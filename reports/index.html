@@ -144,9 +144,77 @@
       .main { padding: 32px 20px 48px; }
       .site-footer { padding: 20px; flex-direction: column; text-align: center; }
     }
+    #gate {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--bg-deep);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #gate::before {
+      content: ""; position: fixed; top: -20%; right: -10%; width: 60vw; height: 60vw;
+      background: radial-gradient(circle at center, rgba(0,208,132,0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .gate-box {
+      width: 100%; max-width: 380px; padding: 0 24px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .gate-logo { height: 36px; margin-bottom: 32px; }
+    .gate-title {
+      font-family: "Sora", sans-serif; font-size: 1.5rem; font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 8px;
+    }
+    .gate-title span {
+      background: linear-gradient(120deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .gate-sub { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 28px; }
+    .gate-input-wrap { position: relative; width: 100%; margin-bottom: 12px; }
+    .gate-input {
+      width: 100%; padding: 14px 48px 14px 16px;
+      background: var(--bg-soft); border: 1px solid var(--border-soft);
+      border-radius: 12px; color: var(--text-primary); font-size: 15px;
+      font-family: inherit; outline: none; transition: border-color 0.2s;
+      letter-spacing: 0.08em;
+    }
+    .gate-input:focus { border-color: var(--accent-green); }
+    .gate-input.error { border-color: #ff5c5c; animation: shake 0.3s ease; }
+    .gate-toggle {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: var(--text-muted);
+      padding: 0; display: flex; align-items: center;
+    }
+    .gate-toggle:hover { color: var(--text-secondary); }
+    .gate-btn {
+      width: 100%; padding: 14px; border-radius: 12px; border: none; cursor: pointer;
+      background: var(--accent-green); color: #0a1628; font-weight: 700;
+      font-size: 15px; font-family: inherit; letter-spacing: 0.01em;
+      transition: opacity 0.2s, transform 0.2s; margin-bottom: 12px;
+    }
+    .gate-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .gate-error { color: #ff5c5c; font-size: 13px; min-height: 18px; }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
   </style>
 </head>
 <body>
+<div id="gate">
+  <div class="gate-box">
+    <img class="gate-logo" src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
+    <h1 class="gate-title"><span>Team</span> Access</h1>
+    <p class="gate-sub">Enter the password to view client reports.</p>
+    <div class="gate-input-wrap">
+      <input class="gate-input" id="pwInput" type="password" placeholder="Password" autocomplete="current-password" />
+      <button class="gate-toggle" id="pwToggle" type="button" aria-label="Show password">
+        <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+    <button class="gate-btn" id="pwBtn">Unlock →</button>
+    <div class="gate-error" id="pwError"></div>
+  </div>
+</div>
   <div class="page">
     <header class="site-header">
       <a href="/" class="logo">
@@ -358,6 +426,42 @@
         if (match) visible++;
       });
       noResults.style.display = visible === 0 ? 'block' : 'none';
+    });
+  </script>
+  <script>
+    const PASS = "NerdsTeam";
+    const gate = document.getElementById("gate");
+    const input2 = document.getElementById("pwInput");
+    const btn = document.getElementById("pwBtn");
+    const err = document.getElementById("pwError");
+    const toggle = document.getElementById("pwToggle");
+
+    function unlock() {
+      if (input2.value === PASS) {
+        sessionStorage.setItem("dn_reports_auth", "1");
+        gate.style.display = "none";
+      } else {
+        err.textContent = "Incorrect password. Please try again.";
+        input2.classList.add("error");
+        input2.value = "";
+        setTimeout(() => input2.classList.remove("error"), 400);
+      }
+    }
+
+    if (sessionStorage.getItem("dn_reports_auth") === "1") {
+      gate.style.display = "none";
+    }
+
+    btn.addEventListener("click", unlock);
+    input2.addEventListener("keydown", e => { if (e.key === "Enter") unlock(); });
+    input2.addEventListener("input", () => { err.textContent = ""; });
+
+    toggle.addEventListener("click", () => {
+      const show = input2.type === "password";
+      input2.type = show ? "text" : "password";
+      document.getElementById("eyeIcon").innerHTML = show
+        ? '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/>'
+        : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
     });
   </script>
 </body>
