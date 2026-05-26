@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Reports | Dentist Nerds</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #0a1628; --bg-soft: #142a47;
+      --accent-green: #00d084; --accent-green-soft: rgba(0,208,132,0.15);
+      --accent-blue: #4aa3ff;
+      --text-primary: #ffffff; --text-secondary: #a9b9cf; --text-muted: #6d7f99;
+      --border-soft: rgba(255,255,255,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      min-height: 100%; background: var(--bg-deep); color: var(--text-primary);
+      font-family: "DM Sans", system-ui, sans-serif; font-size: 16px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ""; position: fixed; top: -20%; right: -10%; width: 60vw; height: 60vw;
+      background: radial-gradient(circle at center, rgba(0,208,132,0.10) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ""; position: fixed; bottom: -20%; left: -10%; width: 50vw; height: 50vw;
+      background: radial-gradient(circle at center, rgba(74,163,255,0.08) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .page { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 100vh; }
+    .site-header {
+      padding: 24px 40px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo img { height: 36px; width: auto; display: block; }
+    .header-link {
+      color: var(--text-secondary); text-decoration: none; font-size: 14px;
+      font-weight: 500; padding: 9px 18px; border: 1px solid var(--border-soft);
+      border-radius: 999px; transition: all 0.2s ease;
+    }
+    .header-link:hover { color: var(--text-primary); border-color: var(--accent-green); background: var(--accent-green-soft); }
+    .main { flex: 1; padding: 48px 40px 64px; max-width: 900px; margin: 0 auto; width: 100%; }
+    .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent-green); }
+    .page-title {
+      font-family: "Sora", sans-serif; font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px;
+    }
+    .page-title span {
+      background: linear-gradient(120deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .page-subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 32px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .card {
+      background: linear-gradient(180deg, rgba(20,42,71,0.7) 0%, rgba(15,32,56,0.5) 100%);
+      border: 1px solid var(--border-soft); border-radius: 16px; padding: 22px 20px;
+      text-decoration: none; color: var(--text-primary);
+      display: flex; align-items: center; gap: 14px;
+      transition: border-color 0.22s ease, transform 0.22s ease, background 0.22s ease;
+    }
+    .card:hover {
+      border-color: rgba(0,208,132,0.5);
+      background: linear-gradient(180deg, rgba(0,208,132,0.07) 0%, rgba(15,32,56,0.5) 100%);
+      transform: translateY(-2px);
+    }
+    .card-icon {
+      flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px;
+      background: var(--accent-green-soft); color: var(--accent-green);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-name { font-weight: 600; font-size: 0.95rem; line-height: 1.3; }
+    .card-tag { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .site-footer {
+      padding: 24px 40px; border-top: 1px solid var(--border-soft);
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--text-muted); font-size: 13px; flex-wrap: wrap; gap: 10px;
+    }
+    .site-footer a { color: var(--text-muted); text-decoration: none; }
+    .site-footer a:hover { color: var(--text-primary); }
+    @media (max-width: 600px) {
+      .site-header { padding: 18px 20px; }
+      .main { padding: 32px 20px 48px; }
+      .site-footer { padding: 20px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header class="site-header">
+    <a href="/" class="logo">
+      <img src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
+    </a>
+    <a href="https://www.dentistnerds.com/" class="header-link">Main Site →</a>
+  </header>
+  <main class="main">
+    <h1 class="page-title">Client <span>Reports</span></h1>
+    <p class="page-subtitle">Select a client to view their monthly reports.</p>
+    <div class="grid">
+      <a href="/clients/Torrance-Dental-Spa/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Torrance Dental Spa</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/all-smiles-dental-studio/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">All Smiles Dental Studio</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/av-dental-wellness-group/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Av Dental Wellness Group</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/beverly-hIlls-cosmetic-dentistry/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Beverly Hills Cosmetic Dentistry</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/cameron-park-family-dentistry/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Cameron Park Family Dentistry</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/canyon-country-dental-care/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Canyon Country Dental Care</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/elite-dentistry/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Elite Dentistry</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/exceptional-dentistry/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Exceptional Dentistry</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/foothill-ranch-dentistry/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Foothill Ranch Dentistry</div><div class="card-tag">2 reports · Latest: May 2026</div></div>
+      </a>
+      <a href="/clients/fullerton-smile-dentistry/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Fullerton Smile Dentistry</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/gardena-dental-group/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Gardena Dental Group</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/malibu-dentistry/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Malibu Dentistry</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/oc-perio-implants-dental-group/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Oc Perio Implants Dental Group</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/pennsylvania-perio--implants/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Pennsylvania Perio Implants</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/perio-implants-health-pro/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Perio Implants Health Pro</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/san-juan-family-dentistry/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">San Juan Family Dentistry</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/seren-advanced-dentistry-oxnard/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Seren Advanced Dentistry Oxnard</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/smile-spa-camarillo/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Smile Spa Camarillo</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/smile-tustin/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Smile Tustin</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/the-smile-spa/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">The Smile Spa</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/valencia-aesthetic-dentistry/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Valencia Aesthetic Dentistry</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/west-hollywood-dental-studio/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">West Hollywood Dental Studio</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/westgrove-dental-care/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Westgrove Dental Care</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+      <a href="/clients/woodland-hills-family-dentistry/" class="card">
+        <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+        <div><div class="card-name">Woodland Hills Family Dentistry</div><div class="card-tag">1 report · Latest: April 2026</div></div>
+      </a>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div>© 2026 Dentist Nerds. All rights reserved.</div>
+    <div>
+      <a href="https://www.dentistnerds.com/privacy-policy">Privacy Policy</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.dentistnerds.com/contact">Contact</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
