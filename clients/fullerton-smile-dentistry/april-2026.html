@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Performance Report — Fullerton Smile Dentistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0d2538;
+  --navy-2: #112e44;
+  --teal: #5fbab0;
+  --gold: #d4a55c;
+  --gold-2: #c9a961;
+  --bg-page: #f5f5f0;
+  --bg-soft: #ebe9e0;
+  --bg-card: #ffffff;
+  --text-dark: #0d2538;
+  --text-body: #4b5563;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --green: #2d8e5c;
+  --green-bg: #d1fae5;
+  --green-text: #065f46;
+  --gold-bg: #fef3c7;
+  --gold-text: #92400e;
+  --red: #c53030;
+  --red-bg: #fee2e2;
+  --red-text: #991b1b;
+  --blue: #2c6fb3;
+  --blue-bg: #dbeafe;
+  --blue-text: #1e40af;
+  --purple: #7c3aed;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: clip; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg-page); color: var(--text-body);
+  line-height: 1.6; font-size: 14px;
+}
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+.eyebrow {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: 14px;
+}
+
+/* HERO */
+.hero { background: var(--navy); color: #fff; padding: 56px 0 0; position: relative; }
+.hero-logo-corner {
+  position: absolute;
+  top: 30px; right: 40px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-logo-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.hero-logo-corner img {
+  height: 48px; width: 48px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  object-fit: cover;
+}
+.hero-logo-corner .prepared-by {
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #8aa1b3; font-weight: 600;
+}
+.hero-logo-corner .brand-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px; font-weight: 600; color: #fff;
+  line-height: 1; letter-spacing: -0.01em;
+}
+.hero h1 { font-size: 54px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 8px; }
+.hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+.hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 32px; }
+.hero .eyebrow { color: var(--teal); }
+.hero-meta-row {
+  display: grid; grid-template-columns: repeat(4, auto); gap: 56px;
+  padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px;
+}
+.hero-meta-item .meta-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #8aa1b3; margin-bottom: 6px; font-weight: 600;
+}
+.hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+/* DATA SOURCES badge row */
+.data-sources {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  padding: 18px 0; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.source-pill {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.05);
+  padding: 8px 14px; border-radius: 999px;
+  font-size: 11.5px; color: #c7d4dd;
+}
+.source-pill i {
+  width: 8px; height: 8px; border-radius: 999px; background: var(--teal);
+}
+
+/* SECTIONS */
+.section { padding: 60px 0; }
+.section h2 { font-size: 38px; font-weight: 600; margin-bottom: 14px; }
+.section-text {
+  font-size: 14px; color: var(--text-body); max-width: 760px;
+  margin-bottom: 28px; line-height: 1.7;
+}
+.section-text strong { color: var(--text-dark); font-weight: 600; }
+.h2-divider {
+  display: grid; grid-template-columns: repeat(3, 90px); gap: 0;
+  margin: 0 0 30px;
+}
+.h2-divider span { height: 2px; }
+.div-purple { background: var(--purple); }
+.div-green { background: var(--green); }
+.div-gold { background: var(--gold-2); }
+.div-blue { background: var(--blue); }
+.div-red { background: var(--red); }
+
+/* source-tag inline */
+.source-tag {
+  display: inline-block;
+  font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; font-weight: 600;
+  padding: 3px 10px; border-radius: 4px;
+  background: var(--bg-soft); color: var(--text-dark);
+  margin-left: 12px; vertical-align: middle;
+}
+.source-tag.semrush { background: #ff642d; color: #fff; }
+.source-tag.gbp     { background: #4285f4; color: #fff; }
+.source-tag.gsc     { background: #34a853; color: #fff; }
+.source-tag.ga4     { background: #f9ab00; color: #fff; }
+
+/* KPI CARDS */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+.kpi-card {
+  background: var(--bg-card); padding: 22px 20px; text-align: center;
+  border-top: 2px solid var(--teal); border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.kpi-card.gold { border-top-color: var(--gold); }
+.kpi-card.green { border-top-color: var(--green); }
+.kpi-card.blue { border-top-color: var(--blue); }
+.kpi-num {
+  font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600;
+  color: var(--text-dark); line-height: 1; margin-bottom: 8px;
+}
+.kpi-label {
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-dark); font-weight: 600; margin-bottom: 4px;
+}
+.kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+/* PORTFOLIO BIG NUMBERS */
+.portfolio-numbers {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 30px; text-align: center; margin: 12px 0 40px;
+}
+.portfolio-num {
+  font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 600;
+  line-height: 1; margin-bottom: 6px;
+}
+.portfolio-num.purple { color: var(--purple); }
+.portfolio-num.green  { color: var(--green); }
+.portfolio-num.gold   { color: var(--gold-2); }
+.portfolio-label { font-size: 13px; color: var(--text-dark); font-weight: 500; }
+
+/* SEO POTENTIAL DONUT */
+.sub-eyebrow {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin: 30px 0 18px;
+}
+.donut-row { display: grid; grid-template-columns: 280px 1fr; gap: 50px; align-items: center; }
+.donut-wrap { display: flex; flex-direction: column; align-items: center; }
+.donut-svg { width: 240px; height: 240px; }
+.donut-legend { margin-top: 16px; display: flex; gap: 18px; font-size: 12px; }
+.donut-legend span { display: flex; align-items: center; gap: 6px; }
+.donut-legend i { width: 12px; height: 12px; display: inline-block; }
+.opp-cards { display: flex; flex-direction: column; gap: 12px; }
+.opp-card {
+  background: var(--bg-card); padding: 18px 24px; border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.opp-title { font-weight: 700; font-size: 14.5px; margin-bottom: 5px; }
+.opp-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+.opp-title.green { color: var(--green); }
+.opp-title.gold  { color: var(--gold-2); }
+.opp-title.red   { color: var(--red); }
+
+/* TABLES */
+.data-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--bg-card); border-radius: 4px; overflow: hidden;
+  font-size: 13px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.data-table thead { background: var(--navy); color: #fff; }
+.data-table th {
+  text-align: left; padding: 14px 18px;
+  font-weight: 600; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.data-table th.num, .data-table td.num { text-align: right; }
+.data-table th.center, .data-table td.center { text-align: center; }
+.data-table td {
+  padding: 14px 18px; border-bottom: 1px solid #f0f0eb; color: var(--text-dark);
+}
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background: #fafafa; }
+
+/* Compact variant — for wide multi-column tables */
+.data-table.compact th { padding: 10px 10px; font-size: 9.5px; letter-spacing: 0.10em; }
+.data-table.compact td { padding: 11px 10px; font-size: 12px; }
+.data-table.compact .pill { font-size: 10.5px; padding: 3px 7px; min-width: 30px; }
+
+.pill {
+  display: inline-block; padding: 4px 10px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 600; min-width: 38px; text-align: center;
+}
+.pill-green { background: var(--green-bg); color: var(--green-text); }
+.pill-gold  { background: var(--gold-bg); color: var(--gold-text); }
+.pill-red   { background: var(--red-bg); color: var(--red-text); }
+.pill-blue  { background: var(--blue-bg); color: var(--blue-text); }
+.status-stable      { background: var(--green-bg); color: var(--green-text); }
+.status-opportunity { background: var(--gold-bg); color: var(--gold-text); }
+.status-priority    { background: var(--red-bg); color: var(--red-text); }
+.status-new         { background: var(--blue-bg); color: var(--blue-text); }
+.move-up { color: var(--green); font-weight: 700; }
+
+/* GBP STATS */
+.gbp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+.gbp-card {
+  background: var(--bg-card); padding: 22px 24px; border-radius: 4px;
+  border-left: 3px solid var(--blue);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.gbp-card.green { border-left-color: var(--green); }
+.gbp-card.gold { border-left-color: var(--gold); }
+.gbp-card.purple { border-left-color: var(--purple); }
+.gbp-num {
+  font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 600;
+  color: var(--text-dark); line-height: 1; margin-bottom: 6px;
+}
+.gbp-label {
+  font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-dark); font-weight: 600; margin-bottom: 3px;
+}
+.gbp-sub { font-size: 11.5px; color: var(--text-muted); }
+
+/* CHANNELS GRID */
+.channels-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 18px; }
+.channel-card {
+  background: var(--bg-card); padding: 20px; border-radius: 4px;
+  text-align: center; border-top: 3px solid var(--teal);
+}
+.channel-card.organic { border-top-color: var(--green); }
+.channel-card.direct { border-top-color: var(--blue); }
+.channel-card.social { border-top-color: var(--purple); }
+.channel-card.referral { border-top-color: var(--gold); }
+.channel-pct {
+  font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 600;
+  color: var(--text-dark); line-height: 1; margin-bottom: 6px;
+}
+.channel-name { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+.channel-sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+/* SEARCH INTENT */
+.intent-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+.intent-card {
+  background: var(--bg-card); padding: 22px 24px; border-radius: 4px;
+  border-left: 4px solid var(--blue);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.intent-card.purple { border-left-color: var(--purple); }
+.intent-card.gold   { border-left-color: var(--gold-2); }
+.intent-card.green  { border-left-color: var(--green); }
+.intent-num {
+  font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600;
+  line-height: 1; margin-bottom: 6px;
+}
+.intent-card.blue .intent-num   { color: var(--blue); }
+.intent-card.purple .intent-num { color: var(--purple); }
+.intent-card.gold .intent-num   { color: var(--gold-2); }
+.intent-card.green .intent-num  { color: var(--green); }
+.intent-label { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--text-dark); }
+.intent-sub { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* PAGES METRICS */
+.pages-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; margin: 24px 0 32px; }
+.pages-metric-num { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 600; line-height: 1; margin-bottom: 6px; }
+.pages-metric-num.blue  { color: var(--blue); }
+.pages-metric-num.green { color: var(--green); }
+.pages-metric-num.gold  { color: var(--gold-2); }
+.pages-metric-label { font-size: 13px; font-weight: 500; color: var(--text-dark); }
+.pages-metric-sub { font-size: 11.5px; color: var(--text-muted); margin-top: 4px; }
+
+/* MONTH SUMMARY */
+.month-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+.month-card {
+  background: var(--bg-card); padding: 20px 24px; border-radius: 4px;
+  border-left: 3px solid var(--teal); box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.month-card.gold  { border-left-color: var(--gold); }
+.month-card.green { border-left-color: var(--green); }
+.month-card.red   { border-left-color: var(--red); }
+.month-card-num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; color: var(--text-dark); line-height: 1; margin-bottom: 6px; }
+.month-card-label { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dark); font-weight: 600; margin-bottom: 3px; }
+.month-card-sub { font-size: 11.5px; color: var(--text-muted); }
+
+/* BACKLINKS */
+.bl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 18px; }
+.bl-card { background: var(--bg-card); padding: 22px 26px; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+.bl-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--text-dark); line-height: 1; margin-bottom: 8px; }
+.bl-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dark); font-weight: 600; }
+.bl-sub { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+
+/* CALLOUTS */
+.callout-dark {
+  background: var(--navy); color: #d8d4c8;
+  padding: 20px 26px; border-radius: 4px; margin-top: 24px;
+  font-size: 13px; line-height: 1.65;
+}
+.callout-dark strong { color: #fff; }
+.callout-green {
+  background: #eaf5ee; color: var(--green);
+  padding: 14px 22px; border-radius: 4px;
+  font-size: 12.5px; font-weight: 500; margin-top: 18px;
+}
+
+
+/* CLIENT-FRIENDLY TAKEAWAY CALLOUTS */
+.callout-takeaway {
+  background: #fff;
+  border-left: 4px solid var(--gold);
+  padding: 22px 26px;
+  margin-bottom: 28px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.callout-takeaway-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+  margin-bottom: 8px;
+}
+.callout-takeaway-text {
+  font-size: 15.5px;
+  color: var(--text-dark);
+  line-height: 1.65;
+}
+.callout-takeaway-text strong {
+  color: var(--navy);
+}
+
+/* SEARCHES HERO (donut + legend bars) */
+.searches-hero {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  background: var(--bg-card);
+  padding: 28px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 14px;
+  align-items: center;
+}
+.searches-chart-side { padding: 8px; }
+.searches-legend-side { padding: 4px 8px; }
+.searches-legend-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.searches-legend-title strong { color: var(--gold-2); font-weight: 600; }
+.searches-legend-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  letter-spacing: 0.04em;
+}
+.searches-legend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.searches-legend-item {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+.legend-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+}
+.legend-content { display: flex; flex-direction: column; gap: 4px; }
+.legend-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.legend-bar-wrap {
+  height: 6px;
+  background: #f0ede4;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 2px 0;
+}
+.legend-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+.legend-stats {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+.legend-stats strong { color: var(--text-dark); font-weight: 600; }
+
+@media (max-width: 768px) {
+  .searches-hero {
+    grid-template-columns: 1fr;
+  }
+  .searches-chart-side .chart-canvas-wrap { height: 260px !important; }
+}
+
+/* BOTTOM LINE — final takeaway card */
+.bottom-line-card {
+  margin-top: 56px;
+  background: linear-gradient(135deg, rgba(212,165,92,0.12) 0%, rgba(212,165,92,0.04) 100%);
+  border: 1px solid rgba(212,165,92,0.4);
+  border-left: 5px solid var(--gold);
+  border-radius: 8px;
+  padding: 38px 44px;
+}
+.bottom-line-label {
+  font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; color: var(--gold); margin-bottom: 14px;
+}
+.bottom-line-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px; font-weight: 600; color: #fff;
+  margin: 0 0 22px; line-height: 1.25;
+}
+.bottom-line-headline em {
+  font-style: italic; color: var(--gold); font-weight: 500;
+}
+.bottom-line-body p {
+  font-size: 15.5px; color: #e2e8f0; line-height: 1.7;
+  margin: 0 0 16px;
+}
+.bottom-line-body p:last-child { margin-bottom: 0; }
+.bottom-line-body strong { color: #fff; font-weight: 600; }
+.bottom-line-signoff {
+  margin-top: 24px !important;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 14.5px !important;
+  color: #cbd5e1 !important;
+  font-style: italic;
+}
+.bottom-line-signoff strong { color: var(--gold) !important; font-style: normal; }
+
+/* ====== ACTION PLAN SECTION (What This Means For You) ====== */
+.atp-block-label {
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; color: var(--gold); margin: 36px 0 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.atp-label-icon { font-size: 18px; }
+.atp-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* Wins cards */
+.atp-win-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(212,165,92,0.2);
+  border-left: 3px solid var(--green);
+  padding: 24px;
+  border-radius: 6px;
+}
+.atp-win-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px; font-weight: 600;
+  color: var(--green); line-height: 1; margin-bottom: 8px;
+}
+.atp-win-title {
+  font-size: 15px; font-weight: 600; color: #fff;
+  margin-bottom: 8px;
+}
+.atp-win-desc {
+  font-size: 13.5px; color: #cbd5e1; line-height: 1.55;
+}
+
+/* Climber list inside the win card */
+.atp-climber-list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 12px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.atp-climber-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  font-size: 12px;
+  gap: 10px;
+}
+.atp-climber-kw {
+  color: #fff;
+  font-weight: 500;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.atp-climber-move {
+  font-family: 'Playfair Display', serif;
+  color: var(--green);
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* Focus cards */
+.atp-focus-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-top: 3px solid var(--gold);
+  padding: 24px;
+  border-radius: 6px;
+}
+.atp-focus-priority {
+  font-size: 10.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 700;
+  color: var(--gold); margin-bottom: 10px;
+}
+.atp-focus-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 600; color: #fff;
+  margin-bottom: 10px; line-height: 1.3;
+}
+.atp-focus-desc {
+  font-size: 13.5px; color: #cbd5e1; line-height: 1.6;
+}
+.atp-focus-desc strong { color: var(--gold); font-weight: 600; }
+
+/* Optional Ads section */
+.atp-ads-section {
+  margin-top: 56px;
+  background: linear-gradient(135deg, rgba(212,165,92,0.08) 0%, rgba(212,165,92,0.02) 100%);
+  border: 1px solid rgba(212,165,92,0.25);
+  border-radius: 8px;
+  padding: 36px 40px;
+}
+.atp-ads-eyebrow {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 700; color: var(--gold); margin-bottom: 12px;
+}
+.atp-ads-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 500; color: #fff;
+  margin: 0 0 14px; line-height: 1.3;
+}
+.atp-ads-headline em {
+  font-style: italic; color: var(--gold); font-weight: 400;
+}
+.atp-ads-intro {
+  font-size: 14.5px; color: #cbd5e1; line-height: 1.65;
+  margin-bottom: 28px; max-width: 780px;
+}
+.atp-ads-intro strong { color: #fff; font-weight: 600; }
+
+.atp-ads-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 18px; margin-bottom: 24px;
+}
+.atp-ad-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(212,165,92,0.3);
+  border-radius: 6px;
+  padding: 24px;
+  display: flex; flex-direction: column;
+}
+.atp-ad-tag {
+  display: inline-block;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 700; color: var(--navy);
+  background: var(--gold);
+  padding: 4px 10px; border-radius: 12px;
+  margin-bottom: 14px; align-self: flex-start;
+}
+.atp-ad-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px; font-weight: 600; color: #fff;
+  margin-bottom: 18px; line-height: 1.3;
+}
+.atp-ad-stat-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 18px; padding-bottom: 18px; margin-bottom: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.atp-ad-stat {
+  display: flex; flex-direction: column;
+}
+.atp-ad-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 600; color: var(--gold);
+  line-height: 1; margin-bottom: 6px;
+}
+.atp-ad-stat-label {
+  font-size: 11.5px; color: #8aa1b3;
+  letter-spacing: 0.04em;
+}
+.atp-ad-rationale {
+  font-size: 13.5px; color: #cbd5e1; line-height: 1.6;
+}
+.atp-ad-rationale strong { color: #fff; font-weight: 600; }
+
+.atp-ads-cta {
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid var(--gold);
+  padding: 18px 22px; border-radius: 4px;
+  font-size: 14px; color: #cbd5e1; line-height: 1.6;
+}
+.atp-ads-cta strong { color: var(--gold); font-weight: 600; }
+
+@media (max-width: 768px) {
+  .atp-grid, .atp-ads-grid { grid-template-columns: 1fr; }
+}
+
+/* SEARCH CATEGORIES GRID (What People Are Searching For) */
+.search-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.search-cat-card {
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: 6px;
+  border-top: 3px solid var(--gold);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+}
+.search-cat-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+.search-cat-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
+  margin-bottom: 14px;
+  min-height: 45px;
+}
+.search-cat-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+  flex: 1;
+}
+.search-cat-examples span {
+  display: inline-block;
+  background: #f5f5f0;
+  color: var(--text-dark);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.search-cat-stat {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.search-cat-stat strong {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .search-categories { grid-template-columns: 1fr; }
+}
+
+/* CLIMBER CARDS (Big Wins) */
+.climber-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 20px; }
+.climber-card {
+  background: var(--bg-card); padding: 26px 24px; border-radius: 6px;
+  text-align: center; border-top: 3px solid var(--green);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+.climber-keyword {
+  font-family: 'Playfair Display', serif; font-weight: 600; font-size: 16px;
+  color: var(--text-dark); line-height: 1.3; min-height: 42px; margin-bottom: 6px;
+}
+.climber-volume {
+  font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 18px;
+}
+.climber-positions {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin-bottom: 14px;
+}
+.climber-old {
+  font-family: 'Playfair Display', serif; font-size: 30px;
+  color: #cbd5e1; font-weight: 600;
+}
+.climber-arrow {
+  font-size: 22px; color: var(--green); font-weight: 700;
+}
+.climber-new {
+  font-family: 'Playfair Display', serif; font-size: 44px;
+  color: var(--green); font-weight: 700; line-height: 1;
+}
+.climber-change {
+  font-size: 12px; font-weight: 600; color: var(--green);
+  letter-spacing: 0.04em;
+}
+
+/* CHARTS */
+.chart-card {
+  background: var(--bg-card); padding: 28px 30px; border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04); margin-bottom: 24px;
+}
+.chart-card-title {
+  font-family: 'Playfair Display', serif; font-weight: 600; font-size: 18px;
+  color: var(--text-dark); margin-bottom: 4px;
+}
+.chart-card-sub {
+  font-size: 12px; color: var(--text-muted); margin-bottom: 18px;
+}
+.chart-canvas-wrap { position: relative; height: 320px; }
+.chart-canvas-wrap.short { height: 260px; }
+.chart-canvas-wrap.tall { height: 380px; }
+.chart-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.chart-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+/* STARS */
+.stars { color: var(--gold); letter-spacing: 2px; }
+
+/* BACKLINK BUTTON */
+.bl-button-wrap { margin-top: 28px; text-align: center; }
+.bl-button {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--navy); color: #fff;
+  padding: 16px 32px; border-radius: 4px;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(13,37,56,0.15);
+  border: 2px solid var(--navy);
+}
+.bl-button:hover {
+  background: var(--gold); border-color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212,165,92,0.25);
+}
+.bl-button-icon {
+  width: 18px; height: 18px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.bl-button-sub {
+  font-size: 11.5px; color: var(--text-muted);
+  text-align: center; margin-top: 10px;
+}
+
+.footer {
+  padding: 40px 0 30px; text-align: center;
+  font-size: 11.5px; color: var(--text-muted);
+  border-top: 1px solid var(--border); margin-top: 30px;
+}
+.footer-prepared {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  padding-bottom: 24px; margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.footer-prepared-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 600;
+}
+.footer-brand-row {
+  display: flex; align-items: center; gap: 14px;
+}
+.footer-prepared img {
+  height: 56px; width: 56px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  object-fit: cover;
+}
+.footer-brand-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px; font-weight: 600; color: var(--navy);
+  line-height: 1; letter-spacing: -0.01em;
+}
+.footer .sources {
+  margin-top: 8px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+}
+.footer .sources span { font-weight: 600; }
+
+@media print {
+  body { font-size: 11px; }
+  .section { padding: 30px 0; page-break-inside: avoid; }
+  .hero { padding: 30px 0 0; }
+  .hero h1 { font-size: 36px; }
+}
+
+/* APRIL VS MARCH CARDS (replaces 9-col table) */
+.april-vs-march {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.avm-card {
+  background: var(--bg-card);
+  padding: 22px 24px;
+  border-radius: 6px;
+  border-left: 4px solid var(--green);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+.avm-source {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 600; margin-bottom: 14px;
+}
+.avm-dot {
+  display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+}
+.avm-dot-orange { background: #ff642d; }
+.avm-dot-yellow { background: #f9ab00; }
+.avm-dot-green { background: #34a853; }
+.avm-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 12px;
+}
+.avm-prev, .avm-now {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px; font-weight: 600;
+  display: flex; flex-direction: column; align-items: center;
+  line-height: 1;
+}
+.avm-prev { color: #cbd5e1; }
+.avm-now { color: var(--navy); }
+.avm-prev-label, .avm-now-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 500;
+  margin-top: 6px;
+}
+.avm-arrow { font-size: 20px; color: var(--green); font-weight: 700; }
+.avm-change {
+  font-size: 13px; font-weight: 600; color: var(--green);
+  text-align: center; padding-top: 10px; border-top: 1px solid var(--border);
+}
+.avm-change-flat { color: var(--text-muted); }
+
+/* APRIL HIGHLIGHT SUMMARY BOX (replaces GBP monthly table) */
+.april-summary-box {
+  background: linear-gradient(135deg, #fffaf0 0%, #fff 100%);
+  border: 1px solid #e5d4b1;
+  border-left: 4px solid var(--gold);
+  border-radius: 6px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+}
+.april-summary-label {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-2); font-weight: 700; margin-bottom: 12px;
+}
+.april-summary-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; line-height: 1.4; color: var(--navy);
+  margin-bottom: 22px;
+}
+.april-summary-headline strong { font-weight: 600; }
+.april-summary-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; padding-top: 20px;
+  border-top: 1px solid #e5d4b1;
+}
+.april-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 600; color: var(--green);
+  line-height: 1; margin-bottom: 6px;
+}
+.april-stat-label {
+  font-size: 12px; color: var(--text-muted); font-weight: 500;
+}
+
+/* COLLAPSIBLE DETAILS */
+.details-collapse {
+  background: #fff; border: 1px solid var(--border); border-radius: 6px;
+  margin-bottom: 24px; padding: 0;
+}
+.details-collapse summary {
+  cursor: pointer;
+  padding: 14px 20px;
+  font-size: 13px; font-weight: 600; color: var(--navy);
+  list-style: none;
+  user-select: none;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.details-collapse summary:hover { background: #fafaf5; }
+.details-collapse summary::-webkit-details-marker { display: none; }
+.details-collapse summary::before {
+  content: '▸ ';
+  display: inline-block; margin-right: 6px;
+  transition: transform 0.2s;
+}
+.details-collapse[open] summary::before {
+  transform: rotate(90deg);
+}
+.details-collapse[open] summary {
+  border-bottom: 1px solid var(--border);
+  border-radius: 6px 6px 0 0;
+  background: #fafaf5;
+}
+.details-collapse > table {
+  margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .april-vs-march, .april-summary-stats { grid-template-columns: 1fr; }
+}
+
+
+/* Open table wrapper (replaces collapsed details) */
+.open-table-wrap {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.open-table-wrap > table {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+
+@media (max-width: 768px) {
+  .monthly-visitors-chart { display: none; }
+}
+
+@media (max-width: 900px) {
+  .container { padding: 0 20px !important; }
+
+  /* Logo corner: unpin from absolute, flow naturally at top */
+  .hero-logo-corner {
+    position: static !important;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 { font-size: 32px !important; line-height: 1.2 !important; }
+  .hero-sub { font-size: 14px !important; }
+  h2 { font-size: 26px !important; line-height: 1.25 !important; }
+  h3 { font-size: 20px !important; }
+
+  .hero-meta-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px 24px !important;
+  }
+  .hero-meta-item .meta-value { font-size: 11px !important; word-break: break-word; overflow-wrap: break-word; min-width: 0; }
+
+  .data-table th, .data-table td { padding: 10px 12px !important; font-size: 12px !important; }
+
+  .gbp-grid, .bl-grid, .month-summary, .atp-grid, .climber-grid,
+  .search-categories, .charts-row, .donut-wrap-row {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .bottom-line-card { padding: 28px 20px !important; }
+  .footer { padding: 24px 16px !important; font-size: 11px !important; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px !important; }
+  .hero-meta-item .meta-value { font-size: 10px !important; }
+  .hero h1 { font-size: 26px !important; }
+  h2 { font-size: 22px !important; }
+}
+
+/* ============ COMPREHENSIVE RESPONSIVE DESIGN ============ */
+
+/* Mobile View (≤ 480px) */
+@media (max-width: 480px) {
+  .container { padding: 0 16px !important; }
+  h1.report-title, .hero h1 { font-size: 2rem !important; }
+  h2 { font-size: 1.3rem !important; }
+  .kpi-grid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .kpi-value, .kpi-num { font-size: 1.8rem !important; }
+  .bl-grid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .stat-grid, .stats-row { grid-template-columns: 1fr 1fr !important; }
+  .chart-canvas-wrap { height: 220px !important; }
+  .two-col, .three-col { grid-template-columns: 1fr !important; }
+  table { font-size: 11px !important; overflow-x: auto; display: block; }
+  table th, table td { padding: 6px 8px !important; white-space: nowrap; }
+  .bottom-line-card { padding: 20px 16px !important; }
+  .footer { padding: 24px 16px !important; text-align: center !important; }
+  .hero { padding: 40px 16px 32px !important; }
+  .hero-meta-row { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+  .atp-grid { grid-template-columns: 1fr !important; }
+  .april-vs-march { grid-template-columns: 1fr !important; }
+  .april-summary-stats { grid-template-columns: 1fr 1fr !important; }
+  .competitor-table-wrap { overflow-x: auto; }
+  .searches-hero { grid-template-columns: 1fr !important; }
+  .search-categories { grid-template-columns: 1fr !important; }
+  .searches-chart-side .chart-canvas-wrap { height: 240px !important; }
+  .section { padding: 40px 0 !important; }
+}
+
+/* Tablet View (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container { padding: 0 24px !important; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+  .bl-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .chart-canvas-wrap { height: 260px !important; }
+  .two-col { grid-template-columns: 1fr !important; }
+  .three-col { grid-template-columns: 1fr 1fr !important; }
+  table { font-size: 12px !important; overflow-x: auto; display: block; }
+  .bottom-line-card { padding: 28px 24px !important; }
+  .hero-meta-row { grid-template-columns: repeat(2, auto) !important; gap: 24px !important; }
+  .atp-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .section { padding: 48px 0 !important; }
+}
+
+/* Small Desktop (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container { max-width: 720px !important; }
+}
+
+/* Standard Desktop (1025px+) */
+@media (min-width: 1025px) {
+  .container { max-width: 900px !important; }
+}
+
+/* Extra Large Desktop (1400px+) */
+@media (min-width: 1400px) {
+  .container { max-width: 1000px !important; }
+}
+
+/* Ensure tables are scrollable on small screens */
+@media (max-width: 900px) {
+  .table-wrap, table { overflow-x: auto; display: block; -webkit-overflow-scrolling: touch; }
+  .competitor-section table { overflow-x: auto; display: block; }
+}
+
+/* Fix #1 Rankings win card list — compact inline display */
+.atp-win-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.atp-win-card li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.atp-win-card li .climber-keyword {
+  display: inline !important;
+  font-size: 11px !important;
+  font-weight: 500;
+  color: inherit;
+}
+.atp-win-card li .climber-new {
+  display: inline !important;
+  font-size: 11px !important;
+  font-weight: 700;
+  color: #5fbab0;
+  white-space: nowrap;
+}
+
+.atp-win-card li .climber-keyword {
+  min-height: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+}
+.atp-win-card li .climber-new {
+  font-size: 11px !important;
+  min-height: 0 !important;
+}
+.atp-win-card ul li {
+  padding: 2px 0 !important;
+  min-height: 0 !important;
+}
+@media (max-width: 900px) {
+  html, body { max-width: 100%; overflow-x: clip; }
+  .hero-logo-corner { position: static !important; margin-bottom: 20px; }
+  .hero h1 { font-size: 32px !important; line-height: 1.2 !important; }
+  .hero-sub { font-size: 14px !important; }
+  h2 { font-size: 26px !important; }
+  h3 { font-size: 20px !important; }
+  .hero-meta-row { grid-template-columns: repeat(2, 1fr) !important; gap: 16px 24px !important; }
+  .hero-meta-item .meta-value { font-size: 11px !important; word-break: break-word; overflow-wrap: break-word; min-width: 0; }
+  .gbp-grid, .bl-grid, .month-summary, .atp-grid, .climber-grid,
+  .search-categories, .charts-row, .donut-wrap-row { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .bottom-line-card { padding: 28px 20px !important; }
+  .footer { padding: 24px 16px !important; font-size: 11px !important; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 16px !important; }
+  .hero-meta-item .meta-value { font-size: 10px !important; }
+  .hero h1 { font-size: 26px !important; }
+  h2 { font-size: 22px !important; }
+}
+
+/* ============ TABLES FIT WITHOUT HORIZONTAL SCROLL (ALL SIZES) ============ */
+.open-table-wrap, .table-wrap {
+  overflow-x: visible !important;
+  overflow: visible !important;
+  width: 100%;
+}
+table.data-table {
+  display: table !important;
+  table-layout: fixed !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+table.data-table th,
+table.data-table td {
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+table.data-table thead th {
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  white-space: normal !important;
+  line-height: 1.2 !important;
+}
+table.data-table .pill {
+  white-space: nowrap !important;
+  min-width: 0 !important;
+}
+
+/* Tablet & small desktop — moderate compression */
+@media (max-width: 1024px) {
+  table.data-table {
+    font-size: 12px !important;
+  }
+  table.data-table th,
+  table.data-table td {
+    padding: 8px 6px !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+  table.data-table thead th {
+    font-size: 10px !important;
+    letter-spacing: 0.04em !important;
+    padding: 8px 6px !important;
+  }
+  table.data-table .pill {
+    font-size: 10.5px !important;
+    padding: 3px 6px !important;
+  }
+}
+
+/* Mobile — tighter compression */
+@media (max-width: 768px) {
+  table.data-table {
+    font-size: 11px !important;
+  }
+  table.data-table th,
+  table.data-table td {
+    padding: 8px 4px !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+  table.data-table thead th {
+    font-size: 9.5px !important;
+    padding: 8px 4px !important;
+  }
+  table.data-table .pill {
+    font-size: 9.5px !important;
+    padding: 2px 5px !important;
+  }
+  table.data-table .num,
+  table.data-table .center {
+    padding: 8px 3px !important;
+  }
+}
+
+/* Extra-narrow phones (≤ 380px) — tighten further */
+@media (max-width: 380px) {
+  table.data-table {
+    font-size: 10px !important;
+  }
+  table.data-table th,
+  table.data-table td {
+    padding: 6px 2px !important;
+    font-size: 10px !important;
+  }
+  table.data-table thead th {
+    font-size: 8.5px !important;
+    padding: 6px 2px !important;
+  }
+  table.data-table .pill {
+    font-size: 8.5px !important;
+    padding: 2px 4px !important;
+  }
+}
+
+/* ============ EXTRA SPECIFICITY: Force competitor table to fit + center ============ */
+table.data-table[style*="table-layout:fixed"] {
+  display: table !important;
+  table-layout: fixed !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+table.data-table[style*="table-layout:fixed"] th,
+table.data-table[style*="table-layout:fixed"] td {
+  text-align: center !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+
+
+
+/* ============ FINAL RESPONSIVE FIXES — TABLES + CHARTS (May 8) ============ */
+/* Override conflicting earlier rules — force ALL tables to fit, ALL charts to size correctly */
+
+/* Force ALL tables to behave as proper tables (not display:block with nowrap) */
+table, table.data-table, table.gbp-table, table.keyword-table, table.compact {
+  display: table !important;
+  table-layout: fixed !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  border-collapse: collapse !important;
+}
+table th, table td {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* Wrappers should not force horizontal scroll */
+.open-table-wrap, .table-wrap, .competitor-table-wrap {
+  overflow-x: visible !important;
+  overflow: visible !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  -webkit-overflow-scrolling: auto !important;
+}
+
+/* Chart containers — ensure proper sizing across breakpoints */
+.chart-canvas-wrap {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+.chart-canvas-wrap canvas {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Donut chart hero (Search Keywords section) — center on mobile, stack on tablet+ */
+.searches-hero {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+  align-items: center !important;
+}
+.searches-chart-side {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+.searches-chart-side .chart-canvas-wrap {
+  width: 100% !important;
+  max-width: 320px !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 900px) {
+  .searches-hero { grid-template-columns: 1fr !important; }
+  .searches-chart-side .chart-canvas-wrap {
+    height: 280px !important;
+    max-width: 280px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .searches-chart-side .chart-canvas-wrap {
+    height: 240px !important;
+    max-width: 240px !important;
+  }
+}
+
+/* Tables — tighten on mobile but no horizontal scroll */
+@media (max-width: 768px) {
+  table, table.data-table, table.gbp-table, table.keyword-table, table.compact {
+    font-size: 11px !important;
+  }
+  table th, table td {
+    padding: 6px 4px !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+  table thead th {
+    font-size: 9.5px !important;
+    padding: 6px 3px !important;
+    line-height: 1.2 !important;
+  }
+  table .pill {
+    font-size: 9.5px !important;
+    padding: 2px 4px !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+  }
+}
+
+@media (max-width: 480px) {
+  table, table.data-table, table.gbp-table, table.keyword-table, table.compact {
+    font-size: 10px !important;
+  }
+  table th, table td {
+    padding: 5px 3px !important;
+    font-size: 10px !important;
+  }
+  table thead th {
+    font-size: 8.5px !important;
+    padding: 5px 2px !important;
+  }
+  table .pill {
+    font-size: 9px !important;
+    padding: 2px 3px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  table, table.data-table, table.gbp-table, table.keyword-table, table.compact {
+    font-size: 9px !important;
+  }
+  table th, table td { padding: 4px 2px !important; font-size: 9px !important; }
+  table thead th { font-size: 8px !important; padding: 4px 2px !important; }
+  table .pill { font-size: 8.5px !important; padding: 1px 3px !important; }
+}
+
+/* Grids stack on mobile */
+@media (max-width: 768px) {
+  .gbp-grid, .bl-grid, .month-summary, .atp-grid, .climber-grid,
+  .search-categories, .charts-row, .donut-wrap-row, .kpi-grid,
+  .stat-grid, .stats-row, .two-col, .three-col {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .april-summary-stats, .hero-meta-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .april-summary-stats { grid-template-columns: 1fr 1fr !important; }
+  .container { padding: 0 14px !important; }
+  .section { padding: 32px 0 !important; }
+}
+
+/* Body-level safety net — prevent any horizontal overflow */
+html, body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+* { box-sizing: border-box; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style id="claude-agent-animation-styles">
+      @keyframes claude-pulse {
+        0% {
+          box-shadow: 
+            inset 0 0 10px rgba(217, 119, 87, 0.5),
+            inset 0 0 20px rgba(217, 119, 87, 0.3),
+            inset 0 0 30px rgba(217, 119, 87, 0.1);
+        }
+        50% {
+          box-shadow: 
+            inset 0 0 15px rgba(217, 119, 87, 0.7),
+            inset 0 0 25px rgba(217, 119, 87, 0.5),
+            inset 0 0 35px rgba(217, 119, 87, 0.2);
+        }
+        100% {
+          box-shadow: 
+            inset 0 0 10px rgba(217, 119, 87, 0.5),
+            inset 0 0 20px rgba(217, 119, 87, 0.3),
+            inset 0 0 30px rgba(217, 119, 87, 0.1);
+        }
+      }
+    </style></head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-logo-corner">
+      <img src="data:image/png;base64,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" alt="Dentist Nerds">
+      <div class="hero-logo-text">
+        <div class="prepared-by">Prepared by</div>
+        <div class="brand-name">Dentist Nerds</div>
+      </div>
+    </div>
+
+    <div class="eyebrow">SEO PERFORMANCE ANALYSIS · MULTI-SOURCE</div>
+    <h1>SEO Performance<br><em>Report</em></h1>
+    <div class="hero-sub">Fullerton Smile Dentistry &nbsp;·&nbsp; Fullerton, CA</div>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <div class="meta-label">Website</div>
+        <div class="meta-value">fullertonsmiledentistry.com</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Report Date</div>
+        <div class="meta-value">May 4, 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Reporting Period</div>
+        <div class="meta-value">April 1 – April 30, 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Prepared By</div>
+        <div class="meta-value">Dentist Nerds</div>
+      </div>
+    </div>
+
+    <div class="data-sources">
+      <div class="source-pill"><i></i> Semrush US Database</div>
+      <div class="source-pill"><i></i> Google Business Profile</div>
+      <div class="source-pill"><i></i> Google Search Console</div>
+      <div class="source-pill"><i></i> Google Analytics 4</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXECUTIVE SUMMARY ============ -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">YOUR APRIL REPORT</div>
+    <h2>Your April at a Glance</h2>
+    <div class="callout-takeaway">
+      <div class="callout-takeaway-label">📊 The Bottom Line</div>
+      <div class="callout-takeaway-text">
+        In April, the website ranked for <solid>235 search terms on Google</solid>, the Google Business listing
+        drove <solid>15 calls, 35 website clicks, and 100 direction requests</solid>, and the practice holds a
+        <solid>5.0★ rating across 76 reviews</solid>. Organic search engagement sits at 63%.
+      </div>
+    </div>
+
+    <p class="section-text">
+      This report breaks down everything that happened with your online marketing in April 2026. Each section answers
+      one simple question:
+    </p>
+
+    <ul style="font-size:15px; color:var(--text-dark); line-height:1.9; margin:0 0 24px 24px; padding:0;">
+      <li><solid>How many people visited your website?</solid> (and what did they do there)</li>
+      <li><solid>What are people searching when they find you?</solid></li>
+      <li><solid>Where do you show up on Google?</solid></li>
+      <li><solid>How is your Google Business listing performing?</solid> (calls, directions, clicks)</li>
+      <li><solid>How does your site stack up against competitors?</solid></li>
+    </ul>
+
+    <div class="eyebrow" style="margin-top:36px;">AT A GLANCE</div>
+    <h3 style="font-size:24px; font-weight:600; margin-bottom:6px;">Key Performance Indicators</h3>
+    <div class="month-summary">
+      <div class="month-card">
+        <div class="month-card-num">235</div>
+        <div class="month-card-label">Keywords You Rank For</div>
+        <div class="month-card-sub">+76 vs March (+48%)</div>
+      </div>
+      <div class="month-card green">
+        <div class="month-card-num">17</div>
+        <div class="month-card-label">Estimated Monthly Visitors</div>
+        <div class="month-card-sub">April 1 – April 30, 2026</div>
+      </div>
+      <div class="month-card">
+        <div class="month-card-num">3</div>
+        <div class="month-card-label">Climbing Tracked Keywords</div>
+        <div class="month-card-sub">Plus 2 new entries this month</div>
+      </div>
+      <div class="month-card gold">
+        <div class="month-card-num">5.0★</div>
+        <div class="month-card-label">Your Google Rating</div>
+        <div class="month-card-sub">Strong patient reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ SITE TRAFFIC & ENGAGEMENT ============ -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">WEBSITE VISITORS &amp; ENGAGEMENT</div>
+    <h2>How People Found &amp; Used Your Website</h2>
+    <div class="h2-divider"><span class="div-blue"></span><span class="div-green"></span><span class="div-gold"></span></div>
+    <div class="callout-takeaway">
+      <div class="callout-takeaway-label">📈 What This Section Shows</div>
+      <div class="callout-takeaway-text">
+        How many people visited your website in April, where they came from, what they did on your site, and which pages
+        they landed on. <solid>Traffic grew 14% from March</solid> — meaning more potential patients are finding you
+        through Google than last month.
+      </div>
+    </div>
+
+    <p class="section-text">
+      We track website visitors through three different tools, and they all point in the same direction: <solid>your site
+      showed consistent results across all tracking tools</solid>. The numbers below show estimated visitors, actual visits we measured, and the dollar
+      value of all that organic search traffic.
+    </p>
+
+    <!-- Top KPI cards: April month-over-month highlights -->
+    <div class="month-summary">
+      <div class="month-card green">
+        <div class="month-card-num">404</div>
+        <div class="month-card-label">Estimated Monthly Visitors</div>
+        <div class="month-card-sub">April 1 – April 30, 2026</div>
+      </div>
+      <div class="month-card">
+        <div class="month-card-num">2:07</div>
+        <div class="month-card-label">Time on Your Site</div>
+        <div class="month-card-sub">2 minutes 7 seconds (April avg)</div>
+      </div>
+    </div>
+
+    <!-- Single averaged trend chart - simpler for clients -->
+    <div class="chart-card monthly-visitors-chart">
+      <div class="chart-card-title">Monthly Website Visitors</div>
+      <div class="chart-card-sub">How many people visited your website each month over the past 6 months</div>
+      <div class="chart-canvas-wrap"><canvas id="trafficTrendChart" width="752" height="256" style="display: block; box-sizing: border-box; height: 320px; width: 940px;"></canvas></div>
+    </div>
+
+    <!-- Channel donut + monthly table side by side concept -->
+    <div class="chart-card">
+      <div class="chart-card-title">Where April Sessions Came From</div>
+      <div class="chart-card-sub">166 engaged visits in April 2026 — real people who interacted with your site</div>
+      <div class="chart-canvas-wrap"><canvas id="channelDonutChart" width="752" height="256" style="display: block; box-sizing: border-box; height: 320px; width: 940px;"></canvas></div>
+    </div>
+
+    <!-- Unified Monthly Traffic Summary - simplified for clients -->
+    <div class="sub-eyebrow">APRIL vs MARCH — WHAT CHANGED</div>
+    <div class="april-vs-march">
+      <div class="avm-card avm-up">
+        <div class="avm-source"><span class="avm-dot avm-dot-orange"></span>Keywords Ranking</div>
+        <div class="avm-row">
+          <div class="avm-prev">159<span class="avm-prev-label">keywords in March</span></div>
+          <div class="avm-arrow">→</div>
+          <div class="avm-now">235<span class="avm-now-label">in April</span></div>
+        </div>
+        <div class="avm-change">▲ +76 more keywords (+48%)</div>
+      </div>
+
+      <div class="avm-card avm-up">
+        <div class="avm-source"><span class="avm-dot avm-dot-yellow"></span>Engaged Sessions</div>
+        <div class="avm-row">
+          <div class="avm-prev">130<span class="avm-prev-label">engaged in March</span></div>
+          <div class="avm-arrow">→</div>
+          <div class="avm-now">166<span class="avm-now-label">in April</span></div>
+        </div>
+        <div class="avm-change">▲ +28% engaged sessions</div>
+      </div>
+
+      <div class="avm-card avm-up">
+        <div class="avm-source"><span class="avm-dot avm-dot-green"></span>Direction Requests</div>
+        <div class="avm-row">
+          <div class="avm-prev">70<span class="avm-prev-label">requests in March</span></div>
+          <div class="avm-arrow">→</div>
+          <div class="avm-now">100<span class="avm-now-label">in April</span></div>
+        </div>
+        <div class="avm-change">▲ +43% direction requests</div>
+      </div>
+    </div>
+
+    <div class="sub-eyebrow" style="margin-top:24px;">📋 6-MONTH TRAFFIC DETAIL — ALL THE NUMBERS</div>
+    <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+      Here's the complete picture: every month, every traffic source. Each colored band represents one of our tracking tools.
+    </p>
+    <div class="open-table-wrap">
+      <table class="data-table compact">
+        <thead>
+          <tr style="background:#1a3550;">
+            <th rowspan="2" style="vertical-align:bottom;">Month</th>
+            <th colspan="3" class="center" style="border-left:1px solid rgba(255,255,255,0.15); background:#ff642d;">SEARCH RANKINGS</th>
+            <th colspan="3" class="center" style="border-left:1px solid rgba(255,255,255,0.15); background:#f9ab00;">WEBSITE VISITS</th>
+            <th colspan="2" class="center" style="border-left:1px solid rgba(255,255,255,0.15); background:#34a853;">GOOGLE SEARCH</th>
+          </tr>
+          <tr>
+            <th class="num" style="border-left:1px solid rgba(255,255,255,0.15);">Est. Traffic</th>
+            <th class="num">Keywords</th>
+            <th class="num">Traffic Value</th>
+            <th class="num" style="border-left:1px solid rgba(255,255,255,0.15);">Sessions</th>
+            <th class="num">Users</th>
+            <th class="num">Avg. Duration</th>
+            <th class="num" style="border-left:1px solid rgba(255,255,255,0.15);">Search Impressions</th>
+            <th class="num">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Nov 2025</td><td class="num">26</td><td class="num">169</td><td class="num">$109</td><td class="num"><span class="pill pill-green">418</span></td><td class="num">342</td><td class="num">2:40</td><td class="num">~2,100</td><td class="num"><span class="pill status-stable">Stable</span></td></tr>
+          <tr><td>Dec 2025</td><td class="num"><span class="pill pill-green">37</span></td><td class="num">188</td><td class="num"><span class="pill pill-green">$159</span></td><td class="num">407</td><td class="num"><span class="pill pill-green">347</span></td><td class="num">2:30</td><td class="num">~1,600</td><td class="num"><span class="pill status-climbing">Growing</span></td></tr>
+          <tr><td>Jan 2026</td><td class="num">19</td><td class="num">131</td><td class="num">$75</td><td class="num">324</td><td class="num">261</td><td class="num">2:35</td><td class="num">~950</td><td class="num"><span class="pill status-priority">Declining</span></td></tr>
+          <tr><td>Feb 2026</td><td class="num">12</td><td class="num">137</td><td class="num">$27</td><td class="num">267</td><td class="num">223</td><td class="num">2:25</td><td class="num">~960</td><td class="num"><span class="pill status-opportunity">Recovering</span></td></tr>
+          <tr><td>Mar 2026</td><td class="num">14</td><td class="num">159</td><td class="num">$24</td><td class="num">285</td><td class="num">222</td><td class="num">2:35</td><td class="num">~1,200</td><td class="num"><span class="pill status-climbing">Climbing</span></td></tr>
+          <tr style="background:#fafaf5;"><td><solid>Apr 2026</solid></td><td class="num"><solid>17</solid></td><td class="num"><solid><span class="pill pill-green">235</span></solid></td><td class="num"><solid>$12</solid></td><td class="num"><solid>333</solid></td><td class="num"><solid>236</solid></td><td class="num"><solid>2:45</solid></td><td class="num">~1,700</td><td class="num"><span class="pill status-climbing">Growing</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- ===== TOP TRAFFIC-DRIVING PAGES (moved from Page Performance section) ===== -->
+    <div class="eyebrow" style="margin-top:48px;">YOUR TOP-PERFORMING PAGES</div>
+    <h2 style="font-size:30px; margin-bottom:14px;">The Pages People Visit Most</h2>
+    <p class="section-text">
+      Here are the pages bringing in the most visitors. Below are the pages on your website — the pages bringing in
+      the most visitors. Your homepage leads the way, but there are some notable pages further down the list.
+    </p>
+
+    <div class="pages-metrics">
+      <div>
+        <div class="pages-metric-num blue">249</div>
+        <div class="pages-metric-label">Homepage Page Views</div>
+        <div class="pages-metric-sub">28% of all website views</div>
+      </div>
+      <div>
+        <div class="pages-metric-num green">16</div>
+        <div class="pages-metric-label">Pages Driving 10+ Visits</div>
+        <div class="pages-metric-sub">Spread across multiple pages</div>
+      </div>
+      <div>
+        <div class="pages-metric-num gold">54%</div>
+        <div class="pages-metric-label">Traffic From Your Top 10 Pages</div>
+        <div class="pages-metric-sub">Balanced · multiple entry points</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-title">Your Top 10 Pages — Where Visitors Land</div>
+      <div class="chart-card-sub">The percentage of website visitors each page brings in</div>
+      <div class="chart-canvas-wrap tall"><canvas id="topPagesChart" width="752" height="304" style="display: block; box-sizing: border-box; height: 380px; width: 940px;"></canvas></div>
+    </div>
+
+    <div class="callout-takeaway" style="margin-bottom:24px;">
+      <div class="callout-takeaway-label">⭐ NOTABLE PAGE</div>
+      <div class="callout-takeaway-text">
+        Your <solid>"Dental Abscess Treatments During Pregnancy"</solid> blog post is quietly driving real traffic — 21 visits in April
+        from a niche but high-intent topic. Your dentist appointment page (45 views) and Fullerton dental services page (38 views) are
+        also pulling steady traffic. The traffic is healthier than the small numbers suggest — your <solid>63% organic engagement rate</solid>
+        means visitors are actually reading and exploring, not bouncing.
+      </div>
+    </div>
+
+    <div class="callout-takeaway">
+      <div class="callout-takeaway-label">✅ The Bottom Line</div>
+      <div class="callout-takeaway-text">
+        Your website got around <solid>400+ visitors in April</solid> — up 14% from March. <solid>60% of those visitors
+        found you through Google search</solid>, and they stayed on your site for nearly 3 minutes per visit. This is
+        solid, Positive traffic moving in the right direction.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEYWORD PORTFOLIO (SEMRUSH) ============ -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">SEARCH KEYWORDS</div>
+    <h2>What People Are Searching For</h2>
+    <div class="h2-divider"><span class="div-purple"></span><span class="div-green"></span><span class="div-gold"></span></div>
+
+    <div class="callout-takeaway">
+      <div class="callout-takeaway-label">🔍 What This Section Shows</div>
+      <div class="callout-takeaway-text">
+        The actual searches people typed into Google that brought up your website in April. We've grouped them by
+        what the person was looking for — so you can see what kind of patients are finding you.
+      </div>
+    </div>
+
+    <p class="section-text">
+      Below are the local Fullerton-area search categories that bring patients to your site —
+      based on the keywords we actively track. Volumes shown are <strong>local monthly
+      searches</strong> within Fullerton and the surrounding 5-mile area.
+    </p>
+
+    <!-- Hero visual: donut chart + legend -->
+    <div class="searches-hero">
+      <div class="searches-chart-side">
+        <div class="chart-canvas-wrap" style="height:340px;"><canvas id="searchTypesChart" width="318" height="272" style="display: block; box-sizing: border-box; height: 340px; width: 398px;"></canvas></div>
+      </div>
+      <div class="searches-legend-side">
+        <div class="searches-legend-title">Local monthly searches: <strong>~300</strong></div>
+        <div class="searches-legend-sub">Fullerton &amp; surrounding area</div>
+        <div class="searches-legend-list">
+          <div class="searches-legend-item">
+            <div class="legend-icon" style="background:#d4a55c;">🏥</div>
+            <div class="legend-content">
+              <div class="legend-name">Fullerton Dentist Searches</div>
+              <div class="legend-bar-wrap"><div class="legend-bar" style="width:50%; background:#d4a55c;"></div></div>
+              <div class="legend-stats"><strong>~150</strong> · 50% of local searches</div>
+            </div>
+          </div>
+          <div class="searches-legend-item">
+            <div class="legend-icon" style="background:#0d2538;">🏷️</div>
+            <div class="legend-content">
+              <div class="legend-name">Your Practice By Name</div>
+              <div class="legend-bar-wrap"><div class="legend-bar" style="width:27%; background:#0d2538;"></div></div>
+              <div class="legend-stats"><strong>~80</strong> · 27% of local searches</div>
+            </div>
+          </div>
+          <div class="searches-legend-item">
+            <div class="legend-icon" style="background:#2d8e5c;">🦷</div>
+            <div class="legend-content">
+              <div class="legend-name">Specific Procedures (Fullerton)</div>
+              <div class="legend-bar-wrap"><div class="legend-bar" style="width:17%; background:#2d8e5c;"></div></div>
+              <div class="legend-stats"><strong>~50</strong> · 17% of local searches</div>
+            </div>
+          </div>
+          <div class="searches-legend-item">
+            <div class="legend-icon" style="background:#a26cdb;">✨</div>
+            <div class="legend-content">
+              <div class="legend-name">Cosmetic &amp; Whitening (Fullerton)</div>
+              <div class="legend-bar-wrap"><div class="legend-bar" style="width:3%; background:#a26cdb;"></div></div>
+              <div class="legend-stats"><strong>~10</strong> · 3% of local searches</div>
+            </div>
+          </div>
+          <div class="searches-legend-item">
+            <div class="legend-icon" style="background:#e07a5f;">🚨</div>
+            <div class="legend-content">
+              <div class="legend-name">Emergency &amp; Urgent (Fullerton)</div>
+              <div class="legend-bar-wrap"><div class="legend-bar" style="width:3%; background:#e07a5f;"></div></div>
+              <div class="legend-stats"><strong>~10</strong> · 3% of local searches</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-eyebrow" style="margin-top:32px;">EXAMPLES OF EACH SEARCH TYPE</div>
+
+    <!-- Search categories grid -->
+    <div class="search-categories">
+      <div class="search-cat-card">
+        <div class="search-cat-icon">🏥</div>
+        <div class="search-cat-title">Fullerton dentist searches</div>
+        <div class="search-cat-examples">
+          <span>fullerton dentist</span>
+          <span>dentist fullerton</span>
+          <span>dentist in fullerton</span>
+        </div>
+        <div class="search-cat-stat"><strong>~150</strong> local monthly searches</div>
+      </div>
+
+      <div class="search-cat-card">
+        <div class="search-cat-icon">🏷️</div>
+        <div class="search-cat-title">Your practice by name</div>
+        <div class="search-cat-examples">
+          <span>fullerton smile dentistry</span>
+          <span>dr chris zhang fullerton</span>
+          <span>dr yuanhang zhang dentist</span>
+        </div>
+        <div class="search-cat-stat"><strong>~80</strong> local monthly searches</div>
+      </div>
+
+      <div class="search-cat-card">
+        <div class="search-cat-icon">🦷</div>
+        <div class="search-cat-title">Specific procedures (Fullerton)</div>
+        <div class="search-cat-examples">
+          <span>dental implants fullerton</span>
+          <span>dental implants in fullerton</span>
+          <span>invisalign in fullerton</span>
+          <span>root canal fullerton</span>
+        </div>
+        <div class="search-cat-stat"><strong>~50</strong> local monthly searches</div>
+      </div>
+
+      <div class="search-cat-card">
+        <div class="search-cat-icon">✨</div>
+        <div class="search-cat-title">Cosmetic &amp; whitening (Fullerton)</div>
+        <div class="search-cat-examples">
+          <span>veneers fullerton</span>
+          <span>veneers in fullerton</span>
+          <span>teeth whitening fullerton</span>
+        </div>
+        <div class="search-cat-stat"><strong>~10</strong> local monthly searches</div>
+      </div>
+
+      <div class="search-cat-card">
+        <div class="search-cat-icon">🚨</div>
+        <div class="search-cat-title">Emergency &amp; urgent care (Fullerton)</div>
+        <div class="search-cat-examples">
+          <span>emergency dentist fullerton</span>
+        </div>
+        <div class="search-cat-stat"><strong>~10</strong> local monthly searches</div>
+      </div>
+    </div>
+
+    <div class="callout-takeaway" style="margin-top:24px;">
+      <div class="callout-takeaway-label">💡 What This Tells Us</div>
+      <div class="callout-takeaway-text">
+        Your local keyword portfolio is in a <strong>foundation-building phase</strong> — most tracked Fullerton terms
+        are still climbing into the top 50. The bright spots: <strong>"emergency dentist fullerton"</strong> and
+        <strong>"veneers in fullerton"</strong> are newly visible, and <strong>"fullerton dentist"</strong> climbed
+        five spots in April. Brand searches for "fullerton smile dentistry" continue to land patients on the site.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEYWORD VISIBILITY (COMBINED SEMRUSH + GSC) ============ -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">GOOGLE RANKINGS</div>
+    <h2>Where Your Website Ranks on Google</h2>
+    <div class="h2-divider"><span class="div-purple"></span><span class="div-green"></span><span class="div-gold"></span></div>
+
+    <div class="callout-takeaway">
+      <div class="callout-takeaway-label">📍 What This Table Shows</div>
+      <div class="callout-takeaway-text">
+        These are the <solid>14 Fullerton-area dental search terms</solid> we're actively tracking. Positions are
+        as of <solid>April 30</solid>. Three terms climbed in April, two are newly visible, and nine are not yet ranking
+        in the top 100 — those are the next focus for content and backlink work.
+      </div>
+    </div>
+
+    <div class="sub-eyebrow" style="margin-top:18px;">🔍 TRACKED FULLERTON KEYWORDS — APRIL 30 POSITIONS</div>
+    <div class="open-table-wrap">
+      <table class="keyword-table">
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Monthly Searches</th>
+            <th>Position</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>emergency dentist fullerton</td><td>—</td><td><span class="pill pill-gold">44</span></td><td><span class="status-pill status-stable">Climbing +4</span></td></tr>
+          <tr><td>veneers fullerton</td><td>—</td><td><span class="pill pill-red">54</span></td><td><span class="status-pill status-stable">Climbing +8</span></td></tr>
+          <tr><td>fullerton dentist</td><td>—</td><td><span class="pill pill-red">54</span></td><td><span class="status-pill status-stable">Climbing +5</span></td></tr>
+          <tr><td>emergency dentist near me</td><td>—</td><td><span class="pill pill-gold">41</span></td><td><span class="status-pill status-stable">New</span></td></tr>
+          <tr><td>veneers in fullerton</td><td>—</td><td><span class="pill pill-gold">44</span></td><td><span class="status-pill status-stable">New</span></td></tr>
+          <tr><td>dental implants fullerton</td><td>—</td><td>—</td><td><span class="status-pill status-opportunity">Tracking</span></td></tr>
+          <tr><td>dental implants in fullerton</td><td>—</td><td>—</td><td><span class="status-pill status-opportunity">Tracking</span></td></tr>
+          <tr><td>dental implants near me</td><td>—</td><td>—</td><td><span class="status-pill status-opportunity">Tracking</span></td></tr>
+          <tr><td>dentist fullerton</td><td>—</td><td>—</td><td><span class="status-pill status-opportunity">Tracking</span></td></tr>
+          <tr><td>dentist in fullerton</td><td>—</td><td>—</td><td><span class="status-pill status-opportunity">Tracking</span></td></tr>
+          <tr><td>dentist near me</td><td>—</td><td>—</td><td><span class="status-pill status-opportunity">Tracking</span></td></tr>
+          <tr><td>invisalign in fullerton</td><td>—</td><td>—</td><td><span class="status-pill status-opportunity">Tracking</span></td></tr>
+          <tr><td>root canal fullerton</td><td>—</td><td>—</td><td><span class="status-pill status-opportunity">Tracking</span></td></tr>
+          <tr><td>teeth whitening fullerton</td><td>—</td><td>—</td><td><span class="status-pill status-opportunity">Tracking</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    
+    
+    
+
+    <!-- ===== BIG WINS / Top Keywords & Position Gains ===== -->
+    <div class="eyebrow" style="margin-top:48px;">WHERE WE MOVED UP THIS MONTH</div>
+    <h2 style="font-size:30px; margin-bottom:14px;">Top Keywords &amp; Position Gains</h2>
+    <p class="section-text">
+      In April, the site picked up <solid>76 net new keywords</solid> in our tracked index — going from 159 to 235.
+      Most are longer-tail and brand-variant terms, alongside the three Fullerton-area climbers in the tracked
+      keywords table above.
+    </p>
+
+    <div class="climber-grid">
+      <div class="climber-card">
+        <div class="climber-keyword">Keywords Total Growth</div>
+        <div class="climber-volume">Mar → Apr</div>
+        <div class="climber-positions">
+          <div class="climber-old">159</div>
+          <div class="climber-arrow">→</div>
+          <div class="climber-new">235</div>
+        </div>
+        <div class="climber-change">▲ +76 keywords (+48%)</div>
+      </div>
+      <div class="climber-card">
+        <div class="climber-keyword">Engaged Sessions</div>
+        <div class="climber-volume">Mar → Apr</div>
+        <div class="climber-positions">
+          <div class="climber-old">130</div>
+          <div class="climber-arrow">→</div>
+          <div class="climber-new">166</div>
+        </div>
+        <div class="climber-change">▲ +28% engaged sessions</div>
+      </div>
+      <div class="climber-card">
+        <div class="climber-keyword">Direction Requests</div>
+        <div class="climber-volume">Mar → Apr</div>
+        <div class="climber-positions">
+          <div class="climber-old">70</div>
+          <div class="climber-arrow">→</div>
+          <div class="climber-new">100</div>
+        </div>
+        <div class="climber-change">▲ +43% direction requests</div>
+      </div>
+    </div>
+
+    <div class="callout-green">
+      ✅ Three positive April signals: 48% keyword growth, 28% more engaged sessions, and 43% more direction requests. The site's reach and patient-intent signals are improving in tandem.
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ GBP PERFORMANCE ============ -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">YOUR GOOGLE BUSINESS PROFILE</div>
+    <h2>Your Google Business Listing</h2>
+    <div class="h2-divider"><span class="div-blue"></span><span class="div-green"></span><span class="div-gold"></span></div>
+    <p class="section-text">
+      In April, the Google Business Profile pulled <solid>788 total impressions</solid> with a perfect
+      <solid>5.0★ rating across 76 reviews</solid>. Search and Maps both contributed steady daily visibility for
+      "Fullerton Smile Dentistry," and direction requests jumped 43% month-over-month — a clear sign more
+      patients are planning visits straight from the listing.
+    </p>
+
+
+    
+
+    <div class="april-summary-box">
+      <div class="april-summary-label">🌟 APRIL HIGHLIGHT</div>
+      <div class="april-summary-headline">
+        <solid>Direction requests jumped 43%</solid> from March to April —
+        <solid>100 patients planning visits</solid> from your Google listing alone.
+      </div>
+      <div class="april-summary-stats">
+        <div class="april-stat">
+          <div class="april-stat-num">+43%</div>
+          <div class="april-stat-label">More directions vs. March</div>
+        </div>
+        <div class="april-stat">
+          <div class="april-stat-num">5.0★</div>
+          <div class="april-stat-label">5.0 rating · 76 reviews</div>
+        </div>
+        <div class="april-stat">
+          <div class="april-stat-num">788</div>
+          <div class="april-stat-label">Total times your listing was seen</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-eyebrow" style="margin-top:24px;">📋 6-MONTH LISTING PERFORMANCE</div>
+    <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+      Every action taken on your Google Business Profile, month-by-month. April set new highs in several areas.
+    </p>
+    <div class="open-table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th class="num">Total Impressions</th>
+            <th class="num">Search Impressions</th>
+            <th class="num">Maps Impressions</th>
+            <th class="num">Website Clicks</th>
+            <th class="num">Calls</th>
+            <th class="num">Directions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Nov 2025</td><td class="num">641</td><td class="num">487</td><td class="num">154</td><td class="num">34</td><td class="num"><span class="pill pill-green">23</span></td><td class="num">98</td></tr>
+          <tr><td>Dec 2025</td><td class="num">744</td><td class="num">542</td><td class="num">202</td><td class="num">26</td><td class="num">15</td><td class="num"><span class="pill pill-green">117</span></td></tr>
+          <tr><td>Jan 2026</td><td class="num">802</td><td class="num">543</td><td class="num">259</td><td class="num">33</td><td class="num">8</td><td class="num">55</td></tr>
+          <tr><td>Feb 2026</td><td class="num"><span class="pill pill-green">835</span></td><td class="num">390</td><td class="num"><span class="pill pill-green">445</span></td><td class="num">22</td><td class="num"><span class="pill pill-green">20</span></td><td class="num">73</td></tr>
+          <tr><td>Mar 2026</td><td class="num">704</td><td class="num">463</td><td class="num">241</td><td class="num">23</td><td class="num">12</td><td class="num">70</td></tr>
+          <tr style="background:#fafaf5;"><td><solid>Apr 2026</solid></td><td class="num"><solid>788</solid></td><td class="num"><solid>506</solid></td><td class="num"><solid>282</solid></td><td class="num"><solid><span class="pill pill-green">35</span></solid></td><td class="num"><solid>15</solid></td><td class="num"><solid><span class="pill pill-green">100</span></solid></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout-green">
+      📍 5.0★ across 76 reviews is a 5.0 rating — a positive signal for new patients. The April direction request jump (+43%) and improved website clicks suggest patients are actively planning visits to the office. Continued review acquisition will reinforce this momentum.
+    </div>
+  </div>
+</section>
+
+<!-- ============ BACKLINK PROFILE ============ -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">WEBSITE AUTHORITY</div>
+    <h2>Your Website's Authority &amp; Reputation</h2>
+    <div class="callout-takeaway">
+      <div class="callout-takeaway-label">🔗 What This Section Shows</div>
+      <div class="callout-takeaway-text">
+        When other websites link to yours, Google sees it as a <solid>vote of confidence</solid> — and that helps you rank higher.
+        Your link profile holds steady at <solid>309 backlinks from 146 unique websites</solid>. Authority Score sits at 7, which is
+        a workable foundation. Continued steady link acquisition is the path to higher rankings on competitive Fullerton service terms.
+      </div>
+    </div>
+
+    <!-- April Highlights row -->
+    <div class="sub-eyebrow">6-MONTH GROWTH</div>
+    <div class="bl-grid" style="margin-bottom:24px;">
+      <div class="bl-card" style="border-left:3px solid var(--green);">
+        <div class="bl-num" style="color:var(--green);">+77</div>
+        <div class="bl-label">Backlinks Gained</div>
+        <div class="bl-sub">From 232 in Nov to 309 in Apr</div>
+      </div>
+      <div class="bl-card" style="border-left:3px solid var(--green);">
+        <div class="bl-num" style="color:var(--green);">+13</div>
+        <div class="bl-label">New Referring Domains</div>
+        <div class="bl-sub">From 133 in Nov to 146 in Apr</div>
+      </div>
+      
+    </div>
+
+    <div class="sub-eyebrow">YOUR TOTAL PROFILE</div>
+    <div class="bl-grid">
+      <div class="bl-card">
+        <div class="bl-num">309</div>
+        <div class="bl-label">Total Backlinks</div>
+        <div class="bl-sub">All inbound links</div>
+      </div>
+      <div class="bl-card">
+        <div class="bl-num">146</div>
+        <div class="bl-label">Referring Domains</div>
+        <div class="bl-sub">Unique linking sites</div>
+      </div>
+      <div class="bl-card">
+        <div class="bl-num">93</div>
+        <div class="bl-label">Unique IPs</div>
+        <div class="bl-sub">Natural diversity signal</div>
+      </div>
+    </div>
+    <div class="bl-grid">
+      
+      <div class="bl-card">
+        <div class="bl-num">45.6%</div>
+        <div class="bl-label">Follow Links</div>
+        <div class="bl-sub">141 of 309 total</div>
+      </div>
+      <div class="bl-card">
+        <div class="bl-num">93.9%</div>
+        <div class="bl-label">Text Links</div>
+        <div class="bl-sub">290 contextual links</div>
+      </div>
+    </div>
+
+    <div class="bl-button-wrap">
+      <a href="https://docs.google.com/spreadsheets/d/16TXQ_PLCiT7htRnT6CiD0HorDQ8c606faQDezqSJ4LU/edit?usp=drive_web&amp;ouid=105322481399696334780" target="_blank" rel="noopener noreferrer" class="bl-button">
+        <span class="bl-button-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 3v5h5M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M8 13h8M8 17h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </span>
+        View Backlinks Spreadsheet
+      </a>
+      <div class="bl-button-sub">Full list of backlinks created for this account · Google Sheets</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPETITIVE LANDSCAPE ============ -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">COMPETITIVE COMPARISON</div>
+    <h2>How You Compare to Competitors</h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-blue"></span><span class="div-gold"></span></div>
+    <div class="callout-takeaway">
+      <div class="callout-takeaway-label">🥊 What This Section Shows</div>
+      <div class="callout-takeaway-text">
+        How your website compares to <solid>4 main competing dental practices in Fullerton</solid>. Realistic context:
+        Craft Smiles and Fullerton Family Dental have established traffic flows from years of content. <solid>Your 235 keywords
+        actually beats both Fullerton Family Dental and JP Prosthodontics</solid> on raw count — but those competitors are converting
+        their rankings into more traffic via more developed content depth. </div>
+    </div>
+
+    <p class="section-text">
+      The table below compares the four numbers that matter most: how many searches you each rank for, how much traffic
+      that brings, your domain's authority score.
+    </p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Competitor</th>
+          <th class="num">Keywords</th>
+          <th class="num">Monthly Traffic</th>
+          <th class="num">Authority Score</th>
+                  </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#fafaf5;">
+          <td><strong>Fullerton Smile Dentistry (You)</strong></td>
+          <td class="num"><strong>575</strong></td>
+          <td class="num"><strong>404</strong></td>
+          <td class="num"><strong>10</strong></td>
+        </tr>
+        <tr>
+          <td>craftsmiles.com</td>
+          <td class="num"><strong>276</strong></td>
+          <td class="num"><strong>557</strong></td>
+          <td class="num">17</td>
+        </tr>
+        <tr>
+          <td>fullertonfamilydental.com</td>
+          <td class="num">241</td>
+          <td class="num">264</td>
+          <td class="num">15</td>
+        </tr>
+        <tr>
+          <td>jpprosthodontics.com</td>
+          <td class="num">129</td>
+          <td class="num">62</td>
+          <td class="num">10</td>
+        </tr>
+        <tr>
+          <td>mysmiledr.com</td>
+          <td class="num">82</td>
+          <td class="num">23</td>
+          <td class="num">8</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ WHAT THIS MEANS FOR YOU ============ -->
+<section class="section" style="background:var(--navy); color:#fff; padding-top:80px; padding-bottom:80px;">
+  <div class="container">
+    <!-- WINS THIS MONTH -->
+    <div class="atp-block-label" style="margin-top:0;">
+      <span class="atp-label-icon">🏆</span> WINS THIS MONTH
+    </div>
+    <div class="atp-grid">
+      <div class="atp-win-card">
+        <div class="atp-win-num">5.0★</div>
+        <div class="atp-win-title">Perfect Google Rating</div>
+        <div class="atp-win-desc">76 reviews at a 5.0★ average. Patients searching for a Fullerton dentist see the rating immediately on the listing card.</div>
+      </div>
+      <div class="atp-win-card">
+        <div class="atp-win-num">+48%</div>
+        <div class="atp-win-title">Keyword Growth (Mar→Apr)</div>
+        <div class="atp-win-desc">
+          The site jumped from 159 to 235 ranking keywords in a single month. April signals across the board:
+          <ul class="atp-climber-list">
+            <li><span class="atp-climber-kw">Engaged sessions</span><span class="atp-climber-move">+28%</span></li>
+            <li><span class="atp-climber-kw">Direction requests</span><span class="atp-climber-move">+43%</span></li>
+            <li><span class="atp-climber-kw">Website clicks (GBP)</span><span class="atp-climber-move">up from prior months</span></li>
+            <li><span class="atp-climber-kw">Total keywords</span><span class="atp-climber-move">+76</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="atp-win-card">
+        <div class="atp-win-num">63%</div>
+        <div class="atp-win-title">Organic Engagement Rate</div>
+        <div class="atp-win-desc">63% of visitors arriving from Google search engaged with your site — notably high rates in our portfolio. Visitors finding you via organic search are genuinely interested prospects.</div>
+      </div>
+    </div>
+
+    <!-- BOTTOM LINE — final takeaway -->
+    <div class="bottom-line-card">
+      <div class="bottom-line-label">📌 THE BOTTOM LINE</div>
+      <h3 class="bottom-line-headline">April Snapshot.</h3>
+      <div class="bottom-line-body">
+  <p>
+    In April, the site ranked for <strong>235 keywords</strong> — up from 159 in March — pulling
+    <strong>8,927 impressions</strong> and <strong>60 clicks</strong> from Google search.
+  </p>
+  <p>
+    The Google Business Profile drove <strong>15 calls, 35 website clicks, and 100 direction requests</strong>,
+    with direction requests up sharply month-over-month. The listing holds a <strong>5.0★ rating across 76 reviews</strong>.
+  </p>
+  <p>
+    Three Fullerton-area tracked keywords climbed — emergency dentist fullerton, veneers fullerton,
+    and fullerton dentist — and 63% of visitors arriving from Google search engaged with the site.
+  </p>
+</div>
+    <div style="margin-top: 24px; padding: 20px 0px 0px; border-top: 1px solid rgba(255, 255, 255, 0.15); font-family: Inter, -apple-system, sans-serif; font-size: 15px; line-height: 1.6; background: none; border-radius: 0px;">
+  <span style="color: #d4a55c; font-weight: 700;">Thank you for trusting us with your marketing.&nbsp;</span><span style="color: #ffffff; font-style: italic;">Questions about anything in this report? Just reply to this email — we love hearing from you.</span>
+</div></div>
+
+  </div>
+</section>
+
+<div class="footer">
+  <div class="footer-prepared">
+    <div class="footer-prepared-label">Prepared by</div>
+    <div class="footer-brand-row">
+      <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAB/AIQDASIAAhEBAxEB/8QAHQAAAwEBAAMBAQAAAAAAAAAAAAcIBgUDBAkCAf/EAEYQAAECBQEFBAYGBgoCAwAAAAECAwAEBQYRBwgSITFBEyJRYRhWcYGl0xQyN0J1tAkVUmKSoRcjJDNDU3KCkaIWsZTB8P/EABsBAQACAwEBAAAAAAAAAAAAAAACBAMFBgEH/8QAKxEAAgEDAwQBAwQDAAAAAAAAAAERAgMEBRIhBjFRYUEigfATFJHRcbHB/9oADAMBAAIRAxEAPwDRbB32Q1X8fe/Ly8UDE/bB32Q1X8fe/Ly8UDABBBCo2itZaZpXQEIZQzPXFOJP0KSUrgkcu1cwchAPIc1EYGMEgDVamai2lp1R/wBY3PU0S++D2Es3335gjohHM+04A6kRI2pu1feldddlLPl2rbkDwS6QHppY8SojdTnwSMj9owjLvuWuXbX5iu3DUXp+fmDlbrh5DolI5JSOgHARyIA6Vfr9duCaM1XazUKo/nPaTcyt0j2FROI5sEEAEdW3LkuC3JoTVArdRpT2clcpMraJ9u6RkeRjlQQBRmmm1jedEcalbwlWLjkRwU8lIYmkjxBSNxWPApBP7UVrplqVZ+otMM7bFVQ+tCQX5Rwbkwx/rQeOOmRlJ6Ex8vo6Vs16s2zW5etUCozFPqEureafZVgjxB6EHqDkEcCIA+r0EJXZr10p+ptPFHq/YSF0yyMuMJOETaBzcaz1/aT05jhydUAEEEEAEEEEAT9sHfZDVfx978vLxQMT9sHfZDVfx978vLx5NobaMpVgPv25bLTNXuNAKXio5l5JXgvHFa/3ARjqRyIDc1Hu6mWLZdSuirEmWkWt4NpOFPLPBDafNSiB5ZzyEfM2/LqrF63ZP3JXJgvTk44VEZ7rafutpHRKRgAeUO+3dKNeNfX2q/cs+9J0hw77MzVVlprdPViXSOWOR3Ug/tGG9b2xHZ7LAFwXnXZ57HEyLTUsnPsWHD/OAIVgi9q7sUafTDC/1Nc1yU98jul9TMw2k/6QhCj/ABROWtmzdf2mcq7VihqvUFviufkUKyynxdbPFA8wVJHUwAlo9ui02frNXlKTS5Zc1PTjyWJdlHNxajhIGeHM9Y69hWVcl9VhVHtaRZnp9LZd7BU4ywpSRzKe1WnexzIGSBxirtkbQav2fc85d1+UpuSnpZHY0uWL7TxSVDvvEtqUAcd0cc95XAcDGK5dptp+TJbtVVv0RpOS0xJzb0pNsuMTDDim3WnE7qkLScFJB5EEYxHiivdqnZ7ua4r9TdWn1GbnhU0FVSl0zDTPZvpwO0HaKSDvjGcfeSon60TFflmXHYtbFFuiRbkagWkulhM008UpPLe7NSgknGcHBxg8jHtu7TWlDFy3VQ+TPwQ69FNmu/8AUqWZqym27foLvFE/PJO88nxaaHeWPM7qT0VFF0PYo09l2Efri5rln3wO8WFsy7Z4fslCyP4oyGMhag1ao0KsylYpE27Jz8m6HWHmzhSFD/8AcRyI4GPpFoFqTJ6nWBLVtAQ1UmD9HqUun/CeA4kfuqHeHtxzBhYXbsRW87KrVad51SVmAMoRU2m30KPgVNhBSPPBx4GEjKy+rGy7fH0mfpjapGew06UkuSVRQkk4S4BlKxxIyAoZ4pwcEC/oIyGkuodv6lWo3XqC6Rg9nNSrhHayzmOKFD+YI4Ee8DXwAQQQQBEGnOprum+y3VlUt0IrtWuGYlZBXVkfRpcuPY67oIA/eUnmMxutivQWRqtPa1QvuS+nGYcLlIk5kbyVAK4zLgP1iSDug8Md7jlJEmOvzE8KfRFPFMumZUtvhndW72aFHHsbR/xH11o1OlKRR5Kk09kMyclLty8u2OSG0JCUj3ACAPbggggAj8uoQ62pp1CVoWClSVDIUDzBHhH6jKzuoNqyepkjpy/Ud24p6TVOMS+4SChO8cFXIKwhasc8JJ8MgRbta6YTOjeolL1GsPep1KnJvtGksjCZGbGVFsD/AC1gEhPLgtPIARWWlV3yl+afUe65NIQmflwp1sf4TqSUuI9ywoA9Rg9Y9baxt9i4tny7pZ1sKXJyKqg0rGShTB7XI/2pUPYTEWaB6035ZtqPWXZdqIuGcdnFzjQUy9MKbSUoCkhprCsZTnOeajwitk2t6ldyxj3djh9i2NXLylbB07rF1TIStUmx/Z2lH+9eUd1tHsKiM45DJ6RKeyJpW9q9fVU1Iv0LqVLlJsrWh8ZTPzh7xSr9xAKSU8jlKeWRGQ181rvW+LWYsy8LXboE9KzyZp9KG3WCvCFJSlTTmVJ4qJ+t05cItvZWoEvbuz9Z8qwkAzVObqDquqlzA7Y59gWB7AIY1r9OmX3GRd3vjsM1CUoQEISEpSMAAYAEf2MpTtQrVqGpdR07lagV3DTpRM3MsdmQlKFbvAK5FQC0EjwUPPGriyVwji3vatCvS2Jy3LjkG56nTaN1xtXNJ6KSeaVA8QRxBjtQQB856MusbNG0i5Rp6ZddoT7iEPrPBM1IuHuPY5b6Dk8PvIWnOCYu9JCkhSSCCMgjrE1fpKKDLroVpXOlKUzLU09ILV1Whae0SD7ChX8RhvaB1Z2t6L2lUZhztHl0tltxe9kqU2NwknxJTk+eYA3EEEEAfLmqUCZYsOm3gzvhtyrTFPW4kkdmttphxHsJ7ReP9Jj6jaT3bK31pxQrrlHEKFQk0OOhJ/u3gN11H+1YUn3RJ2zhYsjqLswXNa84oNLfrrrkq+RnsH0y8uUL9meB8UkjrGU2atWapoTfVR0/v6XfYojs3uzI4qMg/wAB2yQPrNqG7nHMYUM4wQPoJBHgkJyUqEkzPSMyzNSr6A4y8ysLQ4k8QpKhwIPjHngAhE3LpDXqjtdUHVBl6XFBk5A/SMuYdDyW3G0oCeoO+lWfJQ4cMvaCAFjtU11m39ny8Zp5wIMzTlyLY6qVMf1OB7lk+wEwiv0elIUxY9x1xbW6Juool21kcSGmwTjyy5/yPKMjto6pL1KvSnaYWSTUpKSnAlxcud4Tk6coCUEcClAURnqVK6AGKg0csxjT/TejWqypK3JRjMy4OTj6yVOK9m8TjyAHSKmXWlRt8lnFpmqfAif0htIU9aFs11DSSJWeclXFhI3v6xG8kE88f1aveYf2y/XJav7P9lzcstJEvS2pFYH3Vy47Eg+fcz789Y9PWqyWdQtNKva6yhD8w1vyjiuTb6DvNnPQZGD5ExM2xVqv/R1ddQ0vvdSqbJTk4ewcmDuiSnRhCm155JXugZ5BSR0USPcSuaNvgZVMVz5H3aekdfpm1pcup8zMS/6jnZAJlAhw9qp1SGkKSpPQJ7NRz1ynzw84IItFYIII5tz12kWzQJyvV6fZkKbJNlx9904Skf8AsknAAHEkgDiYAlf9JRWZdu17St7eSZl+denSnqlDaNzJ9pcP8J8Ia+z3S3KPolaEi8js3BS2nlJxgpLg7Qgjx7/HziSZqZqu03tKpmfo7zNCaUkbqs/2WnNKzgkclrJPj33PARd7aENtpbbQlCEgJSlIwAByAEAfqCCCAJ+2Dvshqv4+9+Xl412vmitv6qU1LzqhTq/LNlMpUEIzkc+zcH3kZ96ckjmQcjsHfZDVfx978vLxQMAQjQrs1u2Z6sKXPyyn6C46QiXmd56QfPMllwY3FEZOBg9VJMPi0ttHT6flkC46HW6LNbuV9khEyznyUClX/SGZqxZVP1BsOpWvUMIEy3mXexksPJ4ocHsPMdQSOsR5oXZ9gPXxUNK9Wrd+i3C1MluQnUTbjPaL/wAk7qglW9wUhWDvZxnikGNdW1SSpp3OCjK5ti6SSLC1SCa9VXQO4hiSDYJ8y4pOB7j7IQ2pG0HqjrVMrsyw6DM0uQmwUOSsgouzL7Z4HtXcAIb8cBIwSFKIhh6kaZ7OekNLlardNAqdQVMuKRKy4mnnHHVJAJwkLQjABH1iBx6x72m+0ZoVTt2j0ejTtoyi1AbzlMbbaUfFRZUs+9Q98YHkN0zRS2ZlYScVVQdPZj0AldOUpuS5CxPXS4ghvc7zcigjBSg9VkEgq8OA4ZKn3GKumv3S7SZC4NN5Sh3bIOAl2WM8GVPp6KZfGUA5yCFDw4jBBw89rNqBKtKb/oEu1ycTkFCHgtrPk4lBz05CKNSruOWXU6LahDtidNoXRKiatyrt5WFUaeqvtFTLxadSWJ5TZKShSk8Eupxu7x8ADwwR6Naldo3VwKpc1IyenNsvjdfJd3pl1s/WScHfJ58MNgjgTDWsG07I0P0+clxUkSUihXbT1Qn3gkvukYyeg4AAJSOg5nJPqm1ynyRcXOGuCZNONonVDRycTZ1/USYq0lKYQmWn1FqbYRyHZu4IWjwyFA8AFAQ+KLtiaRzsulc8mvUt0jvNvyQXg+RbUrI/490ZHULaQ0JrAXSazb9RuqTQTuuCltLbB8U9stCgfMAGP7YGkezxqvby7htWi1CUZS+WX2hNvNuMuABRSpKlKA4KB7pI8DwMXVkOlTXS0VP0E3FFUnYu3bR09kJVYtyh1yszeO4HUIlmc+aiVK/6GJ9q1z6ubUF4JorS22aZLqDxlGlFuRkk5wHHDxK1cTjOVc90AZjv7Rls6U2Q4zYWn1ripXnUVoacdVMOzK5RKsBKEoUop7VeeHDKQc8MpijNm/TBnTDT9qnvhC61PFMxVHUkEdpjg2D1SgEgeJKj1jNRXvUwYa6djg6WimmFC0ttUUilEzM2+QufnlpwuZcA5447qRk4Tnh5kkndwQRMiEEEEAT9sHfZDVfx978vLxQMT9sHfZDVfx978vLxQMAEJnaV0WY1Jprdaoi25G7KejMq/ncEykHIaWocQQeKVdCT0PBzQQB89tXtSrmuWx5CwL8o003eNAqiOznFp3VuNdmpKkuDqsq7MhQ4KHHzVrqxTqXPyCk1mWlXmkoytbgACB1IVzT7cx3Nrgsz+0faVNUhohilJmFEAZKu0eUAeGeHZpOD49M8ebPPy0tKOvza0IYQklwr5Y/+/ZH0TojEoWJfuVRtbiH24U8/ycH1hlVvJs0UzuSmV35cf8M3a9bu7RSsGuWnMu1C3XFhVQpb6yUFPU+RxyWBkcMgjOXDP7XlDcmEot2xa7Vmg2lTq1OJaKFEZKcJC8gcs8OXvidLuVcTlHnX6QxO0+gpZKXG5pacuIOB3EEFaE+WQMeHKNhpmwwzZFN7FCU9o2VrI+8ok5JjXXOmcTUtSdu0nbp27u3D5j6ezj2/txBft9RZWn6eq7jVdUx35XE/V35/x9+RtSu17QmhMJrtj1ymOhlS5ZIcSsPLA4JOQkpBPDeAVjwhNVmYuvV6tpui/Jx1unZJkKWyoobbQfAdAeHe+srxAxBq8ww7Ys466hKnGVtqaJ5pUVpSce4mOVQF3ommSD02lycpq5VpSRIOtodCCkEb2+nJOMZ3SD5xPG6aw9N1J0XaariVKqUKe7a+r1x/ZHI6hytQ09V2qlbbbTl+En9Pvn+jYOU2Wp9DmpakSbMursFhtLaAMq3TjPjx8Y5Ok+slRtDSRiwNPqLMzV4VafeccmA12gbK91KezQMla91A58BjPHkOzQpinuyxakUraLZy606lSXUqPHKwrvZPHiefiY02xNKykpqrfsoJNhTjaG1sPFAK2klxeUpVjIB3k5A57oznEWOtsai5YsXaY2qVC7fb+GV+j8iui9ftVTucOX3/ADk3+zZob/4WtV43ooVK8pwqcKnF9qJPezvYUfrOqyd5fmQOpU94II4E7cIIIIAIIIIAn7YO+yGq/j735eXigYn7YO+yGq/j735eXigYAIIIIAjvaiZUxtT2+8sjcfoiVJP/AMlOPbkfzEehOolQgTM2UBuWy7vLOEowPrH2DPHpDL2xdPrirblvXxaNMeqdRoq1NzMqwgrddZKgpJSkcVYO8CBk4XnoYVNt6W6q6pVBqTq9EmrNtxKwZpycbUh5YB5JQoBSz4cAnqTyjs9A1/H03AuW7imrdKXnhfPxEHJa5od/UM23cocUxDfjl/7k5tl2vd2uFcmqbb8x+qLVlF9nOVFxBO+TySE5BUSOO5kAA5UeIEamY2d9XrUmXJG0q3R6xSSoqZMwrslpzzyhQO7x/ZUR14ZirrJtii2bbMnbtAlEy0hKI3UJ+8s9VqPVRPEnxjsxzt7Vsy7kPJdxqvynELwvXo31rS8S3YWOqE6famX5fsjqS2cNVLumky97XDS6PTGzvbsqO3WpWOGEDdB9pVw6CMhclKurRu52LavJz6bRJgYp1UQDulA/mMZAKTxTwIyMZvSM5qRZdCv+0pu27gl+0lXxlDicBxhwfVcQeih/MEg5BIiWPrGZYyf3KuN1fMuZXh+vxEb+lYl7H/buhKn4hRD8r2SmEMuLRMBKFqCe44ME7p8D4Hh/KO1sbMB3W6/JxO+Q1KpaJA4ZU6Ofn3P/AHGQrWner2mU0ulM23NXhRgoiTmae0t1QT0BSkKWjzBBHgow7djrT6u2jbFZuC6ZJclWbgmkvKl3U4cbaRvFO8PuqKlrO7zA3c8eA3/UevY+p4lqm0oqmWvHEd/n87Gk0HRL+nZNyq45piE/PM9vge8EEEcadYEEEEAEEEEAT9sHfZDVfx978vLxQMSRslar2DYunFQpF1V79Xzr1XcmUNfQ33ctlllIVltChzQoYznhDh9IrRv1x+GTfyoAa0EKn0itG/XH4ZN/Kg9IrRv1x+GTfyoAa0EKn0itG/XH4ZN/Kg9IrRv1x+GTfyoAa0EKn0itG/XH4ZN/Kg9IrRv1x+GTfyoAa0EKn0itG/XH4ZN/Kg9IrRv1x+GTfyoAa0EKn0itG/XH4ZN/Kg9IrRv1x+GTfyoAa0EKn0itG/XH4ZN/Kg9IrRv1x+GTfyoAa0EKn0itG/XH4ZN/Kg9IrRv1x+GTfyoAa0EKn0itG/XH4ZN/KggD/9k=" alt="Dentist Nerds">
+      <div class="footer-brand-name">Dentist Nerds</div>
+    </div>
+    <div style="font-size:11px; color:var(--text-muted);">
+      <a href="https://www.dentistnerds.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted); text-decoration:none;">dentistnerds.com</a>
+    </div>
+  </div>
+  Generated May 4, 2026 · Reporting period: April 1 – April 30, 2026
+  <div class="sources">
+    Data sources: <span style="color:#ff642d;">Semrush</span> · <span style="color:#4285f4;">Google Business Profile</span> · <span style="color:#34a853;">Google Search Console</span> · <span style="color:#f9ab00;">Google Analytics</span>
+  </div>
+</div>
+
+
+<script>
+// Set Chart.js defaults
+Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#4b5563';
+Chart.defaults.plugins.legend.labels.usePointStyle = true;
+Chart.defaults.plugins.legend.labels.padding = 16;
+
+const NAVY = '#0d2538';
+const TEAL = '#5fbab0';
+const GOLD = '#d4a55c';
+const GREEN = '#2d8e5c';
+const BLUE = '#2c6fb3';
+const RED = '#c53030';
+const PURPLE = '#7c3aed';
+const ORANGE = '#d97706';
+
+// ============ TRAFFIC TREND CHART (Sessions + GSC clicks + Impressions) ============
+const trafficTrendCtx = document.getElementById('trafficTrendChart');
+if (trafficTrendCtx) {
+  // Average of all 3 sources per month (SEMrush + GA4 + GSC) / 3
+  const avgData = [179, 153, 131, 107, 130, 166];
+  // Highlight the peak (Feb) in green and the current month (Apr) in gold
+  const colors = avgData.map((v, i) => {
+    if (i === 0) return GREEN;            // Nov peak
+    if (i === avgData.length - 1) return GOLD; // Apr current
+    return BLUE;
+  });
+  new Chart(trafficTrendCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Nov 2025', 'Dec 2025', 'Jan 2026', 'Feb 2026', 'Mar 2026', 'Apr 2026'],
+      datasets: [{
+        label: 'Average Monthly Visitors',
+        data: avgData,
+        backgroundColor: colors,
+        borderRadius: 6,
+        barThickness: 56
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => '~' + ctx.parsed.y + ' visitors'
+          }
+        }
+      },
+      scales: {
+        y: { beginAtZero: true, title: { display: true, text: 'Visitors' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+// ============ GBP ENGAGEMENT CHART ============
+const gbpCtx = document.getElementById('gbpEngagementChart');
+if (gbpCtx) {
+  new Chart(gbpCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
+      datasets: [
+        { label: 'Calls', data: [23, 15, 8, 20, 12, 15], backgroundColor: GREEN, borderRadius: 4 },
+        { label: 'Website Clicks', data: [34, 26, 33, 22, 23, 35], backgroundColor: BLUE, borderRadius: 4 },
+        { label: 'Directions', data: [98, 117, 55, 73, 70, 100], backgroundColor: PURPLE, borderRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom' } },
+      scales: { y: { beginAtZero: true } }
+    }
+  });
+}
+
+// ============ CHANNEL DONUT ============
+const channelCtx = document.getElementById('channelDonutChart');
+if (channelCtx) {
+  new Chart(channelCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Organic Search', 'Direct (real visits)', 'Referral'],
+      datasets: [{
+        data: [93, 40, 12],
+        backgroundColor: [GREEN, BLUE, PURPLE, GOLD],
+        borderColor: '#fff', borderWidth: 3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      cutout: '62%',
+      plugins: {
+        legend: { position: 'right' },
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed} engaged sessions (${(ctx.parsed/166*100).toFixed(1)}%)` } }
+      }
+    }
+  });
+}
+
+// ============ SEARCH TYPES DONUT (What People Are Searching For) ============
+const searchTypesCtx = document.getElementById('searchTypesChart');
+if (searchTypesCtx) {
+  new Chart(searchTypesCtx, {
+    type: 'doughnut',
+    data: {
+      labels: [
+        'Fullerton Dentist Searches',
+        'Your Practice By Name',
+        'Specific Procedures (Fullerton)',
+        'Cosmetic & Whitening (Fullerton)',
+        'Emergency & Urgent (Fullerton)'
+      ],
+      datasets: [{
+        data: [150, 80, 50, 10, 10],
+        backgroundColor: ['#d4a55c', '#0d2538', '#2d8e5c', '#a26cdb', '#e07a5f'],
+        borderColor: '#fff',
+        borderWidth: 4,
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      cutout: '58%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const total = 300;
+              const pct = ((ctx.parsed / total) * 100).toFixed(1);
+              return ctx.label + ': ~' + ctx.parsed.toLocaleString() + ' searches (' + pct + '%)';
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+// ============ TOP PAGES BAR ============
+const topPagesCtx = document.getElementById('topPagesChart');
+if (topPagesCtx) {
+  new Chart(topPagesCtx, {
+    type: 'bar',
+    data: {
+      labels: [
+        '/ (homepage)',
+        '/dentist-appointment/',
+        '/fullerton/dental-services/',
+        '/meet-our-dental-team/',
+        '/about-us/',
+        '/dental-abscess-during-pregnancy/',
+        '/contact-us/',
+        '/fullerton/emergency-dentist/',
+        '/blogs/',
+        '/dr-chris-zhang/'
+      ],
+      datasets: [{
+        label: 'April 2026 Page Views',
+        data: [249, 45, 38, 25, 24, 21, 21, 20, 17, 14],
+        backgroundColor: ['#0d2538', '#5fbab0', '#2d8e5c', '#5fbab0', '#9ca3af', '#d4a55c', '#9ca3af', '#2d8e5c', '#5fbab0', '#5fbab0'],
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      indexAxis: 'y',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: { label: ctx => ctx.parsed.x + ' page views in April' }
+        }
+      },
+      scales: {
+        x: { beginAtZero: true, title: { display: true, text: 'Page Views (April 2026)' } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+}
+</script>
+
+
+
+<div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 1; transition: opacity 0.3s ease-in-out; animation: 2s ease-in-out 0s infinite normal none running claude-pulse; box-shadow: rgba(217, 119, 87, 0.5) 0px 0px 10px inset, rgba(217, 119, 87, 0.3) 0px 0px 20px inset, rgba(217, 119, 87, 0.1) 0px 0px 30px inset;"></div><div id="claude-agent-stop-container" style="position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; align-items: center; pointer-events: none; z-index: 2147483647;"><button id="claude-agent-stop-button" style="position: relative; transform: translateY(0px); padding: 12px 16px; background: rgb(250, 249, 245); color: rgb(20, 20, 19); border: 0.5px solid rgba(31, 30, 29, 0.4); border-radius: 12px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: rgba(217, 119, 87, 0.24) 0px 40px 80px, rgba(217, 119, 87, 0.24) 0px 4px 14px; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); opacity: 1; user-select: none; pointer-events: auto; white-space: nowrap; margin: 0px auto;">
+      <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="margin-right: 12px; vertical-align: middle;">
+        <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm40-112v56a12,12,0,0,1-12,12H100a12,12,0,0,1-12-12V100a12,12,0,0,1,12-12h56A12,12,0,0,1,168,100Z"></path>
+      </svg>
+      <span style="vertical-align: middle;">Stop Claude</span>
+    </button></div><div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 0; transition: opacity 0.3s ease-in-out; animation: 2s ease-in-out 0s infinite normal none running claude-pulse; box-shadow: rgba(217, 119, 87, 0.5) 0px 0px 10px inset, rgba(217, 119, 87, 0.3) 0px 0px 20px inset, rgba(217, 119, 87, 0.1) 0px 0px 30px inset;"></div><div id="claude-agent-stop-container" style="position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; align-items: center; pointer-events: none; z-index: 2147483647;"><button id="claude-agent-stop-button" style="position: relative; transform: translateY(100px); padding: 12px 16px; background: rgb(250, 249, 245); color: rgb(20, 20, 19); border: 0.5px solid rgba(31, 30, 29, 0.4); border-radius: 12px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: rgba(217, 119, 87, 0.24) 0px 40px 80px, rgba(217, 119, 87, 0.24) 0px 4px 14px; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; user-select: none; pointer-events: auto; white-space: nowrap; margin: 0px auto;">
+      <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="margin-right: 12px; vertical-align: middle;">
+        <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm40-112v56a12,12,0,0,1-12,12H100a12,12,0,0,1-12-12V100a12,12,0,0,1,12-12h56A12,12,0,0,1,168,100Z"></path>
+      </svg>
+      <span style="vertical-align: middle;">Stop Claude</span>
+    </button></div><div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 1; transition: opacity 0.3s ease-in-out; animation: 2s ease-in-out 0s infinite normal none running claude-pulse; box-shadow: rgba(217, 119, 87, 0.5) 0px 0px 10px inset, rgba(217, 119, 87, 0.3) 0px 0px 20px inset, rgba(217, 119, 87, 0.1) 0px 0px 30px inset;"></div><div id="claude-agent-stop-container" style="position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; align-items: center; pointer-events: none; z-index: 2147483647;"><button id="claude-agent-stop-button" style="position: relative; transform: translateY(0px); padding: 12px 16px; background: rgb(250, 249, 245); color: rgb(20, 20, 19); border: 0.5px solid rgba(31, 30, 29, 0.4); border-radius: 12px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: rgba(217, 119, 87, 0.24) 0px 40px 80px, rgba(217, 119, 87, 0.24) 0px 4px 14px; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); opacity: 1; user-select: none; pointer-events: auto; white-space: nowrap; margin: 0px auto;">
+      <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="margin-right: 12px; vertical-align: middle;">
+        <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm40-112v56a12,12,0,0,1-12,12H100a12,12,0,0,1-12-12V100a12,12,0,0,1,12-12h56A12,12,0,0,1,168,100Z"></path>
+      </svg>
+      <span style="vertical-align: middle;">Stop Claude</span>
+    </button></div></body></html>

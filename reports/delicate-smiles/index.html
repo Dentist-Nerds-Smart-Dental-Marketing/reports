@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website Quality Audit — Delicate Smiles · Milwaukee, WI · May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --navy: #0d2538;
+    --navy-2: #112e44;
+    --teal: #5fbab0;
+    --teal-soft: #a4dad3;
+    --gold: #d4a55c;
+    --gold-2: #c9a961;
+    --bg-page: #f5f5f0;
+    --bg-soft: #ebe9e0;
+    --bg-card: #ffffff;
+    --text-dark: #0d2538;
+    --text-body: #4b5563;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #2d8e5c;
+    --green-bg: #d1fae5;
+    --green-text: #065f46;
+    --gold-bg: #fef3c7;
+    --gold-text: #92400e;
+    --red: #c53030;
+    --red-bg: #fee2e2;
+    --red-text: #991b1b;
+    --blue: #2c6fb3;
+    --blue-bg: #dbeafe;
+    --blue-text: #1e40af;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-page); color: var(--text-body);
+    line-height: 1.6; font-size: 14px;
+  }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 14px;
+  }
+
+  /* HERO */
+  .hero { background: var(--navy); color: #fff; padding: 56px 0 44px; position: relative; }
+  .hero .eyebrow { color: var(--teal); }
+  .hero h1 { font-size: 50px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 10px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 28px; max-width: 720px; }
+  .hero-meta-row {
+    display: grid; grid-template-columns: repeat(4, auto); gap: 56px;
+    padding: 22px 0 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px;
+  }
+  .hero-meta-item .meta-label {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #8aa1b3; margin-bottom: 6px; font-weight: 600;
+  }
+  .hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+  /* SECTIONS */
+  .section { padding: 56px 0; }
+  .section h2 { font-size: 36px; font-weight: 600; margin-bottom: 12px; line-height: 1.15; }
+  .section h3 { font-size: 22px; font-weight: 600; margin: 36px 0 14px; }
+  .section-text {
+    font-size: 14.5px; color: var(--text-body); max-width: 760px;
+    margin-bottom: 24px; line-height: 1.7;
+  }
+  .section-text strong { color: var(--text-dark); font-weight: 600; }
+  .h2-divider {
+    display: grid; grid-template-columns: repeat(3, 86px); gap: 0;
+    margin: 0 0 24px;
+  }
+  .h2-divider span { height: 2px; }
+  .div-teal { background: var(--teal); }
+  .div-gold { background: var(--gold-2); }
+  .div-green { background: var(--green); }
+  .div-blue { background: var(--blue); }
+  .div-red { background: var(--red); }
+  .div-navy { background: var(--navy); }
+
+  /* KPI CARDS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 18px 0 28px; }
+  .kpi-card {
+    background: var(--bg-card); padding: 22px 20px; text-align: center;
+    border-top: 2px solid var(--teal); border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kpi-card.gold { border-top-color: var(--gold); }
+  .kpi-card.green { border-top-color: var(--green); }
+  .kpi-card.blue { border-top-color: var(--blue); }
+  .kpi-card.red { border-top-color: var(--red); }
+  .kpi-num {
+    font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600;
+    color: var(--text-dark); line-height: 1; margin-bottom: 8px;
+  }
+  .kpi-label {
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-dark); font-weight: 600; margin-bottom: 4px;
+  }
+  .kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+  /* Account chip */
+  .account-chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--bg-card); border-left: 3px solid var(--gold);
+    padding: 8px 14px 8px 12px; border-radius: 4px;
+    margin: 8px 0 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .account-chip .slug {
+    font-family: 'Courier New', monospace; font-size: 12px;
+    background: var(--bg-soft); padding: 3px 8px; border-radius: 3px;
+    color: var(--text-dark); font-weight: 600;
+  }
+  .account-chip .label { font-size: 12px; color: var(--text-muted); }
+
+  /* Focus boxes — 3 things to know */
+  .focus-3-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin: 22px 0 8px;
+  }
+  .focus-3 {
+    background: var(--bg-card); padding: 22px 22px 22px;
+    border-radius: 4px; border-top: 3px solid var(--teal);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column;
+  }
+  .focus-3.gold { border-top-color: var(--gold-2); }
+  .focus-3.red { border-top-color: var(--red); }
+  .focus-3.green { border-top-color: var(--green); }
+  .focus-3.blue { border-top-color: var(--blue); }
+  .focus-3.purple { border-top-color: #7c3aed; }
+  .focus-3 .f3-eyebrow {
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 700; margin-bottom: 10px;
+  }
+  .focus-3.gold .f3-eyebrow { color: var(--gold-text); }
+  .focus-3.red .f3-eyebrow { color: var(--red); }
+  .focus-3.green .f3-eyebrow { color: var(--green); }
+  .focus-3.blue .f3-eyebrow { color: var(--blue); }
+  .focus-3.purple .f3-eyebrow { color: #7c3aed; }
+  .focus-3 h3 {
+    font-family: 'Playfair Display', serif; font-size: 18px;
+    margin: 0 0 14px; color: var(--text-dark); font-weight: 600; line-height: 1.25;
+  }
+  .focus-3 .visual {
+    min-height: 60px; margin: 4px 0 12px;
+    display: flex; align-items: center; justify-content: flex-start;
+  }
+  .focus-3 .f3-stat {
+    font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600;
+    line-height: 1; margin: 4px 0 8px;
+    color: var(--text-dark);
+  }
+  .focus-3.gold .f3-stat { color: var(--gold-2); }
+  .focus-3.red .f3-stat { color: var(--red); }
+  .focus-3.green .f3-stat { color: var(--green); }
+  .focus-3.blue .f3-stat { color: var(--blue); }
+  .focus-3.purple .f3-stat { color: #7c3aed; }
+  .focus-3 p {
+    font-size: 13px; line-height: 1.55; margin: 0;
+    color: var(--text-body);
+  }
+  .focus-3 code {
+    background: var(--bg-soft); padding: 1px 5px; border-radius: 3px;
+    font-size: 11.5px; color: var(--text-dark);
+  }
+
+  /* Four-column variant of focus grid */
+  .focus-3-grid.four-col { grid-template-columns: repeat(4, 1fr); }
+  .focus-3-grid.four-col .focus-3:last-child { grid-column: auto; }
+  .focus-3-grid.four-col .focus-3 { padding: 20px 18px; }
+  .focus-3-grid.four-col .focus-3 h3 { font-size: 16px; }
+  .focus-3-grid.four-col .focus-3 .f3-stat { font-size: 32px; }
+  @media (max-width: 1024px) {
+    .focus-3-grid.four-col { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 700px) {
+    .focus-3-grid.four-col { grid-template-columns: 1fr; }
+  }
+
+  /* Key findings — icon cards */
+  .keyfinding-list { display: grid; gap: 10px; margin: 16px 0 24px; }
+  .kf-card {
+    background: var(--bg-card); padding: 18px 22px; border-radius: 4px;
+    display: grid; grid-template-columns: 36px 1fr; gap: 14px;
+    align-items: start;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kf-card .kf-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .kf-card.purple .kf-icon { background: #ede4ff; color: #7c3aed; }
+  .kf-card.gold .kf-icon { background: var(--gold-bg); color: var(--gold-text); }
+  .kf-card.red .kf-icon { background: var(--red-bg); color: var(--red-text); }
+  .kf-card.green .kf-icon { background: var(--green-bg); color: var(--green-text); }
+  .kf-card.blue .kf-icon { background: var(--blue-bg); color: var(--blue-text); }
+  .kf-card h5 {
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+    margin: 0 0 4px; color: var(--text-dark);
+  }
+  .kf-card p { font-size: 13px; color: var(--text-body); margin: 0; line-height: 1.55; }
+
+  /* GBP reputation card */
+  .gbp-card {
+    background: var(--bg-card); padding: 28px 32px; border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: grid; grid-template-columns: auto 1fr; gap: 36px;
+    align-items: center; margin: 14px 0 24px;
+    border-left: 3px solid #4285f4;
+  }
+  .gbp-card .star-block { text-align: center; }
+  .gbp-card .star-rating {
+    font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 600;
+    color: var(--gold-2); line-height: 1; margin-bottom: 6px;
+  }
+  .gbp-card .stars { font-size: 18px; color: var(--gold); letter-spacing: 2px; }
+  .gbp-card .review-count {
+    font-size: 12px; color: var(--text-muted); margin-top: 6px;
+    letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+  }
+  .gbp-card .gbp-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 28px; }
+  .gbp-card .gbp-row .label {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 600; margin-bottom: 3px;
+  }
+  .gbp-card .gbp-row .value {
+    font-size: 14px; color: var(--text-dark); font-weight: 600;
+  }
+
+  /* Directory listings */
+  .directory-summary {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin: 16px 0 22px;
+  }
+  .directory-summary .dir-stat { text-align: left; padding-top: 12px; border-top: 2px solid var(--teal); }
+  .directory-summary .dir-stat.green { border-top-color: var(--green); }
+  .directory-summary .dir-stat.red { border-top-color: var(--red); }
+  .directory-summary .dir-stat .num {
+    font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600;
+    line-height: 1; margin: 4px 0;
+  }
+  .directory-summary .dir-stat.green .num { color: var(--green); }
+  .directory-summary .dir-stat.red .num { color: var(--red); }
+  .directory-summary .dir-stat .dir-label {
+    font-size: 11px; color: var(--text-dark); font-weight: 600; margin-bottom: 2px;
+  }
+  .directory-summary .dir-stat small { font-size: 11px; color: var(--text-muted); }
+  .table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    margin: 12px 0 20px;
+    background: var(--bg-card);
+  }
+  .directory-table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 12.5px; min-width: 520px; }
+  .directory-table thead { background: var(--navy); color: #fff; }
+  .directory-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .directory-table th:nth-child(2) { text-align: center; }
+  .directory-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .directory-table td:nth-child(2) { text-align: center; }
+  .directory-table tr:last-child td { border-bottom: none; }
+  .dir-status {
+    display: inline-block; padding: 2px 9px; border-radius: 999px;
+    font-size: 10.5px; font-weight: 600;
+  }
+  .dir-status.listed { background: var(--green-bg); color: var(--green-text); }
+  .dir-status.weak { background: var(--gold-bg); color: var(--gold-text); }
+  .dir-status.missing { background: var(--red-bg); color: var(--red-text); }
+
+  /* Treatment Pages Audit */
+  .triage-counters {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    margin: 16px 0 22px;
+  }
+  .triage-counter { text-align: left; padding: 12px 0; border-top: 2px solid var(--gold-2); }
+  .triage-counter.purple { border-top-color: #7c3aed; }
+  .triage-counter.green { border-top-color: var(--green); }
+  .triage-counter.red { border-top-color: var(--red); }
+  .triage-counter .num {
+    font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600;
+    line-height: 1; margin: 4px 0 4px;
+  }
+  .triage-counter.purple .num { color: #7c3aed; }
+  .triage-counter.green .num { color: var(--green); }
+  .triage-counter.red .num { color: var(--red); }
+  .triage-counter .triage-label {
+    font-size: 11px; color: var(--text-dark); font-weight: 600;
+  }
+  .pages-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 4px; font-size: 12.5px; min-width: 560px; }
+  .pages-table thead { background: var(--navy); color: #fff; }
+  .pages-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .pages-table th:last-child { text-align: right; }
+  .pages-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); vertical-align: middle; }
+  .pages-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .pages-table .url { font-family: 'Courier New', monospace; font-size: 12px; color: var(--text-dark); }
+  .pages-table .url.wrong { color: var(--red); }
+  .pages-table .url-flag { font-size: 11px; color: var(--red); margin-left: 8px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .pages-table tr.flag-row { background: #fff5f3; }
+  .pages-table tr:last-child td { border-bottom: none; }
+  .critical-callout {
+    background: #fff5f3; border-left: 3px solid var(--red);
+    padding: 14px 18px; margin: 10px 0 16px;
+    font-size: 12.5px; color: var(--text-dark); border-radius: 0 4px 4px 0;
+  }
+  .critical-callout strong { color: var(--red); }
+
+  /* Tech issues */
+  .tech-issues-grid {
+    display: grid; grid-template-columns: 1fr;
+    gap: 12px; margin: 18px 0 14px;
+  }
+  @media (min-width: 700px) { .tech-issues-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .tech-issues-grid { grid-template-columns: repeat(4, 1fr); } }
+  .tech-issue-card {
+    background: var(--bg-card);
+    border-left: 3px solid var(--red);
+    padding: 18px 22px;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+  .tech-issue-card.gold { border-left-color: var(--gold-2); }
+  .tech-issue-card.purple { border-left-color: #7c3aed; }
+  .tech-issue-card.green { border-left-color: var(--green); }
+  .tech-issue-card .tech-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 600;
+    color: var(--red); line-height: 1;
+  }
+  .tech-issue-card.gold .tech-num { color: var(--gold-2); }
+  .tech-issue-card.purple .tech-num { color: #7c3aed; }
+  .tech-issue-card.green .tech-num { color: var(--green); }
+  .tech-issue-card h5 {
+    font-family: 'Inter', sans-serif; font-size: 13.5px;
+    font-weight: 700; color: var(--text-dark); margin: 0 0 4px;
+  }
+  .tech-issue-card p {
+    font-size: 12px; color: var(--text-body); margin: 0; line-height: 1.5;
+  }
+  .tech-callout {
+    background: rgba(197, 48, 48, 0.06);
+    border-left: 3px solid var(--red);
+    padding: 14px 20px; margin: 14px 0 0;
+    font-size: 12.5px; color: var(--text-dark); line-height: 1.55;
+    border-radius: 0 4px 4px 0;
+  }
+  .tech-callout strong { color: var(--red); }
+  .tech-callout code { background: rgba(197,48,48,0.08); padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+
+  /* Keyword table */
+  .keyword-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--bg-card); border-radius: 4px;
+    font-size: 13px;
+    min-width: 540px;
+  }
+  .keyword-table thead { background: var(--navy); color: #fff; }
+  .keyword-table th {
+    text-align: center; padding: 12px 10px;
+    font-weight: 600; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    line-height: 1.3; white-space: nowrap;
+  }
+  .keyword-table th:first-child { text-align: left; }
+  .keyword-table td {
+    padding: 11px 12px; border-bottom: 1px solid var(--border);
+    color: var(--text-dark); vertical-align: middle;
+    text-align: center;
+  }
+  .keyword-table td:first-child { text-align: left; font-weight: 500; }
+  .keyword-table tbody tr:last-child td { border-bottom: none; }
+  .pill {
+    display: inline-block; padding: 3px 10px; border-radius: 999px;
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em;
+  }
+  .pill-top10 { background: var(--gold-bg); color: var(--gold-text); }
+  .pill-top3 { background: var(--blue-bg); color: var(--blue-text); }
+  .pill-leader { background: var(--green-bg); color: var(--green-text); }
+  .pill-tracking { background: var(--bg-soft); color: var(--text-dark); }
+
+  /* Competitors */
+  .comp-twins {
+    display: grid; grid-template-columns: 1fr; gap: 18px;
+    margin: 14px 0 24px;
+  }
+  .comp-twin {
+    background: var(--bg-card); border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .comp-twin thead { background: var(--navy); color: #fff; }
+  .comp-twin table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 560px; }
+  .comp-twin th { padding: 11px 14px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; text-align: left; }
+  .comp-twin th:nth-child(n+2) { text-align: center; }
+  .comp-twin td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .comp-twin td:nth-child(n+2) { text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .comp-twin tr:last-child td { border-bottom: none; }
+  .comp-twin tr.self td { color: var(--red); font-weight: 700; background: #fff5f3; }
+
+  /* Chart wrap */
+  .chart-wrap {
+    background: var(--bg-card);
+    padding: 24px;
+    margin: 18px 0 24px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .chart-wrap .chart-caption {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--gold); margin-bottom: 14px; font-weight: 700;
+  }
+  .chart-wrap canvas { max-height: 280px; }
+
+  /* Stage headers (Dentist Nerds 6-stage process) */
+  .stage-header {
+    display: flex; align-items: baseline; gap: 14px;
+    margin: 36px 0 6px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .stage-header .stage-num {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700;
+    padding: 4px 10px; background: var(--bg-soft); border-radius: 3px;
+    white-space: nowrap;
+  }
+  .stage-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--text-dark); margin: 0; flex: 1; line-height: 1.25;
+  }
+  .stage-header .stage-status {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 700; padding: 4px 10px; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .stage-header .stage-status.done { background: var(--green-bg); color: var(--green-text); }
+  .stage-header .stage-status.active { background: var(--gold-bg); color: var(--gold-text); }
+  .stage-header.stage-done h3 { color: var(--text-muted); }
+  .stage-desc {
+    font-size: 13.5px; color: var(--text-body);
+    line-height: 1.6; margin: 8px 0 14px; max-width: 760px;
+  }
+  .stage-desc strong { color: var(--text-dark); font-weight: 600; }
+  @media (max-width: 640px) {
+    .stage-header { gap: 8px; margin: 28px 0 4px; }
+    .stage-header h3 { font-size: 18px; width: 100%; order: 2; }
+    .stage-header .stage-num { order: 1; }
+    .stage-header .stage-status { order: 3; }
+  }
+
+  /* Action plan */
+  .action-list {
+    display: grid; gap: 12px; margin: 14px 0 24px;
+  }
+  .action-item {
+    background: var(--bg-card); padding: 18px 22px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    border-left: 3px solid var(--teal);
+  }
+  .action-item .a-num {
+    font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600;
+    color: var(--gold); line-height: 1;
+  }
+  .action-item .a-body h5 {
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+    color: var(--text-dark); margin: 0 0 4px;
+  }
+  .action-item .a-body p { font-size: 12.5px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .action-item .a-pri {
+    font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.14em;
+    padding: 4px 10px; border-radius: 999px; font-weight: 700;
+    white-space: nowrap;
+  }
+  .a-pri.immediate { background: var(--red-bg); color: var(--red-text); }
+  .a-pri.high { background: var(--gold-bg); color: var(--gold-text); }
+  .a-pri.medium { background: var(--blue-bg); color: var(--blue-text); }
+  .a-pri.ongoing { background: var(--green-bg); color: var(--green-text); }
+
+  /* Location banner */
+  .loc-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff;
+    padding: 40px 0;
+  }
+  .loc-banner .eyebrow { color: var(--teal); }
+  .loc-banner h2 { color: #fff; font-size: 40px; margin-bottom: 8px; }
+  .loc-banner .addr { font-size: 14px; color: #c7d4dd; }
+  .loc-banner .addr a { color: var(--teal); text-decoration: none; }
+
+  /* Footer */
+  footer {
+    background: var(--navy); color: #8aa1b3;
+    padding: 32px 0; text-align: center; font-size: 12px;
+    margin-top: 60px; letter-spacing: 0.06em;
+  }
+  footer .brand { color: var(--gold); font-weight: 600; }
+
+  /* Responsive */
+  img, canvas, svg, table { max-width: 100%; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+  .action-item .a-body { min-width: 0; }
+  .action-item .a-body p { word-wrap: break-word; overflow-wrap: anywhere; }
+  .pages-table .url { word-break: break-all; }
+
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .hero h1 { font-size: 42px; }
+    .section h2 { font-size: 32px; }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+    .hero h1 { font-size: 36px; line-height: 1.1; }
+    .section h2 { font-size: 26px; }
+    .section { padding: 44px 0; }
+    .hero-meta-row { grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+    .loc-banner h2 { font-size: 32px; }
+    .loc-banner { padding: 32px 0; }
+    .gbp-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr 1fr; }
+    .action-item { grid-template-columns: 44px 1fr; }
+    .action-item .a-pri { grid-column: 2; justify-self: start; margin-top: 6px; }
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; }
+    .directory-summary { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .directory-summary .dir-stat .num { font-size: 24px; }
+    .chart-wrap canvas { max-height: 260px; }
+  }
+  @media (max-width: 768px) {
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tech-issue-card { padding: 16px 18px; gap: 14px; grid-template-columns: 50px 1fr; }
+    .tech-issue-card .tech-num { font-size: 34px; }
+    .triage-counters { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .triage-counter .num { font-size: 26px; }
+    .focus-3 { padding: 18px 20px; }
+    .focus-3 h3 { font-size: 16px; }
+    .focus-3 .f3-stat { font-size: 32px; }
+  }
+  /* ≤700px — collapse multi-column grids into single column */
+  @media (max-width: 700px) {
+    .focus-3-grid { grid-template-columns: 1fr; }
+    .focus-3:last-child { grid-column: auto; }
+    .tech-issues-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    .section { padding: 36px 0; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero h1 { font-size: 30px; }
+    .hero h1 br { display: none; }
+    .hero { padding: 36px 0 32px; }
+    .hero-meta-row { grid-template-columns: 1fr; gap: 16px; padding: 18px 0 0; }
+    .section h2 { font-size: 24px; }
+    .section h3 { font-size: 18px; margin: 28px 0 10px; }
+    .loc-banner h2 { font-size: 26px; }
+    .kpi-num { font-size: 30px; }
+    .kpi-card { padding: 18px 14px; }
+    .kpi-label { font-size: 9px; }
+    .h2-divider { grid-template-columns: repeat(3, 56px); margin-bottom: 18px; }
+    .chart-wrap { padding: 14px; }
+    .chart-wrap canvas { max-height: 220px; }
+    .gbp-card .star-rating { font-size: 52px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr; gap: 12px; }
+    .focus-3 .f3-stat { font-size: 28px; }
+    .action-item { padding: 14px 18px; }
+    .action-item .a-num { font-size: 22px; }
+  }
+  @media (max-width: 480px) {
+    .triage-counters { grid-template-columns: 1fr; }
+    .directory-summary { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 420px) {
+    .container { padding: 0 14px; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 26px; }
+    .section h2 { font-size: 22px; }
+    .h2-divider { grid-template-columns: repeat(3, 48px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============= HERO ============= -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Website Quality Audit · Single-Location Practice</div>
+    <h1>Delicate Smiles<br><em>Milwaukee, Wisconsin</em></h1>
+    <p class="hero-sub">A focused audit of organic visibility, Google Business Profile reputation, treatment-page content, and the practice's relative standing among nearby Milwaukee competitors.</p>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <div class="meta-label">Report Period</div>
+        <div class="meta-value">May 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Prepared By</div>
+        <div class="meta-value">Dentist Nerds</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Property Audited</div>
+        <div class="meta-value">delicatesmiles.net</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Data Sources</div>
+        <div class="meta-value">Semrush · Google Business Profile</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============= LOCATION BANNER ============= -->
+<div class="loc-banner">
+  <div class="container">
+    <div class="eyebrow">Practice location</div>
+    <h2>Delicate Smiles</h2>
+    <div class="addr">2330 North Farwell Avenue, Milwaukee, WI 53211 · <a href="https://www.delicatesmiles.net/" target="_blank" rel="noopener">delicatesmiles.net</a></div>
+  </div>
+</div>
+
+<!-- ============= PERFORMANCE SUMMARY ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Performance summary</div>
+    <div class="h2-divider"><span class="div-gold"></span><span class="div-teal"></span><span class="div-green"></span></div>
+    <h2>Strong reputation, narrow organic footprint</h2>
+    <p class="section-text">Delicate Smiles holds <strong>4.9★ with 85 Google reviews</strong> and a Semrush Authority Score of <strong>17</strong> — above several nearby competitors. The website ranks for <strong>251 keywords</strong> but drives only <strong>313 monthly visits</strong> because almost all organic energy lands on the homepage. The seven dedicated service pages are indexed but currently bring zero monthly traffic each.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card gold">
+        <div class="kpi-num">17</div>
+        <div class="kpi-label">Authority Score</div>
+        <div class="kpi-sub">Semrush · US</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">313</div>
+        <div class="kpi-label">Monthly Visits</div>
+        <div class="kpi-sub">May 2026 organic</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-num">251</div>
+        <div class="kpi-label">Ranking Keywords</div>
+        <div class="kpi-sub">organic, US</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-num">85</div>
+        <div class="kpi-label">Google Reviews ★ 4.9</div>
+        <div class="kpi-sub">175 referring domains</div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-caption">Monthly organic traffic · 12-month trend</div>
+      <canvas id="trafficTrend"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ============= TOP PRIORITY FIXES ============= -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Top priority fixes</div>
+    <h2>Top Priority Fixes &amp; Issues</h2>
+    <div class="account-chip">
+      <span class="slug">delicatesmiles.net</span>
+      <span class="label">· Delicate Smiles · 2330 N Farwell Ave, Milwaukee WI</span>
+    </div>
+
+    <div class="focus-3-grid four-col">
+      <div class="focus-3 red">
+        <div class="f3-eyebrow">Issue 01 — Service pages aren't pulling weight</div>
+        <h3>96% of traffic lands on the homepage — service pages drive 0 visits each</h3>
+        <div class="visual">
+          <div class="f3-stat">7</div>
+        </div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+        <p>300 of 313 monthly visits land on the homepage. All seven service pages — <code>/general-and-cosmetic-dentistry</code>, <code>/implant-dentistry</code>, <code>/invisalign-and-clear-aligner-therapy</code>, <code>/dental-evaluations-and-cleanings</code>, <code>/dental-emergencies-and-pain-relief</code>, <code>/complete-and-partial-dentures</code>, <code>/lip-fillers</code> — are indexed but drive 0 visits each. They're template-driven (500–900 words, no gallery, no cost ranges, no procedure-specific FAQs), and the homepage doesn't internally link to them, so authority can't flow down.</p>
+      </div>
+      <div class="focus-3 blue">
+        <div class="f3-eyebrow">Issue 02 — Reviews not surfacing</div>
+        <h3>85 Google reviews not feeding AI search</h3>
+        <div class="visual">
+          <div class="f3-stat">85</div>
+        </div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--blue);">reviews underused</div>
+        <p>The <code>/reviews</code> page exists but holds a single embedded testimonial. There is no Review or LocalBusiness schema, no aggregated star count visible on service pages, and no patient-story content for AI search engines (Google AI Overviews, ChatGPT, Perplexity) to surface. Reputation is the practice's strongest asset; the site does not yet broadcast it.</p>
+      </div>
+      <div class="focus-3 purple">
+        <div class="f3-eyebrow">Issue 03 — Layout, design &amp; UX</div>
+        <h3>The layout and design need a major facelift</h3>
+        <div class="visual">
+          <div class="f3-stat">Major</div>
+        </div>
+        <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">design refresh needed</div>
+        <p>The layout, visual hierarchy, and overall feel across the site need substantial improvement. Treatment pages feel template-driven with weak visual rhythm, dated typography, and no clear differentiation between procedures. The conversion fixes — CTAs above the fold, galleries, FAQs, schema — all build on top of a design foundation that needs to be rebuilt first.</p>
+      </div>
+      <div class="focus-3 gold">
+        <div class="f3-eyebrow">Issue 04 — Keyword footprint</div>
+        <h3>Low keyword rankings — more quality content needed</h3>
+        <div class="visual">
+          <div class="f3-stat">9×</div>
+        </div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--gold-2);">behind market leader</div>
+        <p>Delicate Smiles ranks for 251 keywords today — versus Eastside Dental's 2,216. The site is leaving a wide range of Milwaukee dental searches uncaptured. The path to closing the gap isn't more pages thrown at the wall — it's deeper, higher-quality content on the pages that already exist, plus new content targeting the procedures and patient questions not yet covered.</p>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+    <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · Delicate Smiles</h2>
+    <div class="keyfinding-list">
+      <div class="kf-card gold">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Emergency-dentist visibility is the strongest commercial signal</h5>
+          <p>Top non-brand rankings cluster around emergency dentistry: <em>emergency dentist milwaukee</em> at #9 (1,000/mo), <em>emergency dental milwaukee</em> at #7 (880/mo), <em>milwaukee emergency dentist</em> at #6 (110/mo). This is the only commercial cluster currently producing measurable traffic.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">↓</div>
+        <div>
+          <h5>Service-page internal-link density is weak</h5>
+          <p>Service pages receive few internal links from the homepage or blog. Internal links are how authority flows through a site — weak density limits how Google distributes ranking signals from the homepage (171 keywords) to the dedicated service URLs (0 traffic each).</p>
+        </div>
+      </div>
+      <div class="kf-card blue">
+        <div class="kf-icon">↑</div>
+        <div>
+          <h5>March 2026 traffic drop has recovered</h5>
+          <p>Organic traffic fell from 273 visits in February to 86 in March — likely a SERP volatility event tied to homepage rankings. May 2026 traffic is back to 313, the strongest reading in the 12-month window. Keyword count has continued to grow throughout the dip.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>City confusion across the web — "Milwaukee" vs "Glendale" inconsistency (verified)</h5>
+          <p>The practice's contact page lists <strong>2330 N Farwell Ave, Milwaukee, WI 53211</strong> (the <strong>Murray Hill</strong> neighborhood of Milwaukee's East Side, per local records). But the practice's own website page titles consistently reference <em>"Glendale WI"</em> instead — verified across multiple pages:</p>
+          <p style="margin-top: 8px;">
+            • <code>/general-and-cosmetic-dentistry</code> → <em>"…| Delicate Smiles | Glendale WI"</em><br>
+            • <code>/implant-dentistry</code> → <em>"…| Delicate Smiles | Glendale, WI"</em><br>
+            • <code>/dental-evaluations-and-cleanings</code> → <em>"Local Dentist Milwaukee, WI | Glendale, WI | Delicate Smiles"</em> (both cities in one title)
+          </p>
+          <p style="margin-top: 8px;">Two Yelp listings exist for the practice — <strong>same phone number (414) 363-2404</strong> but two different addresses: one at 2330 N Farwell Ave, Milwaukee (53211) and one at <strong>200 W Silver Spring Dr, Glendale (53217)</strong> — suggesting either an old location that wasn't fully cleaned up, or a second physical office. <strong>Glendale is a separate city about 7 miles north of Milwaukee.</strong> The mixed signals across Google, Yelp, and the practice's own page titles fragment the local entity and weaken ranking authority for both city queries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= BRAND, DESIGN & CONTENT QUALITY ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Brand, design &amp; content quality</div>
+    <h2>Most traffic is branded — what they land on is hurting conversion</h2>
+    <p class="section-text">The bulk of the 313 monthly visits comes from brand searches — people who already know "Delicate Smiles" and are looking the practice up. Those visitors arrive pre-qualified and high-intent. But what they land on — a dated visual brand, heavy stock imagery, and thin service pages with little structure — is leaking conversion. The work here has outsized leverage because the audience is already at the door.</p>
+
+    <div class="focus-3-grid">
+      <div class="focus-3 gold">
+        <div class="f3-eyebrow">Recommendation 01 — Brand identity</div>
+        <h3>Refresh the visual brand — logo, tagline, color scheme</h3>
+        <p>The current logo, tagline, and color scheme don't match the quality of the practice or the reputation built on 4.9★ and 85 Google reviews. A refined visual identity is the foundation a cosmetic site redesign builds on — and it compounds every other improvement in this audit.</p>
+      </div>
+      <div class="focus-3">
+        <div class="f3-eyebrow">Recommendation 02 — Imagery</div>
+        <h3>Replace stock photos with real practice photography</h3>
+        <p>Most pages currently rely on generic stock dental imagery. Real photography — of the doctors, team, office, and patient cases (with consent) — builds trust faster than copy can. Critical for cosmetic, implant, and Invisalign pages where patients want to see actual work, not models.</p>
+      </div>
+      <div class="focus-3 purple">
+        <div class="f3-eyebrow">Recommendation 03 — Page structure</div>
+        <h3>Match every service page to the emergency-dentist page — then exceed it</h3>
+        <p>Every service page needs revamping — proper HTML heading hierarchy, FAQs, <strong>1,000+ words of practice-specific content</strong>, and schema for AI visibility. The proof is already on the site: <code>/dental-emergencies-and-pain-relief</code> ranks <strong>#9 for "emergency dentist milwaukee" (1,000/mo)</strong> because it has more content and more structural work than any other service page. <strong>That page is the bar.</strong> Bring all six others up to match — then exceed it with MedicalProcedure schema, galleries, and cost guidance.</p>
+      </div>
+    </div>
+
+    <div style="background: var(--navy); color: #fff; padding: 28px 32px; border-radius: 6px; margin: 26px 0 0; box-shadow: 0 4px 12px rgba(13,37,56,0.15);">
+      <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 10px;">The recommendation</div>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: #fff; margin: 0 0 12px; font-weight: 600; line-height: 1.25;">Build a new website</h3>
+      <p style="font-size: 14px; color: #c7d4dd; line-height: 1.65; margin: 0;">The cosmetic improvements needed — brand refresh, real photography, content rebuilt on every service page, proper HTML and schema structure — add up to a full ground-up rebuild, not incremental patches. The technical foundation is working (22 pages indexed, architecture solid), but the front-end experience that converts brand traffic into bookings needs to start clean. <strong style="color: #fff;">A new site is the highest-leverage move available to the practice.</strong></p>
+    </div>
+
+    <div style="background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--gold-2); padding: 18px 22px; margin: 14px 0 0; border-radius: 0 4px 4px 0;">
+      <div style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-text); margin-bottom: 6px;">Optional recommendation · Domain</div>
+      <p style="font-size: 13.5px; color: var(--text-dark); line-height: 1.6; margin: 0;">The current domain is <code>delicatesmiles.net</code>. A <code>.com</code> typically builds more trust with patients and carries a slight SEO edge. The current <code>.net</code> already has real authority built up (175 referring domains, Authority Score 17), so this isn't a priority — but if <code>delicatesmiles.com</code> is available, it's worth considering as part of the rebuild.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LOCAL ENTITY CONFLICT · VERIFIED EVIDENCE ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow" style="color: var(--red);">Local entity conflict · verified</div>
+    <h2>The practice is showing up as two different cities online</h2>
+    <p class="section-text">A side-by-side look at what we actually found across the website and on Yelp. The contact page lists Milwaukee. The page titles say Glendale. Two Yelp listings exist with the same phone number but different street addresses. The practice's local entity is split.</p>
+
+    <!-- Verified page titles -->
+    <div style="background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--red); border-radius: 6px; padding: 22px 26px; margin: 14px 0 22px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--red); margin-bottom: 14px;">📌 Evidence · Page titles on delicatesmiles.net</div>
+      <div style="display: grid; gap: 10px;">
+        <div style="background: var(--bg-soft); padding: 12px 14px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12.5px; color: var(--text-dark); line-height: 1.5;">
+          <strong style="font-family: 'Inter', sans-serif; color: var(--text-muted); font-size: 11px; letter-spacing: 0.04em;">/general-and-cosmetic-dentistry →</strong><br>
+          "General &amp; Cosmetic Dentistry | Delicate Smiles | <span style="color: var(--red); font-weight: 700;">Glendale WI</span>"
+        </div>
+        <div style="background: var(--bg-soft); padding: 12px 14px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12.5px; color: var(--text-dark); line-height: 1.5;">
+          <strong style="font-family: 'Inter', sans-serif; color: var(--text-muted); font-size: 11px; letter-spacing: 0.04em;">/implant-dentistry →</strong><br>
+          "Implant Dentistry | Delicate Smiles | <span style="color: var(--red); font-weight: 700;">Glendale, WI</span>"
+        </div>
+        <div style="background: var(--bg-soft); padding: 12px 14px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12.5px; color: var(--text-dark); line-height: 1.5;">
+          <strong style="font-family: 'Inter', sans-serif; color: var(--text-muted); font-size: 11px; letter-spacing: 0.04em;">/dental-evaluations-and-cleanings →</strong><br>
+          "Local Dentist <span style="color: var(--green); font-weight: 700;">Milwaukee, WI</span> | <span style="color: var(--red); font-weight: 700;">Glendale, WI</span> | Delicate Smiles" <span style="font-family: 'Inter', sans-serif; color: var(--text-muted); font-size: 11px; font-style: italic;">— both cities in one title</span>
+        </div>
+        <div style="background: rgba(45,142,92,0.06); padding: 12px 14px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12.5px; color: var(--text-dark); line-height: 1.5;">
+          <strong style="font-family: 'Inter', sans-serif; color: var(--text-muted); font-size: 11px; letter-spacing: 0.04em;">/contact (correct) →</strong><br>
+          "2330 North Farwell Avenue, <span style="color: var(--green); font-weight: 700;">Milwaukee, WI 53211</span>"
+        </div>
+      </div>
+    </div>
+
+    <!-- Side-by-side Yelp comparison -->
+    <h3 style="font-size: 20px; font-weight: 600; margin: 28px 0 14px; color: var(--text-dark);">Two Yelp listings — same phone, two cities</h3>
+    <div style="display: grid; grid-template-columns: 1fr 60px 1fr; gap: 16px; align-items: stretch; margin-bottom: 22px;">
+      <div style="background: var(--bg-card); border-radius: 6px; border: 1px solid var(--border); padding: 20px 22px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--green-text); margin-bottom: 8px;">Listing #1 · Milwaukee</div>
+        <div style="font-family: 'Courier New', monospace; font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">yelp.com/biz/delicate-smiles-milwaukee</div>
+        <div style="font-size: 14px; font-weight: 600; color: var(--text-dark); line-height: 1.5; margin-bottom: 6px;">2330 N Farwell Ave<br>Milwaukee, WI 53211</div>
+        <div style="font-size: 12px; color: var(--text-muted);">10 reviews · (414) 363-2404</div>
+      </div>
+      <div style="text-align: center; align-self: center; font-size: 22px; color: var(--gold-2); font-weight: 700;">vs</div>
+      <div style="background: #fff5f3; border-radius: 6px; border: 1px solid var(--red); padding: 20px 22px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--red); margin-bottom: 8px;">Listing #2 · Glendale (different city)</div>
+        <div style="font-family: 'Courier New', monospace; font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">yelp.com/biz/delicate-smiles-glendale</div>
+        <div style="font-size: 14px; font-weight: 600; color: var(--text-dark); line-height: 1.5; margin-bottom: 6px;">200 W Silver Spring Dr<br>Glendale, WI 53217</div>
+        <div style="font-size: 12px; color: var(--text-muted);">10 reviews · (414) 363-2404 <strong style="color: var(--red);">← same phone</strong></div>
+      </div>
+    </div>
+
+    <!-- Open question for the client -->
+    <div style="background: rgba(212,165,92,0.08); border-left: 3px solid var(--gold-2); padding: 18px 22px; border-radius: 0 4px 4px 0; margin: 18px 0;">
+      <div style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-text); margin-bottom: 6px;">Question for the practice</div>
+      <p style="font-size: 13.5px; color: var(--text-dark); line-height: 1.6; margin: 0;">Is <strong>200 W Silver Spring Dr, Glendale</strong> a current second office, a previous location that the practice has since moved from, or a stale Yelp listing that was never cleaned up? <strong>The answer determines the cleanup path</strong> — either standardize on Milwaukee-only across all directories and page titles, or build out two distinct location pages and properly geo-segment the marketing.</p>
+    </div>
+
+    <!-- What this is costing -->
+    <div style="background: #fff5f3; border-left: 3px solid var(--red); padding: 18px 22px; border-radius: 0 4px 4px 0;">
+      <div style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--red); margin-bottom: 6px;">Why this matters</div>
+      <p style="font-size: 13.5px; color: var(--text-dark); line-height: 1.6; margin: 0;">Conflicting Name / Address / City signals across Google, Yelp, and the practice's own page titles fragment the local entity in search engines. The practice ranks #1 for "delicate smiles" (260/mo) and shows strong commercial signals on emergency-dentist Milwaukee queries — but the same brand is competing with itself on Glendale-targeted searches because of inconsistent geographic anchoring. This is one of the highest-leverage local-SEO fixes available and can be resolved in days, not months.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= GOOGLE BUSINESS PROFILE ============= -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Google Business Profile</div>
+    <h2 style="font-size: 28px;">Reputation · Delicate Smiles</h2>
+    <div class="gbp-card">
+      <div class="star-block">
+        <div class="star-rating">4.9</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">85 reviews</div>
+      </div>
+      <div class="gbp-meta">
+        <div class="gbp-row"><div class="label">Address</div><div class="value">2330 N Farwell Ave, #320</div></div>
+        <div class="gbp-row"><div class="label">Phone</div><div class="value">(414) 363-2404</div></div>
+        <div class="gbp-row"><div class="label">Location</div><div class="value">Milwaukee, WI</div></div>
+        <div class="gbp-row"><div class="label">Recognition</div><div class="value">Best Dentist in WI 2024 · Bucks SBP</div></div>
+        <div class="gbp-row"><div class="label">Specialties</div><div class="value">Emergency · Cosmetic · Implants · Invisalign</div></div>
+        <div class="gbp-row"><div class="label">Average rating</div><div class="value">4.9 ★ — strong</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= DIRECTORY PRESENCE ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Core directory listings</div>
+    <h2>Missing &amp; Unclaimed Directory Listings</h2>
+    <p class="section-text">Listings that are <strong>missing entirely</strong> or only <strong>partially claimed</strong> — the channels where Delicate Smiles is leaving local-citation and patient-acquisition signal on the table. (Claimed and complete listings — Google Business Profile, Yelp, Facebook, Instagram, CareCredit, Yellow Pages, Chamber of Commerce — are not shown here.)</p>
+
+    <div class="directory-summary">
+      <div class="dir-stat red"><div class="num">2</div><div class="dir-label">Missing</div><small>no profile found</small></div>
+      <div class="dir-stat"><div class="num">1</div><div class="dir-label">Limited</div><small>partial profile</small></div>
+      <div class="dir-stat green"><div class="num">7</div><div class="dir-label">Listed (not shown)</div><small>see note above</small></div>
+    </div>
+
+    <div class="table-scroll"><table class="directory-table">
+      <thead><tr><th>Directory</th><th>Status</th><th>What's missing</th></tr></thead>
+      <tbody>
+        <tr><td>Zocdoc</td><td><span class="dir-status missing">Missing</span></td><td>No bookable profile — losing the patient-search channel that competitors Eastside Dental and Dental Associates already use</td></tr>
+        <tr><td>BBB (Better Business Bureau)</td><td><span class="dir-status missing">Missing</span></td><td>No accreditation — straightforward signal for trust queries and a citation source</td></tr>
+        <tr><td>Healthgrades</td><td><span class="dir-status weak">Limited</span></td><td>Practice surfaces in directory listings but individual doctor profiles (with photos, bios, review aggregation) are not claimed or completed</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ============= TREATMENT PAGES AUDIT ============= -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Treatment pages · Technical audit</div>
+    <h2>24 Indexed Pages on Delicate Smiles</h2>
+    <div class="triage-counters">
+      <div class="triage-counter purple">
+        <div class="num">14</div>
+        <div class="triage-label">Evaluate &amp; Rework</div>
+        <small style="font-size: 11px; color: var(--text-muted);">service / info pages at 0 visits</small>
+      </div>
+      <div class="triage-counter red">
+        <div class="num">4</div>
+        <div class="triage-label">Clean Up</div>
+        <small style="font-size: 11px; color: var(--text-muted);">404s, orphan, tracking-param URL</small>
+      </div>
+      <div class="triage-counter green">
+        <div class="num">6</div>
+        <div class="triage-label">Working as expected</div>
+        <small style="font-size: 11px; color: var(--text-muted);">homepage + active blog + contact</small>
+      </div>
+    </div>
+
+    <div class="table-scroll"><table class="pages-table">
+      <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+      <tbody>
+        <tr><td class="url">/ (homepage)</td><td>300</td></tr>
+        <tr><td class="url">/contact</td><td>11</td></tr>
+        <tr><td class="url">/about</td><td>2</td></tr>
+        <tr><td class="url">/general-and-cosmetic-dentistry</td><td>0</td></tr>
+        <tr><td class="url">/implant-dentistry</td><td>0</td></tr>
+        <tr><td class="url">/invisalign-and-clear-aligner-therapy</td><td>0</td></tr>
+        <tr><td class="url">/dental-evaluations-and-cleanings</td><td>0</td></tr>
+        <tr><td class="url">/dental-emergencies-and-pain-relief</td><td>0</td></tr>
+        <tr><td class="url">/complete-and-partial-dentures</td><td>0</td></tr>
+        <tr><td class="url">/gum-treatments-and-tooth-whitening</td><td>0</td></tr>
+        <tr><td class="url">/root-canal-therapy</td><td>0</td></tr>
+        <tr><td class="url">/childrens-dental-care</td><td>0</td></tr>
+        <tr><td class="url">/lip-fillers</td><td>0</td></tr>
+        <tr><td class="url">/meet-our-doctors</td><td>0</td></tr>
+        <tr><td class="url">/meet-the-team</td><td>0</td></tr>
+        <tr><td class="url">/faqs</td><td>0</td></tr>
+        <tr><td class="url">/reviews</td><td>0</td></tr>
+        <tr><td class="url">/payment-plans</td><td>0</td></tr>
+        <tr><td class="url">/blog</td><td>0</td></tr>
+        <tr><td class="url">/how-a-great-dental-routine-can-improve-your-smile</td><td>0</td></tr>
+        <tr><td class="url">/how-to-know-if-you-need-a-root-canal</td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/botox <span class="url-flag">404</span></td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/meet-the-doctor <span class="url-flag">301 — orphan redirect</span></td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/services <span class="url-flag">301 — no destination</span></td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/hibu-video-splash <span class="url-flag">ORPHAN</span></td><td>0</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="critical-callout">
+      <strong>Cleanup notes:</strong> <code>/botox</code> returns a 404 (page removed but link still indexed); <code>/meet-the-doctor</code> and <code>/services</code> are legacy 301 redirects pointing to the homepage rather than the current equivalents (<code>/meet-our-doctors</code>, individual service pages); <code>/hibu-video-splash</code> is a template artifact that should be noindex'd or removed.
+    </div>
+  </div>
+</section>
+
+<!-- ============= TECHNICAL ISSUES ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+    <h2>Technical Issues</h2>
+    <p class="section-text">Site-level technical SEO health check. Counts derived from a crawl of the indexed page set and on-page review of homepage + four representative service pages.</p>
+
+    <div class="tech-issues-grid">
+      <div class="tech-issue-card">
+        <div class="tech-num">7</div>
+        <div>
+          <h5>Service Pages Without Schema</h5>
+          <p>None of the seven service pages carry MedicalProcedure, LocalBusiness, or FAQPage schema. Schema is the channel through which Google AI Overviews and entity search pick up procedure-level data.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card gold">
+        <div class="tech-num">7</div>
+        <div>
+          <h5>Thin Service-Page Copy</h5>
+          <p>Service pages run 500–900 words of largely templated content. No before/after galleries, no transparent cost ranges, no procedure-specific FAQs, no embedded patient testimonials.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card purple">
+        <div class="tech-num">4</div>
+        <div>
+          <h5>Indexed URLs to Clean Up</h5>
+          <p>One 404 (<code>/botox</code>), two legacy 301s with no live equivalent destination, and one Hibu template splash page diluting crawl signals.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card green">
+        <div class="tech-num">22</div>
+        <div>
+          <h5>Pages Indexed (Healthy)</h5>
+          <p>Key pages are crawlable and indexed by Google. The architecture is solid — content optimization and internal-link density are the gaps, not technical access.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-callout">
+      <strong>Highest-leverage technical work:</strong> on-page schema (LocalBusiness on the homepage, MedicalProcedure on each service page, AggregateRating sourced from the 85 Google reviews, FAQPage on <code>/faqs</code>) and 4 URL-cleanup tasks. These two combine to unlock service-page eligibility for the AI Overviews and rich-result panels that brand and emergency-dentist queries currently trigger.
+    </div>
+  </div>
+</section>
+
+<!-- ============= COMPETITIVE POSITION ============= -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Competitive position · 5-mile radius</div>
+    <h2>Primary Competitors Within 5 Miles</h2>
+    <p class="section-text">The three dental practices physically nearest to Delicate Smiles — all within a 5-mile radius of 2330 N Farwell Ave. SEMrush's wider competitor list (Lakeshore Family Dentistry, Emergency Dental of Milwaukee, Wisconsin Smiles, etc.) is excluded here because those practices are located in <strong>West Allis, Glendale, Fox Point, and Greendale</strong> — beyond the 5-mile radius and serving different neighborhoods.</p>
+
+    <div class="comp-twins">
+      <div class="comp-twin">
+        <table>
+          <thead><tr><th>Practice · Address</th><th>Authority</th><th>Keywords</th><th>Visits / mo</th><th>Ref. Domains</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Eastside Dental</strong><br><small style="color: var(--text-muted); font-weight: 400;">1845 N Farwell Ave · esdmke.com · ~0.6 mi</small></td><td>23</td><td>2,216</td><td>1,228</td><td>259</td></tr>
+            <tr><td><strong>DeWan Dental Wellness</strong><br><small style="color: var(--text-muted); font-weight: 400;">2445 N Farwell Ave · dewandental.com · ~0.1 mi</small></td><td>10</td><td>56</td><td>424</td><td>185</td></tr>
+            <tr><td><strong>Downtown Milwaukee Dentist</strong><br><small style="color: var(--text-muted); font-weight: 400;">Iron Block Bldg · downtownmilwaukeedentist.com · ~2 mi</small></td><td>15</td><td>194</td><td>216</td><td>132</td></tr>
+            <tr class="self"><td><strong>Delicate Smiles (You)</strong><br><small style="color: var(--red); font-weight: 400;">2330 N Farwell Ave · delicatesmiles.net</small></td><td>17</td><td>251</td><td>313</td><td>175</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============= PRIORITY ACTION PLAN ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Where attention is needed first</div>
+    <h2>Priority Action Plan</h2>
+    <p class="section-text">The work ahead, in order.</p>
+
+    <div class="action-list">
+      <div class="action-item">
+        <div class="a-num">1</div>
+        <div class="a-body">
+          <h5>Build a new website — designed for conversion and AI search</h5>
+          <p>A full design facelift covering the color scheme, logo adjustments, and every design element. The new site is built around three goals: structured for AI search visibility, polished to present the practice properly, and engineered for high conversion (above-the-fold "Book Online" CTAs, sticky mobile bar, trust signals up front). This is the foundation every other action in this plan builds on.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">2</div>
+        <div class="a-body">
+          <h5>Add schema + clean up indexed URLs</h5>
+          <p>LocalBusiness, MedicalProcedure, FAQPage, and Review schema across the site. Fix the 404 (<code>/botox</code>), two orphan 301s, and one Hibu splash page.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">3</div>
+        <div class="a-body">
+          <h5>Internal linking + homepage service grid</h5>
+          <p>Add a service-grid block on the homepage and contextual links from blog posts so authority flows to the seven service pages (currently 0 visits each).</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">4</div>
+        <div class="a-body">
+          <h5>Fix the Milwaukee vs Glendale city confusion across the web</h5>
+          <p>First step: confirm with the practice whether 200 W Silver Spring Dr, Glendale is an old location, current second office, or stale Yelp listing. Then rewrite every page title to say "Milwaukee, WI" — verified examples currently using <em>"Glendale WI"</em>: <code>/general-and-cosmetic-dentistry</code>, <code>/implant-dentistry</code>, <code>/dental-evaluations-and-cleanings</code>. Resolve the duplicate Yelp listing under the Glendale address. Standardize Name / Address / City across every directory to match the practice's actual location in Milwaukee's Murray Hill neighborhood (East Side).</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">5</div>
+        <div class="a-body">
+          <h5>Claim missing listings + verify NAP</h5>
+          <p>Claim Zocdoc, Healthgrades doctor profiles, and BBB. Verify Name / Address / Phone match exactly across the 7 existing directories.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">6</div>
+        <div class="a-body">
+          <h5>Rebuild seven service pages</h5>
+          <p>Implants, Invisalign, general/cosmetic, root canal, dentures, gum/whitening, children's care. Each: 1,200+ words, FAQs, gallery, cost ranges, CTA.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">7</div>
+        <div class="a-body">
+          <h5>Publish four blogs per month — grow keyword footprint to 600+</h5>
+          <p>Currently ranking for 251 keywords. With a consistent cadence of four blog posts per month — covering patient questions, Milwaukee-specific content, procedure explainers, and cost guidance — the target is <strong>600+ keywords within 6-7 months</strong>. Topics seeded from the existing keyword set plus competitor gap analysis.</p>
+        </div>
+        <span class="a-pri ongoing">Ongoing</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">8</div>
+        <div class="a-body">
+          <h5>Local backlink campaign toward 250 referring domains</h5>
+          <p>Currently 175; Eastside Dental holds 259. Targets: East Side partnerships, dental-school alumni features, Milwaukee Bucks community programming, local-media health columns.</p>
+        </div>
+        <span class="a-pri ongoing">Ongoing</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">9</div>
+        <div class="a-body">
+          <h5>Monthly performance report</h5>
+          <p>Rankings, traffic, GBP performance, new reviews, and booked appointments — measured against the May 2026 baseline established here.</p>
+        </div>
+        <span class="a-pri ongoing">Monthly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer>
+  <div class="container">
+    <span class="brand">Dentist Nerds</span> · Single-Location Website Audit · Delicate Smiles · Milwaukee, WI · May 2026
+  </div>
+</footer>
+
+<script>
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.color = '#6b7280';
+
+  // 12-month organic traffic trend (May 2025 → May 2026)
+  new Chart(document.getElementById('trafficTrend'), {
+    type: 'line',
+    data: {
+      labels: ['Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26'],
+      datasets: [{
+        label: 'Organic visits',
+        data: [265, 309, 293, 281, 277, 279, 310, 278, 273, 86, 112, 313],
+        borderColor: '#5fbab0',
+        backgroundColor: 'rgba(95,186,176,0.15)',
+        borderWidth: 2.5,
+        tension: 0.3,
+        fill: true,
+        pointBackgroundColor: '#5fbab0',
+        pointRadius: 3,
+        pointHoverRadius: 5
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { backgroundColor: '#0d2538', padding: 10, titleFont: { size: 12 }, bodyFont: { size: 12 } }
+      },
+      scales: {
+        x: { grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } },
+        y: { beginAtZero: true, grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } }
+      }
+    }
+  });
+</script>
+</body>
+</html>

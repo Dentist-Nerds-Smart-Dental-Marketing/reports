@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haven Family Dental Joliet — Website Audit | Dentist Nerds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-deep: #0A1422;
+    --navy-soft: #1B2940;
+    --ink: #15202E;
+    --ink-soft: #4A5568;
+    --ink-mute: #7B8794;
+    --line: #E2E8F0;
+    --line-soft: #EDF2F7;
+    --bg: #FFFFFF;
+    --bg-soft: #F7F9FC;
+    --bg-mint: #FDF8E8;
+    --green: #D4A93B;
+    --green-deep: #8B6914;
+    --green-soft: #FAEFCE;
+    --mint: #E5C76E;
+    --coral: #FF5E4D;
+    --coral-soft: #FFE2DE;
+    --amber: #FFB547;
+    --amber-soft: #FFF1D6;
+    --blue: #4D8CFF;
+    --blue-soft: #DCE8FF;
+    --purple: #8B5CF6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* HERO */
+  .hero { background: var(--navy); color: #FFF; padding: 72px 0 64px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -150px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(77,140,255,0.12) 0%, transparent 60%); pointer-events: none; }
+  .hero-wrap { position: relative; z-index: 2; }
+  .audit-strip { display: flex; align-items: center; justify-content: space-between; margin-bottom: 48px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .nerds-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 16px; color: #FFF; letter-spacing: -0.01em; }
+  .nerds-logo .logo-mark { width: 32px; height: 32px; border-radius: 8px; background: var(--green); display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 18px; }
+  .audit-type { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; }
+  .audit-target { display: inline-flex; align-items: center; gap: 10px; background: rgba(212,169,59,0.12); border: 1px solid rgba(212,169,59,0.3); color: var(--green); padding: 8px 16px; border-radius: 100px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px; }
+  .audit-target .pulse { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 0 4px rgba(212,169,59,0.2); }
+  .hero h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.05; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; max-width: 920px; }
+  .hero h1 .accent { color: var(--green); }
+  .hero .lede { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 720px; line-height: 1.55; margin-bottom: 44px; font-weight: 400; }
+  .hero .lede strong { color: #FFF; }
+  .hero-meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .meta-block .meta-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+  .meta-block .meta-value { font-size: 16px; color: #FFF; font-weight: 700; letter-spacing: -0.01em; }
+  .meta-block .meta-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+  /* VERDICT BAR */
+  .verdict { background: linear-gradient(135deg, var(--coral) 0%, #E04535 100%); color: #FFF; padding: 36px 0; position: relative; overflow: hidden; }
+  .verdict-wrap { display: grid; grid-template-columns: 80px 1fr auto; gap: 28px; align-items: center; }
+  .verdict-icon { width: 80px; height: 80px; background: rgba(255,255,255,0.18); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  .verdict-content .verdict-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.8; margin-bottom: 6px; font-weight: 700; }
+  .verdict-content h2 { font-size: 28px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; max-width: 720px; }
+  .verdict-cta { background: #FFF; color: var(--coral); padding: 14px 22px; border-radius: 12px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+
+  /* SECTION SHELL */
+  section { padding: 80px 0; }
+  section.alt { background: var(--bg-soft); }
+  section.dark { background: var(--navy); color: #FFF; }
+  .section-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--green-soft); color: var(--green-deep); padding: 6px 14px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .section-eyebrow .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+  .section-eyebrow.red { background: var(--coral-soft); color: var(--coral); }
+  .section-eyebrow.red .dot { background: var(--coral); }
+  section h2 { font-size: clamp(30px, 4vw, 44px); line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 18px; max-width: 820px; }
+  section h2 .accent { color: var(--green-deep); }
+  section h2 .accent-red { color: var(--coral); }
+  section .section-intro { font-size: 17px; color: var(--ink-soft); max-width: 720px; line-height: 1.55; margin-bottom: 48px; }
+
+  /* HEALTH SCORE */
+  .score-grid { display: grid; grid-template-columns: 380px 1fr; gap: 56px; align-items: center; }
+  .gauge-wrap { background: #FFF; border-radius: 24px; padding: 36px; box-shadow: 0 4px 24px rgba(15,27,45,0.06); border: 1px solid var(--line); text-align: center; }
+  .gauge-label { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
+  .gauge-svg { display: block; margin: 0 auto; }
+  .gauge-num { font-size: 64px; font-weight: 800; color: var(--coral); line-height: 1; margin-top: 8px; letter-spacing: -0.03em; }
+  .gauge-suffix { font-size: 24px; color: var(--ink-mute); font-weight: 600; }
+  .gauge-status { margin-top: 8px; font-size: 13px; color: var(--coral); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .subscore-list { display: flex; flex-direction: column; gap: 16px; }
+  .subscore { background: #FFF; border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; display: grid; grid-template-columns: 36px 1fr auto; gap: 16px; align-items: center; }
+  .subscore-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .subscore-icon.coral { background: var(--coral-soft); }
+  .subscore-icon.amber { background: var(--amber-soft); }
+  .subscore-icon.blue { background: var(--blue-soft); }
+  .subscore-icon.green { background: var(--green-soft); }
+  .subscore-title { font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .subscore-bar { background: var(--line-soft); height: 6px; border-radius: 100px; overflow: hidden; }
+  .subscore-fill { height: 100%; border-radius: 100px; background: var(--coral); }
+  .subscore-fill.amber { background: var(--amber); }
+  .subscore-fill.blue { background: var(--blue); }
+  .subscore-fill.green { background: var(--green); }
+  .subscore-value { font-family: 'Manrope', sans-serif; font-size: 18px; font-weight: 800; color: var(--ink); min-width: 60px; text-align: right; }
+
+  /* ISSUE COUNTERS */
+  .issue-counter { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 48px; }
+  .counter-card { background: #FFF; border-radius: 16px; padding: 26px 22px; border: 1px solid var(--line); position: relative; overflow: hidden; }
+  .counter-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
+  .counter-card.critical::before { background: var(--coral); }
+  .counter-card.high::before { background: var(--amber); }
+  .counter-card.medium::before { background: var(--blue); }
+  .counter-card.good::before { background: var(--green); }
+  .counter-num { font-size: 48px; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 8px; letter-spacing: -0.03em; }
+  .counter-num.coral { color: var(--coral); }
+  .counter-num.amber { color: var(--amber); }
+  .counter-num.blue { color: var(--blue); }
+  .counter-num.green { color: var(--green); }
+  .counter-label { font-size: 13px; color: var(--ink-mute); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* TRAFFIC DONUT */
+  .chart-block { display: grid; grid-template-columns: 360px 1fr; gap: 56px; align-items: center; }
+  .donut-wrap { text-align: center; }
+  .donut-center { position: relative; display: inline-block; }
+  .donut-center .center-num { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+  .donut-center .center-num .big { font-size: 48px; font-weight: 800; color: var(--coral); line-height: 1; letter-spacing: -0.03em; }
+  .donut-center .center-num .small { font-size: 11px; color: var(--ink-mute); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .donut-caption { margin-top: 24px; font-size: 14px; color: var(--ink-soft); }
+  .donut-legend { display: flex; flex-direction: column; gap: 4px; }
+  .legend-row { display: grid; grid-template-columns: 16px 1fr auto; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+  .legend-dot { width: 14px; height: 14px; border-radius: 4px; }
+  .legend-label { font-size: 14.5px; color: var(--ink); font-weight: 500; }
+  .legend-label .leg-sub { color: var(--ink-mute); font-size: 12px; font-weight: 400; }
+  .legend-pct { font-weight: 800; font-size: 16px; color: var(--ink); }
+
+  /* PAGE BAR */
+  .page-bar { display: grid; grid-template-columns: 280px 1fr 80px; gap: 20px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+  .page-name { font-family: 'DM Sans', monospace; font-size: 13px; color: var(--ink); font-weight: 600; }
+  .page-name .pn-sub { display: block; font-size: 11px; color: var(--ink-mute); font-weight: 400; margin-top: 2px; font-family: 'Manrope', sans-serif; }
+  .page-track { background: var(--line-soft); height: 12px; border-radius: 100px; overflow: hidden; }
+  .page-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--coral) 0%, #FF8B7E 100%); }
+  .page-fill.amber { background: linear-gradient(90deg, var(--amber) 0%, #FFD17C 100%); }
+  .page-fill.empty { background: repeating-linear-gradient(45deg, var(--line-soft), var(--line-soft) 6px, var(--line) 6px, var(--line) 12px); }
+  .page-value { font-size: 14px; font-weight: 800; color: var(--ink); text-align: right; }
+  .page-value.crit { color: var(--coral); }
+  .page-value.zero { color: var(--ink-mute); }
+
+  /* ISSUE CARDS */
+  .issues-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+  .issue-card { background: #FFF; border-radius: 20px; border: 1px solid var(--line); padding: 30px; display: grid; grid-template-columns: 56px 1fr; gap: 24px; }
+  .issue-icon-wrap { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+  .issue-icon-wrap.critical { background: var(--coral-soft); }
+  .issue-icon-wrap.high { background: var(--amber-soft); }
+  .issue-icon-wrap.medium { background: var(--blue-soft); }
+  .issue-card-head { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .issue-card-num { font-size: 11px; color: var(--ink-mute); font-weight: 700; letter-spacing: 0.08em; }
+  .issue-card h3 { font-size: 21px; font-weight: 800; color: var(--ink); line-height: 1.25; flex-basis: 100%; letter-spacing: -0.01em; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 100px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .pill .pill-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .pill.critical { background: var(--coral-soft); color: var(--coral); }
+  .pill.critical .pill-dot { background: var(--coral); }
+  .pill.high { background: var(--amber-soft); color: #B87A0E; }
+  .pill.high .pill-dot { background: var(--amber); }
+  .pill.medium { background: var(--blue-soft); color: #2D5BC2; }
+  .pill.medium .pill-dot { background: var(--blue); }
+  .pill.category { background: var(--bg-soft); color: var(--ink-mute); }
+  .pill.category .pill-dot { background: var(--ink-mute); }
+  .issue-card p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; margin-bottom: 12px; }
+  .issue-card p:last-child { margin-bottom: 0; }
+  .issue-card strong { color: var(--ink); font-weight: 700; }
+  .issue-card code { background: var(--bg-soft); border: 1px solid var(--line); padding: 1px 6px; border-radius: 4px; font-family: 'DM Sans', monospace; font-size: 12.5px; color: var(--navy); word-break: break-all; }
+
+  .fix-box { background: var(--bg-mint); border-radius: 12px; padding: 16px 20px; margin-top: 16px; border-left: 3px solid var(--green); }
+  .fix-box-label { font-size: 11px; font-weight: 700; color: var(--green-deep); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .fix-box p { color: var(--ink); font-size: 14px; margin: 0; }
+
+  .evidence { background: #FFF5F3; border-left: 3px solid var(--coral); padding: 16px 20px; margin: 14px 0; border-radius: 0 12px 12px 0; }
+  .evidence-label { font-size: 11px; font-weight: 700; color: var(--coral); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .evidence-quote { font-family: 'DM Sans', monospace; font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0; }
+
+  /* GBP MOCKUP */
+  .gbp-mockup { background: #FFF; border-radius: 16px; border: 1px solid var(--line); padding: 28px; margin: 32px 0; box-shadow: 0 4px 20px rgba(15,27,45,0.04); }
+  .gbp-mockup-head { display: flex; align-items: center; gap: 14px; padding-bottom: 18px; border-bottom: 1px solid var(--line-soft); margin-bottom: 22px; }
+  .gbp-g-logo { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #4285F4 0%, #34A853 33%, #FBBC04 66%, #EA4335 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; }
+  .gbp-mockup-title { font-size: 13px; font-weight: 700; color: var(--ink); letter-spacing: 0.04em; text-transform: uppercase; }
+  .gbp-mockup-sub { font-size: 12px; color: var(--ink-mute); margin-top: 2px; }
+  .gbp-business-name { font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.01em; }
+  .gbp-business-meta { font-size: 13px; color: var(--ink-mute); margin-bottom: 20px; }
+  .gbp-primary-slot { background: linear-gradient(135deg, #EAF2FF 0%, #DCE8FF 100%); border: 2px solid var(--blue); border-radius: 14px; padding: 20px 22px; margin-bottom: 18px; position: relative; }
+  .gbp-primary-slot::before { content: 'PRIMARY CATEGORY'; position: absolute; top: -10px; left: 18px; background: var(--blue); color: #FFF; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; }
+  .gbp-primary-name { font-size: 26px; font-weight: 800; color: #2D5BC2; margin: 8px 0 4px; letter-spacing: -0.01em; }
+  .gbp-primary-note { font-size: 12.5px; color: var(--ink-soft); line-height: 1.4; margin-top: 6px; }
+  .gbp-secondary-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 10px; }
+  .gbp-secondary-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .gbp-sec-chip { background: var(--bg-soft); border: 1px solid var(--line); color: var(--ink-soft); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* BRAND SUGGESTION CARD */
+  .brand-suggestion-card { background: #FFF; border-radius: 24px; padding: 44px 48px; border: 1px solid var(--line); margin-top: 40px; box-shadow: 0 8px 32px rgba(15,27,45,0.04); position: relative; overflow: hidden; }
+  .brand-suggestion-card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(180deg, var(--green) 0%, var(--mint) 100%); }
+  .suggestion-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--green-soft); color: var(--green-deep); padding: 7px 14px; border-radius: 100px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .brand-suggestion-card h3 { font-size: 28px; font-weight: 800; color: var(--ink); margin-bottom: 18px; letter-spacing: -0.015em; line-height: 1.2; }
+  .brand-suggestion-card p { color: var(--ink-soft); font-size: 15.5px; line-height: 1.65; margin-bottom: 14px; }
+  .brand-suggestion-card strong { color: var(--ink); font-weight: 700; }
+  .name-comparison { display: grid; grid-template-columns: 1fr 56px 1fr; gap: 16px; align-items: stretch; margin: 32px 0; }
+  .name-card-vs { border-radius: 14px; padding: 24px 26px; border: 1px solid var(--line); background: var(--bg-soft); display: flex; flex-direction: column; justify-content: center; }
+  .name-card-vs.possible { background: linear-gradient(135deg, #FAEFCE 0%, #F7E5B0 100%); border-color: var(--green); }
+  .name-card-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 800; color: var(--ink-mute); margin-bottom: 10px; }
+  .name-card-vs.possible .name-card-label { color: var(--green-deep); }
+  .name-card-name { font-size: 19px; font-weight: 800; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; line-height: 1.25; }
+  .name-card-meta { font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; font-style: italic; }
+  .name-arrow { text-align: center; font-size: 26px; color: var(--green); font-weight: 800; align-self: center; }
+
+  /* REBUILD VS REPAIR */
+  .rebuild-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  .vs-card { background: #FFF; border-radius: 20px; border: 1px solid var(--line); padding: 32px; position: relative; overflow: hidden; }
+  .vs-card.repair { border-color: var(--coral); }
+  .vs-card.rebuild { border-color: var(--green); box-shadow: 0 12px 40px rgba(212,169,59,0.15); }
+  .vs-stamp { position: absolute; top: 24px; right: 24px; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; }
+  .vs-stamp.bad { background: var(--coral-soft); color: var(--coral); }
+  .vs-stamp.good { background: var(--green-soft); color: var(--green-deep); }
+  .vs-label { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
+  .vs-card h3 { font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 18px; letter-spacing: -0.01em; }
+  .vs-list { list-style: none; padding: 0; margin: 0 0 22px; }
+  .vs-list li { padding: 10px 0 10px 30px; position: relative; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; border-bottom: 1px solid var(--line-soft); }
+  .vs-list li:last-child { border-bottom: none; }
+  .vs-list li::before { position: absolute; left: 0; top: 11px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+  .vs-list.bad li::before { content: '✕'; background: var(--coral-soft); color: var(--coral); }
+  .vs-list.good li::before { content: '✓'; background: var(--green-soft); color: var(--green-deep); }
+  .vs-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line-soft); }
+  .vs-metric { text-align: center; padding: 14px; background: var(--bg-soft); border-radius: 10px; }
+  .vs-metric .vm-num { font-size: 24px; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.02em; }
+  .vs-card.rebuild .vs-metric .vm-num { color: var(--green-deep); }
+  .vs-card.repair .vs-metric .vm-num { color: var(--coral); }
+  .vs-metric .vm-label { font-size: 11px; color: var(--ink-mute); margin-top: 4px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* COMPETITOR */
+  .competitor-table { background: #FFF; border-radius: 20px; border: 1px solid var(--line); overflow: hidden; }
+  .ct-head { display: grid; grid-template-columns: 1.7fr 90px 90px 90px 100px; gap: 16px; padding: 18px 28px; background: var(--navy); color: #FFF; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .ct-row { display: grid; grid-template-columns: 1.7fr 90px 90px 90px 100px; gap: 16px; padding: 16px 28px; align-items: center; border-bottom: 1px solid var(--line-soft); font-size: 14px; }
+  .ct-row:last-child { border-bottom: none; }
+  .ct-row.you { background: var(--bg-mint); border-left: 3px solid var(--green); padding-left: 25px; }
+  .ct-domain { font-weight: 700; color: var(--ink); }
+  .ct-domain .ct-sub { display: block; font-size: 11px; color: var(--ink-mute); font-weight: 400; margin-top: 2px; }
+  .ct-num { font-weight: 700; color: var(--ink); }
+  .ct-num.warn { color: var(--coral); }
+  .ct-num.good { color: var(--green-deep); }
+
+  /* COMPETITOR CARDS */
+  .competitor-cards { display: flex; flex-direction: column; gap: 14px; }
+  .comp-card { background: #FFF; border: 1px solid var(--line); border-radius: 18px; padding: 24px 28px; box-shadow: 0 4px 20px rgba(15,27,45,0.04); }
+  .comp-card.you { background: var(--bg-mint); border-color: var(--green); border-left: 4px solid var(--green); }
+  .comp-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--line-soft); flex-wrap: wrap; }
+  .comp-card.you .comp-card-head { border-bottom-color: rgba(212,169,59,0.3); }
+  .comp-card-name { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 4px; line-height: 1.2; }
+  .comp-card-domain { font-size: 12.5px; color: var(--ink-mute); }
+  .comp-rank-pill { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; background: var(--bg-soft); color: var(--ink-soft); white-space: nowrap; }
+  .comp-rank-pill.leader { background: var(--green-soft); color: var(--green-deep); }
+  .comp-rank-pill.you-pill { background: var(--green); color: var(--navy-deep); }
+  .comp-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .comp-stat { padding: 14px 16px; background: var(--bg-soft); border-radius: 12px; }
+  .comp-card.you .comp-stat { background: #FFF; }
+  .comp-stat-label { font-size: 10px; color: var(--ink-mute); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .comp-stat-num { font-size: 28px; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.02em; }
+
+  /* SITEMAP */
+  .sitemap-card { background: #FFF; border: 1px solid var(--line); border-radius: 18px; padding: 32px; margin: 24px 0 36px; box-shadow: 0 4px 20px rgba(15,27,45,0.04); }
+  .sitemap-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 14px; }
+  .sitemap-card-title { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; }
+  .sitemap-card-title small { display: block; font-size: 12px; color: var(--ink-mute); font-weight: 500; margin-top: 4px; }
+  .sitemap-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line-soft); }
+  .sitemap-stat { background: var(--bg-soft); border-radius: 10px; padding: 14px 16px; }
+  .sitemap-stat-num { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
+  .sitemap-stat-label { font-size: 11px; color: var(--ink-mute); font-weight: 600; letter-spacing: 0.02em; }
+  .sm-stat-service { color: var(--green-deep); }
+  .sm-stat-flag { color: var(--coral); }
+  .sm-stat-nogeo { color: var(--amber); }
+  .sm-stat-utility { color: var(--ink-mute); }
+
+  .red-flags-banner { background: linear-gradient(135deg, #FFF1EE 0%, #FFFBEC 100%); border: 1px solid #FFDDD6; border-radius: 14px; padding: 22px 26px; margin: 4px 0 24px; }
+  .red-flags-banner-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 800; color: var(--coral); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .red-flags-banner-label::before { content: "⚠"; font-size: 14px; }
+  .red-flags-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .red-flag-cell { background: #FFF; border-radius: 10px; padding: 18px 20px; border-left: 4px solid var(--coral); display: flex; align-items: flex-start; gap: 16px; }
+  .red-flag-num { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: var(--coral); line-height: 1; flex-shrink: 0; font-family: 'Manrope', sans-serif; }
+  .red-flag-num.text-big { font-size: 18px; line-height: 1.15; padding-top: 4px; letter-spacing: -0.005em; text-transform: none; max-width: 90px; text-align: left; font-weight: 800; }
+  .red-flag-body { flex: 1; }
+  .red-flag-headline { font-size: 14.5px; font-weight: 800; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em; line-height: 1.3; }
+  .red-flag-detail { font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; }
+  .red-flag-detail strong { color: var(--ink); }
+
+  .sitemap-rows { display: flex; flex-direction: column; gap: 1px; background: var(--line-soft); border-radius: 10px; overflow: hidden; }
+  .sitemap-row { background: #FFF; display: grid; grid-template-columns: 1fr 130px 60px; align-items: center; padding: 11px 16px; gap: 12px; font-size: 13px; }
+  .sitemap-row .sm-url { font-family: 'DM Sans', monospace; font-size: 12.5px; color: var(--ink); word-break: break-all; }
+  .sitemap-row .sm-url strong { color: var(--ink); font-weight: 700; }
+  .sitemap-row .sm-badge { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; text-align: center; white-space: nowrap; }
+  .sm-badge.service { background: var(--green-soft); color: var(--green-deep); }
+  .sm-badge.flag { background: #FFE2DE; color: var(--coral); }
+  .sm-badge.utility { background: var(--bg-soft); color: var(--ink-mute); }
+  .sm-badge.blog { background: #E0E7FF; color: #4338CA; }
+  .sitemap-row .sm-idx { font-family: 'DM Sans', monospace; font-size: 12px; color: var(--ink-mute); text-align: right; font-weight: 600; }
+  .sitemap-row.flag-row { background: #FFF8F7; border-left: 3px solid var(--coral); }
+
+  /* SERVICE PAGES TABLE */
+  .sp-card { background: #FFF; border: 1px solid var(--line); border-radius: 18px; padding: 32px; margin: 24px 0 36px; box-shadow: 0 4px 20px rgba(15,27,45,0.04); }
+  .sp-list { display: flex; flex-direction: column; gap: 1px; background: var(--line-soft); border-radius: 10px; overflow: hidden; margin-top: 18px; }
+  .sp-row { background: #FFF; display: grid; grid-template-columns: 1fr 130px 90px; align-items: center; padding: 12px 16px; gap: 12px; font-size: 13.5px; }
+  .sp-page { font-weight: 700; color: var(--ink); }
+  .sp-page .sp-sub { display: block; font-size: 11.5px; color: var(--ink-mute); font-weight: 400; margin-top: 2px; }
+  .sp-cat { font-size: 10.5px; padding: 3px 9px; border-radius: 100px; font-weight: 700; background: var(--bg-soft); color: var(--ink-soft); display: inline-block; letter-spacing: 0.04em; text-transform: uppercase; }
+  .sp-pri { font-size: 10.5px; padding: 3px 9px; border-radius: 100px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; display: inline-block; text-align: center; }
+  .sp-pri.high { background: var(--coral-soft); color: var(--coral); }
+  .sp-pri.med { background: var(--amber-soft); color: #B87A0E; }
+  .sp-pri.phase2 { background: var(--blue-soft); color: #2D5BC2; }
+
+  /* GAME PLAN — FEATURED STEP 1 + ENGINES */
+  .step-one-feature { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); color: #FFF; border-radius: 24px; padding: 48px; margin-bottom: 32px; position: relative; overflow: hidden; }
+  .step-one-feature::before { content: ''; position: absolute; top: -120px; right: -80px; width: 420px; height: 420px; background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%); pointer-events: none; }
+  .step-one-feature::after { content: ''; position: absolute; bottom: -100px; left: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(77,140,255,0.08) 0%, transparent 60%); pointer-events: none; }
+  .s1-grid { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; position: relative; z-index: 1; }
+  .s1-badge { display: inline-block; background: var(--green); color: var(--navy-deep); font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; margin-bottom: 18px; }
+  .s1-number { font-size: 96px; font-weight: 800; line-height: 1; color: var(--green); letter-spacing: -0.04em; margin-bottom: 16px; }
+  .s1-step-label { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+  .s1-step-title { font-size: 32px; font-weight: 800; color: #FFF; letter-spacing: -0.02em; line-height: 1.15; }
+  .s1-content h4 { font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin: 22px 0 12px; }
+  .s1-content h4:first-child { margin-top: 0; }
+  .s1-content > p { color: rgba(255,255,255,0.8); font-size: 16px; line-height: 1.6; margin-bottom: 16px; }
+  .s1-content > p strong { color: #FFF; }
+  .s1-todo { list-style: none; padding: 0; margin: 0 0 8px; }
+  .s1-todo li { padding: 12px 0 12px 32px; position: relative; color: rgba(255,255,255,0.85); font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .s1-todo li:last-child { border-bottom: none; }
+  .s1-todo li::before { content: ''; position: absolute; left: 0; top: 17px; width: 16px; height: 16px; border: 2px solid var(--green); border-radius: 4px; background: rgba(212,169,59,0.1); }
+  .s1-todo li strong { color: #FFF; }
+
+  .engines-header { text-align: center; margin: 56px 0 32px; position: relative; }
+  .engines-header::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--line); z-index: 0; }
+  .engines-header span { position: relative; z-index: 1; background: var(--bg); padding: 0 24px; font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); }
+  section.alt .engines-header span { background: var(--bg-soft); }
+  .engines-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .engine-card { background: #FFF; border: 1px solid var(--line); border-radius: 18px; padding: 28px; position: relative; }
+  .engine-num { font-size: 11px; font-weight: 800; color: var(--ink-mute); letter-spacing: 0.1em; margin-bottom: 14px; }
+  .engine-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--green-soft); color: var(--green-deep); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 22px; }
+  .engine-card h4 { font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; line-height: 1.25; }
+  .engine-card p { color: var(--ink-soft); font-size: 14px; line-height: 1.55; margin-bottom: 14px; }
+  .engine-card p:last-child { margin-bottom: 0; }
+  .engine-card strong { color: var(--ink); font-weight: 700; }
+  .engine-target { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-mute); }
+  .engine-target strong { color: var(--green-deep); font-weight: 700; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 3px; }
+
+  /* OPPORTUNITY */
+  .opportunity { background: var(--navy); color: #FFF; border-radius: 28px; padding: 56px 48px; position: relative; overflow: hidden; }
+  .opportunity::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,169,59,0.2) 0%, transparent 60%); }
+  .opp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+  .opp-content h2 { color: #FFF; }
+  .opp-content h2 .accent { color: var(--green); }
+  .opp-content p { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.6; margin-bottom: 14px; }
+  .opp-content p strong { color: #FFF; }
+  .opp-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .opp-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 22px; }
+  .opp-stat .opp-star { font-size: 28px; color: var(--green); line-height: 1; margin-bottom: 8px; }
+  .opp-stat .opp-stat-label { font-size: 11px; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+  .opp-stat .opp-stat-text { font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .opp-disclaimer { margin-top: 32px; padding: 18px 22px; background: rgba(255,255,255,0.04); border-radius: 12px; border-left: 3px solid var(--green); font-size: 13.5px; color: rgba(255,255,255,0.78); line-height: 1.6; position: relative; z-index: 1; }
+  .opp-disclaimer strong { color: var(--green); }
+
+  /* END CTA */
+  .end-cta { background: var(--navy); color: #FFF; padding: 64px 0; text-align: center; }
+  .end-cta h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 auto 16px; color: #FFF; max-width: none; }
+  .end-cta h2 .accent { color: var(--green); }
+  .end-cta p { color: rgba(255,255,255,0.7); max-width: 560px; margin: 0 auto 32px; font-size: 16px; }
+  .end-meta { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+    section { padding: 56px 0; }
+    .hero { padding: 48px 0; }
+    .audit-strip { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .hero-meta-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .verdict-wrap { grid-template-columns: 56px 1fr; gap: 18px; }
+    .verdict-icon { width: 56px; height: 56px; font-size: 28px; }
+    .verdict-content h2 { font-size: 22px; }
+    .verdict-cta { grid-column: 1 / -1; text-align: center; }
+    .score-grid { grid-template-columns: 1fr; gap: 32px; }
+    .chart-block { grid-template-columns: 1fr; gap: 32px; }
+    .issue-counter { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .counter-card { padding: 22px 18px; }
+    .counter-num { font-size: 38px; }
+    .sitemap-summary { grid-template-columns: repeat(2, 1fr); }
+    .red-flags-grid { grid-template-columns: 1fr; gap: 12px; }
+    .red-flag-num { font-size: 42px; }
+    .sitemap-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 14px; }
+    .sitemap-row .sm-idx { text-align: left; }
+    .sp-row { grid-template-columns: 1fr; gap: 6px; padding: 14px; }
+    .opp-grid { grid-template-columns: 1fr; gap: 32px; }
+    .opportunity { padding: 36px 24px; }
+    .rebuild-vs { grid-template-columns: 1fr; gap: 16px; }
+    .name-comparison { grid-template-columns: 1fr; gap: 12px; }
+    .name-arrow { transform: rotate(90deg); padding: 4px 0; }
+    .step-one-feature { padding: 28px 22px; }
+    .s1-grid { grid-template-columns: 1fr; gap: 24px; }
+    .s1-number { font-size: 72px; }
+    .s1-step-title { font-size: 24px; }
+    .engines-grid { grid-template-columns: 1fr; gap: 16px; }
+    .ct-head, .ct-row { grid-template-columns: 1fr; gap: 6px; padding: 14px 18px; }
+    .ct-row.you { padding-left: 18px; }
+    .comp-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .comp-card { padding: 20px; }
+    .comp-card-head { gap: 10px; }
+    .brand-suggestion-card { padding: 28px 24px; }
+    .brand-suggestion-card h3 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-wrap">
+    <div class="audit-strip">
+      <div class="nerds-logo"><div class="logo-mark">N</div> Dentist Nerds</div>
+      <div class="audit-type">Website Audit · Confidential</div>
+    </div>
+
+    <div class="audit-target"><span class="pulse"></span> havenfamilydental.com</div>
+
+    <h1>Haven Family Dental — <span class="accent">Joliet, IL</span></h1>
+    <p class="lede">A practical assessment of the website's technical health, content depth, design language, online reputation, backlink profile, and competitive position in the Joliet dental market. <strong>The audit identifies what's working, what needs to be fixed, and the order to fix it in.</strong></p>
+
+    <div class="hero-meta-grid">
+      <div class="meta-block"><div class="meta-label">Prepared For</div><div class="meta-value">Dr. Keyrolos Bottros</div><div class="meta-sub">DDS, MS · Creighton</div></div>
+      <div class="meta-block"><div class="meta-label">Audit Date</div><div class="meta-value">May 2026</div></div>
+      <div class="meta-block"><div class="meta-label">Monthly Visits</div><div class="meta-value">28</div><div class="meta-sub">down from 137 peak</div></div>
+      <div class="meta-block"><div class="meta-label">Ranking Keywords</div><div class="meta-value">92</div><div class="meta-sub">98 ref domains · 58 spam</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VERDICT -->
+<section class="verdict">
+  <div class="wrap">
+    <div class="verdict-wrap">
+      <div class="verdict-icon">⚠</div>
+      <div class="verdict-content">
+        <div class="verdict-label">Recommendation</div>
+        <h2>Rebuild — site, design, content, and backlink profile together</h2>
+      </div>
+      <div class="verdict-cta">Rebuild · Keep Brand</div>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH SCORE -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow red"><span class="dot"></span>Health Score</div>
+    <h2>The site scores <span class="accent-red">18 out of 100</span> — critical condition</h2>
+    <p class="section-intro">The site is technically broken, the design is dated, content is thin, and the backlink profile is contaminated. Despite 98 referring domains and real local rankings, the site is delivering 28 monthly visits — down from a 137-visit peak six months ago.</p>
+
+    <div class="score-grid">
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="14" stroke-linecap="round"/>
+          <path d="M 20 120 A 100 100 0 0 1 76 35" fill="none" stroke="#FF5E4D" stroke-width="14" stroke-linecap="round"/>
+        </svg>
+        <div class="gauge-num">18<span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status">Critical · Needs Rebuild</div>
+      </div>
+
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon coral">🤖</div>
+          <div>
+            <div class="subscore-title">AI Search Visibility</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width: 15%;"></div></div>
+          </div>
+          <div class="subscore-value">15<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon coral">🔗</div>
+          <div>
+            <div class="subscore-title">Backlink Profile Health</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width: 18%;"></div></div>
+          </div>
+          <div class="subscore-value">18<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon coral">📝</div>
+          <div>
+            <div class="subscore-title">Content Quality &amp; Depth</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width: 22%;"></div></div>
+          </div>
+          <div class="subscore-value">22<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon amber">🎨</div>
+          <div>
+            <div class="subscore-title">Design &amp; Typography</div>
+            <div class="subscore-bar"><div class="subscore-fill amber" style="width: 25%;"></div></div>
+          </div>
+          <div class="subscore-value">25<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon amber">📱</div>
+          <div>
+            <div class="subscore-title">UX &amp; Navigation</div>
+            <div class="subscore-bar"><div class="subscore-fill amber" style="width: 30%;"></div></div>
+          </div>
+          <div class="subscore-value">30<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon blue">📍</div>
+          <div>
+            <div class="subscore-title">Local Search &amp; Maps</div>
+            <div class="subscore-bar"><div class="subscore-fill blue" style="width: 40%;"></div></div>
+          </div>
+          <div class="subscore-value">40<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-counter" style="margin-top: 56px;">
+      <div class="counter-card critical">
+        <div class="counter-num coral">5</div>
+        <div class="counter-label">Critical Issues</div>
+      </div>
+      <div class="counter-card high">
+        <div class="counter-num amber">4</div>
+        <div class="counter-label">High Priority</div>
+      </div>
+      <div class="counter-card medium">
+        <div class="counter-num blue">3</div>
+        <div class="counter-label">Medium</div>
+      </div>
+      <div class="counter-card good">
+        <div class="counter-num green">12</div>
+        <div class="counter-label">Total Identified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAFFIC REALITY -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-eyebrow red"><span class="dot"></span>Traffic Reality Check</div>
+    <h2>Just 28 monthly visits — and <span class="accent-red">weak rankings to match</span></h2>
+    <p class="section-intro">From a 137-visit peak in November 2025 to 28 monthly visits today. The drop coincides with Cloudflare 429 errors blocking search crawlers across multiple service pages — but the deeper issue is that the site isn't holding meaningful rankings for the commercial Joliet queries that would otherwise drive traffic. Fixing the technical layer is necessary, but it won't be enough on its own.</p>
+
+    <div class="chart-block">
+      <div class="donut-wrap">
+        <div class="donut-center">
+          <svg width="280" height="280" viewBox="0 0 280 280">
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#EDF2F7" stroke-width="40"/>
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#FF5E4D" stroke-width="40" stroke-dasharray="402 628" transform="rotate(-90 140 140)" stroke-linecap="butt"/>
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#FFB547" stroke-width="40" stroke-dasharray="38 628" stroke-dashoffset="-402" transform="rotate(-90 140 140)"/>
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#4D8CFF" stroke-width="40" stroke-dasharray="38 628" stroke-dashoffset="-440" transform="rotate(-90 140 140)"/>
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#D4A93B" stroke-width="40" stroke-dasharray="25 628" stroke-dashoffset="-478" transform="rotate(-90 140 140)"/>
+          </svg>
+          <div class="center-num">
+            <div class="big">−80%</div>
+            <div class="small">vs Nov 25 peak</div>
+          </div>
+        </div>
+        <div class="donut-caption">Traffic concentrated on the homepage · service pages dormant</div>
+      </div>
+
+      <div class="donut-legend">
+        <div class="legend-row">
+          <div class="legend-dot" style="background: #FF5E4D;"></div>
+          <div class="legend-label">Homepage<span class="leg-sub">/ — utility</span></div>
+          <div class="legend-pct">18 / mo</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-dot" style="background: #FFB547;"></div>
+          <div class="legend-label">Dental Emergency<span class="leg-sub">/dental-emergency — 429 errors</span></div>
+          <div class="legend-pct">3 / mo</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-dot" style="background: #4D8CFF;"></div>
+          <div class="legend-label">Clear Aligners<span class="leg-sub">/clear-aligners-and-orthodontics — 429</span></div>
+          <div class="legend-pct">3 / mo</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-dot" style="background: #D4A93B;"></div>
+          <div class="legend-label">Reviews<span class="leg-sub">/reviews — trust</span></div>
+          <div class="legend-pct">1 / mo</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-dot" style="background: var(--line);"></div>
+          <div class="legend-label">All other service pages<span class="leg-sub">implants · cosmetic · kids · general · etc</span></div>
+          <div class="legend-pct">0 / mo</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 22px; font-weight: 800; color: var(--ink); margin: 64px 0 16px; letter-spacing: -0.01em;">Top pages by traffic</h3>
+    <div>
+      <div class="page-bar">
+        <div class="page-name">/ (homepage)<span class="pn-sub">Home · 64% of all visits</span></div>
+        <div class="page-track"><div class="page-fill" style="width: 100%;"></div></div>
+        <div class="page-value crit">18</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/dental-emergency<span class="pn-sub">Service · 429 errors</span></div>
+        <div class="page-track"><div class="page-fill amber" style="width: 17%;"></div></div>
+        <div class="page-value">3</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/clear-aligners-and-orthodontics<span class="pn-sub">Service · 429 errors</span></div>
+        <div class="page-track"><div class="page-fill amber" style="width: 17%;"></div></div>
+        <div class="page-value">3</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/reviews<span class="pn-sub">Trust</span></div>
+        <div class="page-track"><div class="page-fill amber" style="width: 6%;"></div></div>
+        <div class="page-value">1</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/implant-dentistry<span class="pn-sub">Service · thin content</span></div>
+        <div class="page-track"><div class="page-fill empty" style="width: 100%;"></div></div>
+        <div class="page-value zero">0</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/cosmetic-dentistry<span class="pn-sub">Service · thin content</span></div>
+        <div class="page-track"><div class="page-fill empty" style="width: 100%;"></div></div>
+        <div class="page-value zero">0</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/kids-dentistry<span class="pn-sub">Service · 429 errors</span></div>
+        <div class="page-track"><div class="page-fill empty" style="width: 100%;"></div></div>
+        <div class="page-value zero">0</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/general-dentistry<span class="pn-sub">Service · 429 errors</span></div>
+        <div class="page-track"><div class="page-fill empty" style="width: 100%;"></div></div>
+        <div class="page-value zero">0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ISSUES -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Issues Ranked by Impact</div>
+    <h2>The 12 issues, in <span class="accent">priority order</span></h2>
+    <p class="section-intro">Each issue includes evidence from the audit crawl and a recommended fix. Fixing the top five Critical issues alone — without any content or backlink work — should restore the November 2025 peak of 137 visits/month within 90 days.</p>
+
+    <div class="issues-grid">
+      <!-- Issue 01 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap critical">🚫</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill critical"><span class="pill-dot"></span>Critical</span>
+            <span class="pill category"><span class="pill-dot"></span>Crawler Access</span>
+            <span class="issue-card-num">Issue #01</span>
+            <h3>Cloudflare 429 Too Many Requests blocking 8+ critical pages</h3>
+          </div>
+          <p>Multiple service URLs — <code>/clear-aligners-and-orthodontics</code>, <code>/dental-emergency</code>, <code>/kids-dentistry</code>, <code>/general-dentistry</code>, <code>/home</code>, <code>/before-and-after</code>, plus three blog posts — return <strong>429 Too Many Requests</strong> to crawlers. Google cannot index pages it cannot reach.</p>
+          <div class="evidence">
+            <div class="evidence-label">📌 Evidence</div>
+            <p class="evidence-quote">Multiple service URLs return "429 Too Many Requests" when crawled. The legacy non-www domain also returns 403 Cloudflare challenges across the entire site.</p>
+          </div>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Adjust the Cloudflare bot-challenge / rate-limiting policy to whitelist verified Googlebot, Bingbot, and other major crawlers. Verify in Search Console that all service pages are now reachable.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 02 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap critical">🔀</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill critical"><span class="pill-dot"></span>Critical</span>
+            <span class="pill category"><span class="pill-dot"></span>Duplicate Content</span>
+            <span class="issue-card-num">Issue #02</span>
+            <h3>Two parallel "About" pages indexed + draft "Team 1" page live</h3>
+          </div>
+          <p>Both <code>/about</code> and <code>/about-2</code> are indexed with similar content and no rel="canonical." A third page at <code>/team</code> is titled <strong>"Team 1"</strong> — clearly a development page that shipped to production. Branded "about us" queries don't resolve cleanly to either page.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Pick one canonical About URL, 301-redirect the other to it. Replace the draft <code>/team</code> page with real team content or remove it from the sitemap.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 03 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap critical">📢</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill critical"><span class="pill-dot"></span>Critical</span>
+            <span class="pill category"><span class="pill-dot"></span>Title-Tag Spam</span>
+            <span class="issue-card-num">Issue #03</span>
+            <h3>Every page title ends with "— JOLIET DENTIST NEAR ME" in all caps</h3>
+          </div>
+          <p>Every indexed page on the site ends the title with the string <strong>"— JOLIET DENTIST NEAR ME"</strong> in all caps. This is a classic 2010s-era SEO pattern that Google now penalizes for keyword stuffing — and the all-caps treatment undermines click-through rate.</p>
+          <div class="evidence">
+            <div class="evidence-label">📌 Evidence</div>
+            <p class="evidence-quote">"JOLIET DENTIST NEAR ME | Experience Quality Dental Care — Book Now"<br>"Cosmetic Dentistry | Enhance Your Smile Today – Book Now — JOLIET DENTIST NEAR ME"<br>"Implant Dentistry | Schedule Your Implant Consultation Today — JOLIET DENTIST NEAR ME"</p>
+          </div>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Rewrite every page title in normal case using the pattern <em>"[Service] in Joliet, IL · Haven Family Dental."</em> Drop the all-caps suffix entirely. Keep titles under 60 characters.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 04 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap critical">🌐</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill critical"><span class="pill-dot"></span>Critical</span>
+            <span class="pill category"><span class="pill-dot"></span>Domain Architecture</span>
+            <span class="issue-card-num">Issue #04</span>
+            <h3>Parallel legacy + new site structures both indexed</h3>
+          </div>
+          <p>The legacy WordPress site at <code>havenfamilydental.com</code> (non-www) has 20+ URLs indexed in Google's crawl data — almost all returning 403 Cloudflare challenges. The new site at <code>www.havenfamilydental.com</code> uses different URL slugs. Old backlinks point at URLs that no longer resolve.</p>
+          <div class="evidence">
+            <div class="evidence-label">📌 Evidence</div>
+            <p class="evidence-quote">Legacy URLs still indexed: /about-us/, /dental-implants/, /contact-us/, /dental-emergency/, /invisalign-clear-aligners/, /services/, /smile-makeover-veneers/, /reviews/, /hello-world/. All return 403.</p>
+          </div>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Decommission the legacy WordPress install entirely. Set up explicit 301 redirects from every old URL to the matching new URL. Submit the legacy URLs for removal in Search Console.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 05 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap critical">🎨</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill critical"><span class="pill-dot"></span>Critical</span>
+            <span class="pill category"><span class="pill-dot"></span>Design · Typography · UX</span>
+            <span class="issue-card-num">Issue #05</span>
+            <h3>Dated design, inconsistent typography, stock-photo heroes, weak mobile UX</h3>
+          </div>
+          <p><strong>Typography:</strong> inconsistent across pages — multiple font weights and families with no clear hierarchy. No typographic scale (h1 / h2 / h3 / body / small) consistently applied. Line height is tight where it should breathe.</p>
+          <p><strong>Layout &amp; imagery:</strong> the implant page uses a generic Unsplash stock photo. Buttons inherit default platform styling. Section spacing is uneven. Trust signals (Dr. Bottros's Creighton credential, reviews, Joliet location) aren't surfaced above the fold.</p>
+          <p><strong>Mobile UX:</strong> the "Book Now" CTA isn't persistent or sticky. Phone-number tap-to-call isn't always visible. Forms aren't optimized for mobile input — this is where conversions leak most.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Define a typography system pairing one warm serif headline font (<strong>Playfair Display</strong>, <strong>Lora</strong>, or <strong>Cormorant Garamond</strong>) with one clean sans-serif body font (<strong>Inter</strong>, <strong>Manrope</strong>, or <strong>DM Sans</strong>), consistently applied. Establish a 6-level type scale (44/32/22/16/14/12 px) with line-height 1.5–1.7. Replace all stock images with real practice photography. Build mobile-first: sticky phone-number / "Book Online" bar pinned to viewport bottom, above-the-fold CTAs, trust signals in the first viewport.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 06 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap high">📄</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill high"><span class="pill-dot"></span>High</span>
+            <span class="pill category"><span class="pill-dot"></span>Thin Service Pages</span>
+            <span class="issue-card-num">Issue #06</span>
+            <h3>Service pages average ~170 words — no structure, FAQs, or testimonials</h3>
+          </div>
+          <p>The implant page runs roughly 170 words — far below the ~1,200 words competing Joliet service pages carry. No HTML structure, no FAQs, no testimonials, no before/after gallery, no cost ranges, no schema. To rank in search and surface in AI results, every service page needs proper structure and new content from scratch. Cosmetic, kids, and general dentistry pages follow the same thin template.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Rebuild each service page with 1,000–1,500 words of practice-specific content, 5–8 procedure FAQs, embedded testimonials from existing reviews, before/after gallery, cost guidance or financing notes, schema markup, and a prominent above-the-fold "Book a Consultation" CTA.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 07 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap high">⏰</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill high"><span class="pill-dot"></span>High</span>
+            <span class="pill category"><span class="pill-dot"></span>Content Errors</span>
+            <span class="issue-card-num">Issue #07</span>
+            <h3>Visible content errors — typo'd hours, empty gallery, draft team page</h3>
+          </div>
+          <p>The contact section on multiple pages shows hours as <strong>"Tues - Thursday 9PM-6PM"</strong> — should be 9AM. The before-and-after page is in the navigation but contains no images. The <code>/team</code> page is titled <strong>"Team 1."</strong></p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Manual content audit pass — correct all hours references, populate the before/after gallery with real cases (with patient consent), build the team page with actual headshots and bios.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 08 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap high">🤖</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill high"><span class="pill-dot"></span>High</span>
+            <span class="pill category"><span class="pill-dot"></span>No Schema</span>
+            <span class="issue-card-num">Issue #08</span>
+            <h3>Zero schema markup deployed — invisible to AI Overviews and rich results</h3>
+          </div>
+          <p>No LocalBusiness, MedicalProcedure, FAQPage, AggregateRating, Review, or Person schema is detectable on any page. AI search engines (Google AI Overviews, ChatGPT, Perplexity, Copilot) and traditional rich-result panels rely on schema to surface procedure data, ratings, and provider credentials.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Deploy LocalBusiness + AggregateRating on the homepage, MedicalProcedure + FAQPage on each service page, Person schema for Dr. Bottros, and Review schema on the testimonials page.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 09 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap high">⛓️</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill high"><span class="pill-dot"></span>High</span>
+            <span class="pill category"><span class="pill-dot"></span>Backlink Spam</span>
+            <span class="issue-card-num">Issue #09</span>
+            <h3>58 of 98 referring domains are spam-grade — Telegram-anchor link network</h3>
+          </div>
+          <p>The backlink profile is contaminated. <strong>17 referring domains link with anchor text "join our telegram darksidelinks"</strong>; 6 more use "our telegram chanel quarterlinks25." Across the full profile, 58 of 98 referring domains carry Authority Score 2 or lower. Google reads coordinated anchor-text patterns from low-quality domains as link-scheme participation.</p>
+          <div class="evidence">
+            <div class="evidence-label">📌 Evidence · backlink anchor data</div>
+            <p class="evidence-quote">17 domains · "join our telegram https://t.me/s/darksidelinks"<br>6 domains · "our telegram chanel https://t.me/s/quarterlinks25"<br>Suspicious TLDs: .monster (2), .space (4), .sbs (2), .art (2), .in (9), .cv (3)</p>
+          </div>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Full referring-domain audit · classify each as keep / monitor / disavow · submit a disavow file to Search Console for the 58+ spam-grade domains · run a parallel local-link program to replace toxic links with legitimate ones over 6–12 months.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 10 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap medium">↪️</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill medium"><span class="pill-dot"></span>Medium</span>
+            <span class="pill category"><span class="pill-dot"></span>Redirect Hygiene</span>
+            <span class="issue-card-num">Issue #10</span>
+            <h3>/services route 302-redirects instead of 301</h3>
+          </div>
+          <p>The <code>/services</code> URL returns a 302 (temporary) redirect rather than a 301 (permanent). Search engines treat 302s differently — they may continue crawling the original URL and don't fully pass link equity to the destination.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Change the redirect type to 301 in the platform configuration. Audit other internal redirects to confirm they're all 301.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 11 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap medium">📊</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill medium"><span class="pill-dot"></span>Medium</span>
+            <span class="pill category"><span class="pill-dot"></span>Authority Gap</span>
+            <span class="issue-card-num">Issue #11</span>
+            <h3>Low Authority Score (7) vs Joliet Family Dental (10) — 45× traffic gap</h3>
+          </div>
+          <p>Haven Family Dental holds Authority Score 7 with 98 referring domains (58 of which are spam-grade). Joliet Family Dental holds AS 10 with 174 referring domains and drives 1,259 monthly visits vs Haven's 28. The link asset gap (and contamination) explains most of the traffic gap.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Begin a Joliet-area citation and backlink program in parallel with the spam disavow — Joliet Chamber of Commerce, Will County dental directories, local-press health columns, Creighton Dental School alumni features.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 12 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap medium">🔗</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill medium"><span class="pill-dot"></span>Medium</span>
+            <span class="pill category"><span class="pill-dot"></span>Brand &amp; Internal Linking</span>
+            <span class="issue-card-num">Issue #12</span>
+            <h3>Brand-name dilution + weak internal-link density</h3>
+          </div>
+          <p>The homepage drives 64% of organic traffic but doesn't link prominently to service pages. The brand "Haven" is shared with multiple national dental practices (Haven Dental Studio Chicago, Haven Dentistry Westheimer) — Google can't always disambiguate, causing brand-search authority leakage.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Add a service-grid block on the homepage with descriptive anchor text. Strengthen the local entity association — consistent "Haven Family Dental of Joliet" anchor text in citations and schema.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SITEMAP AUDIT -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Sitemap Audit</div>
+    <h2>22 indexed pages — <span class="accent">low</span> for a comprehensive practice</h2>
+    <p class="section-intro">For comparison, Joliet Family Dental indexes 60+ URLs. A complete dental-practice site for the service set Haven offers should run 50–80 pages. The current footprint is too narrow to compete on the long tail of "Joliet [procedure]" queries.</p>
+
+    <div class="sitemap-card">
+      <div class="sitemap-card-head">
+        <div class="sitemap-card-title">Current sitemap inventory<small>22 indexed URLs · 8 returning 429 · 3 duplicates / drafts</small></div>
+      </div>
+
+      <div class="sitemap-summary">
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-service">7</div><div class="sitemap-stat-label">Service pages live</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-flag">8</div><div class="sitemap-stat-label">429 / blocked</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-nogeo">3</div><div class="sitemap-stat-label">Duplicates / drafts</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-utility">4</div><div class="sitemap-stat-label">Utility pages</div></div>
+      </div>
+
+      <div class="red-flags-banner">
+        <div class="red-flags-banner-label">Red flags from the sitemap audit</div>
+        <div class="red-flags-grid">
+          <div class="red-flag-cell">
+            <div class="red-flag-num">2</div>
+            <div class="red-flag-body">
+              <div class="red-flag-headline">Duplicate /about pages</div>
+              <div class="red-flag-detail">Both <code>/about</code> and <code>/about-2</code> indexed with similar content, no canonical assigned. Branded queries don't resolve cleanly.</div>
+            </div>
+          </div>
+          <div class="red-flag-cell">
+            <div class="red-flag-num text-big">Team 1</div>
+            <div class="red-flag-body">
+              <div class="red-flag-headline">Draft page in production</div>
+              <div class="red-flag-detail"><code>/team</code> shipped as a placeholder titled "Team 1" instead of real team content with bios and headshots.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sitemap-rows">
+        <div class="sitemap-row"><div class="sm-url"><strong>/</strong> homepage</div><span class="sm-badge utility">Utility</span><span class="sm-idx">18</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/dental-emergency</div><span class="sm-badge flag">Service · 429</span><span class="sm-idx">3</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/clear-aligners-and-orthodontics</div><span class="sm-badge flag">Service · 429</span><span class="sm-idx">3</span></div>
+        <div class="sitemap-row"><div class="sm-url">/reviews</div><span class="sm-badge utility">Utility</span><span class="sm-idx">1</span></div>
+        <div class="sitemap-row"><div class="sm-url">/implant-dentistry</div><span class="sm-badge service">Service · thin</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row"><div class="sm-url">/cosmetic-dentistry</div><span class="sm-badge service">Service · thin</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/general-dentistry</div><span class="sm-badge flag">Service · 429</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/kids-dentistry</div><span class="sm-badge flag">Service · 429</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row"><div class="sm-url">/meet-the-doctors</div><span class="sm-badge utility">Utility</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/about</div><span class="sm-badge flag">Duplicate</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/about-2</div><span class="sm-badge flag">Duplicate</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/team</div><span class="sm-badge flag">Draft "Team 1"</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row"><div class="sm-url">/contact-us</div><span class="sm-badge utility">Utility</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/before-and-after</div><span class="sm-badge flag">Empty · 429</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row"><div class="sm-url">/blogs (index + 3 posts)</div><span class="sm-badge blog">Blog</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/home</div><span class="sm-badge flag">Duplicate · 429</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/for-patients</div><span class="sm-badge flag">429</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/services</div><span class="sm-badge flag">302 redirect</span><span class="sm-idx">0</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE PAGES TO ADD -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Service Pages to Add</div>
+    <h2>Missing pages for services <span class="accent">the practice already offers</span></h2>
+    <p class="section-intro">Each missing page is a Google search Haven Family Dental can't currently win — even though Dr. Bottros performs the procedure. With only 22 pages indexed (vs the 50–80 a comprehensive practice needs), adding focused service pages is the single biggest content-driven path to growth.</p>
+
+    <div class="sp-card">
+      <div class="sitemap-summary">
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-service">7</div><div class="sitemap-stat-label">Service pages today</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-nogeo">9</div><div class="sitemap-stat-label">High-value pages to add</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num" style="color: #2D5BC2;">5</div><div class="sitemap-stat-label">Location pages to add</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-flag">~50</div><div class="sitemap-stat-label">Target page count</div></div>
+      </div>
+
+      <div class="sp-list">
+        <div class="sp-row"><div class="sp-page">Veneers<span class="sp-sub">Split out of /cosmetic-dentistry — high-value commercial search</span></div><span class="sp-cat">Cosmetic</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Smile Makeover<span class="sp-sub">Dedicated page with before/after gallery, cost guidance, process</span></div><span class="sp-cat">Cosmetic</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">All-on-4 / Full-Mouth Dental Implants<span class="sp-sub">Dr. Bottros's Full-Mouth Rehab training — highest case-value procedure</span></div><span class="sp-cat">Implants</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Sedation Dentistry<span class="sp-sub">Listed in services but no dedicated page — key for anxious patients</span></div><span class="sp-cat">General</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Teeth Whitening<span class="sp-sub">Already ranks #25 for "teeth whitening near joliet" — needs a real landing page</span></div><span class="sp-cat">Cosmetic</span><span class="sp-pri med">Medium</span></div>
+        <div class="sp-row"><div class="sp-page">Dental Bridges</div><span class="sp-cat">Restorative</span><span class="sp-pri med">Medium</span></div>
+        <div class="sp-row"><div class="sp-page">Dental Crowns</div><span class="sp-cat">Restorative</span><span class="sp-pri med">Medium</span></div>
+        <div class="sp-row"><div class="sp-page">Root Canal Therapy<span class="sp-sub">Emergency-driven procedure with high commercial intent in Joliet</span></div><span class="sp-cat">Restorative</span><span class="sp-pri med">Medium</span></div>
+        <div class="sp-row"><div class="sp-page">Periodontal / Gum Disease Treatment</div><span class="sp-cat">Specialty</span><span class="sp-pri med">Medium</span></div>
+        <div class="sp-row"><div class="sp-page">New Patient · Insurance &amp; Financing<span class="sp-sub">Major conversion lever for the family-dental segment</span></div><span class="sp-cat">Utility</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Plainfield, IL location page</div><span class="sp-cat">Location</span><span class="sp-pri phase2">Phase 2</span></div>
+        <div class="sp-row"><div class="sp-page">Crest Hill, IL location page</div><span class="sp-cat">Location</span><span class="sp-pri phase2">Phase 2</span></div>
+        <div class="sp-row"><div class="sp-page">Shorewood, IL location page</div><span class="sp-cat">Location</span><span class="sp-pri phase2">Phase 2</span></div>
+        <div class="sp-row"><div class="sp-page">Romeoville, IL location page</div><span class="sp-cat">Location</span><span class="sp-pri phase2">Phase 2</span></div>
+        <div class="sp-row"><div class="sp-page">Lockport, IL location page</div><span class="sp-cat">Location</span><span class="sp-pri phase2">Phase 2</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC POSITIONING -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Strategic Positioning</div>
+    <h2>The brand entity isn't yet <span class="accent">local-anchored</span></h2>
+    <p class="section-intro">"Haven" is shared with multiple national dental brands. Search-engine confusion is observable — the site ranks for "haven dental studio chicago," "haven dentistry westheimer," and "haven dental studio." Google can't always distinguish which Haven a searcher means.</p>
+
+    <div class="brand-suggestion-card">
+      <div class="suggestion-eyebrow"><span class="dot" style="background:var(--green); width:6px; height:6px; border-radius:50%;"></span>Recommended brand clarification</div>
+      <h3>From "Haven Family Dental" to "Haven Family Dental of Joliet"</h3>
+      <p>The geographic qualifier in the brand name disambiguates from out-of-state Haven practices and produces a stronger local entity signal across maps, citations, and AI search surfaces. The shift doesn't require legally renaming the practice — it's about consistent anchor text across schema, citations, social profiles, and partnership mentions.</p>
+
+      <div class="name-comparison">
+        <div class="name-card-vs">
+          <div class="name-card-label">Current</div>
+          <div class="name-card-name">Haven Family Dental</div>
+          <div class="name-card-meta">Competes with national Haven dental practices for ambiguous searches.</div>
+        </div>
+        <div class="name-arrow">→</div>
+        <div class="name-card-vs possible">
+          <div class="name-card-label">Clarified</div>
+          <div class="name-card-name">Haven Family Dental of Joliet</div>
+          <div class="name-card-meta">Geographic anchor disambiguates the entity across maps, citations, and AI search.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REBUILD VS REPAIR -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow red"><span class="dot"></span>Strategy Comparison</div>
+    <h2><span class="accent-red">Rebuild</span> the site. Patching what's there will cost more.</h2>
+    <p class="section-intro">The technical state of the site — Cloudflare 429s, parallel domains, duplicates, title spam, thin content, no schema, dated design, missing service pages, contaminated backlinks — is too compounded to fix one issue at a time.</p>
+
+    <div class="rebuild-vs">
+      <div class="vs-card repair">
+        <div class="vs-stamp bad">Not recommended</div>
+        <div class="vs-label">Option A</div>
+        <h3>Patch the existing site</h3>
+        <ul class="vs-list bad">
+          <li>Reconfigure Cloudflare bot-challenge policy</li>
+          <li>301-redirect duplicate pages and draft URLs</li>
+          <li>Rewrite ~20 page titles to remove keyword spam</li>
+          <li>Decommission legacy WordPress install manually</li>
+          <li>Retrofit typography and design onto outdated platform</li>
+          <li>Add 14+ new service pages within current CMS limits</li>
+          <li>Deploy schema retroactively across existing pages</li>
+          <li>Begin spam-link disavow + replacement program</li>
+        </ul>
+        <div class="vs-metrics" style="grid-template-columns: 1fr;">
+          <div class="vs-metric"><div class="vm-num">High</div><div class="vm-label">Risk Level</div></div>
+        </div>
+      </div>
+
+      <div class="vs-card rebuild">
+        <div class="vs-stamp good">Recommended</div>
+        <div class="vs-label">Option B</div>
+        <h3>Rebuild on a clean foundation</h3>
+        <ul class="vs-list good">
+          <li>Modern platform with proper Cloudflare config out of the box</li>
+          <li>Single domain, single URL structure, no parallel platforms</li>
+          <li>Schema-ready CMS with LocalBusiness, MedicalProcedure, FAQPage built in</li>
+          <li>Defined typography system (serif + sans pairing, 6-level scale)</li>
+          <li>Real practice photography in place of stock imagery</li>
+          <li>Mobile-first UX with sticky CTAs and trust signals above fold</li>
+          <li>14+ new service pages plus location-targeted landing pages</li>
+          <li>Parallel backlink disavow + local-link replacement program</li>
+        </ul>
+        <div class="vs-metrics" style="grid-template-columns: 1fr;">
+          <div class="vs-metric"><div class="vm-num">Low</div><div class="vm-label">Risk Level</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITORS -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Local Competitive Landscape</div>
+    <h2>The Joliet field — <span class="accent">within 5 miles</span></h2>
+    <p class="section-intro">Joliet Family Dental is the visibility leader in the immediate market by a wide margin. Other practices in the cluster run small footprints — leaving room for a well-executed rebuild to take meaningful share.</p>
+
+    <div class="competitor-cards">
+      <div class="comp-card">
+        <div class="comp-card-head">
+          <div>
+            <div class="comp-card-name">Joliet Family Dental</div>
+            <div class="comp-card-domain">jolietfamilydental.org</div>
+          </div>
+          <div class="comp-rank-pill leader">Market Leader</div>
+        </div>
+        <div class="comp-stats">
+          <div class="comp-stat"><div class="comp-stat-label">Authority Score</div><div class="comp-stat-num">10</div></div>
+          <div class="comp-stat"><div class="comp-stat-label">Keywords</div><div class="comp-stat-num">662</div></div>
+          <div class="comp-stat"><div class="comp-stat-label">Visits / mo</div><div class="comp-stat-num">1,259</div></div>
+          <div class="comp-stat"><div class="comp-stat-label">Ref. Domains</div><div class="comp-stat-num">174</div></div>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-card-head">
+          <div>
+            <div class="comp-card-name">Dentistry with a Smile</div>
+            <div class="comp-card-domain">Dr. Thomas Zupancic · jolietdds.com</div>
+          </div>
+          <div class="comp-rank-pill">Local Competitor</div>
+        </div>
+        <div class="comp-stats">
+          <div class="comp-stat"><div class="comp-stat-label">Authority Score</div><div class="comp-stat-num">6</div></div>
+          <div class="comp-stat"><div class="comp-stat-label">Keywords</div><div class="comp-stat-num">34</div></div>
+          <div class="comp-stat"><div class="comp-stat-label">Visits / mo</div><div class="comp-stat-num">6</div></div>
+          <div class="comp-stat"><div class="comp-stat-label">Ref. Domains</div><div class="comp-stat-num">117</div></div>
+        </div>
+      </div>
+
+      <div class="comp-card you">
+        <div class="comp-card-head">
+          <div>
+            <div class="comp-card-name">Haven Family Dental</div>
+            <div class="comp-card-domain">2722 Caton Farm Rd · havenfamilydental.com</div>
+          </div>
+          <div class="comp-rank-pill you-pill">You</div>
+        </div>
+        <div class="comp-stats">
+          <div class="comp-stat"><div class="comp-stat-label">Authority Score</div><div class="comp-stat-num">7</div></div>
+          <div class="comp-stat"><div class="comp-stat-label">Keywords</div><div class="comp-stat-num">92</div></div>
+          <div class="comp-stat"><div class="comp-stat-label">Visits / mo</div><div class="comp-stat-num">28</div></div>
+          <div class="comp-stat"><div class="comp-stat-label">Ref. Domains</div><div class="comp-stat-num">98</div></div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 28px; font-size: 16px; color: var(--ink-soft); line-height: 1.6;"><strong style="color:var(--ink);">The good news: the competition is thin.</strong> With only one strong player in the immediate market and a small field overall, Haven has real room to dominate local search in Joliet.</p>
+  </div>
+</section>
+
+<!-- GAME PLAN -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Game Plan</div>
+    <h2>How the rebuild <span class="accent">moves forward</span></h2>
+    <p class="section-intro">One foundational step that everything depends on, plus seven ongoing engines that compound from there.</p>
+
+    <div class="step-one-feature">
+      <div class="s1-grid">
+        <div class="s1-number-block">
+          <div class="s1-badge">The Foundation</div>
+          <div class="s1-number">01</div>
+          <div class="s1-step-label">Step 1 · the heaviest lift</div>
+          <div class="s1-step-title">Rebuild — design, typography, structure, content</div>
+        </div>
+        <div class="s1-content">
+          <h4>Design &amp; Typography</h4>
+          <ul class="s1-todo">
+            <li>One serif headline font (<strong>Playfair Display</strong>, <strong>Lora</strong>, or <strong>Cormorant Garamond</strong>) paired with one clean sans-serif body font (<strong>Inter</strong>, <strong>Manrope</strong>, or <strong>DM Sans</strong>)</li>
+            <li>6-level typographic scale (44/32/22/16/14/12 px) with line-height 1.5–1.7</li>
+            <li>Cohesive color palette signaling modern family-dental — not template defaults</li>
+            <li>Real practice photography of Dr. Bottros, team, office, before/after — no Unsplash</li>
+          </ul>
+          <h4>Layout &amp; UX</h4>
+          <ul class="s1-todo">
+            <li><strong>Sticky phone-number bar</strong> on mobile + above-the-fold "Book a Consultation" CTA on every page</li>
+            <li>Trust signals (Creighton credential, reviews, Joliet location) in the first viewport</li>
+            <li>"What to Expect at Your First Visit" content for anxious patients</li>
+            <li>Same-day-appointment urgency banner on Emergency Dentistry · welcoming child imagery on Kids Dentistry</li>
+          </ul>
+          <h4>Service-Page Coverage</h4>
+          <ul class="s1-todo">
+            <li>Dedicated pages for: <strong>Veneers, Smile Makeover, All-on-4 / Full-Mouth Implants, Sedation, Teeth Whitening, Bridges, Crowns, Root Canal, Periodontal Treatment, New Patient / Insurance</strong></li>
+            <li>Location-targeted landing pages: <strong>Plainfield, Crest Hill, Shorewood, Romeoville, Lockport</strong></li>
+            <li>1,000–1,500 words per service page · 5–8 procedure FAQs · embedded testimonials · before/after · cost guidance</li>
+          </ul>
+          <h4>Technical Foundation</h4>
+          <ul class="s1-todo">
+            <li>Modern CMS · single canonical domain · Cloudflare config compatible with crawlers</li>
+            <li>301-redirect map from every legacy URL at launch · title-tag rewrite under 60 chars</li>
+            <li>LocalBusiness · MedicalProcedure · FAQPage · AggregateRating · Person · Review schema deployed at launch</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="engines-header"><span>Then · 7 Ongoing Engines</span></div>
+
+    <div class="engines-grid">
+      <div class="engine-card">
+        <div class="engine-num">Engine 02</div>
+        <div class="engine-icon">🧹</div>
+        <h4>Backlink Cleanup</h4>
+        <p><strong>The goal:</strong> stop the spam-network signals from suppressing rankings.</p>
+        <p>Full referring-domain audit · disavow the 58+ spam-grade domains (priority on the 17 "darksidelinks" Telegram-anchor domains and 6 "quarterlinks25" domains) · parallel local-link replacement program.</p>
+        <div class="engine-target"><strong>6-month target</strong>Spam disavowed · 30+ legitimate replacements</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">Engine 03</div>
+        <div class="engine-icon">🏆</div>
+        <h4>Authority &amp; Backlinks</h4>
+        <p><strong>The goal:</strong> narrow the gap to Joliet Family Dental's 174 referring domains.</p>
+        <p>Joliet Chamber of Commerce, Will County Medical Society, Creighton alumni features for Dr. Bottros, Patch / Herald-News business profiles, school dental-education partnerships.</p>
+        <div class="engine-target"><strong>12-month target</strong>AS 7 → 14+ · Legit domains 40 → 130+</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">Engine 04</div>
+        <div class="engine-icon">⭐</div>
+        <h4>Review Generation</h4>
+        <p><strong>The goal:</strong> build patient-review base into a competitive asset.</p>
+        <p>Post-visit follow-up via text and email with one-tap review links. Quarterly internal review-velocity targets. Per-procedure review prompts for cosmetic and implant cases.</p>
+        <div class="engine-target"><strong>12-month target</strong>Google reviews toward 75+</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">Engine 05</div>
+        <div class="engine-icon">✍️</div>
+        <h4>Content Engine</h4>
+        <p><strong>The goal:</strong> grow the keyword footprint and capture "near me" intent.</p>
+        <p>Monthly blog cadence focused on patient questions, Joliet-specific topics, cost guidance, procedure explainers. Topics seeded from existing 92 keywords and competitor gap analysis.</p>
+        <div class="engine-target"><strong>12-month target</strong>Keywords 92 → 400+ · Visits 28 → 200+</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">Engine 06</div>
+        <div class="engine-icon">📍</div>
+        <h4>Local Business Profile</h4>
+        <p><strong>The goal:</strong> feed the Map Pack with consistent activity.</p>
+        <p>Weekly business-profile posts featuring services, patient cases, team news. Photo uploads. Q&amp;A monitoring and proactive seeding. Category optimization for implant + cosmetic strengths.</p>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">Engine 07</div>
+        <div class="engine-icon">📊</div>
+        <h4>Tracking &amp; Reporting</h4>
+        <p><strong>The goal:</strong> measure the rebuild against a fixed baseline.</p>
+        <p>Monthly performance report covering rankings, organic traffic, business-profile performance, new reviews, and booked appointments — each tracked against the May 2026 baseline.</p>
+      </div>
+      <div class="engine-card" style="grid-column: 1 / -1;">
+        <div class="engine-num">Engine 08</div>
+        <div class="engine-icon">🌟</div>
+        <h4>Brand Evolution · Long-Term</h4>
+        <p><strong>The goal:</strong> own "Haven Family Dental of Joliet" as the indexed entity.</p>
+        <p>Consistent "Haven Family Dental of Joliet" anchor text across citations, schema, social profiles, and partnership mentions. Aggressive LocalBusiness schema reinforcing the Joliet entity. Local press placements explicitly using the geographic qualifier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section class="alt">
+  <div class="wrap">
+    <div class="opportunity">
+      <div class="opp-grid">
+        <div class="opp-content">
+          <div class="section-eyebrow" style="background:rgba(212,169,59,0.15); color:var(--green);"><span class="dot"></span>The Opportunity</div>
+          <h2>Where the practice <span class="accent">can grow</span></h2>
+          <p><strong>Not promises — just real openings the website isn't taking advantage of yet.</strong></p>
+          <p>Haven Family Dental is doing more right than the current traffic suggests. Real local Joliet families are searching for exactly the services Dr. Bottros offers — and the practice already shows up on Google for many of those searches. The issues this audit identifies are mostly about the website blocking some of that traffic from coming through.</p>
+        </div>
+
+        <div class="opp-stats">
+          <div class="opp-stat">
+            <div class="opp-star">★</div>
+            <div class="opp-stat-label">Google Maps</div>
+            <div class="opp-stat-text">The listing is set up well — the website isn't doing its share of the work yet.</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-star">★</div>
+            <div class="opp-stat-label">Local Patients</div>
+            <div class="opp-stat-text">Real Joliet families are searching for "family dental" and "emergency dentist" today.</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-star">★</div>
+            <div class="opp-stat-label">AI Search</div>
+            <div class="opp-stat-text">When patients ask AI tools for a Joliet dentist, the practice doesn't surface today.</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-star">★</div>
+            <div class="opp-stat-label">Appointments</div>
+            <div class="opp-stat-text">Emergency searchers find the site — but the page doesn't make booking easy enough.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="opp-disclaimer">
+        <strong>What this means:</strong> Once the technical issues are resolved, the foundation is in place to grow. How much growth happens over time depends on the work that follows — this audit doesn't promise a specific number.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- END CTA -->
+<section class="end-cta">
+  <div class="wrap">
+    <h2>Let's get to <span class="accent">work</span></h2>
+    <p>Dentist Nerds is here — like an in-house marketing team — to help grow your practice and dominate local search.</p>
+    <div class="end-meta">Dentist Nerds · Website Audit · Confidential · May 2026 · havenfamilydental.com</div>
+  </div>
+</section>
+
+</body>
+</html>

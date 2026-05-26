@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website Quality Audit — Palani Center for Dental Implants · Rancho Palos Verdes, CA · May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --navy: #0d2538; --navy-2: #112e44;
+    --teal: #5fbab0; --teal-soft: #a4dad3;
+    --gold: #d4a55c; --gold-2: #c9a961;
+    --bg-page: #f5f5f0; --bg-soft: #ebe9e0; --bg-card: #ffffff;
+    --text-dark: #0d2538; --text-body: #4b5563; --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #2d8e5c; --green-bg: #d1fae5; --green-text: #065f46;
+    --gold-bg: #fef3c7; --gold-text: #92400e;
+    --red: #c53030; --red-bg: #fee2e2; --red-text: #991b1b;
+    --blue: #2c6fb3; --blue-bg: #dbeafe; --blue-text: #1e40af;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-body); line-height: 1.6; font-size: 14px; }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+
+  /* HERO */
+  .hero { background: var(--navy); color: #fff; padding: 56px 0 44px; }
+  .hero .eyebrow { color: var(--teal); }
+  .hero h1 { font-size: 50px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 10px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 28px; max-width: 720px; }
+  .hero-meta-row { display: grid; grid-template-columns: repeat(4, auto); gap: 56px; padding: 22px 0 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px; }
+  .hero-meta-item .meta-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; margin-bottom: 6px; font-weight: 600; }
+  .hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+  /* SECTIONS */
+  .section { padding: 56px 0; }
+  .section h2 { font-size: 36px; font-weight: 600; margin-bottom: 12px; line-height: 1.15; }
+  .section h3 { font-size: 22px; font-weight: 600; margin: 36px 0 14px; }
+  .section-text { font-size: 14.5px; color: var(--text-body); max-width: 760px; margin-bottom: 24px; line-height: 1.7; }
+  .section-text strong { color: var(--text-dark); font-weight: 600; }
+  .h2-divider { display: grid; grid-template-columns: repeat(3, 86px); gap: 0; margin: 0 0 24px; }
+  .h2-divider span { height: 2px; }
+  .div-teal { background: var(--teal); } .div-gold { background: var(--gold-2); }
+  .div-green { background: var(--green); } .div-blue { background: var(--blue); }
+  .div-red { background: var(--red); } .div-navy { background: var(--navy); }
+
+  /* KPI CARDS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 18px 0 28px; }
+  .kpi-card { background: var(--bg-card); padding: 22px 20px; text-align: center; border-top: 2px solid var(--teal); border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-card.gold { border-top-color: var(--gold); }
+  .kpi-card.green { border-top-color: var(--green); }
+  .kpi-card.blue { border-top-color: var(--blue); }
+  .kpi-card.red { border-top-color: var(--red); }
+  .kpi-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--text-dark); line-height: 1; margin-bottom: 8px; }
+  .kpi-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dark); font-weight: 600; margin-bottom: 4px; }
+  .kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+  /* ACCOUNT CHIP */
+  .account-chip { display: inline-flex; align-items: center; gap: 10px; background: var(--bg-card); border-left: 3px solid var(--gold); padding: 8px 14px 8px 12px; border-radius: 4px; margin: 8px 0 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .account-chip .slug { font-family: 'Courier New', monospace; font-size: 12px; background: var(--bg-soft); padding: 3px 8px; border-radius: 3px; color: var(--text-dark); font-weight: 600; }
+  .account-chip .label { font-size: 12px; color: var(--text-muted); }
+
+  /* FOCUS BOXES */
+  .focus-3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 22px 0 8px; }
+  .focus-3 { background: var(--bg-card); padding: 22px 22px; border-radius: 4px; border-top: 3px solid var(--teal); box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
+  .focus-3.gold { border-top-color: var(--gold-2); }
+  .focus-3.red { border-top-color: var(--red); }
+  .focus-3.green { border-top-color: var(--green); }
+  .focus-3.blue { border-top-color: var(--blue); }
+  .focus-3.purple { border-top-color: #7c3aed; }
+  .focus-3 .f3-eyebrow { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 10px; }
+  .focus-3.gold .f3-eyebrow { color: var(--gold-text); }
+  .focus-3.red .f3-eyebrow { color: var(--red); }
+  .focus-3.green .f3-eyebrow { color: var(--green); }
+  .focus-3.blue .f3-eyebrow { color: var(--blue); }
+  .focus-3.purple .f3-eyebrow { color: #7c3aed; }
+  .focus-3 h3 { font-family: 'Playfair Display', serif; font-size: 18px; margin: 0 0 14px; color: var(--text-dark); font-weight: 600; line-height: 1.25; }
+  .focus-3 .visual { min-height: 60px; margin: 4px 0 12px; display: flex; align-items: center; }
+  .focus-3 .f3-stat { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600; line-height: 1; margin: 4px 0 8px; color: var(--text-dark); }
+  .focus-3.gold .f3-stat { color: var(--gold-2); }
+  .focus-3.red .f3-stat { color: var(--red); }
+  .focus-3.green .f3-stat { color: var(--green); }
+  .focus-3.blue .f3-stat { color: var(--blue); }
+  .focus-3.purple .f3-stat { color: #7c3aed; }
+  .focus-3 p { font-size: 13px; line-height: 1.55; margin: 0; color: var(--text-body); }
+  .focus-3 code { background: var(--bg-soft); padding: 1px 5px; border-radius: 3px; font-size: 11.5px; color: var(--text-dark); }
+
+  /* KEY FINDINGS */
+  .keyfinding-list { display: grid; gap: 10px; margin: 16px 0 24px; }
+  .kf-card { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kf-card .kf-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .kf-card.purple .kf-icon { background: #ede4ff; color: #7c3aed; }
+  .kf-card.gold .kf-icon { background: var(--gold-bg); color: var(--gold-text); }
+  .kf-card.red .kf-icon { background: var(--red-bg); color: var(--red-text); }
+  .kf-card.green .kf-icon { background: var(--green-bg); color: var(--green-text); }
+  .kf-card.blue .kf-icon { background: var(--blue-bg); color: var(--blue-text); }
+  .kf-card h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; margin: 0 0 4px; color: var(--text-dark); }
+  .kf-card p { font-size: 13px; color: var(--text-body); margin: 0; line-height: 1.55; }
+
+  /* GBP */
+  .gbp-card { background: var(--bg-card); padding: 28px 32px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; margin: 14px 0 24px; border-left: 3px solid #4285f4; }
+  .gbp-card .star-block { text-align: center; }
+  .gbp-card .star-rating { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 600; color: var(--gold-2); line-height: 1; margin-bottom: 6px; }
+  .gbp-card .stars { font-size: 18px; color: var(--gold); letter-spacing: 2px; }
+  .gbp-card .review-count { font-size: 12px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .gbp-card .gbp-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 28px; }
+  .gbp-card .gbp-row .label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 3px; }
+  .gbp-card .gbp-row .value { font-size: 14px; color: var(--text-dark); font-weight: 600; }
+
+  /* DIRECTORIES */
+  .directory-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0 22px; }
+  .directory-summary .dir-stat { text-align: left; padding-top: 12px; border-top: 2px solid var(--teal); }
+  .directory-summary .dir-stat.green { border-top-color: var(--green); }
+  .directory-summary .dir-stat.red { border-top-color: var(--red); }
+  .directory-summary .dir-stat .num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; line-height: 1; margin: 4px 0; }
+  .directory-summary .dir-stat.green .num { color: var(--green); }
+  .directory-summary .dir-stat.red .num { color: var(--red); }
+  .directory-summary .dir-stat .dir-label { font-size: 11px; color: var(--text-dark); font-weight: 600; margin-bottom: 2px; }
+  .directory-summary .dir-stat small { font-size: 11px; color: var(--text-muted); }
+  .table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin: 12px 0 20px; background: var(--bg-card); }
+  .directory-table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 12.5px; min-width: 520px; }
+  .directory-table thead { background: var(--navy); color: #fff; }
+  .directory-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .directory-table th:nth-child(2) { text-align: center; }
+  .directory-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .directory-table td:nth-child(2) { text-align: center; }
+  .directory-table tr:last-child td { border-bottom: none; }
+  .dir-status { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 10.5px; font-weight: 600; }
+  .dir-status.listed { background: var(--green-bg); color: var(--green-text); }
+  .dir-status.weak { background: var(--gold-bg); color: var(--gold-text); }
+  .dir-status.missing { background: var(--red-bg); color: var(--red-text); }
+
+  /* PAGES */
+  .triage-counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 16px 0 22px; }
+  .triage-counter { text-align: left; padding: 12px 0; border-top: 2px solid var(--gold-2); }
+  .triage-counter.purple { border-top-color: #7c3aed; }
+  .triage-counter.green { border-top-color: var(--green); }
+  .triage-counter.red { border-top-color: var(--red); }
+  .triage-counter .num { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600; line-height: 1; margin: 4px 0; }
+  .triage-counter.purple .num { color: #7c3aed; }
+  .triage-counter.green .num { color: var(--green); }
+  .triage-counter.red .num { color: var(--red); }
+  .triage-counter .triage-label { font-size: 11px; color: var(--text-dark); font-weight: 600; }
+  .pages-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 4px; font-size: 12.5px; min-width: 560px; }
+  .pages-table thead { background: var(--navy); color: #fff; }
+  .pages-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .pages-table th:last-child { text-align: right; }
+  .pages-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); vertical-align: middle; }
+  .pages-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .pages-table .url { font-family: 'Courier New', monospace; font-size: 11.5px; color: var(--text-dark); word-break: break-all; }
+  .pages-table .url.wrong { color: var(--red); }
+  .pages-table .url-flag { font-size: 10.5px; color: var(--red); margin-left: 8px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .pages-table tr.flag-row { background: #fff5f3; }
+  .pages-table tr:last-child td { border-bottom: none; }
+  .critical-callout { background: #fff5f3; border-left: 3px solid var(--red); padding: 14px 18px; margin: 10px 0 16px; font-size: 12.5px; color: var(--text-dark); border-radius: 0 4px 4px 0; }
+  .critical-callout strong { color: var(--red); }
+
+  /* TECH */
+  .tech-issues-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 18px 0 14px; }
+  @media (min-width: 700px) { .tech-issues-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .tech-issues-grid { grid-template-columns: repeat(4, 1fr); } }
+  .tech-issue-card { background: var(--bg-card); border-left: 3px solid var(--red); padding: 18px 22px; border-radius: 0 4px 4px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: center; }
+  .tech-issue-card.gold { border-left-color: var(--gold-2); }
+  .tech-issue-card.purple { border-left-color: #7c3aed; }
+  .tech-issue-card.green { border-left-color: var(--green); }
+  .tech-issue-card .tech-num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; color: var(--red); line-height: 1; }
+  .tech-issue-card.gold .tech-num { color: var(--gold-2); }
+  .tech-issue-card.purple .tech-num { color: #7c3aed; }
+  .tech-issue-card.green .tech-num { color: var(--green); }
+  .tech-issue-card h5 { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: var(--text-dark); margin: 0 0 4px; }
+  .tech-issue-card p { font-size: 12px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .tech-callout { background: rgba(197, 48, 48, 0.06); border-left: 3px solid var(--red); padding: 14px 20px; margin: 14px 0 0; font-size: 12.5px; color: var(--text-dark); line-height: 1.55; border-radius: 0 4px 4px 0; }
+  .tech-callout strong { color: var(--red); }
+  .tech-callout code { background: rgba(197,48,48,0.08); padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+
+  /* COMPETITORS */
+  .comp-twins { display: grid; grid-template-columns: 1fr; gap: 18px; margin: 14px 0 24px; }
+  .comp-twin { background: var(--bg-card); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .comp-twin thead { background: var(--navy); color: #fff; }
+  .comp-twin table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 580px; }
+  .comp-twin th { padding: 11px 14px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; text-align: left; white-space: nowrap; }
+  .comp-twin th:nth-child(n+2) { text-align: center; }
+  .comp-twin td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .comp-twin td:nth-child(n+2) { text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .comp-twin tr:last-child td { border-bottom: none; }
+  .comp-twin tr.self td { color: var(--red); font-weight: 700; background: #fff5f3; }
+
+  /* CHART */
+  .chart-wrap { background: var(--bg-card); padding: 24px; margin: 18px 0 24px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .chart-wrap .chart-caption { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 14px; font-weight: 700; }
+  .chart-wrap canvas { max-height: 280px; }
+
+  /* ACTION PLAN */
+  .action-list { display: grid; gap: 12px; margin: 14px 0 24px; }
+  .action-item { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 44px 1fr auto; gap: 16px; align-items: center; border-left: 3px solid var(--teal); }
+  .action-item .a-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--gold); line-height: 1; }
+  .action-item .a-body h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-dark); margin: 0 0 4px; }
+  .action-item .a-body p { font-size: 12.5px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .action-item .a-pri { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.14em; padding: 4px 10px; border-radius: 999px; font-weight: 700; white-space: nowrap; }
+  .a-pri.immediate { background: var(--red-bg); color: var(--red-text); }
+  .a-pri.high { background: var(--gold-bg); color: var(--gold-text); }
+  .a-pri.medium { background: var(--blue-bg); color: var(--blue-text); }
+  .a-pri.ongoing { background: var(--green-bg); color: var(--green-text); }
+
+  /* LOC BANNER */
+  .loc-banner { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; padding: 40px 0; }
+  .loc-banner .eyebrow { color: var(--teal); }
+  .loc-banner h2 { color: #fff; font-size: 40px; margin-bottom: 8px; }
+  .loc-banner .addr { font-size: 14px; color: #c7d4dd; }
+  .loc-banner .addr a { color: var(--teal); text-decoration: none; }
+
+  footer { background: var(--navy); color: #8aa1b3; padding: 32px 0; text-align: center; font-size: 12px; margin-top: 60px; letter-spacing: 0.06em; }
+  footer .brand { color: var(--gold); font-weight: 600; }
+
+  img, canvas, svg, table { max-width: 100%; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+  .action-item .a-body { min-width: 0; }
+  .action-item .a-body p { word-wrap: break-word; overflow-wrap: anywhere; }
+  .pages-table .url { word-break: break-all; }
+
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .hero h1 { font-size: 42px; }
+    .section h2 { font-size: 32px; }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+    .hero h1 { font-size: 36px; line-height: 1.1; }
+    .section h2 { font-size: 26px; }
+    .section { padding: 44px 0; }
+    .hero-meta-row { grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+    .loc-banner h2 { font-size: 32px; } .loc-banner { padding: 32px 0; }
+    .gbp-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr 1fr; }
+    .action-item { grid-template-columns: 44px 1fr; }
+    .action-item .a-pri { grid-column: 2; justify-self: start; margin-top: 6px; }
+    .directory-summary { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .directory-summary .dir-stat .num { font-size: 24px; }
+    .chart-wrap canvas { max-height: 260px; }
+  }
+  @media (max-width: 768px) {
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tech-issue-card { padding: 16px 18px; gap: 14px; grid-template-columns: 50px 1fr; }
+    .tech-issue-card .tech-num { font-size: 34px; }
+    .triage-counters { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .triage-counter .num { font-size: 26px; }
+    .focus-3 { padding: 18px 20px; }
+    .focus-3 h3 { font-size: 16px; }
+    .focus-3 .f3-stat { font-size: 32px; }
+  }
+  @media (max-width: 700px) {
+    .focus-3-grid { grid-template-columns: 1fr; }
+    .focus-3:last-child { grid-column: auto; }
+    .tech-issues-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    .section { padding: 36px 0; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero h1 { font-size: 30px; } .hero h1 br { display: none; }
+    .hero { padding: 36px 0 32px; }
+    .hero-meta-row { grid-template-columns: 1fr; gap: 16px; padding: 18px 0 0; }
+    .section h2 { font-size: 24px; }
+    .section h3 { font-size: 18px; margin: 28px 0 10px; }
+    .loc-banner h2 { font-size: 26px; }
+    .kpi-num { font-size: 30px; }
+    .kpi-card { padding: 18px 14px; }
+    .h2-divider { grid-template-columns: repeat(3, 56px); margin-bottom: 18px; }
+    .chart-wrap { padding: 14px; } .chart-wrap canvas { max-height: 220px; }
+    .gbp-card .star-rating { font-size: 52px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr; gap: 12px; }
+    .focus-3 .f3-stat { font-size: 28px; }
+    .action-item { padding: 14px 18px; }
+    .action-item .a-num { font-size: 22px; }
+  }
+  @media (max-width: 480px) {
+    .triage-counters { grid-template-columns: 1fr; }
+    .directory-summary { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 420px) {
+    .container { padding: 0 14px; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 26px; }
+    .section h2 { font-size: 22px; }
+    .h2-divider { grid-template-columns: repeat(3, 48px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Website Quality Audit · Single-Location Practice</div>
+    <h1>Palani Center for<br><em>Dental Implants</em></h1>
+    <p class="hero-sub">A focused audit of organic visibility, online reputation, treatment-page content, and the practice's relative standing among nearby Palos Verdes Peninsula competitors.</p>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item"><div class="meta-label">Report Period</div><div class="meta-value">May 2026</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Prepared By</div><div class="meta-value">Dentist Nerds</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Property Audited</div><div class="meta-value">drpalani.com</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Property Type</div><div class="meta-value">Single-location practice</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- LOC BANNER -->
+<div class="loc-banner">
+  <div class="container">
+    <div class="eyebrow">Practice location</div>
+    <h2>Dr. Giri Palani, DDS, FICOI</h2>
+    <div class="addr">29050 S Western Ave, Suite 108B · Rancho Palos Verdes, CA 90275 · <a href="https://drpalani.com/" target="_blank" rel="noopener">drpalani.com</a></div>
+  </div>
+</div>
+
+<!-- PERFORMANCE SUMMARY -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Performance summary</div>
+    <div class="h2-divider"><span class="div-gold"></span><span class="div-teal"></span><span class="div-green"></span></div>
+    <h2>Strong overall footprint, weak service-page conversion</h2>
+    <p class="section-text">drpalani.com has nearly <strong>doubled in monthly traffic</strong> over the past 12 months (456 → 903 visits) and ranks <strong>#1 for every brand variation</strong>. The keyword surface is wide — 578 ranking keywords on a site with Authority Score 14 and 238 referring domains. But almost all the traffic comes from national informational blog posts. The dental implant and cosmetic service pages built for the Rancho Palos Verdes market drive roughly six monthly visits combined.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card gold"><div class="kpi-num">14</div><div class="kpi-label">Authority Score</div><div class="kpi-sub">out of 100</div></div>
+      <div class="kpi-card"><div class="kpi-num">881</div><div class="kpi-label">Monthly Visits</div><div class="kpi-sub">May 2026 organic</div></div>
+      <div class="kpi-card green"><div class="kpi-num">578</div><div class="kpi-label">Ranking Keywords</div><div class="kpi-sub">organic, US</div></div>
+      <div class="kpi-card blue"><div class="kpi-num">120</div><div class="kpi-label">Google Reviews ★ 4.8</div><div class="kpi-sub">238 referring domains</div></div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-caption">Monthly organic traffic · 12-month trend</div>
+      <canvas id="trafficTrend"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- TOP PRIORITY FIXES -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Top priority fixes</div>
+    <h2>Top Priority Fixes &amp; Issues</h2>
+    <div class="account-chip">
+      <span class="slug">drpalani.com</span>
+      <span class="label">· Palani Center for Dental Implants · Rancho Palos Verdes, CA</span>
+    </div>
+
+    <div class="focus-3-grid">
+      <div class="focus-3 red">
+        <div class="f3-eyebrow">Issue 01 — Commercial pages dormant</div>
+        <h3>National blog drives 70%+ of traffic — service pages drive ~6 visits combined</h3>
+        <div class="visual"><div class="f3-stat">24</div></div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+        <p>The /p/Dental-Implants-Rancho-Palos-Verdes-CA-* template built dedicated pages for implants, veneers, cosmetic, sedation, holistic, sleep apnea, zygomatic, zirconia bridges, smile makeover and more. Only the dental-implant-cost page drives measurable traffic (6/mo). National blog posts (coconut oil, super glue, gum for breath) carry the site.</p>
+      </div>
+      <div class="focus-3 blue">
+        <div class="f3-eyebrow">Issue 02 — Reputation not surfacing</div>
+        <h3>120 reviews and FICOI credential not feeding AI search</h3>
+        <div class="visual"><div class="f3-stat">120</div></div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--blue);">reviews underused</div>
+        <p>No LocalBusiness, AggregateRating, MedicalProcedure, or FAQPage schema on any page. The 4.8★ Google rating, 120-review aggregate, and Dr. Palani's FICOI implant-specialty credential are not visible to AI search engines (Google AI Overviews, ChatGPT, Perplexity) or rich-result panels.</p>
+      </div>
+      <div class="focus-3 gold">
+        <div class="f3-eyebrow">Issue 03 — Legacy ASP template</div>
+        <h3>Dated URL structure with 15+ 404s &amp; 301s diluting authority</h3>
+        <div class="visual"><div class="f3-stat">15+</div></div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--gold-2);">404 / 301 URLs indexed</div>
+        <p>Site is built on a ProSites-style <code>/p/...-p[number].asp</code> URL pattern. Backlink crawls show many legacy URLs returning 404 ("Page not found") and many service pages still 301-redirecting from old paths. Multiple URLs receiving backlinks — including <code>/Surgical-Instructions</code>, <code>/Foods-That-Can-Damage</code> and several blog posts — return 404.</p>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+    <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · What Needs Improvement</h2>
+    <div class="keyfinding-list">
+      <div class="kf-card gold">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Only two local commercial signals producing traffic</h5>
+          <p><em>Dentist palos verdes</em> sits at #6 (110/mo) and <em>no credit check dental implant financing</em> at #7 (320/mo). These are the only non-brand commercial queries currently producing meaningful visits. Every other implant, veneer, sedation, and cosmetic query the practice should be winning is dormant.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>National blog audience doesn't convert to RPV patients</h5>
+          <p>Top traffic pages (coconut oil for toothache, super glue on teeth, best gum for breath, fluoride allergy, bruising after wisdom teeth) attract national informational searchers — not Rancho Palos Verdes implant prospects. 70%+ of traffic is the wrong audience for the practice's revenue model.</p>
+        </div>
+      </div>
+      <div class="kf-card purple">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Service pages missing key conversion elements</h5>
+          <p>Implant, veneer, sedation, and cosmetic pages lack embedded patient testimonials, before/after galleries, transparent cost ranges, and procedure-specific FAQ sections. Even if traffic arrives, pages aren't built to convert it into consultation requests.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">↓</div>
+        <div>
+          <h5>Service-page internal-link density is weak</h5>
+          <p>The high-traffic blog posts don't link to matching service pages (coconut oil post → no link to /implant or /general dentistry pages, super glue post → no link to /emergency). Authority arrives via the blog but can't reach commercial pages.</p>
+        </div>
+      </div>
+      <div class="kf-card gold">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Reputation signal not surfacing in search results</h5>
+          <p>120 Google reviews at 4.8★ plus Dr. Palani's FICOI implant-specialty credential are real assets — but with no schema markup on any page, none of this appears in Google's rich results, AI Overviews, or knowledge panels. Reputation is invisible to the channels that increasingly drive clicks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GBP -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Reputation snapshot</div>
+    <h2 style="font-size: 28px;">Reputation · Palani Center for Dental Implants</h2>
+    <div class="gbp-card">
+      <div class="star-block">
+        <div class="star-rating">4.8</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">120 reviews (aggregated)</div>
+      </div>
+      <div class="gbp-meta">
+        <div class="gbp-row"><div class="label">Doctor</div><div class="value">Giri Palani, DDS, FICOI</div></div>
+        <div class="gbp-row"><div class="label">Phone</div><div class="value">(310) 894-8337</div></div>
+        <div class="gbp-row"><div class="label">Address</div><div class="value">29050 S Western Ave, #108B</div></div>
+        <div class="gbp-row"><div class="label">City</div><div class="value">Rancho Palos Verdes, CA 90275</div></div>
+        <div class="gbp-row"><div class="label">Credentials</div><div class="value">Marquette · Cedars-Sinai trained</div></div>
+        <div class="gbp-row"><div class="label">Specialties</div><div class="value">Implants · Cosmetic · Sedation</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSING DIRECTORIES -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Core directory listings</div>
+    <h2>Missing &amp; Unclaimed Directory Listings</h2>
+    <p class="section-text">Listings that are <strong>missing entirely</strong> or only <strong>partially claimed</strong> — channels where Dr. Palani is leaving local-citation and patient-acquisition signal on the table. (Claimed and complete listings — the main business profile, Yelp, Facebook, Instagram, Zocdoc, CareCredit — are not shown here.)</p>
+
+    <div class="directory-summary">
+      <div class="dir-stat red"><div class="num">2</div><div class="dir-label">Missing</div><small>no profile found</small></div>
+      <div class="dir-stat"><div class="num">2</div><div class="dir-label">Limited</div><small>partial profile</small></div>
+      <div class="dir-stat green"><div class="num">6</div><div class="dir-label">Listed (not shown)</div><small>see note above</small></div>
+    </div>
+
+    <div class="table-scroll"><table class="directory-table">
+      <thead><tr><th>Directory</th><th>Status</th><th>What's missing</th></tr></thead>
+      <tbody>
+        <tr><td>Healthgrades</td><td><span class="dir-status weak">Limited</span></td><td>Profile listed but bio, photos, awards (FICOI credential) and treatment-list need completion</td></tr>
+        <tr><td>BBB (Better Business Bureau)</td><td><span class="dir-status missing">Missing</span></td><td>No accreditation — a straightforward trust signal and citation source</td></tr>
+        <tr><td>WebMD Provider</td><td><span class="dir-status missing">Missing</span></td><td>No WebMD/Vitals profile — high-authority medical-directory citation</td></tr>
+        <tr><td>American Academy of Implant Dentistry</td><td><span class="dir-status weak">Limited</span></td><td>FICOI membership held but no claimed AAID/ICOI directory profile linked to the practice site</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- TREATMENT PAGES AUDIT -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Treatment pages · Technical audit</div>
+    <h2>Indexed Page Triage on drpalani.com</h2>
+    <div class="triage-counters">
+      <div class="triage-counter purple">
+        <div class="num">24</div>
+        <div class="triage-label">Evaluate &amp; Rework</div>
+        <small style="font-size: 11px; color: var(--text-muted);">service pages at 0 visits</small>
+      </div>
+      <div class="triage-counter red">
+        <div class="num">15+</div>
+        <div class="triage-label">Clean Up</div>
+        <small style="font-size: 11px; color: var(--text-muted);">404s + legacy 301 chains</small>
+      </div>
+      <div class="triage-counter green">
+        <div class="num">11</div>
+        <div class="triage-label">Working as expected</div>
+        <small style="font-size: 11px; color: var(--text-muted);">homepage + top blog posts</small>
+      </div>
+    </div>
+
+    <div class="table-scroll"><table class="pages-table">
+      <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+      <tbody>
+        <tr><td class="url">/ (homepage)</td><td>265</td></tr>
+        <tr><td class="url">/p/BLOG-27007 — Three Chewing Gum Flavors for Freshest Breath</td><td>183</td></tr>
+        <tr><td class="url">/p/BLOG-126702 — How Coconut Oil Can Help Reduce Oral Pain</td><td>181</td></tr>
+        <tr><td class="url">/p/BLOG-24452 — Don't Use Super Glue on Your Teeth or Dentures</td><td>60</td></tr>
+        <tr><td class="url">/p/BLOG-113150 — Five Natural Ways to Improve Your Smile</td><td>47</td></tr>
+        <tr><td class="url">/p/BLOG-110374 — Bruising Under the Eye After Wisdom Teeth Extraction</td><td>34</td></tr>
+        <tr><td class="url">/p/BLOG-77860 — Symptoms You Could Have a Fluoride Allergy</td><td>30</td></tr>
+        <tr><td class="url">/p/BLOG-109171 — What Is an Enameloplasty</td><td>19</td></tr>
+        <tr><td class="url">/p/BLOG-72545 — What Does the Periodontal Ligament Actually Do</td><td>18</td></tr>
+        <tr><td class="url">/p/Dental-Implant-Cost (the only commercial page producing visits)</td><td>6</td></tr>
+        <tr><td class="url">/p/Dental-Implants-Rancho-Palos-Verdes-CA-Dental-Implants-p2080.asp</td><td>0</td></tr>
+        <tr><td class="url">/p/Dental-Implants-Rancho-Palos-Verdes-CA-Cosmetic-Dentistry</td><td>0</td></tr>
+        <tr><td class="url">/p/Dental-Implants-Rancho-Palos-Verdes-CA-Sedation-Dentistry</td><td>0</td></tr>
+        <tr><td class="url">/p/Dental-Implants-Rancho-Palos-Verdes-CA-Holistic-Dentistry</td><td>0</td></tr>
+        <tr><td class="url">/p/Dental-Implants-Rancho-Palos-Verdes-CA-Emergency-Dentistry</td><td>0</td></tr>
+        <tr><td class="url">/p/Dental-Implants-Rancho-Palos-Verdes-CA-Zygomatic-Dental-Implants</td><td>0</td></tr>
+        <tr><td class="url">/p/Dental-Implants-Rancho-Palos-Verdes-CA-Zirconia-Fixed-Bridge</td><td>0</td></tr>
+        <tr><td class="url">/p/Dental-Implants-Rancho-Palos-Verdes-CA-Veneers / Smile-Makeover (301)</td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/p/BLOG-26471 — Pros and Cons of the Paleo Diet <span class="url-flag">404</span></td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/p/BLOG-44499 — Why Drink Through a Straw <span class="url-flag">404</span></td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/p/BLOG-45451 — Untreated Cavities Bigger Problems <span class="url-flag">404</span></td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/p/BLOG-104372 — Foods That Can Damage Oral Health <span class="url-flag">404</span></td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/p/BLOG-119309 — Does Lip Balm Hurt Oral Health <span class="url-flag">404</span></td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/p/Surgical-Instructions / Sleep-Apnea / Meet-Giri-Palani <span class="url-flag">301 / 404 chains</span></td><td>0</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="critical-callout">
+      <strong>Cleanup notes:</strong> backlink crawls reveal at least 8 blog URLs returning 404 (Page Not Found) and 6+ service pages still 301-redirecting from old slugs. Recommended action: noindex or properly redirect each, update sitemap, and submit removals via Google Search Console.
+    </div>
+  </div>
+</section>
+
+<!-- TECHNICAL ISSUES -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+    <h2>Technical Issues</h2>
+    <p class="section-text">Site-level technical SEO health check. Counts derived from a crawl of the indexed page set and on-page review of homepage + representative service pages.</p>
+
+    <div class="tech-issues-grid">
+      <div class="tech-issue-card">
+        <div class="tech-num">24</div>
+        <div>
+          <h5>Service Pages Without Schema</h5>
+          <p>None of the procedure pages carry MedicalProcedure, LocalBusiness, AggregateRating, or FAQPage schema. Schema is the channel through which Google AI Overviews and entity search pick up procedure-level data.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card gold">
+        <div class="tech-num">15+</div>
+        <div>
+          <h5>404 / 301 URL Cleanup</h5>
+          <p>Legacy ASP URLs returning Page Not Found plus dozens of 301 redirects from old slugs. These dilute crawl signal and waste link equity from inbound backlinks pointing at error pages.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card purple">
+        <div class="tech-num">7</div>
+        <div>
+          <h5>National Blog Outranks Local Service Pages</h5>
+          <p>Coconut oil, super glue, gum, fluoride, bruising, periodontal-ligament blog posts produce 70%+ of traffic. None of these visitors convert to RPV implant consults — the audience is wrong.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card green">
+        <div class="tech-num">238</div>
+        <div>
+          <h5>Referring Domains (Healthy)</h5>
+          <p>Strong backlink profile compared to the local field (Rolling Hills Dental holds 231, South Bay Aesthetic 122). The link asset is there — on-page work converts it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-callout">
+      <strong>Highest-leverage technical work:</strong> on-page schema (LocalBusiness on the homepage, MedicalProcedure on each service page, AggregateRating from 120 reviews, FAQPage on common-questions) and 15+ URL-cleanup tasks. These two combine to unlock service-page eligibility for AI Overviews and rich-result panels that brand and implant queries currently trigger.
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITIVE POSITION -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Competitive position · 5-mile radius</div>
+    <h2>Primary Competitors Within 5 Miles</h2>
+    <p class="section-text">The three dental practices physically nearest to Palani Center for Dental Implants — all within a 5-mile radius of 29050 S Western Ave on the Palos Verdes Peninsula. Algorithmic competitor lists returned mostly oral surgeons and out-of-state practices sharing blog-content overlap rather than real local competitors, so the set below is a manual geographic shortlist instead.</p>
+
+    <div class="comp-twins">
+      <div class="comp-twin">
+        <table>
+          <thead><tr><th>Practice · Address</th><th>Authority</th><th>Keywords</th><th>Visits / mo</th><th>Ref. Domains</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Rolling Hills Dental Group</strong><br><small style="color: var(--text-muted); font-weight: 400;">857 Silver Spur Rd · rollinghillsdental.com · ~2.5 mi</small></td><td>15</td><td>701</td><td>163</td><td>231</td></tr>
+            <tr><td><strong>Rancho Palos Verdes Dentistry</strong><br><small style="color: var(--text-muted); font-weight: 400;">ranchopalosverdesdentistry.com · same city</small></td><td>9</td><td>131</td><td>480</td><td>149</td></tr>
+            <tr><td><strong>South Bay Aesthetic Dentistry</strong><br><small style="color: var(--text-muted); font-weight: 400;">Dr. Ronald Mileham · southbayaestheticdentistry.com · RPV</small></td><td>8</td><td>61</td><td>73</td><td>122</td></tr>
+            <tr class="self"><td><strong>Palani Center for Dental Implants (You)</strong><br><small style="color: var(--red); font-weight: 400;">29050 S Western Ave · drpalani.com</small></td><td>14</td><td>578</td><td>881</td><td>238</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="section-text" style="margin-top: 4px;">
+      Above is the 5-mile competitive set alongside drpalani.com — a snapshot of each practice's current organic footprint to track against month over month.
+    </p>
+  </div>
+</section>
+
+<!-- PRIORITY ACTION PLAN -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Where attention is needed first</div>
+    <h2>Priority Action Plan</h2>
+    <p class="section-text">The work ahead, in order.</p>
+
+    <div class="action-list">
+      <div class="action-item">
+        <div class="a-num">1</div>
+        <div class="a-body">
+          <h5>Add schema + clean up legacy URLs</h5>
+          <p>LocalBusiness, MedicalProcedure, FAQPage, and AggregateRating schema across the site (pulling the 4.8★ × 120-review signal). Fix the 15+ 404s and clean up legacy 301 chains from the old ASP template.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">2</div>
+        <div class="a-body">
+          <h5>Internal linking + homepage service grid</h5>
+          <p>High-traffic blog posts (coconut oil, super glue, gum, fluoride) don't link to matching service pages. Add a service-grid block on the homepage and contextual links from blog posts so authority flows to the 24 dormant commercial pages.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">3</div>
+        <div class="a-body">
+          <h5>Complete missing directory listings</h5>
+          <p>Claim BBB, complete WebMD/Vitals provider profile, link AAID/ICOI directory entry to drpalani.com, and finish the Healthgrades doctor profile with photos, FICOI credential, and treatment list.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">4</div>
+        <div class="a-body">
+          <h5>Rebuild the 24 dormant service pages</h5>
+          <p>Implants, zygomatic implants, All-on-X, zirconia bridges, veneers, cosmetic, sedation, holistic, sleep apnea. Each: stronger procedure detail, embedded testimonials, before/after gallery, cost ranges or financing notes, internal links from blog content.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">5</div>
+        <div class="a-body">
+          <h5>Local backlink campaign — Palos Verdes Peninsula</h5>
+          <p>Currently 238 referring domains; Rolling Hills Dental holds 231. Targets: South Bay business partnerships, Marquette dental alumni features, RPV community organizations, local press for the FICOI credential and zygomatic implant specialty.</p>
+        </div>
+        <span class="a-pri ongoing">Ongoing</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">6</div>
+        <div class="a-body">
+          <h5>Monthly performance report</h5>
+          <p>Rankings, traffic, business-profile performance, new reviews, and booked appointments — measured against the May 2026 baseline established here.</p>
+        </div>
+        <span class="a-pri ongoing">Monthly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="brand">Dentist Nerds</span> · Single-Location Website Audit · Palani Center for Dental Implants · Rancho Palos Verdes, CA · May 2026
+  </div>
+</footer>
+
+<script>
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.color = '#6b7280';
+
+  new Chart(document.getElementById('trafficTrend'), {
+    type: 'line',
+    data: {
+      labels: ['May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26'],
+      datasets: [{
+        label: 'Organic visits',
+        data: [456, 374, 291, 437, 627, 650, 727, 948, 852, 800, 824, 903],
+        borderColor: '#5fbab0',
+        backgroundColor: 'rgba(95,186,176,0.15)',
+        borderWidth: 2.5, tension: 0.3, fill: true,
+        pointBackgroundColor: '#5fbab0', pointRadius: 3, pointHoverRadius: 5
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { backgroundColor: '#0d2538', padding: 10 } },
+      scales: {
+        x: { grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } },
+        y: { beginAtZero: true, grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } }
+      }
+    }
+  });
+</script>
+</body>
+</html>

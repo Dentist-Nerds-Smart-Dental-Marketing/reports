@@ -1,0 +1,3451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website Quality Audit — Dr. Afif · View Dental Canada · May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --navy: #0d2538;
+    --navy-2: #112e44;
+    --teal: #5fbab0;
+    --teal-soft: #a4dad3;
+    --gold: #d4a55c;
+    --gold-2: #c9a961;
+    --bg-page: #f5f5f0;
+    --bg-soft: #ebe9e0;
+    --bg-card: #ffffff;
+    --text-dark: #0d2538;
+    --text-body: #4b5563;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #2d8e5c;
+    --green-bg: #d1fae5;
+    --green-text: #065f46;
+    --gold-bg: #fef3c7;
+    --gold-text: #92400e;
+    --red: #c53030;
+    --red-bg: #fee2e2;
+    --red-text: #991b1b;
+    --blue: #2c6fb3;
+    --blue-bg: #dbeafe;
+    --blue-text: #1e40af;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-page); color: var(--text-body);
+    line-height: 1.6; font-size: 14px;
+  }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 14px;
+  }
+
+  /* HERO */
+  .hero { background: var(--navy); color: #fff; padding: 56px 0 0; position: relative; }
+  .hero .eyebrow { color: var(--teal); }
+  .hero h1 { font-size: 50px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 10px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 28px; max-width: 720px; }
+  .hero-meta-row {
+    display: grid; grid-template-columns: repeat(4, auto); gap: 56px;
+    padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px;
+  }
+  .hero-meta-item .meta-label {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #8aa1b3; margin-bottom: 6px; font-weight: 600;
+  }
+  .hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+  /* TAB BAR */
+  .tabbar {
+    background: var(--navy-2); border-top: 1px solid rgba(255,255,255,0.08);
+    position: sticky; top: 0; z-index: 50;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .tabbar-inner {
+    max-width: 1080px; margin: 0 auto; padding: 0 40px;
+    display: flex; gap: 4px; overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .tabbar-inner::-webkit-scrollbar { height: 6px; }
+  .tabbar-inner::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+  .tab {
+    background: none; border: none; cursor: pointer;
+    padding: 16px 18px 14px; color: #8aa1b3;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+    text-align: left;
+  }
+  .tab:hover { color: #fff; }
+  .tab .tab-num { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; }
+  .tab.active { color: #fff; border-bottom-color: var(--gold); }
+  .tab.active .tab-num { color: var(--gold); }
+  .tab.overview-tab.active { border-bottom-color: var(--teal); }
+  .tab.overview-tab.active .tab-num { color: var(--teal); }
+
+  /* TAB PANELS — all visible, tabs act as scroll-to anchors */
+  .tab-panel { display: block; scroll-margin-top: 90px; }
+  .tab-panel + .tab-panel { border-top: 8px solid var(--bg-soft); }
+
+  /* SECTIONS */
+  .section { padding: 56px 0; }
+  .section-tight { padding: 36px 0; }
+  .section h2 { font-size: 36px; font-weight: 600; margin-bottom: 12px; line-height: 1.15; }
+  .section h3 { font-size: 22px; font-weight: 600; margin: 36px 0 14px; }
+  .section-text {
+    font-size: 14.5px; color: var(--text-body); max-width: 760px;
+    margin-bottom: 24px; line-height: 1.7;
+  }
+  .section-text strong { color: var(--text-dark); font-weight: 600; }
+  .h2-divider {
+    display: grid; grid-template-columns: repeat(3, 86px); gap: 0;
+    margin: 0 0 24px;
+  }
+  .h2-divider span { height: 2px; }
+  .div-teal { background: var(--teal); }
+  .div-gold { background: var(--gold-2); }
+  .div-green { background: var(--green); }
+  .div-blue { background: var(--blue); }
+  .div-red { background: var(--red); }
+  .div-navy { background: var(--navy); }
+
+  /* SOURCE TAG */
+  .source-tag {
+    display: inline-block;
+    font-size: 9.5px; letter-spacing: 0.14em;
+    text-transform: uppercase; font-weight: 600;
+    padding: 3px 10px; border-radius: 4px;
+    background: var(--bg-soft); color: var(--text-dark);
+    margin-left: 10px; vertical-align: middle;
+  }
+  .source-tag.semrush { background: #ff642d; color: #fff; }
+  .source-tag.gbp { background: #4285f4; color: #fff; }
+
+  /* KPI CARDS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 18px 0 28px; }
+  .kpi-card {
+    background: var(--bg-card); padding: 22px 20px; text-align: center;
+    border-top: 2px solid var(--teal); border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kpi-card.gold { border-top-color: var(--gold); }
+  .kpi-card.green { border-top-color: var(--green); }
+  .kpi-card.blue { border-top-color: var(--blue); }
+  .kpi-card.red { border-top-color: var(--red); }
+  .kpi-num {
+    font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600;
+    color: var(--text-dark); line-height: 1; margin-bottom: 8px;
+  }
+  .kpi-label {
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-dark); font-weight: 600; margin-bottom: 4px;
+  }
+  .kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+  /* PORTFOLIO BIG NUMBERS */
+  .portfolio-numbers {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px; text-align: center; margin: 8px 0 36px;
+  }
+  .portfolio-num {
+    font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 600;
+    line-height: 1; margin-bottom: 6px;
+  }
+  .portfolio-num.teal { color: var(--teal); }
+  .portfolio-num.green { color: var(--green); }
+  .portfolio-num.gold { color: var(--gold-2); }
+  .portfolio-num.blue { color: var(--blue); }
+  .portfolio-label { font-size: 12px; color: var(--text-dark); font-weight: 500; letter-spacing: 0.06em; }
+
+  /* SNAPSHOT GRID (4 col) */
+  .snapshot-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 14px; margin: 22px 0 6px;
+  }
+  .snap-card {
+    background: var(--bg-card);
+    border-radius: 4px; padding: 18px 16px 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-top: 2px solid var(--teal);
+  }
+  .snap-card.gold { border-top-color: var(--gold); }
+  .snap-card.green { border-top-color: var(--green); }
+  .snap-card.blue { border-top-color: var(--blue); }
+  .snap-card .name {
+    font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600;
+    color: var(--text-dark); line-height: 1.2; margin-bottom: 2px;
+  }
+  .snap-card .neighbourhood {
+    font-size: 10px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 12px; font-weight: 600;
+  }
+  .snap-row {
+    display: flex; justify-content: space-between; padding: 5px 0;
+    border-top: 1px solid var(--border); font-size: 12.5px;
+  }
+  .snap-row:first-of-type { border-top: none; }
+  .snap-row .k { color: var(--text-muted); }
+  .snap-row .v { color: var(--text-dark); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  /* TABLES — responsive scroll wrapper */
+  .table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    margin: 12px 0 20px;
+  }
+  .data-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--bg-card); border-radius: 4px;
+    font-size: 13px;
+    min-width: 560px;
+  }
+  .data-table thead { background: var(--navy); color: #fff; }
+  .data-table th {
+    text-align: center; padding: 12px 10px;
+    font-weight: 600; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    line-height: 1.3; white-space: nowrap;
+  }
+  .data-table td {
+    padding: 12px 14px; border-bottom: 1px solid var(--border);
+    color: var(--text-dark); vertical-align: middle;
+    word-break: break-word;
+  }
+  .data-table tbody tr:last-child td { border-bottom: none; }
+  .data-table .kw { text-align: left; }
+  .data-table .center { text-align: center; }
+  .data-table .right { text-align: right; font-variant-numeric: tabular-nums; }
+  .data-table strong { color: var(--text-dark); font-weight: 600; }
+
+  /* PILLS */
+  .pill {
+    display: inline-block; padding: 3px 10px; border-radius: 999px;
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em;
+  }
+  .pill-leader { background: var(--green-bg); color: var(--green-text); }
+  .pill-top3 { background: var(--blue-bg); color: var(--blue-text); }
+  .pill-top10 { background: var(--gold-bg); color: var(--gold-text); }
+  .pill-out { background: var(--red-bg); color: var(--red-text); }
+
+  /* FINDINGS */
+  .findings {
+    background: var(--bg-card); border-left: 3px solid var(--teal);
+    padding: 22px 26px; margin: 18px 0 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-radius: 4px;
+  }
+  .findings h4 {
+    font-family: 'Inter', sans-serif; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--gold); margin: 0 0 12px; font-weight: 700;
+  }
+  .findings ul { margin: 0; padding-left: 20px; }
+  .findings li { margin: 7px 0; font-size: 13.5px; color: var(--text-body); line-height: 1.6; }
+  .findings strong { color: var(--text-dark); font-weight: 600; }
+
+  /* FOCUS BLOCKS */
+  .focus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0 16px; }
+  .focus {
+    background: var(--bg-card);
+    padding: 22px 24px; border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-top: 2px solid var(--teal);
+    position: relative;
+  }
+  .focus.strength { border-top-color: var(--green); }
+  .focus.watch { border-top-color: var(--gold); }
+  .focus.gap { border-top-color: var(--red); }
+  .focus .priority-tag {
+    position: absolute; top: 16px; right: 18px;
+    font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700;
+    padding: 3px 10px; border-radius: 999px;
+  }
+  .focus.strength .priority-tag { background: var(--green-bg); color: var(--green-text); }
+  .focus.watch .priority-tag { background: var(--gold-bg); color: var(--gold-text); }
+  .focus.gap .priority-tag { background: var(--red-bg); color: var(--red-text); }
+  .focus h4 {
+    font-family: 'Playfair Display', serif; font-size: 17px;
+    margin-bottom: 4px; padding-right: 80px; color: var(--text-dark); font-weight: 600;
+  }
+  .focus .big {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px; font-weight: 600;
+    line-height: 1; margin: 10px 0 10px;
+    color: var(--text-dark);
+  }
+  .focus .big.green { color: var(--green); }
+  .focus .big.red { color: var(--red); }
+  .focus p { font-size: 13px; margin: 0; color: var(--text-body); line-height: 1.55; }
+
+  /* CHART */
+  .chart-wrap {
+    background: var(--bg-card);
+    padding: 24px;
+    margin: 18px 0 24px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .chart-wrap .chart-caption {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--gold); margin-bottom: 14px; font-weight: 700;
+  }
+  .chart-wrap canvas { max-height: 280px; }
+
+  /* COMPARE TABLE */
+  .compare-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--bg-card);
+    border-radius: 4px;
+    font-size: 12px;
+    min-width: 720px;
+  }
+  .compare-table thead { background: var(--navy); color: #fff; }
+  .compare-table thead th {
+    padding: 12px 6px; font-size: 9.5px; letter-spacing: 0.06em;
+    text-transform: uppercase; font-weight: 600; text-align: center; line-height: 1.3;
+    white-space: nowrap;
+  }
+  .compare-table tbody th {
+    background: var(--bg-soft); text-align: left; font-weight: 600;
+    color: var(--text-dark); font-size: 12px; padding: 10px 14px;
+    font-family: 'Playfair Display', serif;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .compare-table td {
+    padding: 10px 8px; text-align: center; border-bottom: 1px solid var(--border);
+    color: var(--text-dark); vertical-align: middle;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .compare-table .leader { background: var(--green-bg); color: var(--green-text); font-weight: 700; }
+  .compare-table .laggard { background: var(--red-bg); color: var(--red-text); }
+  .compare-table tbody tr:last-child td,
+  .compare-table tbody tr:last-child th { border-bottom: none; }
+
+  /* SW (Strengths/Weaknesses) */
+  .sw-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 16px 0 8px; }
+  .sw-card {
+    background: var(--bg-card); padding: 22px 24px; border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-top: 2px solid var(--gold);
+  }
+  .sw-card h4 {
+    font-family: 'Playfair Display', serif; font-size: 18px;
+    margin-bottom: 2px; color: var(--text-dark); font-weight: 600;
+  }
+  .sw-card .sub { font-size: 11px; color: var(--text-muted); margin-bottom: 14px; letter-spacing: 0.04em; }
+  .sw-card .block { margin: 12px 0; }
+  .sw-card .htag {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700;
+    margin-bottom: 8px; display: inline-block;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .sw-card .best-at .htag { background: var(--green-bg); color: var(--green-text); }
+  .sw-card .gap-at .htag { background: var(--red-bg); color: var(--red-text); }
+  .sw-card ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  .sw-card li { margin: 5px 0; color: var(--text-body); line-height: 1.55; }
+
+  /* PRIORITY RANK */
+  .rank-card {
+    background: var(--bg-card); padding: 24px 28px;
+    border-radius: 4px; margin: 14px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid var(--teal);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 22px;
+    align-items: start;
+  }
+  .rank-card .num {
+    font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 600;
+    color: var(--teal); line-height: 1;
+  }
+  .rank-card .priority-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--gold); font-weight: 700; margin-bottom: 4px;
+  }
+  .rank-card h4 {
+    font-family: 'Playfair Display', serif; font-size: 22px;
+    margin-bottom: 4px; color: var(--text-dark); font-weight: 600;
+  }
+  .rank-card .sub { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+  .rank-card p { font-size: 13.5px; line-height: 1.6; }
+  .rank-card .verdict {
+    background: var(--bg-soft); border-left: 3px solid var(--navy);
+    padding: 12px 16px; margin-top: 12px; font-size: 13px;
+    color: var(--text-dark); font-weight: 500; border-radius: 0 4px 4px 0;
+  }
+  .rank-card.r1 { border-left-color: var(--red); }
+  .rank-card.r1 .num { color: var(--red); }
+  .rank-card.r1 .priority-label { color: var(--red); }
+  .rank-card.r8 { border-left-color: var(--green); }
+  .rank-card.r8 .num { color: var(--green); }
+  .rank-card.r8 .priority-label { color: var(--green); }
+
+  /* === LAVA-STYLE COMPONENTS === */
+
+  /* Account chip */
+  .account-chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--bg-card); border-left: 3px solid var(--gold);
+    padding: 8px 14px 8px 12px; border-radius: 4px;
+    margin: 8px 0 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .account-chip .slug {
+    font-family: 'Courier New', monospace; font-size: 12px;
+    background: var(--bg-soft); padding: 3px 8px; border-radius: 3px;
+    color: var(--text-dark); font-weight: 600;
+  }
+  .account-chip .label { font-size: 12px; color: var(--text-muted); }
+
+  /* Focus boxes — 3 things to know */
+  .focus-3-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin: 22px 0 8px;
+  }
+  .focus-3 {
+    background: var(--bg-card); padding: 22px 22px 22px;
+    border-radius: 4px; border-top: 3px solid var(--teal);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column;
+  }
+  .focus-3.gold { border-top-color: var(--gold-2); }
+  .focus-3.red { border-top-color: var(--red); }
+  .focus-3.green { border-top-color: var(--green); }
+  .focus-3.blue { border-top-color: var(--blue); }
+  .focus-3.purple { border-top-color: #7c3aed; }
+  .focus-3 .f3-eyebrow {
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 700; margin-bottom: 10px;
+  }
+  .focus-3.gold .f3-eyebrow { color: var(--gold-text); }
+  .focus-3.red .f3-eyebrow { color: var(--red); }
+  .focus-3.green .f3-eyebrow { color: var(--green); }
+  .focus-3.blue .f3-eyebrow { color: var(--blue); }
+  .focus-3.purple .f3-eyebrow { color: #7c3aed; }
+  .focus-3 h3 {
+    font-family: 'Playfair Display', serif; font-size: 18px;
+    margin: 0 0 14px; color: var(--text-dark); font-weight: 600; line-height: 1.25;
+  }
+  .focus-3 .visual {
+    min-height: 90px; margin: 4px 0 12px;
+    display: flex; align-items: center; justify-content: flex-start;
+  }
+  .focus-3 .f3-stat {
+    font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600;
+    line-height: 1; margin: 4px 0 8px;
+    color: var(--text-dark);
+  }
+  .focus-3.gold .f3-stat { color: var(--gold-2); }
+  .focus-3.red .f3-stat { color: var(--red); }
+  .focus-3.green .f3-stat { color: var(--green); }
+  .focus-3.blue .f3-stat { color: var(--blue); }
+  .focus-3.purple .f3-stat { color: #7c3aed; }
+  .focus-3 .f3-stat-suffix {
+    font-family: 'Inter', sans-serif; font-size: 12px; color: var(--text-muted);
+    font-weight: 500; letter-spacing: 0.02em;
+  }
+  .focus-3 p {
+    font-size: 13px; line-height: 1.55; margin: 0;
+    color: var(--text-body);
+  }
+  .focus-3 .mini-bar {
+    width: 100%; display: flex; gap: 4px; align-items: stretch;
+    margin: 0 0 10px;
+  }
+  .focus-3 .mini-bar .bar {
+    flex: 1; border-radius: 3px; padding: 8px 10px;
+    font-size: 11px; font-weight: 600; color: #fff; text-align: center;
+    display: flex; flex-direction: column; gap: 2px; align-items: center;
+  }
+  .focus-3 .mini-bar .bar.high { background: var(--red); }
+  .focus-3 .mini-bar .bar.low { background: var(--bg-soft); color: var(--text-muted); }
+  .focus-3 .mini-bar .bar small { font-weight: 500; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* Key findings — icon cards */
+  .keyfinding-list { display: grid; gap: 10px; margin: 16px 0 24px; }
+  .kf-card {
+    background: var(--bg-card); padding: 18px 22px; border-radius: 4px;
+    display: grid; grid-template-columns: 36px 1fr; gap: 14px;
+    align-items: start;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kf-card .kf-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .kf-card.purple .kf-icon { background: #ede4ff; color: #7c3aed; }
+  .kf-card.gold .kf-icon { background: var(--gold-bg); color: var(--gold-text); }
+  .kf-card.red .kf-icon { background: var(--red-bg); color: var(--red-text); }
+  .kf-card.green .kf-icon { background: var(--green-bg); color: var(--green-text); }
+  .kf-card.blue .kf-icon { background: var(--blue-bg); color: var(--blue-text); }
+  .kf-card h5 {
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+    margin: 0 0 4px; color: var(--text-dark);
+  }
+  .kf-card p { font-size: 13px; color: var(--text-body); margin: 0; line-height: 1.55; }
+
+  /* GBP reputation card */
+  .gbp-card {
+    background: var(--bg-card); padding: 28px 32px; border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: grid; grid-template-columns: auto 1fr; gap: 36px;
+    align-items: center; margin: 14px 0 24px;
+    border-left: 3px solid #4285f4;
+  }
+  .gbp-card .star-block { text-align: center; }
+  .gbp-card .star-rating {
+    font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 600;
+    color: var(--gold-2); line-height: 1; margin-bottom: 6px;
+  }
+  .gbp-card .stars { font-size: 18px; color: var(--gold); letter-spacing: 2px; }
+  .gbp-card .review-count {
+    font-size: 12px; color: var(--text-muted); margin-top: 6px;
+    letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+  }
+  .gbp-card .gbp-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 28px; }
+  .gbp-card .gbp-row .label {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 600; margin-bottom: 3px;
+  }
+  .gbp-card .gbp-row .value {
+    font-size: 14px; color: var(--text-dark); font-weight: 600;
+  }
+
+  /* Treatment Pages Audit */
+  .triage-counters {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    margin: 16px 0 22px;
+  }
+  .triage-counter { text-align: left; padding: 12px 0; border-top: 2px solid var(--gold-2); }
+  .triage-counter.purple { border-top-color: #7c3aed; }
+  .triage-counter.green { border-top-color: var(--green); }
+  .triage-counter.red { border-top-color: var(--red); }
+  .triage-counter .num {
+    font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600;
+    line-height: 1; margin: 4px 0 4px;
+  }
+  .triage-counter.purple .num { color: #7c3aed; }
+  .triage-counter.green .num { color: var(--green); }
+  .triage-counter.red .num { color: var(--red); }
+  .triage-counter .triage-label {
+    font-size: 11px; color: var(--text-dark); font-weight: 600;
+  }
+  .pages-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 4px; font-size: 12.5px; min-width: 320px; table-layout: fixed; }
+  .pages-table colgroup col:first-child { width: 78%; }
+  .pages-table colgroup col:last-child { width: 22%; }
+  .pages-table th:first-child, .pages-table td:first-child { width: 78%; }
+  .pages-table th:last-child, .pages-table td:last-child { width: 22%; text-align: right; }
+  .pages-table thead { background: var(--navy); color: #fff; }
+  .pages-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .pages-table th:last-child { text-align: right; }
+  .pages-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); vertical-align: middle; }
+  .pages-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .pages-table .url { font-family: 'Courier New', monospace; font-size: 12px; color: var(--text-dark); }
+  .pages-table .url.wrong { color: var(--red); }
+  .pages-table .url-flag { font-size: 11px; color: var(--red); margin-left: 8px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .pages-table tr.flag-row { background: #fff5f3; }
+  .pages-table tr:last-child td { border-bottom: none; }
+  .critical-callout {
+    background: #fff5f3; border-left: 3px solid var(--red);
+    padding: 14px 18px; margin: 10px 0 16px;
+    font-size: 12.5px; color: var(--text-dark); border-radius: 0 4px 4px 0;
+  }
+  .critical-callout strong { color: var(--red); }
+
+  /* Lifetime traffic chart */
+  .lifetime-chart-wrap {
+    background: var(--bg-card); padding: 28px 28px 20px;
+    border-radius: 4px; margin: 14px 0 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .lifetime-chart-wrap canvas { max-height: 280px; }
+  .lifetime-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px; margin: 16px 0 28px;
+  }
+  .lifetime-stat { border-top: 2px solid var(--teal); padding-top: 12px; }
+  .lifetime-stat.gold { border-top-color: var(--gold-2); }
+  .lifetime-stat.purple { border-top-color: #7c3aed; }
+  .lifetime-stat.green { border-top-color: var(--green); }
+  .lifetime-stat.red { border-top-color: var(--red); }
+  .lifetime-stat .num {
+    font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600;
+    color: var(--teal); line-height: 1; margin-bottom: 4px;
+  }
+  .lifetime-stat.gold .num { color: var(--gold-2); }
+  .lifetime-stat.purple .num { color: #7c3aed; }
+  .lifetime-stat.green .num { color: var(--green); }
+  .lifetime-stat.red .num { color: var(--red); }
+  .lifetime-stat .stat-label {
+    font-size: 11px; font-weight: 700; color: var(--text-dark); margin-bottom: 3px;
+  }
+  .lifetime-stat .stat-note { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+
+  /* Competitor twin tables */
+  .comp-twins {
+    display: grid; grid-template-columns: 1fr; gap: 18px;
+    margin: 14px 0 24px;
+  }
+  .comp-twin {
+    background: var(--bg-card); border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); overflow: hidden;
+  }
+  .comp-twin thead { background: var(--navy); color: #fff; }
+  .comp-twin table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .comp-twin th { padding: 11px 14px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; text-align: left; }
+  .comp-twin th:last-child { text-align: right; }
+  .comp-twin td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .comp-twin td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .comp-twin tr:last-child td { border-bottom: none; }
+  .comp-twin tr.self td { color: var(--red); font-weight: 600; }
+  @media (max-width: 900px) {
+    .focus-3-grid { grid-template-columns: 1fr; }
+    .gbp-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr 1fr; }
+    .triage-counters { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .triage-counter .num { font-size: 28px; }
+    .lifetime-stats { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .comp-twins { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .triage-counters { grid-template-columns: 1fr; }
+    .lifetime-stats { grid-template-columns: 1fr; }
+  }
+
+  /* === DIRECTORY LISTINGS === */
+  .directory-summary {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin: 16px 0 22px;
+  }
+  .directory-summary .dir-stat { text-align: left; padding-top: 12px; border-top: 2px solid var(--teal); }
+  .directory-summary .dir-stat.green { border-top-color: var(--green); }
+  .directory-summary .dir-stat.red { border-top-color: var(--red); }
+  .directory-summary .dir-stat .num {
+    font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600;
+    line-height: 1; margin: 4px 0;
+  }
+  .directory-summary .dir-stat.green .num { color: var(--green); }
+  .directory-summary .dir-stat.red .num { color: var(--red); }
+  .directory-summary .dir-stat .dir-label {
+    font-size: 11px; color: var(--text-dark); font-weight: 600; margin-bottom: 2px;
+  }
+  .directory-summary .dir-stat small { font-size: 11px; color: var(--text-muted); }
+  .directory-table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 12.5px; min-width: 520px; }
+  .directory-table thead { background: var(--navy); color: #fff; }
+  .directory-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .directory-table th:nth-child(2), .directory-table th:nth-child(3) { text-align: center; }
+  .directory-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .directory-table td:nth-child(2), .directory-table td:nth-child(3) { text-align: center; }
+  .directory-table tr:last-child td { border-bottom: none; }
+  .dir-status {
+    display: inline-block; padding: 2px 9px; border-radius: 999px;
+    font-size: 10.5px; font-weight: 600;
+  }
+  .dir-status.listed { background: var(--green-bg); color: var(--green-text); }
+  .dir-status.weak { background: var(--gold-bg); color: var(--gold-text); }
+  .dir-status.missing { background: var(--red-bg); color: var(--red-text); }
+
+  /* === WHERE TRAFFIC ACTUALLY COMES FROM === */
+  .traffic-source-metrics {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    margin: 16px 0 22px;
+  }
+  .ts-metric { text-align: center; padding: 14px; background: var(--bg-card); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-top: 2px solid var(--teal); }
+  .ts-metric.gold { border-top-color: var(--gold-2); }
+  .ts-metric.green { border-top-color: var(--green); }
+  .ts-metric.blue { border-top-color: var(--blue); }
+  .ts-metric .num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; line-height: 1; color: var(--text-dark); margin-bottom: 4px; }
+  .ts-metric .ts-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); font-weight: 700; }
+  .source-split-wrap { margin: 14px 0 20px; }
+  .source-split-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
+  .source-bar { display: flex; height: 38px; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .source-segment { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 600; padding: 0 10px; gap: 6px; }
+  .source-segment.brand { background: var(--navy); }
+  .source-segment.non-brand { background: var(--teal); }
+  .source-segment.informational { background: var(--gold-2); }
+  .source-segment.commercial { background: var(--blue); }
+  .source-segment small { font-weight: 500; font-size: 11px; opacity: 0.85; }
+  @media (max-width: 768px) {
+    .directory-summary { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .directory-summary .dir-stat .num { font-size: 24px; }
+    .traffic-source-metrics { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .ts-metric .num { font-size: 26px; }
+    .source-bar { flex-direction: column; height: auto; }
+    .source-segment { padding: 10px; }
+  }
+
+  /* ACTION PLAN */
+  .action-list {
+    display: grid; gap: 12px; margin: 14px 0 24px;
+  }
+  .action-item {
+    background: var(--bg-card); padding: 18px 22px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    border-left: 3px solid var(--teal);
+  }
+  .action-item .a-num {
+    font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600;
+    color: var(--gold); line-height: 1;
+  }
+  .action-item .a-body h5 {
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+    color: var(--text-dark); margin: 0 0 4px;
+  }
+  .action-item .a-body p { font-size: 12.5px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .action-item .a-pri {
+    font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.14em;
+    padding: 4px 10px; border-radius: 999px; font-weight: 700;
+    white-space: nowrap;
+  }
+  .a-pri.immediate { background: var(--red-bg); color: var(--red-text); }
+  .a-pri.high { background: var(--gold-bg); color: var(--gold-text); }
+  .a-pri.medium { background: var(--blue-bg); color: var(--blue-text); }
+  .a-pri.ongoing { background: var(--green-bg); color: var(--green-text); }
+
+  /* QUICK CALL REFERENCE */
+  .call-ref-block {
+    background: var(--bg-card);
+    border-left: 3px solid var(--gold);
+    padding: 22px 26px;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    margin: 14px 0 18px;
+  }
+  .call-ref-block h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--gold-text); font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .call-ref-block h5 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 600; color: var(--text-dark);
+    margin: 0 0 8px;
+  }
+  .call-ref-block p {
+    font-size: 13.5px; line-height: 1.6; margin: 0 0 6px;
+    color: var(--text-body);
+  }
+  .call-ref-block code {
+    background: var(--bg-soft); padding: 1px 6px; border-radius: 3px;
+    font-size: 12px; color: var(--text-dark);
+  }
+  .call-ref-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin: 16px 0 18px;
+  }
+  .weak-kw-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 4px; font-size: 13px; min-width: 460px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .weak-kw-table thead { background: var(--navy); color: #fff; }
+  .weak-kw-table th { padding: 10px 14px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; text-align: left; }
+  .weak-kw-table th:nth-child(2), .weak-kw-table th:nth-child(3) { text-align: center; }
+  .weak-kw-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .weak-kw-table td:nth-child(2), .weak-kw-table td:nth-child(3) { text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .weak-kw-table tr:last-child td { border-bottom: none; }
+  .weak-kw-table .pos-close { color: var(--gold-2); }
+  .weak-kw-table .pos-far { color: var(--red); }
+  @media (max-width: 900px) {
+    .call-ref-grid { grid-template-columns: 1fr; }
+  }
+
+  /* TECHNICAL ISSUES TRIAGE */
+  .tech-issues-grid {
+    display: grid; grid-template-columns: 1fr;
+    gap: 12px; margin: 18px 0 14px;
+  }
+  @media (min-width: 700px) { .tech-issues-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .tech-issues-grid { grid-template-columns: repeat(4, 1fr); } }
+  .tech-issue-card {
+    background: var(--bg-card);
+    border-left: 3px solid var(--red);
+    padding: 18px 22px;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+  .tech-issue-card.gold { border-left-color: var(--gold-2); }
+  .tech-issue-card.purple { border-left-color: #7c3aed; }
+  .tech-issue-card.green { border-left-color: var(--green); }
+  .tech-issue-card .tech-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 600;
+    color: var(--red); line-height: 1;
+  }
+  .tech-issue-card.gold .tech-num { color: var(--gold-2); }
+  .tech-issue-card.purple .tech-num { color: #7c3aed; }
+  .tech-issue-card.green .tech-num { color: var(--green); }
+  .tech-issue-card h5 {
+    font-family: 'Inter', sans-serif; font-size: 13.5px;
+    font-weight: 700; color: var(--text-dark); margin: 0 0 4px;
+  }
+  .tech-issue-card p {
+    font-size: 12px; color: var(--text-body); margin: 0; line-height: 1.5;
+  }
+  .tech-callout {
+    background: rgba(197, 48, 48, 0.06);
+    border-left: 3px solid var(--red);
+    padding: 14px 20px; margin: 14px 0 0;
+    font-size: 12.5px; color: var(--text-dark); line-height: 1.55;
+    border-radius: 0 4px 4px 0;
+  }
+  .tech-callout strong { color: var(--red); }
+  .tech-callout code { background: rgba(197,48,48,0.08); padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+
+  /* WHAT'S NEEDED CALLOUT */
+  .what-needed {
+    background: rgba(212,165,92,0.08);
+    border-left: 2px solid var(--gold-2);
+    padding: 10px 14px;
+    margin: 10px 0 0;
+    font-size: 12.5px;
+    color: var(--text-body);
+    line-height: 1.55;
+    border-radius: 0 4px 4px 0;
+  }
+  .what-needed-label {
+    color: var(--gold-text);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 3px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* PITCH BOX */
+  .pitch-box {
+    background: var(--navy); color: #fff;
+    padding: 36px 40px; border-radius: 4px;
+    margin: 28px 0;
+    display: grid; grid-template-columns: 1.5fr 1fr; gap: 36px; align-items: center;
+  }
+  .pitch-box h3 { color: #fff; font-family: 'Playfair Display', serif; font-size: 28px; margin: 0 0 10px; }
+  .pitch-box p { color: #c7d4dd; font-size: 14px; margin: 0 0 10px; line-height: 1.6; }
+  .pitch-box .pitch-bullet { color: var(--teal); margin-right: 8px; font-weight: 700; }
+  .pitch-box .pitch-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pitch-box .pitch-stat { text-align: center; }
+  .pitch-box .pitch-num {
+    font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600;
+    color: var(--gold); line-height: 1; margin-bottom: 4px;
+  }
+  .pitch-box .pitch-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8aa1b3; }
+  @media (max-width: 900px) {
+    .pitch-box { grid-template-columns: 1fr; padding: 28px 24px; }
+    .action-item { grid-template-columns: 36px 1fr; }
+    .action-item .a-pri { grid-column: 2; justify-self: start; margin-top: 6px; }
+  }
+
+  /* LOCATION HEADER (inside tab) */
+  .loc-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff;
+    padding: 40px 0;
+    margin-bottom: 0;
+  }
+  .loc-banner .eyebrow { color: var(--teal); }
+  .loc-banner h2 { color: #fff; font-size: 40px; margin-bottom: 8px; }
+  .loc-banner .addr { font-size: 14px; color: #c7d4dd; }
+  .loc-banner .addr a { color: var(--teal); text-decoration: none; }
+  .loc-banner .addr a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: #8aa1b3;
+    padding: 32px 0; text-align: center; font-size: 12px;
+    margin-top: 60px; letter-spacing: 0.06em;
+  }
+  footer .brand { color: var(--gold); font-weight: 600; }
+
+  /* === RESPONSIVE — comprehensive breakpoint coverage === */
+  /* Universal safety: prevent overflow */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  img, canvas, svg, table { max-width: 100%; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+  .action-item .a-body { min-width: 0; }
+  .action-item .a-body p { word-wrap: break-word; overflow-wrap: anywhere; }
+  .action-item .a-body h5 { word-wrap: break-word; overflow-wrap: anywhere; }
+  .pages-table .url { word-break: break-all; }
+  .section .container { width: 100%; }
+
+  /* ≤1280px — Large desktop / small laptop */
+  @media (max-width: 1280px) {
+    .container { padding: 0 32px; }
+  }
+  /* ≤1024px — Small desktop / large tablet */
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .hero h1 { font-size: 42px; }
+    .section h2 { font-size: 32px; }
+    .portfolio-num { font-size: 48px; }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; }
+  }
+  /* ≤900px — Tablet */
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .snapshot-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .portfolio-numbers { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .focus-grid, .sw-grid { grid-template-columns: 1fr; }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+    .hero h1 { font-size: 36px; line-height: 1.1; }
+    .section h2 { font-size: 26px; }
+    .section { padding: 44px 0; }
+    .rank-card { grid-template-columns: 1fr; gap: 8px; padding: 22px 22px; }
+    .rank-card .num { font-size: 40px; }
+    .hero-meta-row { grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+    .tabbar-inner { padding: 0 20px; }
+    .tab { padding: 12px 14px 10px; font-size: 12px; }
+    .tab .tab-num { font-size: 9px; }
+    .loc-banner h2 { font-size: 32px; }
+    .loc-banner { padding: 32px 0; }
+    .focus h4 { font-size: 16px; padding-right: 70px; }
+    .focus .big { font-size: 26px; }
+    .gbp-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr 1fr; }
+    .lifetime-stats { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .comp-twins { grid-template-columns: 1fr; }
+    .pitch-box { grid-template-columns: 1fr; padding: 28px 24px; }
+    .action-item { grid-template-columns: 36px 1fr; }
+    .action-item .a-pri { grid-column: 2; justify-self: start; margin-top: 6px; }
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; }
+    .traffic-source-metrics { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .source-bar { flex-direction: column; height: auto; }
+    .source-segment { padding: 10px; }
+    .directory-summary { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .directory-summary .dir-stat .num { font-size: 24px; }
+    .lifetime-chart-wrap canvas { max-height: 240px; }
+    .chart-wrap canvas { max-height: 260px; }
+  }
+  /* ≤768px — Mobile landscape / small tablet */
+  @media (max-width: 768px) {
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; }
+    .tech-issue-card { padding: 16px 18px; gap: 14px; grid-template-columns: 50px 1fr; }
+    .tech-issue-card .tech-num { font-size: 34px; }
+    .triage-counters { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .triage-counter .num { font-size: 26px; }
+    .keyfinding-list .kf-card { padding: 16px 18px; grid-template-columns: 30px 1fr; gap: 12px; }
+    .focus-3-grid { grid-template-columns: 1fr; }
+    .focus-3:last-child { grid-column: auto; }
+    .focus-3 { padding: 18px 20px; }
+    .focus-3 h3 { font-size: 16px; }
+    .focus-3 .f3-stat { font-size: 32px; }
+    .source-bar { flex-direction: column; height: auto; }
+  }
+  /* ≤640px — Mobile */
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    .tech-issues-grid { grid-template-columns: 1fr; }
+    .section { padding: 36px 0; }
+    .snapshot-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .portfolio-numbers { grid-template-columns: 1fr 1fr; gap: 22px; }
+    .portfolio-num { font-size: 40px; }
+    .hero h1 { font-size: 30px; }
+    .hero h1 br { display: none; }
+    .hero h1 em { display: inline; }
+    .hero-sub { font-size: 14px; }
+    .hero { padding: 36px 0 0; }
+    .hero-meta-row { grid-template-columns: 1fr; gap: 16px; padding: 18px 0; }
+    .section h2 { font-size: 24px; }
+    .section h3 { font-size: 18px; margin: 28px 0 10px; }
+    .loc-banner h2 { font-size: 26px; }
+    .loc-banner { padding: 26px 0; }
+    .loc-banner .addr { font-size: 13px; }
+    .kpi-num { font-size: 30px; }
+    .kpi-card { padding: 18px 14px; }
+    .kpi-label { font-size: 9px; }
+    .findings { padding: 18px 20px; }
+    .findings li { font-size: 13px; }
+    .focus { padding: 18px 20px; }
+    .focus h4 { font-size: 15px; padding-right: 64px; }
+    .focus .big { font-size: 24px; }
+    .focus .priority-tag { top: 14px; right: 14px; font-size: 9px; padding: 2px 7px; }
+    .sw-card { padding: 18px 20px; }
+    .sw-card h4 { font-size: 16px; }
+    .sw-card li { font-size: 12.5px; }
+    .rank-card { padding: 18px 20px; }
+    .rank-card h4 { font-size: 18px; }
+    .rank-card p { font-size: 13px; }
+    .h2-divider { grid-template-columns: repeat(3, 56px); margin-bottom: 18px; }
+    .tab { padding: 10px 12px 8px; }
+    .tab .tab-num { font-size: 8.5px; }
+    .tab span:last-child { font-size: 11.5px; }
+    .chart-wrap { padding: 14px; }
+    .chart-wrap canvas { max-height: 220px; }
+    .lifetime-chart-wrap { padding: 18px 16px; }
+    .lifetime-chart-wrap canvas { max-height: 220px; }
+    .lifetime-stats { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .lifetime-stat .num { font-size: 24px; }
+    .pages-table { font-size: 11.5px; }
+    .pages-table th, .pages-table td { padding: 8px 10px; }
+    .directory-summary { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .directory-summary .dir-stat { padding-top: 10px; }
+    .directory-summary .dir-stat .num { font-size: 22px; }
+    .directory-summary .dir-stat .dir-label { font-size: 10.5px; }
+    .focus-3 .f3-stat { font-size: 28px; }
+    .focus-3 .mini-bar { flex-direction: column; gap: 6px; }
+    .focus-3 .mini-bar .bar { padding: 6px 10px; }
+    .gbp-card .star-rating { font-size: 52px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr; gap: 12px; }
+    .traffic-source-metrics { grid-template-columns: 1fr 1fr; }
+    .ts-metric { padding: 12px 10px; }
+    .ts-metric .num { font-size: 24px; }
+    .compare-table { font-size: 10.5px; min-width: 640px; }
+    .compare-table thead th { padding: 8px 4px; font-size: 9px; }
+    .compare-table tbody th { font-size: 11px; padding: 8px 10px; }
+    .compare-table td { padding: 8px 4px; }
+    .data-table { font-size: 12px; min-width: 500px; }
+    .data-table th, .data-table td { padding: 9px 10px; }
+    .what-needed { padding: 9px 12px; font-size: 12px; }
+    .action-item { padding: 14px 18px; }
+    .action-item .a-num { font-size: 22px; }
+    .action-item .a-body h5 { font-size: 13px; }
+    .action-item .a-body p { font-size: 12px; }
+    .account-chip { flex-wrap: wrap; gap: 6px; padding: 8px 12px; }
+    .account-chip .slug { font-size: 11px; }
+    .account-chip .label { font-size: 11px; }
+    .pill { font-size: 9.5px; padding: 2px 7px; }
+    .source-tag { font-size: 9px; padding: 2px 8px; margin-left: 6px; }
+    .findings h4 { font-size: 10px; }
+    footer { font-size: 11px; padding: 24px 0; }
+  }
+  /* ≤480px — Small phone */
+  @media (max-width: 480px) {
+    .triage-counters { grid-template-columns: 1fr; }
+    .directory-summary { grid-template-columns: 1fr 1fr 1fr; }
+    .lifetime-stats { grid-template-columns: 1fr; }
+    .traffic-source-metrics { grid-template-columns: 1fr; }
+    .tab { padding: 9px 10px 7px; }
+    .tabbar-inner { padding: 0 14px; gap: 2px; }
+    .gbp-card { padding: 18px; }
+    .gbp-card .star-block { padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  }
+  /* ≤420px — iPhone SE / very small */
+  @media (max-width: 420px) {
+    .container { padding: 0 14px; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .portfolio-numbers { grid-template-columns: 1fr; gap: 18px; }
+    .hero h1 { font-size: 26px; }
+    .section h2 { font-size: 22px; }
+    .section h3 { font-size: 16px; }
+    .loc-banner h2 { font-size: 22px; }
+    .rank-card .num { font-size: 36px; }
+    .directory-summary { grid-template-columns: 1fr; }
+    .focus-3 { padding: 16px; }
+    .focus-3 h3 { font-size: 15px; }
+    .focus-3 .f3-stat { font-size: 26px; }
+    .focus-3 .visual { min-height: 70px; }
+    .findings { padding: 16px 18px; }
+    .keyfinding-list .kf-card { padding: 14px 16px; }
+    .kpi-num { font-size: 26px; }
+    .tech-issue-card { padding: 14px 16px; grid-template-columns: 44px 1fr; gap: 12px; }
+    .tech-issue-card .tech-num { font-size: 30px; }
+    .tech-issue-card h5 { font-size: 12.5px; }
+    .tech-callout { padding: 12px 14px; font-size: 11.5px; }
+    .source-split-label { font-size: 10px; }
+    .lifetime-chart-wrap { padding: 14px 12px; }
+    .lifetime-chart-wrap canvas { max-height: 200px; }
+    .chart-wrap canvas { max-height: 200px; }
+    .h2-divider { grid-template-columns: repeat(3, 48px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============= HERO ============= -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Website Quality Audit · Multi-Location Portfolio</div>
+    <h1>Dr. Afif<br><em>View Dental Canada</em></h1>
+    <p class="hero-sub">A consolidated audit of seven sister dental practices across downtown Toronto plus the View Dental Canada family-brand site — organic visibility, Google Business Profile reputation, and the relative standing of each clinic within the portfolio.</p>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <div class="meta-label">Report Period</div>
+        <div class="meta-value">May 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Prepared By</div>
+        <div class="meta-value">Dentist Nerds</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Properties Audited</div>
+        <div class="meta-value">8 (7 clinics + family brand)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Data Sources</div>
+        <div class="meta-value">Semrush · Google Business Profile</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============= TAB BAR ============= -->
+<nav class="tabbar" aria-label="Report sections">
+  <div class="tabbar-inner" role="tablist">
+    <button class="tab overview-tab active" data-tab="overview" role="tab">
+      <span class="tab-num">Overview</span>
+      <span>Portfolio Summary</span>
+    </button>
+    <button class="tab" data-tab="parkview" role="tab">
+      <span class="tab-num">Clinic 01</span>
+      <span>Parkview Dental</span>
+    </button>
+    <button class="tab" data-tab="waterview" role="tab">
+      <span class="tab-num">Clinic 02</span>
+      <span>Waterview Dental</span>
+    </button>
+    <button class="tab" data-tab="richmond" role="tab">
+      <span class="tab-num">Clinic 03</span>
+      <span>Richmond Dental</span>
+    </button>
+    <button class="tab" data-tab="cityview" role="tab">
+      <span class="tab-num">Clinic 04</span>
+      <span>Cityview Dental</span>
+    </button>
+    <button class="tab" data-tab="kingsview" role="tab">
+      <span class="tab-num">Clinic 05</span>
+      <span>Kingsview Dental</span>
+    </button>
+    <button class="tab" data-tab="urbanview" role="tab">
+      <span class="tab-num">Clinic 06</span>
+      <span>Urbanview Dental</span>
+    </button>
+    <button class="tab" data-tab="yorkview" role="tab">
+      <span class="tab-num">Clinic 07</span>
+      <span>Yorkview Dental</span>
+    </button>
+    <button class="tab" data-tab="viewdental" role="tab">
+      <span class="tab-num">Family Brand</span>
+      <span>View Dental Canada</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================= -->
+<!-- ============= TAB: OVERVIEW ================= -->
+<!-- ============================================= -->
+<div class="tab-panel active" id="panel-overview" role="tabpanel">
+
+  <!-- Portfolio at a Glance -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">At a Glance</div>
+      <div class="h2-divider"><span class="div-teal"></span><span class="div-gold"></span><span class="div-green"></span></div>
+      <h2>The portfolio at a glance</h2>
+      <p class="section-text">Across <strong>eight properties</strong> in downtown Toronto, Parkview leads on organic visibility while Waterview leads on Google reputation. Yorkview launched in late 2025 and View Dental Canada serves as the family brand site. Together, the group reaches roughly <strong>6,500 monthly organic visits</strong> and carries over <strong>5,600 patient reviews</strong>.</p>
+
+      <div class="portfolio-numbers">
+        <div>
+          <div class="portfolio-num teal">8</div>
+          <div class="portfolio-label">Properties</div>
+        </div>
+        <div>
+          <div class="portfolio-num gold">3,884</div>
+          <div class="portfolio-label">Combined keywords</div>
+        </div>
+        <div>
+          <div class="portfolio-num green">6,477</div>
+          <div class="portfolio-label">Monthly visits</div>
+        </div>
+        <div>
+          <div class="portfolio-num blue">5,605</div>
+          <div class="portfolio-label">Google reviews</div>
+        </div>
+      </div>
+
+      <div class="snapshot-grid">
+        <div class="snap-card gold">
+          <div class="name">Parkview Dental</div>
+          <div class="neighbourhood">Fort York</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">11</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">1,962</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">1,067</span></div>
+          <div class="snap-row"><span class="k">Google reviews</span><span class="v">418 · 4.9★</span></div>
+        </div>
+        <div class="snap-card">
+          <div class="name">Waterview Dental</div>
+          <div class="neighbourhood">Harbourfront</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">11</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">1,469</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">515</span></div>
+          <div class="snap-row"><span class="k">Google reviews</span><span class="v">1,472 · 4.9★</span></div>
+        </div>
+        <div class="snap-card">
+          <div class="name">The Richmond Dental Centre</div>
+          <div class="neighbourhood">Corktown</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">11</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">983</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">430</span></div>
+          <div class="snap-row"><span class="k">Google reviews</span><span class="v">1,283 · 4.9★</span></div>
+        </div>
+        <div class="snap-card">
+          <div class="name">Cityview Dental</div>
+          <div class="neighbourhood">City Place</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">11</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">769</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">739</span></div>
+          <div class="snap-row"><span class="k">Google reviews</span><span class="v">1,201 · 4.8★</span></div>
+        </div>
+        <div class="snap-card green">
+          <div class="name">Kingsview Dental</div>
+          <div class="neighbourhood">Entertainment District</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">10</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">583</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">446</span></div>
+          <div class="snap-row"><span class="k">Google reviews</span><span class="v">710 · 4.8★</span></div>
+        </div>
+        <div class="snap-card">
+          <div class="name">Urbanview Dental</div>
+          <div class="neighbourhood">Hospital District</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">9</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">435</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">181</span></div>
+          <div class="snap-row"><span class="k">Google reviews</span><span class="v">386 · 4.9★</span></div>
+        </div>
+        <div class="snap-card">
+          <div class="name">Yorkview Dental</div>
+          <div class="neighbourhood">Bay Street Corridor</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">9</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">126</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">118</span></div>
+          <div class="snap-row"><span class="k">Google reviews</span><span class="v">135 · 4.7★</span></div>
+        </div>
+        <div class="snap-card blue">
+          <div class="name">View Dental Canada</div>
+          <div class="neighbourhood">Family / Parent brand</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">8</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">135</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">213</span></div>
+          <div class="snap-row"><span class="k">Google reviews</span><span class="v">— (no GBP)</span></div>
+        </div>
+      </div>
+
+      <div class="chart-wrap">
+        <div class="chart-caption">12-month organic traffic by clinic</div>
+        <canvas id="portfolioTraffic"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- GBP comparison -->
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Google Business Profile</div>
+      <div class="h2-divider"><span class="div-gold"></span><span class="div-green"></span><span class="div-teal"></span></div>
+      <h2>Reputation: ratings and reviews</h2>
+      <p class="section-text">Where organic data measures search visibility, Google Business Profile measures the public reputation each clinic carries. Below, the seven physical locations ranked by review volume.</p>
+
+      <div class="table-scroll"><table class="data-table">
+        <colgroup><col style="width:26%"><col style="width:22%"><col style="width:10%"><col style="width:12%"><col style="width:14%"><col style="width:16%"></colgroup>
+        <thead><tr><th>Clinic</th><th>Address</th><th>Rating</th><th>Reviews</th><th>Reviews / mo</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="kw"><strong>Waterview Dental</strong></td><td>218 Queen's Quay W</td><td class="center">4.9 ★</td><td class="center">1,472</td><td class="center">~29</td><td class="center"><span class="pill pill-leader">Leader</span></td></tr>
+          <tr><td class="kw"><strong>The Richmond Dental Centre</strong></td><td>294 Richmond St. East</td><td class="center">4.9 ★</td><td class="center">1,283</td><td class="center">~26</td><td class="center"><span class="pill pill-leader">Top tier</span></td></tr>
+          <tr><td class="kw"><strong>Cityview Dental</strong></td><td>355 Bremner Blvd.</td><td class="center">4.8 ★</td><td class="center">1,201</td><td class="center">~24</td><td class="center"><span class="pill pill-top3">Strong</span></td></tr>
+          <tr><td class="kw"><strong>Kingsview Dental</strong></td><td>339 King Street West</td><td class="center">4.8 ★</td><td class="center">710</td><td class="center">~24</td><td class="center"><span class="pill pill-top3">Strong pace</span></td></tr>
+          <tr><td class="kw"><strong>Parkview Dental</strong></td><td>600 Fleet Street</td><td class="center">4.9 ★</td><td class="center">418</td><td class="center">~8</td><td class="center"><span class="pill pill-top10">Under-indexed</span></td></tr>
+          <tr><td class="kw"><strong>Urbanview Dental</strong></td><td>700 Bay Street</td><td class="center">4.9 ★</td><td class="center">386</td><td class="center">~8</td><td class="center"><span class="pill pill-top10">Under-indexed</span></td></tr>
+          <tr><td class="kw"><strong>Yorkview Dental</strong></td><td>1107 Bay Street</td><td class="center">4.7 ★</td><td class="center">135</td><td class="center">~27</td><td class="center"><span class="pill pill-top3">New, scaling fast</span></td></tr>
+        </tbody>
+      </table></div>
+      <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 6px;">Ratings sourced from Google reviews via aggregator listings (Birdeye, Opencare, TrustAnalytica) as of May 2026.</p>
+
+    </div>
+  </section>
+
+  <!-- Priority Ranking -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Where attention is needed first</div>
+      <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-green"></span></div>
+      <h2>Priority ranking</h2>
+      <p class="section-text">Properties ordered by how much SEO attention they currently need — accounting for traffic gap vs portfolio average, brand control, link velocity, GBP review pace, and lifecycle stage.</p>
+
+      <div class="rank-card r1">
+        <div class="num">1</div>
+        <div>
+          <div class="priority-label">Highest priority — recover lost ground</div>
+          <h4>The Richmond Dental Centre</h4>
+          <div class="sub">Authority 11 · 983 visits/mo · down 66% from peak · 1,283 reviews ★ 4.9</div>
+          <p>Richmond is the clearest case of regression. Authority and reputation are still in place, but page-level rankings have eroded since the July 2024 peak. Keyword count has fallen from 761 to 430.</p>
+          <div class="verdict">The foundations are healthy, but the content layer that earned the long-tail rankings has aged. Over-performing on authority and review reputation, under-performing on content freshness.</div>
+        </div>
+      </div>
+
+      <div class="rank-card">
+        <div class="num">2</div>
+        <div>
+          <div class="priority-label">High priority — break the brand ceiling</div>
+          <h4>Urbanview Dental</h4>
+          <div class="sub">Authority 9 · 435 visits/mo · brand-dependent · 386 reviews ★ 4.9</div>
+          <p>Urbanview has had four years to build non-brand visibility and has not. Its keyword footprint is less than a fifth of Parkview's despite being the same age. Almost all traffic comes from people who already know the name. Review velocity is also among the lowest in the portfolio.</p>
+          <div class="verdict">Brand searches are healthy but flat. Without a discovery layer, the site cannot grow beyond the patient pool that already searches for it directly.</div>
+        </div>
+      </div>
+
+      <div class="rank-card">
+        <div class="num">3</div>
+        <div>
+          <div class="priority-label">Strategic priority — define the role</div>
+          <h4>View Dental Canada</h4>
+          <div class="sub">Authority 8 · 135 visits/mo · family/umbrella site</div>
+          <p>View Dental Canada has the lowest authority and smallest link profile, yet sits at the top of the brand hierarchy. It also ranks for sister-clinic brand terms, splitting visibility from the location pages it should be feeding.</p>
+          <div class="verdict">Is this a hub site that consolidates the brand, or a competitor to its own locations? The current configuration is doing some of each.</div>
+        </div>
+      </div>
+
+      <div class="rank-card">
+        <div class="num">4</div>
+        <div>
+          <div class="priority-label">Capture the review gap</div>
+          <h4>Parkview Dental</h4>
+          <div class="sub">Authority 11 · 1,962 visits/mo · 418 reviews ★ 4.9</div>
+          <p>Parkview is the #1 organic site in the portfolio but only #5 on GBP review count. The 4.9★ rating is intact — the gap is volume, not quality. The mechanism that converts patient visits into reviews appears weaker at Parkview than at Waterview or Richmond.</p>
+          <div class="verdict">Parkview wins search but is mid-pack on reputation. Closing the review gap would compound its already-strong organic position.</div>
+        </div>
+      </div>
+
+      <div class="rank-card">
+        <div class="num">5</div>
+        <div>
+          <div class="priority-label">High potential — continue the recovery</div>
+          <h4>Cityview Dental</h4>
+          <div class="sub">Authority 11 · 769 visits/mo · recovering · 1,201 reviews ★ 4.8</div>
+          <p>Cityview's traffic has more than doubled since the October 2025 trough. The keyword base (739) and authority are in place — recent months suggest the recovery is underway but has not yet returned to the mid-2025 peak of 1,832 visits.</p>
+          <div class="verdict">The clearest "trend up" story after Kingsview. The growth pattern needs continuity, not redirection.</div>
+        </div>
+      </div>
+
+      <div class="rank-card">
+        <div class="num">6</div>
+        <div>
+          <div class="priority-label">Medium priority — own the brand fully</div>
+          <h4>Waterview Dental</h4>
+          <div class="sub">Authority 11 · 1,469 visits/mo · 1,472 reviews ★ 4.9</div>
+          <p>Waterview is the second-strongest site on traffic, the strongest on reputation, and the only clinic ranking top 3 for "toronto dentist." Its one open issue is brand defence — "waterview dental" sits at #2, not #1.</p>
+          <div class="verdict">Waterview is performing. The asterisk is brand control on its highest-volume own-name query.</div>
+        </div>
+      </div>
+
+      <div class="rank-card">
+        <div class="num">7</div>
+        <div>
+          <div class="priority-label">Maintain &amp; nurture — newest site</div>
+          <h4>Yorkview Dental</h4>
+          <div class="sub">Authority 9 · 126 visits/mo · 5 months old · 135 reviews ★ 4.7</div>
+          <p>Yorkview is the youngest site in the portfolio. The trajectory is normal for a site that began ranking in December 2025 — brand searches are owned, most other rankings sit beyond position 30. Review velocity is excellent for the age.</p>
+          <div class="verdict">Too young to draw conclusions from. The next six months of trend data will be more useful than the current snapshot.</div>
+        </div>
+      </div>
+
+      <div class="rank-card r8">
+        <div class="num">8</div>
+        <div>
+          <div class="priority-label">Compound — protect the growth curve</div>
+          <h4>Kingsview Dental</h4>
+          <div class="sub">Authority 10 · 583 visits/mo · set new peak in March · 710 reviews ★ 4.8</div>
+          <p>Kingsview is the clearest momentum story in the portfolio. It set a new traffic peak in March 2026 — the only site to do so this year — and has compounded steadily since launch. Review pace is also strong.</p>
+          <div class="verdict">Kingsview's growth pattern is working. The risk is interrupting it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= PORTFOLIO-LEVEL ACTION PLAN ============= -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Portfolio-level issues</div>
+      <div class="h2-divider"><span class="div-teal"></span><span class="div-gold"></span><span class="div-navy"></span></div>
+      <h2>Issues observed across the portfolio</h2>
+      <p class="section-text">The three patterns that show up across every site in the portfolio — followed by site-specific issues. Each is described in plain English: what's happening, where it shows up, and why it matters.</p>
+
+      <div class="action-list">
+        <div class="action-item">
+          <div class="a-num">1</div>
+          <div class="a-body">
+            <h5>Thin content on treatment pages — every site</h5>
+            <p>Across all 8 properties, 50+ procedure pages are indexed but generate zero monthly visits. Implants, Invisalign, whitening, root canals, periodontist, veneers, TMJ — the URLs exist but lack content depth (description, process, cost ranges, photos). Patient demand exists; content does not. This is the single biggest portfolio-wide gap.</p>
+          </div>
+          <span class="a-pri immediate">Issue</span>
+        </div>
+        <div class="action-item">
+          <div class="a-num">2</div>
+          <div class="a-body">
+            <h5>No FAQs or AI-visibility optimization — every site</h5>
+            <p>FAQ pages exist on most clinic sites (View Dental Canada has 20 Q&amp;A pairs on its homepage, Parkview has 15 on /faqs, etc.) — but none are optimized for AI search engines. Google AI Overviews, ChatGPT, Perplexity, and Claude can't surface those answers. Zero FAQ blocks on the actual treatment pages where they would help patients convert.</p>
+          </div>
+          <span class="a-pri immediate">Issue</span>
+        </div>
+        <div class="action-item">
+          <div class="a-num">3</div>
+          <div class="a-body">
+            <h5>Treatment-page conversion layout needs rebuild — every site</h5>
+            <p>Treatment pages across the portfolio are missing conversion-driving elements: prominent "Book Online" CTA above the fold, before/after photo galleries, transparent cost ranges, FAQ accordion sections, and embedded patient testimonials. Cityview's Invisalign cost page is the only template close to working — replicate it portfolio-wide.</p>
+          </div>
+          <span class="a-pri immediate">Issue</span>
+        </div>
+        <div class="action-item">
+          <div class="a-num">4</div>
+          <div class="a-body">
+            <h5>Review velocity varies 3–4× across clinics of the same age</h5>
+            <p>Parkview (418) and Urbanview (386) trail Waterview (1,472) and Richmond (1,283) by 3–4× on Google review count despite identical site age. Seven similar clinics with similar patient volumes — review velocity shouldn't vary this widely. Review velocity is a local-pack ranking signal.</p>
+          </div>
+          <span class="a-pri high">Issue</span>
+        </div>
+        <div class="action-item">
+          <div class="a-num">5</div>
+          <div class="a-body">
+            <h5>Umbrella site cannibalizes sister-clinic brand searches</h5>
+            <p>viewdentalcanada.com currently ranks for "kingsview dental," "urbanview dental," and "yorkview dental" — splitting brand visibility three ways. When Google returns multiple owned sites for the same brand query, click distribution is diluted.</p>
+          </div>
+          <span class="a-pri high">Issue</span>
+        </div>
+        <div class="action-item">
+          <div class="a-num">6</div>
+          <div class="a-body">
+            <h5>Richmond Dental Centre lost 66% of organic traffic since July 2024</h5>
+            <p>Reputation and backlinks are intact (1,283 reviews, 725 backlinks) — but page-level rankings have decayed steadily over 21 months. Keyword count fell from 761 to 430. Content freshness decay relative to improving competitor pages.</p>
+          </div>
+          <span class="a-pri medium">Issue</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =========================================== -->
+<!-- ============= TAB: PARKVIEW =============== -->
+<!-- =========================================== -->
+<div class="tab-panel" id="panel-parkview" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Clinic 01 · The portfolio leader</div>
+      <h2>Parkview Dental</h2>
+      <div class="addr">600 Fleet Street, Unit 14 · Fort York · <a href="https://www.parkviewdentaltoronto.com/" target="_blank" rel="noopener">parkviewdentaltoronto.com</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-gold"></span><span class="div-teal"></span><span class="div-green"></span></div>
+      <h2>Strongest organic site, lagging on reviews</h2>
+      <p class="section-text">Parkview carries the highest keyword count (1,067) and highest monthly visits (1,962) of any clinic. Brand searches are fully captured; the open opportunity is review velocity — Parkview's GBP review count is 28% of Waterview's despite identical site age.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold">
+          <div class="kpi-num">11</div>
+          <div class="kpi-label">Authority Score</div>
+          <div class="kpi-sub">Semrush · CA</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">1,962</div>
+          <div class="kpi-label">Monthly Visits</div>
+          <div class="kpi-sub">Apr 2026 organic</div>
+        </div>
+        <div class="kpi-card green">
+          <div class="kpi-num">1,067</div>
+          <div class="kpi-label">Ranking Keywords</div>
+          <div class="kpi-sub">organic, Canada</div>
+        </div>
+        <div class="kpi-card blue">
+          <div class="kpi-num">418</div>
+          <div class="kpi-label">Google Reviews ★ 4.9</div>
+          <div class="kpi-sub">245 referring domains</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+      <div class="account-chip">
+        <span class="slug">parkviewdentaltoronto.com</span>
+        <span class="label">· Parkview Dental · Fort York</span>
+      </div>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Thin treatment content</div>
+          <h3>6 service pages at 0–4 monthly visits</h3>
+          <div class="visual">
+            <div class="f3-stat">6</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+          <p>Pages exist but lack content depth: <code>/procedures-1/whitening</code> (4 visits), <code>/invisalign</code> (2), <code>/implants</code> (0), <code>/root-canals</code> (0), <code>/x-ray-vision</code> (0), <code>/our-procedures</code> (0). Patient demand exists — content depth does not.</p>
+        </div>
+        <div class="focus-3 blue">
+          <div class="f3-eyebrow">Issue 02 — No FAQs or AI-visibility optimization</div>
+          <h3>FAQs exist but invisible to AI search</h3>
+          <div class="visual">
+            <div class="f3-stat">15</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--blue);">Q&amp;A pairs not surfaced</div>
+          <p>The <code>/faqs</code> page has 15 visible question/answer pairs covering new patient, anxiety, cleaning, insurance, and emergency topics — but they're not optimized for AI search engines (Google AI Overviews, ChatGPT, Perplexity). Zero FAQ blocks on treatment pages where they would help conversion.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Treatment-page conversion layout</div>
+          <h3>Missing CTAs, gallery, cost ranges, testimonials</h3>
+          <div class="visual">
+            <div class="f3-stat">5</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">layout elements missing</div>
+          <p>Treatment pages need: a prominent "Book Online" CTA above the fold, before/after photo galleries, transparent cost ranges, FAQ accordion sections, and embedded patient testimonials. Current layout limits conversion rate from organic traffic.</p>
+        </div>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+      <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · Parkview Dental</h2>
+      <div class="keyfinding-list">
+        <div class="kf-card purple">
+          <div class="kf-icon">●</div>
+          <div>
+            <h5>Homepage carries 73% of organic traffic</h5>
+            <p>301 keywords route to the homepage; the next-highest page (blog/quit-that-ice-chewing-habit) drives only 10% of total traffic. Heavy reliance on a single entry point.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Blog content over-indexed vs service pages</h5>
+            <p>Informational blog content drives ~21% of traffic; service pages drive only 4%. Patient-acquisition keywords like "veneers toronto," "dental emergencies," and "Invisalign" need stronger on-page work and internal links to convert authority into commercial traffic.</p>
+          </div>
+        </div>
+        <div class="kf-card red">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>5 Squarespace placeholder URLs indexed</h5>
+            <p>URLs containing "blog-post-title-one-..." are default Squarespace template paths that have been indexed by Google. These need to be removed, noindex'd, or redirected to relevant destinations.</p>
+          </div>
+        </div>
+        <div class="kf-card blue">
+          <div class="kf-icon">↓</div>
+          <div>
+            <h5>Service-page internal-link density is weak</h5>
+            <p>The /procedures-1/ pages receive few internal links from blog content or the homepage. Internal links are how authority flows through a site — weak link density limits how Google distributes ranking signals to service pages.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Google Business Profile</div>
+      <h2 style="font-size: 28px;">Reputation · Parkview Dental</h2>
+      <div class="gbp-card">
+        <div class="star-block">
+          <div class="star-rating">4.9</div>
+          <div class="stars">★★★★★</div>
+          <div class="review-count">418 reviews</div>
+        </div>
+        <div class="gbp-meta">
+          <div class="gbp-row"><div class="label">Address</div><div class="value">600 Fleet Street, Unit 14</div></div>
+          <div class="gbp-row"><div class="label">Phone</div><div class="value">416-640-0484</div></div>
+          <div class="gbp-row"><div class="label">Hours</div><div class="value">Mon–Fri 8a–8p · Sat 8a–2p</div></div>
+          <div class="gbp-row"><div class="label">Reviews / month</div><div class="value">~8 <span style="color: var(--red); font-size: 12px;">(below portfolio avg of 24)</span></div></div>
+          <div class="gbp-row"><div class="label">Neighborhood</div><div class="value">Fort York</div></div>
+          <div class="gbp-row"><div class="label">Portfolio GBP rank</div><div class="value">#5 of 7 by review count</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Treatment pages · Technical audit</div>
+      <h2>30 Indexed Pages on Parkview Dental</h2>
+      <div class="triage-counters">
+        <div class="triage-counter purple">
+          <div class="num">14</div>
+          <div class="triage-label">Evaluate &amp; Rework</div>
+          <small style="font-size: 11px; color: var(--text-muted);">service pages with 0–5 visits</small>
+        </div>
+        <div class="triage-counter red">
+          <div class="num">5</div>
+          <div class="triage-label">Remove (Placeholders)</div>
+          <small style="font-size: 11px; color: var(--text-muted);">Squarespace template URLs</small>
+        </div>
+        <div class="triage-counter green">
+          <div class="num">11</div>
+          <div class="triage-label">Working as expected</div>
+          <small style="font-size: 11px; color: var(--text-muted);">homepage + active blog posts</small>
+        </div>
+      </div>
+
+      <div class="table-scroll"><table class="pages-table">
+        <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+        <tbody>
+          <tr><td class="url">/ (homepage)</td><td>1,412</td></tr>
+          <tr><td class="url">/blog/quit-that-ice-chewing-habit</td><td>197</td></tr>
+          <tr><td class="url">/blog/the-anatomy-of-human-teeth</td><td>103</td></tr>
+          <tr><td class="url">/blog/dry-chapped-cracked-lips</td><td>79</td></tr>
+          <tr><td class="url">/procedures-1/dental-emergencies</td><td>45</td></tr>
+          <tr><td class="url">/procedures-1/veneers-and-bondings-the-cosmetic-stuff</td><td>26</td></tr>
+          <tr><td class="url">/about-us</td><td>19</td></tr>
+          <tr><td class="url">/procedures-1/whitening</td><td>4</td></tr>
+          <tr><td class="url">/procedures-1/invisalign</td><td>2</td></tr>
+          <tr><td class="url">/procedures-1/root-canals</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/implants</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/x-ray-vision</td><td>0</td></tr>
+          <tr><td class="url">/our-procedures</td><td>0</td></tr>
+          <tr><td class="url">/dental-locations</td><td>0</td></tr>
+          <tr><td class="url">/faqs</td><td>0</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-... <span class="url-flag">PLACEHOLDER</span></td><td>0</td></tr>
+          <tr class="flag-row"><td class="url wrong">/reviews/Blog%20Post%20Title%20One-... <span class="url-flag">PLACEHOLDER</span></td><td>0</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-...f6yjc-tcfxz <span class="url-flag">PLACEHOLDER</span></td><td>0</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-...s22y3 <span class="url-flag">PLACEHOLDER</span></td><td>0</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="critical-callout">
+        <strong>Critical issue:</strong> 4 Squarespace placeholder URLs are indexed. These dilute crawl budget and can rank for unintended queries. Recommended action: rename, redirect, or noindex.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+      <h2>Technical Issues</h2>
+      <p class="section-text">Site-level technical SEO health check. Counts derived from a sample crawl of the indexed page set and on-page audit of high-traffic URLs.</p>
+
+      <div class="tech-issues-grid">
+        <div class="tech-issue-card">
+          <div class="tech-num">8</div>
+          <div>
+            <h5>Slow Mobile Load Speed (over 4 seconds)</h5>
+            <p>Treatment pages with large unoptimized hero images. Each second of mobile load delay adds to bounce rate and lost appointment requests.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card gold">
+          <div class="tech-num">6</div>
+          <div>
+            <h5>Missing Meta Descriptions</h5>
+            <p>Service pages without unique meta descriptions. Google auto-generates these, often poorly, reducing click-through rate from search results.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card green">
+          <div class="tech-num">25</div>
+          <div>
+            <h5>Pages Indexed (Healthy)</h5>
+            <p>Key pages are crawlable and indexed by Google. The architecture is solid — content optimization is the gap, not technical access.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-callout">
+        <strong>Mobile load-speed issues flagged on</strong> <code>/procedures-1/veneers-and-bondings</code> and <code>/procedures-1/dental-emergencies</code> — both are HIGH-opportunity pages. Speed fixes here unlock measurable ranking gains.
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- =========================================== -->
+<!-- ============= TAB: WATERVIEW ============== -->
+<!-- =========================================== -->
+<div class="tab-panel" id="panel-waterview" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Clinic 02 · The reputation leader</div>
+      <h2>Waterview Dental</h2>
+      <div class="addr">218 Queen's Quay West · Harbourfront · <a href="https://waterviewdentaltoronto.com/" target="_blank" rel="noopener">waterviewdentaltoronto.com</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-teal"></span><span class="div-gold"></span><span class="div-green"></span></div>
+      <h2>Highest reviews, best generic visibility</h2>
+      <p class="section-text">Waterview is the portfolio's reputation leader — 1,472 Google reviews at 4.9★, more than any sister clinic. It owns its brand searches and ranks #3 for the generic "toronto dentist" (720/mo), the only clinic in the portfolio to break into the top 3 on that query.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold">
+          <div class="kpi-num">11</div>
+          <div class="kpi-label">Authority Score</div>
+          <div class="kpi-sub">Semrush · CA</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">1,469</div>
+          <div class="kpi-label">Monthly Visits</div>
+          <div class="kpi-sub">Apr 2026 organic</div>
+        </div>
+        <div class="kpi-card green">
+          <div class="kpi-num">515</div>
+          <div class="kpi-label">Ranking Keywords</div>
+          <div class="kpi-sub">organic, Canada</div>
+        </div>
+        <div class="kpi-card blue">
+          <div class="kpi-num">1,472</div>
+          <div class="kpi-label">Google Reviews ★ 4.9</div>
+          <div class="kpi-sub">269 referring domains</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+      <div class="account-chip">
+        <span class="slug">waterviewdentaltoronto.com</span>
+        <span class="label">· Waterview Dental · Harbourfront</span>
+      </div>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Thin treatment content</div>
+          <h3>5+ procedure pages at 0 monthly visits</h3>
+          <div class="visual">
+            <div class="f3-stat">5+</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+          <p>Indexed but empty: <code>/procedures-1/veneers-and-bondings</code>, <code>/dental-emergencies</code>, <code>/crowns-and-bridges</code>, <code>/primary-baby-teeth-exams</code>, <code>/facility</code>. The Invisalign page is the only service page generating meaningful traffic — every other procedure page is dormant.</p>
+        </div>
+        <div class="focus-3 blue">
+          <div class="f3-eyebrow">Issue 02 — No FAQs or AI-visibility optimization</div>
+          <h3>1,472 reviews not surfacing in AI search</h3>
+          <div class="visual">
+            <div class="f3-stat">0</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--blue);">FAQ blocks on treatment pages</div>
+          <p>The /faqs page has Q&amp;A content but isn't optimized for AI search engines. The portfolio's reputation leader (1,472 reviews at 4.9★) has no on-page mechanism that surfaces its review signal to Google AI Overviews, ChatGPT, or Perplexity. Zero FAQ sections on treatment pages where they would convert.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Treatment-page conversion layout</div>
+          <h3>Missing CTAs, gallery, cost ranges, testimonials</h3>
+          <div class="visual">
+            <div class="f3-stat">5</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">layout elements missing</div>
+          <p>Treatment pages need: a prominent "Book Online" CTA above the fold, before/after photo galleries, transparent cost ranges, FAQ accordion sections, and embedded patient testimonials. Current layout limits conversion rate from organic traffic.</p>
+        </div>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+      <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · Waterview Dental</h2>
+      <div class="keyfinding-list">
+        <div class="kf-card purple">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Sister-clinic brand competition on top keywords</h5>
+            <p>Other View Dental sites rank for "waterview" brand variants (e.g. Cityview at position 4 for "waterview family dental clinic"). Internal-link and content audits needed to reduce cross-brand cannibalization.</p>
+          </div>
+        </div>
+        <div class="kf-card red">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>www vs non-www split</h5>
+            <p>Both <code>https://waterviewdentaltoronto.com/</code> (997 visits) and <code>https://www.waterviewdentaltoronto.com/</code> (34 visits) are indexed. Authority is split across two homepage URLs.</p>
+          </div>
+        </div>
+        <div class="kf-card blue">
+          <div class="kf-icon">↓</div>
+          <div>
+            <h5>Service-page URL structure dated</h5>
+            <p>The <code>/procedures-1/</code> URL pattern is non-descriptive and dated. Cleaner descriptive URLs (e.g. <code>/services/invisalign-toronto</code>) would carry stronger semantic signals to Google and patients.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Cosmetic content gap vs portfolio</h5>
+            <p>No service page is ranking for veneers or whitening despite demand in Toronto. Service-page content development needed for cosmetic dentistry queries.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Google Business Profile</div>
+      <h2 style="font-size: 28px;">Reputation · Waterview Dental</h2>
+      <div class="gbp-card">
+        <div class="star-block">
+          <div class="star-rating">4.9</div>
+          <div class="stars">★★★★★</div>
+          <div class="review-count">1,472 reviews</div>
+        </div>
+        <div class="gbp-meta">
+          <div class="gbp-row"><div class="label">Address</div><div class="value">218 Queen's Quay West</div></div>
+          <div class="gbp-row"><div class="label">Hours</div><div class="value">Mon–Fri 8a–8p · Sat 8a–2p</div></div>
+          <div class="gbp-row"><div class="label">Reviews / month</div><div class="value">~29 <span style="color: var(--green); font-size: 12px;">(portfolio leader)</span></div></div>
+          <div class="gbp-row"><div class="label">Neighborhood</div><div class="value">Harbourfront</div></div>
+          <div class="gbp-row"><div class="label">Portfolio GBP rank</div><div class="value">#1 of 7 by reviews</div></div>
+          <div class="gbp-row"><div class="label">Catchment</div><div class="value">Harbourfront + Financial District</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Treatment pages · Technical audit</div>
+      <h2>29 Indexed Pages on Waterview Dental</h2>
+      <div class="triage-counters">
+        <div class="triage-counter purple">
+          <div class="num">11</div>
+          <div class="triage-label">Evaluate &amp; Rework</div>
+          <small style="font-size: 11px; color: var(--text-muted);">service pages with 0–5 visits</small>
+        </div>
+        <div class="triage-counter red">
+          <div class="num">3</div>
+          <div class="triage-label">Remove (Duplicates / Placeholders)</div>
+          <small style="font-size: 11px; color: var(--text-muted);">www split + Squarespace defaults</small>
+        </div>
+        <div class="triage-counter green">
+          <div class="num">15</div>
+          <div class="triage-label">Working as expected</div>
+          <small style="font-size: 11px; color: var(--text-muted);">homepage + active blog</small>
+        </div>
+      </div>
+
+      <div class="table-scroll"><table class="pages-table">
+        <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+        <tbody>
+          <tr><td class="url">/ (homepage)</td><td>997</td></tr>
+          <tr><td class="url">/blog/dry-chapped-cracked-lips</td><td>113</td></tr>
+          <tr><td class="url">/blog/canker-sores-triggers-and-remedies</td><td>37</td></tr>
+          <tr><td class="url">/blog/quit-that-ice-chewing-habit</td><td>36</td></tr>
+          <tr><td class="url">/blog/warning-signs-of-impacted-wisdom-teeth</td><td>36</td></tr>
+          <tr class="flag-row"><td class="url wrong">www.waterviewdentaltoronto.com/ <span class="url-flag">DUPLICATE</span></td><td>34</td></tr>
+          <tr><td class="url">/blog/smoking-versus-teeth</td><td>32</td></tr>
+          <tr><td class="url">/blog/night-guards-for-teeth-grinding</td><td>30</td></tr>
+          <tr><td class="url">/blog/first-dental-visit</td><td>24</td></tr>
+          <tr><td class="url">/procedures-1/invisalign</td><td>12</td></tr>
+          <tr><td class="url">/our-procedures</td><td>11</td></tr>
+          <tr><td class="url">/procedures-1/on-site-oral-surgery-wisdom-teeth-extractions</td><td>9</td></tr>
+          <tr><td class="url">/procedures-1/tmj-pain-treatment</td><td>2</td></tr>
+          <tr><td class="url">/procedures-1/veneers-and-bondings-the-cosmetic-stuff</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/dental-emergencies</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/crowns-and-bridges</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/primary-baby-teeth-exams</td><td>0</td></tr>
+          <tr><td class="url">/dental-locations</td><td>0</td></tr>
+          <tr><td class="url">/facility</td><td>0</td></tr>
+          <tr><td class="url">/faqs</td><td>0</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-... <span class="url-flag">PLACEHOLDER</span></td><td>1</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-...8payw <span class="url-flag">PLACEHOLDER</span></td><td>0</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="critical-callout">
+        <strong>Critical issue:</strong> www and non-www homepages both indexed — splitting authority between two URLs. Recommended: redirect www to the preferred URL, consolidate signals.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+      <h2>Technical Issues</h2>
+      <p class="section-text">Site-level technical SEO health check. Counts derived from a sample crawl of the indexed page set and on-page audit of high-traffic URLs.</p>
+
+      <div class="tech-issues-grid">
+        <div class="tech-issue-card">
+          <div class="tech-num">10</div>
+          <div>
+            <h5>Slow Mobile Load Speed (over 4 seconds)</h5>
+            <p>Harbourfront homepage and procedure pages with large hero images. Mobile load delays compound the www/non-www indexing split.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card gold">
+          <div class="tech-num">8</div>
+          <div>
+            <h5>Missing Meta Descriptions</h5>
+            <p>Multiple service pages without unique meta descriptions. Google auto-generates these, often poorly, reducing CTR.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card green">
+          <div class="tech-num">24</div>
+          <div>
+            <h5>Pages Indexed (Healthy)</h5>
+            <p>Most pages crawlable and indexed — but with 1 www-duplicate and 2 placeholders, the indexed set should be cleaner.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-callout">
+        <strong>Mobile load-speed issues flagged on</strong> <code>/procedures-1/invisalign</code> and <code>/procedures-1/on-site-oral-surgery-wisdom-teeth-extractions</code> — both are commercial-intent pages. Speed fixes here unlock measurable ranking gains.
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- =========================================== -->
+<!-- ============= TAB: RICHMOND =============== -->
+<!-- =========================================== -->
+<div class="tab-panel" id="panel-richmond" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Clinic 03 · Lost momentum to defend</div>
+      <h2>The Richmond Dental Centre</h2>
+      <div class="addr">294 Richmond St. East · Corktown / Distillery · <a href="https://www.therichmonddentalcentre.com/" target="_blank" rel="noopener">therichmonddentalcentre.com</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-teal"></span></div>
+      <h2>Strong reputation, organic traffic regressing</h2>
+      <p class="section-text">The Richmond peaked in summer 2024 at ~2,860 monthly visits and has since drifted down to about 983 — roughly a third of its high-water mark. Brand searches remain locked at #1, and the GBP reputation has stayed strong (1,283 reviews at 4.9★), but the broader long-tail keyword footprint has thinned considerably.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold">
+          <div class="kpi-num">11</div>
+          <div class="kpi-label">Authority Score</div>
+          <div class="kpi-sub">Semrush · CA</div>
+        </div>
+        <div class="kpi-card red">
+          <div class="kpi-num">983</div>
+          <div class="kpi-label">Monthly Visits</div>
+          <div class="kpi-sub">Apr 2026 · down 66%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">430</div>
+          <div class="kpi-label">Ranking Keywords</div>
+          <div class="kpi-sub">was 761 in Aug 2024</div>
+        </div>
+        <div class="kpi-card blue">
+          <div class="kpi-num">1,283</div>
+          <div class="kpi-label">Google Reviews ★ 4.9</div>
+          <div class="kpi-sub">222 referring domains</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+      <div class="account-chip">
+        <span class="slug">therichmonddentalcentre.com</span>
+        <span class="label">· The Richmond Dental Centre · Corktown</span>
+      </div>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Thin treatment content</div>
+          <h3>EVERY service page at zero traffic</h3>
+          <div class="visual">
+            <div class="f3-stat">8</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">procedure pages dormant</div>
+          <p>Most stark case in the portfolio: <code>/procedures-1/implants</code>, <code>/invisalign</code>, <code>/whitening</code>, <code>/oral-cancer-screening</code>, <code>/x-ray-vision</code>, <code>/periodontist</code>, <code>/veneers-and-bondings</code>, <code>/dental-emergencies</code> — all 8 procedure pages generate zero visits despite strong authority and 725 backlinks behind the site.</p>
+        </div>
+        <div class="focus-3 blue">
+          <div class="f3-eyebrow">Issue 02 — No FAQs or AI-visibility optimization</div>
+          <h3>1,283 reviews not surfacing in AI search</h3>
+          <div class="visual">
+            <div class="f3-stat">0</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--blue);">FAQ blocks on treatment pages</div>
+          <p>The /faqs page has Q&amp;A content but isn't optimized for AI search engines. Despite 1,283 reviews at 4.9★ and the strongest backlink count in the portfolio, the site doesn't appear in Google AI Overviews, ChatGPT, or Perplexity dental responses. Latent authority isn't being read.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Treatment-page conversion layout</div>
+          <h3>Service pages are essentially empty placeholders</h3>
+          <div class="visual">
+            <div class="f3-stat">5</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">layout elements missing</div>
+          <p>Service pages have minimal content. Needed: a prominent "Book Online" CTA above the fold, before/after photo galleries, transparent cost ranges, FAQ accordion sections, and patient testimonials. Full content rebuild rather than refresh.</p>
+        </div>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+      <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · The Richmond Dental Centre</h2>
+      <div class="keyfinding-list">
+        <div class="kf-card red">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>86% of traffic is homepage-only</h5>
+            <p>Almost no service or blog pages drive meaningful traffic. The site is essentially a single-page property at this point, which makes the homepage's dominance fragile.</p>
+          </div>
+        </div>
+        <div class="kf-card purple">
+          <div class="kf-icon">●</div>
+          <div>
+            <h5>"Richmond" SERP competition is BC/Hill</h5>
+            <p>Many SERP competitors for "richmond dental" terms are practices in Richmond, BC and Richmond Hill, ON — not local Toronto-Corktown competitors. Geographic disambiguation in content would reduce noise.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">↓</div>
+          <div>
+            <h5>Service pages all at zero traffic</h5>
+            <p>Implants, invisalign, whitening, periodontist, oral-cancer-screening, veneers — all indexed but generating zero monthly visits. The procedure-page tier is dormant.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Google Business Profile</div>
+      <h2 style="font-size: 28px;">Reputation · The Richmond Dental Centre</h2>
+      <div class="gbp-card">
+        <div class="star-block">
+          <div class="star-rating">4.9</div>
+          <div class="stars">★★★★★</div>
+          <div class="review-count">1,283 reviews</div>
+        </div>
+        <div class="gbp-meta">
+          <div class="gbp-row"><div class="label">Address</div><div class="value">294 Richmond St. East, #101</div></div>
+          <div class="gbp-row"><div class="label">Postal</div><div class="value">M5A 1P5</div></div>
+          <div class="gbp-row"><div class="label">Reviews / month</div><div class="value">~26 <span style="color: var(--green); font-size: 12px;">(top-tier pace)</span></div></div>
+          <div class="gbp-row"><div class="label">Award</div><div class="value">Opencare Patient's Choice 2022</div></div>
+          <div class="gbp-row"><div class="label">Neighborhood</div><div class="value">Corktown / Distillery</div></div>
+          <div class="gbp-row"><div class="label">Portfolio GBP rank</div><div class="value">#2 of 7 by reviews</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Treatment pages · Technical audit</div>
+      <h2>23 Indexed Pages on The Richmond Dental Centre</h2>
+      <div class="triage-counters">
+        <div class="triage-counter purple">
+          <div class="num">14</div>
+          <div class="triage-label">Evaluate &amp; Rework</div>
+          <small style="font-size: 11px; color: var(--text-muted);">service pages with 0 visits</small>
+        </div>
+        <div class="triage-counter red">
+          <div class="num">1</div>
+          <div class="triage-label">Remove (Placeholder)</div>
+          <small style="font-size: 11px; color: var(--text-muted);">Squarespace default URL</small>
+        </div>
+        <div class="triage-counter green">
+          <div class="num">8</div>
+          <div class="triage-label">Working as expected</div>
+          <small style="font-size: 11px; color: var(--text-muted);">homepage + reviews</small>
+        </div>
+      </div>
+
+      <div class="table-scroll"><table class="pages-table">
+        <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+        <tbody>
+          <tr><td class="url">/ (homepage)</td><td>856</td></tr>
+          <tr><td class="url">/dental-reviews</td><td>107</td></tr>
+          <tr><td class="url">/reviews</td><td>10</td></tr>
+          <tr><td class="url">/staff</td><td>9</td></tr>
+          <tr><td class="url">/blog/the-anatomy-of-human-teeth</td><td>5</td></tr>
+          <tr class="flag-row"><td class="url wrong">/reviews/Blog%20Post%20Title%20One-... <span class="url-flag">PLACEHOLDER</span></td><td>4</td></tr>
+          <tr><td class="url">/procedures-1/dental-emergencies</td><td>2</td></tr>
+          <tr><td class="url">/blog/quit-that-ice-chewing-habit</td><td>1</td></tr>
+          <tr><td class="url">/procedures-1/invisalign</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/implants</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/whitening</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/oral-cancer-screening</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/x-ray-vision</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/periodontist</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/veneers-and-bondings-the-cosmetic-stuff</td><td>0</td></tr>
+          <tr><td class="url">/blog/dry-chapped-cracked-lips</td><td>0</td></tr>
+          <tr><td class="url">/blog/the-benefits-of-brushing-with-an-electric-toothbrush</td><td>0</td></tr>
+          <tr><td class="url">/blog/smoking-and-vaping-versus-dental-health</td><td>0</td></tr>
+          <tr><td class="url">/our-procedures</td><td>0</td></tr>
+          <tr><td class="url">/facility</td><td>0</td></tr>
+          <tr><td class="url">/faqs</td><td>0</td></tr>
+          <tr><td class="url">/cancellation-policy</td><td>0</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="critical-callout">
+        <strong>Critical issue:</strong> Every service page is at zero visits. The site has 1,283 reviews and Authority 11 — patient demand and link equity exist, but the content layer to capture it has decayed. Content refresh is the highest-leverage move.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+      <h2>Technical Issues</h2>
+      <p class="section-text">Site-level technical SEO health check. Counts derived from a sample crawl of the indexed page set and on-page audit of high-traffic URLs.</p>
+
+      <div class="tech-issues-grid">
+        <div class="tech-issue-card">
+          <div class="tech-num">12</div>
+          <div>
+            <h5>Slow Mobile Load Speed (over 4 seconds)</h5>
+            <p>Older Squarespace template with heavier hero imagery. Mobile load delay compounds the 66% traffic decline since 2024.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card gold">
+          <div class="tech-num">10</div>
+          <div>
+            <h5>Missing Meta Descriptions</h5>
+            <p>Service pages without unique meta descriptions. CTR suffers from auto-generated snippets — direct contributor to keyword decay.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card green">
+          <div class="tech-num">18</div>
+          <div>
+            <h5>Pages Indexed (Healthy)</h5>
+            <p>Pages indexed but content has staled — content freshness, not technical access, is the gap. Recovery path runs through content not crawlability.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-callout">
+        <strong>Mobile load-speed issues flagged on</strong> <code>/procedures-1/dental-emergencies</code> and <code>/staff</code> (a 62-keyword page) — both contribute to the long-tail decline. Speed fixes here are recovery-path critical.
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- =========================================== -->
+<!-- ============= TAB: CITYVIEW =============== -->
+<!-- =========================================== -->
+<div class="tab-panel" id="panel-cityview" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Clinic 04 · Wide reach, recovering</div>
+      <h2>Cityview Dental</h2>
+      <div class="addr">355 Bremner Blvd · City Place · <a href="https://cityviewdentaltoronto.com/" target="_blank" rel="noopener">cityviewdentaltoronto.com</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-teal"></span><span class="div-gold"></span><span class="div-green"></span></div>
+      <h2>The Invisalign specialist of the portfolio</h2>
+      <p class="section-text">Cityview ranks for 739 keywords — second only to Parkview — and owns the Invisalign category in Toronto. The site is recovering from a 2025 dip: traffic was 322 visits in October 2025 and has rebuilt to 879 by March 2026. Reputation is strong at 1,201 Google reviews.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold">
+          <div class="kpi-num">11</div>
+          <div class="kpi-label">Authority Score</div>
+          <div class="kpi-sub">Semrush · CA</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">769</div>
+          <div class="kpi-label">Monthly Visits</div>
+          <div class="kpi-sub">Apr 2026 organic</div>
+        </div>
+        <div class="kpi-card green">
+          <div class="kpi-num">739</div>
+          <div class="kpi-label">Ranking Keywords</div>
+          <div class="kpi-sub">2nd in portfolio</div>
+        </div>
+        <div class="kpi-card blue">
+          <div class="kpi-num">1,201</div>
+          <div class="kpi-label">Google Reviews ★ 4.8</div>
+          <div class="kpi-sub">173 referring domains</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+      <div class="account-chip">
+        <span class="slug">cityviewdentaltoronto.com</span>
+        <span class="label">· Cityview Dental · City Place</span>
+      </div>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Thin treatment content</div>
+          <h3>13+ city-suffix pages at zero traffic</h3>
+          <div class="visual">
+            <div class="f3-stat">13+</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+          <p>URL structure is SEO-friendly: <code>/teeth-whitening-toronto</code>, <code>/dental-implants-toronto</code>, <code>/root-canal-treatment-toronto</code>, <code>/oral-cancer-screening-toronto</code>, etc. — the foundation is right. Content depth and internal linking are what's missing. The Invisalign page is the only service page generating real traffic.</p>
+        </div>
+        <div class="focus-3 blue">
+          <div class="f3-eyebrow">Issue 02 — No FAQs or AI-visibility optimization</div>
+          <h3>Invisalign asset not surfacing in AI search</h3>
+          <div class="visual">
+            <div class="f3-stat">0</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--blue);">FAQ blocks on key pages</div>
+          <p>The /faqs page has Q&amp;A content but isn't optimized for AI search engines. Worse, the Invisalign cost page — which drives 14% of organic traffic and ranks for 5 queries — has zero FAQ blocks of its own. AI engines like Google AI Overviews surface Invisalign cost answers all day; Cityview isn't being cited as the source.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Treatment-page conversion layout</div>
+          <h3>Invisalign template ready to replicate</h3>
+          <div class="visual">
+            <div class="f3-stat">5</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">layout elements missing</div>
+          <p>The Invisalign cost page is the portfolio's highest-converting service template — case studies, cost transparency, internal linking are working. Replicate that exact layout (CTA above fold, before/after gallery, cost ranges, FAQ accordion, testimonials) across the 13 dormant city-suffix service pages.</p>
+        </div>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+      <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · Cityview Dental</h2>
+      <div class="keyfinding-list">
+        <div class="kf-card purple">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Service pages with city suffix not ranking</h5>
+            <p>Despite having SEO-friendly URLs like <code>/teeth-whitening-toronto</code> and <code>/dental-implants-toronto</code>, most service pages generate zero traffic. Content depth and internal linking are the missing pieces.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Keyword footprint exceeds traffic level</h5>
+            <p>739 ranking keywords but only 769 monthly visits — many rankings sit at lower positions (page 2+) waiting for on-page work to push them into clickable range. Indicates deep keyword inventory underperforming on conversion.</p>
+          </div>
+        </div>
+        <div class="kf-card red">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>1,201 reviews at 4.8★ — below portfolio average</h5>
+            <p>Strong volume, but 4.8 instead of 4.9 keeps Cityview below the portfolio reputation average. Review-quality work (response + post-visit acquisition tuning) needed to close the 0.1-point gap.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Google Business Profile</div>
+      <h2 style="font-size: 28px;">Reputation · Cityview Dental</h2>
+      <div class="gbp-card">
+        <div class="star-block">
+          <div class="star-rating">4.8</div>
+          <div class="stars">★★★★★</div>
+          <div class="review-count">1,201 reviews</div>
+        </div>
+        <div class="gbp-meta">
+          <div class="gbp-row"><div class="label">Address</div><div class="value">355 Bremner Blvd.</div></div>
+          <div class="gbp-row"><div class="label">Postal</div><div class="value">M5V 3V4</div></div>
+          <div class="gbp-row"><div class="label">Phone</div><div class="value">416-883-0070</div></div>
+          <div class="gbp-row"><div class="label">Reviews / month</div><div class="value">~24</div></div>
+          <div class="gbp-row"><div class="label">Neighborhood</div><div class="value">City Place</div></div>
+          <div class="gbp-row"><div class="label">Portfolio GBP rank</div><div class="value">#3 of 7 by reviews</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Treatment pages · Technical audit</div>
+      <h2>30 Indexed Pages on Cityview Dental</h2>
+      <div class="triage-counters">
+        <div class="triage-counter purple">
+          <div class="num">17</div>
+          <div class="triage-label">Evaluate &amp; Rework</div>
+          <small style="font-size: 11px; color: var(--text-muted);">service pages with 0 visits</small>
+        </div>
+        <div class="triage-counter red">
+          <div class="num">1</div>
+          <div class="triage-label">Remove (Placeholder)</div>
+          <small style="font-size: 11px; color: var(--text-muted);">Squarespace default URL</small>
+        </div>
+        <div class="triage-counter green">
+          <div class="num">12</div>
+          <div class="triage-label">Working as expected</div>
+          <small style="font-size: 11px; color: var(--text-muted);">homepage + Invisalign + blog</small>
+        </div>
+      </div>
+
+      <div class="table-scroll"><table class="pages-table">
+        <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+        <tbody>
+          <tr><td class="url">/ (homepage)</td><td>320</td></tr>
+          <tr><td class="url">/blog/dry-chapped-cracked-lips</td><td>122</td></tr>
+          <tr><td class="url">/dental-reviews</td><td>107</td></tr>
+          <tr><td class="url"><strong>/procedures-1/invisalign-cost-toronto</strong></td><td>103</td></tr>
+          <tr><td class="url">/blog/the-anatomy-of-human-teeth</td><td>25</td></tr>
+          <tr><td class="url">/blog/finding-the-right-dental-clinic-in-toronto-...</td><td>19</td></tr>
+          <tr><td class="url">/procedures-1/periodontist-gum-disease-treatment-toronto</td><td>18</td></tr>
+          <tr><td class="url">/blog/10-proven-ways-to-improve-your-oral-health</td><td>7</td></tr>
+          <tr><td class="url">/blog/smoking-versus-teeth</td><td>5</td></tr>
+          <tr><td class="url">/blog/avoid-these-canker-sore-triggers</td><td>4</td></tr>
+          <tr><td class="url">/procedures-1/dental-x-rays-toronto</td><td>3</td></tr>
+          <tr><td class="url">/procedures-1/teeth-whitening-toronto</td><td>3</td></tr>
+          <tr><td class="url">/staff</td><td>2</td></tr>
+          <tr><td class="url">/procedures-1/veneers-bondings-cosmetic-dentistry-toronto</td><td>1</td></tr>
+          <tr><td class="url">/procedures-1/dental-implants-toronto</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/root-canal-treatment-toronto</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/pediatric-dentistry-baby-teeth-toronto</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/oral-cancer-screening-toronto</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/oral-surgery-wisdom-teeth-extraction-toronto</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/teeth-care-tips-toronto</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/comprehensive-dental-treatment-plans-toronto</td><td>0</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-... <span class="url-flag">PLACEHOLDER</span></td><td>0</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="critical-callout">
+        <strong>Critical issue:</strong> Cityview is the only clinic with city-specific service URLs (e.g. <code>/teeth-whitening-toronto</code>) — but most aren't ranking. The URL structure is right; the content depth and internal-linking are the gap.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+      <h2>Technical Issues</h2>
+      <p class="section-text">Site-level technical SEO health check. Counts derived from a sample crawl of the indexed page set and on-page audit of high-traffic URLs.</p>
+
+      <div class="tech-issues-grid">
+        <div class="tech-issue-card">
+          <div class="tech-num">9</div>
+          <div>
+            <h5>Slow Mobile Load Speed (over 4 seconds)</h5>
+            <p>City-suffix service pages with unoptimized imagery. Mobile load delays cap the conversion rate from organic traffic.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card gold">
+          <div class="tech-num">12</div>
+          <div>
+            <h5>Missing Meta Descriptions</h5>
+            <p>Highest count in the portfolio. Many city-specific URLs (<code>/teeth-whitening-toronto</code>, <code>/dental-implants-toronto</code>) lack unique meta descriptions.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card green">
+          <div class="tech-num">25</div>
+          <div>
+            <h5>Pages Indexed (Healthy)</h5>
+            <p>Architecture is sound — descriptive URLs and clean indexing. Content depth is the conversion gap.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-callout">
+        <strong>Mobile load-speed issues flagged on</strong> <code>/procedures-1/invisalign-cost-toronto</code> and <code>/procedures-1/periodontist-gum-disease-treatment-toronto</code> — the two strongest service pages. Speed fixes here push the Invisalign asset toward top-3 click-through range.
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- =========================================== -->
+<!-- ============= TAB: KINGSVIEW ============== -->
+<!-- =========================================== -->
+<div class="tab-panel" id="panel-kingsview" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Clinic 05 · The fastest climber</div>
+      <h2>Kingsview Dental</h2>
+      <div class="addr">339 King Street West · Entertainment District · <a href="https://www.kingsviewdentaltoronto.com/" target="_blank" rel="noopener">kingsviewdentaltoronto.com</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-green"></span><span class="div-teal"></span><span class="div-gold"></span></div>
+      <h2>Steepest growth curve in the portfolio</h2>
+      <p class="section-text">Kingsview launched in late 2023 and has scaled the fastest of any site in the portfolio. It went from zero traffic to a peak of 1,120 monthly visits in March 2026 — a steeper growth curve than any older sister clinic. Reviews are accumulating at ~24/month — strong for a 2.5-year-old site.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold">
+          <div class="kpi-num">10</div>
+          <div class="kpi-label">Authority Score</div>
+          <div class="kpi-sub">Semrush · CA</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">583</div>
+          <div class="kpi-label">Monthly Visits</div>
+          <div class="kpi-sub">peaked 1,120 in Mar</div>
+        </div>
+        <div class="kpi-card green">
+          <div class="kpi-num">446</div>
+          <div class="kpi-label">Ranking Keywords</div>
+          <div class="kpi-sub">organic, Canada</div>
+        </div>
+        <div class="kpi-card blue">
+          <div class="kpi-num">710</div>
+          <div class="kpi-label">Google Reviews ★ 4.8</div>
+          <div class="kpi-sub">113 referring domains</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+      <div class="account-chip">
+        <span class="slug">kingsviewdentaltoronto.com</span>
+        <span class="label">· Kingsview Dental · Entertainment District</span>
+      </div>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Thin treatment content</div>
+          <h3>5+ procedure pages at 0 monthly visits</h3>
+          <div class="visual">
+            <div class="f3-stat">5+</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+          <p>Indexed but thin: <code>/procedures-1/invisalign</code>, <code>/whitening</code>, <code>/tmj-pain-treatment</code>, <code>/oral-surgery-wisdom-teeth-extractions</code>, <code>/dental-emergencies</code>, <code>/comprehensive-dental-treatment-plans</code>. Site is growing fast — content quality on these pages would compound with the existing momentum.</p>
+        </div>
+        <div class="focus-3 blue">
+          <div class="f3-eyebrow">Issue 02 — No FAQs or AI-visibility optimization</div>
+          <h3>Growing site, not yet AI-visible</h3>
+          <div class="visual">
+            <div class="f3-stat">0</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--blue);">FAQ blocks on treatment pages</div>
+          <p>The /faqs page has Q&amp;A content but isn't optimized for AI search engines. Kingsview is the fastest-growing site in the portfolio — building AI-visibility now compounds with the growth momentum, making this the best timing of any clinic. Zero FAQ sections on treatment pages.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Treatment-page conversion layout</div>
+          <h3>Procedure pages are template-thin</h3>
+          <div class="visual">
+            <div class="f3-stat">5</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">layout elements missing</div>
+          <p>Each procedure page needs: full content (description, process, cost ranges), a prominent "Book Online" CTA above the fold, before/after gallery, FAQ accordion, and patient testimonials. Conversion-rate ceiling on growing traffic.</p>
+        </div>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+      <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · Kingsview Dental</h2>
+      <div class="keyfinding-list">
+        <div class="kf-card purple">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Service pages all at zero traffic</h5>
+            <p>Like sister clinics, the procedure pages (invisalign, veneers, whitening, TMJ, wisdom teeth) are indexed but not ranking. Content depth, patient-question sections, and internal-link work needed to surface them.</p>
+          </div>
+        </div>
+        <div class="kf-card red">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>5 Squarespace placeholder URLs indexed</h5>
+            <p>Multiple "blog-post-title-one-..." default template URLs are indexed. These dilute crawl budget and can rank for unintended queries. Need cleanup via rename, noindex, or redirect.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">↓</div>
+          <div>
+            <h5>Authority Score 10 — one notch behind seniors</h5>
+            <p>Older sister clinics (Parkview, Waterview, Cityview, Richmond) all sit at AS 11. Closing this gap requires sustained link-building from local Toronto directories and dental industry sources.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Google Business Profile</div>
+      <h2 style="font-size: 28px;">Reputation · Kingsview Dental</h2>
+      <div class="gbp-card">
+        <div class="star-block">
+          <div class="star-rating">4.8</div>
+          <div class="stars">★★★★★</div>
+          <div class="review-count">710 reviews</div>
+        </div>
+        <div class="gbp-meta">
+          <div class="gbp-row"><div class="label">Address</div><div class="value">339 King Street West</div></div>
+          <div class="gbp-row"><div class="label">Postal</div><div class="value">M5V 1J5</div></div>
+          <div class="gbp-row"><div class="label">Reviews / month</div><div class="value">~24</div></div>
+          <div class="gbp-row"><div class="label">Neighborhood</div><div class="value">Entertainment District</div></div>
+          <div class="gbp-row"><div class="label">Portfolio GBP rank</div><div class="value">#4 of 7 by reviews</div></div>
+          <div class="gbp-row"><div class="label">Site age vs review count</div><div class="value">Excellent (2.5 yrs)</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Treatment pages · Technical audit</div>
+      <h2>30 Indexed Pages on Kingsview Dental</h2>
+      <div class="triage-counters">
+        <div class="triage-counter purple">
+          <div class="num">17</div>
+          <div class="triage-label">Evaluate &amp; Rework</div>
+          <small style="font-size: 11px; color: var(--text-muted);">service pages with 0 visits</small>
+        </div>
+        <div class="triage-counter red">
+          <div class="num">5</div>
+          <div class="triage-label">Remove (Placeholders)</div>
+          <small style="font-size: 11px; color: var(--text-muted);">Squarespace defaults</small>
+        </div>
+        <div class="triage-counter green">
+          <div class="num">8</div>
+          <div class="triage-label">Working as expected</div>
+          <small style="font-size: 11px; color: var(--text-muted);">homepage + reviews + blog</small>
+        </div>
+      </div>
+
+      <div class="table-scroll"><table class="pages-table">
+        <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+        <tbody>
+          <tr><td class="url">/ (homepage)</td><td>444</td></tr>
+          <tr><td class="url">/dental-reviews</td><td>64</td></tr>
+          <tr><td class="url">/blog/dry-chapped-cracked-lips-e4236</td><td>28</td></tr>
+          <tr class="flag-row"><td class="url wrong">kingsviewdentaltoronto.com/ (no-www) <span class="url-flag">DUPLICATE</span></td><td>14</td></tr>
+          <tr><td class="url">/staff</td><td>10</td></tr>
+          <tr><td class="url">/procedures-1/oral-cancer-screening</td><td>6</td></tr>
+          <tr><td class="url">/blog/first-dental-visit-rty7x</td><td>4</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-...f56bx <span class="url-flag">PLACEHOLDER</span></td><td>3</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-...g7deb-gk3wx <span class="url-flag">PLACEHOLDER</span></td><td>3</td></tr>
+          <tr><td class="url">/procedures-1/veneers-and-bondings-the-cosmetic-stuff</td><td>2</td></tr>
+          <tr><td class="url">/procedures-1/x-ray-vision</td><td>1</td></tr>
+          <tr><td class="url">/procedures-1/dental-emergencies</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/invisalign</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/whitening</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/tmj-pain-treatment</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/comprehensive-dental-treatment-plans</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/primary-baby-teeth-exams</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/oral-surgery-wisdom-teeth-extractions</td><td>0</td></tr>
+          <tr><td class="url">/blog/pregnancys-impact-on-oral-health</td><td>0</td></tr>
+          <tr><td class="url">/blog/canker-sores-triggers-and-remedies</td><td>0</td></tr>
+          <tr><td class="url">/facility</td><td>0</td></tr>
+          <tr><td class="url">/faqs</td><td>0</td></tr>
+          <tr class="flag-row"><td class="url wrong">3 more placeholder URLs <span class="url-flag">REMOVE</span></td><td>0</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="critical-callout">
+        <strong>Critical issue:</strong> non-www homepage indexed separately (14 visits) — duplicate. Plus 5 Squarespace placeholder URLs in the index. Crawl-budget cleanup needed.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+      <h2>Technical Issues</h2>
+      <p class="section-text">Site-level technical SEO health check. Counts derived from a sample crawl of the indexed page set and on-page audit of high-traffic URLs.</p>
+
+      <div class="tech-issues-grid">
+        <div class="tech-issue-card">
+          <div class="tech-num">8</div>
+          <div>
+            <h5>Slow Mobile Load Speed (over 4 seconds)</h5>
+            <p>Homepage and procedure pages with large hero images. Mobile load delay compounds the duplicate non-www indexing issue.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card gold">
+          <div class="tech-num">10</div>
+          <div>
+            <h5>Missing Meta Descriptions</h5>
+            <p>Service pages without unique meta descriptions. Auto-generated snippets reduce CTR on the long-tail rankings that powered 2026 growth.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card green">
+          <div class="tech-num">24</div>
+          <div>
+            <h5>Pages Indexed (Healthy)</h5>
+            <p>Most pages indexed cleanly. 1 non-www duplicate and 5 placeholder URLs are the indexing cleanup targets.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-callout">
+        <strong>Mobile load-speed issues flagged on</strong> homepage, <code>/staff</code>, and <code>/procedures-1/oral-cancer-screening</code>. Speed fixes preserve the March 2026 growth peak trajectory.
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- =========================================== -->
+<!-- ============= TAB: URBANVIEW ============== -->
+<!-- =========================================== -->
+<div class="tab-panel" id="panel-urbanview" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Clinic 06 · Flat performance</div>
+      <h2>Urbanview Dental</h2>
+      <div class="addr">700 Bay Street · Hospital District · <a href="https://www.urbanviewdentaltoronto.com/" target="_blank" rel="noopener">urbanviewdentaltoronto.com</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-gold"></span><span class="div-red"></span><span class="div-teal"></span></div>
+      <h2>Brand-dependent visibility</h2>
+      <p class="section-text">Urbanview has been online as long as the other "view" sites but has the thinnest keyword footprint of the established clinics — just 181 ranking keywords and 435 monthly visits. Brand searches are owned and the rating is strong (4.9★), but the site has not built meaningful generic visibility and review velocity is among the lowest in the portfolio.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold">
+          <div class="kpi-num">9</div>
+          <div class="kpi-label">Authority Score</div>
+          <div class="kpi-sub">Semrush · CA</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">435</div>
+          <div class="kpi-label">Monthly Visits</div>
+          <div class="kpi-sub">flat trend</div>
+        </div>
+        <div class="kpi-card red">
+          <div class="kpi-num">181</div>
+          <div class="kpi-label">Ranking Keywords</div>
+          <div class="kpi-sub">smallest in 4-yr cohort</div>
+        </div>
+        <div class="kpi-card blue">
+          <div class="kpi-num">386</div>
+          <div class="kpi-label">Google Reviews ★ 4.9</div>
+          <div class="kpi-sub">109 referring domains</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+      <div class="account-chip">
+        <span class="slug">urbanviewdentaltoronto.com</span>
+        <span class="label">· Urbanview Dental · Hospital District</span>
+      </div>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Thin treatment content</div>
+          <h3>14+ procedure pages indexed at 0 visits</h3>
+          <div class="visual">
+            <div class="f3-stat">14+</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+          <p>Almost no content on any service page: <code>/tmj-pain-treatment</code>, <code>/root-canals</code>, <code>/oral-surgery-wisdom-teeth-extractions</code>, <code>/oral-cancer-screening</code>, <code>/comprehensive-dental-treatment-plans</code>, <code>/veneers-and-bondings</code>, <code>/invisalign</code>, <code>/whitening</code>, <code>/implants</code>, <code>/caring-for-your-teeth</code>, and more. Each needs a comprehensive rebuild.</p>
+        </div>
+        <div class="focus-3 blue">
+          <div class="f3-eyebrow">Issue 02 — No FAQs or AI-visibility optimization</div>
+          <h3>4.9★ quality not surfacing in AI search</h3>
+          <div class="visual">
+            <div class="f3-stat">0</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--blue);">FAQ blocks on treatment pages</div>
+          <p>The /faqs page has Q&amp;A content but isn't optimized for AI search engines. 386 patient reviews at 4.9★ represent a strong quality signal — but it's not being read by Google AI Overviews, ChatGPT, or Perplexity. Zero FAQ sections on treatment pages, where they would help conversion.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Treatment-page conversion layout</div>
+          <h3>85% brand-fed — no discovery layer</h3>
+          <div class="visual">
+            <div class="f3-stat">5</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">layout elements missing</div>
+          <p>Without content-rich service pages with CTA above the fold, before/after gallery, cost ranges, FAQ accordion, and testimonials, only patients who already know the brand find the site. Service-page conversion-focused layout is the discovery-layer foundation Urbanview never built.</p>
+        </div>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+      <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · Urbanview Dental</h2>
+      <div class="keyfinding-list">
+        <div class="kf-card red">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Authority Score stalled at 9</h5>
+            <p>Same Authority Score as the brand-new Yorkview site. After 4 years, the link profile should be at 11 like Parkview. Link velocity has not matched site tenure.</p>
+          </div>
+        </div>
+        <div class="kf-card purple">
+          <div class="kf-icon">●</div>
+          <div>
+            <h5>89% of traffic flows through homepage</h5>
+            <p>No service or blog page generates more than 6 monthly visits. The long-tail content layer that exists at Parkview and Waterview is absent here.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Service pages mostly at zero traffic</h5>
+            <p>Out of 19 indexed service pages, only the Periodontist page generates measurable visits (3/month). Critical service-page weakness — no commercial-intent organic discovery path.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Google Business Profile</div>
+      <h2 style="font-size: 28px;">Reputation · Urbanview Dental</h2>
+      <div class="gbp-card">
+        <div class="star-block">
+          <div class="star-rating">4.9</div>
+          <div class="stars">★★★★★</div>
+          <div class="review-count">386 reviews</div>
+        </div>
+        <div class="gbp-meta">
+          <div class="gbp-row"><div class="label">Address</div><div class="value">700 Bay Street</div></div>
+          <div class="gbp-row"><div class="label">Postal</div><div class="value">M5G 1Z6</div></div>
+          <div class="gbp-row"><div class="label">Reviews / month</div><div class="value">~8 <span style="color: var(--red); font-size: 12px;">(below average)</span></div></div>
+          <div class="gbp-row"><div class="label">Lead dentist</div><div class="value">Dr. Sara Shayan</div></div>
+          <div class="gbp-row"><div class="label">Neighborhood</div><div class="value">Hospital District</div></div>
+          <div class="gbp-row"><div class="label">Portfolio GBP rank</div><div class="value">#6 of 7 by reviews</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Treatment pages · Technical audit</div>
+      <h2>29 Indexed Pages on Urbanview Dental</h2>
+      <div class="triage-counters">
+        <div class="triage-counter purple">
+          <div class="num">19</div>
+          <div class="triage-label">Evaluate &amp; Rework</div>
+          <small style="font-size: 11px; color: var(--text-muted);">service pages with 0 visits</small>
+        </div>
+        <div class="triage-counter red">
+          <div class="num">2</div>
+          <div class="triage-label">Remove (Placeholders)</div>
+          <small style="font-size: 11px; color: var(--text-muted);">Squarespace defaults</small>
+        </div>
+        <div class="triage-counter green">
+          <div class="num">8</div>
+          <div class="triage-label">Working as expected</div>
+          <small style="font-size: 11px; color: var(--text-muted);">homepage + small blog</small>
+        </div>
+      </div>
+
+      <div class="table-scroll"><table class="pages-table">
+        <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+        <tbody>
+          <tr><td class="url">/ (homepage)</td><td>403</td></tr>
+          <tr><td class="url">/dental-reviews</td><td>30</td></tr>
+          <tr><td class="url">/blog/quit-that-ice-chewing-habit</td><td>6</td></tr>
+          <tr><td class="url">/procedures-1/periodontist</td><td>3</td></tr>
+          <tr><td class="url">/blog/what-to-do-with-a-knocked-out-tooth</td><td>3</td></tr>
+          <tr><td class="url">/staff</td><td>2</td></tr>
+          <tr><td class="url">/procedures-1/x-ray-vision</td><td>1</td></tr>
+          <tr><td class="url">/procedures-1/tmj-pain-treatment</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/root-canals</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/invisalign</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/veneers-and-bondings-the-cosmetic-stuff</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/oral-cancer-screening</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/whitening</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/implants</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/on-site-oral-surgery-wisdom-teeth-extractions</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/primary-baby-teeth-exams</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/comprehensive-dental-treatment-plans</td><td>0</td></tr>
+          <tr><td class="url">/procedures-1/caring-for-your-teeth</td><td>0</td></tr>
+          <tr><td class="url">/blog/finding-your-perfect-toothpaste</td><td>0</td></tr>
+          <tr><td class="url">/blog/medicines-relationship-with-oral-health</td><td>0</td></tr>
+          <tr><td class="url">/blog/lets-answer-some-dental-faqs</td><td>0</td></tr>
+          <tr><td class="url">/facility</td><td>0</td></tr>
+          <tr><td class="url">/faqs</td><td>0</td></tr>
+          <tr><td class="url">/our-procedures</td><td>0</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-... <span class="url-flag">PLACEHOLDER</span></td><td>0</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-...4t5t7 <span class="url-flag">PLACEHOLDER</span></td><td>0</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="critical-callout">
+        <strong>Critical issue:</strong> Every procedure page is at zero traffic despite 4 years of indexation. The on-page SEO foundation has never been built — Urbanview is essentially running on brand searches alone.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+      <h2>Technical Issues</h2>
+      <p class="section-text">Site-level technical SEO health check. Counts derived from a sample crawl of the indexed page set and on-page audit of high-traffic URLs.</p>
+
+      <div class="tech-issues-grid">
+        <div class="tech-issue-card">
+          <div class="tech-num">7</div>
+          <div>
+            <h5>Slow Mobile Load Speed (over 4 seconds)</h5>
+            <p>Homepage hero on Bay Street / Hospital District page. Mobile load delay limits new-patient acquisition.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card gold">
+          <div class="tech-num">14</div>
+          <div>
+            <h5>Missing Meta Descriptions</h5>
+            <p>Largest count in the portfolio. Service pages and blog posts mostly without unique descriptions — direct CTR loss in SERPs.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card green">
+          <div class="tech-num">20</div>
+          <div>
+            <h5>Pages Indexed (Healthy)</h5>
+            <p>Pages indexed but 19 service pages generate zero traffic. Indexing isn't the bottleneck — content depth is.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-callout">
+        <strong>Mobile load-speed issues flagged on</strong> homepage and <code>/procedures-1/periodontist</code> — Urbanview's only ranking service page. Speed fixes here are the discovery-layer prerequisite.
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- =========================================== -->
+<!-- ============= TAB: YORKVIEW =============== -->
+<!-- =========================================== -->
+<div class="tab-panel" id="panel-yorkview" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Clinic 07 · Newest property</div>
+      <h2>Yorkview Dental</h2>
+      <div class="addr">1107 Bay Street · Bay Street Corridor · <a href="https://www.yorkviewdentaltoronto.com/" target="_blank" rel="noopener">yorkviewdentaltoronto.com</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-teal"></span><span class="div-gold"></span><span class="div-green"></span></div>
+      <h2>Five-month-old site building fast</h2>
+      <p class="section-text">Yorkview is the youngest site in the portfolio, with measurable organic traffic only beginning in December 2025. It already owns its brand search (#1 on "yorkview dental"), but is still building its commercial footprint. The review pace (~27/month) is on par with Waterview — strong for a new property.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold">
+          <div class="kpi-num">9</div>
+          <div class="kpi-label">Authority Score</div>
+          <div class="kpi-sub">Semrush · CA</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">126</div>
+          <div class="kpi-label">Monthly Visits</div>
+          <div class="kpi-sub">launched Dec 2025</div>
+        </div>
+        <div class="kpi-card green">
+          <div class="kpi-num">118</div>
+          <div class="kpi-label">Ranking Keywords</div>
+          <div class="kpi-sub">from 0 in &lt;12 mo</div>
+        </div>
+        <div class="kpi-card blue">
+          <div class="kpi-num">135</div>
+          <div class="kpi-label">Google Reviews ★ 4.7</div>
+          <div class="kpi-sub">109 referring domains</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+      <div class="account-chip">
+        <span class="slug">yorkviewdentaltoronto.com</span>
+        <span class="label">· Yorkview Dental · Bay Street Corridor</span>
+      </div>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Thin treatment content</div>
+          <h3>All 6 service pages at 0 visits</h3>
+          <div class="visual">
+            <div class="f3-stat">6</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+          <p><code>/services/invisalign</code>, <code>/root-canals</code>, <code>/wisdom-teeth-removal</code>, <code>/tmj-pain-treatment</code>, <code>/oral-cancer-screening</code>, <code>/dental-reviews</code>. New site (5 months) with modern URL structure — best moment to build content right from the start before content debt accumulates.</p>
+        </div>
+        <div class="focus-3 blue">
+          <div class="f3-eyebrow">Issue 02 — No FAQs or AI-visibility optimization</div>
+          <h3>FAQ heading exists with no content</h3>
+          <div class="visual">
+            <div class="f3-stat">0</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--blue);">Q&amp;A pairs published</div>
+          <p>Yorkview's homepage has a "Have a Question? Just ask." heading — but no actual Q&amp;A content sits below it. The site is also not optimized for AI search engines (Google AI Overviews, ChatGPT, Perplexity). Clean-slate window: build AI-visibility now before content scales.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Treatment-page conversion layout</div>
+          <h3>Use as proving ground for new template</h3>
+          <div class="visual">
+            <div class="f3-stat">5</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">layout elements missing</div>
+          <p>With only 7 indexed pages, Yorkview is the ideal proving ground for the new conversion template (CTA above the fold, before/after photo gallery, cost ranges, FAQ accordion, embedded testimonials). Once proven here, replicate at the older sister clinics.</p>
+        </div>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+      <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · Yorkview Dental</h2>
+      <div class="keyfinding-list">
+        <div class="kf-card red">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>100% homepage traffic — no other indexed pages</h5>
+            <p>Every visit lands on the homepage. Service pages exist (root canals, invisalign, TMJ, wisdom teeth, oral cancer screening) but rank too deep to generate clicks.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Authority is borrowed, not earned</h5>
+            <p>378 backlinks at 5 months old is unusually high — likely inherited via redirects or sister-site cross-linking. Borrowed authority is fragile; needs to be supplemented with organic link-earning over the next 12 months for sustainable ranking power.</p>
+          </div>
+        </div>
+        <div class="kf-card red">
+          <div class="kf-icon">↓</div>
+          <div>
+            <h5>4.7★ rating — only sub-4.8 in portfolio</h5>
+            <p>Early reviews can skew sharply either way. 135 reviews in 5 months is excellent velocity; the rating should stabilize toward 4.8-4.9 as the sample grows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Google Business Profile</div>
+      <h2 style="font-size: 28px;">Reputation · Yorkview Dental</h2>
+      <div class="gbp-card">
+        <div class="star-block">
+          <div class="star-rating">4.7</div>
+          <div class="stars">★★★★★</div>
+          <div class="review-count">135 reviews</div>
+        </div>
+        <div class="gbp-meta">
+          <div class="gbp-row"><div class="label">Address</div><div class="value">1107 Bay Street</div></div>
+          <div class="gbp-row"><div class="label">Lead dentist</div><div class="value">Dr. Morshedi</div></div>
+          <div class="gbp-row"><div class="label">Reviews / month</div><div class="value">~27 <span style="color: var(--green); font-size: 12px;">(excellent for age)</span></div></div>
+          <div class="gbp-row"><div class="label">Neighborhood</div><div class="value">Bay Street Corridor</div></div>
+          <div class="gbp-row"><div class="label">Site age</div><div class="value">5 months</div></div>
+          <div class="gbp-row"><div class="label">Portfolio GBP rank</div><div class="value">#7 of 7 (youngest)</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Treatment pages · Technical audit</div>
+      <h2>7 Indexed Pages on Yorkview Dental</h2>
+      <div class="triage-counters">
+        <div class="triage-counter purple">
+          <div class="num">6</div>
+          <div class="triage-label">Evaluate &amp; Rework</div>
+          <small style="font-size: 11px; color: var(--text-muted);">service pages with 0 visits</small>
+        </div>
+        <div class="triage-counter red">
+          <div class="num">0</div>
+          <div class="triage-label">Remove</div>
+          <small style="font-size: 11px; color: var(--text-muted);">no placeholder URLs found</small>
+        </div>
+        <div class="triage-counter green">
+          <div class="num">1</div>
+          <div class="triage-label">Working (homepage only)</div>
+          <small style="font-size: 11px; color: var(--text-muted);">100% of traffic</small>
+        </div>
+      </div>
+
+      <div class="table-scroll"><table class="pages-table">
+        <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+        <tbody>
+          <tr><td class="url">/ (homepage)</td><td>112</td></tr>
+          <tr><td class="url">/services/invisalign</td><td>0</td></tr>
+          <tr><td class="url">/services/root-canals</td><td>0</td></tr>
+          <tr><td class="url">/services/wisdom-teeth-removal</td><td>0</td></tr>
+          <tr><td class="url">/services/tmj-pain-treatment</td><td>0</td></tr>
+          <tr><td class="url">/services/oral-cancer-screening</td><td>0</td></tr>
+          <tr><td class="url">/dental-reviews</td><td>0</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="critical-callout">
+        <strong>Critical issue:</strong> Yorkview uses <code>/services/</code> URL pattern instead of the sister-clinic <code>/procedures-1/</code> pattern. This is actually a cleaner structure — but the pages need content depth and internal linking to surface in rankings.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+      <h2>Technical Issues</h2>
+      <p class="section-text">Site-level technical SEO health check. Counts derived from a sample crawl of the indexed page set and on-page audit of high-traffic URLs.</p>
+
+      <div class="tech-issues-grid">
+        <div class="tech-issue-card">
+          <div class="tech-num">3</div>
+          <div>
+            <h5>Slow Mobile Load Speed (over 4 seconds)</h5>
+            <p>Smaller page count (5 months old) keeps speed issues contained. Homepage and service pages with hero imagery need optimization.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card gold">
+          <div class="tech-num">5</div>
+          <div>
+            <h5>Missing Meta Descriptions</h5>
+            <p>Service pages without unique meta descriptions. Common for new sites — should be addressed before content scaling begins.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card green">
+          <div class="tech-num">6</div>
+          <div>
+            <h5>Pages Indexed (Healthy)</h5>
+            <p>Architecture is clean (modern <code>/services/</code> URL pattern). Indexing works — content depth is the open work.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-callout">
+        <strong>Mobile Load Performance are not yet flagged</strong> on a 5-month-old site — mobile load performance checks pending Google's accumulation of mobile field data. Set baseline measurements now to track from launch.
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- =========================================== -->
+<!-- ============= TAB: VIEWDENTAL ============= -->
+<!-- =========================================== -->
+<div class="tab-panel" id="panel-viewdental" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Family brand · The umbrella site</div>
+      <h2>View Dental Canada</h2>
+      <div class="addr">Family / parent brand · <a href="https://www.viewdentalcanada.com/" target="_blank" rel="noopener">viewdentalcanada.com</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-blue"></span><span class="div-gold"></span><span class="div-teal"></span></div>
+      <h2>Invisalign content carrying the site</h2>
+      <p class="section-text">View Dental Canada is the portfolio's umbrella site. It carries the lowest authority score (8) and the smallest backlink profile (95 referring domains), but its Invisalign cost content punches above its weight — ranking on the first two pages for five distinct cost-related queries.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold">
+          <div class="kpi-num">8</div>
+          <div class="kpi-label">Authority Score</div>
+          <div class="kpi-sub">Semrush · CA</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">135</div>
+          <div class="kpi-label">Monthly Visits</div>
+          <div class="kpi-sub">doubled since Jan</div>
+        </div>
+        <div class="kpi-card green">
+          <div class="kpi-num">213</div>
+          <div class="kpi-label">Ranking Keywords</div>
+          <div class="kpi-sub">organic, Canada</div>
+        </div>
+        <div class="kpi-card red">
+          <div class="kpi-num">95</div>
+          <div class="kpi-label">Referring Domains</div>
+          <div class="kpi-sub">smallest in portfolio</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+      <div class="account-chip">
+        <span class="slug">viewdentalcanada.com</span>
+        <span class="label">· View Dental Canada · Family brand</span>
+      </div>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Thin treatment content</div>
+          <h3>6+ /dental-procedures/ pages at 0 visits</h3>
+          <div class="visual">
+            <div class="f3-stat">6+</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+          <p><code>/dental-crowns-bridges-toronto</code>, <code>/oral-cancer-screening-toronto</code>, <code>/tmj-pain-treatment-toronto</code>, <code>/oral-surgery-wisdom-teeth-extraction-toronto</code>, <code>/root-canal-treatment-toronto</code>, <code>/comprehensive-dental-treatment-plans-toronto</code>. Only the Invisalign cost page has real content.</p>
+        </div>
+        <div class="focus-3 blue">
+          <div class="f3-eyebrow">Issue 02 — No FAQs or AI-visibility optimization</div>
+          <h3>20 FAQs on homepage, not AI-visible</h3>
+          <div class="visual">
+            <div class="f3-stat">20</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--blue);">Q&amp;A pairs not surfaced</div>
+          <p>View Dental Canada has 20 question/answer pairs on its homepage — the most FAQ content in the portfolio — covering new patient, anxiety, cleaning, emergency, insurance topics. But it's not optimized for AI search engines, so Google AI Overviews, ChatGPT, and Perplexity can't cite them as the answer source. No FAQ blocks on treatment pages either.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Treatment-page conversion layout</div>
+          <h3>Define site role before layout investment</h3>
+          <div class="visual">
+            <div class="f3-stat">5</div>
+          </div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">layout elements missing</div>
+          <p>If umbrella hub: content focuses on multi-location brand story and routes patients to the right clinic. If location funnel: remove location-specific content that competes with sister sites. Current pages serve neither role fully. Conversion layout (CTA, gallery, costs, testimonials) follows the role decision.</p>
+        </div>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+      <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · View Dental Canada</h2>
+      <div class="keyfinding-list">
+        <div class="kf-card red">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Multiple placeholder URLs ranking for sister brands</h5>
+            <p>URLs containing "blog-post-title-one-..." are indexed and ranking for kingsview dental, urbanview dental, and yorkview dental. These Squarespace defaults need cleanup.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Site cannibalizes sister-clinic brand queries</h5>
+            <p>Ranks for "kingsview dental," "urbanview dental," and "yorkview dental" — splitting brand visibility three ways. The umbrella site is structurally competing with the location sites it should be supporting.</p>
+          </div>
+        </div>
+        <div class="kf-card purple">
+          <div class="kf-icon">●</div>
+          <div>
+            <h5>Strategic decision needed: hub vs funnel</h5>
+            <p>Site is currently doing both — competing with sister clinics AND attempting to be a parent brand. Neither role is fully executed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Google Business Profile</div>
+      <h2 style="font-size: 28px;">Reputation · View Dental Canada</h2>
+      <div class="gbp-card">
+        <div class="star-block">
+          <div class="star-rating">—</div>
+          <div class="stars" style="color: var(--text-muted);">no GBP</div>
+          <div class="review-count">family brand</div>
+        </div>
+        <div class="gbp-meta">
+          <div class="gbp-row"><div class="label">Status</div><div class="value">No standalone GBP listing</div></div>
+          <div class="gbp-row"><div class="label">Role</div><div class="value">Umbrella / family brand</div></div>
+          <div class="gbp-row"><div class="label">Coverage</div><div class="value">Routes to 7 sister-clinic GBPs</div></div>
+          <div class="gbp-row"><div class="label">Combined reviews</div><div class="value">5,605 across 7 clinics</div></div>
+          <div class="gbp-row"><div class="label">Combined avg rating</div><div class="value">4.86★ portfolio average</div></div>
+          <div class="gbp-row"><div class="label">Note</div><div class="value">Could function as portfolio aggregator</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Treatment pages · Technical audit</div>
+      <h2>14 Indexed Pages on View Dental Canada</h2>
+      <div class="triage-counters">
+        <div class="triage-counter purple">
+          <div class="num">9</div>
+          <div class="triage-label">Evaluate &amp; Rework</div>
+          <small style="font-size: 11px; color: var(--text-muted);">service pages with 0 visits</small>
+        </div>
+        <div class="triage-counter red">
+          <div class="num">2</div>
+          <div class="triage-label">Remove (Placeholders)</div>
+          <small style="font-size: 11px; color: var(--text-muted);">cannibalizing sister brands</small>
+        </div>
+        <div class="triage-counter green">
+          <div class="num">3</div>
+          <div class="triage-label">Working as expected</div>
+          <small style="font-size: 11px; color: var(--text-muted);">homepage + Invisalign asset</small>
+        </div>
+      </div>
+
+      <div class="table-scroll"><table class="pages-table">
+        <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+        <tbody>
+          <tr><td class="url">/ (homepage)</td><td>85</td></tr>
+          <tr><td class="url"><strong>/dental-procedures/invisalign-cost-toronto</strong></td><td>42</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-...vBPP0... <span class="url-flag">RANKS FOR SISTER BRAND</span></td><td>7</td></tr>
+          <tr><td class="url">/dental-procedures/comprehensive-dental-treatment-plans-toronto</td><td>1</td></tr>
+          <tr class="flag-row"><td class="url wrong">/dental-locations/blog-post-title-one-...6z7hx... <span class="url-flag">RANKS FOR SISTER BRAND</span></td><td>1</td></tr>
+          <tr><td class="url">/dental-locations</td><td>0</td></tr>
+          <tr><td class="url">/dental-procedures/dental-crowns-bridges-toronto</td><td>0</td></tr>
+          <tr><td class="url">/dental-procedures/oral-cancer-screening-toronto</td><td>0</td></tr>
+          <tr><td class="url">/dental-procedures/tmj-pain-treatment-toronto</td><td>0</td></tr>
+          <tr><td class="url">/dental-procedures/oral-surgery-wisdom-teeth-extraction-toronto</td><td>0</td></tr>
+          <tr><td class="url">/dental-procedures/root-canal-treatment-toronto</td><td>0</td></tr>
+          <tr><td class="url">/our-services</td><td>0</td></tr>
+          <tr><td class="url">/about-us</td><td>0</td></tr>
+          <tr><td class="url">/careers</td><td>0</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="critical-callout">
+        <strong>Critical issue:</strong> Two Squarespace placeholder URLs are ranking for sister-clinic brand searches (kingsview, urbanview, yorkview dental). These URLs need to be redirected to the actual location sites — they are actively pulling traffic away from the locations they should be supporting.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+      <h2>Technical Issues</h2>
+      <p class="section-text">Site-level technical SEO health check. Counts derived from a sample crawl of the indexed page set and on-page audit of high-traffic URLs.</p>
+
+      <div class="tech-issues-grid">
+        <div class="tech-issue-card">
+          <div class="tech-num">5</div>
+          <div>
+            <h5>Slow Mobile Load Speed (over 4 seconds)</h5>
+            <p>Homepage and Invisalign cost page with unoptimized imagery. Speed fixes compound the Invisalign asset's existing performance.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card gold">
+          <div class="tech-num">8</div>
+          <div>
+            <h5>Missing Meta Descriptions</h5>
+            <p>Sister-clinic redirect pages without unique meta descriptions. Critical because these pages currently rank for sister-clinic brand queries.</p>
+          </div>
+        </div>
+        <div class="tech-issue-card green">
+          <div class="tech-num">9</div>
+          <div>
+            <h5>Pages Indexed (Healthy)</h5>
+            <p>9 of 14 indexed pages are clean; 2 placeholders + 3 sister-clinic cannibalizing URLs need cleanup as priority indexing work.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-callout">
+        <strong>Mobile load-speed issues flagged on</strong> <code>/dental-procedures/invisalign-cost-toronto</code> — the single page that drives 31% of site traffic. Speed fixes here have outsized impact on overall site visibility.
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- ============= PORTFOLIO ACTION PLAN SUMMARY ============= -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Action plan · portfolio summary</div>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-teal"></span></div>
+    <h2>Priority Action Plan — Portfolio</h2>
+    <p class="section-text">A consolidated view of the SEO work that applies across the eight properties. Items are grouped by theme so the same work isn't repeated eight times. Clinic-specific notes appear in italics where relevant.</p>
+
+    <div class="action-list">
+      <div class="action-item">
+        <div class="a-num">01</div>
+        <div class="a-body">
+          <h5>Treatment-page content rebuild</h5>
+          <p>Across all seven location sites, most /procedures-1/ service pages are at 0–4 monthly visits despite real patient demand. Rebuild each treatment page with depth: long-form copy, process explanation, cost ranges, before/after photos, internal links from the homepage and blog. <em>Priority pages: Parkview's veneers + Invisalign + implants, Waterview's cosmetic cluster, Cityview's Invisalign cost asset, Richmond's full /procedures-1/ rebuild, Kingsview + Urbanview service activation.</em></p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">02</div>
+        <div class="a-body">
+          <h5>FAQ sections + AI-search visibility</h5>
+          <p>None of the eight sites have FAQ sections on treatment pages. Build patient-question FAQ blocks (new patient, anxiety, insurance, cost, procedure-specific) on every treatment page so the content surfaces in Google AI Overviews, ChatGPT, and Perplexity — where patients increasingly search first.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">03</div>
+        <div class="a-body">
+          <h5>Treatment-page conversion layout</h5>
+          <p>Standard layout for every treatment page across all locations: prominent "Book Online" CTA above the fold, before/after photo gallery, transparent cost ranges, FAQ accordion, embedded patient testimonials. Lifts conversion rate on the organic traffic the new content brings in.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">04</div>
+        <div class="a-body">
+          <h5>Patient review acquisition system</h5>
+          <p>Automated post-visit SMS + email review request workflow + front-desk hand-off scripts. <em>Most urgent at Parkview (~8/mo vs portfolio average ~24/mo), Urbanview (~8/mo), and Yorkview (lift 4.7★ toward 4.9★ as sample size grows).</em></p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">05</div>
+        <div class="a-body">
+          <h5>Brand cannibalization + site architecture cleanup</h5>
+          <p>Sister sites are competing for each other's brand searches — Cityview ranks for "waterview family dental clinic" (880/mo), View Dental Canada ranks for sister-clinic brand terms. Decide View Dental Canada's role (umbrella hub vs. location-funnel), remove cross-brand references on sister sites, and resolve www vs non-www duplicates on Waterview and Kingsview.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">06</div>
+        <div class="a-body">
+          <h5>Squarespace placeholder URL cleanup</h5>
+          <p>Indexed "blog-post-title-one-..." default-template URLs are diluting crawl budget across Parkview, Kingsview, and View Dental Canada. Audit each, then rename to descriptive slugs, noindex, or redirect. Update sitemap and submit removals in Google Search Console.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">07</div>
+        <div class="a-body">
+          <h5>Technical SEO baseline (speed + meta descriptions)</h5>
+          <p>Cross-portfolio fixes: mobile page-speed work on slow-loading pages, hero image compression, and missing meta descriptions on every site (Urbanview 14, Cityview 12, Richmond 10, Kingsview 10, View Dental 8, Waterview 8, Parkview 6, Yorkview 5). Compounds the content work — improves both rankings and click-through.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">08</div>
+        <div class="a-body">
+          <h5>Content recovery for Richmond</h5>
+          <p>Richmond is down 66% from its July 2024 peak (2,862 → 983 visits/mo) with 331 keywords lost from the top 100. Refresh the top-30 declining pages — on-page content, freshness signals, broken internal links, geographic disambiguation from Richmond, BC and Richmond Hill.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">09</div>
+        <div class="a-body">
+          <h5>Non-brand discovery layer for Urbanview + View Dental</h5>
+          <p>Urbanview has had four years to build non-brand visibility and hasn't — 85% of traffic is brand-fed. Build 10–15 service-focused, neighbourhood-targeted pages. View Dental Canada's hub-and-spoke Invisalign content cluster (cost is already working; add timeline, vs braces, after-care, financing, adults) is the parallel play.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">10</div>
+        <div class="a-body">
+          <h5>Backlink + citation building</h5>
+          <p>Every location benefits from local Toronto dental directory listings (Yably, DentalNearYou, RateMDs CA), neighbourhood business partnerships, dental association listings, and healthcare-publication features. Push Urbanview AS 9 → 11 (sister-clinic average); replace Yorkview's borrowed sister-site links with organic ones over 12 months; grow View Dental Canada's 95 referring domains (smallest in portfolio).</p>
+        </div>
+        <span class="a-pri ongoing">Ongoing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer>
+  <div class="container">
+    <span class="brand">Dentist Nerds</span> · Multi-Location Website Audit · Dr. Afif · View Dental Canada · May 2026
+  </div>
+</footer>
+
+<script>
+  // ============= TAB NAVIGATION (scroll-to-anchor, all panels visible) =============
+  const tabbarEl = document.querySelector('.tabbar');
+  function scrollToPanel(target) {
+    const panel = document.getElementById('panel-' + target);
+    if (!panel) return;
+    const tabbarHeight = tabbarEl.offsetHeight;
+    const top = panel.getBoundingClientRect().top + window.pageYOffset - tabbarHeight - 4;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = tab.dataset.tab;
+      history.replaceState(null, '', '#' + target);
+      scrollToPanel(target);
+    });
+  });
+  // Highlight currently-visible panel's tab using IntersectionObserver
+  const tabObserver = new IntersectionObserver(
+    (entries) => {
+      // Find the entry with the highest intersection ratio that's in view
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      if (visible.length === 0) return;
+      const id = visible[0].target.id.replace('panel-', '');
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      const matchingTab = document.querySelector(`.tab[data-tab="${id}"]`);
+    if (matchingTab) {
+        matchingTab.classList.add('active');
+        // Scroll only the tab bar horizontally — never the page
+        const tabbarInner = document.querySelector('.tabbar-inner');
+        const tabRect = matchingTab.getBoundingClientRect();
+        const innerRect = tabbarInner.getBoundingClientRect();
+        const targetScroll =
+          tabbarInner.scrollLeft +
+          (tabRect.left - innerRect.left) -
+          (innerRect.width / 2) +
+          (tabRect.width / 2);
+        tabbarInner.scrollTo({ left: targetScroll, behavior: 'smooth' });
+      }
+    },
+    { rootMargin: '-80px 0px -50% 0px', threshold: [0, 0.1, 0.25, 0.5] }
+  );
+  document.querySelectorAll('.tab-panel').forEach(p => tabObserver.observe(p));
+  // Deep-link via hash on load
+  if (location.hash) {
+    const h = location.hash.replace('#','');
+    setTimeout(() => scrollToPanel(h), 100);
+  }
+
+  // ============= PORTFOLIO TRAFFIC CHART =============
+  const months = ['May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26'];
+  new Chart(document.getElementById('portfolioTraffic'), {
+    type: 'line',
+    data: {
+      labels: months,
+      datasets: [
+        { label: 'Parkview', data: [1271,850,939,1232,1804,1857,1829,1939,2036,2031,2083,1962], borderColor:'#d4a55c', backgroundColor:'transparent', borderWidth:2.5, tension:0.25 },
+        { label: 'Waterview', data: [1385,1904,716,1016,864,995,1081,1273,974,1097,1654,1469], borderColor:'#5fbab0', backgroundColor:'transparent', borderWidth:2.5, tension:0.25 },
+        { label: 'Richmond', data: [2345,1828,1320,1121,1038,1033,1130,1091,835,808,837,983], borderColor:'#c53030', backgroundColor:'transparent', borderWidth:2.5, tension:0.25 },
+        { label: 'Cityview', data: [1219,1832,1095,867,371,322,419,410,461,768,879,769], borderColor:'#2d8e5c', backgroundColor:'transparent', borderWidth:2.5, tension:0.25 },
+        { label: 'Kingsview', data: [577,561,572,412,373,354,424,420,515,522,1120,583], borderColor:'#2c6fb3', backgroundColor:'transparent', borderWidth:2.5, tension:0.25 },
+        { label: 'Urbanview', data: [516,444,392,405,402,402,393,396,483,488,435,435], borderColor:'#7c3aed', backgroundColor:'transparent', borderWidth:2.5, tension:0.25 },
+        { label: 'Yorkview', data: [0,0,0,0,0,0,0,37,61,171,164,126], borderColor:'#0d2538', backgroundColor:'transparent', borderWidth:2, tension:0.25, borderDash:[4,3] },
+        { label: 'View Dental', data: [8,4,4,4,28,24,31,68,73,74,84,135], borderColor:'#8aa1b3', backgroundColor:'transparent', borderWidth:2, tension:0.25, borderDash:[4,3] }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11, family: "'Inter', sans-serif" }, boxWidth: 12, padding: 10, color: '#4b5563' } } },
+      scales: {
+        x: { grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 }, color: '#6b7280' } },
+        y: { beginAtZero: true, grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 }, color: '#6b7280' } }
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

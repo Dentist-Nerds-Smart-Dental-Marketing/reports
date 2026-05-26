@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit Reports for Dr. André Bruni | Dentist Nerds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-soft: #1B2940;
+    --ink: #15202E;
+    --ink-soft: #455368;
+    --ink-mute: #7B8794;
+    --green: #D4A93B;
+    --green-deep: #8B6914;
+    --green-soft: #FAEFCE;
+    --bg-mint: #FDF8E8;
+    --coral: #FF5E4D;
+    --amber: #FFB547;
+    --blue: #4D8CFF;
+    --bg-soft: #F7F8FA;
+    --line: #E5E9EF;
+    --line-soft: #EDF2F7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FAFBFC;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* HEADER STRIP */
+  .header-strip {
+    background: var(--navy);
+    color: #FFF;
+    padding: 18px 0;
+  }
+  .header-strip-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+  }
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    background: var(--green);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 15px;
+  }
+  .header-audit-type {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    padding: 88px 0 96px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -100px;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(212,169,59,0.16) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -160px; left: -80px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(212,169,59,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: rgba(212,169,59,0.14);
+    color: var(--green);
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    border: 1px solid rgba(212,169,59,0.28);
+  }
+  .hero-eyebrow .pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 0 rgba(212,169,59,0.65);
+    animation: pulseDot 2s infinite;
+  }
+  @keyframes pulseDot {
+    0% { box-shadow: 0 0 0 0 rgba(212,169,59,0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(212,169,59,0); }
+    100% { box-shadow: 0 0 0 0 rgba(212,169,59,0); }
+  }
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    margin-bottom: 18px;
+    max-width: 900px;
+  }
+  .hero h1 .accent { color: var(--green); }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.72);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 8px;
+  }
+  .hero-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 24px;
+    letter-spacing: 0.02em;
+  }
+
+  /* SHARED SECTION */
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+  .section-h2 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .section-intro {
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 760px;
+    line-height: 1.55;
+    margin-bottom: 40px;
+  }
+
+  /* REPORTS SECTION */
+  .reports-section { padding: 72px 0 56px; }
+
+  .reports-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .report-card {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 32px 30px 28px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--accent-color, var(--green));
+    transition: height 0.25s ease;
+  }
+  .report-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(15,27,45,0.10);
+    border-color: var(--accent-color, var(--green));
+  }
+  .report-card:hover::before { height: 6px; }
+  .report-card.coral { --accent-color: var(--coral); }
+  .report-card.amber { --accent-color: var(--amber); }
+  .report-card.gold { --accent-color: var(--green); }
+
+  .report-num {
+    font-family: 'DM Sans', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    margin-bottom: 18px;
+  }
+
+  .score-badge {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 2px;
+    background: var(--bg-soft);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+    font-family: 'Manrope', sans-serif;
+    width: fit-content;
+  }
+  .score-badge.coral { background: #FFE2DE; }
+  .score-badge.amber { background: #FFF1CB; }
+  .score-badge.gold { background: var(--green-soft); }
+  .score-badge .score-num {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .score-badge.coral .score-num { color: var(--coral); }
+  .score-badge.amber .score-num { color: #9A6520; }
+  .score-badge.gold .score-num { color: var(--green-deep); }
+  .score-badge .score-of {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-mute);
+    margin-left: 4px;
+  }
+  .score-badge .score-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .report-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .report-card .domain {
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    margin-bottom: 18px;
+  }
+
+  .report-summary {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 22px;
+    flex: 1;
+  }
+
+  .report-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .report-meta-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .report-meta-label {
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-mute);
+  }
+  .report-meta-value {
+    font-size: 12.5px;
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .report-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--navy);
+    color: #FFF;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    transition: background 0.18s;
+    align-self: flex-start;
+  }
+  .report-card:hover .report-cta { background: var(--green-deep); }
+  .report-cta::after {
+    content: "→";
+    font-size: 15px;
+    transition: transform 0.18s;
+  }
+  .report-card:hover .report-cta::after { transform: translateX(3px); }
+
+  /* PENDING DISCUSSION SECTION */
+  .pending-section { padding: 32px 0 40px; }
+  .pending-card {
+    background: linear-gradient(135deg, #FFF8E6 0%, var(--bg-mint) 100%);
+    border: 1px solid #E5D49E;
+    border-left: 4px solid var(--amber);
+    border-radius: 16px;
+    padding: 36px 40px;
+  }
+  .pending-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #9A6520;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pending-eyebrow::before {
+    content: "⚠";
+    font-size: 14px;
+  }
+  .pending-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .pending-card .pending-domain {
+    font-family: 'DM Sans', monospace;
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-bottom: 18px;
+    display: inline-block;
+    background: #FFF;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .pending-card p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .pending-card p strong { color: var(--ink); }
+  .pending-issues {
+    background: #FFF;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 18px 0;
+  }
+  .pending-issues-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #9A6520;
+    margin-bottom: 10px;
+  }
+  .pending-issues ul {
+    margin: 0;
+    padding-left: 22px;
+    list-style: disc;
+  }
+  .pending-issues li {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .pending-issues li:last-child { margin-bottom: 0; }
+  .pending-issues li strong { color: var(--ink); }
+  .pending-questions {
+    background: var(--navy);
+    color: #FFF;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 18px 0 0;
+  }
+  .pending-questions-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--green);
+    margin-bottom: 10px;
+  }
+  .pending-questions ul {
+    margin: 0;
+    padding-left: 22px;
+    list-style: disc;
+  }
+  .pending-questions li {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .pending-questions li:last-child { margin-bottom: 0; }
+  .pending-questions li strong { color: #FFF; }
+
+  /* INVENTORY SECTION */
+  .inventory-section { padding: 48px 0 80px; }
+  .inventory-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    margin-top: 8px;
+  }
+  .inventory-card {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 26px;
+  }
+  .inventory-card-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--green-deep);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .inventory-card-label .count-pill {
+    background: var(--bg-mint);
+    color: var(--green-deep);
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+  .inventory-list { list-style: none; padding: 0; margin: 0; }
+  .inventory-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 13.5px;
+    line-height: 1.45;
+  }
+  .inventory-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .inventory-list li:first-child { padding-top: 0; }
+  .inventory-list a {
+    color: var(--green-deep);
+    text-decoration: none;
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    word-break: break-all;
+    line-height: 1.45;
+  }
+  .inventory-list a:hover { text-decoration: underline; }
+  .inventory-list .item-name {
+    color: var(--ink);
+    font-weight: 700;
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+  .inventory-list .item-meta {
+    color: var(--ink-mute);
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  .inventory-list .item-meta strong { color: var(--ink-soft); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.55);
+    padding: 36px 0;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .footer strong { color: #FFF; font-weight: 700; }
+
+  /* RESPONSIVE */
+  @media (max-width: 980px) {
+    .reports-grid { grid-template-columns: 1fr; gap: 18px; }
+    .inventory-grid { grid-template-columns: 1fr; gap: 14px; }
+    .hero { padding: 60px 0 64px; }
+    .hero h1 { font-size: 38px; }
+    .hero-sub { font-size: 16px; }
+    .reports-section, .pending-section, .inventory-section { padding-left: 0; padding-right: 0; }
+    .wrap { padding: 0 24px; }
+    .section-h2 { font-size: 24px; }
+    .header-strip-inner, .hero-inner { padding: 0 24px; }
+    .pending-card { padding: 28px 24px; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 30px; }
+    .report-card { padding: 26px 22px 24px; }
+    .report-meta { grid-template-columns: 1fr; gap: 8px; }
+    .header-audit-type { display: none; }
+    .pending-card { padding: 24px 20px; }
+    .inventory-card { padding: 20px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER STRIP -->
+<div class="header-strip">
+  <div class="header-strip-inner">
+    <div class="brand">
+      <div class="brand-mark">DN</div>
+      <span>Dentist Nerds</span>
+    </div>
+    <div class="header-audit-type">Audit Reports · Confidential</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="pulse"></span>
+      Two Completed Reports · One Pending Discussion
+    </div>
+    <h1>
+      Audit Reports for <span class="accent">Dr. André Bruni</span>
+    </h1>
+    <p class="hero-sub">
+      Consolidated view of the website audits Dentist Nerds prepared across Dr. Bruni's connected practices. Two full audit reports are ready to review below. A third related site was identified during research but needs a strategic discussion before an audit can be useful.
+    </p>
+    <div class="hero-meta">Prepared by Dentist Nerds · May 2026</div>
+  </div>
+</section>
+
+<!-- REPORTS GRID -->
+<section class="reports-section">
+  <div class="wrap">
+    <div class="section-label">The Completed Audits</div>
+    <h2 class="section-h2">Two reports ready for review</h2>
+    <p class="section-intro">Please click each one to open the full audit in a new tab.</p>
+
+    <div class="reports-grid">
+
+      <!-- REPORT 01 — Pearl Dental Group -->
+      <a href="https://reports.dentistnerds.com/reports/pearldentalgroup/" target="_blank" rel="noopener noreferrer" class="report-card amber">
+        <div class="report-num">REPORT 01</div>
+
+        <div class="score-badge amber">
+          <span class="score-num">58</span><span class="score-of">/100</span>
+          <span class="score-label">Site Health</span>
+        </div>
+
+        <h3>Pearl Dental Group</h3>
+        <div class="domain">pearldentalgroup.com</div>
+
+        <p class="report-summary">
+          The main Pearl Dental Group website — 3 offices across Baton Rouge and Metairie under one domain. Strong existing site with 15,915 monthly visits, 1,164 combined reviews, and a top-3 position in the Baton Rouge market. The audit identifies a strategic split (Baton Rouge vs Metairie), blog cannibalization, AI-content URL leaks, and a GBP NAP conflict at Perkins as the key levers for the next stage of growth.
+        </p>
+
+        <div class="report-meta">
+          <div class="report-meta-cell">
+            <div class="report-meta-label">Practices</div>
+            <div class="report-meta-value">3 offices · Baton Rouge + Metairie</div>
+          </div>
+          <div class="report-meta-cell">
+            <div class="report-meta-label">Recommendation</div>
+            <div class="report-meta-value">Split &amp; Refocus</div>
+          </div>
+        </div>
+
+        <span class="report-cta">Open Audit Report</span>
+      </a>
+
+      <!-- REPORT 02 — Baton Rouge Dental Implant Center -->
+      <a href="https://reports.dentistnerds.com/reports/batonrougedentalimplantcenter/" target="_blank" rel="noopener noreferrer" class="report-card coral">
+        <div class="report-num">REPORT 02</div>
+
+        <div class="score-badge coral">
+          <span class="score-num">32</span><span class="score-of">/100</span>
+          <span class="score-label">Site Health</span>
+        </div>
+
+        <h3>Baton Rouge Dental Implant Center</h3>
+        <div class="domain">batonrougedentalimplantcenter.com</div>
+
+        <p class="report-summary">
+          Sister site to Pearl Dental Group — a focused implant-specialist destination at 7017 Perkins Rd Suite B. The strategic concept is right, but execution is thin: only six implant-specific treatment pages with the rest drifting into cosmetic dentistry, AI-generated patient testimonials with ChatGPT-named images, stock imagery throughout, and a phone number that conflicts with the parent practice's GBP.
+        </p>
+
+        <div class="report-meta">
+          <div class="report-meta-cell">
+            <div class="report-meta-label">Practice</div>
+            <div class="report-meta-value">Pearl Dental Group · sister site</div>
+          </div>
+          <div class="report-meta-cell">
+            <div class="report-meta-label">Recommendation</div>
+            <div class="report-meta-value">Differentiate &amp; Deepen</div>
+          </div>
+        </div>
+
+        <span class="report-cta">Open Audit Report</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PENDING STRATEGIC DISCUSSION -->
+<section class="pending-section">
+  <div class="wrap">
+    <div class="pending-card">
+      <div class="pending-eyebrow">Pending Strategic Discussion</div>
+      <h3>One more site was found — but we need one thing answered first.</h3>
+      <span class="pending-domain">pearldentalimplantcenter.com</span>
+
+      <p>This third site came up during research but was <strong>not audited</strong>. Before a report would be useful, one question needs answering:</p>
+
+      <div class="pending-questions" style="margin-top:18px;">
+        <div class="pending-questions-label">Ask</div>
+        <p style="color:#FFF; font-size:18px; font-weight:700; margin:0; line-height:1.4;">Will this be a website or a directory?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOVERY INVENTORY -->
+<section class="inventory-section">
+  <div class="wrap">
+    <div class="section-label">Discovery Inventory</div>
+    <h2 class="section-h2">Everything we found connected to the business</h2>
+    <p class="section-intro">During research we mapped every website, Google Business listing, and physical address tied to Dr. André Bruni's practices. Below is the full inventory for reference.</p>
+
+    <div class="inventory-grid">
+
+      <!-- WEBSITES -->
+      <div class="inventory-card">
+        <div class="inventory-card-label">Websites <span class="count-pill">3</span></div>
+        <ul class="inventory-list">
+          <li>
+            <div class="item-name">Pearl Dental Group <span style="background:var(--bg-mint); color:var(--green-deep); padding:1px 6px; border-radius:4px; font-size:10px; font-weight:800; letter-spacing:0.04em; margin-left:4px;">MAIN</span></div>
+            <a href="https://www.pearldentalgroup.com/" target="_blank" rel="noopener noreferrer">pearldentalgroup.com</a>
+            <div class="item-meta">Audit complete — Report 01 above</div>
+          </li>
+          <li>
+            <div class="item-name">Baton Rouge Dental Implant Center <span style="background:#FFE2DE; color:var(--coral); padding:1px 6px; border-radius:4px; font-size:10px; font-weight:800; letter-spacing:0.04em; margin-left:4px;">SISTER</span></div>
+            <a href="https://batonrougedentalimplantcenter.com/" target="_blank" rel="noopener noreferrer">batonrougedentalimplantcenter.com</a>
+            <div class="item-meta">Audit complete — Report 02 above</div>
+          </li>
+          <li>
+            <div class="item-name">Pearl Dental Implant Center <span style="background:#FFF1CB; color:#9A6520; padding:1px 6px; border-radius:4px; font-size:10px; font-weight:800; letter-spacing:0.04em; margin-left:4px;">PENDING</span></div>
+            <a href="https://pearldentalimplantcenter.com/" target="_blank" rel="noopener noreferrer">pearldentalimplantcenter.com</a>
+            <div class="item-meta">Not audited — needs strategic discussion (see above)</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- GOOGLE BUSINESS LISTINGS -->
+      <div class="inventory-card">
+        <div class="inventory-card-label">Google Business Listings <span class="count-pill">4</span></div>
+        <ul class="inventory-list">
+          <li>
+            <div class="item-name">Pearl Dental Group &amp; Dental Implant Center</div>
+            <a href="https://maps.app.goo.gl/Td4EswpRpwjmMiZW6" target="_blank" rel="noopener noreferrer">maps.app.goo.gl/Td4EswpRpwjmMiZW6</a>
+            <div class="item-meta">571 reviews · 4.9 ★</div>
+          </li>
+          <li>
+            <div class="item-name">Pearl Dental Group — Jones Creek Rd</div>
+            <a href="https://maps.app.goo.gl/yTHXUxyrcksF2Cdm8" target="_blank" rel="noopener noreferrer">maps.app.goo.gl/yTHXUxyrcksF2Cdm8</a>
+            <div class="item-meta">536 reviews · 4.9 ★</div>
+          </li>
+          <li>
+            <div class="item-name">Pearl Dental Group — Metairie</div>
+            <a href="https://maps.app.goo.gl/J9MRu6vgFbzweLbU7" target="_blank" rel="noopener noreferrer">maps.app.goo.gl/J9MRu6vgFbzweLbU7</a>
+            <div class="item-meta">57 reviews · 5.0 ★</div>
+          </li>
+          <li>
+            <div class="item-name">Baton Rouge Dental Implant Center | Pearl Dental</div>
+            <a href="https://maps.app.goo.gl/8KhLxJSjbuhzWzXE6" target="_blank" rel="noopener noreferrer">maps.app.goo.gl/8KhLxJSjbuhzWzXE6</a>
+            <div class="item-meta">18 reviews · 4.9 ★</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- PHYSICAL ADDRESSES -->
+      <div class="inventory-card">
+        <div class="inventory-card-label">Physical Addresses <span class="count-pill">3</span></div>
+        <ul class="inventory-list">
+          <li>
+            <div class="item-name">Perkins Rd · Baton Rouge</div>
+            <div style="color:var(--ink-soft); font-size:13px; line-height:1.5;">7017 Perkins Rd<br>Baton Rouge, LA 70808</div>
+            <div class="item-meta"><strong>(225) 277-3311</strong> · Pearl Dental main + BRDIC Suite B share this building</div>
+          </li>
+          <li>
+            <div class="item-name">Jones Creek Rd · Baton Rouge</div>
+            <div style="color:var(--ink-soft); font-size:13px; line-height:1.5;">6031 Jones Creek Rd<br>Baton Rouge, LA 70817</div>
+            <div class="item-meta"><strong>(225) 256-1163</strong></div>
+          </li>
+          <li>
+            <div class="item-name">Veterans Blvd · Metairie</div>
+            <div style="color:var(--ink-soft); font-size:13px; line-height:1.5;">730 Veterans Blvd, Suite B<br>Metairie, LA 70005</div>
+            <div class="item-meta"><strong>(504) 313-3734</strong></div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  Prepared by <strong>Dentist Nerds</strong> · May 2026 · Confidential to Dr. André Bruni
+</div>
+
+</body>
+</html>

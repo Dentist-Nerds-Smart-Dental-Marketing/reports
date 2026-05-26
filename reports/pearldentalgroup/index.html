@@ -1,0 +1,3201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pearl Dental Group — Website Audit | Dentist Nerds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-deep: #0A1422;
+    --navy-soft: #1B2940;
+    --ink: #15202E;
+    --ink-soft: #4A5568;
+    --ink-mute: #7B8794;
+    --line: #E2E8F0;
+    --line-soft: #EDF2F7;
+    --bg: #FFFFFF;
+    --bg-soft: #F7F9FC;
+    --bg-mint: #FDF8E8;
+
+    --green: #D4A93B;
+    --green-deep: #8B6914;
+    --green-soft: #FAEFCE;
+    --mint: #E5C76E;
+
+    --coral: #FF5E4D;
+    --coral-soft: #FFE2DE;
+    --amber: #FFB547;
+    --amber-soft: #FFF1D6;
+    --blue: #4D8CFF;
+    --blue-soft: #DCE8FF;
+    --purple: #8B5CF6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============== HERO ============== */
+  .hero {
+    background: var(--navy);
+    color: #FFF;
+    padding: 72px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(77,140,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-wrap { position: relative; z-index: 2; }
+
+  /* Top header strip */
+  .audit-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nerds-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #FFF;
+    letter-spacing: -0.01em;
+  }
+  .nerds-logo .logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: 18px;
+  }
+  .audit-type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .audit-target {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212,169,59,0.12);
+    border: 1px solid rgba(212,169,59,0.3);
+    color: var(--green);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .audit-target .pulse {
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(212,169,59,0.2);
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5.2vw, 60px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+    max-width: 920px;
+  }
+  .hero h1 .accent { color: var(--green); }
+  .hero-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero .lede {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 44px;
+    font-weight: 400;
+  }
+  .hero .lede strong { color: #FFF; }
+
+  .hero-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .meta-block .meta-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .meta-block .meta-value {
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .meta-block .meta-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  /* ============== VERDICT BAR ============== */
+  .verdict {
+    background: linear-gradient(135deg, var(--coral) 0%, #E04535 100%);
+    color: #FFF;
+    padding: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .verdict-wrap {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .verdict-icon {
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .verdict-content .verdict-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .verdict-content h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    max-width: 720px;
+  }
+  .verdict-cta {
+    background: #FFF;
+    color: var(--coral);
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* ============== SECTION SHELL ============== */
+  section { padding: 80px 0; }
+  section.alt { background: var(--bg-soft); }
+  section.dark { background: var(--navy); color: #FFF; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .section-eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+  .section-eyebrow.red {
+    background: var(--coral-soft);
+    color: var(--coral);
+  }
+  .section-eyebrow.red .dot { background: var(--coral); }
+  section.dark .section-eyebrow {
+    background: rgba(212,169,59,0.15);
+    color: var(--green);
+  }
+  section h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    max-width: 820px;
+  }
+  section h2 .accent { color: var(--green-deep); }
+  section h2 .accent-red { color: var(--coral); }
+  section.dark h2 .accent { color: var(--green); }
+  section .section-intro {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 48px;
+  }
+  section.dark .section-intro { color: rgba(255,255,255,0.7); }
+
+  /* ============== HEALTH SCORE ============== */
+  .score-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .gauge-wrap {
+    background: #FFF;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(15,27,45,0.06);
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .gauge-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .gauge-svg { display: block; margin: 0 auto; }
+  .gauge-num {
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--coral);
+    line-height: 1;
+    margin-top: 8px;
+    letter-spacing: -0.03em;
+  }
+  .gauge-suffix { font-size: 24px; color: var(--ink-mute); font-weight: 600; }
+  .gauge-status {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--coral);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .subscore-list { display: flex; flex-direction: column; gap: 16px; }
+  .subscore {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .subscore-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .subscore-icon.coral { background: var(--coral-soft); }
+  .subscore-icon.amber { background: var(--amber-soft); }
+  .subscore-icon.blue { background: var(--blue-soft); }
+  .subscore-icon.green { background: var(--green-soft); }
+  .subscore-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .subscore-bar {
+    background: var(--line-soft);
+    height: 6px;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .subscore-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: var(--coral);
+  }
+  .subscore-fill.amber { background: var(--amber); }
+  .subscore-fill.blue { background: var(--blue); }
+  .subscore-fill.green { background: var(--green); }
+  .subscore-value {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  /* ============== ISSUE COUNTERS ============== */
+  .issue-counter {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+  .counter-card {
+    background: #FFF;
+    border-radius: 16px;
+    padding: 26px 22px;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .counter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+  }
+  .counter-card.critical::before { background: var(--coral); }
+  .counter-card.high::before { background: var(--amber); }
+  .counter-card.medium::before { background: var(--blue); }
+  .counter-card.good::before { background: var(--green); }
+  .counter-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+  }
+  .counter-num.coral { color: var(--coral); }
+  .counter-num.amber { color: var(--amber); }
+  .counter-num.blue { color: var(--blue); }
+  .counter-num.green { color: var(--green); }
+  .counter-label {
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ============== TRAFFIC CHART ============== */
+  .chart-block {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .donut-wrap { text-align: center; }
+  .donut-center {
+    position: relative;
+    display: inline-block;
+  }
+  .donut-center .center-num {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .donut-center .center-num .big {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--coral);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .donut-center .center-num .small {
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .donut-caption {
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .legend-row {
+    display: grid;
+    grid-template-columns: 16px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .legend-dot {
+    width: 14px; height: 14px;
+    border-radius: 4px;
+  }
+  .legend-label { font-size: 14.5px; color: var(--ink); font-weight: 500; }
+  .legend-label .leg-sub { color: var(--ink-mute); font-size: 12px; font-weight: 400;}
+  .legend-pct {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--ink);
+  }
+
+  /* ============== TOP PAGES BAR CHART ============== */
+  .page-bar {
+    display: grid;
+    grid-template-columns: 240px 1fr 80px;
+    gap: 20px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .page-name {
+    font-family: 'DM Sans', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .page-name .pn-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .page-track {
+    background: var(--line-soft);
+    height: 12px;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .page-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--coral) 0%, #FF8B7E 100%);
+  }
+  .page-fill.amber { background: linear-gradient(90deg, var(--amber) 0%, #FFD17C 100%); }
+  .page-fill.empty {
+    background: repeating-linear-gradient(45deg, var(--line-soft), var(--line-soft) 6px, var(--line) 6px, var(--line) 12px);
+  }
+  .page-value {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ink);
+    text-align: right;
+  }
+  .page-value.crit { color: var(--coral); }
+  .page-value.zero { color: var(--ink-mute); }
+
+  /* ============== ISSUE CARDS ============== */
+  .issues-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .issue-card {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .issue-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(15,27,45,0.08);
+  }
+  .issue-icon-wrap {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .issue-icon-wrap.critical { background: var(--coral-soft); }
+  .issue-icon-wrap.high { background: var(--amber-soft); }
+  .issue-icon-wrap.medium { background: var(--blue-soft); }
+  .issue-card-head {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .issue-card-num {
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .issue-card h3 {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.25;
+    flex-basis: 100%;
+    letter-spacing: -0.01em;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pill .pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .pill.critical { background: var(--coral-soft); color: var(--coral); }
+  .pill.critical .pill-dot { background: var(--coral); }
+  .pill.high { background: var(--amber-soft); color: #B87A0E; }
+  .pill.high .pill-dot { background: var(--amber); }
+  .pill.medium { background: var(--blue-soft); color: #2D5BC2; }
+  .pill.medium .pill-dot { background: var(--blue); }
+
+  .issue-card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .issue-card p:last-child { margin-bottom: 0; }
+  .issue-card strong { color: var(--ink); font-weight: 700; }
+  .issue-card code {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    color: var(--navy);
+    word-break: break-all;
+  }
+
+  .fix-box {
+    background: var(--bg-mint);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    border-left: 3px solid var(--green);
+  }
+  .fix-box-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-deep);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fix-box p {
+    color: var(--ink);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* Evidence / quote boxes */
+  .evidence {
+    background: #FFF5F3;
+    border-left: 3px solid var(--coral);
+    padding: 16px 20px;
+    margin: 14px 0;
+    border-radius: 0 12px 12px 0;
+  }
+  .evidence-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--coral);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .evidence-quote {
+    font-family: 'DM Sans', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Cannibalization visual */
+  .canniba-vis {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 18px 0;
+  }
+  .canniba-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .canniba-flow {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 14px;
+    align-items: center;
+  }
+  .canniba-page {
+    background: #FFF;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .canniba-page.service {
+    border-color: var(--green);
+    background: var(--bg-mint);
+  }
+  .canniba-page.blog {
+    border-color: var(--coral);
+    background: #FFF5F3;
+  }
+  .canniba-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .canniba-tag.service { background: var(--green); color: #FFF; }
+  .canniba-tag.blog { background: var(--coral); color: #FFF; }
+  .canniba-url {
+    font-family: 'DM Sans', monospace;
+    font-size: 11px;
+    color: var(--ink);
+    font-weight: 600;
+    word-break: break-all;
+    margin-bottom: 6px;
+  }
+  .canniba-meta {
+    font-size: 11px;
+    color: var(--ink-mute);
+  }
+  .canniba-fight {
+    text-align: center;
+    font-size: 28px;
+    color: var(--coral);
+    font-weight: 800;
+  }
+
+  /* Broken link example */
+  .broken-link-vis {
+    background: var(--navy-deep);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 14px 0;
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.85);
+    overflow-x: auto;
+  }
+  .broken-link-vis .bl-label {
+    font-size: 10px;
+    color: var(--coral);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
+  }
+  .broken-link-vis .bl-line {
+    line-height: 1.7;
+    word-break: break-all;
+  }
+  .broken-link-vis .highlight {
+    background: rgba(255,94,77,0.25);
+    color: #FFB5AB;
+    padding: 1px 4px;
+    border-radius: 3px;
+    text-decoration: line-through wavy var(--coral);
+  }
+  .broken-link-vis .ok {
+    color: var(--green);
+  }
+
+  /* ============== BRAND POSITIONING / GBP ============== */
+  .gbp-mockup {
+    background: #FFF;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    padding: 28px;
+    margin: 32px 0;
+    box-shadow: 0 4px 20px rgba(15,27,45,0.04);
+  }
+  .gbp-mockup-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 22px;
+  }
+  .gbp-g-logo {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4285F4 0%, #34A853 33%, #FBBC04 66%, #EA4335 100%);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .gbp-mockup-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .gbp-mockup-sub {
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+  .gbp-business-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .gbp-business-meta {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-bottom: 20px;
+  }
+
+  /* The primary slot — the hero of the mockup */
+  .gbp-primary-slot {
+    background: linear-gradient(135deg, #EAF2FF 0%, #DCE8FF 100%);
+    border: 2px solid var(--blue);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .gbp-primary-slot::before {
+    content: 'PRIMARY CATEGORY';
+    position: absolute;
+    top: -10px; left: 18px;
+    background: var(--blue);
+    color: #FFF;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+  .gbp-primary-name {
+    font-size: 26px;
+    font-weight: 800;
+    color: #2D5BC2;
+    margin: 8px 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .gbp-primary-note {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    margin-top: 6px;
+  }
+
+  /* Secondary categories pills */
+  .gbp-secondary-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+  }
+  .gbp-secondary-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .gbp-sec-chip {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .gbp-secondary-note {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* Educational callout about primary category */
+  .primary-edu {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 28px 0;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 22px;
+    align-items: center;
+  }
+  .primary-edu-icon {
+    width: 56px; height: 56px;
+    background: rgba(212,169,59,0.15);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .primary-edu-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .primary-edu-text {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #FFF;
+  }
+  .primary-edu-text strong { color: var(--green); }
+
+  /* Strategic paths cards */
+  .brand-paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 36px;
+  }
+  .path-card {
+    background: #FFF;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .path-card.a {
+    border-color: var(--purple);
+    border-top: 4px solid var(--purple);
+  }
+  .path-card.b {
+    border-color: var(--green);
+    border-top: 4px solid var(--green);
+    background: linear-gradient(180deg, #FFF 0%, #F8FCF9 100%);
+  }
+  .path-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+  .path-card.a .path-label {
+    background: rgba(139,92,246,0.12);
+    color: var(--purple);
+  }
+  .path-card.b .path-label {
+    background: var(--green-soft);
+    color: var(--green-deep);
+  }
+  .path-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .path-tagline {
+    font-size: 14px;
+    color: var(--ink-mute);
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+
+  /* GBP move-mockup inside path card */
+  .path-gbp-move {
+    background: var(--bg-soft);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    border-left: 3px solid;
+  }
+  .path-card.a .path-gbp-move { border-left-color: var(--purple); }
+  .path-card.b .path-gbp-move { border-left-color: var(--green); }
+  .path-gbp-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+  .path-gbp-action {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .path-gbp-action .gbp-arrow {
+    color: var(--ink-mute);
+    margin: 0 6px;
+  }
+
+  .path-rebrand {
+    background: var(--bg-soft);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-left: 2px solid var(--ink-mute);
+  }
+  .path-rebrand strong { color: var(--ink); display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
+  .path-card.a .path-rebrand { border-left-color: var(--purple); }
+  .path-card.b .path-rebrand { border-left-color: var(--green); }
+  .path-section-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+    margin-top: 18px;
+  }
+  .path-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .path-list li {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    padding: 6px 0 6px 20px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .path-list li::before {
+    position: absolute;
+    left: 0; top: 6px;
+    font-size: 12px;
+    font-weight: 800;
+    width: 14px;
+    text-align: center;
+  }
+  .path-list.pros li::before { content: '+'; color: var(--green-deep); }
+  .path-list.cons li::before { content: '−'; color: var(--coral); }
+  .path-best {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--bg-soft);
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .path-best strong { font-weight: 700; }
+
+  /* ============== SINGLE BRAND SUGGESTION CARD ============== */
+  .brand-suggestion-card {
+    background: #FFF;
+    border-radius: 24px;
+    padding: 44px 48px;
+    border: 1px solid var(--line);
+    margin-top: 40px;
+    box-shadow: 0 8px 32px rgba(15,27,45,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand-suggestion-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+    background: linear-gradient(180deg, var(--green) 0%, var(--mint) 100%);
+  }
+  .suggestion-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .brand-suggestion-card h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+  .brand-suggestion-card p {
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .brand-suggestion-card strong { color: var(--ink); font-weight: 700; }
+
+  /* Name comparison visual */
+  .name-comparison {
+    display: grid;
+    grid-template-columns: 1fr 56px 1fr;
+    gap: 16px;
+    align-items: stretch;
+    margin: 32px 0;
+  }
+  .name-card-vs {
+    border-radius: 14px;
+    padding: 24px 26px;
+    border: 1px solid var(--line);
+    background: var(--bg-soft);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .name-card-vs.possible {
+    background: linear-gradient(135deg, #FAEFCE 0%, #F7E5B0 100%);
+    border-color: var(--green);
+    position: relative;
+  }
+  .name-card-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+  }
+  .name-card-vs.possible .name-card-label {
+    color: var(--green-deep);
+  }
+  .name-card-name {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .name-card-meta {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+    font-style: italic;
+  }
+  .name-card-vs.possible .name-card-meta {
+    color: var(--ink);
+  }
+  .name-arrow {
+    text-align: center;
+    font-size: 26px;
+    color: var(--green);
+    font-weight: 800;
+    align-self: center;
+  }
+
+  .suggestion-closing {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  /* ============== LOCAL COMPETITORS · review gap visuals ============== */
+  .review-gap-stat {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    border-radius: 20px;
+    padding: 36px 40px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 36px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .review-gap-stat::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -80px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(255,94,77,0.15) 0%, transparent 60%);
+  }
+  .gap-side {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .gap-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    height: 80%;
+    align-self: center;
+    position: relative;
+    z-index: 1;
+  }
+  .gap-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .gap-num {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+  .gap-num.you { color: var(--coral); }
+  .gap-num.them { color: var(--green); }
+  .gap-name {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+  .gap-multiplier {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    position: relative;
+    z-index: 1;
+  }
+  .gap-mult-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--coral);
+    letter-spacing: -0.02em;
+  }
+  .gap-mult-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    margin-top: 2px;
+  }
+
+  /* Review chart row */
+  .rev-bar {
+    display: grid;
+    grid-template-columns: 280px 1fr 110px;
+    gap: 18px;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .rev-bar.you {
+    background: linear-gradient(90deg, rgba(255,94,77,0.06) 0%, transparent 100%);
+    border-left: 3px solid var(--coral);
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 8px;
+    margin: 4px 0;
+  }
+  .rev-name {
+    font-size: 13.5px;
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .rev-name .rev-spec {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .rev-name .rev-flag {
+    display: inline-block;
+    background: var(--coral);
+    color: #FFF;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    vertical-align: middle;
+  }
+  .rev-track {
+    background: var(--line-soft);
+    height: 14px;
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  .rev-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #8B6914 0%, var(--green) 100%);
+  }
+  .rev-fill.you {
+    background: linear-gradient(90deg, var(--coral) 0%, #FF8B7E 100%);
+  }
+  .rev-fill.same-building {
+    background: linear-gradient(90deg, #B85A1F 0%, var(--coral) 100%);
+  }
+  .rev-value {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--ink);
+    text-align: right;
+  }
+  .rev-value .rev-stars {
+    display: block;
+    font-size: 11px;
+    color: var(--amber);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .rev-value.you { color: var(--coral); }
+
+  /* Same building callout */
+  .same-building-alert {
+    background: linear-gradient(135deg, #FFE2DE 0%, #FFD0C9 100%);
+    border: 1px solid var(--coral);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .same-building-icon {
+    width: 64px; height: 64px;
+    background: var(--coral);
+    color: #FFF;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(255,94,77,0.25);
+  }
+  .sb-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+  .sb-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .sb-body {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .sb-body strong { color: var(--ink); }
+
+  /* ============== REBUILD VS REPAIR SECTION ============== */
+  .rebuild-vs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .vs-card {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .vs-card.repair {
+    border-color: var(--coral);
+  }
+  .vs-card.rebuild {
+    border-color: var(--green);
+    box-shadow: 0 12px 40px rgba(212,169,59,0.15);
+  }
+  .vs-stamp {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 100px;
+  }
+  .vs-stamp.bad { background: var(--coral-soft); color: var(--coral); }
+  .vs-stamp.good { background: var(--green-soft); color: var(--green-deep); }
+  .vs-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .vs-card h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .vs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px;
+  }
+  .vs-list li {
+    padding: 10px 0 10px 30px;
+    position: relative;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .vs-list li:last-child { border-bottom: none; }
+  .vs-list li::before {
+    position: absolute;
+    left: 0; top: 11px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .vs-list.bad li::before {
+    content: '✕';
+    background: var(--coral-soft);
+    color: var(--coral);
+  }
+  .vs-list.good li::before {
+    content: '✓';
+    background: var(--green-soft);
+    color: var(--green-deep);
+  }
+  .vs-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .vs-metric {
+    text-align: center;
+    padding: 14px;
+    background: var(--bg-soft);
+    border-radius: 10px;
+  }
+  .vs-metric .vm-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .vs-card.rebuild .vs-metric .vm-num { color: var(--green-deep); }
+  .vs-card.repair .vs-metric .vm-num { color: var(--coral); }
+  .vs-metric .vm-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ============== COMPETITOR ============== */
+  .competitor-table {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .ct-head {
+    display: grid;
+    grid-template-columns: 1.7fr 90px 90px 90px 100px;
+    gap: 16px;
+    padding: 18px 28px;
+    background: var(--navy);
+    color: #FFF;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .ct-row {
+    display: grid;
+    grid-template-columns: 1.7fr 90px 90px 90px 100px;
+    gap: 16px;
+    padding: 16px 28px;
+    align-items: center;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 14px;
+  }
+  .ct-row:last-child { border-bottom: none; }
+  .ct-row.you {
+    background: var(--bg-mint);
+    border-left: 3px solid var(--green);
+    padding-left: 25px;
+  }
+  .ct-domain { font-weight: 700; color: var(--ink); }
+  .ct-domain .ct-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .ct-num { font-weight: 700; color: var(--ink); }
+  .ct-num.warn { color: var(--coral); }
+  .ct-num.good { color: var(--green-deep); }
+
+  /* ============== ROADMAP ============== */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    position: relative;
+  }
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    top: 40px; left: 8%; right: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--coral), var(--amber), var(--green));
+    z-index: 0;
+  }
+  .phase {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 26px;
+    position: relative;
+    z-index: 1;
+  }
+  .phase-number {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0 auto 18px;
+    border: 4px solid var(--bg-soft);
+    position: relative;
+    z-index: 2;
+  }
+  .phase-number.amber { background: var(--amber); color: var(--navy); }
+  .phase-number.green { background: var(--green); }
+  .phase-weeks {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .phase h3 {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .phase ul {
+    list-style: none;
+    padding: 0;
+  }
+  .phase li {
+    padding: 10px 0 10px 24px;
+    position: relative;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .phase li:last-child { border-bottom: none; }
+  .phase li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 16px;
+    width: 12px; height: 12px;
+    border-radius: 4px;
+    background: var(--coral-soft);
+    border: 2px solid var(--coral);
+  }
+  .phase.amber li::before {
+    background: var(--amber-soft);
+    border-color: var(--amber);
+  }
+  .phase.green li::before {
+    background: var(--green-soft);
+    border-color: var(--green);
+  }
+
+  /* ============== GAME PLAN · Featured Step 1 + Ongoing Engines ============== */
+  .step-one-feature {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    border-radius: 24px;
+    padding: 48px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .step-one-feature::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .step-one-feature::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(77,140,255,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .s1-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+  .s1-number-block {
+    text-align: left;
+  }
+  .s1-badge {
+    display: inline-block;
+    background: var(--green);
+    color: var(--navy-deep);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+  }
+  .s1-number {
+    font-size: 96px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--green);
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+  }
+  .s1-step-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .s1-step-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #FFF;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .s1-content h4 {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 18px;
+  }
+  .s1-content > p {
+    color: rgba(255,255,255,0.8);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .s1-content > p strong { color: #FFF; }
+  .s1-todo {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+  .s1-todo li {
+    padding: 12px 0 12px 32px;
+    position: relative;
+    color: rgba(255,255,255,0.85);
+    font-size: 15px;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .s1-todo li:last-child { border-bottom: none; }
+  .s1-todo li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 17px;
+    width: 18px; height: 18px;
+    border: 2px solid var(--green);
+    border-radius: 5px;
+    background: rgba(212,169,59,0.1);
+  }
+  .s1-todo li strong { color: #FFF; }
+  .s1-closing {
+    background: rgba(212,169,59,0.1);
+    border-left: 3px solid var(--green);
+    padding: 18px 22px;
+    border-radius: 0 12px 12px 0;
+    margin-top: 12px;
+  }
+  .s1-closing p {
+    margin: 0;
+    color: rgba(255,255,255,0.92);
+    font-size: 14.5px;
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .s1-closing strong { color: var(--green); font-style: normal; }
+
+  /* Ongoing engines section */
+  .engines-header {
+    text-align: center;
+    margin: 56px 0 32px;
+    position: relative;
+  }
+  .engines-header::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px;
+    background: var(--line);
+    z-index: 0;
+  }
+  .engines-header span {
+    position: relative;
+    z-index: 1;
+    background: var(--bg);
+    padding: 0 24px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .engines-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .engine-card {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 28px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+  }
+  .engine-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(15,27,45,0.07);
+    border-color: var(--green);
+  }
+  .engine-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+  .engine-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+  .engine-card h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .engine-card p {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .engine-card p:last-child { margin-bottom: 0; }
+  .engine-card strong { color: var(--ink); font-weight: 700; }
+  .engine-target {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+  .engine-target strong {
+    color: var(--green-deep);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* ============== OPPORTUNITY ============== */
+  .opportunity {
+    background: var(--navy);
+    color: #FFF;
+    border-radius: 28px;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .opportunity::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212,169,59,0.2) 0%, transparent 60%);
+  }
+  .opp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .opp-content h2 { color: #FFF; }
+  .opp-content h2 .accent { color: var(--green); }
+  .opp-content p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .opp-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .opp-stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 22px;
+  }
+  .opp-stat-num {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .opp-stat-label {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+
+  /* ============== COMPANION AUDIT · Beverly Hills ============== */
+  .audit-switch {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    border-radius: 24px;
+    padding: 40px 48px;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+    border-left: 5px solid var(--green);
+  }
+  .audit-switch::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -80px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .audit-switch-eyebrow {
+    display: inline-block;
+    background: var(--green);
+    color: var(--navy-deep);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .audit-switch h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .audit-switch h2 .accent { color: var(--green); }
+  .audit-switch-meta {
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+  .audit-switch-meta strong { color: #FFF; }
+
+  /* Side-by-side site comparison */
+  .site-compare {
+    background: #FFF;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    margin: 28px 0;
+  }
+  .site-compare-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--navy);
+    color: #FFF;
+  }
+  .site-compare-head > div {
+    padding: 18px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .site-compare-head > div:first-child {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.6);
+  }
+  .site-compare-head .site-name {
+    font-size: 14px;
+    color: #FFF;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .site-compare-head .site-name small {
+    display: block;
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    margin-top: 2px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .site-compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid var(--line-soft);
+  }
+  .site-compare-row > div {
+    padding: 14px 22px;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .site-compare-row > div:first-child {
+    background: var(--bg-soft);
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+  .site-compare-row .scv {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .site-compare-row .scv.win { color: var(--green-deep); }
+  .site-compare-row .scv.lose { color: var(--coral); }
+  .site-compare-row .scv-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .scv-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .scv-badge.win { background: var(--green-soft); color: var(--green-deep); }
+  .scv-badge.lose { background: var(--coral-soft); color: var(--coral); }
+
+  /* "What's working" callout for BH section */
+  .bh-good-news {
+    background: linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%);
+    border-left: 4px solid var(--green);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 32px 0;
+  }
+  .bh-good-news-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--green-deep);
+    margin-bottom: 10px;
+  }
+  .bh-good-news h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .bh-good-news ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .bh-good-news li {
+    padding-left: 26px;
+    position: relative;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .bh-good-news li::before {
+    content: '✓';
+    position: absolute;
+    left: 0; top: 0;
+    width: 18px; height: 18px;
+    background: var(--green);
+    color: #FFF;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bh-good-news li strong { color: var(--ink); }
+
+  /* Phone format demo */
+  .phone-format-demo {
+    background: var(--bg-soft);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    font-family: 'DM Sans', monospace;
+    font-size: 14px;
+  }
+  .phone-format-demo .pf-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-mute);
+    margin-right: 8px;
+  }
+  .phone-format-demo .pf-bad {
+    color: var(--coral);
+    text-decoration: line-through;
+    margin-right: 14px;
+  }
+  .phone-format-demo .pf-good {
+    color: var(--green-deep);
+    font-weight: 700;
+  }
+
+  /* BH section heading */
+  .bh-subhead {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 48px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .bh-subhead-sub {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  /* ============== SITEMAP AUDIT VISUAL ============== */
+  .sitemap-card {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 32px;
+    margin: 24px 0 36px;
+    box-shadow: 0 4px 20px rgba(15,27,45,0.04);
+  }
+  .sitemap-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .sitemap-card-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .sitemap-card-title small {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+  .sitemap-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .sitemap-stat {
+    background: var(--bg-soft);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .sitemap-stat-num {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .sitemap-stat-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .sm-stat-la { color: #C2410C; }
+  .sm-stat-bh { color: var(--green-deep); }
+  .sm-stat-nogeo { color: var(--amber); }
+  .sm-stat-flag { color: var(--coral); }
+
+  /* RED FLAGS CALLOUT — emphasizes the two biggest findings */
+  .red-flags-banner {
+    background: linear-gradient(135deg, #FFF1EE 0%, #FFFBEC 100%);
+    border: 1px solid #FFDDD6;
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin: 4px 0 24px;
+  }
+  .red-flags-banner-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--coral);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .red-flags-banner-label::before {
+    content: "⚠";
+    font-size: 14px;
+  }
+  .red-flags-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .red-flag-cell {
+    background: #FFF;
+    border-radius: 10px;
+    padding: 18px 20px;
+    border-left: 4px solid var(--coral);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .red-flag-num {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--coral);
+    line-height: 1;
+    flex-shrink: 0;
+    font-family: 'Manrope', sans-serif;
+  }
+  .red-flag-num.text {
+    font-size: 11px;
+    line-height: 1.2;
+    padding-top: 6px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    max-width: 70px;
+    text-align: center;
+    font-weight: 800;
+  }
+  .red-flag-num.text-big {
+    font-size: 18px;
+    line-height: 1.15;
+    padding-top: 4px;
+    letter-spacing: -0.005em;
+    text-transform: none;
+    max-width: 90px;
+    text-align: left;
+    font-weight: 800;
+  }
+  .red-flag-body { flex: 1; }
+  .red-flag-headline {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+  }
+  .red-flag-detail {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .red-flag-detail strong { color: var(--ink); }
+  .red-flag-detail .benchmark {
+    display: inline-block;
+    background: var(--bg-soft);
+    color: var(--ink-soft);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'DM Sans', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .sitemap-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--line-soft);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .sitemap-row {
+    background: #FFF;
+    display: grid;
+    grid-template-columns: 1fr 110px 60px;
+    align-items: center;
+    padding: 11px 16px;
+    gap: 12px;
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+  .sitemap-row:hover { background: #FCFCFD; }
+  .sitemap-row .sm-url {
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    color: var(--ink);
+    word-break: break-all;
+  }
+  .sitemap-row .sm-url strong { color: var(--ink); font-weight: 700; }
+  .sitemap-row .sm-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .sm-badge.la { background: #FFE4D3; color: #C2410C; }
+  .sm-badge.bh { background: var(--green-soft); color: var(--green-deep); }
+  .sm-badge.nogeo { background: #FFF1CB; color: #92740C; }
+  .sm-badge.flag { background: #FFE2DE; color: var(--coral); }
+  .sm-badge.utility { background: var(--bg-soft); color: var(--ink-mute); }
+
+  .sitemap-row .sm-idx {
+    font-family: 'DM Sans', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-align: right;
+    font-weight: 600;
+  }
+  .sitemap-row.flag-row {
+    background: #FFF8F7;
+    border-left: 3px solid var(--coral);
+  }
+  .sitemap-row.flag-row:hover { background: #FFF1EE; }
+  .sitemap-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+  }
+  .sitemap-legend > div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sitemap-legend .leg-sw {
+    width: 10px; height: 10px;
+    border-radius: 3px;
+  }
+
+  /* ============== END CTA ============== */
+  .end-cta {
+    background: var(--navy);
+    color: #FFF;
+    padding: 64px 0;
+    text-align: center;
+  }
+  .end-cta h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 auto 16px;
+    color: #FFF;
+    max-width: none;
+  }
+  .end-cta h2 .accent { color: var(--green); }
+  .end-cta p {
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+    margin: 0 auto 32px;
+    font-size: 16px;
+  }
+  .end-meta {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ============== RESPONSIVE ============== */
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+    section { padding: 56px 0; }
+    .hero { padding: 48px 0; }
+    .audit-strip { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .hero-meta-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .verdict-wrap { grid-template-columns: 56px 1fr; gap: 18px; }
+    .verdict-icon { width: 56px; height: 56px; }
+    .verdict-content h2 { font-size: 22px; }
+    .verdict-cta { grid-column: 1 / -1; text-align: center; }
+    .score-grid { grid-template-columns: 1fr; gap: 32px; }
+    .chart-block { grid-template-columns: 1fr; gap: 32px; }
+    .issue-counter { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .counter-card { padding: 22px 18px; }
+    .counter-num { font-size: 38px; }
+    .sitemap-summary { grid-template-columns: repeat(2, 1fr); }
+    .red-flags-grid { grid-template-columns: 1fr; gap: 12px; }
+    .red-flag-num { font-size: 42px; }
+    .sitemap-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 14px; }
+    .sitemap-row .sm-idx { text-align: left; }
+    .roadmap { grid-template-columns: 1fr; gap: 16px; }
+    .roadmap::before { display: none; }
+    .opp-grid { grid-template-columns: 1fr; gap: 32px; }
+    .opportunity { padding: 36px 24px; }
+    .rebuild-vs { grid-template-columns: 1fr; gap: 16px; }
+    .brand-paths { grid-template-columns: 1fr; gap: 16px; }
+    .primary-edu { grid-template-columns: 1fr; padding: 22px; text-align: left; }
+    .primary-edu-icon { width: 48px; height: 48px; }
+    .path-card { padding: 24px; }
+    .brand-suggestion-card { padding: 28px 24px; }
+    .brand-suggestion-card h3 { font-size: 22px; }
+    .name-comparison { grid-template-columns: 1fr; gap: 12px; }
+    .name-arrow { transform: rotate(90deg); padding: 4px 0; }
+    .review-gap-stat { grid-template-columns: 1fr; gap: 24px; padding: 28px 22px; }
+    .gap-divider { display: none; }
+    .gap-num { font-size: 48px; }
+    .rev-bar { grid-template-columns: 1fr; gap: 6px; padding: 14px 0; }
+    .rev-value { text-align: left; }
+    .rev-value .rev-stars { display: inline; margin-left: 8px; }
+    .same-building-alert { grid-template-columns: 1fr; padding: 22px; text-align: left; gap: 14px; }
+    .same-building-icon { width: 48px; height: 48px; }
+    .step-one-feature { padding: 28px 22px; }
+    .s1-grid { grid-template-columns: 1fr; gap: 24px; }
+    .s1-number { font-size: 72px; }
+    .s1-step-title { font-size: 24px; }
+    .engines-grid { grid-template-columns: 1fr; gap: 14px; }
+    .engine-card { padding: 22px; }
+    .audit-switch { padding: 28px 22px; }
+    .site-compare-head, .site-compare-row { grid-template-columns: 1fr 1fr; font-size: 13px; }
+    .site-compare-head > div:first-child, .site-compare-row > div:first-child { grid-column: 1 / -1; }
+    .bh-good-news ul { grid-template-columns: 1fr; }
+    .ct-head, .ct-row {
+      grid-template-columns: 1.5fr 60px 60px;
+      gap: 10px;
+      padding: 14px 16px;
+      font-size: 12px;
+    }
+    .ct-head .hide-mobile, .ct-row .hide-mobile { display: none; }
+    .canniba-flow { grid-template-columns: 1fr; gap: 12px; }
+    .canniba-fight { font-size: 22px; }
+    .issue-card { grid-template-columns: 1fr; padding: 24px; gap: 18px; }
+    .issue-icon-wrap { width: 48px; height: 48px; }
+    .page-bar { grid-template-columns: 1fr; gap: 6px; padding: 14px 0; }
+    .page-value { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-wrap">
+
+    <div class="audit-strip">
+      <div class="nerds-logo">
+        <span class="logo-mark">N</span>
+        <span>Dentist Nerds</span>
+      </div>
+      <div class="audit-type">Website Audit · Confidential</div>
+    </div>
+
+    <div class="audit-target">
+      <span class="pulse"></span>
+      Audited: pearldentalgroup.com
+    </div>
+
+    <h1>
+      Website Audit for <span class="accent">Pearl Dental Group</span>
+    </h1>
+    <p class="hero-subtitle">Prepared by Dentist Nerds · May 2026</p>
+    <p class="lede">
+      Pearl Dental Group runs three offices across Baton Rouge and Metairie under a single website — and the site is already pulling <strong>15,915 organic visits per month</strong>, which is strong. But under the hood, the audit found a structural issue worth solving for long-term growth: <strong>the website is trying to serve two different markets (Baton Rouge and Metairie) from one URL</strong>, plus a real cannibalization problem where AI-generated blogs are competing with the homepage and treatment pages for the same keywords. There's also a GBP NAP conflict at the Perkins Rd address, internal-linking quality issues, and traces of ChatGPT URLs/UTMs left behind in published pages. Here's the full breakdown.
+    </p>
+
+    <div class="hero-meta-grid">
+      <div class="meta-block">
+        <div class="meta-label">Prepared For</div>
+        <div class="meta-value">Pearl Dental Group</div>
+        <div class="meta-sub">Dr. André Bruni, Dr. Jessica Bruni, Dr. Blake Mann, Dr. Rachel Nery</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Audit Date</div>
+        <div class="meta-value">May 2026</div>
+        <div class="meta-sub">Tools: Semrush, Local Falcon, Google Places, manual UX</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Issues Found</div>
+        <div class="meta-value">9 issues</div>
+        <div class="meta-sub">3 critical · 4 high · 2 medium</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Primary Recommendation</div>
+        <div class="meta-value" style="color:var(--green);">Split &amp; Refocus</div>
+        <div class="meta-sub">Two websites · cleanup · transactional focus</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ HEALTH SCORE ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Health Score Breakdown</span>
+    <h2>Overall site health: <span style="color:var(--amber);">58/100</span>.<br>Strong traffic — held back by structural and content issues.</h2>
+    <p class="section-intro">We graded the site using Semrush data (15,915 monthly organic visits, 7,633 keywords, Authority Score 20, 606 referring domains), the Google Business Profile landscape, the live local competitive field via Local Falcon, and a manual UX review. Pearl Dental Group scores well above the Beverly Hills practices on traffic and authority, but loses points on multi-location architecture, content cannibalization, and the AI-generated content leaks visible across the URL structure.</p>
+
+    <div class="score-grid">
+
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="20" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5E4D"/>
+              <stop offset="50%" stop-color="#FFB547"/>
+              <stop offset="100%" stop-color="#D4A93B"/>
+            </linearGradient>
+          </defs>
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="url(#gaugeGrad)" stroke-width="20" stroke-linecap="round" opacity="0.15"/>
+          <path d="M 20 120 A 100 100 0 0 1 168 26" fill="none" stroke="#FFB547" stroke-width="20" stroke-linecap="round"/>
+          <text x="20" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">0</text>
+          <text x="120" y="14" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">50</text>
+          <text x="220" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">100</text>
+        </svg>
+        <div class="gauge-num" style="color:var(--amber);">58<span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status" style="color:var(--amber);">Strong Traffic · Structural Cleanup Needed</div>
+      </div>
+
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Content Quality &amp; Intent Alignment</div>
+            <div class="subscore-bar amber"><div class="subscore-fill amber" style="width:42%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--amber);">42%</div>
+        </div>
+
+        <div class="subscore">
+          <div class="subscore-icon coral">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Site Architecture (Multi-Location)</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:32%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--coral);">32%</div>
+        </div>
+
+        <div class="subscore">
+          <div class="subscore-icon" style="background:rgba(212,169,59,0.15);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B6914" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Traffic Volume &amp; Keyword Reach</div>
+            <div class="subscore-bar" style="background:var(--green-soft);"><div class="subscore-fill" style="width:76%;background:linear-gradient(90deg, #8B6914 0%, var(--green) 100%);"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--green-deep);">76%</div>
+        </div>
+
+        <div class="subscore">
+          <div class="subscore-icon" style="background:rgba(212,169,59,0.15);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B6914" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Reviews &amp; Local Visibility</div>
+            <div class="subscore-bar" style="background:var(--green-soft);"><div class="subscore-fill" style="width:82%;background:linear-gradient(90deg, #8B6914 0%, var(--green) 100%);"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--green-deep);">82%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================ WHAT'S WORKING + STATS SNAPSHOT ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>What's Working</span>
+    <h2>The site has <span class="accent">real momentum already</span> — let's name it first.</h2>
+    <p class="section-intro">Pearl Dental Group is on different footing than most local dental practices. The site already pulls strong traffic, the doctors are well-credentialed, the GBP listings have 1,000+ combined reviews, and the brand presentation is solid. These are foundations to compound, not problems to fix.</p>
+
+    <div class="bh-good-news" style="background:linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%); border-left:4px solid var(--green); border-radius:16px; padding:32px 36px; margin:32px 0;">
+      <div class="bh-good-news-label" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:14px;">✓ Eight Things Pearl Dental Group Gets Right</div>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">15,915 monthly organic visits</strong> — exceptionally strong for a dental practice and well above all three of the other practices we audited (Brentwood 580/mo, Beverly Hills 156/mo).</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">7,633 ranking keywords · 606 referring domains</strong> — broad keyword footprint and a solid backlink base to compound from.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">1,164 combined Google reviews</strong> — Perkins (571), Jones Creek (536), Metairie (57). Strong social proof across the practice.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Clean treatment-page architecture</strong> — Dental Implants, Cosmetic, Periodontics, Full Mouth Reconstruction, Sedation. The IA backbone is in good shape.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Strong patient-story video content</strong> — full mouth reconstruction patient stories (Charmaine, Mike, Jeff) on the homepage are real social proof patients actually watch.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Real photography throughout</strong> — actual doctor portraits, office interiors, real amenity shots. Zero stock-photo problem.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Free Virtual Consultation funnel</strong> — Pearl Smile Consult is a smart pre-qualification tool that turns site visitors into engaged leads without forcing a phone call.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">In-house lab + 3D imaging</strong> — operational differentiators that justify premium full-arch positioning and faster turnaround claims.</li>
+      </ul>
+    </div>
+
+    <h3 style="font-size:22px; font-weight:800; margin:48px 0 8px; letter-spacing:-0.01em;">The numbers at a glance</h3>
+    <p style="color:var(--ink-soft); font-size:15px; margin-bottom:24px;">Semrush + Google snapshot of where Pearl Dental Group sits today.</p>
+
+    <div class="hero-meta-grid" style="--label-color:var(--ink-mute); --sub-color:var(--ink-soft);">
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Authority Score</div>
+        <div class="meta-value" style="color:var(--green-deep);">20 / 100</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Semrush · solid, room to grow</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Monthly Organic Traffic</div>
+        <div class="meta-value" style="color:var(--green);">15,915 visits</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">7,633 keywords ranking</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Total Backlinks</div>
+        <div class="meta-value" style="color:var(--ink);">2,414</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">606 referring domains</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Combined Reviews</div>
+        <div class="meta-value" style="color:var(--green);">1,164 · 4.9 ★</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Across 3 main location GBPs</div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px; padding:22px 26px; background:#FFF4E5; border-radius:14px; border-left:3px solid var(--amber);">
+      <p style="margin:0; color:var(--ink); font-size:15px; line-height:1.6;"><strong style="color:#9A6520;">The pattern:</strong> the front-end engagement signals (reviews, brand, real content, video stories) are doing well. Where the audit found friction is in the <strong>back-end architecture</strong> — multi-location URL strategy, blog cannibalization, AI-generated content leaks, GBP NAP overlap, and most importantly, the bulk of the traffic is coming from <em>informational</em> queries that don't convert to Baton Rouge or Metairie patients. The plan: fix those structural issues, then redirect the SEO machinery toward the queries that actually book appointments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ THE INTENT MISMATCH — Pearl Centerpiece ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>The Headline Finding</span>
+    <h2>Most of the traffic isn't <span class="accent-red">Baton Rouge patients</span>.</h2>
+    <p class="section-intro">Pearl Dental Group has 15,915 monthly visits — but when we pull the top-traffic keywords, an important pattern emerges: most of the traffic is from informational, research-stage queries with no local intent. People reading "what is a zirconia bridge price" from anywhere in the country are not booking appointments in Baton Rouge or Metairie. The site's SEO machinery is producing volume, just not the right kind of volume.</p>
+
+    <div class="review-gap-stat" style="background:linear-gradient(135deg, #FFF1EE 0%, #FFFBEC 100%); border:1px solid #FFDDD6; color:var(--ink);">
+      <div class="gap-side">
+        <div class="gap-label" style="color:var(--coral);">Top Traffic Source</div>
+        <div class="gap-num them" style="color:var(--coral);">Zirconia</div>
+        <div class="gap-name" style="color:var(--ink-soft);">"Zirconia bridge / arches / full-arch cost"<br>Informational · price-research queries</div>
+      </div>
+      <div class="gap-divider" style="background:#E8D9D2;"></div>
+      <div class="gap-side">
+        <div class="gap-label" style="color:var(--green-deep);">What Books Appointments</div>
+        <div class="gap-num them" style="color:var(--green-deep);">Local</div>
+        <div class="gap-name" style="color:var(--ink-soft);">"Dentist Baton Rouge", "Implants Metairie"<br>Transactional · local-intent queries</div>
+      </div>
+      <div class="gap-multiplier" style="border-top:1px solid #E8D9D2;">
+        <div class="gap-mult-num" style="color:var(--coral); font-size:36px;">The mismatch</div>
+        <div class="gap-mult-label" style="color:var(--ink-soft);">High traffic is great — but only if it converts. Informational traffic builds authority over time, while local-intent traffic is what fills the appointment book this week. Pearl Dental is heavy on the first kind and underweighting the second.</div>
+      </div>
+    </div>
+
+    <!-- TOP TRAFFIC KEYWORDS TABLE -->
+    <div class="sitemap-card" style="margin-top:32px;">
+      <div class="sitemap-card-head">
+        <div class="sitemap-card-title">
+          Top Traffic-Driving Keywords (Semrush)
+          <small>Real keywords driving Pearl Dental Group's organic traffic, ranked by % of total traffic</small>
+        </div>
+      </div>
+
+      <div class="sitemap-rows">
+        <div class="sitemap-row">
+          <div class="sm-url"><strong>pearl dental</strong> <em>(brand)</em></div>
+          <div><span class="sm-badge bh">Branded</span></div>
+          <div class="sm-idx">4.17% · Pos 2</div>
+        </div>
+        <div class="sitemap-row flag-row">
+          <div class="sm-url"><strong>zirconia bridge</strong> <em>(27,100 vol)</em></div>
+          <div><span class="sm-badge flag">⚠ Informational</span></div>
+          <div class="sm-idx">3.22% · Pos 4</div>
+        </div>
+        <div class="sitemap-row flag-row">
+          <div class="sm-url"><strong>full fixed arch implant cost</strong> <em>(9,900 vol)</em></div>
+          <div><span class="sm-badge flag">⚠ Informational</span></div>
+          <div class="sm-idx">1.36% · Pos 6</div>
+        </div>
+        <div class="sitemap-row flag-row">
+          <div class="sm-url"><strong>my crown fell out but it doesn't hurt</strong> <em>(1,600 vol)</em></div>
+          <div><span class="sm-badge flag">⚠ Informational</span></div>
+          <div class="sm-idx">1.32% · Pos 1</div>
+        </div>
+        <div class="sitemap-row flag-row">
+          <div class="sm-url"><strong>side of tooth decay</strong> <em>(1,300 vol)</em></div>
+          <div><span class="sm-badge flag">⚠ Informational</span></div>
+          <div class="sm-idx">1.07% · Pos 1</div>
+        </div>
+        <div class="sitemap-row flag-row">
+          <div class="sm-url"><strong>full mouth dental implants cost</strong> <em>(49,500 vol — huge query)</em></div>
+          <div><span class="sm-badge flag">⚠ Price Research</span></div>
+          <div class="sm-idx">0.92% · Pos 9</div>
+        </div>
+        <div class="sitemap-row flag-row">
+          <div class="sm-url"><strong>black gums</strong> <em>(5,400 vol)</em></div>
+          <div><span class="sm-badge flag">⚠ Informational</span></div>
+          <div class="sm-idx">0.81% · Pos 5</div>
+        </div>
+        <div class="sitemap-row">
+          <div class="sm-url"><strong>pearl dental baton rouge</strong></div>
+          <div><span class="sm-badge bh">Branded · Local</span></div>
+          <div class="sm-idx">0.85% · Pos 1</div>
+        </div>
+        <div class="sitemap-row">
+          <div class="sm-url"><strong>pearl dental group metairie la</strong></div>
+          <div><span class="sm-badge bh">Branded · Local</span></div>
+          <div class="sm-idx">0.45% · Pos 1</div>
+        </div>
+        <div class="sitemap-row">
+          <div class="sm-url"><strong>pearl dental group at perkins</strong></div>
+          <div><span class="sm-badge bh">Branded · Local</span></div>
+          <div class="sm-idx">0.35% · Pos 1</div>
+        </div>
+      </div>
+
+      <div class="sitemap-legend">
+        <div><span class="leg-sw" style="background:#FAEFCE;"></span>Branded / Local-Intent (converts to patients)</div>
+        <div><span class="leg-sw" style="background:#FFE2DE;"></span>Informational / Price-Research (drives traffic, low conversion)</div>
+      </div>
+    </div>
+
+    <!-- TAKEAWAY -->
+    <div style="margin-top:28px;padding:22px 26px;background:var(--bg-mint);border-radius:14px;border-left:3px solid var(--green);">
+      <p style="margin:0;color:var(--ink);font-size:15px;line-height:1.6;"><strong style="color:var(--green-deep);">What this means:</strong> The 15,915 monthly visits look impressive on a dashboard, but the highest-traffic pages are educational blogs answering questions for people who are researching, not booking. The path forward isn't to kill these blogs — they build authority — but to <strong>rebalance where the SEO effort goes</strong> so the homepage and treatment pages start winning the local, transactional queries that actually fill chairs in Baton Rouge and Metairie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ISSUES BREAKDOWN ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>What Needs Fixing</span>
+    <h2>Nine issues holding the site back — <span class="accent-red">all fixable</span>.</h2>
+    <p class="section-intro">For a multi-location practice already pulling strong traffic, the audit found structural and content issues that, once cleaned up, should redirect significantly more of the existing SEO momentum into actual patient bookings. Ranked by impact below.</p>
+
+    <div class="issue-counter">
+      <div class="counter-card critical">
+        <div class="counter-num coral">3</div>
+        <div class="counter-label">Critical · structure &amp; intent</div>
+      </div>
+      <div class="counter-card high">
+        <div class="counter-num amber">4</div>
+        <div class="counter-label">High priority</div>
+      </div>
+      <div class="counter-card medium">
+        <div class="counter-num blue">2</div>
+        <div class="counter-label">Medium · polish</div>
+      </div>
+      <div class="counter-card good">
+        <div class="counter-num green">8</div>
+        <div class="counter-label">Already working well</div>
+      </div>
+    </div>
+
+    <div class="issues-grid">
+
+      <!-- ISSUE 1 — Two-website split recommendation -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 1</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Site Strategy</span>
+            <h3>One website is trying to serve two different markets — Baton Rouge and Metairie.</h3>
+          </div>
+          <p>Pearl Dental Group operates three offices: <strong>Perkins Rd</strong> and <strong>Jones Creek Rd</strong> in Baton Rouge (75 miles inland), and <strong>Veterans Blvd</strong> in Metairie (suburb of New Orleans). Treating these as one SEO entity forces every treatment page to either pick a city or stay generic — neither of which ranks well for local-intent searches. For example: the <code style="background:var(--bg-soft); padding:1px 5px; border-radius:3px; font-family:'DM Sans',monospace; font-size:12px;">/emergency-dentistry/</code> page targets "Baton Rouge, LA" — but a New Orleans patient searching "emergency dentist Metairie" won't find Pearl Dental ranking for that. Same problem in reverse for Baton Rouge-specific terms when the Metairie content fights for attention.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The recommendation — split into two websites</div>
+            <p>Build <strong>one website for the two Baton Rouge offices</strong> (Perkins Rd + Jones Creek Rd, since they share a metro and competitive field) and a <strong>separate website for the Metairie office</strong> (730 Veterans Blvd). Each site gets its own clean geo-targeting, its own keyword strategy, its own backlink profile, and its own GBP integration. This is the single biggest lever Pearl Dental Group can pull for long-term local SEO growth. The brand and visual identity stay the same across both sites — what changes is that each one is optimized for the right city.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 2 — Blog cannibalization -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 2</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Cannibalization</span>
+            <h3>Blogs are competing with the homepage and treatment pages for the same keywords.</h3>
+          </div>
+          <p>Several blog posts target the exact same keywords the homepage and treatment pages are trying to rank for in Baton Rouge — which means Google has to pick which page to show, and often shows the wrong one (or neither well). Examples we found:</p>
+          <ul style="margin:14px 0; padding-left:22px; color:var(--ink-soft); line-height:1.7;">
+            <li><code style="background:var(--bg-soft); padding:1px 5px; border-radius:3px; font-family:'DM Sans',monospace; font-size:12px;">/pearl-dental-group-the-pinnacle-of-cosmetic-dentistry-in-baton-rouge/</code> — competes with /cosmetic-dentistry/</li>
+            <li><code style="background:var(--bg-soft); padding:1px 5px; border-radius:3px; font-family:'DM Sans',monospace; font-size:12px;">/revolutionize-your-smile-with-premium-dental-implants-in-baton-rouge/</code> — competes with /dental-implants/</li>
+            <li><code style="background:var(--bg-soft); padding:1px 5px; border-radius:3px; font-family:'DM Sans',monospace; font-size:12px;">/enhancing-your-smile-with-porcelain-veneers-in-baton-rouge-pearl-dental-group/</code> — competes with /cosmetic-dentistry/porcelain-veneers-lumineers/</li>
+            <li><code style="background:var(--bg-soft); padding:1px 5px; border-radius:3px; font-family:'DM Sans',monospace; font-size:12px;">/the-differences-between-implant-supported-dentures-and-all-on-4-dental-implants-in-baton-rouge-la/</code> — competes with /dental-implants/all-on-4-dental-implants/</li>
+          </ul>
+          <p>This is cannibalization — both the blog and the treatment page are fighting for the same keyword. Google can't tell which one to show first, so it dilutes the ranking signal for both. The treatment page (the page that converts) loses ground to the blog (the page that doesn't).</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Audit every blog against the treatment pages. For overlapping topics: either <strong>301-redirect the blog into the treatment page</strong> (combining content + link equity), or <strong>refocus the blog onto a long-tail informational angle</strong> the treatment page doesn't cover (e.g., a recovery-experience post, financing-comparison post, FAQ deep-dive). The treatment page should always rank first for the core money keyword; the blog should support it, not fight it.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 3 — Traffic intent rebalance -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 4 4 5-5"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 3</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Traffic Intent</span>
+            <h3>Most of the traffic is informational research, not patients ready to book.</h3>
+          </div>
+          <p>Covered in detail in the section above. Pearl Dental Group's top traffic-driving pages are price-research blogs ("zirconia bridge", "full fixed arch implant cost", "full mouth dental implants cost") and symptom-research blogs ("my crown fell out", "side of tooth decay", "black gums"). These pull big traffic numbers but they're <em>nationally-distributed informational queries</em>. Someone in Houston researching zirconia bridge prices will never book at Pearl Dental Group. Meanwhile the homepage and treatment pages — the ones designed to convert local searches into bookings — are getting smaller slices of attention.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Don't kill the informational blogs — they build authority. But <strong>rebalance the SEO investment</strong> so the homepage and treatment pages get the priority for local-intent terms: "dentist Baton Rouge," "dental implants Baton Rouge," "veneers Baton Rouge," "emergency dentist Metairie," etc. Strengthen the homepage and treatment pages with Baton Rouge-specific content, local schema markup, internal links from blog → treatment page (not the reverse), and clean URL geo-modifiers. The goal: keep the big traffic and add more of the right traffic on top.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 4 — ChatGPT URLs and UTMs -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 4</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Content Quality</span>
+            <h3>ChatGPT URLs and UTMs are leaking into published page titles.</h3>
+          </div>
+          <p>We found published pages where the URL itself contains a ChatGPT UTM parameter — for example:</p>
+          <div style="background:var(--bg-soft); padding:12px 16px; border-radius:8px; margin:14px 0; font-family:'DM Sans',monospace; font-size:12px; color:var(--ink); word-break:break-all; line-height:1.5;">
+            /transform-your-smile-with-confidence-dental-implants-baton-rouge-for-lasting-results/<strong style="color:var(--coral);">?utm_source=chatgpt.com</strong>
+          </div>
+          <p>This is a strong signal that the page was copy-pasted from a ChatGPT response without removing the tracking parameter — the URL slug is the AI-generated headline phrasing, and the UTM is the source attribution ChatGPT itself adds. The page reads like AI output too (long, generic, "transformative" / "revolutionize" / "pinnacle of excellence" filler language). Google increasingly down-ranks pages that read as low-effort AI-generated content, especially when the published URL itself reveals the source.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Audit every URL with <code style="background:var(--bg-soft); padding:1px 5px; border-radius:3px; font-family:'DM Sans',monospace; font-size:12px;">?utm_source=chatgpt.com</code> in it and clean it up — strip the UTM, rewrite the slug to a clean keyword-focused phrase, and revise the body copy to read like it was written by the practice rather than a generative AI. AI is a useful drafting tool, but the published version has to be edited by a human to remove generic language, source UTMs, and the obvious AI-tells. This is also a good time to merge or 301-redirect the AI-generated blogs that overlap with Issue 2 (cannibalization).</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 5 — Same address + phone on two GBPs (NAP conflict) -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 5</span>
+            <span class="pill high"><span class="pill-dot"></span>High · GBP NAP Conflict</span>
+            <h3>Two Google Business Profiles share the same address and phone at the Perkins location.</h3>
+          </div>
+          <p>At 7017 Perkins Rd, Pearl Dental Group operates <strong>two separate Google Business Profile listings</strong> that share the same phone number:</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0;">
+            <div style="background:var(--bg-soft); padding:14px 16px; border-radius:8px; border-left:3px solid var(--coral);">
+              <div style="font-size:11px; color:var(--ink-mute); font-weight:700; margin-bottom:4px;">PRIMARY · Pearl Dental Group &amp; Dental Implant Center</div>
+              <div style="font-family:'DM Sans',monospace; font-size:12.5px; color:var(--ink); margin-bottom:4px;">7017 Perkins Rd · (225) 277-3311</div>
+              <div style="font-size:12px; color:var(--green-deep); font-weight:700;">571 reviews · 4.9 ★</div>
+            </div>
+            <div style="background:var(--bg-soft); padding:14px 16px; border-radius:8px; border-left:3px solid var(--coral);">
+              <div style="font-size:11px; color:var(--ink-mute); font-weight:700; margin-bottom:4px;">SECONDARY · Baton Rouge Dental Implant Center | Pearl Dental</div>
+              <div style="font-family:'DM Sans',monospace; font-size:12.5px; color:var(--ink); margin-bottom:4px;">7017 Perkins Rd <strong>Suite B</strong> · (225) 277-3311</div>
+              <div style="font-size:12px; color:var(--green-deep); font-weight:700;">18 reviews · 4.9 ★</div>
+            </div>
+          </div>
+          <p>Same building, same phone, slight address variation. Google's local algorithm uses Name + Address + Phone (NAP) to differentiate businesses — when two listings overlap this closely, Google can struggle to tell them apart, which risks suppressing one in the Map Pack or weakening both. This is the same problem we identified on the Rifkin Raanan audit.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix — Dentist Nerds installs call tracking</div>
+            <p>Install <strong>a dedicated call-tracking number on one of the two listings</strong>. The new number rings through to the same front desk at (225) 277-3311, so no calls are lost and the patient experience doesn't change. But from Google's perspective, each listing now has a unique NAP signature, which removes the duplicate-listing ambiguity. Bonus: call-tracking analytics let you see which listing actually drives the phone volume that turns into bookings. Dentist Nerds handles end-to-end setup: number provisioning, GBP updates, schema markup on the website, and the analytics dashboard.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 6 — Location page → GBP linking -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 6</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Location → GBP Links</span>
+            <h3>Location pages on the site aren't linking to the right Google Business Profiles.</h3>
+          </div>
+          <p>Two location-page issues that confuse the link between the website and Google:</p>
+          <ul style="margin:14px 0; padding-left:22px; color:var(--ink-soft); line-height:1.7;">
+            <li><strong>Jones Creek Rd &amp; Perkins Rd location pages link to the same GBP.</strong> Each office should link to its own dedicated GBP (Pearl Dental Group &amp; Dental Implant Center for Perkins · Pearl Dental Group - Jones Creek Rd. for Jones Creek). Right now Google can't cleanly associate each location page on the site with its matching GBP.</li>
+            <li><strong>Veterans Blvd (Metairie) location page links to just an address, not the GBP.</strong> The page should link directly to the Metairie Pearl Dental Group GBP — that's how Google associates the website page with the local business profile and ranks it for "dentist Metairie" type searches.</li>
+          </ul>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Update each location page so it links directly to its own GBP. Use the Google Maps "embed code" or the GBP profile URL — not just a static address. This is one of the strongest local-SEO signals because it tells Google "this URL on this website represents this business at this Map Pack listing." Easy to fix, meaningful uplift.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 7 — Internal linking with ChatGPT UTM -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 7</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Internal Linking</span>
+            <h3>Internal links contain ChatGPT UTMs and link to the wrong destinations.</h3>
+          </div>
+          <p>On the Dental Implants page, the brand name "Pearl Dental Group" is hyperlinked back to the homepage with a <code style="background:var(--bg-soft); padding:1px 5px; border-radius:3px; font-family:'DM Sans',monospace; font-size:12px;">?utm_source=chatgpt</code> parameter attached. Same root cause as Issue 4 (AI-generated content not edited before publishing), and the same impact: internal links that pass UTM parameters to the homepage muddy the analytics, create duplicate-URL crawling waste for Google, and signal low-quality content management.</p>
+          <p>More broadly: <strong>internal linking</strong> on the site needs a strategic audit. The treatment pages should be the destinations that <em>receive</em> the most internal link equity (because they're the pages that convert) — not the homepage. Most blogs should link <em>down</em> to treatment pages, not <em>across</em> to other blogs or <em>up</em> to the homepage.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Crawl the site, identify every internal link with a UTM parameter, and strip them. Then audit the link architecture: each treatment page should receive 8–15 contextual internal links from related blogs and from the homepage. Each blog should have 1–3 links pointing down to its parent treatment page. Clean links, clean equity flow, no tracking-parameter pollution.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 8 — Outdated Elementor -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap medium">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4D8CFF" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 8</span>
+            <span class="pill medium"><span class="pill-dot"></span>Medium · Platform</span>
+            <h3>The site appears to be built on Elementor — which tends to run slower and produce bloated code.</h3>
+          </div>
+          <p>The page generator tag indicates Elementor as the underlying builder. Elementor-built sites tend to load more slowly than purpose-built ones because the page builder outputs a lot of extra wrapper divs, inline styles, and helper scripts that aren't strictly needed for what's on the page. The result is a heavier site — slower to load, harder for Google to crawl efficiently, and more complicated to maintain or extend with cleaner schema and per-location templates.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>This is a lower priority than the strategic issues above — the current setup is producing meaningful traffic, so an immediate rebuild isn't necessary. But when the two-website split (Issue 1) happens, it's the right moment to migrate both sites onto a leaner, faster, schema-ready stack with cleaner per-location templates, better Core Web Vitals, and code that doesn't drag the rest of the SEO work down. Plan it as part of the split, not as a separate project.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 9 — Schema markup -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap medium">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4D8CFF" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 9</span>
+            <span class="pill medium"><span class="pill-dot"></span>Medium · Technical SEO</span>
+            <h3>Schema markup is incomplete sitewide.</h3>
+          </div>
+          <p>No comprehensive Dentist schema with proper LocalBusiness tagging per location, no Physician schema on doctor pages, no FAQPage schema even where homepage content already includes FAQs, no MedicalProcedure schema on treatment pages, no AggregateRating tied to the GBP review counts. AI search engines (ChatGPT, Perplexity, Google AI Overviews) lean heavily on schema markup to decide which sources to cite for medical questions — without it, the content is harder to surface, regardless of how good it is.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Add the full schema suite: <strong>Dentist + LocalBusiness</strong> per location (one for each of the three offices, with the correct NAP), <strong>Physician</strong> on each doctor page, <strong>FAQPage</strong> wherever FAQs already exist, <strong>MedicalProcedure</strong> on each treatment page, and <strong>AggregateRating</strong> tied to the GBP review counts. This is a 1–2 day implementation that produces a meaningful uplift in AI-search visibility — and becomes especially valuable when the two-website split happens, because each new site gets its own clean schema layer from day one.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================ COMPETITORS ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Local Competitive Landscape</span>
+    <h2>The Baton Rouge implant/dentistry field — <span class="accent">Pearl Dental is already a top-3 player</span>.</h2>
+    <p class="section-intro">Pearl Dental Group's two Baton Rouge listings (Perkins + Jones Creek) combined have over <strong>1,107 reviews</strong>, putting the practice in striking distance of the regional chains and ahead of every local specialist. The strategic question isn't <em>how to start competing</em> — it's <em>how to compound the existing strength</em> against larger national chains and lock in #1 in Baton Rouge.</p>
+
+    <!-- REVIEW COUNT BAR CHART · BATON ROUGE FIELD -->
+    <div style="margin-top:36px;">
+      <h3 style="font-size:22px;font-weight:800;margin-bottom:8px;letter-spacing:-0.01em;">Baton Rouge implant/dentistry field by Google review count</h3>
+      <p style="color:var(--ink-soft);font-size:15px;margin-bottom:24px;">Real practices ranked by total Google review volume. Pearl Dental Group's reviews are spread across two strong listings (Perkins + Jones Creek), which together hold their own against the chains.</p>
+
+      <div>
+        <div class="rev-bar">
+          <div class="rev-name">Affordable Dentures &amp; Implants<span class="rev-spec">National chain · S Sherwood Forest Blvd · Baton Rouge</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:100%"></div></div>
+          <div class="rev-value">932<span class="rev-stars">★ 4.3</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Aspen Dental — College Dr<span class="rev-spec">National chain · College Dr · Baton Rouge</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:66%"></div></div>
+          <div class="rev-value">613<span class="rev-stars">★ 4.4</span></div>
+        </div>
+        <div class="rev-bar you">
+          <div class="rev-name">Pearl Dental Group &amp; Dental Implant Center <span class="rev-flag" style="background:var(--green-deep); color:#FFF;">YOUR PERKINS</span><span class="rev-spec">Cosmetic + Implants + General · 7017 Perkins Rd · Baton Rouge</span></div>
+          <div class="rev-track"><div class="rev-fill you" style="width:61%; background:linear-gradient(90deg, #8B6914 0%, var(--green) 100%);"></div></div>
+          <div class="rev-value you" style="color:var(--green-deep);">571<span class="rev-stars">★ 4.9</span></div>
+        </div>
+        <div class="rev-bar you">
+          <div class="rev-name">Pearl Dental Group — Jones Creek Rd <span class="rev-flag" style="background:var(--green-deep); color:#FFF;">YOUR JONES CREEK</span><span class="rev-spec">Cosmetic + Implants + General · 6031 Jones Creek Rd · Baton Rouge</span></div>
+          <div class="rev-track"><div class="rev-fill you" style="width:57%; background:linear-gradient(90deg, #8B6914 0%, var(--green) 100%);"></div></div>
+          <div class="rev-value you" style="color:var(--green-deep);">536<span class="rev-stars">★ 4.9</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">The Louisiana Center for Restorative Dentistry<span class="rev-spec">Cosmetic + Implants · Bluebonnet Blvd · Baton Rouge</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:35%"></div></div>
+          <div class="rev-value">325<span class="rev-stars">★ 5.0</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Baton Rouge Periodontics &amp; Implants<span class="rev-spec">Periodontist + Implants · N Oak Hills Pkwy · Baton Rouge</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:33%"></div></div>
+          <div class="rev-value">303<span class="rev-stars">★ 4.9</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Highland Dental Center<span class="rev-spec">General · Highland Rd · Baton Rouge</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:31%"></div></div>
+          <div class="rev-value">289<span class="rev-stars">★ 5.0</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Dentistry by Brooksher<span class="rev-spec">General + Cosmetic · S Acadian Thruway · Baton Rouge</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:28%"></div></div>
+          <div class="rev-value">264<span class="rev-stars">★ 4.9</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Louisiana Implants and Dentures<span class="rev-spec">Implants + Dentures · Airline Hwy · Baton Rouge</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:20%"></div></div>
+          <div class="rev-value">189<span class="rev-stars">★ 4.9</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Fusion Implant Center<span class="rev-spec">Implants · Prairieville · ~12 mi from Perkins</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:20%"></div></div>
+          <div class="rev-value">183<span class="rev-stars">★ 4.9</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAKEAWAY -->
+    <div style="margin-top:36px;padding:22px 26px;background:var(--bg-mint);border-radius:14px;border-left:3px solid var(--green);">
+      <p style="margin:0 0 12px;color:var(--ink);font-size:15px;line-height:1.6;"><strong style="color:var(--green-deep);">The good news:</strong> Pearl Dental Group's <strong>combined Baton Rouge review count is 1,107</strong> — second only to Affordable Dentures (932) and well ahead of Aspen Dental (613). On rating alone (4.9 ★), Pearl is materially stronger than both of the national chains.</p>
+      <p style="margin:0;color:var(--ink);font-size:15px;line-height:1.6;"><strong style="color:var(--green-deep);">The opportunity:</strong> Pearl Dental Group is already a top-3 player in Baton Rouge. With the structural and content fixes in this audit — and the two-website split for Baton Rouge vs Metairie — the practice can compound that lead, separate from the national chains on quality signals, and own the local "implants Baton Rouge" / "dentist Baton Rouge" searches that the chains currently outrank for on volume alone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ GAME PLAN ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Our Game Plan</span>
+    <h2>How we'd grow the practice — <span class="accent">step by step</span>.</h2>
+    <p class="section-intro">We don't believe in flashy launches that flame out. The plan starts with a strong technical foundation, then layers ongoing engines on top — each one compounding the last over months and years.</p>
+
+    <!-- STEP 1 · The Featured Foundation -->
+    <div class="step-one-feature">
+      <div class="s1-grid">
+        <div class="s1-number-block">
+          <span class="s1-badge">⚡ Start Here</span>
+          <div class="s1-number">01</div>
+          <div class="s1-step-label">The Foundation</div>
+          <div class="s1-step-title">Split the website, clean up the content, redirect the SEO toward Baton Rouge &amp; Metairie patients.</div>
+        </div>
+
+        <div class="s1-content">
+          <h4>What we'd do in Step 1</h4>
+          <p>Pearl Dental Group already has the traffic, the reviews, and the brand. What it doesn't have is a clean structural setup that lets each market — Baton Rouge and Metairie — actually compete for its own local searches. Step 1 fixes the structural problems, cleans up the cannibalization and AI-content leaks, refocuses the SEO engine on transactional/local queries, and sets up the GBP NAP solution that lets the Perkins Rd listings rank independently.</p>
+
+          <ul class="s1-todo">
+            <li><strong>Plan the two-website split.</strong> One site for the two Baton Rouge offices (Perkins + Jones Creek), one site for Metairie (Veterans Blvd). Map the URL strategy, the 301 redirect plan, the shared brand assets, and the timeline so the split lifts both markets rather than disrupting the existing traffic.</li>
+            <li><strong>Audit and resolve every cannibalizing blog.</strong> Crawl the site, identify every URL that competes with a treatment page or the homepage for the same keyword. For each: either 301-redirect the blog into the treatment page, or refocus the blog onto a long-tail informational angle the treatment page doesn't cover.</li>
+            <li><strong>Clean up the ChatGPT UTMs and AI-content URL slugs.</strong> Find every URL containing <code style="background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px;font-family:'DM Sans',monospace;font-size:12px;">?utm_source=chatgpt.com</code> or that reads as AI-generated headline phrasing. Rewrite the slugs, rewrite the body copy to remove the AI tells, and 301-redirect from old → new.</li>
+            <li><strong>Install call tracking on the Perkins Rd secondary GBP</strong> (Baton Rouge Dental Implant Center). Dedicated forwarding number that rings through to (225) 277-3311, so no calls are lost, but the secondary listing now has its own unique NAP signature. Each Perkins listing can rank cleanly without competing against itself.</li>
+            <li><strong>Fix the location-page → GBP links.</strong> Each office's location page on the site links directly to its own dedicated Google Business Profile (not to the same GBP as another location, not to a static address). Use embedded Google Maps with the actual GBP, not just an address card.</li>
+            <li><strong>Strip internal-link UTMs and audit the link architecture.</strong> Treatment pages should be the destinations that receive the most internal link equity. Blogs should link down to their parent treatment page. No more <code style="background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px;font-family:'DM Sans',monospace;font-size:12px;">?utm_source=chatgpt</code> on internal links.</li>
+            <li><strong>Add the full schema suite</strong> — Dentist + LocalBusiness per location, Physician on each doctor page, FAQPage where FAQs exist, MedicalProcedure on each treatment page, AggregateRating tied to the actual GBP review counts. Especially valuable when the two-website split happens because each new site starts clean.</li>
+            <li><strong>Add four AI-SEO-friendly blogs per month.</strong> Question-and-answer style content built specifically for how AI search engines (ChatGPT, Perplexity, Google AI Overviews) read and cite pages. Four new posts every month, on a steady cadence — each one tightly scoped to a question patients actually ask, structured with proper FAQ schema, and aligned to the treatment pages rather than competing with them.</li>
+          </ul>
+
+          <div class="s1-closing">
+            <p><strong>Why this matters:</strong> Pearl Dental Group's traffic engine is already producing — it just needs to be pointed at the right audience. With the two-site split, the cannibalization cleanup, and the SEO rebalance, the same SEO effort that generated 15,915 monthly visits last month should start delivering meaningfully more <em>local patient bookings</em> — without losing the authority signals the existing traffic builds.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="engines-header">
+      <span>What runs alongside &amp; after — the ongoing engines</span>
+    </div>
+
+    <!-- THE FIVE ENGINES -->
+    <div class="engines-grid">
+
+      <!-- 02 Authority -->
+      <div class="engine-card">
+        <div class="engine-num">02</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <h4>Authority &amp; Backlinks</h4>
+        <p>Once the on-page SEO is solid, we start <strong>building backlinks, citations, and brand mentions</strong> across high-quality dental and local publications.</p>
+        <p>The goal: become a source AI search engines (ChatGPT, Perplexity, Google AI Overviews) cite when patients ask about cosmetic dentists, dental implants, full-arch reconstruction, or premium dentistry in Baton Rouge and Metairie.</p>
+        <div class="engine-target">
+          <strong>Target</strong>
+          Authority Score 9 → 30+ in 12 months
+        </div>
+      </div>
+
+      <!-- 03 Content (was 04) -->
+      <div class="engine-card">
+        <div class="engine-num">03</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h4>Content Engine</h4>
+        <p>Monthly long-form articles written specifically for <strong>AI search visibility and traditional SEO</strong>. Patient-language questions, structured answers, schema-rich.</p>
+        <p>Each piece links back to the relevant service page, building topical authority around periodontics, implants, and cosmetic dentistry over time.</p>
+        <div class="engine-target">
+          <strong>Target</strong>
+          1–2 high-quality articles per month
+        </div>
+      </div>
+
+      <!-- 04 GBP Management -->
+      <div class="engine-card">
+        <div class="engine-num">04</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h4>Google Business Management</h4>
+        <p>Hands-on GBP management: <strong>weekly posts, review responses, Q&amp;A monitoring, photo updates, service descriptions</strong>. The GBP is treated as a living asset, not a one-time setup.</p>
+        <p>Combined with Local Falcon scans to track Map Pack rankings month-over-month and iterate on what moves placement.</p>
+        <div class="engine-target">
+          <strong>Target</strong>
+          Top-3 Map Pack for 8+ core keywords in 6 months
+        </div>
+      </div>
+
+      <!-- 05 Tracking -->
+      <div class="engine-card">
+        <div class="engine-num">05</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h4>Tracking &amp; Reporting</h4>
+        <p>We use multiple tools together so nothing slips: <strong>Semrush</strong> for keyword position, <strong>Local Falcon</strong> for Map Pack tracking, <strong>GA4</strong> for traffic, <strong>Search Console</strong> for impressions and click data.</p>
+        <p>Monthly reports show what's working, what isn't, and what to iterate next month. The data drives the decisions — not guesses.</p>
+        <div class="engine-target">
+          <strong>Target</strong>
+          Monthly reporting cadence · always know where you stand
+        </div>
+      </div>
+
+      <!-- 06 — Become a top Baton Rouge / Metairie practice -->
+      <div class="engine-card">
+        <div class="engine-num">06</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h4>Grow Visibility In Baton Rouge &amp; Metairie</h4>
+        <p>With the two-website split and the issues from this audit cleaned up, Pearl Dental Group is in a strong position to compound its existing advantage. The combined Baton Rouge review count is already top-3 in the market. The brand is already trusted. The patient experience already drives 4.9 ★ reviews at scale. What's needed is the structural alignment so each office can rank for its own city's transactional queries.</p>
+        <p>This is one of the most achievable growth setups we've audited — because the engine is already running. We just need to point it at the right destinations.</p>
+        <div class="engine-target">
+          <strong>Direction</strong>
+          Top-tier visibility in both Baton Rouge and Metairie markets · 18–24 month horizon
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ END CTA ============================================================ -->
+<section class="end-cta">
+  <div class="wrap">
+    <h2>Dentist Nerds is here to take Pearl Dental Group <span class="accent">to the next level</span>.</h2>
+    <p>The traffic is strong. The reviews are real. The doctors are trusted. The brand is established. What's holding Pearl Dental back from its full potential is the structural misalignment — one website serving two markets, blogs competing with treatment pages, AI-content leaks in the URL structure, and a GBP NAP conflict at Perkins. Each of those is fixable. Together they unlock the next stage of growth for both the Baton Rouge and Metairie practices.</p>
+    <div class="end-meta">Prepared by Dentist Nerds · May 2026 · Confidential to Pearl Dental Group</div>
+  </div>
+</section>
+
+</body>
+</html>

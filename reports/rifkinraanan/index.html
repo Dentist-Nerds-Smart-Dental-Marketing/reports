@@ -1,0 +1,3339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rifkin Raanan Beverly Hills — Website Audit | Dentist Nerds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-deep: #0A1422;
+    --navy-soft: #1B2940;
+    --ink: #15202E;
+    --ink-soft: #4A5568;
+    --ink-mute: #7B8794;
+    --line: #E2E8F0;
+    --line-soft: #EDF2F7;
+    --bg: #FFFFFF;
+    --bg-soft: #F7F9FC;
+    --bg-mint: #FDF8E8;
+
+    --green: #D4A93B;
+    --green-deep: #8B6914;
+    --green-soft: #FAEFCE;
+    --mint: #E5C76E;
+
+    --coral: #FF5E4D;
+    --coral-soft: #FFE2DE;
+    --amber: #FFB547;
+    --amber-soft: #FFF1D6;
+    --blue: #4D8CFF;
+    --blue-soft: #DCE8FF;
+    --purple: #8B5CF6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============== HERO ============== */
+  .hero {
+    background: var(--navy);
+    color: #FFF;
+    padding: 72px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(77,140,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-wrap { position: relative; z-index: 2; }
+
+  /* Top header strip */
+  .audit-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nerds-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #FFF;
+    letter-spacing: -0.01em;
+  }
+  .nerds-logo .logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: 18px;
+  }
+  .audit-type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .audit-target {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212,169,59,0.12);
+    border: 1px solid rgba(212,169,59,0.3);
+    color: var(--green);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .audit-target .pulse {
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(212,169,59,0.2);
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5.2vw, 60px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+    max-width: 920px;
+  }
+  .hero h1 .accent { color: var(--green); }
+  .hero-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero .lede {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 44px;
+    font-weight: 400;
+  }
+  .hero .lede strong { color: #FFF; }
+
+  .hero-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .meta-block .meta-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .meta-block .meta-value {
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .meta-block .meta-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  /* ============== VERDICT BAR ============== */
+  .verdict {
+    background: linear-gradient(135deg, var(--coral) 0%, #E04535 100%);
+    color: #FFF;
+    padding: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .verdict-wrap {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .verdict-icon {
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .verdict-content .verdict-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .verdict-content h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    max-width: 720px;
+  }
+  .verdict-cta {
+    background: #FFF;
+    color: var(--coral);
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* ============== SECTION SHELL ============== */
+  section { padding: 80px 0; }
+  section.alt { background: var(--bg-soft); }
+  section.dark { background: var(--navy); color: #FFF; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .section-eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+  .section-eyebrow.red {
+    background: var(--coral-soft);
+    color: var(--coral);
+  }
+  .section-eyebrow.red .dot { background: var(--coral); }
+  section.dark .section-eyebrow {
+    background: rgba(212,169,59,0.15);
+    color: var(--green);
+  }
+  section h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    max-width: 820px;
+  }
+  section h2 .accent { color: var(--green-deep); }
+  section h2 .accent-red { color: var(--coral); }
+  section.dark h2 .accent { color: var(--green); }
+  section .section-intro {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 48px;
+  }
+  section.dark .section-intro { color: rgba(255,255,255,0.7); }
+
+  /* ============== HEALTH SCORE ============== */
+  .score-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .gauge-wrap {
+    background: #FFF;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(15,27,45,0.06);
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .gauge-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .gauge-svg { display: block; margin: 0 auto; }
+  .gauge-num {
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--coral);
+    line-height: 1;
+    margin-top: 8px;
+    letter-spacing: -0.03em;
+  }
+  .gauge-suffix { font-size: 24px; color: var(--ink-mute); font-weight: 600; }
+  .gauge-status {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--coral);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .subscore-list { display: flex; flex-direction: column; gap: 16px; }
+  .subscore {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .subscore-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .subscore-icon.coral { background: var(--coral-soft); }
+  .subscore-icon.amber { background: var(--amber-soft); }
+  .subscore-icon.blue { background: var(--blue-soft); }
+  .subscore-icon.green { background: var(--green-soft); }
+  .subscore-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .subscore-bar {
+    background: var(--line-soft);
+    height: 6px;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .subscore-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: var(--coral);
+  }
+  .subscore-fill.amber { background: var(--amber); }
+  .subscore-fill.blue { background: var(--blue); }
+  .subscore-fill.green { background: var(--green); }
+  .subscore-value {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  /* ============== ISSUE COUNTERS ============== */
+  .issue-counter {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+  .counter-card {
+    background: #FFF;
+    border-radius: 16px;
+    padding: 26px 22px;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .counter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+  }
+  .counter-card.critical::before { background: var(--coral); }
+  .counter-card.high::before { background: var(--amber); }
+  .counter-card.medium::before { background: var(--blue); }
+  .counter-card.good::before { background: var(--green); }
+  .counter-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+  }
+  .counter-num.coral { color: var(--coral); }
+  .counter-num.amber { color: var(--amber); }
+  .counter-num.blue { color: var(--blue); }
+  .counter-num.green { color: var(--green); }
+  .counter-label {
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ============== TRAFFIC CHART ============== */
+  .chart-block {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .donut-wrap { text-align: center; }
+  .donut-center {
+    position: relative;
+    display: inline-block;
+  }
+  .donut-center .center-num {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .donut-center .center-num .big {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--coral);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .donut-center .center-num .small {
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .donut-caption {
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .legend-row {
+    display: grid;
+    grid-template-columns: 16px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .legend-dot {
+    width: 14px; height: 14px;
+    border-radius: 4px;
+  }
+  .legend-label { font-size: 14.5px; color: var(--ink); font-weight: 500; }
+  .legend-label .leg-sub { color: var(--ink-mute); font-size: 12px; font-weight: 400;}
+  .legend-pct {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--ink);
+  }
+
+  /* ============== TOP PAGES BAR CHART ============== */
+  .page-bar {
+    display: grid;
+    grid-template-columns: 240px 1fr 80px;
+    gap: 20px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .page-name {
+    font-family: 'DM Sans', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .page-name .pn-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .page-track {
+    background: var(--line-soft);
+    height: 12px;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .page-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--coral) 0%, #FF8B7E 100%);
+  }
+  .page-fill.amber { background: linear-gradient(90deg, var(--amber) 0%, #FFD17C 100%); }
+  .page-fill.empty {
+    background: repeating-linear-gradient(45deg, var(--line-soft), var(--line-soft) 6px, var(--line) 6px, var(--line) 12px);
+  }
+  .page-value {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ink);
+    text-align: right;
+  }
+  .page-value.crit { color: var(--coral); }
+  .page-value.zero { color: var(--ink-mute); }
+
+  /* ============== ISSUE CARDS ============== */
+  .issues-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .issue-card {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .issue-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(15,27,45,0.08);
+  }
+  .issue-icon-wrap {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .issue-icon-wrap.critical { background: var(--coral-soft); }
+  .issue-icon-wrap.high { background: var(--amber-soft); }
+  .issue-icon-wrap.medium { background: var(--blue-soft); }
+  .issue-card-head {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .issue-card-num {
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .issue-card h3 {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.25;
+    flex-basis: 100%;
+    letter-spacing: -0.01em;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pill .pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .pill.critical { background: var(--coral-soft); color: var(--coral); }
+  .pill.critical .pill-dot { background: var(--coral); }
+  .pill.high { background: var(--amber-soft); color: #B87A0E; }
+  .pill.high .pill-dot { background: var(--amber); }
+  .pill.medium { background: var(--blue-soft); color: #2D5BC2; }
+  .pill.medium .pill-dot { background: var(--blue); }
+
+  .issue-card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .issue-card p:last-child { margin-bottom: 0; }
+  .issue-card strong { color: var(--ink); font-weight: 700; }
+  .issue-card code {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    color: var(--navy);
+    word-break: break-all;
+  }
+
+  .fix-box {
+    background: var(--bg-mint);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    border-left: 3px solid var(--green);
+  }
+  .fix-box-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-deep);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fix-box p {
+    color: var(--ink);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* Evidence / quote boxes */
+  .evidence {
+    background: #FFF5F3;
+    border-left: 3px solid var(--coral);
+    padding: 16px 20px;
+    margin: 14px 0;
+    border-radius: 0 12px 12px 0;
+  }
+  .evidence-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--coral);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .evidence-quote {
+    font-family: 'DM Sans', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Cannibalization visual */
+  .canniba-vis {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 18px 0;
+  }
+  .canniba-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .canniba-flow {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 14px;
+    align-items: center;
+  }
+  .canniba-page {
+    background: #FFF;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .canniba-page.service {
+    border-color: var(--green);
+    background: var(--bg-mint);
+  }
+  .canniba-page.blog {
+    border-color: var(--coral);
+    background: #FFF5F3;
+  }
+  .canniba-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .canniba-tag.service { background: var(--green); color: #FFF; }
+  .canniba-tag.blog { background: var(--coral); color: #FFF; }
+  .canniba-url {
+    font-family: 'DM Sans', monospace;
+    font-size: 11px;
+    color: var(--ink);
+    font-weight: 600;
+    word-break: break-all;
+    margin-bottom: 6px;
+  }
+  .canniba-meta {
+    font-size: 11px;
+    color: var(--ink-mute);
+  }
+  .canniba-fight {
+    text-align: center;
+    font-size: 28px;
+    color: var(--coral);
+    font-weight: 800;
+  }
+
+  /* Broken link example */
+  .broken-link-vis {
+    background: var(--navy-deep);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 14px 0;
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.85);
+    overflow-x: auto;
+  }
+  .broken-link-vis .bl-label {
+    font-size: 10px;
+    color: var(--coral);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
+  }
+  .broken-link-vis .bl-line {
+    line-height: 1.7;
+    word-break: break-all;
+  }
+  .broken-link-vis .highlight {
+    background: rgba(255,94,77,0.25);
+    color: #FFB5AB;
+    padding: 1px 4px;
+    border-radius: 3px;
+    text-decoration: line-through wavy var(--coral);
+  }
+  .broken-link-vis .ok {
+    color: var(--green);
+  }
+
+  /* ============== BRAND POSITIONING / GBP ============== */
+  .gbp-mockup {
+    background: #FFF;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    padding: 28px;
+    margin: 32px 0;
+    box-shadow: 0 4px 20px rgba(15,27,45,0.04);
+  }
+  .gbp-mockup-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 22px;
+  }
+  .gbp-g-logo {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4285F4 0%, #34A853 33%, #FBBC04 66%, #EA4335 100%);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .gbp-mockup-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .gbp-mockup-sub {
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+  .gbp-business-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .gbp-business-meta {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-bottom: 20px;
+  }
+
+  /* The primary slot — the hero of the mockup */
+  .gbp-primary-slot {
+    background: linear-gradient(135deg, #EAF2FF 0%, #DCE8FF 100%);
+    border: 2px solid var(--blue);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .gbp-primary-slot::before {
+    content: 'PRIMARY CATEGORY';
+    position: absolute;
+    top: -10px; left: 18px;
+    background: var(--blue);
+    color: #FFF;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+  .gbp-primary-name {
+    font-size: 26px;
+    font-weight: 800;
+    color: #2D5BC2;
+    margin: 8px 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .gbp-primary-note {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    margin-top: 6px;
+  }
+
+  /* Secondary categories pills */
+  .gbp-secondary-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+  }
+  .gbp-secondary-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .gbp-sec-chip {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .gbp-secondary-note {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* Educational callout about primary category */
+  .primary-edu {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 28px 0;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 22px;
+    align-items: center;
+  }
+  .primary-edu-icon {
+    width: 56px; height: 56px;
+    background: rgba(212,169,59,0.15);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .primary-edu-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .primary-edu-text {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #FFF;
+  }
+  .primary-edu-text strong { color: var(--green); }
+
+  /* Strategic paths cards */
+  .brand-paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 36px;
+  }
+  .path-card {
+    background: #FFF;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .path-card.a {
+    border-color: var(--purple);
+    border-top: 4px solid var(--purple);
+  }
+  .path-card.b {
+    border-color: var(--green);
+    border-top: 4px solid var(--green);
+    background: linear-gradient(180deg, #FFF 0%, #F8FCF9 100%);
+  }
+  .path-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+  .path-card.a .path-label {
+    background: rgba(139,92,246,0.12);
+    color: var(--purple);
+  }
+  .path-card.b .path-label {
+    background: var(--green-soft);
+    color: var(--green-deep);
+  }
+  .path-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .path-tagline {
+    font-size: 14px;
+    color: var(--ink-mute);
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+
+  /* GBP move-mockup inside path card */
+  .path-gbp-move {
+    background: var(--bg-soft);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    border-left: 3px solid;
+  }
+  .path-card.a .path-gbp-move { border-left-color: var(--purple); }
+  .path-card.b .path-gbp-move { border-left-color: var(--green); }
+  .path-gbp-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+  .path-gbp-action {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .path-gbp-action .gbp-arrow {
+    color: var(--ink-mute);
+    margin: 0 6px;
+  }
+
+  .path-rebrand {
+    background: var(--bg-soft);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-left: 2px solid var(--ink-mute);
+  }
+  .path-rebrand strong { color: var(--ink); display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
+  .path-card.a .path-rebrand { border-left-color: var(--purple); }
+  .path-card.b .path-rebrand { border-left-color: var(--green); }
+  .path-section-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+    margin-top: 18px;
+  }
+  .path-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .path-list li {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    padding: 6px 0 6px 20px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .path-list li::before {
+    position: absolute;
+    left: 0; top: 6px;
+    font-size: 12px;
+    font-weight: 800;
+    width: 14px;
+    text-align: center;
+  }
+  .path-list.pros li::before { content: '+'; color: var(--green-deep); }
+  .path-list.cons li::before { content: '−'; color: var(--coral); }
+  .path-best {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--bg-soft);
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .path-best strong { font-weight: 700; }
+
+  /* ============== SINGLE BRAND SUGGESTION CARD ============== */
+  .brand-suggestion-card {
+    background: #FFF;
+    border-radius: 24px;
+    padding: 44px 48px;
+    border: 1px solid var(--line);
+    margin-top: 40px;
+    box-shadow: 0 8px 32px rgba(15,27,45,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand-suggestion-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+    background: linear-gradient(180deg, var(--green) 0%, var(--mint) 100%);
+  }
+  .suggestion-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .brand-suggestion-card h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+  .brand-suggestion-card p {
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .brand-suggestion-card strong { color: var(--ink); font-weight: 700; }
+
+  /* Name comparison visual */
+  .name-comparison {
+    display: grid;
+    grid-template-columns: 1fr 56px 1fr;
+    gap: 16px;
+    align-items: stretch;
+    margin: 32px 0;
+  }
+  .name-card-vs {
+    border-radius: 14px;
+    padding: 24px 26px;
+    border: 1px solid var(--line);
+    background: var(--bg-soft);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .name-card-vs.possible {
+    background: linear-gradient(135deg, #FAEFCE 0%, #F7E5B0 100%);
+    border-color: var(--green);
+    position: relative;
+  }
+  .name-card-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+  }
+  .name-card-vs.possible .name-card-label {
+    color: var(--green-deep);
+  }
+  .name-card-name {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .name-card-meta {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+    font-style: italic;
+  }
+  .name-card-vs.possible .name-card-meta {
+    color: var(--ink);
+  }
+  .name-arrow {
+    text-align: center;
+    font-size: 26px;
+    color: var(--green);
+    font-weight: 800;
+    align-self: center;
+  }
+
+  .suggestion-closing {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  /* ============== LOCAL COMPETITORS · review gap visuals ============== */
+  .review-gap-stat {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    border-radius: 20px;
+    padding: 36px 40px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 36px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .review-gap-stat::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -80px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(255,94,77,0.15) 0%, transparent 60%);
+  }
+  .gap-side {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .gap-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    height: 80%;
+    align-self: center;
+    position: relative;
+    z-index: 1;
+  }
+  .gap-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .gap-num {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+  .gap-num.you { color: var(--coral); }
+  .gap-num.them { color: var(--green); }
+  .gap-name {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+  .gap-multiplier {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    position: relative;
+    z-index: 1;
+  }
+  .gap-mult-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--coral);
+    letter-spacing: -0.02em;
+  }
+  .gap-mult-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    margin-top: 2px;
+  }
+
+  /* Review chart row */
+  .rev-bar {
+    display: grid;
+    grid-template-columns: 280px 1fr 110px;
+    gap: 18px;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .rev-bar.you {
+    background: linear-gradient(90deg, rgba(255,94,77,0.06) 0%, transparent 100%);
+    border-left: 3px solid var(--coral);
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 8px;
+    margin: 4px 0;
+  }
+  .rev-name {
+    font-size: 13.5px;
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .rev-name .rev-spec {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .rev-name .rev-flag {
+    display: inline-block;
+    background: var(--coral);
+    color: #FFF;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    vertical-align: middle;
+  }
+  .rev-track {
+    background: var(--line-soft);
+    height: 14px;
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  .rev-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #8B6914 0%, var(--green) 100%);
+  }
+  .rev-fill.you {
+    background: linear-gradient(90deg, var(--coral) 0%, #FF8B7E 100%);
+  }
+  .rev-fill.same-building {
+    background: linear-gradient(90deg, #B85A1F 0%, var(--coral) 100%);
+  }
+  .rev-value {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--ink);
+    text-align: right;
+  }
+  .rev-value .rev-stars {
+    display: block;
+    font-size: 11px;
+    color: var(--amber);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .rev-value.you { color: var(--coral); }
+
+  /* Same building callout */
+  .same-building-alert {
+    background: linear-gradient(135deg, #FFE2DE 0%, #FFD0C9 100%);
+    border: 1px solid var(--coral);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .same-building-icon {
+    width: 64px; height: 64px;
+    background: var(--coral);
+    color: #FFF;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(255,94,77,0.25);
+  }
+  .sb-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+  .sb-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .sb-body {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .sb-body strong { color: var(--ink); }
+
+  /* ============== REBUILD VS REPAIR SECTION ============== */
+  .rebuild-vs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .vs-card {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .vs-card.repair {
+    border-color: var(--coral);
+  }
+  .vs-card.rebuild {
+    border-color: var(--green);
+    box-shadow: 0 12px 40px rgba(212,169,59,0.15);
+  }
+  .vs-stamp {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 100px;
+  }
+  .vs-stamp.bad { background: var(--coral-soft); color: var(--coral); }
+  .vs-stamp.good { background: var(--green-soft); color: var(--green-deep); }
+  .vs-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .vs-card h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .vs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px;
+  }
+  .vs-list li {
+    padding: 10px 0 10px 30px;
+    position: relative;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .vs-list li:last-child { border-bottom: none; }
+  .vs-list li::before {
+    position: absolute;
+    left: 0; top: 11px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .vs-list.bad li::before {
+    content: '✕';
+    background: var(--coral-soft);
+    color: var(--coral);
+  }
+  .vs-list.good li::before {
+    content: '✓';
+    background: var(--green-soft);
+    color: var(--green-deep);
+  }
+  .vs-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .vs-metric {
+    text-align: center;
+    padding: 14px;
+    background: var(--bg-soft);
+    border-radius: 10px;
+  }
+  .vs-metric .vm-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .vs-card.rebuild .vs-metric .vm-num { color: var(--green-deep); }
+  .vs-card.repair .vs-metric .vm-num { color: var(--coral); }
+  .vs-metric .vm-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ============== COMPETITOR ============== */
+  .competitor-table {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .ct-head {
+    display: grid;
+    grid-template-columns: 1.7fr 90px 90px 90px 100px;
+    gap: 16px;
+    padding: 18px 28px;
+    background: var(--navy);
+    color: #FFF;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .ct-row {
+    display: grid;
+    grid-template-columns: 1.7fr 90px 90px 90px 100px;
+    gap: 16px;
+    padding: 16px 28px;
+    align-items: center;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 14px;
+  }
+  .ct-row:last-child { border-bottom: none; }
+  .ct-row.you {
+    background: var(--bg-mint);
+    border-left: 3px solid var(--green);
+    padding-left: 25px;
+  }
+  .ct-domain { font-weight: 700; color: var(--ink); }
+  .ct-domain .ct-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .ct-num { font-weight: 700; color: var(--ink); }
+  .ct-num.warn { color: var(--coral); }
+  .ct-num.good { color: var(--green-deep); }
+
+  /* ============== ROADMAP ============== */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    position: relative;
+  }
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    top: 40px; left: 8%; right: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--coral), var(--amber), var(--green));
+    z-index: 0;
+  }
+  .phase {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 26px;
+    position: relative;
+    z-index: 1;
+  }
+  .phase-number {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0 auto 18px;
+    border: 4px solid var(--bg-soft);
+    position: relative;
+    z-index: 2;
+  }
+  .phase-number.amber { background: var(--amber); color: var(--navy); }
+  .phase-number.green { background: var(--green); }
+  .phase-weeks {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .phase h3 {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .phase ul {
+    list-style: none;
+    padding: 0;
+  }
+  .phase li {
+    padding: 10px 0 10px 24px;
+    position: relative;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .phase li:last-child { border-bottom: none; }
+  .phase li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 16px;
+    width: 12px; height: 12px;
+    border-radius: 4px;
+    background: var(--coral-soft);
+    border: 2px solid var(--coral);
+  }
+  .phase.amber li::before {
+    background: var(--amber-soft);
+    border-color: var(--amber);
+  }
+  .phase.green li::before {
+    background: var(--green-soft);
+    border-color: var(--green);
+  }
+
+  /* ============== GAME PLAN · Featured Step 1 + Ongoing Engines ============== */
+  .step-one-feature {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    border-radius: 24px;
+    padding: 48px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .step-one-feature::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .step-one-feature::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(77,140,255,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .s1-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+  .s1-number-block {
+    text-align: left;
+  }
+  .s1-badge {
+    display: inline-block;
+    background: var(--green);
+    color: var(--navy-deep);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+  }
+  .s1-number {
+    font-size: 96px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--green);
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+  }
+  .s1-step-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .s1-step-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #FFF;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .s1-content h4 {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 18px;
+  }
+  .s1-content > p {
+    color: rgba(255,255,255,0.8);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .s1-content > p strong { color: #FFF; }
+  .s1-todo {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+  .s1-todo li {
+    padding: 12px 0 12px 32px;
+    position: relative;
+    color: rgba(255,255,255,0.85);
+    font-size: 15px;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .s1-todo li:last-child { border-bottom: none; }
+  .s1-todo li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 17px;
+    width: 18px; height: 18px;
+    border: 2px solid var(--green);
+    border-radius: 5px;
+    background: rgba(212,169,59,0.1);
+  }
+  .s1-todo li strong { color: #FFF; }
+  .s1-closing {
+    background: rgba(212,169,59,0.1);
+    border-left: 3px solid var(--green);
+    padding: 18px 22px;
+    border-radius: 0 12px 12px 0;
+    margin-top: 12px;
+  }
+  .s1-closing p {
+    margin: 0;
+    color: rgba(255,255,255,0.92);
+    font-size: 14.5px;
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .s1-closing strong { color: var(--green); font-style: normal; }
+
+  /* Ongoing engines section */
+  .engines-header {
+    text-align: center;
+    margin: 56px 0 32px;
+    position: relative;
+  }
+  .engines-header::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px;
+    background: var(--line);
+    z-index: 0;
+  }
+  .engines-header span {
+    position: relative;
+    z-index: 1;
+    background: var(--bg);
+    padding: 0 24px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .engines-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .engine-card {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 28px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+  }
+  .engine-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(15,27,45,0.07);
+    border-color: var(--green);
+  }
+  .engine-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+  .engine-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+  .engine-card h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .engine-card p {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .engine-card p:last-child { margin-bottom: 0; }
+  .engine-card strong { color: var(--ink); font-weight: 700; }
+  .engine-target {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+  .engine-target strong {
+    color: var(--green-deep);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* ============== OPPORTUNITY ============== */
+  .opportunity {
+    background: var(--navy);
+    color: #FFF;
+    border-radius: 28px;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .opportunity::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212,169,59,0.2) 0%, transparent 60%);
+  }
+  .opp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .opp-content h2 { color: #FFF; }
+  .opp-content h2 .accent { color: var(--green); }
+  .opp-content p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .opp-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .opp-stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 22px;
+  }
+  .opp-stat-num {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .opp-stat-label {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+
+  /* ============== COMPANION AUDIT · Beverly Hills ============== */
+  .audit-switch {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    border-radius: 24px;
+    padding: 40px 48px;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+    border-left: 5px solid var(--green);
+  }
+  .audit-switch::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -80px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .audit-switch-eyebrow {
+    display: inline-block;
+    background: var(--green);
+    color: var(--navy-deep);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .audit-switch h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .audit-switch h2 .accent { color: var(--green); }
+  .audit-switch-meta {
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+  .audit-switch-meta strong { color: #FFF; }
+
+  /* Side-by-side site comparison */
+  .site-compare {
+    background: #FFF;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    margin: 28px 0;
+  }
+  .site-compare-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--navy);
+    color: #FFF;
+  }
+  .site-compare-head > div {
+    padding: 18px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .site-compare-head > div:first-child {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.6);
+  }
+  .site-compare-head .site-name {
+    font-size: 14px;
+    color: #FFF;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .site-compare-head .site-name small {
+    display: block;
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    margin-top: 2px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .site-compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid var(--line-soft);
+  }
+  .site-compare-row > div {
+    padding: 14px 22px;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .site-compare-row > div:first-child {
+    background: var(--bg-soft);
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+  .site-compare-row .scv {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .site-compare-row .scv.win { color: var(--green-deep); }
+  .site-compare-row .scv.lose { color: var(--coral); }
+  .site-compare-row .scv-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .scv-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .scv-badge.win { background: var(--green-soft); color: var(--green-deep); }
+  .scv-badge.lose { background: var(--coral-soft); color: var(--coral); }
+
+  /* "What's working" callout for BH section */
+  .bh-good-news {
+    background: linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%);
+    border-left: 4px solid var(--green);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 32px 0;
+  }
+  .bh-good-news-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--green-deep);
+    margin-bottom: 10px;
+  }
+  .bh-good-news h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .bh-good-news ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .bh-good-news li {
+    padding-left: 26px;
+    position: relative;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .bh-good-news li::before {
+    content: '✓';
+    position: absolute;
+    left: 0; top: 0;
+    width: 18px; height: 18px;
+    background: var(--green);
+    color: #FFF;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bh-good-news li strong { color: var(--ink); }
+
+  /* Phone format demo */
+  .phone-format-demo {
+    background: var(--bg-soft);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    font-family: 'DM Sans', monospace;
+    font-size: 14px;
+  }
+  .phone-format-demo .pf-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-mute);
+    margin-right: 8px;
+  }
+  .phone-format-demo .pf-bad {
+    color: var(--coral);
+    text-decoration: line-through;
+    margin-right: 14px;
+  }
+  .phone-format-demo .pf-good {
+    color: var(--green-deep);
+    font-weight: 700;
+  }
+
+  /* BH section heading */
+  .bh-subhead {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 48px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .bh-subhead-sub {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  /* ============== SITEMAP AUDIT VISUAL ============== */
+  .sitemap-card {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 32px;
+    margin: 24px 0 36px;
+    box-shadow: 0 4px 20px rgba(15,27,45,0.04);
+  }
+  .sitemap-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .sitemap-card-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .sitemap-card-title small {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+  .sitemap-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .sitemap-stat {
+    background: var(--bg-soft);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .sitemap-stat-num {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .sitemap-stat-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .sm-stat-la { color: #C2410C; }
+  .sm-stat-bh { color: var(--green-deep); }
+  .sm-stat-nogeo { color: var(--amber); }
+  .sm-stat-flag { color: var(--coral); }
+
+  /* RED FLAGS CALLOUT — emphasizes the two biggest findings */
+  .red-flags-banner {
+    background: linear-gradient(135deg, #FFF1EE 0%, #FFFBEC 100%);
+    border: 1px solid #FFDDD6;
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin: 4px 0 24px;
+  }
+  .red-flags-banner-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--coral);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .red-flags-banner-label::before {
+    content: "⚠";
+    font-size: 14px;
+  }
+  .red-flags-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .red-flag-cell {
+    background: #FFF;
+    border-radius: 10px;
+    padding: 18px 20px;
+    border-left: 4px solid var(--coral);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .red-flag-num {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--coral);
+    line-height: 1;
+    flex-shrink: 0;
+    font-family: 'Manrope', sans-serif;
+  }
+  .red-flag-num.text {
+    font-size: 11px;
+    line-height: 1.2;
+    padding-top: 6px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    max-width: 70px;
+    text-align: center;
+    font-weight: 800;
+  }
+  .red-flag-num.text-big {
+    font-size: 18px;
+    line-height: 1.15;
+    padding-top: 4px;
+    letter-spacing: -0.005em;
+    text-transform: none;
+    max-width: 90px;
+    text-align: left;
+    font-weight: 800;
+  }
+  .red-flag-body { flex: 1; }
+  .red-flag-headline {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+  }
+  .red-flag-detail {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .red-flag-detail strong { color: var(--ink); }
+  .red-flag-detail .benchmark {
+    display: inline-block;
+    background: var(--bg-soft);
+    color: var(--ink-soft);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'DM Sans', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .sitemap-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--line-soft);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .sitemap-row {
+    background: #FFF;
+    display: grid;
+    grid-template-columns: 1fr 110px 60px;
+    align-items: center;
+    padding: 11px 16px;
+    gap: 12px;
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+  .sitemap-row:hover { background: #FCFCFD; }
+  .sitemap-row .sm-url {
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    color: var(--ink);
+    word-break: break-all;
+  }
+  .sitemap-row .sm-url strong { color: var(--ink); font-weight: 700; }
+  .sitemap-row .sm-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .sm-badge.la { background: #FFE4D3; color: #C2410C; }
+  .sm-badge.bh { background: var(--green-soft); color: var(--green-deep); }
+  .sm-badge.nogeo { background: #FFF1CB; color: #92740C; }
+  .sm-badge.flag { background: #FFE2DE; color: var(--coral); }
+  .sm-badge.utility { background: var(--bg-soft); color: var(--ink-mute); }
+
+  .sitemap-row .sm-idx {
+    font-family: 'DM Sans', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-align: right;
+    font-weight: 600;
+  }
+  .sitemap-row.flag-row {
+    background: #FFF8F7;
+    border-left: 3px solid var(--coral);
+  }
+  .sitemap-row.flag-row:hover { background: #FFF1EE; }
+  .sitemap-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+  }
+  .sitemap-legend > div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sitemap-legend .leg-sw {
+    width: 10px; height: 10px;
+    border-radius: 3px;
+  }
+
+  /* ============== REVIEW ROUTING STRATEGY (Rifkin Raanan specific) ============== */
+  .review-routing {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 32px;
+    margin: 32px 0;
+    box-shadow: 0 4px 20px rgba(15,27,45,0.04);
+  }
+  .review-routing-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--green-deep);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .review-routing-label::before {
+    content: "→";
+    color: var(--green);
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .review-routing-title {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .review-routing-sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+  .routing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .routing-card {
+    background: linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%);
+    border-radius: 14px;
+    padding: 24px 26px;
+    border-left: 4px solid var(--green);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .routing-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+  .routing-doctor {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    line-height: 1.25;
+  }
+  .routing-doctor small {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    margin-top: 3px;
+    letter-spacing: 0;
+  }
+  .routing-count {
+    background: #FFF;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--green-deep);
+    white-space: nowrap;
+  }
+  .routing-count small {
+    font-size: 10px;
+    color: var(--ink-mute);
+    font-weight: 600;
+    margin-left: 4px;
+  }
+  .routing-for-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+  .routing-for {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 18px;
+    flex: 1;
+  }
+  .routing-for strong { color: var(--ink); font-weight: 700; }
+  .routing-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy);
+    color: #FFF;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 700;
+    transition: background 0.15s;
+    align-self: flex-start;
+  }
+  .routing-link:hover { background: #1B2940; }
+  .routing-link::after {
+    content: "→";
+    font-size: 14px;
+  }
+  .routing-rule {
+    margin-top: 22px;
+    padding: 16px 20px;
+    background: var(--bg-soft);
+    border-radius: 10px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .routing-rule strong { color: var(--ink); }
+
+  /* ============== NAP CONFUSION ALERT ============== */
+  .nap-alert {
+    background: linear-gradient(135deg, #FFF1EE 0%, #FFFBEC 100%);
+    border: 1px solid #FFDDD6;
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin: 28px 0;
+  }
+  .nap-alert-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--coral);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nap-alert-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .nap-alert-body {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .nap-alert-body strong { color: var(--ink); }
+  .nap-shared {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .nap-shared-cell {
+    background: #FFF;
+    border-radius: 10px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--coral);
+  }
+  .nap-shared-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+  .nap-shared-value {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 600;
+    font-family: 'DM Sans', monospace;
+    line-height: 1.4;
+  }
+  .nap-solution {
+    background: #FFF;
+    border-radius: 10px;
+    padding: 18px 22px;
+    border-left: 3px solid var(--green);
+    margin-top: 16px;
+  }
+  .nap-solution-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--green-deep);
+    margin-bottom: 8px;
+  }
+  .nap-solution-body {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .nap-solution-body strong { color: var(--ink); }
+
+  /* ============== END CTA ============== */
+  .end-cta {
+    background: var(--navy);
+    color: #FFF;
+    padding: 64px 0;
+    text-align: center;
+  }
+  .end-cta h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 auto 16px;
+    color: #FFF;
+    max-width: none;
+  }
+  .end-cta h2 .accent { color: var(--green); }
+  .end-cta p {
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+    margin: 0 auto 32px;
+    font-size: 16px;
+  }
+  .end-meta {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ============== RESPONSIVE ============== */
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+    section { padding: 56px 0; }
+    .hero { padding: 48px 0; }
+    .audit-strip { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .hero-meta-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .verdict-wrap { grid-template-columns: 56px 1fr; gap: 18px; }
+    .verdict-icon { width: 56px; height: 56px; }
+    .verdict-content h2 { font-size: 22px; }
+    .verdict-cta { grid-column: 1 / -1; text-align: center; }
+    .score-grid { grid-template-columns: 1fr; gap: 32px; }
+    .chart-block { grid-template-columns: 1fr; gap: 32px; }
+    .issue-counter { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .counter-card { padding: 22px 18px; }
+    .counter-num { font-size: 38px; }
+    .sitemap-summary { grid-template-columns: repeat(2, 1fr); }
+    .red-flags-grid { grid-template-columns: 1fr; gap: 12px; }
+    .routing-grid { grid-template-columns: 1fr; gap: 14px; }
+    .nap-shared { grid-template-columns: 1fr; gap: 10px; }
+    .red-flag-num { font-size: 42px; }
+    .sitemap-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 14px; }
+    .sitemap-row .sm-idx { text-align: left; }
+    .roadmap { grid-template-columns: 1fr; gap: 16px; }
+    .roadmap::before { display: none; }
+    .opp-grid { grid-template-columns: 1fr; gap: 32px; }
+    .opportunity { padding: 36px 24px; }
+    .rebuild-vs { grid-template-columns: 1fr; gap: 16px; }
+    .brand-paths { grid-template-columns: 1fr; gap: 16px; }
+    .primary-edu { grid-template-columns: 1fr; padding: 22px; text-align: left; }
+    .primary-edu-icon { width: 48px; height: 48px; }
+    .path-card { padding: 24px; }
+    .brand-suggestion-card { padding: 28px 24px; }
+    .brand-suggestion-card h3 { font-size: 22px; }
+    .name-comparison { grid-template-columns: 1fr; gap: 12px; }
+    .name-arrow { transform: rotate(90deg); padding: 4px 0; }
+    .review-gap-stat { grid-template-columns: 1fr; gap: 24px; padding: 28px 22px; }
+    .gap-divider { display: none; }
+    .gap-num { font-size: 48px; }
+    .rev-bar { grid-template-columns: 1fr; gap: 6px; padding: 14px 0; }
+    .rev-value { text-align: left; }
+    .rev-value .rev-stars { display: inline; margin-left: 8px; }
+    .same-building-alert { grid-template-columns: 1fr; padding: 22px; text-align: left; gap: 14px; }
+    .same-building-icon { width: 48px; height: 48px; }
+    .step-one-feature { padding: 28px 22px; }
+    .s1-grid { grid-template-columns: 1fr; gap: 24px; }
+    .s1-number { font-size: 72px; }
+    .s1-step-title { font-size: 24px; }
+    .engines-grid { grid-template-columns: 1fr; gap: 14px; }
+    .engine-card { padding: 22px; }
+    .audit-switch { padding: 28px 22px; }
+    .site-compare-head, .site-compare-row { grid-template-columns: 1fr 1fr; font-size: 13px; }
+    .site-compare-head > div:first-child, .site-compare-row > div:first-child { grid-column: 1 / -1; }
+    .bh-good-news ul { grid-template-columns: 1fr; }
+    .ct-head, .ct-row {
+      grid-template-columns: 1.5fr 60px 60px;
+      gap: 10px;
+      padding: 14px 16px;
+      font-size: 12px;
+    }
+    .ct-head .hide-mobile, .ct-row .hide-mobile { display: none; }
+    .canniba-flow { grid-template-columns: 1fr; gap: 12px; }
+    .canniba-fight { font-size: 22px; }
+    .issue-card { grid-template-columns: 1fr; padding: 24px; gap: 18px; }
+    .issue-icon-wrap { width: 48px; height: 48px; }
+    .page-bar { grid-template-columns: 1fr; gap: 6px; padding: 14px 0; }
+    .page-value { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-wrap">
+
+    <div class="audit-strip">
+      <div class="nerds-logo">
+        <span class="logo-mark">N</span>
+        <span>Dentist Nerds</span>
+      </div>
+      <div class="audit-type">Website Audit · Confidential</div>
+    </div>
+
+    <div class="audit-target">
+      <span class="pulse"></span>
+      Audited: rifkinraanan.com
+    </div>
+
+    <h1>
+      Website Audit for <span class="accent">Rifkin Raanan</span> — Beverly Hills Cosmetic Dentistry
+    </h1>
+    <p class="hero-subtitle">Prepared for Dr. Justin Raanan · May 2026</p>
+    <p class="lede">
+      Out of the three websites we audited, <strong>this one is the strongest</strong> — by a significant margin. The brand is world-class, the design is luxury-tier, the doctors are presented properly, the navigation works, and the celebrity-dentist legacy (Sinatra, Magic Johnson, the Lakers, Reese Witherspoon, Megan Fox) is fully on display. The site does almost everything right. There's one big area where the practice is leaving major visibility on the table: <strong>reviews</strong>. The main practice listing has 106 Google reviews. With this caliber of doctors and 40+ years of celebrity-tier work, the target should be <strong>500–600 reviews</strong>. That's the focus.
+    </p>
+
+    <div class="hero-meta-grid">
+      <div class="meta-block">
+        <div class="meta-label">Prepared For</div>
+        <div class="meta-value">Dr. Justin Raanan</div>
+        <div class="meta-sub">414 N Camden Dr Suite 1280, Beverly Hills</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Audit Date</div>
+        <div class="meta-value">May 2026</div>
+        <div class="meta-sub">Tools: Google Places, manual UX review</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Issues Found</div>
+        <div class="meta-value">5 issues</div>
+        <div class="meta-sub">1 critical · 2 high · 2 medium</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Primary Focus</div>
+        <div class="meta-value" style="color:var(--green);">Accelerate Reviews</div>
+        <div class="meta-sub">Target: 500–600 reviews on the main listing</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ HEALTH SCORE ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Health Score Breakdown</span>
+    <h2>Overall site health: <span style="color:var(--green-deep);">72/100</span>.<br>The strongest of the three Raanan-affiliated websites.</h2>
+    <p class="section-intro">We graded the site across four categories using manual review of the page-by-page experience, the live Google Business Profile listings, and the local competitive field. The Rifkin Raanan site scores significantly higher than both Brentwood (28) and Dr. Justin Raanan's solo BH practice (38) — almost twice as high. The brand work, design, and IA are mostly done. The numbers point at one area to focus on: <strong>review velocity.</strong></p>
+
+    <div class="score-grid">
+
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="20" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5E4D"/>
+              <stop offset="50%" stop-color="#FFB547"/>
+              <stop offset="100%" stop-color="#D4A93B"/>
+            </linearGradient>
+          </defs>
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="url(#gaugeGrad)" stroke-width="20" stroke-linecap="round" opacity="0.15"/>
+          <path d="M 20 120 A 100 100 0 0 1 198 51" fill="none" stroke="#8B6914" stroke-width="20" stroke-linecap="round"/>
+          <text x="20" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">0</text>
+          <text x="120" y="14" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">50</text>
+          <text x="220" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">100</text>
+        </svg>
+        <div class="gauge-num" style="color:var(--green-deep);">72<span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status" style="color:var(--green-deep);">Strong Foundation · Focus On Reviews</div>
+      </div>
+
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon" style="background:rgba(212,169,59,0.15);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B6914" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Content Depth &amp; Quality</div>
+            <div class="subscore-bar" style="background:var(--green-soft);"><div class="subscore-fill" style="width:78%;background:linear-gradient(90deg, #8B6914 0%, var(--green) 100%);"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--green-deep);">78%</div>
+        </div>
+
+        <div class="subscore">
+          <div class="subscore-icon" style="background:rgba(212,169,59,0.15);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B6914" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">UX &amp; Navigation Accessibility</div>
+            <div class="subscore-bar" style="background:var(--green-soft);"><div class="subscore-fill" style="width:82%;background:linear-gradient(90deg, #8B6914 0%, var(--green) 100%);"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--green-deep);">82%</div>
+        </div>
+
+        <div class="subscore">
+          <div class="subscore-icon amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2.5"><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.36 2.64"/><polyline points="21 3 21 9 15 9"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Technical SEO &amp; Schema</div>
+            <div class="subscore-bar amber"><div class="subscore-fill amber" style="width:65%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--amber);">65%</div>
+        </div>
+
+        <div class="subscore">
+          <div class="subscore-icon amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Reviews, Local Visibility &amp; GBP Health</div>
+            <div class="subscore-bar amber"><div class="subscore-fill amber" style="width:52%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--amber);">52%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================ WHAT'S WORKING + STATS SNAPSHOT ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>What's Working</span>
+    <h2>This site does <span class="accent">a lot of things right</span> — let's start there.</h2>
+    <p class="section-intro">Compared to both other websites we audited, Rifkin Raanan operates on a different tier. The brand work, the design, the doctor presentation, the storytelling, and the technical structure are all already in place. Here's what's already working — these are the foundations the rest of the plan builds on, not problems to solve.</p>
+
+    <div class="bh-good-news" style="background:linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%); border-left:4px solid var(--green); border-radius:16px; padding:32px 36px; margin:32px 0;">
+      <div class="bh-good-news-label" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:14px;">✓ Ten Things Rifkin Raanan Gets Right</div>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">"Dentist to the Stars" legacy</strong> — Frank Sinatra, Magic Johnson, Janet Jackson, Reese Witherspoon, Megan Fox, the LA Lakers. 40+ years of celebrity-tier work. Almost no competitor can match this story.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Real luxury-tier visual design</strong> — typography, hero video, premium photography, considered layout. Matches a 12th-floor penthouse Beverly Hills cosmetic dentist.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Real top navigation with full treatment menu</strong> — Cosmetic Dentistry, Advanced Dentistry, General Dentistry, all visible. None of the popup-only nav issues the other two sites have.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Four doctors properly profiled</strong> — Dr. Robert Rifkin, Dr. Rodney Raanan, Dr. Steven Rifkin, and Dr. Justin Raanan each get their own page. Multi-generational family practice told properly.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">"Own Your Smile™" + Atelier Aesthetics</strong> — branded philosophy and in-house lab give the practice signature differentiation no competitor can copy.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Real photography throughout</strong> — actual doctor portraits, real office shots, real patient photos. Zero stock-photo problem.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">FAQ section on the homepage</strong> — answers the common questions patients actually ask. Good for SEO and AI search extraction (ChatGPT, Perplexity, Google AI Overviews).</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Comprehensive treatment site architecture</strong> — Cosmetic / Advanced / General Dentistry hubs each with proper sub-pages. Strong IA already in place.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Giving A Smile Foundation</strong> — non-profit pediatric outreach gives the brand authentic community depth, not just luxury polish. Big trust signal.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Press &amp; Media + Active Social</strong> — dedicated Press section, Instagram @drrodneyraanan, Facebook RifkinRaanan. The legacy has cultural reach already.</li>
+      </ul>
+    </div>
+
+    <h3 style="font-size:22px; font-weight:800; margin:48px 0 8px; letter-spacing:-0.01em;">The numbers at a glance</h3>
+    <p style="color:var(--ink-soft); font-size:15px; margin-bottom:24px;">Quick Google snapshot of where Rifkin Raanan stands today in the Beverly Hills cosmetic dentistry market.</p>
+
+    <div class="hero-meta-grid">
+      <div class="meta-block">
+        <div class="meta-label">Practice Listing Reviews</div>
+        <div class="meta-value" style="color:var(--amber);">106 · 5.0 ★</div>
+        <div class="meta-sub">Main GBP · target: 500–600</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Aggregate Across All GBP Listings</div>
+        <div class="meta-value" style="color:var(--green);">~272 reviews</div>
+        <div class="meta-sub">Main + Dr. Rodney Raanan + Dr. Robert Rifkin</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Yelp Reviews</div>
+        <div class="meta-value">50+ · 5.0 ★</div>
+        <div class="meta-sub">Cross-platform proof patients look at</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Doctors On Site</div>
+        <div class="meta-value">4 doctors</div>
+        <div class="meta-sub">Robert Rifkin, Rodney Raanan, Steven Rifkin, Justin Raanan</div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px; padding:22px 26px; background:var(--bg-mint); border-radius:14px; border-left:3px solid var(--green);">
+      <p style="margin:0; color:var(--ink); font-size:15px; line-height:1.6;"><strong style="color:var(--green-deep);">The pattern:</strong> the front-end of this practice is doing almost everything right — brand, design, doctors, content, IA. The one big number that doesn't match the caliber of the work is the review count on the main practice listing. With this team and this legacy, the target should be <strong>500–600 reviews</strong> — and that's the dominant focus of this plan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ THE REVIEW OPPORTUNITY — CENTERPIECE ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>The Headline Opportunity</span>
+    <h2>The biggest gap: <span class="accent-red">reviews on the main practice listing</span>.</h2>
+    <p class="section-intro">With this caliber of doctors — Harvard-trained, USC-trained, UCLA faculty, 40+ years of celebrity-tier work — the main Rifkin Raanan Google Business Profile listing should be operating in a different league than its current review count suggests. Right now it sits at 106. Top Beverly Hills cosmetic dentists are at 173, 244, 413, 525, and Bill Dorfman at 1,751. The target is <strong>500–600 reviews on the main listing</strong>. Here's the context.</p>
+
+    <!-- THE DRAMATIC REVIEW GAP -->
+    <div class="review-gap-stat" style="background:linear-gradient(135deg, #FFF1EE 0%, #FFFBEC 100%); border:1px solid #FFDDD6; color:var(--ink);">
+      <div class="gap-side">
+        <div class="gap-label" style="color:var(--coral);">Rifkin Raanan Main GBP</div>
+        <div class="gap-num them" style="color:var(--coral);">106</div>
+        <div class="gap-name" style="color:var(--ink-soft);">Google reviews · 5.0 ★<br>Current state</div>
+      </div>
+      <div class="gap-divider" style="background:#E8D9D2;"></div>
+      <div class="gap-side">
+        <div class="gap-label" style="color:var(--green-deep);">Where It Should Be</div>
+        <div class="gap-num them" style="color:var(--green-deep);">500–600</div>
+        <div class="gap-name" style="color:var(--ink-soft);">Google reviews · 5.0 ★<br>Realistic target for the team &amp; legacy</div>
+      </div>
+      <div class="gap-multiplier" style="border-top:1px solid #E8D9D2;">
+        <div class="gap-mult-num" style="color:var(--coral);">~5×</div>
+        <div class="gap-mult-label" style="color:var(--ink-soft);">Gap between the current count and where a Beverly Hills cosmetic dentist of this caliber should be</div>
+      </div>
+    </div>
+
+    <!-- REVIEW ROUTING STRATEGY — where each patient's review goes -->
+    <div class="review-routing">
+      <div class="review-routing-label">Review Routing</div>
+      <div class="review-routing-title" style="margin-bottom:24px;">Two GBP listings is fine — as long as the address and phone don't conflict. <span style="font-weight:600; color:var(--ink-soft); font-size:16px; display:block; margin-top:6px;">Dentist Nerds can solve the conflict piece with call tracking. Here's where to route reviews in the meantime.</span></div>
+
+      <div class="routing-grid">
+        <div class="routing-card">
+          <div class="routing-card-head">
+            <div class="routing-doctor">Dr. Rodney Raanan's GBP<small>414 N Camden Dr Suite 1280</small></div>
+            <div class="routing-count">120<small>★ 5.0</small></div>
+          </div>
+          <div class="routing-for-label">Send Reviews From</div>
+          <div class="routing-for"><strong>Patients who saw Dr. Rodney Raanan</strong> — including his personal-brand searches, his Harvard-trained prosthodontics work, and his returning long-term patients. His individual listing already has the highest review count of the three; we keep that compounding.</div>
+          <a href="https://maps.app.goo.gl/FbCM4YDka12Zjoqf8" class="routing-link" target="_blank" rel="noopener">Open Dr. Rodney's Review Link</a>
+        </div>
+
+        <div class="routing-card">
+          <div class="routing-card-head">
+            <div class="routing-doctor">Rifkin Raanan Main GBP<small>414 N Camden Dr Suite 1280</small></div>
+            <div class="routing-count">106<small>★ 5.0</small></div>
+          </div>
+          <div class="routing-for-label">Send Reviews From</div>
+          <div class="routing-for"><strong>Patients of Dr. Robert Rifkin, Dr. Steven Rifkin, Dr. Justin Raanan, or general practice visits</strong> — including smile makeovers, veneers consultations, hygiene cleanings, and any review that's about the practice experience rather than a specific individual doctor.</div>
+          <a href="https://maps.app.goo.gl/82BrNK3tp5Pcs9SA6" class="routing-link" target="_blank" rel="noopener">Open Main Practice Review Link</a>
+        </div>
+      </div>
+
+      <div class="routing-rule">
+        <strong>The simple rule for staff:</strong> ask the patient at checkout who they saw. If Dr. Rodney → use his SMS template / QR code. Anyone else → use the main practice template. The link is in the SMS or printed on the QR card. Two templates total. Nothing more complicated than that.
+      </div>
+    </div>
+
+    <!-- NAP CONFUSION ALERT — same address + same phone + same website -->
+    <div class="nap-alert">
+      <div class="nap-alert-label">⚠ Google Maps NAP Conflict</div>
+      <div class="nap-alert-title">The main listing and Dr. Rodney's listing share the same address, the same phone, and the same website — which can confuse Google.</div>
+      <div class="nap-alert-body">Google's local algorithm uses <strong>NAP signals</strong> (Name, Address, Phone) to decide which listing maps to which business entity. When two GBP listings — and the website behind them — share identical NAP data, Google can struggle to differentiate them. The risk: one listing may get suppressed in favor of the other, the wrong listing may surface for the wrong search, or both listings may rank weaker than they should because Google can't tell them apart cleanly.</div>
+
+      <div class="nap-shared">
+        <div class="nap-shared-cell">
+          <div class="nap-shared-label">Shared Address</div>
+          <div class="nap-shared-value">414 N Camden Dr<br>Suite 1280, BH 90210</div>
+        </div>
+        <div class="nap-shared-cell">
+          <div class="nap-shared-label">Shared Phone</div>
+          <div class="nap-shared-value">(310) 205-5300</div>
+        </div>
+        <div class="nap-shared-cell">
+          <div class="nap-shared-label">Shared Website</div>
+          <div class="nap-shared-value">rifkinraanan.com</div>
+        </div>
+      </div>
+
+      <div class="nap-solution">
+        <div class="nap-solution-label">✓ How Dentist Nerds Solves This</div>
+        <div class="nap-solution-body"><strong>Install call tracking</strong> — each GBP listing gets its own dedicated forwarding phone number. All calls still ring through to the practice's real line at (310) 205-5300, but from Google's perspective each listing now has a unique NAP signature. The practice keeps every call. Google sees two distinct, well-differentiated entities. Each listing can rank on its own merits without competing against itself. We handle setup end-to-end: number provisioning, GBP updates, website schema, and call analytics so you can see which listing is actually driving phone volume.</div>
+      </div>
+    </div>
+
+    <!-- COSMETIC DENTIST FIELD CHART -->
+    <div style="margin-top:36px;">
+      <h3 style="font-size:22px;font-weight:800;margin-bottom:8px;letter-spacing:-0.01em;">Beverly Hills cosmetic dentist field by review count</h3>
+      <p style="color:var(--ink-soft);font-size:15px;margin-bottom:24px;">Real BH-area cosmetic dentistry practices, sorted by Google review volume on the primary practice listing.</p>
+
+      <div>
+        <div class="rev-bar">
+          <div class="rev-name">Bill Dorfman, DDS<span class="rev-spec">"Extreme Makeover" celebrity dentist · Century City · 1.5 mi</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:100%"></div></div>
+          <div class="rev-value">1,751<span class="rev-stars">★ 5.0</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Enzo Dentistry Beverly Hills<span class="rev-spec">Cosmetic · 9440 Santa Monica Blvd · 0.4 mi</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:30%"></div></div>
+          <div class="rev-value">525<span class="rev-stars">★ 5.0</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Arthur Glosman Cosmetic Dentistry<span class="rev-spec">Cosmetic · 450 N Roxbury Dr · 0.1 mi</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:24%"></div></div>
+          <div class="rev-value">413<span class="rev-stars">★ 5.0</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Smile Boutique Beverly Hills<span class="rev-spec">Cosmetic · 8500 Wilshire Blvd · 1.0 mi</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:20%"></div></div>
+          <div class="rev-value">356<span class="rev-stars">★ 4.9</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Bedford Dental Group<span class="rev-spec">General + Cosmetic · 436 N Bedford Dr · 0.1 mi</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:14%"></div></div>
+          <div class="rev-value">244<span class="rev-stars">★ 4.9</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Dr. Kourosh Maddahi DDS<span class="rev-spec">Cosmetic · 9400 Brighton Way · 0.3 mi</span></div>
+          <div class="rev-track"><div class="rev-fill" style="width:13%"></div></div>
+          <div class="rev-value">221<span class="rev-stars">★ 4.9</span></div>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-name">Kevin B. Sands DDS <span class="rev-flag">SAME BUILDING</span><span class="rev-spec">Cosmetic · 414 N Camden Dr Suite 940 · 0.0 mi</span></div>
+          <div class="rev-track"><div class="rev-fill same-building" style="width:10%"></div></div>
+          <div class="rev-value">173<span class="rev-stars">★ 5.0</span></div>
+        </div>
+        <div class="rev-bar you">
+          <div class="rev-name">Rifkin Raanan (main practice listing) <span class="rev-flag" style="background:var(--coral); color:#FFF;">YOU ARE HERE</span><span class="rev-spec">Cosmetic · 414 N Camden Dr Suite 1280 · 0.0 mi</span></div>
+          <div class="rev-track"><div class="rev-fill you" style="width:6%"></div></div>
+          <div class="rev-value you" style="color:var(--coral);">106<span class="rev-stars">★ 5.0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAKEAWAY -->
+    <div style="margin-top:36px;padding:22px 26px;background:var(--bg-mint);border-radius:14px;border-left:3px solid var(--green);">
+      <p style="margin:0;color:var(--ink);font-size:15px;line-height:1.6;"><strong style="color:var(--green-deep);">The good news:</strong> the brand, the work, the team, and the patient experience already justify a much higher review count. The 5.0 ★ rating is already there — patients love the practice. The ask infrastructure is what's missing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ OTHER ISSUES FOUND ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>Other Issues Found</span>
+    <h2>Beyond reviews, <span class="accent-red">five smaller things</span> to address.</h2>
+    <p class="section-intro">The site is in strong shape — but a complete audit surfaces a few additional items worth addressing alongside the review push. None of these require a rebuild; they're polish-level items that round out the foundation.</p>
+
+    <div class="issue-counter">
+      <div class="counter-card critical">
+        <div class="counter-num coral">1</div>
+        <div class="counter-label">Critical · the review gap</div>
+      </div>
+      <div class="counter-card high">
+        <div class="counter-num amber">2</div>
+        <div class="counter-label">High priority</div>
+      </div>
+      <div class="counter-card medium">
+        <div class="counter-num blue">2</div>
+        <div class="counter-label">Medium · polish</div>
+      </div>
+      <div class="counter-card good">
+        <div class="counter-num green">10</div>
+        <div class="counter-label">Already working well</div>
+      </div>
+    </div>
+
+    <div class="issues-grid">
+
+      <!-- ISSUE 1 — Reviews (covered in detail above) -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 1</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Reviews</span>
+            <h3>The main practice GBP listing is at 106 reviews — far below where this caliber of practice should sit.</h3>
+          </div>
+          <p>Covered in detail in the section above. The headline: the main Rifkin Raanan Google Business Profile has 106 reviews, while top BH cosmetic competitors sit at 173, 244, 413, 525, and 1,751. With the team, legacy, and patient experience already in place, the target should be <strong>500–600 reviews</strong> on the main listing. The plan is the <em>two-path routing strategy</em> shown above: patients of Dr. Rodney Raanan go to his individual GBP, everyone else goes to the main practice GBP.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Implement a post-visit SMS workflow with <strong>two pre-built templates</strong> — one with Dr. Rodney's review link (<a href="https://maps.app.goo.gl/FbCM4YDka12Zjoqf8" target="_blank" rel="noopener" style="color:var(--green-deep); text-decoration:underline;">maps.app.goo.gl/FbCM4YDka12Zjoqf8</a>), one with the main practice review link (<a href="https://maps.app.goo.gl/82BrNK3tp5Pcs9SA6" target="_blank" rel="noopener" style="color:var(--green-deep); text-decoration:underline;">maps.app.goo.gl/82BrNK3tp5Pcs9SA6</a>). Staff picks the template based on who the patient saw. Same-day send. Pre-visit consent so the ask is expected. Optional: a printed QR card in each operatory with both links for in-office reviews. Target velocity: 8–12 new reviews per month across the two listings combined. Track weekly.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 2 — Multiple GBP listings + same NAP confusion -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 2</span>
+            <span class="pill high"><span class="pill-dot"></span>High · GBP Strategy &amp; NAP</span>
+            <h3>Multiple GBP listings share the exact same address, phone, and website — which can confuse Google.</h3>
+          </div>
+          <p>The Rifkin Raanan practice operates with three active GBP listings at <strong>414 N Camden Dr Suite 1280</strong>: the main <em>Rifkin Raanan Beverly Hills Cosmetic Dentistry</em> (106 reviews), <em>Dr. Rodney Raanan, DDS MMSc</em> (120 reviews), and <em>Dr. Robert Rifkin, DDS</em> (46 reviews). All three share the <strong>same address</strong>, the <strong>same phone number (310) 205-5300</strong>, and the <strong>same website rifkinraanan.com</strong>. This is a real NAP-consistency conflict — Google can struggle to differentiate the listings, which risks suppressing one in favor of the other or weakening all of them in the Map Pack.</p>
+          <p>This is separate from the review-routing problem. The routing strategy decides where new reviews go. The NAP conflict is about whether Google can even understand these as three distinct business entities to begin with.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix — Dentist Nerds installs call tracking</div>
+            <p>Install <strong>dedicated call tracking numbers</strong> for each GBP listing. Each listing gets its own unique forwarding number that rings through to the main practice line at (310) 205-5300 — every call is still answered by the same front desk team, the patient experience doesn't change, and no calls are lost. But from Google's perspective, each listing now has a distinct NAP signature, which removes the duplicate-listing ambiguity. As a bonus: call tracking gives you per-listing analytics, so you can see which GBP is actually driving the phone volume that turns into bookings. Dentist Nerds handles end-to-end setup — number provisioning, GBP updates, schema markup on the site, and the call analytics dashboard.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 3 — External booking flow -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 3</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Booking Flow</span>
+            <h3>Appointment booking redirects to an external MyOryx URL.</h3>
+          </div>
+          <p>Every "Schedule an Appointment" CTA on the site redirects to <code style="background:var(--bg-soft); padding:1px 5px; border-radius:3px; font-family:'DM Sans',monospace; font-size:12px;">mychart.myoryx.com</code> — a third-party scheduling system. This creates two compounding problems. <strong>SEO impact:</strong> sending traffic off-domain costs the site valuable on-page engagement signals (time on site, pages per session, return visits). Google reads off-domain redirects as users leaving rifkinraanan.com — which weakens the site's overall ranking signal over time. <strong>Conversion impact:</strong> third-party scheduling tools typically require more questions, more form steps, and more friction than a native flow needs — and every additional step on a booking funnel measurably lowers the percentage of patients who complete the booking. For a luxury cosmetic dentist where each consultation can represent a high-value case, even a small drop in conversion is meaningful revenue lost.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Build an on-site booking flow that lives on rifkinraanan.com itself. The patient picks their doctor, the procedure of interest, preferred time, and submits — all within the Rifkin Raanan brand experience. The backend can still integrate with MyOryx, but the patient never sees the handoff. This is also a strong AI-search signal — current booking patterns are increasingly the place AI agents look to verify a practice is real and active.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 4 — Schema -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap medium">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4D8CFF" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 4</span>
+            <span class="pill medium"><span class="pill-dot"></span>Medium · Technical SEO</span>
+            <h3>Schema markup gaps — the FAQ section on the homepage isn't structured for extraction.</h3>
+          </div>
+          <p>The site has a strong FAQ section on the homepage answering questions about smile makeovers, veneers, pricing, and what makes Rifkin Raanan different. The content is there — what's missing is <strong>FAQPage schema markup</strong> wrapping it. Same applies to the doctor pages (no Physician schema), treatment pages (no MedicalProcedure schema), and the practice listing (no Dentist schema with AggregateRating). AI search engines (ChatGPT, Perplexity, Google AI Overviews) lean heavily on schema to decide which sources to cite. Without it, the content is harder to surface.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Add the full schema suite — Dentist (with AggregateRating tied to the GBP reviews), Physician for each doctor, FAQPage on the homepage, MedicalProcedure on every treatment page. None of this changes how the site looks to humans; it just lets Google and AI engines understand what's there. Should be a 1–2 day implementation.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 5 — Patient portal -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap medium">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4D8CFF" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 5</span>
+            <span class="pill medium"><span class="pill-dot"></span>Medium · Polish</span>
+            <h3>Patient login and forms route to a separate ident.ws third-party platform.</h3>
+          </div>
+          <p>Existing patient login redirects to <code style="background:var(--bg-soft); padding:1px 5px; border-radius:3px; font-family:'DM Sans',monospace; font-size:12px;">ident.ws</code> — same brand-break issue as the booking flow. New patient forms also live off-site. For a practice operating at this price tier, patients expect the same level of digital experience they get from a high-end concierge service. The forms work — they just look like a 2008-era dental portal.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Lower-priority than the review work, but worth addressing in a Phase 2 polish pass: branded on-site patient login and form experience that matches the rest of the site's design quality. Backend can still integrate with the existing patient management system; the patient just never sees the handoff.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ AUTHORITY COMPOUNDING STRATEGY ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Strategic Note</span>
+    <h2>The on-page SEO work is mostly done — <span class="accent">now we go external</span>.</h2>
+    <p class="section-intro">This is a strategic note rather than an issue card, because it's a recommendation that flows from what the site already does well. Rifkin Raanan's on-page SEO and domain authority foundation are sitting at roughly <strong>80–90% of what they need to be</strong>. The keyword structure is clean, the architecture is solid, the FAQs are in place, treatment pages have real content depth, and the brand is well-positioned. That changes where the highest-ROI growth moves come from.</p>
+
+    <div style="background:linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%); border-left:4px solid var(--green); border-radius:16px; padding:32px 36px; margin:32px 0;">
+      <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:12px;">✓ The Recommendation</div>
+      <h3 style="font-size:22px; font-weight:800; margin-bottom:14px; letter-spacing:-0.01em; color:var(--ink);">Compound the authority externally — publications, podcasts, and press.</h3>
+      <p style="font-size:15px; color:var(--ink-soft); line-height:1.6; margin-bottom:18px;">When a site already has 80–90% of its on-page work done, more on-page SEO produces diminishing returns. The highest-leverage move at this point is <strong style="color:var(--ink);">stacking external authority signals on top of the foundation already built</strong>. Editorial mentions, podcast appearances, press coverage, and credible cross-publication signal are what move the needle from here.</p>
+      <p style="font-size:15px; color:var(--ink-soft); line-height:1.6; margin-bottom:18px;">The good news: <strong style="color:var(--ink);">Rifkin Raanan has one of the strongest editorial hooks in Beverly Hills cosmetic dentistry</strong> — a 40+ year celebrity-dentist legacy, a unique in-house Atelier Aesthetics lab, three generations of doctors, and clients ranging from Frank Sinatra to Magic Johnson to Megan Fox. That's a press kit competitors can't replicate. It just needs to be actively pitched.</p>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:24px;">
+        <div style="background:#FFF; border-radius:10px; padding:18px 20px; border-left:3px solid var(--green);">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:8px;">Editorial Publications</div>
+          <p style="font-size:13.5px; color:var(--ink-soft); line-height:1.5; margin:0;">Pitch features in <strong style="color:var(--ink);">Allure, GQ, Vogue, Robb Report, The Hollywood Reporter, Town &amp; Country, Beverly Hills Magazine</strong>. The celebrity-dentist legacy and Atelier lab are real news hooks. Even one strong feature per quarter compounds for years.</p>
+        </div>
+        <div style="background:#FFF; border-radius:10px; padding:18px 20px; border-left:3px solid var(--green);">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:8px;">Podcast Appearances</div>
+          <p style="font-size:13.5px; color:var(--ink-soft); line-height:1.5; margin:0;">Target <strong style="color:var(--ink);">aesthetic medicine podcasts, business-of-dentistry shows, celebrity beauty podcasts, longevity &amp; wellness podcasts</strong>. Each appearance is a backlink, a brand exposure, and a credibility signal AI search engines pick up.</p>
+        </div>
+        <div style="background:#FFF; border-radius:10px; padding:18px 20px; border-left:3px solid var(--green);">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:8px;">Industry Publications</div>
+          <p style="font-size:13.5px; color:var(--ink-soft); line-height:1.5; margin:0;">Cosmetic dentistry trade journals, ADA News, AACD coverage, CE-circuit lecture write-ups, dental industry features. The doctors are already adjunct UCLA / USC faculty — that academic adjacency is worth leveraging.</p>
+        </div>
+        <div style="background:#FFF; border-radius:10px; padding:18px 20px; border-left:3px solid var(--green);">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:8px;">Atelier Aesthetics Coverage</div>
+          <p style="font-size:13.5px; color:var(--ink-soft); line-height:1.5; margin:0;">The in-house lab is a <strong style="color:var(--ink);">genuinely newsworthy differentiator</strong> — almost no cosmetic dentist anywhere has this. Architecture/design publications, dental tech press, and luxury lifestyle media all have angles into this story.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:24px; padding:18px 22px; background:rgba(212,169,59,0.12); border-radius:10px;">
+        <p style="margin:0; font-size:14px; color:var(--ink); line-height:1.6;"><strong>Why this matters for AI search:</strong> ChatGPT, Perplexity, Google AI Overviews, and Claude don't decide which cosmetic dentists to cite based on on-page SEO alone. They cite the entities with the strongest cross-publication footprint — the ones that appear in editorial coverage, are quoted by other authoritative sources, and have a verifiable real-world reputation. Each new credible mention compounds the practice's standing as the AI-search-cited authority on Beverly Hills cosmetic dentistry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================ GAME PLAN ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Our Game Plan</span>
+    <h2>How we'd grow the practice — <span class="accent">step by step</span>.</h2>
+    <p class="section-intro">Because the brand, design, IA, and content foundation are already in place, the plan here looks different than the other two reports. Step 1 isn't a rebuild — it's a review-acceleration engine focused on the main practice GBP. The ongoing engines that run alongside it round out the rest.</p>
+
+    <!-- STEP 1 · Authority & Backlinks (was: review acceleration) -->
+    <div class="step-one-feature">
+      <div class="s1-grid">
+        <div class="s1-number-block">
+          <span class="s1-badge">⚡ Start Here</span>
+          <div class="s1-number">01</div>
+          <div class="s1-step-label">The Foundation</div>
+          <div class="s1-step-title">Authority &amp; Backlinks.</div>
+        </div>
+
+        <div class="s1-content">
+          <h4>What we'd do in Step 1</h4>
+          <p>Once the on-page SEO is solid, we start <strong>building backlinks, citations, and brand mentions</strong> across high-quality dental and local publications. The goal: become a source AI search engines (ChatGPT, Perplexity, Google AI Overviews) cite when patients ask about cosmetic dentists, porcelain veneers, smile makeovers, or premium dentistry in Beverly Hills.</p>
+
+          <ul class="s1-todo">
+            <li><strong>Pitch editorial coverage</strong> in <em>Allure, GQ, Vogue, Robb Report, The Hollywood Reporter, Town &amp; Country, Beverly Hills Magazine</em>. The "Dentist to the Stars" legacy (Sinatra, Magic Johnson, Reese Witherspoon, Megan Fox, the Lakers) is a press hook competitors can't replicate.</li>
+            <li><strong>Book recurring podcast appearances</strong> on aesthetic medicine shows, business-of-dentistry podcasts, celebrity beauty podcasts, and longevity &amp; wellness podcasts. Each appearance compounds — backlink, brand exposure, credibility signal.</li>
+            <li><strong>Lean into Atelier Aesthetics as the press hook.</strong> The in-house lab is a genuinely newsworthy differentiator with angles into architecture/design publications, dental tech press, and luxury lifestyle media. Almost no cosmetic dentist anywhere has this.</li>
+            <li><strong>Industry &amp; CE coverage.</strong> The doctors are already adjunct UCLA / USC faculty — turn that academic adjacency into trade-journal features, ADA News mentions, AACD coverage, and CE-circuit write-ups.</li>
+            <li><strong>High-DA citation cleanup &amp; growth.</strong> Audit existing citations (Healthgrades, RealSelf, Vitals, Yelp, BBB), ensure NAP consistency, and add the practice to high-authority directories Rifkin Raanan isn't yet listed on.</li>
+            <li><strong>Install call tracking to fix the NAP conflict.</strong> Each GBP listing — Rifkin Raanan main, Dr. Rodney Raanan, Dr. Robert Rifkin — gets its own dedicated forwarding number. All calls still ring through to (310) 205-5300; the patient experience doesn't change. But each listing now has a unique NAP signature, so Google can rank them as three distinct entities instead of three duplicates of the same listing. Bonus: per-listing call analytics so you can see which GBP is actually driving phone volume.</li>
+            <li><strong>Add the full schema suite</strong> — Dentist with AggregateRating, Physician for each doctor, FAQPage on the homepage, MedicalProcedure on every treatment page. 1–2 day implementation; meaningful uplift for AI search visibility and helps Google attribute authority signals to the right entity.</li>
+          </ul>
+
+          <div class="s1-closing">
+            <p><strong>Why this matters:</strong> the on-page SEO and content foundation is sitting at 80–90% of where it needs to be. More on-page work produces diminishing returns from here. The highest-leverage move is stacking external authority signals on top of the foundation — and Rifkin Raanan has one of the strongest editorial hooks in Beverly Hills cosmetic dentistry to do exactly that.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="engines-header">
+      <span>What runs alongside &amp; after — the ongoing engines</span>
+    </div>
+
+    <!-- THE FIVE ENGINES -->
+    <div class="engines-grid">
+
+      <!-- 02 Press Pipeline (ongoing version of Step 1) -->
+      <div class="engine-card">
+        <div class="engine-num">02</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6z"/></svg>
+        </div>
+        <h4>Ongoing Press Pipeline</h4>
+        <p>Step 1 kicks off the editorial &amp; podcast push. This is the <strong>ongoing rhythm</strong> that runs alongside it — pitching new features, booking new podcast appearances, surfacing new angles, and keeping the press pipeline producing 1–2 placements every quarter at minimum.</p>
+        <p>Each new credible mention reinforces Rifkin Raanan as the entity AI search engines and patients keep encountering when researching premium Beverly Hills cosmetic dentistry.</p>
+        <div class="engine-target">
+          <strong>Target</strong>
+          1–2 new editorial placements or podcast appearances per quarter, sustained
+        </div>
+      </div>
+
+      <!-- 03 Reviews -->
+      <div class="engine-card">
+        <div class="engine-num">03</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h4>Review Generation</h4>
+        <p>A consistent, daily review-collection cadence. Post-visit text-message asks make it effortless for happy patients to leave a Google review.</p>
+        <p><strong>Recency matters more than volume</strong> — a steady drip of fresh reviews beats a thousand old ones. Google's algorithm rewards velocity and freshness.</p>
+        <div class="engine-target">
+          <strong>Target</strong>
+          8–12 new Google reviews per month on the main listing
+        </div>
+      </div>
+
+      <!-- 04 Content -->
+      <div class="engine-card">
+        <div class="engine-num">04</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h4>Content Engine</h4>
+        <p>Monthly long-form articles written specifically for <strong>AI search visibility and traditional SEO</strong>. Patient-language questions, structured answers, schema-rich.</p>
+        <p>Each piece links back to the relevant service page, building topical authority around periodontics, implants, and cosmetic dentistry over time.</p>
+        <div class="engine-target">
+          <strong>Target</strong>
+          1–2 high-quality articles per month
+        </div>
+      </div>
+
+      <!-- 05 GBP Management -->
+      <div class="engine-card">
+        <div class="engine-num">05</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h4>Google Business Management</h4>
+        <p>Hands-on GBP management: <strong>weekly posts, review responses, Q&amp;A monitoring, photo updates, service descriptions</strong>. The GBP is treated as a living asset, not a one-time setup.</p>
+        <p>Combined with Local Falcon scans to track Map Pack rankings month-over-month and iterate on what moves placement.</p>
+        <div class="engine-target">
+          <strong>Target</strong>
+          Top-3 Map Pack for 8+ core keywords in 6 months
+        </div>
+      </div>
+
+      <!-- 06 Tracking -->
+      <div class="engine-card">
+        <div class="engine-num">06</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h4>Tracking &amp; Reporting</h4>
+        <p>We use multiple tools together so nothing slips: <strong>Semrush</strong> for keyword position, <strong>Local Falcon</strong> for Map Pack tracking, <strong>GA4</strong> for traffic, <strong>Search Console</strong> for impressions and click data.</p>
+        <p>Monthly reports show what's working, what isn't, and what to iterate next month. The data drives the decisions — not guesses.</p>
+        <div class="engine-target">
+          <strong>Target</strong>
+          Monthly reporting cadence · always know where you stand
+        </div>
+      </div>
+
+      <!-- 07 — Become #1 in Beverly Hills -->
+      <div class="engine-card">
+        <div class="engine-num">07</div>
+        <div class="engine-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h4>Grow Visibility Among Beverly Hills Cosmetic Dentists</h4>
+        <p>The brand, doctors, and patient experience are already at top-tier level — what's missing is the review velocity to compound. With Steps 1–6 running consistently, the main Rifkin Raanan listing has a clear path to growing toward the 500–600 review range, climbing the local rankings, and growing its visibility among the most-cited Beverly Hills cosmetic dentists.</p>
+        <p>This is the most achievable of the three Raanan-affiliated growth targets — because the foundation work has already been done.</p>
+        <div class="engine-target">
+          <strong>Direction</strong>
+          One of the top cosmetic dentists by visibility in Beverly Hills · 24–36 month horizon
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ END CTA ============================================================ -->
+<section class="end-cta">
+  <div class="wrap">
+    <h2>Dentist Nerds is here to take the practice to <span class="accent">the next level</span>.</h2>
+    <p>The brand is built. The legacy is unmatched. The doctors are world-class. The site is in great shape. Almost every signal a Beverly Hills cosmetic dentistry patient could want to see is already in place — the one big number that doesn't match the quality of the work is the main GBP's review count. That's the headline focus of the plan. Get that to 500–600, and the rest of the foundation already does its job.</p>
+    <div class="end-meta">Prepared by Dentist Nerds · May 2026 · Confidential to Dr. Justin Raanan · Rifkin Raanan Beverly Hills</div>
+  </div>
+</section>
+
+</body>
+</html>

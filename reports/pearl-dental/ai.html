@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit Addendum — Pearl Dental Group · May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Newsreader:opsz,wght@6..72,300..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F1E8;
+    --paper: #FBF8F1;
+    --ink: #1C1B1A;
+    --ink-soft: #3C3A36;
+    --mute: #7A746A;
+    --rule: #D8D2C4;
+    --rule-soft: #E8E3D5;
+    --accent: #B8390E;
+    --accent-soft: #F4E4DC;
+    --green: #2F5C42;
+    --green-soft: #E3ECE5;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 64px 56px 96px;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  h1 {
+    font-size: clamp(44px, 6vw, 72px);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+  h1 em { font-style: italic; font-weight: 300; color: var(--accent); }
+
+  h2 {
+    font-size: clamp(24px, 2.6vw, 30px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  p { margin: 0 0 1em; }
+  p:last-child { margin-bottom: 0; }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.86em;
+    background: var(--rule-soft);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--ink-soft);
+  }
+
+  .kicker {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+  .kicker.accent { color: var(--accent); }
+
+  /* Cover */
+  header.cover {
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 56px;
+  }
+  .cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--mute);
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .cover-lede {
+    font-size: 20px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 720px;
+    font-weight: 300;
+    margin-top: 24px;
+  }
+
+  /* Intro index */
+  .index {
+    margin: 40px 0 0;
+    padding: 24px 28px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+  }
+  .index .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--mute);
+    margin-bottom: 10px;
+  }
+  .index ol {
+    margin: 0;
+    padding-left: 24px;
+    columns: 2;
+    column-gap: 32px;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 15.5px;
+    line-height: 1.7;
+  }
+  .index ol li { break-inside: avoid; }
+  .index ol li a {
+    color: var(--ink);
+    border-bottom: 0;
+    text-decoration: none;
+  }
+  .index ol li a:hover { color: var(--accent); }
+
+  /* Item card */
+  .item {
+    margin: 56px 0;
+    padding: 0;
+    position: relative;
+    counter-increment: itemcount;
+  }
+  .item-head {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 28px;
+    align-items: start;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .item-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 60px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .tag-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 2px;
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .tag.update { background: var(--rule-soft); color: var(--ink-soft); }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 0;
+  }
+  .pair > div {
+    padding: 28px 32px;
+  }
+  .problem {
+    background: transparent;
+    border-right: 1px solid var(--rule);
+  }
+  .fix {
+    background: var(--paper);
+  }
+  .pair-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 14px;
+  }
+  .problem .pair-label { color: var(--accent); }
+  .fix .pair-label { color: var(--green); }
+
+  .pair h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .pair p {
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .pair ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pair ul li {
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+  .pair ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--green);
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pair ul li:last-child { margin-bottom: 0; }
+  .pair ul li strong { color: var(--ink); font-weight: 600; }
+
+  /* CTA / footer */
+  .cta {
+    margin-top: 72px;
+    padding: 40px 44px;
+    background: var(--ink);
+    color: #F0EBDD;
+    border-radius: 2px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .cta h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.15;
+    color: #F0EBDD;
+    letter-spacing: -0.02em;
+  }
+  .cta h3 em { color: #D4A933; font-style: italic; font-weight: 300; }
+  .cta p {
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: #B8B0A0;
+    margin-top: 14px;
+  }
+  .cta-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #B8B0A0;
+    line-height: 1.8;
+  }
+  .cta-meta .v { color: #F0EBDD; }
+
+  footer {
+    margin-top: 60px;
+    padding: 28px 0 0;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--mute);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  @media (max-width: 820px) {
+    .page { padding: 36px 22px 60px; }
+    .index ol { columns: 1; }
+    .item-head { grid-template-columns: 1fr; gap: 14px; }
+    .item-num { font-size: 44px; }
+    .pair { grid-template-columns: 1fr; }
+    .problem { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .pair > div { padding: 24px 22px; }
+    .cta { grid-template-columns: 1fr; padding: 32px 24px; }
+  }
+
+  @media print {
+    body { background: white; font-size: 11pt; }
+    .page { max-width: none; padding: 0; }
+    .item { page-break-inside: avoid; }
+    .cta { background: #1C1B1A !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    a { color: var(--ink); border-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="cover">
+    <div class="cover-meta">
+      <span>Audit addendum · May 2026</span>
+      <span>Dentist Nerds</span>
+    </div>
+    <h1>Pearl Dental <em>Group</em></h1>
+    <p class="cover-lede">Six new findings on top of the May 2026 audit — covering AI search readiness, content cannibalization, brand exposure, provider visibility, market footprint, and on-site navigation. Each one paired with the specific work to fix it.</p>
+
+    <div class="index">
+      <div class="lbl">In this addendum</div>
+      <ol>
+        <li><a href="#i1">AI search readiness · schema + llms.txt</a></li>
+        <li><a href="#i2">Blog cannibalization of treatment pages</a></li>
+        <li><a href="#i3">Local press &amp; AI brand exposure</a></li>
+        <li><a href="#i4">Dr. Rachel Nery missing on-site &amp; off-site</a></li>
+        <li><a href="#i5">Metairie missing from homepage signals</a></li>
+        <li><a href="#i6">Navigation routing &amp; menu QA</a></li>
+      </ol>
+    </div>
+  </header>
+
+  <!-- ITEM 1 -->
+  <article class="item" id="i1">
+    <div class="item-head">
+      <div class="item-num">01</div>
+      <div>
+        <div class="tag-row">
+          <span class="tag update">Updates Issue 01</span>
+          <span class="tag">AI Search Readiness</span>
+        </div>
+        <h2>The site looks great — but it's invisible to ChatGPT, Perplexity &amp; Google AI Overviews</h2>
+      </div>
+    </div>
+    <div class="pair">
+      <div class="problem">
+        <div class="pair-label">What's happening</div>
+        <h4>Strong design, zero AI-readable signal</h4>
+        <p>The site itself looks great — clean design, clear navigation, professional photography, strong brand presentation. The gap is purely technical readiness for AI search.</p>
+        <p>No <code>LocalBusiness</code>, <code>MedicalProcedure</code>, <code>FAQPage</code>, <code>AggregateRating</code>, or <code>Article</code> schema is deployed anywhere on the site, and there's no <code>llms.txt</code> file at the root telling AI crawlers which pages represent the canonical knowledge base.</p>
+        <p>AI engines read schema to pick up procedure data, provider credentials, ratings, and FAQ answers — and increasingly use <code>llms.txt</code> as a routing signal for the content they cite. The 540+ reviews, the "Family Favorites" awards, and every cost-guide answer are all invisible to those channels.</p>
+      </div>
+      <div class="fix">
+        <div class="pair-label">How we fix it</div>
+        <h4>AI-readiness deployment package</h4>
+        <ul>
+          <li>Publish an <strong><code>llms.txt</code> file</strong> at the root pointing AI crawlers to canonical treatment pages, provider bios, and cost guides.</li>
+          <li>Add <strong><code>LocalBusiness</code> + <code>AggregateRating</code> schema</strong> on the homepage and each location page, pulling in the 540+ review count and the "Family Favorites" awards.</li>
+          <li>Layer <strong><code>MedicalProcedure</code> schema</strong> on every implant, cosmetic, sedation, and orthodontic treatment page.</li>
+          <li>Layer <strong><code>Article</code> + <code>FAQPage</code> schema</strong> on the top-traffic cost-guide pages so the existing content becomes AI-quotable.</li>
+          <li>Add <strong><code>Person</code> / <code>Physician</code> schema</strong> on each doctor's bio page.</li>
+          <li>Validate everything through Google's Rich Results Test and Schema.org validator before launch.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ITEM 2 -->
+  <article class="item" id="i2">
+    <div class="item-head">
+      <div class="item-num">02</div>
+      <div>
+        <div class="tag-row">
+          <span class="tag">New finding</span>
+          <span class="tag">Content strategy</span>
+        </div>
+        <h2>The blog is cannibalizing the homepage and treatment-page keywords</h2>
+      </div>
+    </div>
+    <div class="pair">
+      <div class="problem">
+        <div class="pair-label">What's happening</div>
+        <h4>Authority flowing to pages that don't convert</h4>
+        <p>The homepage leads with three primary sections: Full Mouth Dental Implants (All-on-4 / All-on-X), Sedation Dentistry, and Smile Makeovers. These are the exact topics the cost-guide engine ranks for:</p>
+        <p><code>/zirconia-bridge-price-guide/</code> 3,154 visits · <code>/full-mouth-dental-implants-cost/</code> 2,414 · <code>/zirconia-full-arch-cost/</code> 1,638 · <code>/smile-makeover-cost-guide/</code> 205.</p>
+        <p>Google is reading the blog as the canonical answer for procedure queries that should land on the homepage or the matching treatment pages. ~16,000 monthly visits flow to informational pages with low transactional intent, while the homepage gets 1,109 and the commercial service pages capture under 250 combined. <strong>The content engine is too good at its informational job — and starving the pages that book patients.</strong></p>
+      </div>
+      <div class="fix">
+        <div class="pair-label">How we fix it</div>
+        <h4>Redirect authority back to treatment pages</h4>
+        <ul>
+          <li><strong>Pair-audit each high-traffic cost-guide page</strong> against its matching treatment page (implants cost ↔ <code>/dental-implants/</code>, zirconia full-arch cost ↔ <code>/dental-implants/all-on-4-dental-implants/</code>, smile makeover cost ↔ <code>/cosmetic-dentistry/smile-makeover/</code>).</li>
+          <li><strong>Move the deeper transactional content</strong> — pricing examples, consultation CTAs, provider info, before-and-afters — onto the treatment pages. Keep cost guides focused on the informational answer.</li>
+          <li><strong>Add prominent internal links</strong> from each cost-guide page to its parent treatment page, with descriptive anchor text Google can read as a topic relationship.</li>
+          <li><strong>Restructure the treatment-page hierarchy</strong> so each is a clear topical hub the cost guides feed up into.</li>
+          <li><strong>Apply <code>rel="canonical"</code></strong> selectively where two pages are competing for the same query, consolidating ranking signals on the page that converts.</li>
+          <li><strong>Add location-specific CTAs and Baton Rouge/Metairie pricing context</strong> on every cost-guide page so informational traffic has a path to a consultation.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ITEM 3 -->
+  <article class="item" id="i3">
+    <div class="item-head">
+      <div class="item-num">03</div>
+      <div>
+        <div class="tag-row">
+          <span class="tag">New action</span>
+          <span class="tag">Brand exposure</span>
+        </div>
+        <h2>Earn local press mentions to feed AI brand-exposure signals</h2>
+      </div>
+    </div>
+    <div class="pair">
+      <div class="problem">
+        <div class="pair-label">What's happening</div>
+        <h4>AI models weight brands by mention volume</h4>
+        <p>AI engines — ChatGPT, Perplexity, Google AI Overviews, Copilot — rank brands partly by mention volume and the authority of the sources doing the mentioning, not just by traditional SEO signals.</p>
+        <p>The more the "Pearl Dental Group" entity appears in trusted, third-party contexts, the more often it surfaces when those models answer queries like <em>"best dentist in Baton Rouge"</em> or <em>"all-on-4 implants Louisiana."</em></p>
+        <p>Right now, Pearl Dental's brand authority lives almost entirely on its own domain. The 540+ reviews are real, the four "Family Favorites" wins are real — but neither shows up as third-party mentions in the news domains AI engines weight most heavily.</p>
+      </div>
+      <div class="fix">
+        <div class="pair-label">How we fix it</div>
+        <h4>Quarterly press &amp; community PR cadence</h4>
+        <ul>
+          <li><strong>Build a media list</strong> of Baton Rouge outlets (The Advocate, WBRZ, 225 Magazine, Baton Rouge Business Report) and Metairie / New Orleans-area media (Nola.com, Gambit, Biz New Orleans).</li>
+          <li><strong>Quarterly press releases</strong> tied to "Family Favorites" wins, new technology installs, provider milestones, charitable initiatives, community-event sponsorships, and patient-impact stories.</li>
+          <li><strong>Pitch local lifestyle &amp; parenting features</strong> — the Bruni family-dentist angle is a natural fit for <em>Baton Rouge Parents</em> beyond the annual awards issue.</li>
+          <li><strong>Partner with LSU, the Greater Baton Rouge Dental Association, and local charities</strong> for co-branded community programs that earn linked news coverage.</li>
+          <li><strong>Track AI visibility monthly</strong> — prompt-test "best dentist in Baton Rouge," "all-on-4 Louisiana," and similar queries across ChatGPT, Perplexity, and Google AI Overviews to measure brand surface as the press cadence builds.</li>
+          <li><strong>Mirror earned mentions into schema</strong> via <code>mentions</code> and <code>subjectOf</code> properties on the homepage <code>LocalBusiness</code> entity so the press wins compound on-site too.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ITEM 4 -->
+  <article class="item" id="i4">
+    <div class="item-head">
+      <div class="item-num">04</div>
+      <div>
+        <div class="tag-row">
+          <span class="tag">New finding</span>
+          <span class="tag">Provider visibility</span>
+        </div>
+        <h2>Dr. Rachel Nery is on the site nav but missing everywhere it counts</h2>
+      </div>
+    </div>
+    <div class="pair">
+      <div class="problem">
+        <div class="pair-label">What's happening</div>
+        <h4>A fourth provider with no digital footprint</h4>
+        <p>Dr. Rachel Nery appears in the main site navigation as a Pearl Dental provider — but the supporting infrastructure is missing.</p>
+        <p>There's no indexed team bio at <code>/about-us/meet-the-team/dr-rachel-nery/</code>, no individual Healthgrades or Vitals profile, and no LinkedIn or Louisiana Dental Association directory link tied back to pearldentalgroup.com.</p>
+        <p>Missing provider pages mean missing E-E-A-T signal, missing <code>Person</code>/<code>Physician</code> schema, and missing surface area for any AI Overview or ChatGPT answer that names individual providers when responding to <em>"best dentist in Baton Rouge"</em> queries. The other three doctors are well-covered — Dr. Nery's presence needs to match.</p>
+      </div>
+      <div class="fix">
+        <div class="pair-label">How we fix it</div>
+        <h4>Full provider buildout for Dr. Nery</h4>
+        <ul>
+          <li><strong>Build a complete team bio page</strong> at <code>/about-us/meet-the-team/dr-rachel-nery/</code> matching the depth of the existing three doctor pages — credentials, training, photography, treatment focus, patient stories.</li>
+          <li><strong>Layer <code>Person</code> + <code>Physician</code> schema</strong> on her page and on the homepage doctors block.</li>
+          <li><strong>Claim or build individual external profiles</strong> — Healthgrades, Vitals, LinkedIn, Louisiana Dental Association directory — with consistent NAP and a link back to her on-site bio.</li>
+          <li><strong>Add her to the "Meet the Doctors" submenu</strong> at parity with the other three providers (currently inconsistent across navigation states).</li>
+          <li><strong>Update the homepage doctors section</strong> to show all four providers, and the meta description / OG tags where applicable.</li>
+          <li><strong>Cross-link her bio</strong> from the relevant treatment pages she practices (so the new authority feeds the commercial pages, not just the bio).</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ITEM 5 -->
+  <article class="item" id="i5">
+    <div class="item-head">
+      <div class="item-num">05</div>
+      <div>
+        <div class="tag-row">
+          <span class="tag">New finding</span>
+          <span class="tag">Geographic footprint</span>
+        </div>
+        <h2>Metairie isn't in the homepage's primary signals — it competes as an orphan</h2>
+      </div>
+    </div>
+    <div class="pair">
+      <div class="problem">
+        <div class="pair-label">What's happening</div>
+        <h4>Root-level geo signal is Baton Rouge only</h4>
+        <p>The Veterans Blvd / Metairie location pages have meaningful potential but currently produce a fraction of the Baton Rouge offices' traffic.</p>
+        <p>Compounding the gap: the homepage H1 reads <em>"Cosmetic And Implant Dentistry — Baton Rouge, LA"</em> and the meta title reads <em>"Pearl Dental Group | Trusted Dentist in Baton Rouge."</em> Neither mentions Metairie or the New Orleans metro.</p>
+        <p>Google's primary geographic signal for the entire site is Baton Rouge — the Metairie location pages are competing as orphans without root-level reinforcement. Every external link to the homepage is voting for Baton Rouge authority, not for a multi-metro practice.</p>
+      </div>
+      <div class="fix">
+        <div class="pair-label">How we fix it</div>
+        <h4>Re-anchor the site as a multi-metro practice</h4>
+        <ul>
+          <li><strong>Rewrite the homepage H1</strong> to include both metros — e.g. <em>"Cosmetic and Implant Dentistry — Baton Rouge &amp; Metairie, LA."</em></li>
+          <li><strong>Rewrite the meta title and OG title</strong> to signal both markets to search engines and social previews.</li>
+          <li><strong>Update the meta description</strong> to name both Baton Rouge and Metairie service areas.</li>
+          <li><strong>Add a Metairie-focused content block</strong> to the homepage (location card, Metairie-specific testimonial, or quick-link to the Veterans Blvd page).</li>
+          <li><strong>Build out Metairie-specific service pages</strong> — Metairie implants, Metairie cosmetic dentistry, Metairie emergency dentistry — with locally-targeted FAQ content and pricing context.</li>
+          <li><strong>Layer a second <code>LocalBusiness</code> entity</strong> for the Metairie location with its own NAP, hours, and aggregate rating drawn from Metairie-specific reviews.</li>
+          <li><strong>Citation &amp; backlink work in the New Orleans metro</strong> to establish Metairie as its own market entity rather than a Baton Rouge spillover.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ITEM 6 -->
+  <article class="item" id="i6">
+    <div class="item-head">
+      <div class="item-num">06</div>
+      <div>
+        <div class="tag-row">
+          <span class="tag">New finding</span>
+          <span class="tag">UX &amp; crawlability</span>
+        </div>
+        <h2>Navigation routing &amp; menu QA — small bugs accumulating into real friction</h2>
+      </div>
+    </div>
+    <div class="pair">
+      <div class="problem">
+        <div class="pair-label">What's happening</div>
+        <h4>Broken anchors, mis-routed links, duplicate items</h4>
+        <p>The global "Patient Center" link in the primary navigation routes to <code>/metairie/patient-center/</code> — a location-scoped URL — sending Baton Rouge visitors to the wrong office's content.</p>
+        <p>The mobile menu splits "Porcelain Veneers And Lumineers" into two separate clickable items. Several submenu parents — "Meet the Doctors," "Periodontics," "General Dentistry" — point to placeholder anchors (<code>#</code>) or off-topic URLs (the General Dentistry parent currently routes to the Porcelain Veneers page).</p>
+        <p>Each one is small. Together they add up to UX friction for patients and confused crawl interpretation of the site's topical hierarchy.</p>
+      </div>
+      <div class="fix">
+        <div class="pair-label">How we fix it</div>
+        <h4>Full navigation audit &amp; cleanup</h4>
+        <ul>
+          <li><strong>Route the global "Patient Center" link</strong> to a top-level <code>/patient-center/</code> URL (not the Metairie-scoped one), with location-specific sub-pages underneath.</li>
+          <li><strong>Fix the mobile menu</strong> — collapse "Porcelain Veneers And" + "Lumineers" into a single item linking to the correct page.</li>
+          <li><strong>Replace placeholder <code>#</code> anchors</strong> on parent menu items with either real landing pages or proper expand/collapse behavior.</li>
+          <li><strong>Re-route the "General Dentistry" parent</strong> off the Porcelain Veneers page and onto a real General Dentistry hub page.</li>
+          <li><strong>Standardize menus across desktop &amp; mobile</strong> — Dr. Nery currently appears inconsistently, and other items disagree between viewports.</li>
+          <li><strong>Add breadcrumb schema</strong> so the corrected hierarchy is machine-readable.</li>
+          <li><strong>Submit the updated sitemap</strong> to Search Console after the menu cleanup to refresh Google's understanding of the site's topical structure.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- CLOSING CTA -->
+  <div class="cta">
+    <div>
+      <h3>Ready to fix all six? <em>We can start this week.</em></h3>
+      <p>Schema deployment, content restructuring, press cadence, and provider buildout typically run as a 60–90 day engagement. The navigation cleanup and homepage rewrite can ship in the first sprint.</p>
+    </div>
+    <div class="cta-meta">
+      <div>Contact</div>
+      <div class="v">Dentist Nerds</div>
+      <br>
+      <div>Next step</div>
+      <div class="v">Scope &amp; kick-off call</div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Dentist Nerds · Audit Addendum</span>
+    <span>Pearl Dental Group · Baton Rouge &amp; Metairie, LA · May 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website Quality Audit — Perfect Smiles California · Chula Vista, CA · May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --navy: #0d2538; --navy-2: #112e44;
+    --teal: #5fbab0; --teal-soft: #a4dad3;
+    --gold: #d4a55c; --gold-2: #c9a961;
+    --bg-page: #f5f5f0; --bg-soft: #ebe9e0; --bg-card: #ffffff;
+    --text-dark: #0d2538; --text-body: #4b5563; --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #2d8e5c; --green-bg: #d1fae5; --green-text: #065f46;
+    --gold-bg: #fef3c7; --gold-text: #92400e;
+    --red: #c53030; --red-bg: #fee2e2; --red-text: #991b1b;
+    --blue: #2c6fb3; --blue-bg: #dbeafe; --blue-text: #1e40af;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-body); line-height: 1.6; font-size: 14px; }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+
+  .hero { background: var(--navy); color: #fff; padding: 56px 0 44px; }
+  .hero .eyebrow { color: var(--teal); }
+  .hero h1 { font-size: 50px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 10px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 28px; max-width: 720px; }
+  .hero-meta-row { display: grid; grid-template-columns: repeat(4, auto); gap: 56px; padding: 22px 0 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px; }
+  .hero-meta-item .meta-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; margin-bottom: 6px; font-weight: 600; }
+  .hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+  .section { padding: 56px 0; }
+  .section h2 { font-size: 36px; font-weight: 600; margin-bottom: 12px; line-height: 1.15; }
+  .section h3 { font-size: 22px; font-weight: 600; margin: 36px 0 14px; }
+  .section-text { font-size: 14.5px; color: var(--text-body); max-width: 760px; margin-bottom: 24px; line-height: 1.7; }
+  .section-text strong { color: var(--text-dark); font-weight: 600; }
+  .h2-divider { display: grid; grid-template-columns: repeat(3, 86px); gap: 0; margin: 0 0 24px; }
+  .h2-divider span { height: 2px; }
+  .div-teal { background: var(--teal); } .div-gold { background: var(--gold-2); }
+  .div-green { background: var(--green); } .div-blue { background: var(--blue); }
+  .div-red { background: var(--red); } .div-navy { background: var(--navy); }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 18px 0 28px; }
+  .kpi-card { background: var(--bg-card); padding: 22px 20px; text-align: center; border-top: 2px solid var(--teal); border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-card.gold { border-top-color: var(--gold); }
+  .kpi-card.green { border-top-color: var(--green); }
+  .kpi-card.blue { border-top-color: var(--blue); }
+  .kpi-card.red { border-top-color: var(--red); }
+  .kpi-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--text-dark); line-height: 1; margin-bottom: 8px; }
+  .kpi-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dark); font-weight: 600; margin-bottom: 4px; }
+  .kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+  .account-chip { display: inline-flex; align-items: center; gap: 10px; background: var(--bg-card); border-left: 3px solid var(--gold); padding: 8px 14px 8px 12px; border-radius: 4px; margin: 8px 0 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .account-chip .slug { font-family: 'Courier New', monospace; font-size: 12px; background: var(--bg-soft); padding: 3px 8px; border-radius: 3px; color: var(--text-dark); font-weight: 600; }
+  .account-chip .label { font-size: 12px; color: var(--text-muted); }
+
+  .focus-3-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 22px 0 8px; }
+  .focus-3 { background: var(--bg-card); padding: 20px 20px; border-radius: 4px; border-top: 3px solid var(--teal); box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
+  .focus-3.gold { border-top-color: var(--gold-2); }
+  .focus-3.red { border-top-color: var(--red); }
+  .focus-3.green { border-top-color: var(--green); }
+  .focus-3.blue { border-top-color: var(--blue); }
+  .focus-3.purple { border-top-color: #7c3aed; }
+  .focus-3 .f3-eyebrow { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 10px; }
+  .focus-3.gold .f3-eyebrow { color: var(--gold-text); }
+  .focus-3.red .f3-eyebrow { color: var(--red); }
+  .focus-3.green .f3-eyebrow { color: var(--green); }
+  .focus-3.blue .f3-eyebrow { color: var(--blue); }
+  .focus-3.purple .f3-eyebrow { color: #7c3aed; }
+  .focus-3 h3 { font-family: 'Playfair Display', serif; font-size: 16.5px; margin: 0 0 14px; color: var(--text-dark); font-weight: 600; line-height: 1.25; }
+  .focus-3 .visual { min-height: 60px; margin: 4px 0 12px; display: flex; align-items: center; }
+  .focus-3 .f3-stat { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600; line-height: 1; margin: 4px 0 8px; color: var(--text-dark); }
+  .focus-3.gold .f3-stat { color: var(--gold-2); }
+  .focus-3.red .f3-stat { color: var(--red); }
+  .focus-3.green .f3-stat { color: var(--green); }
+  .focus-3.blue .f3-stat { color: var(--blue); }
+  .focus-3.purple .f3-stat { color: #7c3aed; }
+  .focus-3 p { font-size: 13px; line-height: 1.55; margin: 0; color: var(--text-body); }
+  .focus-3 code { background: var(--bg-soft); padding: 1px 5px; border-radius: 3px; font-size: 11.5px; color: var(--text-dark); }
+
+  .keyfinding-list { display: grid; gap: 10px; margin: 16px 0 24px; }
+  .kf-card { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kf-card .kf-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .kf-card.purple .kf-icon { background: #ede4ff; color: #7c3aed; }
+  .kf-card.gold .kf-icon { background: var(--gold-bg); color: var(--gold-text); }
+  .kf-card.red .kf-icon { background: var(--red-bg); color: var(--red-text); }
+  .kf-card.green .kf-icon { background: var(--green-bg); color: var(--green-text); }
+  .kf-card.blue .kf-icon { background: var(--blue-bg); color: var(--blue-text); }
+  .kf-card h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; margin: 0 0 4px; color: var(--text-dark); }
+  .kf-card p { font-size: 13px; color: var(--text-body); margin: 0; line-height: 1.55; }
+
+  .gbp-card { background: var(--bg-card); padding: 28px 32px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; margin: 14px 0 24px; border-left: 3px solid #4285f4; }
+  .gbp-card .star-block { text-align: center; }
+  .gbp-card .star-rating { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 600; color: var(--gold-2); line-height: 1; margin-bottom: 6px; }
+  .gbp-card .stars { font-size: 18px; color: var(--gold); letter-spacing: 2px; }
+  .gbp-card .review-count { font-size: 12px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .gbp-card .gbp-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 28px; }
+  .gbp-card .gbp-row .label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 3px; }
+  .gbp-card .gbp-row .value { font-size: 14px; color: var(--text-dark); font-weight: 600; }
+
+  .directory-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0 22px; }
+  .directory-summary .dir-stat { text-align: left; padding-top: 12px; border-top: 2px solid var(--teal); }
+  .directory-summary .dir-stat.green { border-top-color: var(--green); }
+  .directory-summary .dir-stat.red { border-top-color: var(--red); }
+  .directory-summary .dir-stat .num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; line-height: 1; margin: 4px 0; }
+  .directory-summary .dir-stat.green .num { color: var(--green); }
+  .directory-summary .dir-stat.red .num { color: var(--red); }
+  .directory-summary .dir-stat .dir-label { font-size: 11px; color: var(--text-dark); font-weight: 600; margin-bottom: 2px; }
+  .directory-summary .dir-stat small { font-size: 11px; color: var(--text-muted); }
+  .table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin: 12px 0 20px; background: var(--bg-card); }
+  .directory-table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 12.5px; min-width: 520px; }
+  .directory-table thead { background: var(--navy); color: #fff; }
+  .directory-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .directory-table th:nth-child(2) { text-align: center; }
+  .directory-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .directory-table td:nth-child(2) { text-align: center; }
+  .directory-table tr:last-child td { border-bottom: none; }
+  .dir-status { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 10.5px; font-weight: 600; }
+  .dir-status.listed { background: var(--green-bg); color: var(--green-text); }
+  .dir-status.weak { background: var(--gold-bg); color: var(--gold-text); }
+  .dir-status.missing { background: var(--red-bg); color: var(--red-text); }
+
+  .triage-counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 16px 0 22px; }
+  .triage-counter { text-align: left; padding: 12px 0; border-top: 2px solid var(--gold-2); }
+  .triage-counter.purple { border-top-color: #7c3aed; }
+  .triage-counter.green { border-top-color: var(--green); }
+  .triage-counter.red { border-top-color: var(--red); }
+  .triage-counter .num { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600; line-height: 1; margin: 4px 0; }
+  .triage-counter.purple .num { color: #7c3aed; }
+  .triage-counter.green .num { color: var(--green); }
+  .triage-counter.red .num { color: var(--red); }
+  .triage-counter .triage-label { font-size: 11px; color: var(--text-dark); font-weight: 600; }
+  .pages-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 4px; font-size: 12.5px; min-width: 560px; }
+  .pages-table thead { background: var(--navy); color: #fff; }
+  .pages-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .pages-table th:last-child { text-align: right; }
+  .pages-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); vertical-align: middle; }
+  .pages-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .pages-table .url { font-family: 'Courier New', monospace; font-size: 11.5px; color: var(--text-dark); word-break: break-all; }
+  .pages-table .url.wrong { color: var(--red); }
+  .pages-table .url-flag { font-size: 10.5px; color: var(--red); margin-left: 8px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .pages-table tr.flag-row { background: #fff5f3; }
+  .pages-table tr:last-child td { border-bottom: none; }
+  .critical-callout { background: #fff5f3; border-left: 3px solid var(--red); padding: 14px 18px; margin: 10px 0 16px; font-size: 12.5px; color: var(--text-dark); border-radius: 0 4px 4px 0; }
+  .critical-callout strong { color: var(--red); }
+
+  .tech-issues-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 18px 0 14px; }
+  @media (min-width: 700px) { .tech-issues-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .tech-issues-grid { grid-template-columns: repeat(4, 1fr); } }
+  .tech-issue-card { background: var(--bg-card); border-left: 3px solid var(--red); padding: 18px 22px; border-radius: 0 4px 4px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: center; }
+  .tech-issue-card.gold { border-left-color: var(--gold-2); }
+  .tech-issue-card.purple { border-left-color: #7c3aed; }
+  .tech-issue-card.green { border-left-color: var(--green); }
+  .tech-issue-card .tech-num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; color: var(--red); line-height: 1; }
+  .tech-issue-card.gold .tech-num { color: var(--gold-2); }
+  .tech-issue-card.purple .tech-num { color: #7c3aed; }
+  .tech-issue-card.green .tech-num { color: var(--green); }
+  .tech-issue-card h5 { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: var(--text-dark); margin: 0 0 4px; }
+  .tech-issue-card p { font-size: 12px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .tech-callout { background: rgba(197, 48, 48, 0.06); border-left: 3px solid var(--red); padding: 14px 20px; margin: 14px 0 0; font-size: 12.5px; color: var(--text-dark); line-height: 1.55; border-radius: 0 4px 4px 0; }
+  .tech-callout strong { color: var(--red); }
+  .tech-callout code { background: rgba(197,48,48,0.08); padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+
+  .comp-twins { display: grid; grid-template-columns: 1fr; gap: 18px; margin: 14px 0 24px; }
+  .comp-twin { background: var(--bg-card); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .comp-twin thead { background: var(--navy); color: #fff; }
+  .comp-twin table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 580px; }
+  .comp-twin th { padding: 11px 14px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; text-align: left; white-space: nowrap; }
+  .comp-twin th:nth-child(n+2) { text-align: center; }
+  .comp-twin td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .comp-twin td:nth-child(n+2) { text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .comp-twin tr:last-child td { border-bottom: none; }
+  .comp-twin tr.self td { color: var(--red); font-weight: 700; background: #fff5f3; }
+
+  .chart-wrap { background: var(--bg-card); padding: 24px; margin: 18px 0 24px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .chart-wrap .chart-caption { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 14px; font-weight: 700; }
+  .chart-wrap canvas { max-height: 280px; }
+
+  .action-list { display: grid; gap: 12px; margin: 14px 0 24px; }
+  .action-item { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 44px 1fr auto; gap: 16px; align-items: center; border-left: 3px solid var(--teal); }
+  .action-item .a-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--gold); line-height: 1; }
+  .action-item .a-body h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-dark); margin: 0 0 4px; }
+  .action-item .a-body p { font-size: 12.5px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .action-item .a-pri { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.14em; padding: 4px 10px; border-radius: 999px; font-weight: 700; white-space: nowrap; }
+  .a-pri.immediate { background: var(--red-bg); color: var(--red-text); }
+  .a-pri.high { background: var(--gold-bg); color: var(--gold-text); }
+  .a-pri.medium { background: var(--blue-bg); color: var(--blue-text); }
+  .a-pri.ongoing { background: var(--green-bg); color: var(--green-text); }
+
+  .loc-banner { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; padding: 40px 0; }
+  .loc-banner .eyebrow { color: var(--teal); }
+  .loc-banner h2 { color: #fff; font-size: 40px; margin-bottom: 8px; }
+  .loc-banner .addr { font-size: 14px; color: #c7d4dd; }
+  .loc-banner .addr a { color: var(--teal); text-decoration: none; }
+
+  footer { background: var(--navy); color: #8aa1b3; padding: 32px 0; text-align: center; font-size: 12px; margin-top: 60px; letter-spacing: 0.06em; }
+  footer .brand { color: var(--gold); font-weight: 600; }
+
+  img, canvas, svg, table { max-width: 100%; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+  .action-item .a-body { min-width: 0; }
+  .action-item .a-body p { word-wrap: break-word; overflow-wrap: anywhere; }
+  .pages-table .url { word-break: break-all; }
+
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .hero h1 { font-size: 42px; }
+    .section h2 { font-size: 32px; }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .hero h1 { font-size: 36px; line-height: 1.1; }
+    .section h2 { font-size: 26px; }
+    .section { padding: 44px 0; }
+    .hero-meta-row { grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+    .loc-banner h2 { font-size: 32px; } .loc-banner { padding: 32px 0; }
+    .gbp-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr 1fr; }
+    .action-item { grid-template-columns: 44px 1fr; }
+    .action-item .a-pri { grid-column: 2; justify-self: start; margin-top: 6px; }
+    .directory-summary { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .directory-summary .dir-stat .num { font-size: 24px; }
+    .chart-wrap canvas { max-height: 260px; }
+  }
+  @media (max-width: 768px) {
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tech-issue-card { padding: 16px 18px; gap: 14px; grid-template-columns: 50px 1fr; }
+    .tech-issue-card .tech-num { font-size: 34px; }
+    .triage-counters { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .triage-counter .num { font-size: 26px; }
+    .focus-3 { padding: 18px 20px; }
+    .focus-3 h3 { font-size: 16px; }
+    .focus-3 .f3-stat { font-size: 32px; }
+  }
+  @media (max-width: 700px) {
+    .focus-3-grid { grid-template-columns: 1fr; }
+    .tech-issues-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    .section { padding: 36px 0; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero h1 { font-size: 30px; } .hero h1 br { display: none; }
+    .hero { padding: 36px 0 32px; }
+    .hero-meta-row { grid-template-columns: 1fr; gap: 16px; padding: 18px 0 0; }
+    .section h2 { font-size: 24px; }
+    .section h3 { font-size: 18px; margin: 28px 0 10px; }
+    .loc-banner h2 { font-size: 26px; }
+    .kpi-num { font-size: 30px; }
+    .kpi-card { padding: 18px 14px; }
+    .h2-divider { grid-template-columns: repeat(3, 56px); margin-bottom: 18px; }
+    .chart-wrap { padding: 14px; } .chart-wrap canvas { max-height: 220px; }
+    .gbp-card .star-rating { font-size: 52px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr; gap: 12px; }
+    .focus-3 .f3-stat { font-size: 28px; }
+    .action-item { padding: 14px 18px; }
+    .action-item .a-num { font-size: 22px; }
+  }
+  @media (max-width: 480px) {
+    .triage-counters { grid-template-columns: 1fr; }
+    .directory-summary { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 420px) {
+    .container { padding: 0 14px; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 26px; }
+    .section h2 { font-size: 22px; }
+    .h2-divider { grid-template-columns: repeat(3, 48px); }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Website Quality Audit · Single-Location Practice</div>
+    <h1>Perfect Smiles<br><em>California</em></h1>
+    <p class="hero-sub">A focused audit of organic visibility, online reputation, treatment-page content, and the practice's relative standing among nearby Chula Vista competitors.</p>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item"><div class="meta-label">Report Period</div><div class="meta-value">May 2026</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Prepared By</div><div class="meta-value">Dentist Nerds</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Property Audited</div><div class="meta-value">perfectsmilescalifornia.com</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Property Type</div><div class="meta-value">Single-location practice</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="loc-banner">
+  <div class="container">
+    <div class="eyebrow">Practice location</div>
+    <h2>Dr. David Garate &amp; Dr. Myriam V. Falcon</h2>
+    <div class="addr">885 Canarios Ct, Ste 210 · Chula Vista, CA 91910 · <a href="https://www.perfectsmilescalifornia.com/" target="_blank" rel="noopener">perfectsmilescalifornia.com</a></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Performance summary</div>
+    <div class="h2-divider"><span class="div-gold"></span><span class="div-teal"></span><span class="div-green"></span></div>
+    <h2>Strong backlink base, weak service-page conversion</h2>
+    <p class="section-text">Perfect Smiles California holds <strong>322 referring domains</strong> — the strongest backlink profile in the immediate 5-mile cluster — and an Authority Score of <strong>15</strong>. But that link equity isn't converting into traffic: <strong>203 monthly visits</strong> sits below every nearby competitor. Traffic has been volatile through the year (low of 150, March peak of 296) with no consistent growth trend. The homepage carries <strong>93% of all visits</strong>; every other service page is at or near zero.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card gold"><div class="kpi-num">15</div><div class="kpi-label">Authority Score</div><div class="kpi-sub">out of 100</div></div>
+      <div class="kpi-card"><div class="kpi-num">203</div><div class="kpi-label">Monthly Visits</div><div class="kpi-sub">May 2026 organic</div></div>
+      <div class="kpi-card green"><div class="kpi-num">282</div><div class="kpi-label">Ranking Keywords</div><div class="kpi-sub">organic, US</div></div>
+      <div class="kpi-card red"><div class="kpi-num">33</div><div class="kpi-label">Total Site Pages</div><div class="kpi-sub">thin for a dental practice</div></div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-caption">Monthly organic traffic · 12-month trend</div>
+      <canvas id="trafficTrend"></canvas>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Top priority fixes</div>
+    <h2>Top Priority Fixes &amp; Issues</h2>
+    <div class="account-chip">
+      <span class="slug">perfectsmilescalifornia.com</span>
+      <span class="label">· Perfect Smiles California · Chula Vista, CA</span>
+    </div>
+
+    <div class="focus-3-grid">
+      <div class="focus-3 red">
+        <div class="f3-eyebrow">Issue 01 — Service pages aren't pulling weight</div>
+        <h3>93% of traffic lands on the homepage — service pages drive 0–8 visits each</h3>
+        <div class="visual"><div class="f3-stat">18</div></div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+        <p>189 of 203 monthly visits land on the homepage. The only service pages producing any traffic are <code>/services/emergency-dentistry</code> (8 visits), <code>/services/lanap</code> (3), <code>/restorative-services/dental-bridges</code> (2), and <code>/cosmetic-services/orthodontics</code> (1). Implants, dentures, veneers, whitening, clearcorrect, crowns, gum disease, wisdom teeth, laser, cosmetic, braces — all at 0 visits.</p>
+      </div>
+      <div class="focus-3 gold">
+        <div class="f3-eyebrow">Issue 02 — 23 backlinks pointing at a 404</div>
+        <h3>Legacy URL <code>/chula-vista-dentist-office</code> is broken</h3>
+        <div class="visual"><div class="f3-stat">23</div></div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--gold-2);">backlinks wasted</div>
+        <p>An old practice URL — <code>/chula-vista-dentist-office</code> — returns 404 but still has 23 referring domains pointing at it. All of that link equity is being thrown away. A single 301 redirect to the homepage or About page reclaims it immediately.</p>
+      </div>
+      <div class="focus-3 blue">
+        <div class="f3-eyebrow">Issue 03 — Content depth too thin</div>
+        <h3>Only 282 keywords ranking — content quality is the bottleneck</h3>
+        <div class="visual"><div class="f3-stat">282</div></div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--blue);">ranking keywords</div>
+        <p>Below every nearby competitor (292 to 428). With only 33 total pages in the sitemap, the site doesn't cover the breadth of patient queries — treatment variants, sub-procedures, financing, recovery, and patient-question pages are missing. The fix is more quality content: deeper service pages, sub-topic pages, FAQ pages, and a consistent blog cadence with named, credentialed authors.</p>
+      </div>
+      <div class="focus-3 purple">
+        <div class="f3-eyebrow">Issue 04 — Spanish-language demand untapped</div>
+        <h3>One Spanish page in a majority-Hispanic city</h3>
+        <div class="visual"><div class="f3-stat">1</div></div>
+        <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">of 33 pages is Spanish</div>
+        <p>Chula Vista is majority Hispanic with a substantial Spanish-dominant population. The site has a single Spanish page — a token presence that captures almost none of the local Spanish-language search demand. The right move is a full Spanish section mirroring the main service set (implants, cosmetic, emergency, etc.), and ideally a dedicated subdomain (e.g. <code>es.perfectsmilescalifornia.com</code>) or <code>/es/</code> directory so each language is indexed and ranked independently.</p>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+    <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · What Needs Improvement</h2>
+    <div class="keyfinding-list">
+      <div class="kf-card gold">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Service-page internal-link density is weak</h5>
+          <p>The homepage holds 93% of organic traffic but doesn't surface a service-grid block with descriptive anchor text. Visitors land on the homepage and don't navigate deeper, and authority can't flow to the service pages without paths to follow.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>22+ legacy URLs still 301-redirecting through old site structure</h5>
+          <p>Backlink crawl reveals dozens of old URL patterns (<code>/orthodontics/</code>, <code>/preventive_dentistry/</code>, <code>/cosmetic_dentistry/</code>, <code>/dental_implants/</code>, <code>/pediatric_dentistry/</code>, <code>/endodontics/root_canals/</code>, <code>/periodontics/</code>, <code>/oral_surgery/</code>, <code>/appointments/</code>, <code>/teeth-whitening</code>, plus 12 more) all 301-redirecting to current pages. Each redirect chain leaks crawl budget and a fraction of link equity.</p>
+        </div>
+      </div>
+      <div class="kf-card purple">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Traffic is volatile with no clear trend</h5>
+          <p>12-month range: 150 (May 25) → 296 (Mar 26 peak) → 170 (Apr 26) → 203 (current). The site oscillates between 150–300 visits with no compounding growth. Strong months aren't sustained, and the lift comes from brand or keyword volatility rather than systematic improvement.</p>
+        </div>
+      </div>
+      <div class="kf-card gold">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Two practicing doctors but only one has a profile page</h5>
+          <p>Dr. Myriam V. Falcon has a dedicated page (<code>/myriam-v-falcon--dds</code>); Dr. David Garate does not have a similar standalone profile page indexed. The /meet-the-doctor URL is generic. Doctor-name searches won't reliably surface the practice for prospects researching Dr. Garate specifically.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Service pages missing key conversion elements</h5>
+          <p>The dental-implants page is well-written (1,200+ words, FAQs, CTAs) but lacks embedded patient testimonials, before/after gallery, and cost ranges. Same pattern applies across the service set. Visitors who do reach service pages don't see the social-proof or financial-clarity elements that drive consultation requests.</p>
+        </div>
+      </div>
+      <div class="kf-card purple">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Content footprint is thin — 33 pages, 282 ranking keywords</h5>
+          <p>Sitemap shows only 33 total pages and the site ranks for 282 keywords — below every nearby competitor (292 to 428). Dentistry is a high-intent vertical with dozens of treatment, sub-treatment, and patient-question queries; the current page set is far too small to compete on the full surface. Need more service depth, sub-topic pages, FAQ pages, and a productive blog to widen the ranking footprint.</p>
+        </div>
+      </div>
+      <div class="kf-card gold">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Blog post bylines literally say "SEO"</h5>
+          <p>At least one blog author is listed as "SEO" — a placeholder string instead of a real person. Google's E-E-A-T guidelines (experience, expertise, authoritativeness, trust) lean heavily on named, credentialed authors, especially in medical and health verticals. Replace every "SEO" byline with the actual author — ideally one of the doctors with a short bio and credentials linked to their profile page.</p>
+        </div>
+      </div>
+      <div class="kf-card blue">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Service-page layouts need a conversion-focused rebuild</h5>
+          <p>Beyond the content itself, the visual layout on service pages doesn't guide a visitor toward booking. Treatment content needs to be paired with conversion blocks at consistent scroll intervals — phone CTA, before/after gallery, embedded testimonial, financing snippet, and an inline booking widget — so any scroll position contains a clear next step. Right now the pages read as informational rather than as a path to a consultation.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>ADA accessibility — contrast failures and no accessibility widget</h5>
+          <p>Light orange and yellow accents paired with white text fall below WCAG AA contrast minimums in several places — both a legal-exposure issue under ADA Title III for healthcare sites and a real usability problem for older patients. Two-part fix: tighten color usage so all text and interactive elements meet contrast standards, and install an ADA accessibility widget (UserWay, accessiBe, or equivalent) so users can adjust contrast, font size, and reading mode themselves.</p>
+        </div>
+      </div>
+      <div class="kf-card gold">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Pull orange back to accents — current background use works against the brand</h5>
+          <p>Orange is shown to elevate heart rate and visual urgency — useful for sale buttons and hover states, but counterproductive across large background panels of a healthcare site, where the goal is calm and trust. Pull orange into a smaller role (hover states, small highlight chips, CTA accents) and let calmer base colors carry the larger surfaces. This also makes the contrast fixes above easier.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Core directory listings</div>
+    <h2>Missing &amp; Unclaimed Directory Listings</h2>
+    <p class="section-text">Listings that are <strong>missing entirely</strong> or only <strong>partially claimed</strong> — channels where Perfect Smiles California is leaving local-citation and patient-acquisition signal on the table. (Claimed listings — the main business profile, Yelp, Facebook, BBB, CareCredit, Healthgrades — are not shown here.)</p>
+
+    <div class="directory-summary">
+      <div class="dir-stat red"><div class="num">2</div><div class="dir-label">Missing</div><small>no profile found</small></div>
+      <div class="dir-stat"><div class="num">2</div><div class="dir-label">Limited</div><small>partial profile</small></div>
+      <div class="dir-stat green"><div class="num">6</div><div class="dir-label">Listed (not shown)</div><small>see note above</small></div>
+    </div>
+
+    <div class="table-scroll"><table class="directory-table">
+      <thead><tr><th>Directory</th><th>Status</th><th>What's missing</th></tr></thead>
+      <tbody>
+        <tr><td>Zocdoc</td><td><span class="dir-status missing">Missing</span></td><td>No bookable profile — a meaningful patient-channel competitors in Chula Vista already use</td></tr>
+        <tr><td>Vitals / WebMD Provider</td><td><span class="dir-status missing">Missing</span></td><td>No individual provider profiles for either Dr. Garate or Dr. Falcon</td></tr>
+        <tr><td>Healthgrades (individual doctor profiles)</td><td><span class="dir-status weak">Limited</span></td><td>Practice listing exists but individual doctor profiles aren't fully built out with photos, bios, credentials, treatment lists</td></tr>
+        <tr><td>San Diego County Dental Society</td><td><span class="dir-status weak">Limited</span></td><td>Verify the practice and both doctors are listed in the regional dental-society member directory</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Treatment pages · Technical audit</div>
+    <h2>Indexed Page Triage on perfectsmilescalifornia.com</h2>
+    <div class="triage-counters">
+      <div class="triage-counter purple">
+        <div class="num">18</div>
+        <div class="triage-label">Evaluate &amp; Rework</div>
+        <small style="font-size: 11px; color: var(--text-muted);">service pages at 0 visits</small>
+      </div>
+      <div class="triage-counter red">
+        <div class="num">22+</div>
+        <div class="triage-label">Clean Up</div>
+        <small style="font-size: 11px; color: var(--text-muted);">legacy 301 chains + 1 high-equity 404</small>
+      </div>
+      <div class="triage-counter green">
+        <div class="num">5</div>
+        <div class="triage-label">Working</div>
+        <small style="font-size: 11px; color: var(--text-muted);">homepage + 4 service pages</small>
+      </div>
+    </div>
+
+    <div class="table-scroll"><table class="pages-table">
+      <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+      <tbody>
+        <tr><td class="url">/ (homepage)</td><td>189</td></tr>
+        <tr><td class="url">/services/emergency-dentistry</td><td>8</td></tr>
+        <tr><td class="url">/services/lanap</td><td>3</td></tr>
+        <tr><td class="url">/restorative-services/dental-bridges</td><td>2</td></tr>
+        <tr><td class="url">/cosmetic-services/orthodontics</td><td>1</td></tr>
+        <tr><td class="url">/restorative-services/dental-implants</td><td>0</td></tr>
+        <tr><td class="url">/restorative-services/dentures</td><td>0</td></tr>
+        <tr><td class="url">/restorative-services/dental-crowns</td><td>0</td></tr>
+        <tr><td class="url">/cosmetic-services/cosmetic-dentistry</td><td>0</td></tr>
+        <tr><td class="url">/cosmetic-services/veneers</td><td>0</td></tr>
+        <tr><td class="url">/cosmetic-services/teeth-whitening</td><td>0</td></tr>
+        <tr><td class="url">/cosmetic-services/clearcorrect</td><td>0</td></tr>
+        <tr><td class="url">/cosmetic-services/braces</td><td>0</td></tr>
+        <tr><td class="url">/services/laser-dentistry</td><td>0</td></tr>
+        <tr><td class="url">/services/wisdom-teeth-removal</td><td>0</td></tr>
+        <tr><td class="url">/services/gum-disease-treatment</td><td>0</td></tr>
+        <tr><td class="url">/myriam-v-falcon--dds</td><td>0</td></tr>
+        <tr><td class="url">/meet-the-doctor</td><td>0</td></tr>
+        <tr><td class="url">/testimonials</td><td>0</td></tr>
+        <tr><td class="url">/insurance-and-financing</td><td>0</td></tr>
+        <tr><td class="url">/new-patient</td><td>0</td></tr>
+        <tr><td class="url">/contact-us</td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/chula-vista-dentist-office <span class="url-flag">404 · 23 backlinks orphaned</span></td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/orthodontics/ · /preventive_dentistry/ · /cosmetic_dentistry/ · /dental_implants/ · /pediatric_dentistry/ · /endodontics/root_canals/ · /periodontics/ · /oral_surgery/ <span class="url-flag">8 legacy 301 chains</span></td><td>0</td></tr>
+        <tr class="flag-row"><td class="url wrong">/appointments/ · /teeth-whitening · /contact_us/ · /orthodontics/invisalign/ · /about-us-chula-vista-ca/ · 9 more <span class="url-flag">14+ legacy 301 chains</span></td><td>0</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="critical-callout">
+      <strong>Highest-priority cleanup:</strong> the <code>/chula-vista-dentist-office</code> 404 is holding 23 referring domains worth of orphaned link equity. A single 301 redirect to the homepage (or the new About page) reclaims it. The 22+ legacy 301 chains from the old site structure are lower-priority but should be audited for redirect-loop or chain-length issues.
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+    <h2>Technical Issues</h2>
+    <p class="section-text">Site-level technical SEO health check. Counts derived from a crawl of the indexed page set and on-page review of homepage + representative service pages.</p>
+
+    <div class="tech-issues-grid">
+      <div class="tech-issue-card">
+        <div class="tech-num">18</div>
+        <div>
+          <h5>Service Pages Without Schema</h5>
+          <p>No MedicalProcedure, LocalBusiness, AggregateRating, or FAQPage schema on any page. Schema is the channel through which AI search engines and rich results pick up procedure-level data.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card gold">
+        <div class="tech-num">23</div>
+        <div>
+          <h5>Orphan Backlinks on 404</h5>
+          <p><code>/chula-vista-dentist-office</code> returns Page Not Found but holds 23 referring-domain backlinks. Single highest-leverage fix on the site — one redirect recovers the equity.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card purple">
+        <div class="tech-num">22+</div>
+        <div>
+          <h5>Legacy 301 Redirect Chains</h5>
+          <p>Old underscore-style URLs (<code>/dental_implants/</code>, <code>/cosmetic_dentistry/</code>, etc.) all 301-redirecting to current paths. Worth auditing for chain length and consolidation.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card green">
+        <div class="tech-num">322</div>
+        <div>
+          <h5>Referring Domains (Healthy)</h5>
+          <p>Strongest backlink profile in the 5-mile cluster (highest of any local competitor). The asset is there — on-page work converts it into rankings.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-callout">
+      <strong>Highest-leverage technical work:</strong> redirect the <code>/chula-vista-dentist-office</code> 404 to recover 23 referring-domain backlinks immediately, then layer LocalBusiness + AggregateRating schema on the homepage and MedicalProcedure schema on each service page. Combined, these unlock the existing link equity to start producing actual rankings on service-page queries.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Competitive position · 5-mile radius</div>
+    <h2>Primary Competitors Within 5 Miles</h2>
+    <p class="section-text">The four dental practices physically nearest to Perfect Smiles California — all within a 5-mile radius of 885 Canarios Ct in Chula Vista. Algorithmic competitor lists returned mostly out-of-area practices sharing keyword overlap rather than real local competitors, so the set below is a manual geographic shortlist.</p>
+
+    <div class="comp-twins">
+      <div class="comp-twin">
+        <table>
+          <thead><tr><th>Practice · Domain</th><th>Authority</th><th>Keywords</th><th>Visits / mo</th><th>Ref. Domains</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Barajas Dentistry</strong><br><small style="color: var(--text-muted); font-weight: 400;">barajasdentistry.com</small></td><td>17</td><td>428</td><td>378</td><td>190</td></tr>
+            <tr><td><strong>Chula Vista Cosmetic Dentist</strong><br><small style="color: var(--text-muted); font-weight: 400;">chulavistacosmeticdentist.com</small></td><td>10</td><td>292</td><td>430</td><td>175</td></tr>
+            <tr><td><strong>Canyon Vista Dental Group</strong><br><small style="color: var(--text-muted); font-weight: 400;">canyonvistadentalgroup.com</small></td><td>9</td><td>304</td><td>493</td><td>166</td></tr>
+            <tr><td><strong>Millenia Dental</strong><br><small style="color: var(--text-muted); font-weight: 400;">milleniadental.com</small></td><td>9</td><td>321</td><td>301</td><td>143</td></tr>
+            <tr class="self"><td><strong>Perfect Smiles California (You)</strong><br><small style="color: var(--red); font-weight: 400;">885 Canarios Ct · perfectsmilescalifornia.com</small></td><td>15</td><td>282</td><td>203</td><td>322</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="section-text" style="margin-top: 4px;">
+      Above is the 5-mile competitive set alongside perfectsmilescalifornia.com — a snapshot of each practice's current organic footprint to track against month over month.
+    </p>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Where attention is needed first</div>
+    <h2>Priority Action Plan</h2>
+    <p class="section-text">The work ahead, in order.</p>
+
+    <div class="action-list">
+      <div class="action-item">
+        <div class="a-num">1</div>
+        <div class="a-body">
+          <h5>301-redirect the /chula-vista-dentist-office 404</h5>
+          <p>Single highest-leverage technical fix — recovers 23 orphan referring-domain backlinks with one redirect rule. Point it to the homepage or the About page, whichever is the better thematic match.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">2</div>
+        <div class="a-body">
+          <h5>Add schema + clean up legacy URLs</h5>
+          <p>LocalBusiness, MedicalProcedure, FAQPage, and AggregateRating schema across the site (pulling the 5★ × 53-review signal). Audit and consolidate the 22+ legacy 301 redirect chains from the old underscore-style URL structure.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">3</div>
+        <div class="a-body">
+          <h5>Internal linking + homepage service grid</h5>
+          <p>93% of traffic lands on the homepage; service pages drive 0–8 visits each. Add a service-grid block to the homepage with descriptive anchor text, contextual links from service pages to related ones, and a related-services block at the bottom of each page so authority flows to commercial pages.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">4</div>
+        <div class="a-body">
+          <h5>Rebuild the dormant service pages</h5>
+          <p>Implants, dentures, cosmetic, veneers, whitening, ClearCorrect, crowns, gum disease, wisdom teeth, laser. Each: embedded patient testimonials, before/after gallery, transparent cost ranges or financing notes, schema markup, and prominent CTA. The implants page is already well-written and can be the template.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">5</div>
+        <div class="a-body">
+          <h5>ADA accessibility fixes + install accessibility widget</h5>
+          <p>Audit all text/background pairings for WCAG AA contrast and resolve any failures (the light orange and yellow on white combinations are the most common offenders). Install an ADA widget (UserWay, accessiBe, or equivalent) so users can self-adjust contrast, font size, and reading mode. Both pieces are needed — the widget alone doesn't substitute for fixing the underlying contrast issues.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">6</div>
+        <div class="a-body">
+          <h5>Spanish-language expansion — section or dedicated subdomain</h5>
+          <p>Chula Vista is majority Hispanic and the site has one Spanish page. Expand to a full Spanish section mirroring the main service set — implants, cosmetic, emergency, orthodontics, pediatric, etc. Strong recommendation: a dedicated <code>es.</code> subdomain or <code>/es/</code> directory so each language is optimized, indexed, and ranks independently. This is the largest untapped patient channel for the practice.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">7</div>
+        <div class="a-body">
+          <h5>Build content depth and fix blog author bylines</h5>
+          <p>Site has only 33 total pages and ranks for 282 keywords (below the cluster). Plan: expand the service set with sub-topic pages (single-tooth implants, all-on-four, sedation options, etc.), add patient-question FAQ pages, and publish a steady blog cadence. Equally important — replace every blog byline that says "SEO" with the actual author. Bylines need a real name, credentials, and a short bio for both E-E-A-T and patient trust.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">8</div>
+        <div class="a-body">
+          <h5>Complete missing directory listings</h5>
+          <p>Claim Zocdoc (bookable-profile patient channel competitors already use), set up Vitals/WebMD provider profiles for both Dr. Garate and Dr. Falcon, complete the Healthgrades doctor profiles, and verify both doctors appear in the San Diego County Dental Society directory.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">9</div>
+        <div class="a-body">
+          <h5>Refine color usage — orange as accent only</h5>
+          <p>Pull orange off large background panels and reserve it for hover states, CTA buttons, and small highlight elements. Orange elevates urgency and heart rate — fine for a "Book Now" button, working against the brand on a hero banner of a healthcare site. This also reduces the surface area where contrast failures appear in the first place.</p>
+        </div>
+        <span class="a-pri medium">Medium</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">10</div>
+        <div class="a-body">
+          <h5>Monthly performance report</h5>
+          <p>Rankings, traffic, business-profile performance, new reviews, and booked appointments — measured against the May 2026 baseline established here.</p>
+        </div>
+        <span class="a-pri ongoing">Monthly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="brand">Dentist Nerds</span> · Single-Location Website Audit · Perfect Smiles California · Chula Vista, CA · May 2026
+  </div>
+</footer>
+
+<script>
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.color = '#6b7280';
+
+  new Chart(document.getElementById('trafficTrend'), {
+    type: 'line',
+    data: {
+      labels: ['Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26'],
+      datasets: [{
+        label: 'Organic visits',
+        data: [220, 179, 225, 171, 212, 176, 245, 240, 181, 296, 170, 203],
+        borderColor: '#5fbab0',
+        backgroundColor: 'rgba(95,186,176,0.15)',
+        borderWidth: 2.5, tension: 0.3, fill: true,
+        pointBackgroundColor: '#5fbab0', pointRadius: 3, pointHoverRadius: 5
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { backgroundColor: '#0d2538', padding: 10 } },
+      scales: {
+        x: { grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } },
+        y: { beginAtZero: true, grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } }
+      }
+    }
+  });
+</script>
+</body>
+</html>

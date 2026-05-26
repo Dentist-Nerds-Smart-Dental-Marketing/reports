@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agoura Hills Dental SEO Market Analysis · Prepared for Dr. Nathan Rabizadeh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d1620;
+    --ink-2: #142030;
+
+    --cream: #f6f0e2;
+    --paper: #ffffff;
+
+    /* Our client: green/blue (winner) */
+    --us: #16a34a;
+    --us-deep: #15803d;
+    --us-soft: #d1fae5;
+    --us-light: #4ade80;
+
+    /* Competitor: red/orange (losing) */
+    --them: #dc2626;
+    --them-deep: #b91c1c;
+    --them-soft: #fee2e2;
+    --them-light: #fca5a5;
+
+    --blue: #4a90e2;
+    --blue-deep: #2563eb;
+    --blue-dark: #1e40af;
+    --blue-soft: #dbeafe;
+    --blue-tint: #f0f5ff;
+    --slate: #64748b;
+    --amber: #d97706;
+    --purple: #8b5cf6;
+    --gold: #c89a3a;
+
+    --text: #0d1620;
+    --text-muted: #5c6b7d;
+    --text-light: #94a3b8;
+    --line-light: rgba(13,22,32,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: white;
+    padding: 96px 0 112px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(74, 222, 128, 0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--us-light);
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin-bottom: 32px;
+    color: white;
+  }
+  .hero h1 .accent { color: var(--us-light); font-style: italic; }
+  .hero-desc {
+    font-size: 17px;
+    color: #a8b3c2;
+    max-width: 760px;
+    line-height: 1.65;
+    margin-bottom: 48px;
+  }
+
+  /* HEAD-TO-HEAD TILES */
+  .vs-tile-row {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+  .vs-tile {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 28px 26px;
+    border-top: 4px solid;
+  }
+  .vs-tile.us { border-top-color: var(--us); }
+  .vs-tile.them { border-top-color: var(--them); }
+  .vs-tile-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+  .vs-tile-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: white;
+    margin-bottom: 2px;
+    line-height: 1.2;
+  }
+  .vs-tile-domain {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-light);
+    margin-bottom: 18px;
+    word-break: break-all;
+  }
+  .vs-tile-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .vs-tile-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+  }
+  .vs-tile.us .vs-tile-stat-num { color: var(--us-light); }
+  .vs-tile.them .vs-tile-stat-num { color: var(--them-light); }
+  .vs-tile-stat-lbl {
+    font-size: 10px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  .vs-divider {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--us-light);
+    font-style: italic;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-prepared {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  section.light { background: var(--cream); padding: 96px 0; }
+  section.paper { background: var(--paper); padding: 96px 0; }
+  section.dark { background: var(--ink); color: white; padding: 96px 0; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--us-deep);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  section.dark .section-eyebrow { color: var(--us-light); }
+
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+  section.dark h2.section-title { color: white; }
+
+  .section-lead {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 820px;
+    line-height: 1.65;
+    margin-bottom: 48px;
+  }
+
+  /* HEADLINE METRICS */
+  .metric-bars { display: flex; flex-direction: column; gap: 14px; }
+  .metric-bar {
+    background: var(--paper);
+    border-radius: 12px;
+    padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+  }
+  .metric-bar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line-light);
+  }
+  .metric-bar-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .metric-bar-title span {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .metric-bar-multi {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--us);
+    letter-spacing: -0.015em;
+  }
+  .metric-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 90px;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0;
+  }
+  .metric-row-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .metric-row-name span {
+    display: block;
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 2px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .metric-track {
+    height: 32px;
+    background: rgba(13,22,32,0.04);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .metric-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .metric-fill.us { background: linear-gradient(90deg, var(--us-deep), var(--us)); }
+  .metric-fill.them { background: linear-gradient(90deg, var(--them-deep), var(--them)); }
+  .metric-value {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 600;
+    text-align: right;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .metric-row.us .metric-value { color: var(--us); }
+  .metric-row.them .metric-value { color: var(--them); }
+
+  /* TREND CHART */
+  .chart-wrap {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 40px 44px;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+  }
+  .trend-svg { width: 100%; height: auto; max-width: 100%; }
+  svg .grid { stroke: rgba(13,22,32,0.06); stroke-width: 1; }
+  svg .axis { stroke: rgba(13,22,32,0.2); stroke-width: 1; }
+  svg .lbl { font-family: 'Inter', sans-serif; font-size: 11px; fill: var(--text-muted); font-weight: 500; }
+  .trend-legend {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-light);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .trend-legend-item { display: flex; align-items: center; gap: 10px; }
+
+  /* SCORECARD */
+  .scorecard {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .scorecard-head {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 100px;
+    gap: 16px;
+    padding: 22px 32px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #94a3b8;
+  }
+  .scorecard-head .col-us {
+    text-align: center;
+    color: var(--us-light);
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-transform: none;
+  }
+  .scorecard-head .col-them {
+    text-align: center;
+    color: var(--them-light);
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-transform: none;
+  }
+  .scorecard-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 100px;
+    gap: 16px;
+    padding: 20px 32px;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .scorecard-row:last-child { border-bottom: none; }
+  .scorecard-metric {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+  }
+  .scorecard-metric span {
+    display: block;
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .scorecard-cell {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .scorecard-cell.win { color: var(--us-light); }
+  .scorecard-cell.win::after { content: ' ★'; font-size: 12px; vertical-align: top; }
+  .scorecard-cell.lose { color: var(--them-light); opacity: 0.85; }
+  .scorecard-multi {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--us-light);
+    letter-spacing: -0.015em;
+  }
+  @media (max-width: 880px) {
+    .scorecard-head { display: none; }
+    .scorecard-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 18px 20px;
+    }
+    .scorecard-cell, .scorecard-multi {
+      text-align: left;
+      font-size: 18px;
+    }
+    .scorecard-cell::before {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-right: 6px;
+    }
+    .scorecard-row > div:nth-child(2)::before { content: "Reference · "; }
+    .scorecard-row > div:nth-child(3)::before { content: "Your Practice · "; }
+    .scorecard-row > div:nth-child(4)::before { content: "Gap · "; color: var(--us-light); }
+  }
+
+  /* SHARED-KEYWORD HIGHLIGHT */
+  .keyword-vs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .keyword-card {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 32px 28px;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+    border-top: 4px solid;
+  }
+  .keyword-card.us { border-top-color: var(--us); }
+  .keyword-card.them { border-top-color: var(--them); }
+  .keyword-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .keyword-card.us .keyword-card-label { color: var(--us); }
+  .keyword-card.them .keyword-card-label { color: var(--them); }
+  .keyword-card-name {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+    color: var(--text);
+  }
+  .kw-row {
+    display: grid;
+    grid-template-columns: 1fr 60px;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 0;
+    font-size: 13px;
+    border-bottom: 1px solid var(--line-light);
+  }
+  .kw-row:last-child { border-bottom: none; }
+  .kw-row-text { color: var(--text); line-height: 1.4; }
+  .kw-pos {
+    text-align: right;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .kw-pos.win { color: var(--us); }
+  .kw-pos.mid { color: var(--amber); }
+  .kw-pos.lose { color: var(--them); }
+
+  /* SHARED KEYWORDS COMPARISON */
+  /* ANALYSIS / LESSONS */
+  .lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 24px;
+  }
+  .lesson-card {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 32px 36px;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+    border-left: 4px solid var(--us);
+  }
+  .lesson-card.warning { border-left-color: var(--amber); }
+  .lesson-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--us);
+    margin-bottom: 12px;
+  }
+  .lesson-card.warning .lesson-eyebrow { color: var(--amber); }
+  .lesson-headline {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .lesson-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* FINAL VERDICT */
+  .verdict-banner {
+    background: linear-gradient(135deg, var(--us-deep), var(--us));
+    border-radius: 16px;
+    padding: 56px 48px;
+    text-align: center;
+    margin-top: 56px;
+  }
+  .verdict-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #d1fae5;
+    margin-bottom: 20px;
+  }
+  .verdict-headline {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: white;
+    max-width: 820px;
+    margin: 0 auto 24px;
+  }
+  .verdict-body {
+    font-size: 16px;
+    color: #d1fae5;
+    line-height: 1.7;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: white;
+    padding: 56px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .foot-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--us-light);
+    margin-bottom: 10px;
+  }
+  .foot-meta {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .container { padding: 0 32px; }
+    .hero { padding: 80px 0 96px; }
+    section.light, section.paper, section.dark { padding: 80px 0; }
+    h2.section-title { font-size: 36px; }
+    .vs-tile-row { grid-template-columns: 1fr; gap: 16px; }
+    .vs-divider { transform: rotate(0deg); padding: 8px 0; }
+    .keyword-vs-grid { grid-template-columns: 1fr; }
+    .lessons-grid { grid-template-columns: 1fr; }
+    .verdict-headline { font-size: 28px; }
+    .metric-row { grid-template-columns: 130px 1fr 70px; gap: 14px; }
+    .metric-row-name { font-size: 12px; }
+    .metric-value { font-size: 22px; }
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    body { font-size: 14px; }
+    .hero { padding: 56px 0 64px; }
+    section.light, section.paper, section.dark { padding: 56px 0; }
+    .hero h1 { font-size: 32px; line-height: 1.08; margin-bottom: 24px; }
+    .hero-desc { font-size: 14px; margin-bottom: 32px; }
+    h2.section-title { font-size: 24px; line-height: 1.15; margin-bottom: 18px; }
+    .section-lead { font-size: 13px; margin-bottom: 28px; }
+
+    .vs-tile { padding: 20px; }
+    .vs-tile-name { font-size: 18px; }
+    .vs-tile-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .vs-tile-stat-num { font-size: 22px; }
+
+    .metric-bar { padding: 18px 20px; }
+    .metric-bar-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .metric-row { grid-template-columns: 1fr; gap: 8px; padding: 12px 0; }
+    .metric-track { width: 100%; }
+    .metric-value { text-align: left; font-size: 20px; }
+    .metric-row-name { font-size: 12px; }
+
+    .verdict-banner { padding: 36px 24px; }
+    .verdict-headline { font-size: 22px; }
+    .verdict-body { font-size: 14px; }
+
+
+    .keyword-card { padding: 22px 20px; }
+    .lesson-card { padding: 22px 24px; }
+    .lesson-headline { font-size: 18px; }
+    .chart-wrap { padding: 20px 14px; }
+    .trend-legend { flex-wrap: wrap; gap: 14px; justify-content: flex-start; font-size: 11px; }
+  }
+
+  /* ============ ACTION PLAN ============ */
+  .pages-callout {
+    background: linear-gradient(135deg, #1e40af, #2563eb);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin: 16px 0 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pages-callout::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .pages-callout-grid {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+  }
+  .pages-callout-num {
+    font-family: 'Fraunces', serif;
+    font-size: 72px;
+    font-weight: 600;
+    color: white;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .pages-callout-num span { color: #93c5fd; }
+  .pages-callout-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: #93c5fd;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .pages-callout-headline {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .pages-callout-body {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    max-width: 540px;
+  }
+  .pages-callout-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .pages-callout-meta-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #93c5fd;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
+
+  .action-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .action-row {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 22px 28px;
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    transition: all 0.2s;
+  }
+  .action-row:hover {
+    background: rgba(74,222,128,0.06);
+    border-color: rgba(74,222,128,0.2);
+    transform: translateX(4px);
+  }
+  .action-num {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-light);
+    letter-spacing: -0.02em;
+  }
+  .action-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: white;
+    letter-spacing: -0.005em;
+  }
+  .action-desc {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.55;
+  }
+  .action-tag {
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: white;
+    white-space: nowrap;
+  }
+  .action-tag.immediate { background: #dc2626; }
+  .action-tag.high { background: #d97706; }
+  .action-tag.medium { background: #4a90e2; }
+  .action-tag.ongoing { background: #8b5cf6; }
+
+  .target-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(252,165,165,0.1);
+    border: 1px solid rgba(252,165,165,0.25);
+    padding: 10px 18px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .target-pill-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--them-light);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .target-pill-url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: white;
+    word-break: break-all;
+  }
+
+  @media (max-width: 1024px) {
+    .pages-callout-grid { grid-template-columns: auto 1fr; gap: 20px; }
+    .pages-callout-meta { grid-column: 1 / -1; flex-direction: row; gap: 18px; align-items: flex-start; }
+  }
+  @media (max-width: 640px) {
+    .pages-callout { padding: 24px 22px; }
+    .pages-callout-grid { grid-template-columns: 1fr; gap: 14px; }
+    .pages-callout-num { font-size: 56px; }
+    .pages-callout-headline { font-size: 18px; }
+    .action-row { grid-template-columns: 36px 1fr; gap: 12px; padding: 16px 18px; }
+    .action-tag { grid-column: 2; justify-self: start; margin-top: 6px; padding: 5px 10px; font-size: 9px; }
+    .action-title { font-size: 14px; }
+    .action-desc { font-size: 12px; }
+    .target-pill { padding: 8px 14px; }
+    .target-pill-label, .target-pill-url { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Agoura Hills Dental SEO Market Analysis · Live Semrush Data · May 2026</div>
+    <h1>Dr. Rabizadeh, here's where your practice <span class="accent">stands in the Agoura Hills market</span></h1>
+    <p class="hero-desc">A complete read on the Agoura Hills dental SEO landscape — pulled live from Semrush. We benchmarked agouradentalarts.com against the 8 other dental practices currently competing for the same Agoura Hills keywords. The numbers show exactly where you stand today, what's achievable, and the realistic path to climbing the leaderboard.</p>
+
+    <div class="hero-prepared"></div>
+  </div>
+</header>
+
+<!-- 3 FOCUS AREAS — UNIFIED SINGLE-VISUAL SUMMARY -->
+<section class="paper" style="padding-top: 80px;">
+  <div class="container">
+    <div class="section-eyebrow">Where to Focus</div>
+    <h2 class="section-title">3 priorities that will move the needle</h2>
+    <p class="section-lead">Looking at the full data — your current rankings, your competitors, your existing assets — three priority areas stand out. Each one is grounded in something measurable from your Semrush profile, not a generic checklist.</p>
+
+    <div class="focus-summary">
+
+      <div class="focus-row focus-row-1">
+        <div class="focus-row-num">01</div>
+        <div class="focus-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="focus-row-body">
+          <div class="focus-row-tag">Foundation · Priority 01</div>
+          <div class="focus-row-title">Local SEO &amp; technical foundation</div>
+          <div class="focus-row-desc">Deploy Dentist + LocalBusiness schema sitewide, fix heading hierarchy, optimize Google Business Profile, replace placeholder URLs. The foundation work that lets every other improvement actually translate into rankings.</div>
+        </div>
+        <div class="focus-row-metric">
+          <div class="focus-row-metric-num">9</div>
+          <div class="focus-row-metric-lbl">technical issues<br>to address</div>
+        </div>
+      </div>
+
+      <div class="focus-row focus-row-2">
+        <div class="focus-row-num">02</div>
+        <div class="focus-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+        </div>
+        <div class="focus-row-body">
+          <div class="focus-row-tag">Content · Priority 02</div>
+          <div class="focus-row-title">Content depth &amp; topical authority</div>
+          <div class="focus-row-desc">Build out treatment, condition, and location pages — smile makeovers, sedation, dental bonding, periodontics, and Calabasas/Thousand Oaks/Westlake area pages. More indexed pages means more long-tail ranking opportunities.</div>
+        </div>
+        <div class="focus-row-metric">
+          <div class="focus-row-metric-num">22</div>
+          <div class="focus-row-metric-lbl">indexed pages<br>(market mid: ~200)</div>
+        </div>
+      </div>
+
+      <div class="focus-row focus-row-3">
+        <div class="focus-row-num">03</div>
+        <div class="focus-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="focus-row-body">
+          <div class="focus-row-tag">AI Visibility · Priority 03</div>
+          <div class="focus-row-title">AI search &amp; answer-engine presence</div>
+          <div class="focus-row-desc">Position the practice to be cited by ChatGPT, Gemini, Perplexity, and Google AI Overviews — increasingly how patients find dentists. Requires structured data, FAQ content, brand mentions in trusted sources, and review velocity.</div>
+        </div>
+        <div class="focus-row-metric">
+          <div class="focus-row-metric-num">0</div>
+          <div class="focus-row-metric-lbl">AI citations<br>currently</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="focus-summary-note">
+      <strong>The throughline:</strong> all three priorities share a foundation — structured data and content depth. Get those right and Local SEO, content rankings, and AI visibility all start improving together. The work compounds across all three.
+    </div>
+  </div>
+</section>
+
+<style>
+  .focus-summary {
+    background: var(--paper);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+    border: 1px solid var(--line-light);
+  }
+  .focus-row {
+    display: grid;
+    grid-template-columns: 60px 56px 1fr 130px;
+    gap: 24px;
+    align-items: center;
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--line-light);
+    border-left: 4px solid;
+    transition: background 0.15s;
+  }
+  .focus-row:last-child { border-bottom: none; }
+  .focus-row:hover { background: rgba(13,22,32,0.015); }
+  .focus-row-1 { border-left-color: var(--blue-deep); }
+  .focus-row-2 { border-left-color: var(--us); }
+  .focus-row-3 { border-left-color: var(--purple); }
+
+  .focus-row-num {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--text-light);
+    opacity: 0.4;
+  }
+  .focus-row-1 .focus-row-num { color: var(--blue-deep); opacity: 0.3; }
+  .focus-row-2 .focus-row-num { color: var(--us); opacity: 0.3; }
+  .focus-row-3 .focus-row-num { color: var(--purple); opacity: 0.3; }
+
+  .focus-row-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .focus-row-1 .focus-row-icon { background: var(--blue-tint); color: var(--blue-deep); }
+  .focus-row-2 .focus-row-icon { background: var(--us-soft); color: var(--us-deep); }
+  .focus-row-3 .focus-row-icon { background: var(--purple-soft); color: var(--purple); }
+  .focus-row-icon svg { width: 26px; height: 26px; }
+
+  .focus-row-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .focus-row-1 .focus-row-tag { color: var(--blue-deep); }
+  .focus-row-2 .focus-row-tag { color: var(--us); }
+  .focus-row-3 .focus-row-tag { color: var(--purple); }
+
+  .focus-row-title {
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .focus-row-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .focus-row-metric {
+    text-align: right;
+    padding-left: 14px;
+    border-left: 1px solid var(--line-light);
+  }
+  .focus-row-metric-num {
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 6px;
+  }
+  .focus-row-1 .focus-row-metric-num { color: var(--blue-deep); }
+  .focus-row-2 .focus-row-metric-num { color: var(--us); }
+  .focus-row-3 .focus-row-metric-num { color: var(--purple); }
+  .focus-row-metric-lbl {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  .focus-summary-note {
+    background: var(--blue-tint);
+    border-radius: 10px;
+    padding: 18px 24px;
+    color: var(--blue-dark);
+    font-size: 13px;
+    line-height: 1.65;
+    margin-top: 24px;
+    border-left: 3px solid var(--blue-deep);
+  }
+  .focus-summary-note strong { color: var(--blue-deep); font-weight: 700; }
+
+  @media (max-width: 1024px) {
+    .focus-row {
+      grid-template-columns: 44px 48px 1fr;
+      gap: 18px;
+      padding: 22px 24px;
+    }
+    .focus-row-num { font-size: 36px; }
+    .focus-row-icon { width: 48px; height: 48px; border-radius: 12px; }
+    .focus-row-icon svg { width: 22px; height: 22px; }
+    .focus-row-metric {
+      grid-column: 1 / -1;
+      text-align: left;
+      padding-left: 0;
+      padding-top: 14px;
+      margin-top: 4px;
+      border-left: none;
+      border-top: 1px solid var(--line-light);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .focus-row-metric-num { font-size: 28px; margin-bottom: 0; }
+    .focus-row-metric-lbl br { display: none; }
+    .focus-row-title { font-size: 18px; }
+  }
+  @media (max-width: 640px) {
+    .focus-row {
+      grid-template-columns: 36px 1fr;
+      gap: 14px;
+      padding: 20px 18px;
+    }
+    .focus-row-num { font-size: 28px; }
+    .focus-row-icon {
+      grid-column: 1;
+      grid-row: 2;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      align-self: start;
+    }
+    .focus-row-icon svg { width: 18px; height: 18px; }
+    .focus-row-body { grid-column: 2; grid-row: 2; }
+    .focus-row-num { grid-column: 1 / -1; grid-row: 1; }
+    .focus-row-metric { grid-column: 1 / -1; grid-row: 3; }
+    .focus-row-title { font-size: 16px; }
+    .focus-row-desc { font-size: 12px; }
+    .focus-summary-note { font-size: 12px; padding: 14px 18px; }
+  }
+</style>
+
+<style>
+  .hero-quick-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 32px 0 40px;
+  }
+  .quick-stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px 22px;
+  }
+  .quick-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--us-light);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+  }
+  .quick-stat-lbl {
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+  @media (max-width: 880px) {
+    .hero-quick-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .quick-stat-num { font-size: 28px; }
+  }
+  @media (max-width: 480px) {
+    .hero-quick-stats { grid-template-columns: 1fr; }
+  }
+
+  /* YOUR PRACTICE STAT BLOCK (red-themed) */
+  .your-stats-section {
+    background: var(--ink);
+    color: white;
+    padding: 0 0 80px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .your-stats-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--them-light);
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .your-stats-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--them);
+    display: inline-block;
+  }
+  .your-stats-title {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    margin-bottom: 32px;
+    color: white;
+  }
+  .your-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .your-stat-tile {
+    background: rgba(220,38,38,0.06);
+    border: 1px solid rgba(220,38,38,0.18);
+    border-radius: 12px;
+    padding: 28px 26px;
+    transition: all 0.2s;
+  }
+  .your-stat-tile:hover {
+    background: rgba(220,38,38,0.10);
+    border-color: rgba(220,38,38,0.3);
+  }
+  .your-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 600;
+    color: var(--them-light);
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -0.025em;
+  }
+  .your-stat-lbl {
+    font-size: 12px;
+    color: #a8b3c2;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  @media (max-width: 880px) {
+    .your-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .your-stat-num { font-size: 34px; }
+    .your-stats-title { font-size: 22px; }
+  }
+  @media (max-width: 480px) {
+    .your-stats-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- YOUR PRACTICE: CURRENT NUMBERS -->
+<section class="your-stats-section">
+  <div class="container">
+    <div class="your-stats-eyebrow">Your Practice · agouradentalarts.com</div>
+    <h2 class="your-stats-title">Your current numbers, at a glance</h2>
+    <div class="your-stats-grid">
+      <div class="your-stat-tile">
+        <div class="your-stat-num">6</div>
+        <div class="your-stat-lbl">Authority Score</div>
+      </div>
+      <div class="your-stat-tile">
+        <div class="your-stat-num">14</div>
+        <div class="your-stat-lbl">Monthly Visits</div>
+      </div>
+      <div class="your-stat-tile">
+        <div class="your-stat-num">75</div>
+        <div class="your-stat-lbl">Ranking Keywords</div>
+      </div>
+      <div class="your-stat-tile">
+        <div class="your-stat-num">125</div>
+        <div class="your-stat-lbl">Referring Domains</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGOURA HILLS MARKET LEADERBOARD -->
+<section class="paper">
+  <div class="container">
+    <div class="section-eyebrow">The Agoura Hills Dental Leaderboard</div>
+    <h2 class="section-title">Every metric across all 9 practices</h2>
+    <p class="section-lead">A full matrix of every key SEO metric for every Agoura Hills dental practice. Rows are metrics, columns are practices. The market leader is highlighted in green, your practice is highlighted in red. Every cell is real data from Semrush.</p>
+
+    <div class="matrix-light-wrap">
+      <table class="matrix-light-table">
+        <thead>
+          <tr>
+            <th class="ml-th-metric">Metric</th>
+            <th class="ml-th leader">Cosmetic Dentists<span>★ #1</span></th>
+            <th class="ml-th">Agoura Dental<span>#2</span></th>
+            <th class="ml-th">Dental Designs<span>#3</span></th>
+            <th class="ml-th">Agoura DDS<span>#4</span></th>
+            <th class="ml-th">Hilltop Dental<span>#5</span></th>
+            <th class="ml-th">Philip Shindler<span>#6</span></th>
+            <th class="ml-th">Agoura Smile<span>#7</span></th>
+            <th class="ml-th">AFM Dental<span>#8</span></th>
+            <th class="ml-th you">Your Practice<span>#9</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ml-metric">Authority Score<span>Domain trust · 0–100</span></td>
+            <td class="ml-cell">9</td>
+            <td class="ml-cell best">17</td>
+            <td class="ml-cell">13</td>
+            <td class="ml-cell best">17</td>
+            <td class="ml-cell">6</td>
+            <td class="ml-cell">14</td>
+            <td class="ml-cell">7</td>
+            <td class="ml-cell">7</td>
+            <td class="ml-cell you">6</td>
+          </tr>
+          <tr>
+            <td class="ml-metric">Monthly Traffic<span>Organic visitors / month</span></td>
+            <td class="ml-cell best">614</td>
+            <td class="ml-cell">265</td>
+            <td class="ml-cell">123</td>
+            <td class="ml-cell">104</td>
+            <td class="ml-cell">96</td>
+            <td class="ml-cell">67</td>
+            <td class="ml-cell">42</td>
+            <td class="ml-cell">20</td>
+            <td class="ml-cell you">14</td>
+          </tr>
+          <tr>
+            <td class="ml-metric">Ranking Keywords<span>Google top 100 · US</span></td>
+            <td class="ml-cell best">499</td>
+            <td class="ml-cell">137</td>
+            <td class="ml-cell">55</td>
+            <td class="ml-cell">127</td>
+            <td class="ml-cell">59</td>
+            <td class="ml-cell">119</td>
+            <td class="ml-cell">27</td>
+            <td class="ml-cell">93</td>
+            <td class="ml-cell you">75</td>
+          </tr>
+          <tr>
+            <td class="ml-metric">Total Backlinks<span>All inbound links</span></td>
+            <td class="ml-cell">778</td>
+            <td class="ml-cell best">15,324</td>
+            <td class="ml-cell">4,994</td>
+            <td class="ml-cell">888</td>
+            <td class="ml-cell">199</td>
+            <td class="ml-cell">390</td>
+            <td class="ml-cell">985</td>
+            <td class="ml-cell">438</td>
+            <td class="ml-cell you">22</td>
+          </tr>
+          <tr>
+            <td class="ml-metric">Referring Domains<span>Unique linking sites</span></td>
+            <td class="ml-cell">162</td>
+            <td class="ml-cell best">277</td>
+            <td class="ml-cell">274</td>
+            <td class="ml-cell">174</td>
+            <td class="ml-cell">117</td>
+            <td class="ml-cell">138</td>
+            <td class="ml-cell">109</td>
+            <td class="ml-cell">130</td>
+            <td class="ml-cell you">125</td>
+          </tr>
+          <tr>
+            <td class="ml-metric">Indexed Pages<span>URLs in Google's index</span></td>
+            <td class="ml-cell">705</td>
+            <td class="ml-cell best">6,267</td>
+            <td class="ml-cell">1,407</td>
+            <td class="ml-cell">752</td>
+            <td class="ml-cell">193</td>
+            <td class="ml-cell">275</td>
+            <td class="ml-cell">303</td>
+            <td class="ml-cell">430</td>
+            <td class="ml-cell you">22</td>
+          </tr>
+          <tr>
+            <td class="ml-metric">"cosmetic dentist agoura hills"<span>Position · 90 searches/mo</span></td>
+            <td class="ml-cell best">#1</td>
+            <td class="ml-cell">#3</td>
+            <td class="ml-cell">#5</td>
+            <td class="ml-cell">#8</td>
+            <td class="ml-cell">#9</td>
+            <td class="ml-cell">#2</td>
+            <td class="ml-cell">#33</td>
+            <td class="ml-cell">#20</td>
+            <td class="ml-cell you">#10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="matrix-light-legend">
+      <div class="matrix-light-legend-item"><span class="ml-dot best"></span>Best in market on this metric</div>
+      <div class="matrix-light-legend-item"><span class="ml-dot leader-dot"></span>Market leader (overall #1 by traffic)</div>
+      <div class="matrix-light-legend-item"><span class="ml-dot you-dot"></span>Your practice</div>
+    </div>
+
+    <div class="leaderboard-note" style="margin-top: 32px;">
+      <strong>The headline read:</strong> Agoura Hills is a competitive market where SEO is clearly working for the top performers. The leader is bringing in 614 monthly visitors. The #5 practice is doing 96. Your domain authority (6) already matches Hilltop Dental at the middle of the leaderboard — meaning your foundation is solid.
+    </div>
+  </div>
+</section>
+
+<style>
+  .matrix-light-wrap {
+    background: var(--paper);
+    border: 1px solid var(--line-light);
+    border-radius: 14px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+  }
+  .matrix-light-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+    min-width: 1100px;
+  }
+  .ml-th-metric {
+    background: var(--ink);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 18px 20px;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+  }
+  .ml-th {
+    background: var(--ink);
+    color: white;
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-align: center;
+    padding: 14px 10px;
+    line-height: 1.2;
+    min-width: 96px;
+    border-left: 1px solid rgba(255,255,255,0.08);
+  }
+  .ml-th span {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+  .ml-th.leader {
+    color: var(--us-light);
+    background: #14532d;
+  }
+  .ml-th.leader span { color: var(--us-light); opacity: 0.85; }
+  .ml-th.you {
+    color: var(--them-light);
+    background: #7f1d1d;
+  }
+  .ml-th.you span { color: var(--them-light); opacity: 0.85; }
+
+  .matrix-light-table tbody tr {
+    transition: background 0.15s;
+    border-bottom: 1px solid var(--line-light);
+  }
+  .matrix-light-table tbody tr:last-child { border-bottom: none; }
+  .matrix-light-table tbody tr:hover {
+    background: var(--blue-tint);
+  }
+  .ml-metric {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 18px 20px;
+    border-right: 1px solid var(--line-light);
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--paper);
+    min-width: 200px;
+  }
+  .ml-metric span {
+    display: block;
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 3px;
+  }
+  .ml-cell {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    padding: 18px 12px;
+    letter-spacing: -0.02em;
+  }
+  .ml-cell.best {
+    color: var(--us-deep);
+    background: rgba(22,163,74,0.08);
+    position: relative;
+  }
+  .ml-cell.best::after {
+    content: '★';
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 9px;
+    color: var(--us-deep);
+    opacity: 0.6;
+  }
+  .ml-cell.you {
+    color: var(--them-deep);
+    background: rgba(220,38,38,0.06);
+  }
+
+  .matrix-light-legend {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-light);
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .matrix-light-legend-item { display: flex; align-items: center; gap: 8px; }
+  .ml-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .ml-dot.best { background: rgba(22,163,74,0.4); border: 1px solid var(--us-deep); }
+  .ml-dot.leader-dot { background: var(--us-deep); }
+  .ml-dot.you-dot { background: var(--them); }
+
+  @media (max-width: 1024px) {
+    .matrix-light-wrap { border-radius: 10px; }
+    .matrix-light-table { font-size: 13px; }
+    .ml-th, .ml-cell { padding: 12px 8px; }
+    .ml-cell { font-size: 16px; }
+    .ml-metric { padding: 12px 14px; min-width: 160px; }
+  }
+  @media (max-width: 640px) {
+    .ml-th-metric, .ml-th { font-size: 10px; }
+    .ml-th { padding: 10px 6px; min-width: 76px; }
+    .ml-cell { font-size: 14px; padding: 12px 6px; }
+    .ml-metric { font-size: 11px; min-width: 130px; padding: 10px 12px; }
+    .ml-metric span { font-size: 9px; }
+    .matrix-light-legend { gap: 14px; font-size: 11px; }
+  }
+</style>
+
+<!-- HEADLINE METRICS BAR COMPARISON -->
+<section class="light">
+  <div class="container">
+    <div class="section-eyebrow">Where You Stand</div>
+    <h2 class="section-title">All 9 practices side-by-side, ranked by traffic</h2>
+    <p class="section-lead">Each row is one Agoura Hills dental practice. The bars show monthly organic traffic, ranking keywords, and referring domains — the three numbers that drive new patient acquisition. Your practice is highlighted in red at the bottom.</p>
+
+    <div class="hbar-wrap">
+      <div class="hbar-head">
+        <div class="hbar-cell-name">Practice</div>
+        <div class="hbar-cell-bar">Monthly Traffic</div>
+        <div class="hbar-cell-bar">Ranking Keywords</div>
+        <div class="hbar-cell-bar">Referring Domains</div>
+      </div>
+
+      <div class="hbar-row leader">
+        <div class="hbar-name">Agoura Hills Cosmetic Dentists<span>★ Market Leader</span></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar leader" style="width: 100%;"><span class="hbar-bar-val">614</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar leader" style="width: 100%;"><span class="hbar-bar-val">499</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar leader" style="width: 58.5%;"><span class="hbar-bar-val">162</span></div></div>
+      </div>
+
+      <div class="hbar-row">
+        <div class="hbar-name">Agoura Dental<span>agouradental.com</span></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 43.2%;"><span class="hbar-bar-val">265</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 27.5%;"><span class="hbar-bar-val">137</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 100%;"><span class="hbar-bar-val">277</span></div></div>
+      </div>
+
+      <div class="hbar-row">
+        <div class="hbar-name">Agoura Hills Dental Designs<span>agourahillsdentaldesigns.com</span></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 20.0%;"><span class="hbar-bar-val">123</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 11.0%;"><span class="hbar-bar-val">55</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 98.9%;"><span class="hbar-bar-val">274</span></div></div>
+      </div>
+
+      <div class="hbar-row">
+        <div class="hbar-name">Agoura DDS<span>agouradds.com</span></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 16.9%;"><span class="hbar-bar-val">104</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 25.5%;"><span class="hbar-bar-val">127</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 62.8%;"><span class="hbar-bar-val">174</span></div></div>
+      </div>
+
+      <div class="hbar-row">
+        <div class="hbar-name">Hilltop Dental Care<span>hilltopdentalcare.com</span></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 15.6%;"><span class="hbar-bar-val">96</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 11.8%;"><span class="hbar-bar-val">59</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 42.2%;"><span class="hbar-bar-val">117</span></div></div>
+      </div>
+
+      <div class="hbar-row">
+        <div class="hbar-name">Philip Shindler DDS<span>philipshindlerdds.com</span></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 10.9%;"><span class="hbar-bar-val">67</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 23.8%;"><span class="hbar-bar-val">119</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 49.8%;"><span class="hbar-bar-val">138</span></div></div>
+      </div>
+
+      <div class="hbar-row">
+        <div class="hbar-name">Agoura Smile<span>agourasmile.com</span></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 6.8%;"><span class="hbar-bar-val">42</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 5.4%;"><span class="hbar-bar-val">27</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 39.4%;"><span class="hbar-bar-val">109</span></div></div>
+      </div>
+
+      <div class="hbar-row">
+        <div class="hbar-name">AFM Dental Smiles<span>afmdds.com</span></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 3.3%;"><span class="hbar-bar-val">20</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 18.6%;"><span class="hbar-bar-val">93</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar" style="width: 46.9%;"><span class="hbar-bar-val">130</span></div></div>
+      </div>
+
+      <div class="hbar-row you">
+        <div class="hbar-name">Agoura Dental Arts<span>YOUR PRACTICE · agouradentalarts.com</span></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar you" style="width: 2.3%;"><span class="hbar-bar-val">14</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar you" style="width: 15.0%;"><span class="hbar-bar-val">75</span></div></div>
+        <div class="hbar-bar-wrap"><div class="hbar-bar you" style="width: 45.1%;"><span class="hbar-bar-val">125</span></div></div>
+      </div>
+
+    </div>
+
+    <div class="leaderboard-note" style="margin-top: 32px;">
+      <strong>What this tells us:</strong> the practices ahead of you span a wide range — some are strong on traffic, others on link profile, others on keyword count. There's no single "winning" template. Your practice has room to grow on all three measures, and gains on any one of them move the needle.
+    </div>
+  </div>
+</section>
+
+<style>
+  .hbar-wrap {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+    overflow: hidden;
+  }
+  .hbar-head {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 14px 0 18px;
+    border-bottom: 2px solid var(--line-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .hbar-cell-name { padding-left: 4px; }
+  .hbar-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-light);
+    align-items: center;
+    transition: background 0.15s;
+  }
+  .hbar-row:last-child { border-bottom: none; }
+  .hbar-row:hover { background: var(--blue-tint); }
+  .hbar-row.leader { background: rgba(22,163,74,0.04); border-left: 3px solid var(--us); padding-left: 8px; padding-right: 8px; border-radius: 6px 6px 0 0; margin-left: -8px; margin-right: -8px; }
+  .hbar-row.you { background: rgba(220,38,38,0.04); border-left: 3px solid var(--them); padding-left: 8px; padding-right: 8px; border-radius: 0 0 6px 6px; margin-left: -8px; margin-right: -8px; }
+  .hbar-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    padding-left: 4px;
+  }
+  .hbar-name span {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 3px;
+    word-break: break-all;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .hbar-row.leader .hbar-name span { color: var(--us); font-weight: 700; }
+  .hbar-row.you .hbar-name span { color: var(--them); font-weight: 700; }
+  .hbar-bar-wrap {
+    background: rgba(13,22,32,0.04);
+    border-radius: 5px;
+    height: 28px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hbar-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue-deep), var(--blue));
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 10px;
+    min-width: 36px;
+    transition: width 0.4s ease;
+  }
+  .hbar-bar.leader { background: linear-gradient(90deg, var(--us-deep), var(--us)); }
+  .hbar-bar.you { background: linear-gradient(90deg, var(--them-deep), var(--them)); }
+  .hbar-bar-val {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 1024px) {
+    .hbar-head, .hbar-row {
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 14px;
+    }
+    .hbar-head > div:nth-child(4),
+    .hbar-row > .hbar-bar-wrap:nth-child(4) {
+      display: none;
+    }
+  }
+  @media (max-width: 640px) {
+    .hbar-wrap { padding: 18px 16px; }
+    .hbar-head { display: none; }
+    .hbar-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 16px 0;
+      align-items: stretch;
+    }
+    .hbar-row.leader, .hbar-row.you { padding: 14px 8px; }
+    .hbar-name { padding-left: 0; margin-bottom: 4px; }
+    .hbar-bar-wrap {
+      height: 38px;
+      padding-top: 16px;
+    }
+    .hbar-bar-wrap::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      line-height: 1;
+      z-index: 2;
+    }
+    .hbar-row > .hbar-bar-wrap:nth-child(2)::before { content: "Traffic"; }
+    .hbar-row > .hbar-bar-wrap:nth-child(3)::before { content: "Keywords"; }
+    .hbar-row > .hbar-bar-wrap:nth-child(4) { display: block !important; }
+    .hbar-row > .hbar-bar-wrap:nth-child(4)::before { content: "Ref Domains"; }
+    .hbar-bar { position: absolute; bottom: 0; left: 0; height: 22px; }
+    .hbar-bar-val { font-size: 12px; }
+  }
+</style>
+<!-- TRAJECTORY CHART -->
+<section class="light">
+  <div class="container">
+    <div class="section-eyebrow">Market Trajectory</div>
+    <h2 class="section-title">How traffic grows in this market</h2>
+    <p class="section-lead">A look at how the market leader's monthly traffic has changed over time. The trend isn't a smooth straight line — it climbs in steps, with bigger jumps when specific work lands. The exact numbers and timing are different for every practice, but the general pattern is the same: steady effort builds steady growth.</p>
+
+    <div class="chart-wrap">
+      <svg class="trend-svg" viewBox="0 0 1100 540" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="usGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#16a34a" stop-opacity="0.20"/>
+            <stop offset="100%" stop-color="#16a34a" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <line class="grid" x1="80" y1="60" x2="1060" y2="60"/>
+        <line class="grid" x1="80" y1="136" x2="1060" y2="136"/>
+        <line class="grid" x1="80" y1="212" x2="1060" y2="212"/>
+        <line class="grid" x1="80" y1="288" x2="1060" y2="288"/>
+        <line class="grid" x1="80" y1="364" x2="1060" y2="364"/>
+        <line class="axis" x1="80" y1="440" x2="1060" y2="440"/>
+
+        <text class="lbl" x="70" y="64" text-anchor="end" font-size="12">1,700</text>
+        <text class="lbl" x="70" y="140" text-anchor="end" font-size="12">1,360</text>
+        <text class="lbl" x="70" y="216" text-anchor="end" font-size="12">1,020</text>
+        <text class="lbl" x="70" y="292" text-anchor="end" font-size="12">680</text>
+        <text class="lbl" x="70" y="368" text-anchor="end" font-size="12">340</text>
+        <text class="lbl" x="70" y="444" text-anchor="end" font-size="12">0</text>
+
+        <!-- Year separators -->
+        <line x1="304.8" y1="60" x2="304.8" y2="440" stroke="rgba(13,22,32,0.08)" stroke-dasharray="3 4"/>
+        <line x1="538.5" y1="60" x2="538.5" y2="440" stroke="rgba(13,22,32,0.08)" stroke-dasharray="3 4"/>
+        <line x1="772.3" y1="60" x2="772.3" y2="440" stroke="rgba(13,22,32,0.08)" stroke-dasharray="3 4"/>
+        <line x1="1006.0" y1="60" x2="1006.0" y2="440" stroke="rgba(13,22,32,0.08)" stroke-dasharray="3 4"/>
+
+        <text class="lbl" x="207" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2022</text>
+        <text class="lbl" x="421" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2023</text>
+        <text class="lbl" x="655" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2024</text>
+        <text class="lbl" x="889" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2025</text>
+        <text class="lbl" x="1025" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">'26</text>
+
+        <!-- Our client filled area -->
+        <path fill="url(#usGrad)" d="M 110.0,412.1 L 129.5,416.1 L 149.0,415.2 L 168.4,415.2 L 187.9,408.5 L 207.4,418.8 L 226.9,403.8 L 246.4,414.7 L 265.8,405.6 L 285.3,410.7 L 304.8,414.7 L 324.3,400.2 L 343.8,413.6 L 363.2,402.7 L 382.7,361.8 L 402.2,374.3 L 421.7,347.2 L 441.1,390.4 L 460.6,361.3 L 480.1,369.4 L 499.6,361.3 L 519.1,380.8 L 538.5,366.5 L 558.0,390.6 L 577.5,344.6 L 597.0,385.7 L 616.5,350.8 L 635.9,388.4 L 655.4,307.9 L 674.9,315.5 L 694.4,319.5 L 713.9,366.7 L 733.3,334.9 L 752.8,81.9 L 772.3,337.2 L 791.8,402.0 L 811.2,358.2 L 830.7,358.6 L 850.2,102.2 L 869.7,107.4 L 889.2,366.7 L 908.6,324.4 L 928.1,376.3 L 947.6,396.0 L 967.1,270.6 L 986.6,378.1 L 1006.0,301.0 L 1025.5,268.1 L 1045.0,302.8 L 1045.0,440 L 110.0,440 Z"/>
+
+        <!-- Our client line -->
+        <path fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M 110.0,412.1 L 129.5,416.1 L 149.0,415.2 L 168.4,415.2 L 187.9,408.5 L 207.4,418.8 L 226.9,403.8 L 246.4,414.7 L 265.8,405.6 L 285.3,410.7 L 304.8,414.7 L 324.3,400.2 L 343.8,413.6 L 363.2,402.7 L 382.7,361.8 L 402.2,374.3 L 421.7,347.2 L 441.1,390.4 L 460.6,361.3 L 480.1,369.4 L 499.6,361.3 L 519.1,380.8 L 538.5,366.5 L 558.0,390.6 L 577.5,344.6 L 597.0,385.7 L 616.5,350.8 L 635.9,388.4 L 655.4,307.9 L 674.9,315.5 L 694.4,319.5 L 713.9,366.7 L 733.3,334.9 L 752.8,81.9 L 772.3,337.2 L 791.8,402.0 L 811.2,358.2 L 830.7,358.6 L 850.2,102.2 L 869.7,107.4 L 889.2,366.7 L 908.6,324.4 L 928.1,376.3 L 947.6,396.0 L 967.1,270.6 L 986.6,378.1 L 1006.0,301.0 L 1025.5,268.1 L 1045.0,302.8"/>
+
+        <!-- Competitor line (mostly flat at zero, only ranks since June 2025) -->
+        <path fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M 110.0,440.0 L 889.2,438.0 L 908.6,438.9 L 928.1,438.9 L 947.6,438.9 L 967.1,439.3 L 986.6,439.3 L 1006.0,439.8 L 1025.5,439.6 L 1045.0,437.8"/>
+
+        <!-- Reference practice peak callout (Jan 2025 = 1602) -->
+        <circle cx="752.8" cy="81.9" r="8" fill="#16a34a" stroke="white" stroke-width="3"/>
+        <line x1="752.8" y1="81.9" x2="752.8" y2="440" stroke="#16a34a" stroke-width="1" stroke-dasharray="4 4" opacity="0.35"/>
+        <rect x="640" y="40" width="220" height="48" rx="8" fill="white" stroke="#16a34a" stroke-width="1.5"/>
+        <text x="750" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#16a34a" letter-spacing="2">PEAK · JAN 2025</text>
+        <text x="750" y="78" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="600" fill="#16a34a" letter-spacing="-0.5">1,602 visits / month</text>
+
+        <!-- Your site first appearance (June 2025) -->
+        <circle cx="889.2" cy="438" r="6" fill="#dc2626" stroke="white" stroke-width="2"/>
+        <rect x="800" y="395" width="180" height="38" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
+        <text x="890" y="411" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#dc2626" letter-spacing="2">YOUR SITE · JUN 2025</text>
+        <text x="890" y="426" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#dc2626" font-weight="600">first organic ranking</text>
+
+        <!-- Current values -->
+        <circle cx="1045" cy="302.8" r="6" fill="#16a34a" stroke="white" stroke-width="3"/>
+        <circle cx="1045" cy="437.8" r="5" fill="#dc2626" stroke="white" stroke-width="2"/>
+        <rect x="950" y="270" width="100" height="38" rx="6" fill="white" stroke="#16a34a" stroke-width="1.5"/>
+        <text x="1000" y="287" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#16a34a" letter-spacing="2">CURRENT</text>
+        <text x="1000" y="301" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="600" fill="#16a34a">614 / mo</text>
+      </svg>
+
+      <div class="trend-legend">
+        <div class="trend-legend-item"><span style="display: inline-block; width: 28px; height: 3px; background: #16a34a; border-radius: 2px;"></span>Reference Practice (agourahillscosmeticdentists.com) · 614 / mo</div>
+        <div class="trend-legend-item"><span style="display: inline-block; width: 28px; height: 2.5px; background: #dc2626; border-radius: 2px;"></span>Your Site (agouradentalarts.com) · 10 / mo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- DIRECTORY LISTINGS / LOCAL CITATIONS AUDIT -->
+<section class="paper">
+  <div class="container">
+    <div class="section-eyebrow">Directory Listings &amp; Local Citations</div>
+    <h2 class="section-title">Where the practice is listed — and where it isn't</h2>
+    <p class="section-lead">Local citations (Yelp, Google Business Profile, Healthgrades, BBB, etc.) are one of the strongest local SEO signals. Each consistent listing tells Google "this practice is real, established, and located here." We checked the major dental directories — here's what's already in place, what needs fixing, and what's missing entirely.</p>
+
+    <!-- SUMMARY STATS -->
+    <div class="cite-summary">
+      <div class="cite-summary-item ok">
+        <div class="cite-summary-num">3</div>
+        <div class="cite-summary-lbl">Listed correctly</div>
+      </div>
+      <div class="cite-summary-item warn">
+        <div class="cite-summary-num">4</div>
+        <div class="cite-summary-lbl">Listed but wrong NAP</div>
+      </div>
+      <div class="cite-summary-item miss">
+        <div class="cite-summary-num">11</div>
+        <div class="cite-summary-lbl">Missing entirely</div>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="cite-table-wrap">
+      <table class="cite-table">
+        <thead>
+          <tr>
+            <th class="cite-th-name">Directory</th>
+            <th class="cite-th-status">Status</th>
+            <th class="cite-th-notes">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- ============ LISTED CORRECTLY ============ -->
+          <tr class="cite-row-group"><td colspan="3">Tier 1 · Critical citations (highest local SEO weight)</td></tr>
+
+          <tr>
+            <td class="cite-name">Yelp</td>
+            <td class="cite-status"><span class="cite-tag ok">✓ Listed</span></td>
+            <td class="cite-notes">Listed at correct address (29219 Canwood St, Ste 250). 8 photos uploaded, hours accurate. Strong starting point.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">Zocdoc</td>
+            <td class="cite-status"><span class="cite-tag ok">✓ Listed</span></td>
+            <td class="cite-notes">Both practice profile + Dr. Rabizadeh's individual profile listed correctly. High-value healthcare-specific directory.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">NPI Registry (HIPAASpace)</td>
+            <td class="cite-status"><span class="cite-tag ok">✓ Listed</span></td>
+            <td class="cite-notes">Government NPI #1063900868 with correct address. Authoritative healthcare data source.</td>
+          </tr>
+
+          <tr>
+            <td class="cite-name">Google Business Profile</td>
+            <td class="cite-status"><span class="cite-tag unknown">? Verify</span></td>
+            <td class="cite-notes">The single most important local citation. Needs verification — claim/optimize listing, complete all fields, add photos, post weekly updates, monitor reviews.</td>
+          </tr>
+
+          <!-- ============ WRONG NAP ============ -->
+          <tr class="cite-row-group"><td colspan="3">Tier 2 · Listed but with WRONG location (urgent fix needed)</td></tr>
+
+          <tr>
+            <td class="cite-name">Healthgrades</td>
+            <td class="cite-status"><span class="cite-tag warn">⚠ Wrong NAP</span></td>
+            <td class="cite-notes">Lists Dr. Rabizadeh in <strong>Long Beach, CA</strong> — outdated from his residency. Major dental directory; needs claim &amp; update to current Agoura Hills practice.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">WebMD</td>
+            <td class="cite-status"><span class="cite-tag warn">⚠ Wrong NAP</span></td>
+            <td class="cite-notes">Lists him in <strong>Pasadena, CA</strong>. High-authority site; contradictory NAP data confuses Google.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">LocalMed</td>
+            <td class="cite-status"><span class="cite-tag warn">⚠ Wrong NAP</span></td>
+            <td class="cite-notes">Lists him in <strong>Phoenix, Arizona</strong> — from his pre-California work. Needs update or removal.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">DentistMT / ProviderWire</td>
+            <td class="cite-status"><span class="cite-tag warn">⚠ Wrong NAP</span></td>
+            <td class="cite-notes">List old Pasadena/Long Beach addresses. Each inaccurate citation actively works against local rankings.</td>
+          </tr>
+
+          <!-- ============ MISSING ============ -->
+          <tr class="cite-row-group"><td colspan="3">Tier 3 · Missing entirely (build these out)</td></tr>
+
+          <tr>
+            <td class="cite-name">Better Business Bureau (BBB)</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">No BBB profile found. Trust signal valued by patients researching providers. Free to claim.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">Vitals.com</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">Major healthcare directory. No profile for Agoura Hills location.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">1-800-Dentist</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">High-traffic dental-specific referral network.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">RateMDs</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">Healthcare review directory — strong patient-search visibility.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">Apple Maps / Apple Business Connect</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">Critical for iPhone users searching "dentist near me" — separate from Google.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">Bing Places for Business</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">Required for Microsoft/Bing AI search and ChatGPT search visibility.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">Yellow Pages (yellowpages.com)</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">Foundational local directory; still feeds many aggregators.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">Foursquare / City-data / Manta</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">Data aggregators that distribute NAP info to dozens of smaller directories.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">Local Chamber of Commerce</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">Agoura Hills / Conejo Valley Chamber listing — high-authority local citation.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">ADA Find-a-Dentist</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">American Dental Association directory — top-tier industry trust signal.</td>
+          </tr>
+          <tr>
+            <td class="cite-name">CDA Find-a-Dentist</td>
+            <td class="cite-status"><span class="cite-tag miss">✗ Missing</span></td>
+            <td class="cite-notes">California Dental Association — state-level industry citation.</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cite-takeaway">
+      <strong>The takeaway:</strong> the practice has 3 quality citations in place but 4 critical listings show outdated locations (Long Beach, Pasadena, Phoenix) — actively confusing Google about where the practice actually is. Fix the wrong NAP data first, then build out the missing 11 directories. Each consistent listing strengthens local pack rankings for "dentist agoura hills" and related searches.
+    </div>
+  </div>
+</section>
+
+<style>
+  .cite-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 8px 0 32px;
+  }
+  .cite-summary-item {
+    background: var(--paper);
+    border: 1px solid var(--line-light);
+    border-radius: 12px;
+    padding: 24px 26px;
+    border-left: 4px solid;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+  }
+  .cite-summary-item.ok { border-left-color: var(--us); }
+  .cite-summary-item.warn { border-left-color: var(--amber); }
+  .cite-summary-item.miss { border-left-color: var(--them); }
+  .cite-summary-num {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 6px;
+  }
+  .cite-summary-item.ok .cite-summary-num { color: var(--us); }
+  .cite-summary-item.warn .cite-summary-num { color: var(--amber); }
+  .cite-summary-item.miss .cite-summary-num { color: var(--them); }
+  .cite-summary-lbl {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .cite-table-wrap {
+    background: var(--paper);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+    border: 1px solid var(--line-light);
+  }
+  .cite-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+  }
+  .cite-table thead th {
+    background: var(--ink);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 18px 24px;
+  }
+  .cite-th-name { width: 240px; }
+  .cite-th-status { width: 150px; }
+
+  .cite-row-group td {
+    background: rgba(13,22,32,0.03);
+    padding: 14px 24px !important;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-top: 1px solid var(--line-light);
+  }
+
+  .cite-table tbody tr:not(.cite-row-group) {
+    border-bottom: 1px solid var(--line-light);
+    transition: background 0.15s;
+  }
+  .cite-table tbody tr:not(.cite-row-group):hover { background: var(--blue-tint); }
+  .cite-table td {
+    padding: 16px 24px;
+    vertical-align: top;
+  }
+  .cite-name {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .cite-status { white-space: nowrap; }
+  .cite-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 5px 12px;
+    border-radius: 5px;
+  }
+  .cite-tag.ok { background: var(--us-soft); color: var(--us-deep); }
+  .cite-tag.warn { background: var(--amber-soft); color: #92400e; }
+  .cite-tag.miss { background: var(--them-soft); color: var(--them); }
+  .cite-tag.unknown { background: var(--blue-tint); color: var(--blue-dark); }
+
+  .cite-notes {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .cite-notes strong { color: var(--them); font-weight: 700; }
+
+  .cite-takeaway {
+    background: var(--blue-tint);
+    border-left: 3px solid var(--blue-deep);
+    border-radius: 10px;
+    padding: 18px 24px;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--blue-dark);
+    line-height: 1.65;
+  }
+  .cite-takeaway strong { color: var(--blue-deep); font-weight: 700; }
+
+  @media (max-width: 1024px) {
+    .cite-table thead th, .cite-table td { padding: 14px 16px; }
+    .cite-th-name { width: 180px; }
+    .cite-th-status { width: 120px; }
+  }
+  @media (max-width: 880px) {
+    .cite-summary { grid-template-columns: 1fr; gap: 10px; }
+    .cite-summary-num { font-size: 32px; }
+    .cite-summary-item { padding: 18px 22px; }
+  }
+  @media (max-width: 640px) {
+    .cite-table thead { display: none; }
+    .cite-table tr:not(.cite-row-group) {
+      display: block;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line-light);
+    }
+    .cite-table tr:not(.cite-row-group) td {
+      display: block;
+      padding: 4px 0;
+    }
+    .cite-row-group td { padding: 12px 18px !important; }
+    .cite-name { margin-bottom: 6px; font-size: 15px; }
+    .cite-status { margin-bottom: 8px; }
+    .cite-notes { font-size: 12px; }
+  }
+</style>
+
+<!-- TECHNICAL ISSUES — TABLE -->
+<section class="paper">
+  <div class="container">
+    <div class="section-eyebrow">Technical Audit Summary</div>
+    <h2 class="section-title">Key technical issues found on the site</h2>
+    <p class="section-lead">A direct technical review of <a href="https://www.agouradentalarts.com/" target="_blank" rel="noopener" style="color: var(--blue-deep); text-decoration: underline;">agouradentalarts.com</a>. These are the highest-impact issues affecting search visibility — each one is a fixable item, not a structural barrier.</p>
+
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr>
+            <th class="th-priority">Priority</th>
+            <th class="th-issue">Issue</th>
+            <th class="th-desc">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tech-cell-priority"><span class="priority-tag critical">Critical</span></td>
+            <td class="tech-cell-issue">No structured data (Schema)</td>
+            <td class="tech-cell-desc">Dentist, LocalBusiness, and Person schema all missing sitewide. Required for AI engines and Google rich results.</td>
+          </tr>
+          <tr>
+            <td class="tech-cell-priority"><span class="priority-tag critical">Critical</span></td>
+            <td class="tech-cell-issue">Heading hierarchy broken</td>
+            <td class="tech-cell-desc">Pages use H3/H4 as main headings instead of proper H1 → H2 → H3 structure. Weakens topical relevance signals.</td>
+          </tr>
+          <tr>
+            <td class="tech-cell-priority"><span class="priority-tag high">High</span></td>
+            <td class="tech-cell-issue">Only 22 indexed pages</td>
+            <td class="tech-cell-desc">Major content gaps in treatment, condition, and location pages. Most patient-intent keywords have nowhere to land.</td>
+          </tr>
+          <tr>
+            <td class="tech-cell-priority"><span class="priority-tag high">High</span></td>
+            <td class="tech-cell-issue">Missing image alt text</td>
+            <td class="tech-cell-desc">Most images sitewide have no alt attributes. ADA compliance risk + missed image-search traffic.</td>
+          </tr>
+          <tr>
+            <td class="tech-cell-priority"><span class="priority-tag high">High</span></td>
+            <td class="tech-cell-issue">Generic / placeholder URL slugs</td>
+            <td class="tech-cell-desc">Pages like <code>/new-page-43</code>, <code>/about-1</code>, <code>/services-1</code> need SEO-friendly URLs that match search intent.</td>
+          </tr>
+          <tr>
+            <td class="tech-cell-priority"><span class="priority-tag medium">Medium</span></td>
+            <td class="tech-cell-issue">No reviews or testimonials embedded</td>
+            <td class="tech-cell-desc">Homepage has a "Reviews" heading but the section is empty. Critical E-E-A-T signal for healthcare sites.</td>
+          </tr>
+          <tr>
+            <td class="tech-cell-priority"><span class="priority-tag medium">Medium</span></td>
+            <td class="tech-cell-issue">Weak internal linking</td>
+            <td class="tech-cell-desc">Treatment pages exist as isolated URLs with no contextual linking. Site authority isn't flowing efficiently.</td>
+          </tr>
+          <tr>
+            <td class="tech-cell-priority"><span class="priority-tag medium">Medium</span></td>
+            <td class="tech-cell-issue">No FAQ sections with schema</td>
+            <td class="tech-cell-desc">No FAQPage schema deployed. Missed long-tail rankings and rich-result snippet opportunities.</td>
+          </tr>
+          <tr>
+            <td class="tech-cell-priority"><span class="priority-tag info">Info</span></td>
+            <td class="tech-cell-issue">CMS / Platform: Squarespace</td>
+            <td class="tech-cell-desc">The site is built on <strong>Squarespace</strong>. Workable for SEO but limits advanced control over schema injection, custom URL handling, server-level redirects, and granular meta-tag deployment compared to WordPress or custom builds. Workarounds exist via header code injection.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-table-wrap {
+    background: var(--paper);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+    border: 1px solid var(--line-light);
+  }
+  .tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+  }
+  .tech-table thead th {
+    background: var(--ink);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 18px 24px;
+  }
+  .tech-table .th-priority { width: 130px; }
+  .tech-table .th-issue { width: 260px; }
+  .tech-table tbody tr {
+    border-bottom: 1px solid var(--line-light);
+    transition: background 0.15s;
+  }
+  .tech-table tbody tr:last-child { border-bottom: none; }
+  .tech-table tbody tr:hover { background: var(--blue-tint); }
+  .tech-table td {
+    padding: 18px 24px;
+    vertical-align: top;
+  }
+  .tech-cell-priority { white-space: nowrap; }
+  .priority-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 5px;
+    color: white;
+  }
+  .priority-tag.critical { background: var(--them); }
+  .priority-tag.high { background: var(--amber); }
+  .priority-tag.medium { background: var(--blue-deep); }
+  .priority-tag.info { background: var(--slate); }
+  .tech-cell-issue {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+  .tech-cell-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .tech-cell-desc code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--blue-tint);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--blue-dark);
+    word-break: break-all;
+  }
+
+  @media (max-width: 1024px) {
+    .tech-table thead th, .tech-table td { padding: 14px 16px; }
+    .tech-table .th-issue { width: 220px; }
+  }
+  @media (max-width: 640px) {
+    .tech-table thead { display: none; }
+    .tech-table tr {
+      display: block;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line-light);
+    }
+    .tech-table td {
+      display: block;
+      padding: 4px 0;
+    }
+    .tech-cell-priority { margin-bottom: 10px; }
+    .tech-cell-issue { font-size: 15px; margin-bottom: 6px; }
+    .tech-cell-desc { font-size: 12px; }
+  }
+</style>
+
+<!-- ACTION PLAN FOR DR. RABIZADEH -->
+<section class="dark">
+  <div class="container">
+    <div class="section-eyebrow">Recommended Action Plan</div>
+    <h2 class="section-title" style="color: white;">The work we'd take on for your practice</h2>
+    <p class="section-lead" style="color: #a8b3c2;">The 9 priorities below are the specific things we'd do for agouradentalarts.com, ordered by urgency. Items tagged "Immediate" are the foundational fixes — they need to be in place before anything else builds on top. Each technical issue from the audit above maps directly to one of these actions, and each item is grounded in the live Semrush data from this report.</p>
+
+    <div class="target-pill">
+      <span class="target-pill-label">Featured Page Build</span>
+      <span class="target-pill-url">agouradentalarts.com/nathan-rabizadeh-dds</span>
+    </div>
+
+    <div class="action-list">
+
+      <div class="action-row">
+        <div class="action-num">01</div>
+        <div>
+          <div class="action-title">Rebuild the Nathan Rabizadeh Dentist Bio Page</div>
+          <div class="action-desc">The bio page currently ranks for zero keywords. We'll add a proper title tag ("Nathan Rabizadeh DDS · Cosmetic Dentist Agoura Hills"), 800+ words of original bio copy highlighting your background and specialties, credentials, before-and-after gallery, patient reviews, and an FAQ section. The page should rank for branded "dr nathan rabizadeh" searches almost immediately.</div>
+        </div>
+        <div class="action-tag immediate">Immediate</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">02</div>
+        <div>
+          <div class="action-title">Deploy Dentist, Person, LocalBusiness, FAQPage, and Review Schema</div>
+          <div class="action-desc">Structured data isn't currently in place — it's the foundation for healthcare E-E-A-T signals, Google rich results, and AI engines (ChatGPT, Gemini, Google AI Overviews). We'll deploy Dentist + LocalBusiness schema sitewide, Person schema on the bio page (so branded provider searches start working), FAQPage schema on every treatment page, and Review schema once patient reviews are embedded. Together these unlock rich-result snippets and AI-engine citations. <strong>Addresses Technical Issues #1, #6, #8 from the audit.</strong></div>
+        </div>
+        <div class="action-tag immediate">Immediate</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">03</div>
+        <div>
+          <div class="action-title">Fix On-Page Technical Foundation</div>
+          <div class="action-desc">A bundled cleanup of the on-page issues blocking ranking signals across the site: rebuild heading hierarchy with proper H1 → H2 → H3 structure on every page, write descriptive alt text for every image (ADA compliance + image search), rename placeholder Squarespace URLs (<code style="font-family: 'JetBrains Mono', monospace; font-size: 11px; background: var(--blue-tint); padding: 1px 5px; border-radius: 3px;">/new-page-43</code>, <code style="font-family: 'JetBrains Mono', monospace; font-size: 11px; background: var(--blue-tint); padding: 1px 5px; border-radius: 3px;">/about-1</code>, <code style="font-family: 'JetBrains Mono', monospace; font-size: 11px; background: var(--blue-tint); padding: 1px 5px; border-radius: 3px;">/services-1</code>) with 301 redirects, embed live Google reviews on the homepage and bio page, and add FAQ sections to treatment pages. <strong>Addresses Technical Issues #2, #4, #5, #6, #8 from the audit.</strong></div>
+        </div>
+        <div class="action-tag immediate">Immediate</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">04</div>
+        <div>
+          <div class="action-title">Expand Treatment Page Coverage</div>
+          <div class="action-desc">Currently only 22 indexed pages — the lowest in the market. We'll map every dental procedure to its own dedicated page with location-targeted copy: veneers, dental implants, dentures, crowns, root canals, Invisalign, teeth whitening, TMJ, sedation, plus condition pages and Calabasas/Thousand Oaks/Westlake area pages. Each page is a separate ranking opportunity. <strong>Addresses Technical Issue #3 from the audit.</strong></div>
+        </div>
+        <div class="action-tag high">High</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">05</div>
+        <div>
+          <div class="action-title">Backlink Acquisition Campaign</div>
+          <div class="action-desc">Currently 125 referring domains — a respectable foundation. We'll target healthcare directories (Healthgrades, Zocdoc, Vitals, 1-800-Dentist), local Agoura Hills business associations, dental industry publications, and guest contributions to oral-health blogs to push toward the market leader's 162.</div>
+        </div>
+        <div class="action-tag high">High</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">06</div>
+        <div>
+          <div class="action-title">Educational Blog Program · 4 Posts Per Month</div>
+          <div class="action-desc">Reference practices win meaningful traffic from posts like "what happens if you don't get a root canal" (#3), "purpose of wisdom teeth" (#6), "loose crown" (#7). Your existing GLP-1 post is a great start — we'll build out a content calendar of ~1,000-word posts mapped to high-intent dental questions your patients are actually asking Google.</div>
+        </div>
+        <div class="action-tag high">High</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">07</div>
+        <div>
+          <div class="action-title">Optimize Google Business Profile for Local Pack</div>
+          <div class="action-desc">Local Pack rankings are the #1 driver of patient inquiries for "dentist agoura hills" searches. Weekly posts, photos, services list, Q&amp;A monitoring, review velocity, response cadence. The fastest-moving lever in local dental SEO — independent of website content depth, so it tends to show wins early.</div>
+        </div>
+        <div class="action-tag medium">Medium</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">08</div>
+        <div>
+          <div class="action-title">Strengthen Internal Linking Architecture</div>
+          <div class="action-desc">Pages currently exist as essentially isolated URLs — treatment pages don't link to each other or back to the bio. We'll build a proper internal-linking structure: Nathan Rabizadeh bio → treatment pages → educational blog → contact. Each new page should be linked from at least 3 other relevant pages so authority flows efficiently through the site. <strong>Addresses Technical Issue #7 from the audit.</strong></div>
+        </div>
+        <div class="action-tag medium">Medium</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">09</div>
+        <div>
+          <div class="action-title">Monthly Reporting and Strategy Review</div>
+          <div class="action-desc">Live Semrush data, ranking changes, traffic progress, and a working session with you to adjust priorities based on what's gaining traction. We'll track the metrics that matter most — keyword count, referring domains, page-1 ranking growth — so progress is visible and measurable.</div>
+        </div>
+        <div class="action-tag ongoing">Ongoing</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-brand">Dentist Nerds</div>
+    <div class="foot-meta">Agoura Hills Market Analysis · Prepared for Dr. Nathan Rabizadeh · May 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>

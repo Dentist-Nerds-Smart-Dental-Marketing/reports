@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website Quality Audit — Dr. Giri Palani · Palani Center for Dental Implants · May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --navy: #0d2538; --navy-2: #112e44;
+    --teal: #5fbab0; --teal-soft: #a4dad3;
+    --gold: #d4a55c; --gold-2: #c9a961;
+    --bg-page: #f5f5f0; --bg-soft: #ebe9e0; --bg-card: #ffffff;
+    --text-dark: #0d2538; --text-body: #4b5563; --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #2d8e5c; --green-bg: #d1fae5; --green-text: #065f46;
+    --gold-bg: #fef3c7; --gold-text: #92400e;
+    --red: #c53030; --red-bg: #fee2e2; --red-text: #991b1b;
+    --blue: #2c6fb3; --blue-bg: #dbeafe; --blue-text: #1e40af;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-body); line-height: 1.6; font-size: 14px; }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+
+  /* HERO */
+  .hero { background: var(--navy); color: #fff; padding: 56px 0 0; }
+  .hero .eyebrow { color: var(--teal); }
+  .hero h1 { font-size: 50px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 10px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 28px; max-width: 720px; }
+  .hero-meta-row { display: grid; grid-template-columns: repeat(4, auto); gap: 56px; padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px; }
+  .hero-meta-item .meta-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; margin-bottom: 6px; font-weight: 600; }
+  .hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+  /* TAB BAR */
+  .tabbar { background: var(--navy-2); border-top: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .tabbar-inner { max-width: 1080px; margin: 0 auto; padding: 0 40px; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: thin; }
+  .tabbar-inner::-webkit-scrollbar { height: 6px; }
+  .tabbar-inner::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+  .tab { background: none; border: none; cursor: pointer; padding: 16px 18px 14px; color: #8aa1b3; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; }
+  .tab:hover { color: #fff; }
+  .tab .tab-num { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; }
+  .tab.active { color: #fff; border-bottom-color: var(--gold); }
+  .tab.active .tab-num { color: var(--gold); }
+  .tab.overview-tab.active { border-bottom-color: var(--teal); }
+  .tab.overview-tab.active .tab-num { color: var(--teal); }
+
+  .tab-panel { display: block; scroll-margin-top: 90px; }
+  .tab-panel + .tab-panel { border-top: 8px solid var(--bg-soft); }
+
+  /* SECTIONS */
+  .section { padding: 56px 0; }
+  .section h2 { font-size: 36px; font-weight: 600; margin-bottom: 12px; line-height: 1.15; }
+  .section h3 { font-size: 22px; font-weight: 600; margin: 36px 0 14px; }
+  .section-text { font-size: 14.5px; color: var(--text-body); max-width: 760px; margin-bottom: 24px; line-height: 1.7; }
+  .section-text strong { color: var(--text-dark); font-weight: 600; }
+  .h2-divider { display: grid; grid-template-columns: repeat(3, 86px); gap: 0; margin: 0 0 24px; }
+  .h2-divider span { height: 2px; }
+  .div-teal { background: var(--teal); } .div-gold { background: var(--gold-2); }
+  .div-green { background: var(--green); } .div-blue { background: var(--blue); }
+  .div-red { background: var(--red); } .div-navy { background: var(--navy); }
+
+  /* KPI CARDS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 18px 0 28px; }
+  .kpi-card { background: var(--bg-card); padding: 22px 20px; text-align: center; border-top: 2px solid var(--teal); border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-card.gold { border-top-color: var(--gold); }
+  .kpi-card.green { border-top-color: var(--green); }
+  .kpi-card.blue { border-top-color: var(--blue); }
+  .kpi-card.red { border-top-color: var(--red); }
+  .kpi-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--text-dark); line-height: 1; margin-bottom: 8px; }
+  .kpi-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dark); font-weight: 600; margin-bottom: 4px; }
+  .kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+  /* PORTFOLIO BIG NUMBERS */
+  .portfolio-numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; margin: 8px 0 36px; }
+  .portfolio-num { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 600; line-height: 1; margin-bottom: 6px; }
+  .portfolio-num.teal { color: var(--teal); } .portfolio-num.green { color: var(--green); }
+  .portfolio-num.gold { color: var(--gold-2); } .portfolio-num.blue { color: var(--blue); }
+  .portfolio-num.red { color: var(--red); }
+  .portfolio-label { font-size: 12px; color: var(--text-dark); font-weight: 500; letter-spacing: 0.06em; }
+
+  /* SNAPSHOT GRID — properties at a glance */
+  .snapshot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 22px 0 6px; }
+  .snap-card { background: var(--bg-card); border-radius: 4px; padding: 18px 16px 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-top: 2px solid var(--teal); }
+  .snap-card.gold { border-top-color: var(--gold); }
+  .snap-card.green { border-top-color: var(--green); }
+  .snap-card.blue { border-top-color: var(--blue); }
+  .snap-card.red { border-top-color: var(--red); }
+  .snap-card .name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--text-dark); line-height: 1.2; margin-bottom: 2px; }
+  .snap-card .domain { font-family: 'Courier New', monospace; font-size: 10.5px; color: var(--text-muted); margin-bottom: 12px; word-break: break-all; }
+  .snap-row { display: flex; justify-content: space-between; padding: 5px 0; border-top: 1px solid var(--border); font-size: 12.5px; }
+  .snap-row:first-of-type { border-top: none; }
+  .snap-row .k { color: var(--text-muted); }
+  .snap-row .v { color: var(--text-dark); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .snap-card.red .snap-row .v { color: var(--red); }
+
+  /* TABLE SCROLL */
+  .table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin: 12px 0 20px; background: var(--bg-card); }
+
+  /* FINDINGS / FOCUS BOXES */
+  .focus-3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 22px 0 8px; }
+  .focus-3 { background: var(--bg-card); padding: 22px 22px; border-radius: 4px; border-top: 3px solid var(--teal); box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
+  .focus-3.gold { border-top-color: var(--gold-2); }
+  .focus-3.red { border-top-color: var(--red); }
+  .focus-3.green { border-top-color: var(--green); }
+  .focus-3.blue { border-top-color: var(--blue); }
+  .focus-3.purple { border-top-color: #7c3aed; }
+  .focus-3 .f3-eyebrow { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 10px; }
+  .focus-3.gold .f3-eyebrow { color: var(--gold-text); }
+  .focus-3.red .f3-eyebrow { color: var(--red); }
+  .focus-3.green .f3-eyebrow { color: var(--green); }
+  .focus-3.blue .f3-eyebrow { color: var(--blue); }
+  .focus-3.purple .f3-eyebrow { color: #7c3aed; }
+  .focus-3 h3 { font-family: 'Playfair Display', serif; font-size: 18px; margin: 0 0 14px; color: var(--text-dark); font-weight: 600; line-height: 1.25; }
+  .focus-3 .visual { min-height: 60px; margin: 4px 0 12px; display: flex; align-items: center; }
+  .focus-3 .f3-stat { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600; line-height: 1; margin: 4px 0 8px; color: var(--text-dark); }
+  .focus-3.gold .f3-stat { color: var(--gold-2); }
+  .focus-3.red .f3-stat { color: var(--red); }
+  .focus-3.green .f3-stat { color: var(--green); }
+  .focus-3.blue .f3-stat { color: var(--blue); }
+  .focus-3.purple .f3-stat { color: #7c3aed; }
+  .focus-3 p { font-size: 13px; line-height: 1.55; margin: 0; color: var(--text-body); }
+  .focus-3 code { background: var(--bg-soft); padding: 1px 5px; border-radius: 3px; font-size: 11.5px; color: var(--text-dark); }
+
+  /* KEY FINDINGS */
+  .keyfinding-list { display: grid; gap: 10px; margin: 16px 0 24px; }
+  .kf-card { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kf-card .kf-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+  .kf-card.purple .kf-icon { background: #ede4ff; color: #7c3aed; }
+  .kf-card.gold .kf-icon { background: var(--gold-bg); color: var(--gold-text); }
+  .kf-card.red .kf-icon { background: var(--red-bg); color: var(--red-text); }
+  .kf-card.green .kf-icon { background: var(--green-bg); color: var(--green-text); }
+  .kf-card.blue .kf-icon { background: var(--blue-bg); color: var(--blue-text); }
+  .kf-card h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; margin: 0 0 4px; color: var(--text-dark); }
+  .kf-card p { font-size: 13px; color: var(--text-body); margin: 0; line-height: 1.55; }
+
+  /* GBP */
+  .gbp-card { background: var(--bg-card); padding: 28px 32px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; margin: 14px 0 24px; border-left: 3px solid #4285f4; }
+  .gbp-card .star-block { text-align: center; }
+  .gbp-card .star-rating { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 600; color: var(--gold-2); line-height: 1; margin-bottom: 6px; }
+  .gbp-card .stars { font-size: 18px; color: var(--gold); letter-spacing: 2px; }
+  .gbp-card .review-count { font-size: 12px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .gbp-card .gbp-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 28px; }
+  .gbp-card .gbp-row .label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 3px; }
+  .gbp-card .gbp-row .value { font-size: 14px; color: var(--text-dark); font-weight: 600; }
+
+  /* DIRECTORIES */
+  .directory-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0 22px; }
+  .directory-summary .dir-stat { text-align: left; padding-top: 12px; border-top: 2px solid var(--teal); }
+  .directory-summary .dir-stat.green { border-top-color: var(--green); }
+  .directory-summary .dir-stat.red { border-top-color: var(--red); }
+  .directory-summary .dir-stat .num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; line-height: 1; margin: 4px 0; }
+  .directory-summary .dir-stat.green .num { color: var(--green); }
+  .directory-summary .dir-stat.red .num { color: var(--red); }
+  .directory-summary .dir-stat .dir-label { font-size: 11px; color: var(--text-dark); font-weight: 600; margin-bottom: 2px; }
+  .directory-summary .dir-stat small { font-size: 11px; color: var(--text-muted); }
+  .directory-table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 12.5px; min-width: 520px; }
+  .directory-table thead { background: var(--navy); color: #fff; }
+  .directory-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .directory-table th:nth-child(2) { text-align: center; }
+  .directory-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .directory-table td:nth-child(2) { text-align: center; }
+  .directory-table tr:last-child td { border-bottom: none; }
+  .dir-status { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 10.5px; font-weight: 600; }
+  .dir-status.listed { background: var(--green-bg); color: var(--green-text); }
+  .dir-status.weak { background: var(--gold-bg); color: var(--gold-text); }
+  .dir-status.missing { background: var(--red-bg); color: var(--red-text); }
+
+  /* PAGES TABLE */
+  .triage-counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 16px 0 22px; }
+  .triage-counter { text-align: left; padding: 12px 0; border-top: 2px solid var(--gold-2); }
+  .triage-counter.purple { border-top-color: #7c3aed; }
+  .triage-counter.green { border-top-color: var(--green); }
+  .triage-counter.red { border-top-color: var(--red); }
+  .triage-counter .num { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600; line-height: 1; margin: 4px 0; }
+  .triage-counter.purple .num { color: #7c3aed; }
+  .triage-counter.green .num { color: var(--green); }
+  .triage-counter.red .num { color: var(--red); }
+  .triage-counter .triage-label { font-size: 11px; color: var(--text-dark); font-weight: 600; }
+  .pages-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 4px; font-size: 12.5px; min-width: 560px; }
+  .pages-table thead { background: var(--navy); color: #fff; }
+  .pages-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .pages-table th:last-child { text-align: right; }
+  .pages-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); vertical-align: middle; }
+  .pages-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .pages-table .url { font-family: 'Courier New', monospace; font-size: 11.5px; color: var(--text-dark); word-break: break-all; }
+  .pages-table .url.wrong { color: var(--red); }
+  .pages-table .url-flag { font-size: 10.5px; color: var(--red); margin-left: 8px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .pages-table tr.flag-row { background: #fff5f3; }
+  .pages-table tr:last-child td { border-bottom: none; }
+  .critical-callout { background: #fff5f3; border-left: 3px solid var(--red); padding: 14px 18px; margin: 10px 0 16px; font-size: 12.5px; color: var(--text-dark); border-radius: 0 4px 4px 0; }
+  .critical-callout strong { color: var(--red); }
+
+  /* TECH ISSUES */
+  .tech-issues-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 18px 0 14px; }
+  @media (min-width: 700px) { .tech-issues-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .tech-issues-grid { grid-template-columns: repeat(4, 1fr); } }
+  .tech-issue-card { background: var(--bg-card); border-left: 3px solid var(--red); padding: 18px 22px; border-radius: 0 4px 4px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: center; }
+  .tech-issue-card.gold { border-left-color: var(--gold-2); }
+  .tech-issue-card.purple { border-left-color: #7c3aed; }
+  .tech-issue-card.green { border-left-color: var(--green); }
+  .tech-issue-card .tech-num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; color: var(--red); line-height: 1; }
+  .tech-issue-card.gold .tech-num { color: var(--gold-2); }
+  .tech-issue-card.purple .tech-num { color: #7c3aed; }
+  .tech-issue-card.green .tech-num { color: var(--green); }
+  .tech-issue-card h5 { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: var(--text-dark); margin: 0 0 4px; }
+  .tech-issue-card p { font-size: 12px; color: var(--text-body); margin: 0; line-height: 1.5; }
+
+  /* COMPETITORS */
+  .comp-twins { display: grid; grid-template-columns: 1fr; gap: 18px; margin: 14px 0 24px; }
+  .comp-twin { background: var(--bg-card); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .comp-twin thead { background: var(--navy); color: #fff; }
+  .comp-twin table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 580px; }
+  .comp-twin th { padding: 11px 14px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; text-align: left; white-space: nowrap; }
+  .comp-twin th:nth-child(n+2) { text-align: center; }
+  .comp-twin td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .comp-twin td:nth-child(n+2) { text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .comp-twin tr:last-child td { border-bottom: none; }
+  .comp-twin tr.self td { color: var(--red); font-weight: 700; background: #fff5f3; }
+
+  /* CHART */
+  .chart-wrap { background: var(--bg-card); padding: 24px; margin: 18px 0 24px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .chart-wrap .chart-caption { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 14px; font-weight: 700; }
+  .chart-wrap canvas { max-height: 320px; }
+
+  /* ACTION PLAN */
+  .action-list { display: grid; gap: 12px; margin: 14px 0 24px; }
+  .action-item { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 44px 1fr auto; gap: 16px; align-items: center; border-left: 3px solid var(--teal); }
+  .action-item .a-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--gold); line-height: 1; }
+  .action-item .a-body h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-dark); margin: 0 0 4px; }
+  .action-item .a-body p { font-size: 12.5px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .action-item .a-pri { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.14em; padding: 4px 10px; border-radius: 999px; font-weight: 700; white-space: nowrap; }
+  .a-pri.immediate { background: var(--red-bg); color: var(--red-text); }
+  .a-pri.high { background: var(--gold-bg); color: var(--gold-text); }
+  .a-pri.medium { background: var(--blue-bg); color: var(--blue-text); }
+  .a-pri.ongoing { background: var(--green-bg); color: var(--green-text); }
+
+  /* LOC BANNER */
+  .loc-banner { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; padding: 40px 0; }
+  .loc-banner.dead { background: linear-gradient(135deg, #4a1f1f 0%, #6b2929 100%); }
+  .loc-banner .eyebrow { color: var(--teal); }
+  .loc-banner.dead .eyebrow { color: #fca5a5; }
+  .loc-banner h2 { color: #fff; font-size: 40px; margin-bottom: 8px; }
+  .loc-banner .addr { font-size: 14px; color: #c7d4dd; }
+  .loc-banner .addr a { color: var(--teal); text-decoration: none; }
+  .loc-banner.dead .addr a { color: #fca5a5; }
+
+  /* DEAD DOMAIN CALLOUT */
+  .dead-callout { background: var(--bg-card); border: 2px solid var(--red); border-radius: 6px; padding: 32px 36px; margin: 18px 0 24px; }
+  .dead-callout h3 { color: var(--red); font-size: 22px; margin-bottom: 10px; }
+  .dead-callout p { font-size: 13.5px; line-height: 1.6; margin-bottom: 10px; color: var(--text-body); }
+  .dead-callout code { background: var(--bg-soft); padding: 2px 7px; border-radius: 3px; font-size: 12px; }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: #8aa1b3; padding: 32px 0; text-align: center; font-size: 12px; margin-top: 60px; letter-spacing: 0.06em; }
+  footer .brand { color: var(--gold); font-weight: 600; }
+
+  /* RESPONSIVE */
+  img, canvas, svg, table { max-width: 100%; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+  .action-item .a-body { min-width: 0; }
+  .action-item .a-body p { word-wrap: break-word; overflow-wrap: anywhere; }
+
+  @media (max-width: 1280px) { .container { padding: 0 32px; } }
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .hero h1 { font-size: 42px; }
+    .section h2 { font-size: 32px; }
+    .portfolio-num { font-size: 48px; }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+    .snapshot-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+    .hero h1 { font-size: 36px; line-height: 1.1; }
+    .section h2 { font-size: 26px; }
+    .section { padding: 44px 0; }
+    .hero-meta-row { grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+    .loc-banner h2 { font-size: 32px; } .loc-banner { padding: 32px 0; }
+    .gbp-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr 1fr; }
+    .action-item { grid-template-columns: 44px 1fr; }
+    .action-item .a-pri { grid-column: 2; justify-self: start; margin-top: 6px; }
+    .portfolio-numbers { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .directory-summary { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .tabbar-inner { padding: 0 20px; }
+    .tab { padding: 12px 14px 10px; font-size: 12px; }
+  }
+  @media (max-width: 768px) {
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tech-issue-card { padding: 16px 18px; gap: 14px; grid-template-columns: 50px 1fr; }
+    .tech-issue-card .tech-num { font-size: 34px; }
+    .triage-counters { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .focus-3 { padding: 18px 20px; }
+    .focus-3 h3 { font-size: 16px; }
+    .focus-3 .f3-stat { font-size: 32px; }
+    .snapshot-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) {
+    .focus-3-grid { grid-template-columns: 1fr; }
+    .focus-3:last-child { grid-column: auto; }
+    .tech-issues-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    .section { padding: 36px 0; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero h1 { font-size: 30px; } .hero h1 br { display: none; }
+    .hero { padding: 36px 0 0; }
+    .hero-meta-row { grid-template-columns: 1fr; gap: 16px; padding: 18px 0; }
+    .section h2 { font-size: 24px; }
+    .loc-banner h2 { font-size: 26px; } .loc-banner { padding: 26px 0; }
+    .kpi-num { font-size: 30px; } .kpi-card { padding: 18px 14px; }
+    .h2-divider { grid-template-columns: repeat(3, 56px); margin-bottom: 18px; }
+    .gbp-card .star-rating { font-size: 52px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr; gap: 12px; }
+    .snapshot-grid { grid-template-columns: 1fr; }
+    .portfolio-num { font-size: 40px; }
+    .portfolio-numbers { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .action-item { padding: 14px 18px; }
+    .action-item .a-num { font-size: 22px; }
+  }
+  @media (max-width: 480px) {
+    .triage-counters { grid-template-columns: 1fr; }
+    .directory-summary { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 420px) {
+    .container { padding: 0 14px; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .portfolio-numbers { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 26px; }
+    .section h2 { font-size: 22px; }
+    .h2-divider { grid-template-columns: repeat(3, 48px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============= HERO ============= -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Website Quality Audit · Multi-Property Portfolio</div>
+    <h1>Dr. Giri Palani, DDS<br><em>Palani Center for Dental Implants</em></h1>
+    <p class="hero-sub">A consolidated audit of five web properties associated with Dr. Palani — the main practice site plus four legacy branding domains. Organic visibility, online reputation, treatment-page content, and how the properties compete with (or duplicate) each other.</p>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item"><div class="meta-label">Report Period</div><div class="meta-value">May 2026</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Prepared By</div><div class="meta-value">Dentist Nerds</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Properties Audited</div><div class="meta-value">5 (4 active + 1 offline)</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Property Type</div><div class="meta-value">Multi-domain portfolio</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============= TAB BAR ============= -->
+<nav class="tabbar" aria-label="Report sections">
+  <div class="tabbar-inner" role="tablist">
+    <button class="tab overview-tab active" data-tab="overview" role="tab">
+      <span class="tab-num">Overview</span>
+      <span>Portfolio Summary</span>
+    </button>
+    <button class="tab" data-tab="drpalani" role="tab">
+      <span class="tab-num">Property 01</span>
+      <span>drpalani.com</span>
+    </button>
+    <button class="tab" data-tab="sedation" role="tab">
+      <span class="tab-num">Property 02</span>
+      <span>sedation-dentist-beverly-hills</span>
+    </button>
+    <button class="tab" data-tab="dibhd" role="tab">
+      <span class="tab-num">Property 03</span>
+      <span>dental-implants-beverly-hills</span>
+    </button>
+    <button class="tab" data-tab="cosmetic" role="tab">
+      <span class="tab-num">Property 04</span>
+      <span>cosmetic-dentistry-beverly-hills</span>
+    </button>
+    <button class="tab" data-tab="rpvdead" role="tab">
+      <span class="tab-num">Property 05 · Offline</span>
+      <span>ranchopalosverdesdentist</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================= -->
+<!-- ============= TAB: OVERVIEW ================= -->
+<!-- ============================================= -->
+<div class="tab-panel active" id="panel-overview" role="tabpanel">
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">At a Glance</div>
+      <div class="h2-divider"><span class="div-teal"></span><span class="div-gold"></span><span class="div-green"></span></div>
+      <h2>The portfolio at a glance</h2>
+      <p class="section-text">Five domains carry the Dr. Palani brand. <strong>drpalani.com</strong> does almost all the work — it holds <strong>78% of the portfolio's monthly visits</strong> and 62% of its ranking keywords. The four satellite domains contribute small footprints, and one of them — <strong>ranchopalosverdesdentist.com</strong>, the only domain targeting the practice's actual city — is offline entirely. Three of the remaining four target Beverly Hills, ~30 miles from the practice.</p>
+
+      <div class="portfolio-numbers">
+        <div><div class="portfolio-num teal">5</div><div class="portfolio-label">Properties</div></div>
+        <div><div class="portfolio-num gold">1,113</div><div class="portfolio-label">Combined keywords</div></div>
+        <div><div class="portfolio-num green">1,151</div><div class="portfolio-label">Monthly visits</div></div>
+        <div><div class="portfolio-num blue">120</div><div class="portfolio-label">Google reviews · 4.8★</div></div>
+      </div>
+
+      <div class="snapshot-grid">
+        <div class="snap-card gold">
+          <div class="name">drpalani.com</div>
+          <div class="domain">Main practice site</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">14</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">881</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">578</span></div>
+          <div class="snap-row"><span class="k">Ref. domains</span><span class="v">238</span></div>
+        </div>
+        <div class="snap-card">
+          <div class="name">sedation-dentist-beverly-hills.com</div>
+          <div class="domain">Sedation branding</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">7</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">209</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">171</span></div>
+          <div class="snap-row"><span class="k">Ref. domains</span><span class="v">127</span></div>
+        </div>
+        <div class="snap-card">
+          <div class="name">dental-implants-beverly-hills-dentist.com</div>
+          <div class="domain">Implant branding</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">6</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">55</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">107</span></div>
+          <div class="snap-row"><span class="k">Ref. domains</span><span class="v">96</span></div>
+        </div>
+        <div class="snap-card">
+          <div class="name">cosmetic-dentistry-beverly-hills.com</div>
+          <div class="domain">Cosmetic branding</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">8</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">4</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">149</span></div>
+          <div class="snap-row"><span class="k">Ref. domains</span><span class="v">128</span></div>
+        </div>
+        <div class="snap-card red">
+          <div class="name">ranchopalosverdesdentist.com</div>
+          <div class="domain">Offline · DNS does not resolve</div>
+          <div class="snap-row"><span class="k">Authority</span><span class="v">—</span></div>
+          <div class="snap-row"><span class="k">Monthly visits</span><span class="v">0</span></div>
+          <div class="snap-row"><span class="k">Keywords</span><span class="v">0</span></div>
+          <div class="snap-row"><span class="k">Ref. domains</span><span class="v">26 (orphan)</span></div>
+        </div>
+      </div>
+
+      <div class="chart-wrap">
+        <div class="chart-caption">drpalani.com · Monthly organic traffic, 12-month trend</div>
+        <canvas id="trafficTrend"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reputation -->
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Reputation snapshot</div>
+      <div class="h2-divider"><span class="div-gold"></span><span class="div-teal"></span><span class="div-blue"></span></div>
+      <h2>Reputation — single practice, strong signal</h2>
+      <p class="section-text">All five domains point to the same physical practice and the same business profile. The reputation signal is concentrated rather than spread, which is a strength worth preserving.</p>
+
+      <div class="gbp-card">
+        <div class="star-block">
+          <div class="star-rating">4.8</div>
+          <div class="stars">★★★★★</div>
+          <div class="review-count">120 reviews (aggregated)</div>
+        </div>
+        <div class="gbp-meta">
+          <div class="gbp-row"><div class="label">Practice name</div><div class="value">Palani Center for Dental Implants</div></div>
+          <div class="gbp-row"><div class="label">Doctor</div><div class="value">Giri Palani, DDS, FICOI</div></div>
+          <div class="gbp-row"><div class="label">Address</div><div class="value">29050 S Western Ave, Ste 108B</div></div>
+          <div class="gbp-row"><div class="label">City</div><div class="value">Rancho Palos Verdes, CA 90275</div></div>
+          <div class="gbp-row"><div class="label">Phone</div><div class="value">(310) 894-8337</div></div>
+          <div class="gbp-row"><div class="label">Specialties</div><div class="value">Implants · Cosmetic · Sedation</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio-level issues -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Portfolio-level issues</div>
+      <h2>Three structural issues observed across the portfolio</h2>
+      <p class="section-text">These problems repeat across multiple properties. They're stronger candidates for portfolio-level action than per-site fixes.</p>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Dead domain</div>
+          <h3>The only domain targeting Rancho Palos Verdes is offline</h3>
+          <div class="visual"><div class="f3-stat">26</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">orphan backlinks</div>
+          <p><code>ranchopalosverdesdentist.com</code> DNS does not resolve — the domain is dead. It once carried 26 referring domains' worth of trust, all of which now point at nothing. This is the only domain in the portfolio whose name matches the practice's actual city.</p>
+        </div>
+        <div class="focus-3 gold">
+          <div class="f3-eyebrow">Issue 02 — Wrong geography</div>
+          <h3>3 of 4 active satellite sites target Beverly Hills</h3>
+          <div class="visual"><div class="f3-stat">~30</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--gold-2);">miles from the practice</div>
+          <p>Three domains (<code>sedation-...</code>, <code>cosmetic-...</code>, <code>dental-implants-beverly-hills-dentist</code>) chase a Beverly Hills market the practice has no physical presence in. They cannot rank in the Beverly Hills map pack and currently produce 268 combined monthly visits — almost all from non-local blog content.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Content cannibalization</div>
+          <h3>Blog posts duplicated across multiple domains</h3>
+          <div class="visual"><div class="f3-stat">4+</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">posts indexed on 2+ domains</div>
+          <p>Identical blog content appears on drpalani.com and the Beverly Hills satellites (super glue on teeth, gum for breath, periodontal ligament, etc.). Google has to pick one canonical version — Dr. Palani's strongest domain ends up competing with his weaker ones for the same query.</p>
+        </div>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+      <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · What Needs Improvement</h2>
+      <div class="keyfinding-list">
+        <div class="kf-card gold">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>National blog content is carrying drpalani.com instead of commercial pages</h5>
+            <p>Top traffic pages are blog posts about coconut oil for tooth pain (480/mo), super glue on teeth (260/mo), best gum for bad breath (1,300/mo), bruising after wisdom teeth, and fluoride allergy — all national informational queries. Local implant and cosmetic service pages drive ~6 visits/mo combined. Wrong audience for the practice's revenue model.</p>
+          </div>
+        </div>
+        <div class="kf-card red">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Beverly Hills satellites running on a legacy ASP template</h5>
+            <p>All four Beverly Hills domains use an identical /p/Dental-Implants-Beverly-Hills-… ASP URL structure and templated service pages — same legacy CMS, same era. The shared template generates many 301 redirects and 404 pages today, fragmenting authority across multiple dormant properties.</p>
+          </div>
+        </div>
+        <div class="kf-card purple">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Growth on drpalani.com has not reached commercial pages</h5>
+            <p>Total traffic nearly doubled over 12 months (456 → 903 visits), but every visit gained came through the blog layer. The implant, cosmetic, sedation, and full-mouth service pages — the pages that produce consultations — have not participated in the growth.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Reputation signal not surfacing in search results across the portfolio</h5>
+            <p>120 reviews at 4.8★ plus Dr. Palani's FICOI implant-specialty credential are real assets — but no LocalBusiness, AggregateRating, MedicalProcedure, or FAQPage schema exists on any of the five domains. None of this reputation appears in rich-result panels or AI Overviews.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local competitors at portfolio level -->
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Competitive position · 5-mile radius</div>
+      <h2>Primary Competitors Within 5 Miles of the Practice</h2>
+      <p class="section-text">Dental practices physically within ~5 miles of 29050 S Western Ave (Rancho Palos Verdes / Rolling Hills Estates / Palos Verdes Peninsula). Algorithmic competitor lists returned mostly oral surgeons and out-of-state practices that share blog content overlap rather than real local competitors, so the set below is a manual geographic shortlist instead.</p>
+
+      <div class="comp-twins">
+        <div class="comp-twin">
+          <table>
+            <thead><tr><th>Practice · Address</th><th>Authority</th><th>Keywords</th><th>Visits / mo</th><th>Ref. Domains</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Rolling Hills Dental Group</strong><br><small style="color: var(--text-muted); font-weight: 400;">857 Silver Spur Rd · rollinghillsdental.com · ~2.5 mi</small></td><td>15</td><td>701</td><td>163</td><td>231</td></tr>
+              <tr><td><strong>Rancho Palos Verdes Dentistry</strong><br><small style="color: var(--text-muted); font-weight: 400;">ranchopalosverdesdentistry.com · same city</small></td><td>9</td><td>131</td><td>480</td><td>149</td></tr>
+              <tr><td><strong>South Bay Aesthetic Dentistry</strong><br><small style="color: var(--text-muted); font-weight: 400;">Dr. Ronald Mileham · southbayaestheticdentistry.com · RPV</small></td><td>8</td><td>61</td><td>73</td><td>122</td></tr>
+              <tr class="self"><td><strong>Dr. Giri Palani (drpalani.com — main)</strong><br><small style="color: var(--red); font-weight: 400;">29050 S Western Ave · Palani Center for Dental Implants</small></td><td>14</td><td>578</td><td>881</td><td>238</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="section-text" style="margin-top: 4px;">
+        Above is the 5-mile competitive set alongside drpalani.com — a snapshot of each practice's current organic footprint to track against month over month.
+      </p>
+    </div>
+  </section>
+
+</div>
+<!-- ============= END OVERVIEW ============= -->
+
+<!-- ============================================= -->
+<!-- ============= TAB: DRPALANI.COM ============== -->
+<!-- ============================================= -->
+<div class="tab-panel" id="panel-drpalani" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Property 01 · The main site</div>
+      <h2>drpalani.com</h2>
+      <div class="addr">Palani Center for Dental Implants · 29050 S Western Ave · <a href="https://drpalani.com/" target="_blank" rel="noopener">drpalani.com</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-gold"></span><span class="div-teal"></span><span class="div-green"></span></div>
+      <h2>Strong overall footprint, weak service-page conversion</h2>
+      <p class="section-text">The main domain doubled traffic over 12 months (456 → 903 visits/mo) and ranks #1 for every brand variation. The keyword surface is wide. But almost all the traffic comes from national informational blog posts — the dental implant and cosmetic service pages built specifically for the RPV market drive ~6 monthly visits combined.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold"><div class="kpi-num">14</div><div class="kpi-label">Authority Score</div><div class="kpi-sub">out of 100</div></div>
+        <div class="kpi-card"><div class="kpi-num">881</div><div class="kpi-label">Monthly Visits</div><div class="kpi-sub">May 2026</div></div>
+        <div class="kpi-card green"><div class="kpi-num">578</div><div class="kpi-label">Ranking Keywords</div><div class="kpi-sub">organic, US</div></div>
+        <div class="kpi-card blue"><div class="kpi-num">238</div><div class="kpi-label">Referring Domains</div><div class="kpi-sub">4,996 backlinks</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Commercial pages dormant</div>
+          <h3>24 service pages at near-zero visits each</h3>
+          <div class="visual"><div class="f3-stat">24</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+          <p>The /p/Dental-Implants-Rancho-Palos-Verdes-CA-* template generated dedicated pages for implants, veneers, cosmetic, sedation, holistic, emergency, sleep apnea, smile makeover, full mouth, zygomatic, zirconia bridges, and more — but only a handful rank for anything beyond a brand query.</p>
+        </div>
+        <div class="focus-3 blue">
+          <div class="f3-eyebrow">Issue 02 — Blog carries 70%+ of traffic</div>
+          <h3>National informational blog beats local commercial</h3>
+          <div class="visual"><div class="f3-stat">7</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--blue);">non-local blog posts dominate</div>
+          <p>Coconut oil for toothache (213 visits), best gum for breath (183 visits), super glue on teeth (60 visits), bruising after wisdom teeth, fluoride allergy, and 2 others account for most of the site's traffic. None of these visitors are Rancho Palos Verdes implant prospects.</p>
+        </div>
+        <div class="focus-3 gold">
+          <div class="f3-eyebrow">Issue 03 — Legacy ASP template</div>
+          <h3>Dated URL structure with many 404s &amp; 301s</h3>
+          <div class="visual"><div class="f3-stat">15+</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--gold-2);">404 / 301 indexed URLs</div>
+          <p>The site uses a ProSites-style <code>/p/...-p[number].asp</code> URL pattern. Backlink crawls reveal many legacy URLs returning 404 ("Page not found"), and many service pages still 301-redirecting old paths — both wasting crawl budget and link equity.</p>
+        </div>
+      </div>
+
+      <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+      <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · drpalani.com</h2>
+      <div class="keyfinding-list">
+        <div class="kf-card green">
+          <div class="kf-icon">↑</div>
+          <div>
+            <h5>Brand searches fully captured</h5>
+            <p>#1 for "palani center for dental implants" (210/mo), "dr palani" (170/mo), "giri palani" (50/mo), "giri palani dds" (50/mo). Brand recall is intact — no leakage to competing domains for these queries.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">●</div>
+          <div>
+            <h5>One local commercial signal worth defending</h5>
+            <p>"dentist palos verdes" at position #6 (110/mo) and "no credit check dental implant financing" at #7 (320/mo) are the only commercial queries currently producing meaningful traffic. The financing keyword is unusual and worth defending.</p>
+          </div>
+        </div>
+        <div class="kf-card purple">
+          <div class="kf-icon">●</div>
+          <div>
+            <h5>Implant service page exists and is reasonably built</h5>
+            <p>The /Dental-Implants-p2080.asp page runs 800–900 words, has clear procedure detail, multiple CTAs, and provider credentials. It just isn't ranking or pulling traffic. Quality is acceptable; visibility is the gap.</p>
+          </div>
+        </div>
+        <div class="kf-card red">
+          <div class="kf-icon">⚠</div>
+          <div>
+            <h5>Service-page internal-link density is weak</h5>
+            <p>Service pages receive few internal links from the homepage or from the high-traffic blog posts. Authority that arrives via the blog content can't flow to the commercial pages without paths to follow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Technical audit</div>
+      <h2>Technical Issues · drpalani.com</h2>
+      <div class="tech-issues-grid">
+        <div class="tech-issue-card"><div class="tech-num">24</div><div><h5>Service Pages Without Schema</h5><p>None of the procedure pages carry MedicalProcedure, LocalBusiness, or AggregateRating schema. This is the single highest-leverage on-page fix.</p></div></div>
+        <div class="tech-issue-card gold"><div class="tech-num">15+</div><div><h5>404 / 301 URL Cleanup</h5><p>Legacy ASP URLs returning Page Not Found, plus dozens of 301 redirects from old URL slugs. Diluting crawl signal.</p></div></div>
+        <div class="tech-issue-card purple"><div class="tech-num">7</div><div><h5>National Blog Posts Outranking Local Pages</h5><p>Coconut oil, super glue, gum, fluoride blog posts produce 70%+ of traffic. None of these visitors convert to RPV implant consults.</p></div></div>
+        <div class="tech-issue-card green"><div class="tech-num">238</div><div><h5>Referring Domains (Healthy)</h5><p>Strong backlink profile compared to the local field. The asset is there; on-page work converts it.</p></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================= -->
+<!-- ============= TAB: SEDATION ============== -->
+<!-- ============================================= -->
+<div class="tab-panel" id="panel-sedation" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Property 02 · Sedation branding</div>
+      <h2>sedation-dentist-beverly-hills.com</h2>
+      <div class="addr">Targets Beverly Hills · practice is in Rancho Palos Verdes (~30 mi away) · <a href="https://sedation-dentist-beverly-hills.com/" target="_blank" rel="noopener">site link</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-gold"></span><span class="div-teal"></span><span class="div-blue"></span></div>
+      <h2>Mid-tier traffic from two blog posts</h2>
+      <p class="section-text">209 monthly visits — 86% of which come from two blog posts (bitewing X-rays, dental debridement) that have nothing to do with sedation dentistry. The actual sedation service pages (IV sedation, oral conscious sedation, nitrous oxide) drive ≤1 visit per month each.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold"><div class="kpi-num">7</div><div class="kpi-label">Authority Score</div><div class="kpi-sub">out of 100</div></div>
+        <div class="kpi-card"><div class="kpi-num">209</div><div class="kpi-label">Monthly Visits</div><div class="kpi-sub">May 2026</div></div>
+        <div class="kpi-card green"><div class="kpi-num">171</div><div class="kpi-label">Ranking Keywords</div><div class="kpi-sub">organic, US</div></div>
+        <div class="kpi-card blue"><div class="kpi-num">127</div><div class="kpi-label">Referring Domains</div><div class="kpi-sub">915 backlinks</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Off-theme traffic</div>
+          <h3>86% of visits are unrelated to sedation</h3>
+          <div class="visual"><div class="f3-stat">180</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">of 209 visits non-thematic</div>
+          <p>The site's two top-performing pages are about bitewing X-rays (101 visits) and dental debridement (79 visits) — informational topics. Visitors arriving for these aren't sedation-dentistry prospects.</p>
+        </div>
+        <div class="focus-3 gold">
+          <div class="f3-eyebrow">Issue 02 — Wrong city</div>
+          <h3>Cannot rank in Beverly Hills map pack</h3>
+          <div class="visual"><div class="f3-stat">30</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--gold-2);">miles from real practice</div>
+          <p>The domain's entire premise is Beverly Hills sedation dentistry, but Dr. Palani's practice is in Rancho Palos Verdes. Google won't surface this domain in the Beverly Hills local pack without a verified Beverly Hills address.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Sedation pages dormant</div>
+          <h3>IV / oral / nitrous pages drive ≤1 visit each</h3>
+          <div class="visual"><div class="f3-stat">5</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">sedation pages near-zero</div>
+          <p>IV Sedation, Oral Conscious Sedation, Anxiolysis, Nitrous Oxide, and Consultations pages exist but each pulls 0–1 monthly visits. The domain isn't building a sedation-specific organic footprint.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================= -->
+<!-- ============= TAB: DENTAL IMPLANTS BH ============== -->
+<!-- ============================================= -->
+<div class="tab-panel" id="panel-dibhd" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Property 03 · Implant branding</div>
+      <h2>dental-implants-beverly-hills-dentist.com</h2>
+      <div class="addr">Targets Beverly Hills · practice is in Rancho Palos Verdes · <a href="https://dental-implants-beverly-hills-dentist.com/" target="_blank" rel="noopener">site link</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-gold"></span><span class="div-teal"></span><span class="div-red"></span></div>
+      <h2>Smallest active site in the portfolio</h2>
+      <p class="section-text">55 monthly visits, 75% of which come from a single blog post about periodontal ligaments. The implant service pages this domain was built to promote — single implants, mini implants, All-on-X — drive 0 visits each. The Beverly Hills implant queries are not won.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card gold"><div class="kpi-num">6</div><div class="kpi-label">Authority Score</div><div class="kpi-sub">out of 100</div></div>
+        <div class="kpi-card"><div class="kpi-num">55</div><div class="kpi-label">Monthly Visits</div><div class="kpi-sub">May 2026</div></div>
+        <div class="kpi-card green"><div class="kpi-num">107</div><div class="kpi-label">Ranking Keywords</div><div class="kpi-sub">organic, US</div></div>
+        <div class="kpi-card blue"><div class="kpi-num">96</div><div class="kpi-label">Referring Domains</div><div class="kpi-sub">423 backlinks</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — All implant pages dormant</div>
+          <h3>Dental Implants, MDI, Bone Grafting all at 0 visits</h3>
+          <div class="visual"><div class="f3-stat">8</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">implant pages dormant</div>
+          <p>Every page the domain was built to rank for — Dental Implants Beverly Hills, Mini Dental Implants, Bone Grafting, Implant Candidates, Crowns, Restorative Dentistry — drives 0 visits. The implant content is duplicative of drpalani.com's version.</p>
+        </div>
+        <div class="focus-3 gold">
+          <div class="f3-eyebrow">Issue 02 — Wrong city</div>
+          <h3>Cannot win Beverly Hills implant queries</h3>
+          <div class="visual"><div class="f3-stat">~$5K</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--gold-2);">Beverly Hills implant CPC</div>
+          <p>Beverly Hills dental implant queries are among the highest-CPC dental terms in the US. Winning them requires a physical Beverly Hills presence (map-pack eligibility) and significantly more authority than this domain currently has.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Single blog post = 75% of traffic</div>
+          <h3>Periodontal ligament post is the only working asset</h3>
+          <div class="visual"><div class="f3-stat">41</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">of 55 visits / month</div>
+          <p>The "What Does the Periodontal Ligament Actually Do" post produces 41 of 55 monthly visits. Same post also lives on drpalani.com — this domain is essentially a duplicate-content host for it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================= -->
+<!-- ============= TAB: COSMETIC BH ============== -->
+<!-- ============================================= -->
+<div class="tab-panel" id="panel-cosmetic" role="tabpanel">
+  <div class="loc-banner">
+    <div class="container">
+      <div class="eyebrow">Property 04 · Cosmetic branding</div>
+      <h2>cosmetic-dentistry-beverly-hills.com</h2>
+      <div class="addr">Targets Beverly Hills · practice is in Rancho Palos Verdes · <a href="https://cosmetic-dentistry-beverly-hills.com/" target="_blank" rel="noopener">site link</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Performance summary</div>
+      <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-teal"></span></div>
+      <h2>Essentially dormant — 4 visits per month</h2>
+      <p class="section-text">Despite 149 keywords and 128 referring domains accumulated over years, this domain drives only <strong>4 monthly visits</strong>. All four come from a single old blog post about alcohol in mouthwash. The veneer, Invisalign, Lumineers, sedation, and cosmetic service pages this site was built around all drive 0 visits each.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card red"><div class="kpi-num">8</div><div class="kpi-label">Authority Score</div><div class="kpi-sub">out of 100</div></div>
+        <div class="kpi-card red"><div class="kpi-num">4</div><div class="kpi-label">Monthly Visits</div><div class="kpi-sub">May 2026 · effectively dormant</div></div>
+        <div class="kpi-card"><div class="kpi-num">149</div><div class="kpi-label">Ranking Keywords</div><div class="kpi-sub">most at zero traffic</div></div>
+        <div class="kpi-card blue"><div class="kpi-num">128</div><div class="kpi-label">Referring Domains</div><div class="kpi-sub">orphan link equity</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">Top priority fixes</div>
+      <h2>Top Priority Fixes &amp; Issues</h2>
+
+      <div class="focus-3-grid">
+        <div class="focus-3 red">
+          <div class="f3-eyebrow">Issue 01 — Functionally inactive</div>
+          <h3>All 18 service pages at 0 traffic</h3>
+          <div class="visual"><div class="f3-stat">18</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--red);">service pages dormant</div>
+          <p>Veneers, Invisalign, Lumineers, Sedation, Root Canals, CEREC, Holistic Dentistry, Preventive Dentistry, Pre-Anesthesia, Oral Surgery, Technologies — every page drives 0 visits. The site is effectively offline as far as patient acquisition is concerned.</p>
+        </div>
+        <div class="focus-3 gold">
+          <div class="f3-eyebrow">Issue 02 — Orphan link equity</div>
+          <h3>128 referring domains pointing at a dormant site</h3>
+          <div class="visual"><div class="f3-stat">128</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: var(--gold-2);">referring domains wasted</div>
+          <p>Years of link building accumulated 128 referring domains here — second only to the main site within the portfolio. None of that authority flows to commercial pages that could convert. Strong candidate for a 301-redirect plan to drpalani.com.</p>
+        </div>
+        <div class="focus-3 purple">
+          <div class="f3-eyebrow">Issue 03 — Duplicate content fingerprint</div>
+          <h3>Same blog template + same service pages as 3 sister domains</h3>
+          <div class="visual"><div class="f3-stat">4</div></div>
+          <div class="f3-stat" style="font-size: 22px; color: #7c3aed;">overlapping properties</div>
+          <p>The /p/cosmetic-dentist-Beverly-Hills-CA-* URL structure is identical to the implant and sedation BH sites. Service-page copy and blog posts overlap — Google is forced to choose one, and the strongest property (drpalani.com) wins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================= -->
+<!-- ============= TAB: RPV DEAD ============== -->
+<!-- ============================================= -->
+<div class="tab-panel" id="panel-rpvdead" role="tabpanel">
+  <div class="loc-banner dead">
+    <div class="container">
+      <div class="eyebrow">Property 05 · Offline</div>
+      <h2>ranchopalosverdesdentist.com</h2>
+      <div class="addr">Domain does not resolve · <a href="http://ranchopalosverdesdentist.com/" target="_blank" rel="noopener">attempted URL</a></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Status</div>
+      <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-navy"></span></div>
+      <h2>The only domain matching the practice's city is offline</h2>
+
+      <div class="dead-callout">
+        <h3>DNS does not resolve</h3>
+        <p>A direct request to <code>https://ranchopalosverdesdentist.com/</code> returns "The remote name could not be resolved." The domain is either expired, never delegated, or pointed at no host. The domain has also fallen out of every major organic search index, suggesting it has been offline for an extended period.</p>
+        <p><strong>What was lost:</strong> the domain name itself is the most valuable real estate Dr. Palani could own — an exact match for the practice's city. It would have been a natural anchor for local SEO, "rancho palos verdes dentist" anchor-text backlinks, and a primary entity for Google to associate with the practice. Today, 26 referring domains still link to URLs on this domain, and all of those links return errors.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="eyebrow">What to do about it</div>
+      <h2>Options for the domain</h2>
+
+      <div class="keyfinding-list">
+        <div class="kf-card green">
+          <div class="kf-icon">1</div>
+          <div>
+            <h5>Re-register and revive the domain (preferred)</h5>
+            <p>If the registration has lapsed, re-acquire it. Build it back as either a primary RPV-targeted site or 301-redirect everything to drpalani.com — either way recovers the 26 referring domains' worth of link equity that's currently orphaned.</p>
+          </div>
+        </div>
+        <div class="kf-card gold">
+          <div class="kf-icon">2</div>
+          <div>
+            <h5>Verify domain ownership status</h5>
+            <p>Check WHOIS to confirm whether Dr. Palani still owns the registration (just inactive DNS) or whether it has lapsed and is available. If still owned, restoring DNS is a small technical fix. If lapsed, registration is the first step.</p>
+          </div>
+        </div>
+        <div class="kf-card red">
+          <div class="kf-icon">3</div>
+          <div>
+            <h5>If unrecoverable: redirect all referring domains</h5>
+            <p>If the domain has been claimed by someone else or cannot be re-acquired, reach out to the 26 referring sites and request that links be updated to point at drpalani.com. This is slow manual work but preserves at least some of the link equity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============= PRIORITY ACTION PLAN ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Where attention is needed first</div>
+    <h2>Priority Action Plan</h2>
+    <p class="section-text">The work ahead, in order.</p>
+
+    <div class="action-list">
+      <div class="action-item">
+        <div class="a-num">1</div>
+        <div class="a-body">
+          <h5>Recover or redirect ranchopalosverdesdentist.com</h5>
+          <p>Check WHOIS, re-register if available, then 301-redirect everything to drpalani.com to reclaim the 26 orphan referring domains. The exact-match city domain is too valuable to leave dead.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">2</div>
+        <div class="a-body">
+          <h5>301-redirect the 3 Beverly Hills satellite sites to drpalani.com</h5>
+          <p>The Beverly Hills domains can't rank in a market the practice doesn't physically serve and are diluting authority via duplicate content. Consolidating their 351 combined referring domains into drpalani.com is a direct authority boost.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">3</div>
+        <div class="a-body">
+          <h5>Add schema + clean up legacy URLs on drpalani.com</h5>
+          <p>LocalBusiness, MedicalProcedure (on each implant/cosmetic page), AggregateRating (from 120 reviews), and FAQPage schema. Fix the 15+ 404s and clean up legacy 301 chains from the old ASP template.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">4</div>
+        <div class="a-body">
+          <h5>Rebuild the 24 dormant service pages on drpalani.com</h5>
+          <p>Implants, zygomatic implants, All-on-X, veneers, cosmetic, sedation, holistic, sleep apnea. Each: stronger procedure detail, embedded testimonials, before/after gallery, transparent cost ranges or financing notes, internal links from the high-traffic blog posts.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">5</div>
+        <div class="a-body">
+          <h5>Local backlink campaign — Palos Verdes Peninsula</h5>
+          <p>Currently 238 referring domains; Rolling Hills Dental holds 231 and Washington Dental holds 275. Targets: South Bay business partnerships, Marquette dental alumni features, RPV community organizations, local press for the FICOI credential and implant specialty.</p>
+        </div>
+        <span class="a-pri ongoing">Ongoing</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">6</div>
+        <div class="a-body">
+          <h5>Monthly performance report</h5>
+          <p>Rankings, traffic, business-profile performance, new reviews, and booked appointments — measured against the May 2026 baseline established here.</p>
+        </div>
+        <span class="a-pri ongoing">Monthly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer>
+  <div class="container">
+    <span class="brand">Dentist Nerds</span> · Multi-Property Website Audit · Dr. Giri Palani · Palani Center for Dental Implants · May 2026
+  </div>
+</footer>
+
+<script>
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.color = '#6b7280';
+
+  // Tab navigation
+  const tabbarEl = document.querySelector('.tabbar');
+  function scrollToPanel(target) {
+    const panel = document.getElementById('panel-' + target);
+    if (!panel) return;
+    const tabbarHeight = tabbarEl.offsetHeight;
+    const top = panel.getBoundingClientRect().top + window.pageYOffset - tabbarHeight - 4;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = tab.dataset.tab;
+      history.replaceState(null, '', '#' + target);
+      scrollToPanel(target);
+    });
+  });
+  const tabObserver = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      if (visible.length === 0) return;
+      const id = visible[0].target.id.replace('panel-', '');
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      const matchingTab = document.querySelector(`.tab[data-tab="${id}"]`);
+      if (matchingTab) {
+        matchingTab.classList.add('active');
+        matchingTab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+      }
+    },
+    { rootMargin: '-80px 0px -50% 0px', threshold: [0, 0.1, 0.25, 0.5] }
+  );
+  document.querySelectorAll('.tab-panel').forEach(p => tabObserver.observe(p));
+  if (location.hash) {
+    const h = location.hash.replace('#','');
+    setTimeout(() => scrollToPanel(h), 100);
+  }
+
+  // drpalani.com 12-month traffic chart
+  new Chart(document.getElementById('trafficTrend'), {
+    type: 'line',
+    data: {
+      labels: ['May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26'],
+      datasets: [{
+        label: 'drpalani.com',
+        data: [456, 374, 291, 437, 627, 650, 727, 948, 852, 800, 824, 903],
+        borderColor: '#5fbab0',
+        backgroundColor: 'rgba(95,186,176,0.15)',
+        borderWidth: 2.5, tension: 0.3, fill: true,
+        pointBackgroundColor: '#5fbab0', pointRadius: 3, pointHoverRadius: 5
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { backgroundColor: '#0d2538', padding: 10 } },
+      scales: {
+        x: { grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } },
+        y: { beginAtZero: true, grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } }
+      }
+    }
+  });
+</script>
+</body>
+</html>

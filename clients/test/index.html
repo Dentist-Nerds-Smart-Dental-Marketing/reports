@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monterey Dental Contours — Website Quality Audit | WEBRIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f8f9fb;
+  --surface-2: #f0f1f5;
+  --surface-3: #e8eaef;
+  --border: #e0e2e8;
+  --border-light: #d0d3da;
+  --text: #1a1a2e;
+  --text-dim: #555770;
+  --text-muted: #888a9e;
+  --accent: #2563eb;
+  --accent-glow: #2563eb15;
+  --red: #dc2626;
+  --red-dim: #dc262610;
+  --green: #16a34a;
+  --green-dim: #16a34a10;
+  --yellow: #ca8a04;
+  --yellow-dim: #ca8a0410;
+  --orange: #ea580c;
+  --orange-dim: #ea580c10;
+  --purple: #7c3aed;
+  --purple-dim: #7c3aed10;
+  --cyan: #0891b2;
+  --cyan-dim: #0891b210;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  padding: 80px 0 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, #2563eb0d 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid #2563eb30;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.hero p.subtitle {
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  max-width: 680px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+}
+
+/* ─── STAT GRID ─── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.stat-card .number {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-card .number.red { color: var(--red); }
+.stat-card .number.yellow { color: var(--yellow); }
+.stat-card .number.green { color: var(--green); }
+.stat-card .number.orange { color: var(--orange); }
+
+.stat-card .label {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.meta-line {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── SECTIONS ─── */
+section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header {
+  margin-bottom: 36px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.section-header h2 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.section-header p {
+  color: var(--text-dim);
+  margin-top: 8px;
+  max-width: 640px;
+}
+
+/* ─── CARDS ─── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.card-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+}
+
+.card .icon {
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+}
+
+.card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.card p {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+/* ─── TABLES ─── */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+thead th {
+  background: var(--surface-2);
+  font-weight: 600;
+  font-size: 0.76rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:hover { background: var(--surface-2); }
+
+td.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+}
+
+/* ─── TAGS / BADGES ─── */
+.tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.tag-red { background: var(--red-dim); color: var(--red); border: 1px solid #dc262625; }
+.tag-green { background: var(--green-dim); color: var(--green); border: 1px solid #16a34a25; }
+.tag-yellow { background: var(--yellow-dim); color: var(--yellow); border: 1px solid #ca8a0425; }
+.tag-orange { background: var(--orange-dim); color: var(--orange); border: 1px solid #ea580c25; }
+.tag-purple { background: var(--purple-dim); color: var(--purple); border: 1px solid #7c3aed25; }
+.tag-blue { background: var(--accent-glow); color: var(--accent); border: 1px solid #2563eb25; }
+
+/* ─── CALLOUT ─── */
+.callout {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin: 20px 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.callout strong { color: var(--text); }
+
+.callout.warning { border-left-color: var(--red); }
+.callout.success { border-left-color: var(--green); }
+.callout.info { border-left-color: var(--yellow); }
+
+/* ─── PROGRESS BARS ─── */
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.progress-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  min-width: 140px;
+  color: var(--text-dim);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--surface-3);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 0.6s ease;
+}
+
+.progress-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  min-width: 50px;
+  text-align: right;
+  color: var(--text-dim);
+}
+
+/* ─── TIMELINE ─── */
+.timeline {
+  position: relative;
+  padding-left: 36px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--surface);
+}
+
+.timeline-item h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+
+.timeline-item p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ─── STEP CARDS ─── */
+.step-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.step-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.step-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid #2563eb30;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+}
+
+.step-content h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.step-content p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+.step-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+/* ─── TRIAGE ─── */
+.triage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.triage-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+}
+
+.triage-card .big-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.triage-card .triage-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.triage-card .triage-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ─── CHART PLACEHOLDER ─── */
+.chart-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  margin: 20px 0;
+}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 200px;
+  padding-top: 20px;
+}
+
+.bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.bar {
+  width: 100%;
+  max-width: 48px;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  transition: height 0.4s ease;
+}
+
+.bar-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.bar-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+/* ─── MISSING PAGES ─── */
+.missing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.missing-item {
+  font-size: 0.82rem;
+  padding: 10px 14px;
+  background: var(--red-dim);
+  border: 1px solid #dc262618;
+  border-radius: var(--radius-sm);
+  color: var(--red);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.missing-item::before {
+  content: '✕';
+  font-weight: 700;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+/* ─── DIRECTORY ─── */
+.dir-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+}
+
+.dir-item:last-child { border-bottom: none; }
+
+.dir-name {
+  font-weight: 600;
+}
+
+.dir-status {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  padding: 40px 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .card-grid { grid-template-columns: 1fr; }
+  .triage-grid { grid-template-columns: repeat(2, 1fr); }
+  .step-card { flex-direction: column; }
+  section { padding: 48px 0; }
+}
+
+/* ─── KEYWORD ROW HIGHLIGHT ─── */
+tr.highlight-row td {
+  background: var(--red-dim);
+}
+
+/* ─── TWO COLUMN LAYOUT ─── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* ─── SCORE GAUGE ─── */
+.gauge-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin: 32px 0;
+}
+
+.gauge {
+  text-align: center;
+}
+
+.gauge-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 auto 10px;
+}
+
+.gauge-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.gauge-circle.low {
+  background: var(--red-dim);
+  border: 3px solid var(--red);
+  color: var(--red);
+}
+
+.gauge-circle.mid {
+  background: var(--yellow-dim);
+  border: 3px solid var(--yellow);
+  color: var(--yellow);
+}
+
+.gauge-circle.high {
+  background: var(--green-dim);
+  border: 3px solid var(--green);
+  color: var(--green);
+}
+
+/* existing page vs missing */
+.existing-item {
+  font-size: 0.82rem;
+  padding: 10px 14px;
+  background: var(--green-dim);
+  border: 1px solid #16a34a18;
+  border-radius: var(--radius-sm);
+  color: var(--green);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.existing-item::before { content: '✓'; font-weight: 700; font-size: 0.7rem; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════ HERO ════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-badge">Website Quality Audit</div>
+    <h1>Monterey Dental Contours</h1>
+    <p class="subtitle">Comprehensive SEO & digital presence audit for montereydentalcontours.com. Keyword analysis, content gap assessment, local SEO performance, backlink profile, and AI visibility review.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="number red">23</div>
+        <div class="label">Total Pages</div>
+      </div>
+      <div class="stat-card">
+        <div class="number red">29</div>
+        <div class="label">Organic Sessions/mo</div>
+      </div>
+      <div class="stat-card">
+        <div class="number yellow">83</div>
+        <div class="label">Ranking Keywords</div>
+      </div>
+      <div class="stat-card">
+        <div class="number red">7</div>
+        <div class="label">Authority Score</div>
+      </div>
+      <div class="stat-card">
+        <div class="number orange">138</div>
+        <div class="label">Referring Domains</div>
+      </div>
+    </div>
+
+    <div class="meta-line">Prepared by WEBRIS · April 2026 · Data via Semrush</div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════ EXECUTIVE SUMMARY ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Executive Summary</div>
+      <h2>Key Findings</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">📉</div>
+        <h3>29 Organic Visits/Month — Near Zero Visibility</h3>
+        <p>Semrush estimates only ~29 organic sessions per month. Traffic has declined over 70% from a peak of ~115/mo in early 2022. The site is functionally invisible in organic search.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔍</div>
+        <h3>Only 23 Pages — Missing Critical Treatment Pages</h3>
+        <p>The entire website has just 23 pages. No dedicated pages for dental implants, crowns, bridges, root canals, veneers, Invisalign, emergency dentistry, or sedation dentistry. Competitors have 60–150+ pages.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Main Keywords Ranking on Page 2–10</h3>
+        <p>"Dentists in Monterey California" at position 86. "Dentist in Monterey Park CA" at position 46. "Dentist Monterey" at position 12. Zero keywords in top 3 for commercial dental terms.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>Low AI / LLM Visibility</h3>
+        <p>With only 23 thin pages and no schema markup beyond basic defaults, ChatGPT, Perplexity, and Google AI Overviews have very little content to cite. AI traffic is effectively zero.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚠️</div>
+        <h3>Authority Score: 7/100</h3>
+        <p>Semrush Authority Score is 7 — extremely low. Only 138 referring domains, mostly low-quality directories. No authoritative backlinks from dental associations, local press, or health sites.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏥</div>
+        <h3>No Schema Markup — Missing E-E-A-T Signals</h3>
+        <p>No LocalBusiness, Dentist, or Person schema on any page. Google sees a generic website — not a dental practice with a credentialed provider. Critical gap for healthcare (YMYL) sites.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ TRAFFIC TRENDS ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Traffic Trends</div>
+      <h2>Organic Traffic — 24-Month Trend</h2>
+      <p>Traffic has declined consistently since early 2022, dropping from ~115 sessions/month to ~29 sessions today.</p>
+    </div>
+
+    <div class="chart-container">
+      <div class="bar-chart">
+        <div class="bar-item">
+          <div class="bar-value">115</div>
+          <div class="bar" style="height:100%;background:var(--green);"></div>
+          <div class="bar-label">Mar'22</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">102</div>
+          <div class="bar" style="height:89%;background:var(--green);"></div>
+          <div class="bar-label">Jun'22</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">59</div>
+          <div class="bar" style="height:51%;background:var(--yellow);"></div>
+          <div class="bar-label">Sep'22</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">49</div>
+          <div class="bar" style="height:43%;background:var(--yellow);"></div>
+          <div class="bar-label">Dec'22</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">60</div>
+          <div class="bar" style="height:52%;background:var(--yellow);"></div>
+          <div class="bar-label">Mar'23</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">54</div>
+          <div class="bar" style="height:47%;background:var(--yellow);"></div>
+          <div class="bar-label">Jun'23</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">50</div>
+          <div class="bar" style="height:43%;background:var(--yellow);"></div>
+          <div class="bar-label">Sep'23</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">18</div>
+          <div class="bar" style="height:16%;background:var(--red);"></div>
+          <div class="bar-label">Dec'23</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">18</div>
+          <div class="bar" style="height:16%;background:var(--red);"></div>
+          <div class="bar-label">Mar'24</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">14</div>
+          <div class="bar" style="height:12%;background:var(--red);"></div>
+          <div class="bar-label">Jun'24</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">8</div>
+          <div class="bar" style="height:7%;background:var(--red);"></div>
+          <div class="bar-label">Sep'24</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">15</div>
+          <div class="bar" style="height:13%;background:var(--red);"></div>
+          <div class="bar-label">Dec'24</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">15</div>
+          <div class="bar" style="height:13%;background:var(--red);"></div>
+          <div class="bar-label">Jan'25</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">17</div>
+          <div class="bar" style="height:15%;background:var(--red);"></div>
+          <div class="bar-label">Mar'25</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">24</div>
+          <div class="bar" style="height:21%;background:var(--orange);"></div>
+          <div class="bar-label">Jun'25</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">37</div>
+          <div class="bar" style="height:32%;background:var(--orange);"></div>
+          <div class="bar-label">Jul'25</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">5</div>
+          <div class="bar" style="height:4%;background:var(--red);"></div>
+          <div class="bar-label">Oct'25</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">15</div>
+          <div class="bar" style="height:13%;background:var(--red);"></div>
+          <div class="bar-label">Jan'26</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">23</div>
+          <div class="bar" style="height:20%;background:var(--red);"></div>
+          <div class="bar-label">Feb'26</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-value">29</div>
+          <div class="bar" style="height:25%;background:var(--red);"></div>
+          <div class="bar-label">Mar'26</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warning">
+      <strong>75% traffic loss since March 2022.</strong> The site went from ~115 organic sessions/month to 29. Without new content, proper on-page optimization, or link building, the downward trend will continue. Competitors are gaining the share this site is losing.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ KEYWORD ANALYSIS ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Keyword Analysis</div>
+      <h2>Current Keyword Rankings</h2>
+      <p>83 total keywords tracked. Only 2 keywords in top 10. Zero commercial dental keywords in top 3 positions.</p>
+    </div>
+
+    <div class="gauge-wrap">
+      <div class="gauge">
+        <div class="gauge-circle low">2</div>
+        <div class="gauge-label">Top 10 Keywords</div>
+      </div>
+      <div class="gauge">
+        <div class="gauge-circle low">5</div>
+        <div class="gauge-label">Top 20 Keywords</div>
+      </div>
+      <div class="gauge">
+        <div class="gauge-circle mid">83</div>
+        <div class="gauge-label">Total Keywords</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Position</th>
+            <th>Volume</th>
+            <th>CPC</th>
+            <th>URL</th>
+            <th>Assessment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>dr kent dentist</strong></td>
+            <td class="mono">3</td>
+            <td class="mono">210</td>
+            <td class="mono">$2.59</td>
+            <td style="font-size:0.78rem;color:var(--text-muted);">/about-us/dr-kent/</td>
+            <td><span class="tag tag-green">Branded — OK</span></td>
+          </tr>
+          <tr>
+            <td><strong>monterey dental</strong></td>
+            <td class="mono">8</td>
+            <td class="mono">320</td>
+            <td class="mono">$3.90</td>
+            <td style="font-size:0.78rem;color:var(--text-muted);">/contact-us/</td>
+            <td><span class="tag tag-yellow">Should be #1–3</span></td>
+          </tr>
+          <tr>
+            <td><strong>teeth whitening monterey ca</strong></td>
+            <td class="mono">11</td>
+            <td class="mono">70</td>
+            <td class="mono">$1.51</td>
+            <td style="font-size:0.78rem;color:var(--text-muted);">/teeth-whitening/</td>
+            <td><span class="tag tag-yellow">Near top 10</span></td>
+          </tr>
+          <tr>
+            <td><strong>dentist monterey</strong></td>
+            <td class="mono">12</td>
+            <td class="mono">320</td>
+            <td class="mono">$3.03</td>
+            <td style="font-size:0.78rem;color:var(--text-muted);">/</td>
+            <td><span class="tag tag-orange">Huge opportunity</span></td>
+          </tr>
+          <tr>
+            <td><strong>cosmetic dentist monterey ca</strong></td>
+            <td class="mono">13</td>
+            <td class="mono">40</td>
+            <td class="mono">$2.74</td>
+            <td style="font-size:0.78rem;color:var(--text-muted);">/cosmetic-dentistry-monterey-ca/</td>
+            <td><span class="tag tag-orange">Close to page 1</span></td>
+          </tr>
+          <tr>
+            <td><strong>best dentist in monterey ca</strong></td>
+            <td class="mono">15</td>
+            <td class="mono">70</td>
+            <td class="mono">$1.71</td>
+            <td style="font-size:0.78rem;color:var(--text-muted);">/</td>
+            <td><span class="tag tag-orange">High-intent — needs page</span></td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>dentists in monterey california</strong></td>
+            <td class="mono" style="color:var(--red);">18 / 86</td>
+            <td class="mono">110</td>
+            <td class="mono">$3.18</td>
+            <td style="font-size:0.78rem;color:var(--text-muted);">/ + /cosmetic-dentistry…</td>
+            <td><span class="tag tag-red">Cannibalizing — 2 URLs</span></td>
+          </tr>
+          <tr>
+            <td><strong>dentist in monterey</strong></td>
+            <td class="mono">24 / 40 / 81</td>
+            <td class="mono">110</td>
+            <td class="mono">$3.03</td>
+            <td style="font-size:0.78rem;color:var(--text-muted);">3 URLs competing</td>
+            <td><span class="tag tag-red">Heavy cannibalization</span></td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>dentist in monterey park ca</strong></td>
+            <td class="mono" style="color:var(--red);">46</td>
+            <td class="mono">110</td>
+            <td class="mono">$4.81</td>
+            <td style="font-size:0.78rem;color:var(--text-muted);">/</td>
+            <td><span class="tag tag-red">Wrong geo — irrelevant</span></td>
+          </tr>
+          <tr>
+            <td><strong>monterey dentistry</strong></td>
+            <td class="mono">14–84</td>
+            <td class="mono">70</td>
+            <td class="mono">$3.90</td>
+            <td style="font-size:0.78rem;color:var(--text-muted);">5 URLs competing</td>
+            <td><span class="tag tag-red">Worst cannibalization</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warning" style="margin-top: 20px;">
+      <strong>Keyword Cannibalization is Severe.</strong> Multiple URLs are competing for the same search terms. "Monterey dentistry" has 5 different URLs ranking (positions 14, 31, 43, 49, 84) — Google can't determine which page to show. This must be resolved with proper URL targeting and internal linking before any content creation begins.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ CONTENT GAP ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Content Gap Analysis</div>
+      <h2>Missing Treatment & Service Pages</h2>
+      <p>Monterey Dental Contours has 23 total pages. Competitive dental practices in the area have 60–150+ pages. The following high-value treatment pages do not exist on the site.</p>
+    </div>
+
+    <h3 style="font-size:0.95rem;margin-bottom:16px;color:var(--red);">❌ Missing Pages (Critical Revenue-Generating Keywords)</h3>
+
+    <div class="missing-grid">
+      <div class="missing-item">Dental Implants Monterey</div>
+      <div class="missing-item">Dental Crowns Monterey</div>
+      <div class="missing-item">Dental Bridges Monterey</div>
+      <div class="missing-item">Root Canal Treatment</div>
+      <div class="missing-item">Porcelain Veneers</div>
+      <div class="missing-item">Invisalign / Clear Aligners</div>
+      <div class="missing-item">Emergency Dentist Monterey</div>
+      <div class="missing-item">Sedation Dentistry</div>
+      <div class="missing-item">Dental Fillings</div>
+      <div class="missing-item">Dentures & Partials</div>
+      <div class="missing-item">TMJ / TMD Treatment</div>
+      <div class="missing-item">Periodontal / Gum Treatment</div>
+      <div class="missing-item">Tooth Extraction</div>
+      <div class="missing-item">Night Guards / Mouth Guards</div>
+      <div class="missing-item">Dental Bonding</div>
+      <div class="missing-item">Full Mouth Rehabilitation</div>
+      <div class="missing-item">Pediatric / Family Dentistry</div>
+      <div class="missing-item">New Patient Page</div>
+      <div class="missing-item">Insurance / Financing Page</div>
+      <div class="missing-item">Dental Anxiety / Comfort</div>
+      <div class="missing-item">Before & After Gallery</div>
+      <div class="missing-item">FAQ Page</div>
+      <div class="missing-item">Smile Makeover</div>
+      <div class="missing-item">Same Day Dentistry</div>
+    </div>
+
+    <h3 style="font-size:0.95rem;margin:28px 0 16px;color:var(--green);">✓ Existing Pages</h3>
+
+    <div class="missing-grid">
+      <div class="existing-item">Homepage</div>
+      <div class="existing-item">Cosmetic Dentistry</div>
+      <div class="existing-item">Restorative Dentistry</div>
+      <div class="existing-item">Teeth Whitening</div>
+      <div class="existing-item">Dental Hygiene & Prevention</div>
+      <div class="existing-item">Services (General)</div>
+      <div class="existing-item">About Us</div>
+      <div class="existing-item">Dr. Kent Bio</div>
+      <div class="existing-item">Contact Us</div>
+      <div class="existing-item">Testimonials</div>
+      <div class="existing-item">Membership Club</div>
+      <div class="existing-item">Welcome Page</div>
+    </div>
+
+    <div class="callout warning" style="margin-top:24px;">
+      <strong>24 critical treatment pages are missing.</strong> Each of these represents a keyword family with local search intent. "Emergency dentist Monterey" alone has ~200+ monthly searches. A competitor with a dedicated page for each service will outrank a site that bundles everything into a single "Services" page every time.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ LOCAL SEO ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Local SEO</div>
+      <h2>Google Business Profile & Maps Performance</h2>
+    </div>
+
+    <div class="card" style="margin-bottom:24px;">
+      <div class="two-col">
+        <div>
+          <h3 style="margin-bottom:16px;">Google Business Profile</h3>
+          <div class="dir-item">
+            <span class="dir-name">Business Name</span>
+            <span style="color:var(--text);">Monterey Dental Contours</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">Address</span>
+            <span style="color:var(--text);">2100 Garden Rd, Bldg K, Monterey, CA 93940</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">Phone</span>
+            <span style="color:var(--text);">(831) 375-4242</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">Rating</span>
+            <span style="color:var(--green);">⭐ 5.0 Stars</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">Hours</span>
+            <span style="color:var(--text);">Mon–Thu 8:30 AM – 5:00 PM</span>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom:16px;">GBP Assessment</h3>
+          <div class="dir-item">
+            <span class="dir-name">Review Count</span>
+            <span style="color:var(--yellow);">Low — Needs Growth</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">Review Velocity</span>
+            <span style="color:var(--red);">Very Low</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">GBP Posts</span>
+            <span style="color:var(--red);">Not Active</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">Photos</span>
+            <span style="color:var(--yellow);">16 photos on Yelp — GBP unclear</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">Q&A Section</span>
+            <span style="color:var(--red);">Empty</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <strong>5-star rating is an asset — but review count needs to grow.</strong> Competitors with 100+ reviews will outrank a profile with fewer reviews in the Local Pack. A structured review generation campaign (post-appointment SMS/email) should target 5–10 new reviews per month.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ DIRECTORY MANAGEMENT ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Directory Management</div>
+      <h2>Core Directory Listings</h2>
+    </div>
+
+    <div class="triage-grid" style="margin-bottom:28px;">
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--accent);">14</div>
+        <div class="triage-label">Directories Checked</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--green);">5</div>
+        <div class="triage-label">Live Listings</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--red);">9</div>
+        <div class="triage-label">Not Found / Unclaimed</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--yellow);">36%</div>
+        <div class="triage-label">Listing Rate</div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:0;">
+      <div style="padding:16px 24px;">
+        <div class="dir-item">
+          <span class="dir-name">Google Business Profile</span>
+          <span class="dir-status" style="color:var(--green);">✓ Live</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">Yelp</span>
+          <span class="dir-status" style="color:var(--green);">✓ Live — 16 photos</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">Yellow Pages</span>
+          <span class="dir-status" style="color:var(--yellow);">⚠ Live — No reviews, no specialties listed</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">Wheree.com</span>
+          <span class="dir-status" style="color:var(--green);">✓ Live</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">DentistsInFoCa.com</span>
+          <span class="dir-status" style="color:var(--green);">✓ Live</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">Healthgrades</span>
+          <span class="dir-status" style="color:var(--red);">✕ Not found</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">Zocdoc</span>
+          <span class="dir-status" style="color:var(--red);">✕ Not found</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">WebMD / Vitals</span>
+          <span class="dir-status" style="color:var(--red);">✕ Not found</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">1-800-Dentist</span>
+          <span class="dir-status" style="color:var(--red);">✕ Not found</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">ADA Find-A-Dentist</span>
+          <span class="dir-status" style="color:var(--red);">✕ Not claimed</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">Birdeye</span>
+          <span class="dir-status" style="color:var(--red);">✕ Not found</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">Bing Places</span>
+          <span class="dir-status" style="color:var(--red);">✕ Not verified</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">Apple Maps</span>
+          <span class="dir-status" style="color:var(--red);">✕ Not verified</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-name">Facebook Business</span>
+          <span class="dir-status" style="color:var(--red);">✕ Not found</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warning" style="margin-top:20px;">
+      <strong>Missing from 9 of 14 critical directories.</strong> Healthgrades, Zocdoc, and ADA Find-A-Dentist are high-authority healthcare directories. Each missing listing is a lost citation signal for local search rankings and a lost referral channel for new patients. NAP (Name, Address, Phone) consistency across all directories must be verified.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ BACKLINK PROFILE ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Backlink Profile</div>
+      <h2>Authority & Link Analysis</h2>
+    </div>
+
+    <div class="triage-grid" style="margin-bottom:28px;">
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--red);">7</div>
+        <div class="triage-label">Authority Score /100</div>
+        <div class="triage-desc">Extremely low — needs significant link building</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--orange);">222</div>
+        <div class="triage-label">Total Backlinks</div>
+        <div class="triage-desc">122 follow, 101 nofollow</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--orange);">138</div>
+        <div class="triage-label">Referring Domains</div>
+        <div class="triage-desc">From 91 unique IPs</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--red);">7</div>
+        <div class="triage-label">Trust Score /100</div>
+        <div class="triage-desc">Low trust — few authoritative sources</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Link building is essential.</strong> An authority score of 7 means the site has almost no link equity in Google's eyes. Priority targets: Monterey Bay Dental Society, local Monterey County press outlets, Monterey Chamber of Commerce, dental association directories, and any community sponsorship or event partnerships Dr. Kent participates in. Even 10–15 quality links from local sources would meaningfully improve rankings.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ E-E-A-T & SCHEMA ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">E-E-A-T & Schema</div>
+      <h2>Trust Signals & Structured Data</h2>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>What's Missing</h3>
+        <div style="margin-top:16px;">
+          <div class="dir-item">
+            <span class="dir-name">LocalBusiness / Dentist Schema</span>
+            <span class="dir-status" style="color:var(--red);">✕ Missing</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">Person Schema (Dr. Kent)</span>
+            <span class="dir-status" style="color:var(--red);">✕ Missing</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">MedicalBusiness Schema</span>
+            <span class="dir-status" style="color:var(--red);">✕ Missing</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">FAQ Schema</span>
+            <span class="dir-status" style="color:var(--red);">✕ Missing</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">Review / AggregateRating Schema</span>
+            <span class="dir-status" style="color:var(--red);">✕ Missing</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name">Service Schema per treatment</span>
+            <span class="dir-status" style="color:var(--red);">✕ Missing</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>What Needs to Be Added</h3>
+        <p style="margin-top:12px;line-height:1.8;">
+          <strong>Dentist schema</strong> with name, address, phone, hours, accepted insurance, geo coordinates, and services offered.<br><br>
+          <strong>Person schema for Dr. Kent</strong> with jobTitle, alumniOf (Loma Linda University), award ("Dentist of the Year 2013"), memberOf (Monterey Bay Dental Society), knowsAbout, and hasCredential.<br><br>
+          <strong>FAQ schema</strong> on service pages to win featured snippets. <strong>Service schema</strong> on each treatment page for Google's service understanding.
+        </p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:20px;">
+      <strong>Dentistry is YMYL (Your Money, Your Life).</strong> Google holds healthcare sites to a higher trust standard. Dr. Kent's 30+ years of experience, Dentist of the Year award, and Monterey Bay Dental Society presidency are strong E-E-A-T signals — but none of them are machine-readable. Schema markup converts credentials into trust signals that Google and AI systems can consume.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ AI VISIBILITY ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">AI & LLM Visibility</div>
+      <h2>AI-Referred Traffic & Citation Readiness</h2>
+    </div>
+
+    <div class="triage-grid" style="margin-bottom:28px;">
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--red);">~0</div>
+        <div class="triage-label">AI Sessions / Month</div>
+        <div class="triage-desc">No measurable AI-referred traffic</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--red);">23</div>
+        <div class="triage-label">Indexable Pages</div>
+        <div class="triage-desc">Too few for AI training & citation</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--red);">0</div>
+        <div class="triage-label">Structured Data Types</div>
+        <div class="triage-desc">No schema for AI consumption</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--red);">Low</div>
+        <div class="triage-label">Content Depth</div>
+        <div class="triage-desc">Thin pages don't get cited by AI</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:14px;">Why AI Visibility Matters for Dentists</h3>
+      <p>When someone asks ChatGPT, Perplexity, or Google AI Overview "Who is the best dentist in Monterey, CA?" — the AI needs content to cite. Sites with comprehensive treatment pages, FAQ content, schema markup, and authority signals get mentioned. With only 23 thin pages and no structured data, Monterey Dental Contours is invisible to AI systems.</p>
+      <br>
+      <p><strong>What's needed:</strong> Detailed treatment pages with FAQ sections, Person schema for Dr. Kent, LocalBusiness schema with services, and at minimum 50–75 well-optimized pages for AI crawlers to reference.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ TECHNICAL ISSUES ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Triage Center</div>
+      <h2>On-Site & Technical Issues</h2>
+    </div>
+
+    <div class="triage-grid" style="margin-bottom:28px;">
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--red);">23</div>
+        <div class="triage-label">Total Pages</div>
+        <div class="triage-desc">Competitors avg 60–150 pages</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--red);">0</div>
+        <div class="triage-label">Blog Posts (Active)</div>
+        <div class="triage-desc">Old posts from 2016–2017 only</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--orange);">5+</div>
+        <div class="triage-label">Cannibalized Keywords</div>
+        <div class="triage-desc">Multiple URLs competing for same terms</div>
+      </div>
+      <div class="triage-card">
+        <div class="big-number" style="color:var(--yellow);">~2016</div>
+        <div class="triage-label">Last Updated</div>
+        <div class="triage-desc">Content appears largely unchanged since launch</div>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>🗂️ Website Architecture Issues</h3>
+        <p style="margin-top:8px;">The site has no proper service page hierarchy. "Services" is a single page listing everything — not individual, keyword-targeted pages. Blog posts from 2016 have no internal links back to service pages. The "Welcome" page duplicates the homepage content.</p>
+      </div>
+      <div class="card">
+        <h3>📄 Content Freshness</h3>
+        <p style="margin-top:8px;">Blog posts date from 2016–2017 and have not been updated. Google's freshness signals penalize stale content in competitive markets. Blog titles use generic topics with no local keyword targeting ("How Often to Have Teeth Cleaned" — no mention of Monterey).</p>
+      </div>
+      <div class="card">
+        <h3>📱 Mobile & Speed</h3>
+        <p style="margin-top:8px;">Full mobile/speed audit recommended. The site appears to be a WordPress installation from 2015–2016 that may have accumulated technical debt including outdated plugins, unoptimized images, and legacy code affecting Core Web Vitals.</p>
+      </div>
+      <div class="card">
+        <h3>🔗 Internal Linking</h3>
+        <p style="margin-top:8px;">No visible internal linking strategy. Service pages don't link to each other. Blog posts don't link to service pages. The homepage doesn't funnel link equity to the most important treatment pages. This flattens the site's topical authority.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ RECOMMENDATIONS ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Recommendations</div>
+      <h2>Priority Action Plan</h2>
+    </div>
+
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h4>Build 24+ Dedicated Treatment Pages</h4>
+          <p>Create individual, keyword-targeted pages for every service offered: dental implants, crowns, veneers, root canals, emergency dentistry, Invisalign, etc. Each page needs 1,200+ words, FAQ section, before/after imagery, and clear CTAs.</p>
+          <span class="step-tag tag-red">Immediate — Biggest Growth Lever</span>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h4>Fix Keyword Cannibalization Across All Pages</h4>
+          <p>Assign one primary keyword to one URL. "Dentist Monterey" → homepage. "Cosmetic dentist Monterey" → cosmetic page. "Restorative dentistry Monterey" → restorative page. Redirect or consolidate competing URLs. Set up proper canonical tags.</p>
+          <span class="step-tag tag-red">Immediate</span>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h4>Deploy Full Schema Markup Site-Wide</h4>
+          <p>Add Dentist + LocalBusiness schema on all pages. Add Person schema for Dr. Kent with credentials, awards, society memberships. Add FAQ schema on treatment pages. Add Service schema per treatment type.</p>
+          <span class="step-tag tag-orange">This Quarter</span>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-content">
+          <h4>Claim & Optimize All Directory Listings</h4>
+          <p>Claim profiles on Healthgrades, Zocdoc, ADA Find-A-Dentist, Bing Places, Apple Maps, and Facebook. Ensure 100% NAP consistency. Add photos, services, and insurance info to every profile.</p>
+          <span class="step-tag tag-orange">This Quarter</span>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">05</div>
+        <div class="step-content">
+          <h4>Launch Google Review Generation Campaign</h4>
+          <p>Implement post-appointment email/SMS review requests. Target 5–10 new Google reviews per month. Respond to all reviews (positive and negative). This directly impacts Local Pack rankings.</p>
+          <span class="step-tag tag-yellow">Ongoing</span>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">06</div>
+        <div class="step-content">
+          <h4>Build Local Backlinks & Authority</h4>
+          <p>Target links from Monterey Bay Dental Society, Monterey Chamber of Commerce, local news outlets, community organizations, and dental association directories. Sponsor local events for link + brand visibility.</p>
+          <span class="step-tag tag-yellow">Ongoing</span>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">07</div>
+        <div class="step-content">
+          <h4>Refresh & Expand Blog Content</h4>
+          <p>Update 2016–2017 blog posts with current information and local keywords. Launch a monthly publishing cadence targeting long-tail dental queries in the Monterey area. Every blog post should link to a relevant treatment page.</p>
+          <span class="step-tag tag-blue">Next Quarter</span>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">08</div>
+        <div class="step-content">
+          <h4>Optimize for AI Visibility</h4>
+          <p>Comprehensive content, FAQ schema, Person schema with credentials, and topical authority are the foundation. As AI search grows, sites with structured, authoritative content will be cited. This is the long game — and it starts now.</p>
+          <span class="step-tag tag-blue">Ongoing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ TIMELINE ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Next Steps</div>
+      <h2>Implementation Timeline</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Week 1–2</h4>
+        <p>Fix keyword cannibalization — assign primary keywords to correct URLs. Deploy Dentist + LocalBusiness + Person schema site-wide. Claim Healthgrades, Zocdoc, ADA, Bing Places, Apple Maps listings. Set up Google review generation automation.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Weeks 3–6</h4>
+        <p>Build first batch of 12 treatment pages (dental implants, crowns, bridges, root canals, veneers, Invisalign, emergency dentist, sedation, fillings, dentures, TMJ, periodontal care). Each page: 1,200+ words, FAQ section, schema, internal links.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Weeks 7–10</h4>
+        <p>Build second batch of 12 pages (tooth extraction, night guards, bonding, full mouth rehab, family dentistry, new patient, insurance/financing, dental anxiety, before/after gallery, FAQ page, smile makeover, same-day dentistry). Refresh all 2016–2017 blog posts.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Month 3+</h4>
+        <p>Launch local link building campaign. Begin monthly blog cadence. Activate GBP posting. Monitor rankings, adjust on-page optimization. Quarterly content refresh cycle. Track AI/LLM visibility growth and citation patterns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ FOOTER ════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    WEBRIS · montereydentalcontours.com · April 2026
+  </div>
+</footer>
+
+</body>
+</html>

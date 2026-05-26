@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website Quality Audit — Adel Dentistry · Carrollwood, Tampa FL · May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --navy: #0d2538;
+    --navy-2: #112e44;
+    --teal: #5fbab0;
+    --teal-soft: #a4dad3;
+    --gold: #d4a55c;
+    --gold-2: #c9a961;
+    --bg-page: #f5f5f0;
+    --bg-soft: #ebe9e0;
+    --bg-card: #ffffff;
+    --text-dark: #0d2538;
+    --text-body: #4b5563;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #2d8e5c;
+    --green-bg: #d1fae5;
+    --green-text: #065f46;
+    --gold-bg: #fef3c7;
+    --gold-text: #92400e;
+    --red: #c53030;
+    --red-bg: #fee2e2;
+    --red-text: #991b1b;
+    --blue: #2c6fb3;
+    --blue-bg: #dbeafe;
+    --blue-text: #1e40af;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-page); color: var(--text-body);
+    line-height: 1.6; font-size: 14px;
+  }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 14px;
+  }
+
+  /* HERO */
+  .hero { background: var(--navy); color: #fff; padding: 56px 0 44px; position: relative; }
+  .hero .eyebrow { color: var(--teal); }
+  .hero h1 { font-size: 50px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 10px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 28px; max-width: 720px; }
+  .hero-meta-row {
+    display: grid; grid-template-columns: repeat(4, auto); gap: 56px;
+    padding: 22px 0 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px;
+  }
+  .hero-meta-item .meta-label {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #8aa1b3; margin-bottom: 6px; font-weight: 600;
+  }
+  .hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+  /* SECTIONS */
+  .section { padding: 56px 0; }
+  .section h2 { font-size: 36px; font-weight: 600; margin-bottom: 12px; line-height: 1.15; }
+  .section h3 { font-size: 22px; font-weight: 600; margin: 36px 0 14px; }
+  .section-text {
+    font-size: 14.5px; color: var(--text-body); max-width: 760px;
+    margin-bottom: 24px; line-height: 1.7;
+  }
+  .section-text strong { color: var(--text-dark); font-weight: 600; }
+  .h2-divider {
+    display: grid; grid-template-columns: repeat(3, 86px); gap: 0;
+    margin: 0 0 24px;
+  }
+  .h2-divider span { height: 2px; }
+  .div-teal { background: var(--teal); }
+  .div-gold { background: var(--gold-2); }
+  .div-green { background: var(--green); }
+  .div-blue { background: var(--blue); }
+  .div-red { background: var(--red); }
+  .div-navy { background: var(--navy); }
+
+  /* KPI CARDS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 18px 0 28px; }
+  .kpi-card {
+    background: var(--bg-card); padding: 22px 20px; text-align: center;
+    border-top: 2px solid var(--teal); border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kpi-card.gold { border-top-color: var(--gold); }
+  .kpi-card.green { border-top-color: var(--green); }
+  .kpi-card.blue { border-top-color: var(--blue); }
+  .kpi-card.red { border-top-color: var(--red); }
+  .kpi-num {
+    font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600;
+    color: var(--text-dark); line-height: 1; margin-bottom: 8px;
+  }
+  .kpi-label {
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-dark); font-weight: 600; margin-bottom: 4px;
+  }
+  .kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+  /* Account chip */
+  .account-chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--bg-card); border-left: 3px solid var(--gold);
+    padding: 8px 14px 8px 12px; border-radius: 4px;
+    margin: 8px 0 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .account-chip .slug {
+    font-family: 'Courier New', monospace; font-size: 12px;
+    background: var(--bg-soft); padding: 3px 8px; border-radius: 3px;
+    color: var(--text-dark); font-weight: 600;
+  }
+  .account-chip .label { font-size: 12px; color: var(--text-muted); }
+
+  /* Focus boxes */
+  .focus-3-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin: 22px 0 8px;
+  }
+  .focus-3 {
+    background: var(--bg-card); padding: 22px 22px 22px;
+    border-radius: 4px; border-top: 3px solid var(--teal);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column;
+  }
+  .focus-3.gold { border-top-color: var(--gold-2); }
+  .focus-3.red { border-top-color: var(--red); }
+  .focus-3.green { border-top-color: var(--green); }
+  .focus-3.blue { border-top-color: var(--blue); }
+  .focus-3.purple { border-top-color: #7c3aed; }
+  .focus-3 .f3-eyebrow {
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 700; margin-bottom: 10px;
+  }
+  .focus-3.gold .f3-eyebrow { color: var(--gold-text); }
+  .focus-3.red .f3-eyebrow { color: var(--red); }
+  .focus-3.green .f3-eyebrow { color: var(--green); }
+  .focus-3.blue .f3-eyebrow { color: var(--blue); }
+  .focus-3.purple .f3-eyebrow { color: #7c3aed; }
+  .focus-3 h3 {
+    font-family: 'Playfair Display', serif; font-size: 18px;
+    margin: 0 0 14px; color: var(--text-dark); font-weight: 600; line-height: 1.25;
+  }
+  .focus-3 .visual {
+    min-height: 60px; margin: 4px 0 12px;
+    display: flex; align-items: center; justify-content: flex-start;
+  }
+  .focus-3 .f3-stat {
+    font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600;
+    line-height: 1; margin: 4px 0 8px; color: var(--text-dark);
+  }
+  .focus-3.gold .f3-stat { color: var(--gold-2); }
+  .focus-3.red .f3-stat { color: var(--red); }
+  .focus-3.green .f3-stat { color: var(--green); }
+  .focus-3.blue .f3-stat { color: var(--blue); }
+  .focus-3.purple .f3-stat { color: #7c3aed; }
+  .focus-3 p {
+    font-size: 13px; line-height: 1.55; margin: 0; color: var(--text-body);
+  }
+  .focus-3 code {
+    background: var(--bg-soft); padding: 1px 5px; border-radius: 3px;
+    font-size: 11.5px; color: var(--text-dark);
+  }
+
+  /* Key findings */
+  .keyfinding-list { display: grid; gap: 10px; margin: 16px 0 24px; }
+  .kf-card {
+    background: var(--bg-card); padding: 18px 22px; border-radius: 4px;
+    display: grid; grid-template-columns: 36px 1fr; gap: 14px;
+    align-items: start; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kf-card .kf-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+  }
+  .kf-card.purple .kf-icon { background: #ede4ff; color: #7c3aed; }
+  .kf-card.gold .kf-icon { background: var(--gold-bg); color: var(--gold-text); }
+  .kf-card.red .kf-icon { background: var(--red-bg); color: var(--red-text); }
+  .kf-card.green .kf-icon { background: var(--green-bg); color: var(--green-text); }
+  .kf-card.blue .kf-icon { background: var(--blue-bg); color: var(--blue-text); }
+  .kf-card h5 {
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+    margin: 0 0 4px; color: var(--text-dark);
+  }
+  .kf-card p { font-size: 13px; color: var(--text-body); margin: 0; line-height: 1.55; }
+
+  /* GBP card */
+  .gbp-card {
+    background: var(--bg-card); padding: 28px 32px; border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: grid; grid-template-columns: auto 1fr; gap: 36px;
+    align-items: center; margin: 14px 0 24px; border-left: 3px solid #4285f4;
+  }
+  .gbp-card .star-block { text-align: center; }
+  .gbp-card .star-rating {
+    font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 600;
+    color: var(--gold-2); line-height: 1; margin-bottom: 6px;
+  }
+  .gbp-card .stars { font-size: 18px; color: var(--gold); letter-spacing: 2px; }
+  .gbp-card .review-count {
+    font-size: 12px; color: var(--text-muted); margin-top: 6px;
+    letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+  }
+  .gbp-card .gbp-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 28px; }
+  .gbp-card .gbp-row .label {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 600; margin-bottom: 3px;
+  }
+  .gbp-card .gbp-row .value { font-size: 14px; color: var(--text-dark); font-weight: 600; }
+
+  /* Directory */
+  .directory-summary {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0 22px;
+  }
+  .directory-summary .dir-stat { text-align: left; padding-top: 12px; border-top: 2px solid var(--teal); }
+  .directory-summary .dir-stat.green { border-top-color: var(--green); }
+  .directory-summary .dir-stat.red { border-top-color: var(--red); }
+  .directory-summary .dir-stat .num {
+    font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; line-height: 1; margin: 4px 0;
+  }
+  .directory-summary .dir-stat.green .num { color: var(--green); }
+  .directory-summary .dir-stat.red .num { color: var(--red); }
+  .directory-summary .dir-stat .dir-label { font-size: 11px; color: var(--text-dark); font-weight: 600; margin-bottom: 2px; }
+  .directory-summary .dir-stat small { font-size: 11px; color: var(--text-muted); }
+  .table-scroll {
+    width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    margin: 12px 0 20px; background: var(--bg-card);
+  }
+  .directory-table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 12.5px; min-width: 520px; }
+  .directory-table thead { background: var(--navy); color: #fff; }
+  .directory-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .directory-table th:nth-child(2) { text-align: center; }
+  .directory-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .directory-table td:nth-child(2) { text-align: center; }
+  .directory-table tr:last-child td { border-bottom: none; }
+  .dir-status {
+    display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 10.5px; font-weight: 600;
+  }
+  .dir-status.listed { background: var(--green-bg); color: var(--green-text); }
+  .dir-status.weak { background: var(--gold-bg); color: var(--gold-text); }
+  .dir-status.missing { background: var(--red-bg); color: var(--red-text); }
+  .dir-status.verify { background: var(--blue-bg); color: var(--blue-text); }
+
+  /* Treatment pages */
+  .triage-counters {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 16px 0 22px;
+  }
+  .triage-counter { text-align: left; padding: 12px 0; border-top: 2px solid var(--gold-2); }
+  .triage-counter.purple { border-top-color: #7c3aed; }
+  .triage-counter.green { border-top-color: var(--green); }
+  .triage-counter.red { border-top-color: var(--red); }
+  .triage-counter .num {
+    font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600; line-height: 1; margin: 4px 0 4px;
+  }
+  .triage-counter.purple .num { color: #7c3aed; }
+  .triage-counter.green .num { color: var(--green); }
+  .triage-counter.red .num { color: var(--red); }
+  .triage-counter .triage-label { font-size: 11px; color: var(--text-dark); font-weight: 600; }
+  .pages-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 4px; font-size: 12.5px; min-width: 560px; }
+  .pages-table thead { background: var(--navy); color: #fff; }
+  .pages-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .pages-table th:last-child { text-align: right; }
+  .pages-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); vertical-align: middle; }
+  .pages-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .pages-table .url { font-family: 'Courier New', monospace; font-size: 12px; color: var(--text-dark); }
+  .pages-table .url.wrong { color: var(--red); }
+  .pages-table .url-flag { font-size: 11px; color: var(--red); margin-left: 8px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .pages-table .url-flag.gold { color: var(--gold-text); }
+  .pages-table tr.flag-row { background: #fff5f3; }
+  .pages-table tr.flag-row-gold { background: #fffbeb; }
+  .pages-table tr:last-child td { border-bottom: none; }
+  .critical-callout {
+    background: #fff5f3; border-left: 3px solid var(--red);
+    padding: 14px 18px; margin: 10px 0 16px;
+    font-size: 12.5px; color: var(--text-dark); border-radius: 0 4px 4px 0;
+  }
+  .critical-callout strong { color: var(--red); }
+
+  /* Tech issues */
+  .tech-issues-grid {
+    display: grid; grid-template-columns: 1fr; gap: 12px; margin: 18px 0 14px;
+  }
+  @media (min-width: 700px) { .tech-issues-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .tech-issues-grid { grid-template-columns: repeat(3, 1fr); } }
+  .tech-issue-card {
+    background: var(--bg-card); border-left: 3px solid var(--red);
+    padding: 18px 22px; border-radius: 0 4px 4px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: center;
+  }
+  .tech-issue-card.gold { border-left-color: var(--gold-2); }
+  .tech-issue-card.purple { border-left-color: #7c3aed; }
+  .tech-issue-card.green { border-left-color: var(--green); }
+  .tech-issue-card .tech-num {
+    font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; color: var(--red); line-height: 1;
+  }
+  .tech-issue-card.gold .tech-num { color: var(--gold-2); }
+  .tech-issue-card.purple .tech-num { color: #7c3aed; }
+  .tech-issue-card.green .tech-num { color: var(--green); }
+  .tech-issue-card h5 { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: var(--text-dark); margin: 0 0 4px; }
+  .tech-issue-card p { font-size: 12px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .tech-callout {
+    background: rgba(197, 48, 48, 0.06); border-left: 3px solid var(--red);
+    padding: 14px 20px; margin: 14px 0 0;
+    font-size: 12.5px; color: var(--text-dark); line-height: 1.55; border-radius: 0 4px 4px 0;
+  }
+  .tech-callout strong { color: var(--red); }
+  .tech-callout code { background: rgba(197,48,48,0.08); padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+
+  /* Keyword table */
+  .keyword-table {
+    width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 4px; font-size: 13px; min-width: 540px;
+  }
+  .keyword-table colgroup col:first-child { width: 44%; }
+  .keyword-table thead { background: var(--navy); color: #fff; }
+  .keyword-table th {
+    text-align: center; padding: 12px 10px;
+    font-weight: 600; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.3; white-space: nowrap;
+  }
+  .keyword-table th:first-child { text-align: left; }
+  .keyword-table td {
+    padding: 11px 12px; border-bottom: 1px solid var(--border); color: var(--text-dark); vertical-align: middle; text-align: center;
+  }
+  .keyword-table td:first-child { text-align: left; font-weight: 500; }
+  .keyword-table tbody tr:last-child td { border-bottom: none; }
+  .pill {
+    display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em;
+  }
+  .pill-top10 { background: var(--gold-bg); color: var(--gold-text); }
+  .pill-top3 { background: var(--blue-bg); color: var(--blue-text); }
+  .pill-deep { background: var(--red-bg); color: var(--red-text); }
+  .pill-tracking { background: var(--bg-soft); color: var(--text-dark); }
+
+  /* Competitors */
+  .comp-twins {
+    display: grid; grid-template-columns: 1fr; gap: 18px; margin: 14px 0 24px;
+  }
+  .comp-twin {
+    background: var(--bg-card); border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .comp-twin thead { background: var(--navy); color: #fff; }
+  .comp-twin table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 560px; }
+  .comp-twin th { padding: 11px 14px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; text-align: left; }
+  .comp-twin th:nth-child(n+2) { text-align: center; }
+  .comp-twin td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .comp-twin td:nth-child(n+2) { text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .comp-twin tr:last-child td { border-bottom: none; }
+  .comp-twin tr.self td { color: var(--red); font-weight: 700; background: #fff5f3; }
+
+  /* Chart */
+  .chart-wrap {
+    background: var(--bg-card); padding: 24px; margin: 18px 0 24px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .chart-wrap .chart-caption {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 14px; font-weight: 700;
+  }
+  .chart-wrap canvas { max-height: 280px; }
+
+  /* Action plan */
+  .action-list { display: grid; gap: 12px; margin: 14px 0 24px; }
+  .action-item {
+    background: var(--bg-card); padding: 18px 22px; border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: grid; grid-template-columns: 44px 1fr auto; gap: 16px; align-items: center;
+    border-left: 3px solid var(--teal);
+  }
+  .action-item .a-num {
+    font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--gold); line-height: 1;
+  }
+  .action-item .a-body h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-dark); margin: 0 0 4px; }
+  .action-item .a-body p { font-size: 12.5px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .action-item .a-pri {
+    font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.14em;
+    padding: 4px 10px; border-radius: 999px; font-weight: 700; white-space: nowrap;
+  }
+  .a-pri.immediate { background: var(--red-bg); color: var(--red-text); }
+  .a-pri.high { background: var(--gold-bg); color: var(--gold-text); }
+  .a-pri.medium { background: var(--blue-bg); color: var(--blue-text); }
+  .a-pri.ongoing { background: var(--green-bg); color: var(--green-text); }
+
+  /* Location banner */
+  .loc-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; padding: 40px 0;
+  }
+  .loc-banner .eyebrow { color: var(--teal); }
+  .loc-banner h2 { color: #fff; font-size: 40px; margin-bottom: 8px; }
+  .loc-banner .addr { font-size: 14px; color: #c7d4dd; }
+  .loc-banner .addr a { color: var(--teal); text-decoration: none; }
+
+  /* Footer */
+  footer {
+    background: var(--navy); color: #8aa1b3; padding: 32px 0; text-align: center;
+    font-size: 12px; margin-top: 60px; letter-spacing: 0.06em;
+  }
+  footer .brand { color: var(--gold); font-weight: 600; }
+
+  /* Responsive */
+  img, canvas, svg, table { max-width: 100%; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+  .action-item .a-body { min-width: 0; }
+  .action-item .a-body p { word-wrap: break-word; overflow-wrap: anywhere; }
+  .pages-table .url { word-break: break-all; }
+
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .hero h1 { font-size: 42px; }
+    .section h2 { font-size: 32px; }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+    .hero h1 { font-size: 36px; line-height: 1.1; }
+    .section h2 { font-size: 26px; }
+    .section { padding: 44px 0; }
+    .hero-meta-row { grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+    .loc-banner h2 { font-size: 32px; }
+    .loc-banner { padding: 32px 0; }
+    .gbp-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr 1fr; }
+    .action-item { grid-template-columns: 44px 1fr; }
+    .action-item .a-pri { grid-column: 2; justify-self: start; margin-top: 6px; }
+    .directory-summary { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .directory-summary .dir-stat .num { font-size: 24px; }
+    .chart-wrap canvas { max-height: 260px; }
+  }
+  @media (max-width: 768px) {
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tech-issue-card { padding: 16px 18px; gap: 14px; grid-template-columns: 50px 1fr; }
+    .tech-issue-card .tech-num { font-size: 34px; }
+    .triage-counters { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .triage-counter .num { font-size: 26px; }
+    .focus-3 { padding: 18px 20px; }
+    .focus-3 h3 { font-size: 16px; }
+    .focus-3 .f3-stat { font-size: 32px; }
+  }
+  @media (max-width: 700px) {
+    .focus-3-grid { grid-template-columns: 1fr; }
+    .focus-3:last-child { grid-column: auto; }
+    .tech-issues-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    .section { padding: 36px 0; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero h1 { font-size: 30px; }
+    .hero { padding: 36px 0 32px; }
+    .hero-meta-row { grid-template-columns: 1fr; gap: 16px; padding: 18px 0 0; }
+    .section h2 { font-size: 24px; }
+    .section h3 { font-size: 18px; margin: 28px 0 10px; }
+    .loc-banner h2 { font-size: 26px; }
+    .kpi-num { font-size: 30px; }
+    .kpi-card { padding: 18px 14px; }
+    .kpi-label { font-size: 9px; }
+    .h2-divider { grid-template-columns: repeat(3, 56px); margin-bottom: 18px; }
+    .chart-wrap { padding: 14px; }
+    .chart-wrap canvas { max-height: 220px; }
+    .gbp-card .star-rating { font-size: 52px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr; gap: 12px; }
+    .focus-3 .f3-stat { font-size: 28px; }
+    .action-item { padding: 14px 18px; }
+    .action-item .a-num { font-size: 22px; }
+  }
+  @media (max-width: 480px) {
+    .triage-counters { grid-template-columns: 1fr; }
+    .directory-summary { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 420px) {
+    .container { padding: 0 14px; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 26px; }
+    .section h2 { font-size: 22px; }
+    .h2-divider { grid-template-columns: repeat(3, 48px); }
+  }
+
+  /* ===== GLOBAL MOBILE FIXES ===== */
+  html, body { overflow-x: hidden; }
+  .account-chip { flex-wrap: wrap; min-width: 0; }
+  .focus-3 code, .kf-card code, .critical-callout code, .tech-callout code { word-break: break-all; }
+  .pages-table .url-flag { word-break: normal; white-space: normal; }
+
+  /* Tables: hide least-critical column on small phones to eliminate horizontal clip */
+  @media (max-width: 500px) {
+    /* Directory table: hide "Why it matters" column */
+    .directory-table thead tr th:nth-child(3),
+    .directory-table tbody tr td:nth-child(3) { display: none; }
+    .directory-table { min-width: 0; width: 100%; }
+
+    /* Keyword table: hide Status pill column */
+    .keyword-table thead tr th:nth-child(4),
+    .keyword-table tbody tr td:nth-child(4) { display: none; }
+    .keyword-table { min-width: 0; width: 100%; }
+
+    /* Competitor table: hide Ref Domains column */
+    .comp-twin table thead tr th:nth-child(5),
+    .comp-twin table tbody tr td:nth-child(5) { display: none; }
+    .comp-twin table { min-width: 0; width: 100%; }
+
+    /* Pages table: fine as-is, just reduce min-width */
+    .pages-table { min-width: 0; width: 100%; }
+    .directory-table { min-width: 0; width: 100%; }
+  }
+
+  /* Extra-small phone tweaks */
+  @media (max-width: 380px) {
+    .kf-card { grid-template-columns: 28px 1fr; gap: 10px; padding: 14px 16px; }
+    .kf-card .kf-icon { width: 26px; height: 26px; font-size: 13px; }
+    .focus-3 { padding: 16px; }
+    .focus-3 .f3-stat { font-size: 26px; }
+    .tech-issue-card { padding: 14px 16px; gap: 12px; grid-template-columns: 42px 1fr; }
+    .tech-issue-card .tech-num { font-size: 28px; }
+    .action-item { padding: 12px 16px; gap: 12px; }
+    .action-item .a-num { font-size: 20px; }
+    .gbp-card { padding: 18px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============= HERO ============= -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Website Quality Audit · Single-Location Practice · Prospect</div>
+    <h1>Adel Dentistry<br><em>Carrollwood, Tampa FL</em></h1>
+    <p class="hero-sub">A focused audit of organic visibility, Google Business Profile presence, website structure, and competitive standing among nearby Tampa practices — prepared as part of a growth opportunity assessment.</p>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <div class="meta-label">Audit Date</div>
+        <div class="meta-value">May 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Prepared By</div>
+        <div class="meta-value">Dentist Nerds</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Property Audited</div>
+        <div class="meta-value">adeldentistry.com</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Data Source</div>
+        <div class="meta-value">Semrush · Google Maps</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============= LOCATION BANNER ============= -->
+<div class="loc-banner">
+  <div class="container">
+    <div class="eyebrow">Practice location</div>
+    <h2>Adel Dentistry — Carrollwood</h2>
+    <div class="addr">Carrollwood · Tampa, Florida 33618 · <a href="https://www.adeldentistry.com/" target="_blank" rel="noopener">adeldentistry.com</a></div>
+  </div>
+</div>
+
+<!-- ============= PERFORMANCE SUMMARY ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Performance summary</div>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-teal"></span></div>
+    <h2>New site, invisible traffic — big potential not yet activated</h2>
+    <p class="section-text">Adel Dentistry's website launched in October 2024 — roughly seven months ago. Despite accumulating <strong>110 ranking keywords</strong> and <strong>92 referring domains</strong>, the site attracts only <strong>15 monthly organic visitors</strong>. Every single one of those visits lands on the homepage. The nine other indexed pages — veneers, location-specific, booking, about — drive <strong>zero traffic each</strong>. This is not a content problem; it is a structure and optimization problem, and it is entirely fixable.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card gold">
+        <div class="kpi-num">7</div>
+        <div class="kpi-label">Authority Score</div>
+        <div class="kpi-sub">Semrush · US</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-num">15</div>
+        <div class="kpi-label">Monthly Visits</div>
+        <div class="kpi-sub">May 2026 organic</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-num">110</div>
+        <div class="kpi-label">Ranking Keywords</div>
+        <div class="kpi-sub">organic, US</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-num">92</div>
+        <div class="kpi-label">Referring Domains</div>
+        <div class="kpi-sub">171 total backlinks</div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-caption">Monthly organic traffic · 12-month trend (Jun 2025 – May 2026)</div>
+      <canvas id="trafficTrend"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ============= TOP PRIORITY FIXES ============= -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Top priority fixes</div>
+    <h2>Top Priority Fixes &amp; Issues</h2>
+    <div class="account-chip">
+      <span class="slug">adeldentistry.com</span>
+      <span class="label">· Adel Dentistry · Carrollwood · Tampa, FL</span>
+    </div>
+
+    <div class="focus-3-grid">
+      <div class="focus-3 red">
+        <div class="f3-eyebrow">Issue 01 — Homepage monopoly</div>
+        <h3>100% of traffic on homepage — 9 other pages each get zero visits</h3>
+        <div class="visual">
+          <div class="f3-stat">9</div>
+        </div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--red);">pages at 0 visits</div>
+        <p>All 15 monthly visits land on the homepage. The veneers page (<code>/porcelain-veneers-tampa-fl</code>), the Lake Magdalene location page (<code>/dentist-lake-magdalene-tampa-fl</code>), the booking page, the about page — none drive a single visit. These pages exist but are not optimized to rank for anything a patient would actually search.</p>
+      </div>
+      <div class="focus-3 gold">
+        <div class="f3-eyebrow">Issue 02 — Keyword cannibalization</div>
+        <h3>5 different URLs competing for the same "adel dental" search terms</h3>
+        <div class="visual">
+          <div class="f3-stat">5</div>
+        </div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--gold-2);">URLs in conflict</div>
+        <p>Semrush shows <code>/about-1</code>, <code>/categories-1</code>, <code>/contact</code>, <code>/book-online</code>, and the homepage all ranking simultaneously for "adel dental" and "adel dentist." This splits Google's attention across multiple weak signals instead of concentrating authority on one authoritative page — and is a clear sign of a Wix template site without SEO structure.</p>
+      </div>
+      <div class="focus-3 blue">
+        <div class="f3-eyebrow">Issue 03 — Primary keyword too deep</div>
+        <h3>"Carrollwood dentist" at position #19 — below the fold, zero clicks</h3>
+        <div class="visual">
+          <div class="f3-stat">#19</div>
+        </div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--blue);">page 2 ranking</div>
+        <p>The highest-value non-brand keyword for this practice is <em>carrollwood dentist</em> (90 searches/month) — and the site sits at position #19. Positions 1–3 capture 60–75% of clicks; position 19 captures near zero. With focused on-page optimization and local authority building, breaking the top 5 is achievable within 90–120 days.</p>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+    <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · Adel Dentistry</h2>
+    <div class="keyfinding-list">
+      <div class="kf-card purple">
+        <div class="kf-icon">◈</div>
+        <div>
+          <h5>Veneers is the strongest commercial asset — and it's being wasted</h5>
+          <p>The practice has a dedicated <code>/porcelain-veneers-tampa-fl</code> page targeting a high-value cosmetic keyword (<em>porcelain veneers tampa</em>, 90 searches/mo). It currently ranks at #77 — deep on page 8. A properly structured, schema-marked veneers page for a Carrollwood Tampa practice could realistically reach top 20 within one quarter, driving high-intent traffic worth $4–9 CPC in paid equivalency.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">↓</div>
+        <div>
+          <h5>Wix platform is limiting SEO ceiling</h5>
+          <p>URL slugs like <code>/about-1</code>, <code>/categories-1</code>, and <code>/gallery-static</code> are Wix template artifacts — non-descriptive paths that dilute crawl signals and prevent page-level topic authority. Wix sites can rank well, but only with deliberate structural cleanup that most Wix users never do. The current setup signals to Google that the site is a default installation rather than an intentionally built practice presence.</p>
+        </div>
+      </div>
+      <div class="kf-card gold">
+        <div class="kf-icon">⚡</div>
+        <div>
+          <h5>Traffic collapsed after launch peak — now slowly recovering</h5>
+          <p>The site launched around October 2024 and briefly saw 35–62 visits per month in its first two months before dropping to 3–11 visits per month through most of 2025. May 2026 shows 15 visits — a recovery, but still far below even the modest early peak. Keyword count has grown consistently (now 110) which means Google is indexing more content, but rankings are too deep to convert to clicks.</p>
+        </div>
+      </div>
+      <div class="kf-card blue">
+        <div class="kf-icon">↑</div>
+        <div>
+          <h5>Competing with a site (Phoenix Dental Tampa) that has far fewer backlinks but double the traffic</h5>
+          <p>Phoenix Dental Tampa has only 37 referring domains vs. Adel Dentistry's 92 — yet drives 82 monthly visits vs. 15. Their Authority Score is 16 vs. 7. This shows that content optimization and on-page structure matter more than raw link count at this local competitive level. Better-structured pages on similar domain authority will outrank a larger backlink profile every time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= GOOGLE BUSINESS PROFILE ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Google Business Profile</div>
+    <h2 style="font-size: 28px;">Local Presence · Adel Dentistry</h2>
+    <div class="gbp-card">
+      <div class="star-block">
+        <div class="star-rating" style="font-size:40px; padding: 10px 0;">GBP</div>
+        <div class="stars" style="font-size:13px; color: #4285f4; letter-spacing:0;">Active · Verified</div>
+        <div class="review-count">Google Maps</div>
+      </div>
+      <div class="gbp-meta">
+        <div class="gbp-row"><div class="label">Neighborhood</div><div class="value">Carrollwood · Tampa, FL</div></div>
+        <div class="gbp-row"><div class="label">GBP Status</div><div class="value">Listed on Google Maps ✓</div></div>
+        <div class="gbp-row"><div class="label">Category</div><div class="value">Dentist · Carrollwood</div></div>
+        <div class="gbp-row"><div class="label">Website Link on GBP</div><div class="value">adeldentistry.com ✓</div></div>
+        <div class="gbp-row"><div class="label">Review Count / Rating</div><div class="value">Verify on GBP dashboard</div></div>
+        <div class="gbp-row"><div class="label">Schema on Website</div><div class="value">LocalBusiness — Not detected</div></div>
+      </div>
+    </div>
+    <p class="section-text" style="margin-top: 0;">The GBP listing is active and verified on Google Maps — a solid starting point. The critical gap is that the website does not carry <strong>LocalBusiness or AggregateRating schema</strong>, which means Google AI Overviews and knowledge panels cannot pull structured practice data (address, hours, reviews) directly from the site. Adding schema bridges the GBP signals to the organic rankings.</p>
+  </div>
+</section>
+
+<!-- ============= DIRECTORY PRESENCE ============= -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Core directory listings</div>
+    <h2>Directory &amp; Citation Gaps</h2>
+    <p class="section-text">For a practice that launched in late 2024, citation building is urgent. Local citation consistency is one of the top signals Google uses for local pack rankings. The directories below are the highest-priority for a Tampa dental practice at this stage.</p>
+
+    <div class="directory-summary">
+      <div class="dir-stat red"><div class="num">2</div><div class="dir-label">Likely Missing</div><small>no profile detected</small></div>
+      <div class="dir-stat"><div class="num">3</div><div class="dir-label">Verify Status</div><small>confirm + complete</small></div>
+      <div class="dir-stat green"><div class="num">1</div><div class="dir-label">Confirmed Active</div><small>Google Maps</small></div>
+    </div>
+
+    <div class="table-scroll"><table class="directory-table">
+      <thead><tr><th>Directory</th><th>Status</th><th>Why It Matters</th></tr></thead>
+      <tbody>
+        <tr><td>Zocdoc</td><td><span class="dir-status missing">Missing</span></td><td>Largest bookable-appointment platform for dentists in the US — competitors in Carrollwood are actively using it for new patient acquisition</td></tr>
+        <tr><td>BBB (Better Business Bureau)</td><td><span class="dir-status missing">Missing</span></td><td>High-authority citation source (DA 91) — straightforward trust signal for "best dentist" queries and AI Overviews</td></tr>
+        <tr><td>Healthgrades</td><td><span class="dir-status verify">Verify</span></td><td>Individual doctor profiles with photos, bios, and review aggregation — likely auto-generated but unclaimed; claimed profiles rank significantly better</td></tr>
+        <tr><td>Vitals.com</td><td><span class="dir-status verify">Verify</span></td><td>High-DR dental directory that feeds into aggregated "best dentist" results — common citation gap for practices under 1 year old</td></tr>
+        <tr><td>Yelp</td><td><span class="dir-status verify">Verify</span></td><td>Verify profile is claimed, address matches exactly, and category is set to "General Dentist" — NAP consistency impacts local pack rankings</td></tr>
+        <tr><td>Google Business Profile</td><td><span class="dir-status listed">Active</span></td><td>Listed and verified on Google Maps — website link confirmed</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ============= PAGE AUDIT ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Indexed pages · Technical audit</div>
+    <h2>10 Indexed Pages on adeldentistry.com</h2>
+    <div class="triage-counters">
+      <div class="triage-counter red">
+        <div class="num">7</div>
+        <div class="triage-label">Optimize &amp; Rebuild</div>
+        <small style="font-size: 11px; color: var(--text-muted);">service / location pages at 0 visits</small>
+      </div>
+      <div class="triage-counter gold" style="border-top-color: var(--gold-2);">
+        <div class="num" style="color: var(--gold-2);">2</div>
+        <div class="triage-label">Structural Issues</div>
+        <small style="font-size: 11px; color: var(--text-muted);">Wix template artifacts</small>
+      </div>
+      <div class="triage-counter green">
+        <div class="num">1</div>
+        <div class="triage-label">Working</div>
+        <small style="font-size: 11px; color: var(--text-muted);">homepage driving all traffic</small>
+      </div>
+    </div>
+
+    <div class="table-scroll"><table class="pages-table">
+      <thead><tr><th>URL</th><th>Visits / mo</th></tr></thead>
+      <tbody>
+        <tr><td class="url">/ (homepage)</td><td>15</td></tr>
+        <tr><td class="url">/porcelain-veneers-tampa-fl</td><td>0</td></tr>
+        <tr><td class="url">/dentist-lake-magdalene-tampa-fl</td><td>0</td></tr>
+        <tr><td class="url">/book-online</td><td>0</td></tr>
+        <tr><td class="url">/contact</td><td>0</td></tr>
+        <tr class="flag-row-gold"><td class="url wrong">/about-1 <span class="url-flag gold">Wix artifact — non-descriptive slug</span></td><td>0</td></tr>
+        <tr class="flag-row-gold"><td class="url wrong">/categories-1 <span class="url-flag gold">Wix artifact — thin template page</span></td><td>0</td></tr>
+        <tr class="flag-row-gold"><td class="url wrong">/gallery-static <span class="url-flag gold">Wix artifact — no rankable content</span></td><td>0</td></tr>
+        <tr><td class="url">/category/cosmetic-dentistry</td><td>0</td></tr>
+        <tr><td class="url">/category/teeth-straightening</td><td>0</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="critical-callout">
+      <strong>Structural note:</strong> <code>/about-1</code>, <code>/categories-1</code>, and <code>/gallery-static</code> are Wix-generated slugs with no SEO value. They are diluting the crawl budget and competing with the homepage for brand keyword rankings. These should be renamed, consolidated, or noindex'd. The <code>/category/</code> pages are thin auto-generated Wix blog categories — likely indexing but contributing no topical authority.
+    </div>
+  </div>
+</section>
+
+<!-- ============= KEYWORD RANKINGS ============= -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Organic keyword rankings · Top opportunities</div>
+    <h2>Where Adel Dentistry Ranks Today</h2>
+    <p class="section-text">Non-brand keywords with commercial intent are almost entirely absent from the top 20. The practice is ranking for its own name (#1) but is invisible to patients searching for a dentist by service or neighborhood — which represents the vast majority of new patient search behavior.</p>
+
+    <div class="table-scroll"><table class="keyword-table">
+      <colgroup>
+        <col style="width:44%">
+        <col style="width:14%">
+        <col style="width:14%">
+        <col style="width:28%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th>Position</th>
+          <th>Search Vol / mo</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>adel dentistry</td><td>1</td><td>50</td><td><span class="pill pill-top3">Brand #1</span></td></tr>
+        <tr><td>adel dental</td><td>8</td><td>110</td><td><span class="pill pill-top10">Brand top 10</span></td></tr>
+        <tr><td>carrollwood dentist</td><td>19</td><td>90</td><td><span class="pill pill-deep">Page 2</span></td></tr>
+        <tr><td>dentist carrollwood fl</td><td>23</td><td>40</td><td><span class="pill pill-deep">Page 3</span></td></tr>
+        <tr><td>dentist in carrollwood</td><td>24</td><td>70</td><td><span class="pill pill-deep">Page 3</span></td></tr>
+        <tr><td>adel dentist</td><td>26</td><td>320</td><td><span class="pill pill-deep">Page 3</span></td></tr>
+        <tr><td>porcelain veneers tampa</td><td>77</td><td>90</td><td><span class="pill pill-deep">Page 8</span></td></tr>
+        <tr><td>dentist tampa near me</td><td>62</td><td>30</td><td><span class="pill pill-deep">Page 7</span></td></tr>
+        <tr><td>south tampa veneers</td><td>74</td><td>30</td><td><span class="pill pill-deep">Page 8</span></td></tr>
+        <tr><td>orthodontist carrollwood</td><td>43</td><td>70</td><td><span class="pill pill-deep">Wrong entity</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="section-text" style="font-size: 13px; color: var(--text-muted);">Note: <em>orthodontist carrollwood</em> ranking for a general dentistry site is a red flag — it suggests the site's entity is not clearly defined to Google, which can suppress rankings across all categories.</p>
+  </div>
+</section>
+
+<!-- ============= TECHNICAL ISSUES ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+    <h2>Technical Issues</h2>
+    <p class="section-text">Site-level technical SEO health check based on Semrush data, on-page review, and indexed URL analysis.</p>
+
+    <div class="tech-issues-grid">
+      <div class="tech-issue-card gold">
+        <div class="tech-num">3</div>
+        <div>
+          <h5>Wix Template Artifacts</h5>
+          <p><code>/about-1</code>, <code>/categories-1</code>, <code>/gallery-static</code> — non-descriptive slugs from default Wix template. Dilute crawl budget and confuse entity signals.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card purple">
+        <div class="tech-num">0</div>
+        <div>
+          <h5>Schema Markup Detected</h5>
+          <p>No LocalBusiness, MedicalBusiness, FAQPage, or AggregateRating schema detected. Schema is required for AI Overviews, knowledge panels, and rich results eligibility.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card green">
+        <div class="tech-num">10</div>
+        <div>
+          <h5>Pages Indexed (Crawlable)</h5>
+          <p>All pages are crawlable and indexed by Google. Site architecture is functional — optimization and content structure are the gaps, not technical access.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-callout">
+      <strong>Highest-leverage technical work:</strong> (1) Rename or consolidate Wix template artifact URLs (<code>/about-1</code>, <code>/categories-1</code>, <code>/gallery-static</code>); (2) Add <code>LocalBusiness</code> schema to the homepage, <code>MedicalProcedure</code> to the veneers page, and <code>FAQPage</code> where applicable. These two tasks together are estimated to move "carrollwood dentist" from position #19 into the top 10 within 60–90 days.
+    </div>
+  </div>
+</section>
+
+<!-- ============= COMPETITIVE POSITION ============= -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Competitive position · Tampa / Carrollwood area</div>
+    <h2>How Adel Dentistry Compares to Nearby Practices</h2>
+    <p class="section-text">Four Tampa-area dental practices with comparable domain age and authority. Adel Dentistry has <strong>more keywords than three of them</strong> — but converts those keywords into the fewest visits of the group. The gap is not authority or backlinks: it is content structure and ranking depth.</p>
+
+    <div class="comp-twins">
+      <div class="comp-twin">
+        <table>
+          <thead>
+            <tr>
+              <th>Practice</th>
+              <th>Auth Score</th>
+              <th>Keywords</th>
+              <th>Visits / mo</th>
+              <th>Ref. Domains</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Phoenix Dental Tampa</strong><br><small style="color: var(--text-muted); font-weight: 400;">phoenixdentaltampa.com · Tampa area</small></td>
+              <td>16</td><td>126</td><td>82</td><td>37</td>
+            </tr>
+            <tr>
+              <td><strong>Lake Magdalene Dental</strong><br><small style="color: var(--text-muted); font-weight: 400;">lakemagdalenedental.com · ~3 mi</small></td>
+              <td>8</td><td>43</td><td>95</td><td>67</td>
+            </tr>
+            <tr>
+              <td><strong>HM Dentistry</strong><br><small style="color: var(--text-muted); font-weight: 400;">hmdentistry.com · Tampa area</small></td>
+              <td>7</td><td>70</td><td>67</td><td>123</td>
+            </tr>
+            <tr>
+              <td><strong>Impressive Smiles Tampa</strong><br><small style="color: var(--text-muted); font-weight: 400;">impressivesmilestampa.com · Tampa area</small></td>
+              <td>7</td><td>142</td><td>43</td><td>146</td>
+            </tr>
+            <tr class="self">
+              <td><strong>Adel Dentistry (You)</strong><br><small style="color: var(--red); font-weight: 400;">adeldentistry.com · Carrollwood</small></td>
+              <td>7</td><td>110</td><td>15</td><td>92</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="critical-callout" style="background: var(--blue-bg); border-left-color: var(--blue);">
+      <strong style="color: var(--blue);">The opportunity in plain numbers:</strong> Lake Magdalene Dental drives 95 visits/month with only 43 keywords and 67 referring domains. Adel Dentistry has 110 keywords and 92 referring domains — and gets 15 visits. Fixing structure and on-page optimization alone, without building a single new backlink, should close most of this gap.
+    </div>
+  </div>
+</section>
+
+<!-- ============= PRIORITY ACTION PLAN ============= -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Where attention is needed first</div>
+    <h2>Priority Action Plan</h2>
+    <p class="section-text">The six moves that will take Adel Dentistry from 15 monthly visitors to 100+, in order of impact.</p>
+
+    <div class="action-list">
+      <div class="action-item">
+        <div class="a-num">1</div>
+        <div class="a-body">
+          <h5>Fix keyword cannibalization — consolidate brand-name pages</h5>
+          <p>Remove or redirect <code>/about-1</code>, <code>/categories-1</code>, and <code>/gallery-static</code> to properly named equivalents. Ensure only one page ranks for "adel dental / adel dentist" queries, concentrating all authority on the homepage or a dedicated About page with a clean slug.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">2</div>
+        <div class="a-body">
+          <h5>Add schema markup site-wide</h5>
+          <p>LocalBusiness + MedicalBusiness on homepage (with address, hours, phone), MedicalProcedure on the veneers page, AggregateRating pulling from GBP reviews, FAQPage on any FAQ content. This unlocks AI Overviews eligibility and rich-result panels for the Carrollwood dentist queries.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">3</div>
+        <div class="a-body">
+          <h5>Optimize the "carrollwood dentist" cluster</h5>
+          <p>The homepage needs a stronger title tag, H1, and on-page content targeting "dentist in Carrollwood Tampa FL." Currently ranking at #19 — a properly optimized homepage for a local single-location practice should reach top 5 within 90 days.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">4</div>
+        <div class="a-body">
+          <h5>Rebuild the veneers page as a conversion + SEO asset</h5>
+          <p><code>/porcelain-veneers-tampa-fl</code> is a high-value page ranking at #77 for a 90-search/month keyword with $4–9 CPC equivalent. Rebuild with 1,000+ words, before/after photos, FAQ accordion, transparent pricing notes, and CTA above the fold. Target: top 20 within 60 days, top 10 within 120.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">5</div>
+        <div class="a-body">
+          <h5>Claim missing directories + verify NAP consistency</h5>
+          <p>Zocdoc, Healthgrades (doctor profile), and BBB as first priority. Verify that Name / Address / Phone matches exactly across Google Maps, Yelp, and any existing listings. NAP inconsistency is a known suppressor of local pack visibility.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">6</div>
+        <div class="a-body">
+          <h5>Local backlink campaign — from 92 toward 150 referring domains</h5>
+          <p>Competitors getting the most traffic (Lake Magdalene: 67 ref. domains, 95 visits) show that quality local links outperform raw count. Targets: Carrollwood community associations, Tampa Bay local media health columns, dental association directories, and neighborhood business listings.</p>
+        </div>
+        <span class="a-pri ongoing">Ongoing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer>
+  <div class="container">
+    <span class="brand">Dentist Nerds</span> · Website Quality Audit · Adel Dentistry · Carrollwood, Tampa FL · May 2026
+  </div>
+</footer>
+
+<script>
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.color = '#6b7280';
+
+  new Chart(document.getElementById('trafficTrend'), {
+    type: 'line',
+    data: {
+      labels: ['Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26'],
+      datasets: [{
+        label: 'Organic visits',
+        data: [7, 4, 11, 5, 5, 5, 3, 8, 7, 15, 15, 15],
+        borderColor: '#5fbab0',
+        backgroundColor: 'rgba(95,186,176,0.15)',
+        borderWidth: 2.5,
+        tension: 0.3,
+        fill: true,
+        pointBackgroundColor: '#5fbab0',
+        pointRadius: 3,
+        pointHoverRadius: 5
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { backgroundColor: '#0d2538', padding: 10, titleFont: { size: 12 }, bodyFont: { size: 12 } }
+      },
+      scales: {
+        x: { grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } },
+        y: { beginAtZero: true, grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } }
+      }
+    }
+  });
+
+  // Touch scroll hint for tables on mobile
+  document.querySelectorAll('.table-scroll, .comp-twin').forEach(function(el) {
+    el.addEventListener('touchstart', function() {}, { passive: true });
+  });
+</script>
+</body>
+</html>

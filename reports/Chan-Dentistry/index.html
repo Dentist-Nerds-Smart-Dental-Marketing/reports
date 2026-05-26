@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Christopher Chan Dentistry — Pre-Acquisition Website Audit</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:#fff;color:#1a2332;line-height:1.55;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  }
+  .page{max-width:880px;margin:0 auto;padding:60px 32px 40px}
+
+  .hero{text-align:center;padding-bottom:40px}
+  .pill{
+    display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.18em;
+    color:#2563eb;background:#eff6ff;padding:7px 16px;border-radius:24px;
+    border:1px solid #dbeafe;text-transform:uppercase;
+  }
+  .hero h1{
+    font-size:54px;font-weight:800;letter-spacing:-0.025em;
+    color:#0f172a;margin:24px 0 18px;line-height:1.05;
+  }
+  .hero .lede{
+    max-width:640px;margin:0 auto;color:#64748b;font-size:15px;line-height:1.65;
+  }
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:10px;
+    max-width:780px;margin:34px auto 22px;
+  }
+  .hstat{background:#f8fafc;border-radius:10px;padding:18px 8px;text-align:center}
+  .hstat .n{font-size:32px;font-weight:800;line-height:1;letter-spacing:-0.02em}
+  .hstat .l{font-size:11px;color:#64748b;margin-top:6px;font-weight:500}
+  .red{color:#dc2626}
+  .amber{color:#d97706}
+  .green{color:#059669}
+  .blue{color:#2563eb}
+  .prepared{font-size:11px;color:#94a3b8;letter-spacing:0.04em}
+
+  hr.div{border:0;border-top:1px solid #e2e8f0;margin:48px 0}
+
+  .eyebrow{font-size:10px;font-weight:700;letter-spacing:0.2em;color:#2563eb;text-transform:uppercase;margin-bottom:12px}
+
+  .q-header{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+  .q-num{
+    flex-shrink:0;width:42px;height:42px;border-radius:10px;
+    background:#0f172a;color:#fff;font-weight:800;font-size:16px;
+    display:flex;align-items:center;justify-content:center;letter-spacing:-0.01em;
+  }
+  .q-title{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:#0f172a;line-height:1.15}
+
+  h2.sec{font-size:28px;font-weight:800;letter-spacing:-0.02em;color:#0f172a;margin-bottom:8px}
+  h3.sub{font-size:18px;font-weight:700;color:#0f172a;margin-bottom:10px;letter-spacing:-0.01em;margin-top:28px}
+  p.intro{font-size:14px;color:#64748b;margin-bottom:22px;line-height:1.65}
+
+  .findings{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .finding{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 18px 16px}
+  .finding .icon{font-size:18px;margin-bottom:10px;display:block}
+  .finding h4{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:6px;line-height:1.35}
+  .finding p{font-size:12.5px;color:#64748b;line-height:1.55}
+
+  .alert{
+    background:#fef9c3;border-left:3px solid #eab308;padding:13px 18px;
+    border-radius:4px;font-size:13px;color:#713f12;margin-top:18px;line-height:1.6;
+  }
+  .alert strong{color:#713f12;font-weight:700}
+
+  .chart-box{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px 16px}
+  .chart-row{display:flex;align-items:flex-end;gap:4px;height:170px;margin-top:8px}
+  .bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px}
+  .bar .v{font-size:9px;color:#0f172a;font-weight:600}
+  .bar .b{width:100%;border-radius:2px 2px 0 0;min-height:2px}
+  .bar.up .b{background:#10b981}
+  .bar.down .b{background:#dc2626}
+  .bar.mid .b{background:#f59e0b}
+  .bar .lbl{font-size:9px;color:#94a3b8;margin-top:4px;font-weight:500}
+
+  .kw-circles{display:flex;justify-content:center;gap:48px;margin:26px 0 8px}
+  .kw-circle{text-align:center}
+  .kw-circle .ring{
+    width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:26px;font-weight:800;margin:0 auto 8px;border:5px solid;letter-spacing:-0.02em;
+  }
+  .kw-circle.r1 .ring{border-color:#fecaca;color:#dc2626}
+  .kw-circle.r2 .ring{border-color:#fde68a;color:#d97706}
+  .kw-circle.r3 .ring{border-color:#fde68a;color:#d97706}
+  .kw-circle .lab{font-size:11px;color:#64748b;font-weight:500}
+
+  table.tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:16px}
+  table.tbl th{text-align:left;padding:10px 12px;font-size:9px;font-weight:700;letter-spacing:0.12em;color:#94a3b8;text-transform:uppercase;background:#f8fafc;border-bottom:1px solid #e2e8f0}
+  table.tbl td{padding:10px 12px;border-bottom:1px solid #f1f5f9;color:#0f172a;vertical-align:middle}
+  td.kw{font-weight:600}
+  td.pos{font-family:'SF Mono',Monaco,Consolas,monospace;text-align:left;color:#475569}
+  .tag{padding:3px 9px;border-radius:4px;font-size:10.5px;font-weight:600;display:inline-block;letter-spacing:0.01em}
+  .tag.good{background:#dcfce7;color:#15803d}
+  .tag.warn{background:#fef3c7;color:#92400e}
+  .tag.bad{background:#fee2e2;color:#b91c1c}
+  .tag.info{background:#dbeafe;color:#1e40af}
+  .row-warn{background:#fffbeb}
+  .row-bad{background:#fef2f2}
+
+  .comp-table-wrap{margin-top:18px}
+  .comp-row{display:grid;grid-template-columns:1fr 60px 80px 80px 90px 100px;gap:12px;font-size:13px;padding:12px 14px;border-bottom:1px solid #f1f5f9;align-items:center}
+  .comp-row.head{background:#f8fafc;font-size:9.5px;font-weight:700;letter-spacing:0.1em;color:#94a3b8;text-transform:uppercase;border-bottom:1px solid #e2e8f0;border-radius:8px 8px 0 0}
+  .comp-row.you{background:#fef2f2}
+  .comp-row .nm{font-weight:600;color:#0f172a}
+  .comp-row .nm .sub{font-size:11px;color:#94a3b8;font-weight:400;display:block}
+  .comp-row .num{text-align:center;font-family:'SF Mono',Monaco,Consolas,monospace;color:#475569}
+  .comp-table-wrap .border-wrap{border:1px solid #e2e8f0;border-radius:8px;overflow:hidden}
+
+  .share-list{margin-top:14px}
+  .share-row{margin-bottom:14px}
+  .share-row .head{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;align-items:baseline}
+  .share-row .head .nm{font-weight:600;color:#0f172a}
+  .share-row .head .pct{color:#64748b;font-weight:600;font-size:13px}
+  .share-row .head .pct.big{font-size:15px;color:#0f172a}
+  .share-row .track{height:14px;background:#f1f5f9;border-radius:6px;overflow:hidden}
+  .share-row .fill{height:100%;background:#3b82f6;border-radius:6px}
+  .share-row.you .fill{background:#dc2626}
+  .share-row.you .head .nm{color:#dc2626}
+  .share-row.leader .fill{background:#15803d}
+  .share-toggle{display:flex;gap:8px;margin-top:6px;margin-bottom:14px;font-size:12px}
+  .toggle-tag{background:#f1f5f9;color:#475569;padding:4px 10px;border-radius:4px;font-weight:600}
+
+  .opp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+  .opp-card{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:16px 18px}
+  .opp-card .lbl{font-size:9.5px;font-weight:700;letter-spacing:0.12em;color:#15803d;text-transform:uppercase;margin-bottom:6px;display:block}
+  .opp-card h4{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:6px;letter-spacing:-0.01em}
+  .opp-card p{font-size:12.5px;color:#1f2937;line-height:1.55;margin-bottom:8px}
+  .opp-card .est{font-size:11px;font-weight:600;color:#15803d;letter-spacing:0.02em}
+
+  .deliver-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+  .deliver-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px}
+  .deliver-card .num{
+    width:28px;height:28px;border-radius:6px;background:#eff6ff;color:#2563eb;
+    font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;
+    margin-bottom:10px;border:1px solid #dbeafe;
+  }
+  .deliver-card h4{font-size:13.5px;font-weight:700;color:#0f172a;margin-bottom:6px;letter-spacing:-0.01em}
+  .deliver-card p{font-size:12px;color:#64748b;line-height:1.5}
+
+  .pages-section{margin-top:18px}
+  .pages-section h4{font-size:13px;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em}
+  .pages-section .miss h4{color:#dc2626}
+  .pages-section .have h4{color:#059669}
+  .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  .chip{padding:7px 10px;border-radius:5px;font-size:11.5px;font-weight:500;border:1px solid;line-height:1.3}
+  .chip.x{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .chip.x::before{content:"× ";font-weight:700}
+  .chip.ok{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+  .chip.ok::before{content:"✓ ";font-weight:700}
+
+  .gbp-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden}
+  .gbp-table th{text-align:left;padding:14px 18px;font-size:10px;font-weight:700;letter-spacing:0.12em;color:#94a3b8;text-transform:uppercase;background:#f8fafc;border-bottom:1px solid #e2e8f0;width:50%}
+  .gbp-table td{padding:11px 18px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+  .gbp-table tr:last-child td{border-bottom:0}
+  .gbp-table .lbl{color:#64748b;font-weight:500}
+  .gbp-table .val{color:#0f172a}
+  .gbp-table .neg{color:#dc2626;font-weight:500;text-align:right}
+
+  .dir-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 14px}
+  .dir-stats .ds{background:#f8fafc;border-radius:10px;padding:18px 12px;text-align:center}
+  .dir-stats .ds .n{font-size:28px;font-weight:800;letter-spacing:-0.02em;line-height:1}
+  .dir-stats .ds .l{font-size:11px;color:#64748b;margin-top:6px;font-weight:500}
+
+  .dir-list{border:1px solid #e2e8f0;border-radius:8px;overflow:hidden}
+  .dir-list .row{display:flex;justify-content:space-between;padding:11px 18px;font-size:13px;border-bottom:1px solid #f1f5f9}
+  .dir-list .row:last-child{border-bottom:0}
+  .dir-list .row .v{font-weight:600;font-size:11.5px}
+  .v.live{color:#15803d}
+  .v.live::before{content:"✓ "}
+  .v.partial{color:#d97706}
+  .v.partial::before{content:"⚠ "}
+  .v.miss{color:#dc2626}
+  .v.miss::before{content:"✗ "}
+
+  .schema-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .schema-card{border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;background:#fff}
+  .schema-card h4{font-size:13px;font-weight:700;margin-bottom:14px;color:#0f172a}
+  .schema-card .item{display:flex;justify-content:space-between;font-size:12.5px;padding:8px 0;border-bottom:1px solid #f1f5f9;gap:10px}
+  .schema-card .item:last-child{border-bottom:0}
+  .schema-card .item .miss{color:#dc2626;font-weight:600;font-size:11px}
+  .schema-card .item .miss::before{content:"× "}
+  .schema-card .item p{color:#64748b;font-size:12px;line-height:1.55}
+
+  .info-box{
+    background:#eff6ff;border-left:3px solid #2563eb;padding:13px 18px;
+    border-radius:4px;font-size:13px;color:#1e3a8a;margin-top:18px;line-height:1.65;
+  }
+  .info-box strong{color:#1e40af;font-weight:700}
+
+  .ai-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+  .ai-stat{background:#f8fafc;border-radius:10px;padding:18px 12px;text-align:center}
+  .ai-stat .n{font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1}
+  .ai-stat .l{font-size:11px;color:#0f172a;margin-top:6px;line-height:1.4;font-weight:600}
+  .ai-stat .sub{font-size:10px;color:#94a3b8;margin-top:2px;display:block}
+
+  .issue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+  .issue{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px}
+  .issue.amber{background:#fffbeb;border-color:#fde68a}
+  .issue.red{background:#fef2f2;border-color:#fecaca}
+  .issue .h{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .issue .ic{font-size:14px}
+  .issue .t{font-size:12.5px;font-weight:700;color:#0f172a;letter-spacing:-0.01em}
+  .issue p{font-size:11.5px;color:#64748b;line-height:1.5}
+  .issue.full{grid-column:span 3}
+  @media (max-width:760px){.issue.full{grid-column:span 1}}
+
+  .timeline{margin-top:18px;padding-left:24px;position:relative}
+  .timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:#cbd5e1}
+  .tl-item{margin-bottom:18px;position:relative}
+  .tl-item::before{content:"";position:absolute;left:-24px;top:6px;width:9px;height:9px;background:#2563eb;border-radius:50%}
+  .tl-item h4{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:4px}
+  .tl-item p{font-size:12.5px;color:#64748b;line-height:1.55}
+
+  .footer{margin-top:60px;padding-top:24px;border-top:1px solid #e2e8f0;text-align:center;font-size:11px;color:#94a3b8;letter-spacing:0.04em}
+
+  .toc{
+    background:#0f172a;color:#fff;border-radius:12px;padding:24px 28px;margin-bottom:8px;
+  }
+  .toc-label{font-size:10px;font-weight:700;letter-spacing:0.18em;color:#93c5fd;text-transform:uppercase;margin-bottom:14px}
+  .toc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .toc-item{display:flex;gap:12px;align-items:flex-start}
+  .toc-item .n{
+    flex-shrink:0;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.1);
+    color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;
+  }
+  .toc-item .t{font-size:13px;font-weight:600;line-height:1.4;color:#fff}
+  .toc-item .d{font-size:11px;color:#93c5fd;margin-top:2px}
+
+  @media (max-width:760px){
+    .page{padding:32px 18px}
+    .hero h1{font-size:32px}
+    .hero-stats{grid-template-columns:repeat(2,1fr)}
+    .findings,.schema-grid,.dir-stats,.ai-stats,.issue-grid,.opp-grid,.deliver-grid,.toc-grid{grid-template-columns:1fr}
+    .chips{grid-template-columns:repeat(2,1fr)}
+    .kw-circles{flex-wrap:wrap;gap:18px}
+    .comp-row{grid-template-columns:1fr 50px 60px 60px;font-size:12px}
+    .comp-row .num.hide-m{display:none}
+    .q-title{font-size:18px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="pill">Pre-Acquisition Website Audit</span>
+    <h1>Christopher Chan Dentistry</h1>
+    <p class="lede">Comprehensive SEO &amp; digital presence audit for chandentistry.com — prepared for the prospective buyer. Four critical questions answered: who the competitors are, what share each captures, where the opportunities sit, and exactly what a new owner can do to close the gap.</p>
+
+    <div class="hero-stats">
+      <div class="hstat"><div class="n red">8</div><div class="l">Total Pages</div></div>
+      <div class="hstat"><div class="n red">71</div><div class="l">Organic Sessions/mo</div></div>
+      <div class="hstat"><div class="n red">88</div><div class="l">Ranking Keywords</div></div>
+      <div class="hstat"><div class="n red">8</div><div class="l">Authority Score</div></div>
+      <div class="hstat"><div class="n red">129</div><div class="l">Referring Domains</div></div>
+    </div>
+    <p class="prepared">Prepared April 2026 · Data via Semrush</p>
+  </div>
+
+  <hr class="div" />
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-label">The Four Questions This Report Answers</div>
+    <div class="toc-grid">
+      <div class="toc-item">
+        <div class="n">1</div>
+        <div>
+          <div class="t">Who are the primary competitors?</div>
+          <div class="d">The 4 Huntington Beach dental practices Chan Dentistry is up against</div>
+        </div>
+      </div>
+      <div class="toc-item">
+        <div class="n">2</div>
+        <div>
+          <div class="t">What % of search volume do they get?</div>
+          <div class="d">Real Semrush share-of-voice: total + commercial-intent</div>
+        </div>
+      </div>
+      <div class="toc-item">
+        <div class="n">3</div>
+        <div>
+          <div class="t">Where are the areas of opportunity?</div>
+          <div class="d">6 specific gaps with sized revenue estimates for the new owner</div>
+        </div>
+      </div>
+      <div class="toc-item">
+        <div class="n">4</div>
+        <div>
+          <div class="t">What can we do to help?</div>
+          <div class="d">9 deliverables across a 90-day plan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- KEY FINDINGS -->
+  <div>
+    <div class="eyebrow">Executive Summary</div>
+    <h2 class="sec">Key Findings</h2>
+
+    <div class="findings">
+      <div class="finding">
+        <span class="icon">📉</span>
+        <h4>71 Visits/Month — 95%+ Name-Based</h4>
+        <p>Semrush confirms ~71 organic sessions/mo, virtually all driven by people searching "Dr. Chan" or "Christopher Chan" by name. Effectively zero traffic from prospective new patients searching for a dentist in Huntington Beach.</p>
+      </div>
+      <div class="finding">
+        <span class="icon">🔍</span>
+        <h4>Only 8 Pages Indexed</h4>
+        <p>Smallest indexed footprint of any site reviewed. Competitors have 90–400+ pages. Missing dedicated pages for almost every service Dr. Chan offers — including his Pinhole Surgical Technique, the practice's biggest differentiator.</p>
+      </div>
+      <div class="finding">
+        <span class="icon">⚠️</span>
+        <h4>HTTP / HTTPS Split Issue</h4>
+        <p>Site has both http://www.chandentistry.com/ AND https://www.chandentistry.com/ indexed as separate pages, splitting link equity between two URLs. Critical technical fix needed before any SEO work.</p>
+      </div>
+      <div class="finding">
+        <span class="icon">📊</span>
+        <h4>Ranks Page 5+ for Every Commercial Search</h4>
+        <p>"Huntington Beach dentists" #66, "best dentist in Huntington Beach CA" #52, "dentist in Huntington Beach" #67, "Huntington Beach dental" #54. None of these rank on page 1 — or even page 5.</p>
+      </div>
+      <div class="finding">
+        <span class="icon">📈</span>
+        <h4>Volatile Traffic — No Stable Foundation</h4>
+        <p>Traffic has swung from 5 → 213 → 41 → 128 sessions/mo over 24 months with no consistent trajectory. The site has no organic strategy — wins are accidents, losses are unrecoverable.</p>
+      </div>
+      <div class="finding">
+        <span class="icon">🎯</span>
+        <h4>Strong Clinical Asset, Weak Digital Asset</h4>
+        <p>Dr. Chan is a Pinhole Academy member, implant fellowship trained, JHU magna cum laude, UCSF DDS, with cosmetic dentistry residency. None of these credentials are surfaced in a way that drives search rankings or new patient acquisition.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- ============================ -->
+  <!-- QUESTION 1 — WHO ARE THE COMPETITORS -->
+  <!-- ============================ -->
+  <div>
+    <div class="eyebrow">Question 1 of 4</div>
+    <div class="q-header">
+      <div class="q-num">01</div>
+      <div class="q-title">Who Are the Primary Competitors?</div>
+    </div>
+    <p class="intro">These are the 4 Huntington Beach dental practices winning the searches Chan Dentistry should be winning. They each occupy specific positions — the volume leader, the cosmetic award winner, the longtime pillar, the boutique mid-tier — and together with Chan Dentistry they make up the local search market.</p>
+
+    <div class="comp-table-wrap">
+      <div class="border-wrap">
+        <div class="comp-row head">
+          <div>Practice</div>
+          <div class="num">AS</div>
+          <div class="num">Keywords</div>
+          <div class="num">Traffic/mo</div>
+          <div class="num">Backlinks</div>
+          <div class="num">Position</div>
+        </div>
+        <div class="comp-row">
+          <div class="nm">oceanicdental.com<span class="sub">Oceanic Dental — Multi-location HB</span></div>
+          <div class="num">23</div>
+          <div class="num">1,193</div>
+          <div class="num"><strong>407</strong></div>
+          <div class="num">1,355</div>
+          <div class="num"><span class="tag good">Leader</span></div>
+        </div>
+        <div class="comp-row">
+          <div class="nm">jasoncellarsdds.com<span class="sub">Jason Cellars / Sea Cliff Dental</span></div>
+          <div class="num">17</div>
+          <div class="num">86</div>
+          <div class="num"><strong>299</strong></div>
+          <div class="num">859</div>
+          <div class="num"><span class="tag good">Award Winner</span></div>
+        </div>
+        <div class="comp-row">
+          <div class="nm">mortensendds.com<span class="sub">Andrew G. Mortensen, DDS — AACD</span></div>
+          <div class="num">13</div>
+          <div class="num">1,045</div>
+          <div class="num"><strong>286</strong></div>
+          <div class="num">463</div>
+          <div class="num"><span class="tag good">40+ Yrs Pillar</span></div>
+        </div>
+        <div class="comp-row">
+          <div class="nm">splendiddentistry.com<span class="sub">Splendid Dentistry — Negar Derakshani</span></div>
+          <div class="num">8</div>
+          <div class="num">158</div>
+          <div class="num"><strong>84</strong></div>
+          <div class="num">263</div>
+          <div class="num"><span class="tag info">Mid-Pack</span></div>
+        </div>
+        <div class="comp-row you">
+          <div class="nm"><strong>chandentistry.com</strong> (Subject)<span class="sub">Christopher Chan Dentistry</span></div>
+          <div class="num">8</div>
+          <div class="num">88</div>
+          <div class="num"><strong>71</strong></div>
+          <div class="num">245</div>
+          <div class="num"><span class="tag bad">Bottom of Pack</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>Quick read on each competitor:</strong>
+      <br><br>
+      <strong>Oceanic Dental</strong> — The dominant player by every metric. AS 23, 1,193 ranking keywords, 407 visits/mo, 605 referring domains. Multi-location strategy (Huntington Beach + Fountain Valley). They invest heavily in content and technical SEO and convert it into traffic. Hardest competitor to displace.
+      <br><br>
+      <strong>Jason Cellars / Sea Cliff Dental</strong> — "Best Dentist in America" 3 years running, "Best in OC" winner. Purchased the practice from Dr. Robert Moretta in 2021. AS 17 with 859 backlinks but only 86 ranking keywords — meaning his authority is concentrated in a few high-converting terms. PR-led strategy.
+      <br><br>
+      <strong>Andrew G. Mortensen, DDS</strong> — AACD-accredited, "Best Dentist Orange County" winner, 40+ years experience. 1,045 ranking keywords (the broadest content footprint of any HB competitor) but the lowest authority score among the leaders at AS 13. Signs of a long-tenured site that hasn't been updated for current SEO.
+      <br><br>
+      <strong>Splendid Dentistry (Negar Derakshani)</strong> — Boutique mid-tier player. AS 8, 84 visits/mo. Direct head-to-head competitor in the same authority/scale tier as Chan Dentistry — but already pulling slightly more commercial traffic.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- ============================ -->
+  <!-- QUESTION 2 — SEARCH SHARE -->
+  <!-- ============================ -->
+  <div>
+    <div class="eyebrow">Question 2 of 4</div>
+    <div class="q-header">
+      <div class="q-num">02</div>
+      <div class="q-title">What % of Search Volume Do They Get vs. Chan Dentistry?</div>
+    </div>
+    <p class="intro">Two views of share. The first shows total Semrush traffic (branded + commercial). The second strips out branded searches — i.e. people typing "Dr. Chan" or "Mortensen DDS" by name — to reveal the share of <em>real, prospective-patient demand</em>. The gap between the two views is the buyer story.</p>
+
+    <h3 class="sub" style="margin-top:8px">View A: Total Search Volume Share</h3>
+    <p style="font-size:13px;color:#64748b;margin-bottom:8px">All organic sessions per month (branded + commercial), split across the top 5 Huntington Beach dental practices.</p>
+    <div class="share-toggle">
+      <span class="toggle-tag">Total: 1,147 sessions/mo across all 5 practices</span>
+    </div>
+    <div class="share-list">
+      <div class="share-row leader">
+        <div class="head"><span class="nm">Oceanic Dental</span><span class="pct big">35.5%</span></div>
+        <div class="track"><div class="fill" style="width:35.5%"></div></div>
+      </div>
+      <div class="share-row">
+        <div class="head"><span class="nm">Jason Cellars / Sea Cliff Dental</span><span class="pct big">26.1%</span></div>
+        <div class="track"><div class="fill" style="width:26.1%"></div></div>
+      </div>
+      <div class="share-row">
+        <div class="head"><span class="nm">Andrew G. Mortensen, DDS</span><span class="pct big">24.9%</span></div>
+        <div class="track"><div class="fill" style="width:24.9%"></div></div>
+      </div>
+      <div class="share-row">
+        <div class="head"><span class="nm">Splendid Dentistry</span><span class="pct big">7.3%</span></div>
+        <div class="track"><div class="fill" style="width:7.3%"></div></div>
+      </div>
+      <div class="share-row you">
+        <div class="head"><span class="nm">Chan Dentistry (Subject)</span><span class="pct big">6.2%</span></div>
+        <div class="track"><div class="fill" style="width:6.2%"></div></div>
+      </div>
+    </div>
+
+    <h3 class="sub" style="margin-top:32px">View B: Commercial-Intent Search Share (Non-Branded)</h3>
+    <p style="font-size:13px;color:#64748b;margin-bottom:8px">This is the share that actually matters for new-patient acquisition. After stripping out searches for the practice's own name (e.g. "chan christopher", "mortensen dds", "jason cellars"), here's the share of <em>real commercial demand</em> — searches like "huntington beach dentists", "best dentist huntington beach", "dental implants huntington beach".</p>
+    <div class="share-toggle">
+      <span class="toggle-tag">~644 commercial-intent sessions/mo across the top 5</span>
+    </div>
+    <div class="share-list">
+      <div class="share-row leader">
+        <div class="head"><span class="nm">Oceanic Dental</span><span class="pct big">41.1%</span></div>
+        <div class="track"><div class="fill" style="width:41.1%"></div></div>
+      </div>
+      <div class="share-row">
+        <div class="head"><span class="nm">Jason Cellars / Sea Cliff Dental</span><span class="pct big">25.5%</span></div>
+        <div class="track"><div class="fill" style="width:25.5%"></div></div>
+      </div>
+      <div class="share-row">
+        <div class="head"><span class="nm">Andrew G. Mortensen, DDS</span><span class="pct big">24.4%</span></div>
+        <div class="track"><div class="fill" style="width:24.4%"></div></div>
+      </div>
+      <div class="share-row">
+        <div class="head"><span class="nm">Splendid Dentistry</span><span class="pct big">8.5%</span></div>
+        <div class="track"><div class="fill" style="width:8.5%"></div></div>
+      </div>
+      <div class="share-row you">
+        <div class="head"><span class="nm">Chan Dentistry (Subject)</span><span class="pct big">0.6%</span></div>
+        <div class="track"><div class="fill" style="width:0.6%"></div></div>
+      </div>
+    </div>
+
+    <div class="alert">
+      <strong>The honest read for the buyer:</strong> Chan Dentistry's 6.2% total share is misleading — it's almost entirely his existing patient base searching for him by name. On <strong>commercial-intent searches</strong> (the people who don't know the practice yet), the site captures only <strong>~0.6% share — roughly 3–4 visits per month</strong>. Oceanic Dental captures 41.1%. Mortensen captures 24.4%. Even the smallest competitor (Splendid Dentistry, similar AS) captures 14× more commercial-intent traffic than Chan Dentistry. <strong>The site is essentially invisible to new patients searching online.</strong> For a buyer, this is a rebuild — but it's also an asset bought at a lower multiple with substantial documented upside.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- ============================ -->
+  <!-- QUESTION 3 — OPPORTUNITIES -->
+  <!-- ============================ -->
+  <div>
+    <div class="eyebrow">Question 3 of 4</div>
+    <div class="q-header">
+      <div class="q-num">03</div>
+      <div class="q-title">Where Are the Areas of Opportunity?</div>
+    </div>
+    <p class="intro">Six concrete opportunities the new owner can capitalize on. Each is sized using Semrush search-volume data, Dr. Chan's existing clinical credentials, and Huntington Beach market estimates. Several are uncontested — meaning a new owner can own them without displacing any incumbent.</p>
+
+    <div class="opp-grid">
+      <div class="opp-card">
+        <span class="lbl">Opportunity 01</span>
+        <h4>Pinhole Surgical Technique — Uncontested</h4>
+        <p>Dr. Chan is a certified Pinhole Academy member trained in Pinhole Surgical Technique for gum recession — a high-margin, niche service. <strong>No Huntington Beach competitor offers it or ranks for it.</strong> "Pinhole gum surgery", "pinhole technique near me", "gum recession treatment Orange County" are wide open. The new owner inherits a uncontested specialty differentiator.</p>
+        <p class="est">Est. uplift: 30–60 cases/yr · $90K–$300K revenue</p>
+      </div>
+      <div class="opp-card">
+        <span class="lbl">Opportunity 02</span>
+        <h4>Fix HTTP/HTTPS Canonicalization</h4>
+        <p>The site's traffic is split between http:// and https:// versions of the homepage — Semrush shows 45 sessions on HTTP and 26 on HTTPS as separate pages. Resolving this and consolidating link equity could deliver a <strong>15–30% rankings lift in 30 days</strong> with no content investment. Easiest win available to the new owner.</p>
+        <p class="est">Est. uplift: +15–25 visits/mo immediately</p>
+      </div>
+      <div class="opp-card">
+        <span class="lbl">Opportunity 03</span>
+        <h4>"Huntington Beach Dentist" Top-3 Push</h4>
+        <p>Currently ranks #66 for "huntington beach dentists" (170/mo, $6.92 CPC), #52 for "best dentist in huntington beach ca" (90/mo, $4.08 CPC), #67 for "dentist in huntington beach" (260/mo). Combined ~520 monthly searches at high CPC. With proper service pages and link building, top-10 is achievable in 6–9 months for the new owner.</p>
+        <p class="est">Est. uplift: 80–160 new patients/yr</p>
+      </div>
+      <div class="opp-card">
+        <span class="lbl">Opportunity 04</span>
+        <h4>Activate Implant + Cosmetic Credentials</h4>
+        <p>Dr. Chan completed his fellowship in Implant Surgery (Implant Seminars + California Implant Institute) and an Aesthetic Dentistry residency at Esthetic Professionals — top-tier credentials. The implant page has 1 keyword, 0 traffic. A proper implant + cosmetic content strategy is the highest-value rebuild for the new owner ($3K–$30K per implant case).</p>
+        <p class="est">Est. uplift: $250K–$600K/yr revenue</p>
+      </div>
+      <div class="opp-card">
+        <span class="lbl">Opportunity 05</span>
+        <h4>Bella Terra / Hamilton Geo Pages</h4>
+        <p>The practice sits at 9917 Hamilton Avenue near Brookhurst — a high-traffic intersection adjacent to Bella Terra mall. <strong>No competitor targets these neighborhood searches.</strong> Geo-targeted pages for "dentist near Bella Terra", "dentist near Hamilton/Brookhurst", "dentist near Trader Joe's Huntington Beach" are wide open at near-zero competition.</p>
+        <p class="est">Est. uplift: 30–60 new patients/yr</p>
+      </div>
+      <div class="opp-card">
+        <span class="lbl">Opportunity 06</span>
+        <h4>Invisalign &amp; Zoom Whitening Activation</h4>
+        <p>Invisalign page has 2 ranking keywords, 0 traffic. Zoom Whitening — a brand-name service that converts strongly — has no dedicated page at all. Both services already exist clinically; both are missing from search. Quick rebuilds with high commercial intent for the new owner.</p>
+        <p class="est">Est. uplift: 20–40 cases/yr · $80K–$200K</p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>Combined Year-1 opportunity sizing for the new owner:</strong> $420K–$1.1M revenue uplift, primarily from implant and Pinhole Surgical Technique cases. Projected commercial-search share grows from <strong>~0.6% → ~12–18%</strong>, putting Chan Dentistry in striking distance of Splendid Dentistry and meaningfully closing the gap with Mortensen and Sea Cliff. Total practice traffic grows from 71/mo → 350–500/mo with the majority from <em>commercial</em> (not name-based) searches — exactly what a buyer needs to grow new-patient flow beyond Dr. Chan's existing book.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- ============================ -->
+  <!-- QUESTION 4 — WHAT WE CAN DO -->
+  <!-- ============================ -->
+  <div>
+    <div class="eyebrow">Question 4 of 4</div>
+    <div class="q-header">
+      <div class="q-num">04</div>
+      <div class="q-title">What Can We Do to Help?</div>
+    </div>
+    <p class="intro">Nine specific deliverables structured into three 30-day phases for the new owner. By Day 90 the digital foundation will be rebuilt, the on-page and technical issues will be resolved, and the content engine will be running for ongoing share-of-voice growth.</p>
+
+    <h3 class="sub" style="margin-top:8px">Phase 1 · Days 1–30 — Foundation</h3>
+    <div class="deliver-grid">
+      <div class="deliver-card">
+        <div class="num">01</div>
+        <h4>Fix HTTP/HTTPS &amp; Technical Foundation</h4>
+        <p>Consolidate to single HTTPS canonical, set 301 redirects from HTTP versions, fix Search Console verification, audit robots.txt, ensure proper indexation. The fastest-impact lever available to the new owner.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="num">02</div>
+        <h4>Deploy Schema Site-Wide</h4>
+        <p>Dentist + LocalBusiness schema. Person schema for the practicing dentist with credentials (Pinhole Academy, implant fellowships, JHU magna cum laude, UCSF DDS, cosmetic residency). FAQ schema on every service page.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="num">03</div>
+        <h4>Claim Missing Directories</h4>
+        <p>Healthgrades, Zocdoc, ADA Find-A-Dentist, Bing Places, Apple Maps, NextDoor, RealSelf, 1-800-Dentist, Pinhole Academy member directory. Photos, services, hours, NAP-consistent across all citations.</p>
+      </div>
+    </div>
+
+    <h3 class="sub">Phase 2 · Days 31–60 — Content &amp; Visibility</h3>
+    <div class="deliver-grid">
+      <div class="deliver-card">
+        <div class="num">04</div>
+        <h4>Build 12 Service Pages from Scratch</h4>
+        <p>Pinhole Surgical Technique (priority), dental implants, Invisalign, Zoom whitening, porcelain veneers, cosmetic dentistry, laser dentistry, oral sedation, crowns, fillings, cleanings, emergency dentist. 1,500–2,500 words each, FAQ schema, before/after photos, cost ranges.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="num">05</div>
+        <h4>Launch Review Engine</h4>
+        <p>Birdeye/Podium-class automation with post-visit SMS + email. The practice has strong reviews (100% recommend on Facebook, 28+ reviews) but they're not aggregating on Google. Target 15–25 new Google reviews/month for the new owner.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="num">06</div>
+        <h4>Pinhole Surgical Technique Vertical</h4>
+        <p>Dedicated content cluster: main service page + 4–6 supporting articles ("Pinhole vs gum graft", "Pinhole recovery time", "Pinhole cost", "Is Pinhole right for me"). Pinhole Academy backlink. AI-Overview targeting. Owns an uncontested vertical.</p>
+      </div>
+    </div>
+
+    <h3 class="sub">Phase 3 · Days 61–90 — Expansion &amp; Authority</h3>
+    <div class="deliver-grid">
+      <div class="deliver-card">
+        <div class="num">07</div>
+        <h4>Local Backlink Campaign</h4>
+        <p>Huntington Beach Chamber of Commerce, OC Register, OC Weekly, Pinhole Academy directory, dental association directories, USCF alumni network, local sponsorships. Target: 25+ quality DA 30+ links Year 1 for the new owner.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="num">08</div>
+        <h4>Neighborhood Geo Pages</h4>
+        <p>Bella Terra dentist, Hamilton/Brookhurst dentist, Adams Avenue dentist, Pacific Coast Highway dentist, Fountain Valley-adjacent dentist, Newport Beach-adjacent dentist. All currently uncontested or low-competition.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="num">09</div>
+        <h4>Content Engine + AEO</h4>
+        <p>2 long-form blog posts/month targeting Oceanic and Mortensen's keyword wins. FAQ-pattern content for AI Overview citation. Expand smile gallery and patient stories. Each post links to a relevant treatment page.</p>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:24px">
+      <strong>Projected 12-month outcome for the new owner:</strong> Commercial-intent search share grows from <strong>~0.6% → ~12–18%</strong>, putting the practice in striking distance of Splendid Dentistry and meaningfully closing the gap with Mortensen and Sea Cliff. Organic traffic grows from 71/mo → 350–500/mo with most growth coming from <em>commercial searches</em>, not name-based queries. Total Year-1 revenue uplift: <strong>$420K–$1.1M</strong>. This is the rebuild a buyer should price into the acquisition model — the practice has the clinical capability already; what it lacks is the digital scaffolding to convert that capability into new-patient flow.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- ============================ -->
+  <!-- SUPPORTING DETAIL SECTIONS -->
+  <!-- ============================ -->
+
+  <!-- TRAFFIC TREND -->
+  <div>
+    <div class="eyebrow">Supporting Detail · Traffic Trends</div>
+    <h2 class="sec">Organic Traffic — 24-Month Trend</h2>
+    <p class="intro">Traffic has been wildly volatile — peaking at 213 sessions in May 2024, bottoming at 41 in July 2025, and recovering to 128 by March 2026. There is no consistent trajectory because there is no consistent SEO strategy. Wins are accidental rankings of a single page; losses are unrecoverable because there's no link or content base to fall back on.</p>
+
+    <div class="chart-box">
+      <div class="chart-row">
+        <div class="bar down"><div class="v">5</div><div class="b" style="height:2%"></div><div class="lbl">Oct 23</div></div>
+        <div class="bar down"><div class="v">18</div><div class="b" style="height:8%"></div><div class="lbl">Nov 23</div></div>
+        <div class="bar mid"><div class="v">105</div><div class="b" style="height:50%"></div><div class="lbl">Dec 23</div></div>
+        <div class="bar up"><div class="v">190</div><div class="b" style="height:90%"></div><div class="lbl">Jan 24</div></div>
+        <div class="bar up"><div class="v">209</div><div class="b" style="height:99%"></div><div class="lbl">Feb 24</div></div>
+        <div class="bar up"><div class="v">179</div><div class="b" style="height:85%"></div><div class="lbl">Mar 24</div></div>
+        <div class="bar down"><div class="v">82</div><div class="b" style="height:39%"></div><div class="lbl">Apr 24</div></div>
+        <div class="bar up"><div class="v">213</div><div class="b" style="height:100%"></div><div class="lbl">May 24</div></div>
+        <div class="bar mid"><div class="v">108</div><div class="b" style="height:51%"></div><div class="lbl">Jun 24</div></div>
+        <div class="bar mid"><div class="v">115</div><div class="b" style="height:54%"></div><div class="lbl">Jul 24</div></div>
+        <div class="bar down"><div class="v">81</div><div class="b" style="height:38%"></div><div class="lbl">Aug 24</div></div>
+        <div class="bar mid"><div class="v">103</div><div class="b" style="height:48%"></div><div class="lbl">Sep 24</div></div>
+        <div class="bar down"><div class="v">49</div><div class="b" style="height:23%"></div><div class="lbl">Oct 24</div></div>
+        <div class="bar down"><div class="v">57</div><div class="b" style="height:27%"></div><div class="lbl">Nov 24</div></div>
+        <div class="bar mid"><div class="v">107</div><div class="b" style="height:50%"></div><div class="lbl">Dec 24</div></div>
+        <div class="bar down"><div class="v">56</div><div class="b" style="height:26%"></div><div class="lbl">Jan 25</div></div>
+        <div class="bar down"><div class="v">69</div><div class="b" style="height:32%"></div><div class="lbl">Feb 25</div></div>
+        <div class="bar mid"><div class="v">92</div><div class="b" style="height:43%"></div><div class="lbl">Mar 25</div></div>
+        <div class="bar down"><div class="v">74</div><div class="b" style="height:35%"></div><div class="lbl">Apr 25</div></div>
+        <div class="bar down"><div class="v">80</div><div class="b" style="height:38%"></div><div class="lbl">May 25</div></div>
+        <div class="bar mid"><div class="v">125</div><div class="b" style="height:59%"></div><div class="lbl">Jun 25</div></div>
+        <div class="bar down"><div class="v">41</div><div class="b" style="height:19%"></div><div class="lbl">Jul 25</div></div>
+        <div class="bar mid"><div class="v">158</div><div class="b" style="height:74%"></div><div class="lbl">Dec 25</div></div>
+        <div class="bar mid"><div class="v">128</div><div class="b" style="height:60%"></div><div class="lbl">Mar 26</div></div>
+      </div>
+    </div>
+
+    <div class="alert">
+      <strong>Traffic volatility is a sign of zero strategic foundation.</strong> A site with consistent on-page optimization, schema, internal linking, and a content cadence does not swing from 5 → 213 → 41. The current pattern is what happens when 1–2 pages get accidental ranking lifts that disappear at the next algorithm update because nothing else is reinforcing them. For the new owner, this is actually an opportunity — there is nothing to "preserve" or work around. The rebuild can be done from a clean slate.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- KEYWORDS -->
+  <div>
+    <div class="eyebrow">Supporting Detail · Keyword Analysis</div>
+    <h2 class="sec">Current Keyword Rankings</h2>
+    <p class="intro">88 total keywords ranking. Heavily concentrated in branded "Dr. Chan" / "Christopher Chan" terms. Page 5+ on every commercial Huntington Beach search.</p>
+
+    <div class="kw-circles">
+      <div class="kw-circle r1"><div class="ring">5</div><div class="lab">Top 10 Keywords</div></div>
+      <div class="kw-circle r2"><div class="ring">5</div><div class="lab">Top 20 Keywords</div></div>
+      <div class="kw-circle r3"><div class="ring">88</div><div class="lab">Total Keywords</div></div>
+    </div>
+
+    <table class="tbl">
+      <thead>
+        <tr><th>Keyword</th><th>Position</th><th>Volume</th><th>CPC</th><th>URL</th><th>Assessment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="kw">chan christopher</td><td class="pos">4</td><td>210</td><td>—</td><td>Homepage</td><td><span class="tag good">Branded — OK</span></td></tr>
+        <tr><td class="kw">chan dentist</td><td class="pos">3</td><td>260</td><td>$3.09</td><td>Homepage</td><td><span class="tag good">Branded — OK</span></td></tr>
+        <tr><td class="kw">dr christopher chan</td><td class="pos">6</td><td>170</td><td>$2.33</td><td>Homepage</td><td><span class="tag good">Branded — OK</span></td></tr>
+        <tr><td class="kw">christopher chan dds</td><td class="pos">3</td><td>90</td><td>$4.81</td><td>Homepage</td><td><span class="tag good">Branded — OK</span></td></tr>
+        <tr><td class="kw">dr. chan dentist</td><td class="pos">3</td><td>30</td><td>$2.72</td><td>Homepage</td><td><span class="tag good">Branded — OK</span></td></tr>
+        <tr class="row-bad"><td class="kw">huntington beach dentists</td><td class="pos">66</td><td>170</td><td>$6.92</td><td>Homepage</td><td><span class="tag bad">Page 7 — invisible</span></td></tr>
+        <tr class="row-bad"><td class="kw">best dentist in huntington beach ca</td><td class="pos">52</td><td>90</td><td>$4.08</td><td>Homepage</td><td><span class="tag bad">Page 6 — invisible</span></td></tr>
+        <tr class="row-bad"><td class="kw">dentist in huntington beach</td><td class="pos">67</td><td>260</td><td>—</td><td>Homepage</td><td><span class="tag bad">Page 7 — invisible</span></td></tr>
+        <tr class="row-bad"><td class="kw">huntington beach dental</td><td class="pos">54</td><td>140</td><td>—</td><td>Homepage</td><td><span class="tag bad">Page 6 — invisible</span></td></tr>
+        <tr class="row-bad"><td class="kw">dental huntington beach</td><td class="pos">52</td><td>40</td><td>$6.92</td><td>Homepage</td><td><span class="tag bad">Page 6 — invisible</span></td></tr>
+        <tr class="row-bad"><td class="kw">dental implants huntington beach</td><td class="pos">—</td><td>140</td><td>—</td><td>(not ranking)</td><td><span class="tag bad">Page exists, ranks 0</span></td></tr>
+        <tr class="row-bad"><td class="kw">invisalign huntington beach</td><td class="pos">—</td><td>110</td><td>—</td><td>(not ranking)</td><td><span class="tag bad">Page exists, ranks 0</span></td></tr>
+        <tr class="row-bad"><td class="kw">cosmetic dentist huntington beach</td><td class="pos">—</td><td>90</td><td>—</td><td>(not ranking)</td><td><span class="tag bad">Page exists, ranks 0</span></td></tr>
+        <tr class="row-bad"><td class="kw">pinhole gum surgery</td><td class="pos">—</td><td>—</td><td>—</td><td>(no page)</td><td><span class="tag bad">Specialty unlisted</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="alert">
+      <strong>The site ranks for "Dr. Chan" but for nothing else that matters.</strong> Every commercial Huntington Beach keyword sits on page 5, 6, or 7 of Google. Click-through rate at those positions is functionally zero. Worse, the highest-margin services (Pinhole Surgical Technique, dental implants, Zoom whitening) don't have rankings at all. For the new owner, this means new-patient acquisition online today is essentially zero — but it also means the upside is large and well-defined.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- CONTENT GAP -->
+  <div>
+    <div class="eyebrow">Supporting Detail · Content Gaps</div>
+    <h2 class="sec">Missing &amp; Underperforming Treatment Pages</h2>
+    <p class="intro">Chan Dentistry has only <strong>8 pages indexed</strong> — the smallest footprint of any practice reviewed. Competitors have 90–400+ pages. Almost every treatment Dr. Chan offers is either missing a dedicated page or has a thin page that gets zero traffic.</p>
+
+    <div class="pages-section miss">
+      <h4>✗ Missing or Underperforming Pages (0 organic visits/mo)</h4>
+      <div class="chips">
+        <div class="chip x">Pinhole Surgical Technique</div>
+        <div class="chip x">Dental Implants HB</div>
+        <div class="chip x">Invisalign Huntington Beach</div>
+        <div class="chip x">Zoom Whitening</div>
+        <div class="chip x">Porcelain Veneers</div>
+        <div class="chip x">Cosmetic Dentistry HB</div>
+        <div class="chip x">Laser Dentistry</div>
+        <div class="chip x">Smile Makeover</div>
+        <div class="chip x">Metal-Free Crowns</div>
+        <div class="chip x">Dental Bondings</div>
+        <div class="chip x">Gum Recession Treatment</div>
+        <div class="chip x">Emergency Dentist HB</div>
+        <div class="chip x">Bella Terra Dentist</div>
+        <div class="chip x">Hamilton Ave Dentist</div>
+        <div class="chip x">Family Dentistry</div>
+        <div class="chip x">New Patient Page</div>
+        <div class="chip x">Insurance / Financing</div>
+        <div class="chip x">Smile Gallery</div>
+        <div class="chip x">Blog</div>
+        <div class="chip x">Patient Reviews / Testimonials</div>
+      </div>
+    </div>
+    <div class="pages-section have" style="margin-top:18px">
+      <h4>✓ Existing Pages (only 8)</h4>
+      <div class="chips">
+        <div class="chip ok">Homepage (HTTP)</div>
+        <div class="chip ok">Homepage (HTTPS)</div>
+        <div class="chip ok">General &amp; Preventive Care</div>
+        <div class="chip ok">Oral Sedation</div>
+        <div class="chip ok">Services (Index)</div>
+        <div class="chip ok">Implants</div>
+        <div class="chip ok">Meet Dr. Chan</div>
+        <div class="chip ok">Invisalign</div>
+      </div>
+    </div>
+
+    <div class="alert">
+      <strong>The site is a brochure, not a marketing asset.</strong> 8 pages cannot rank for a meaningful share of dental searches in any market — let alone a competitive one like Huntington Beach. The good news for the buyer: this is the easiest type of site to rebuild because there's almost nothing to migrate or preserve. A 12-page service-content build (Phase 2) takes the indexed footprint from 8 → 24+ pages and gives the practice a real foundation for ranking.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- LOCAL SEO / GBP -->
+  <div>
+    <div class="eyebrow">Supporting Detail · Local SEO</div>
+    <h2 class="sec">Google Business Profile &amp; Maps Performance</h2>
+
+    <table class="gbp-table">
+      <thead>
+        <tr><th>Google Business Profile</th><th>GBP Assessment</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="lbl">Business Name</span> &nbsp; <span class="val">Christopher Chan Dentistry</span></td>
+          <td><span class="lbl">Facebook Reviews</span> <span class="neg" style="float:right;color:#15803d">100% recommend (28)</span></td>
+        </tr>
+        <tr>
+          <td><span class="lbl">Address</span> &nbsp; <span class="val">9917 Hamilton Avenue, Huntington Beach, CA 92646</span></td>
+          <td><span class="lbl">Google Reviews</span> <span class="neg" style="float:right;color:#d97706">Limited — Push to 200+</span></td>
+        </tr>
+        <tr>
+          <td><span class="lbl">Phone</span> &nbsp; <span class="val">(714) 962-1345</span></td>
+          <td><span class="lbl">Yelp Reviews</span> <span class="neg" style="float:right">Underdeveloped</span></td>
+        </tr>
+        <tr>
+          <td><span class="lbl">Email</span> &nbsp; <span class="val">info@chandentistry.com</span></td>
+          <td><span class="lbl">GBP Posts</span> <span class="neg" style="float:right">Not Active</span></td>
+        </tr>
+        <tr>
+          <td><span class="lbl">Founded</span> &nbsp; <span class="val">Spring 2005 — 20+ years in HB</span></td>
+          <td><span class="lbl">Q&amp;A Section</span> <span class="neg" style="float:right">Empty</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert">
+      <strong>20 years of practice in Huntington Beach with limited online review presence.</strong> The 100% Facebook recommendation rate (28 reviews) confirms the practice's clinical reputation — but Google Reviews specifically is what drives Local Pack rankings, and that's where the practice falls behind. Sea Cliff Dental, Mortensen, and Oceanic Dental each have hundreds of Google reviews. A structured review-generation campaign (post-appointment SMS/email automation) targeting 15–25 new Google reviews/month is the single highest-ROI lever available for the new owner — Dr. Chan's existing patients already trust him; they just need to be asked.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- DIRECTORIES -->
+  <div>
+    <div class="eyebrow">Supporting Detail · Directories</div>
+    <h2 class="sec">Core Directory Listings</h2>
+
+    <div class="dir-stats">
+      <div class="ds"><div class="n blue">14</div><div class="l">Directories Checked</div></div>
+      <div class="ds"><div class="n green">5</div><div class="l">Live Listings</div></div>
+      <div class="ds"><div class="n red">9</div><div class="l">Not Found / Unclaimed</div></div>
+      <div class="ds"><div class="n red">36%</div><div class="l">Listing Rate</div></div>
+    </div>
+
+    <div class="dir-list">
+      <div class="row"><span>Google Business Profile</span><span class="v live">Live</span></div>
+      <div class="row"><span>Facebook Business</span><span class="v live">Live — 28 reviews</span></div>
+      <div class="row"><span>Demandforce</span><span class="v live">Live</span></div>
+      <div class="row"><span>Yelp</span><span class="v partial">Live — Underdeveloped</span></div>
+      <div class="row"><span>BBB</span><span class="v partial">Live — Not Highlighted</span></div>
+      <div class="row"><span>Healthgrades</span><span class="v miss">Not Claimed</span></div>
+      <div class="row"><span>Zocdoc</span><span class="v miss">Not Found</span></div>
+      <div class="row"><span>RealSelf (cosmetic)</span><span class="v miss">Not Found</span></div>
+      <div class="row"><span>Pinhole Academy Directory</span><span class="v miss">Not Found</span></div>
+      <div class="row"><span>1-800-Dentist</span><span class="v miss">Not Found</span></div>
+      <div class="row"><span>ADA Find-A-Dentist</span><span class="v miss">Not Claimed</span></div>
+      <div class="row"><span>Bing Places</span><span class="v miss">Not Verified</span></div>
+      <div class="row"><span>Apple Maps</span><span class="v miss">Not Verified</span></div>
+      <div class="row"><span>NextDoor Business</span><span class="v miss">Not Found</span></div>
+    </div>
+
+    <div class="alert">
+      <strong>9 of 14 critical directories missing or unclaimed.</strong> Healthgrades, Zocdoc, and ADA Find-A-Dentist are high-authority healthcare directories that pass strong local citation signal AND drive direct referral traffic. The Pinhole Academy directory is particularly important — Dr. Chan is a certified member, but the listing isn't being leveraged to drive Pinhole-specific search traffic. Each missing listing is a lost citation signal AND a lost referral channel for new patients. NAP (Name, Address, Phone) consistency must be verified across all live listings.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- BACKLINKS -->
+  <div>
+    <div class="eyebrow">Supporting Detail · Backlinks</div>
+    <h2 class="sec">Authority &amp; Link Analysis</h2>
+
+    <div class="dir-stats">
+      <div class="ds"><div class="n red">8</div><div class="l">Authority Score /100</div></div>
+      <div class="ds"><div class="n red">245</div><div class="l">Total Backlinks</div></div>
+      <div class="ds"><div class="n red">129</div><div class="l">Referring Domains</div></div>
+      <div class="ds"><div class="n red">8</div><div class="l">Trust Score /100</div></div>
+    </div>
+
+    <div class="info-box">
+      <strong>Authority Score 8 — the lowest of any subject reviewed.</strong> Comparison: Oceanic Dental has AS 23 with 1,355 backlinks (605 referring domains). Sea Cliff has AS 17 with 859 backlinks. Even Splendid Dentistry (AS 8) has more referring domains. Priority targets for the new owner: Huntington Beach Chamber of Commerce, OC Register / OC Weekly press, USCF School of Dentistry alumni network, Pinhole Academy member directory, Implant Seminars / California Implant Institute alumni listings, JHU alumni network, local Bella Terra / Hamilton-area sponsorships and charitable mentions. <strong>Even 15–20 quality DA 30+ links</strong> would meaningfully improve rankings within 6 months.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- SCHEMA -->
+  <div>
+    <div class="eyebrow">Supporting Detail · E-E-A-T &amp; Schema</div>
+    <h2 class="sec">Trust Signals &amp; Structured Data</h2>
+
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>What's Missing</h4>
+        <div class="item"><span>LocalBusiness / Dentist Schema</span><span class="miss">Missing</span></div>
+        <div class="item"><span>Person Schema (Dr. Chan)</span><span class="miss">Missing</span></div>
+        <div class="item"><span>MedicalProcedure Schema (Pinhole)</span><span class="miss">Missing</span></div>
+        <div class="item"><span>FAQ Schema (any page)</span><span class="miss">Missing</span></div>
+        <div class="item"><span>Review / AggregateRating Schema</span><span class="miss">Missing</span></div>
+        <div class="item"><span>Service Schema per treatment</span><span class="miss">Missing</span></div>
+      </div>
+      <div class="schema-card">
+        <h4>What Needs to Be Added</h4>
+        <div class="item"><p><strong>Dentist schema</strong> with name, address, phone, hours, accepted insurance, geo coordinates, and full services list.</p></div>
+        <div class="item"><p><strong>Person schema for Dr. Chan</strong> with credentials (Johns Hopkins University BS Magna Cum Laude, UCSF School of Dentistry DDS, Aesthetic Dentistry residency at Esthetic Professionals, fellowship in Implant Surgery, Pinhole Academy member).</p></div>
+        <div class="item"><p><strong>FAQ schema</strong> on every service page for AI Overview and featured snippet eligibility.</p></div>
+        <div class="item"><p><strong>MedicalProcedure schema</strong> on the Pinhole Surgical Technique page — the practice's most differentiated service.</p></div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>Dentistry is YMYL (Your Money, Your Life).</strong> Google holds healthcare sites to a higher trust standard. Dr. Chan's JHU magna cum laude, UCSF DDS, Aesthetic Dentistry residency at Esthetic Professionals, fellowships in Implant Surgery (Implant Seminars + California Implant Institute), Pinhole Academy certification, and 20+ years in Huntington Beach are all extremely strong E-E-A-T signals — but none of them are machine-readable today. Schema markup converts the credentials Dr. Chan already has into signals that Google and AI systems can consume. For the new owner, this is the single fastest E-E-A-T uplift available — and it doesn't require any new content creation.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- AI VISIBILITY -->
+  <div>
+    <div class="eyebrow">Supporting Detail · AI / LLM Visibility</div>
+    <h2 class="sec">AI-Referred Traffic &amp; Citation Readiness</h2>
+
+    <div class="ai-stats">
+      <div class="ai-stat"><div class="n red">~0</div><div class="l">AI Sessions / Month<span class="sub">No measurable AI traffic</span></div></div>
+      <div class="ai-stat"><div class="n red">8</div><div class="l">Indexable Pages<span class="sub">Far too few for AI citation</span></div></div>
+      <div class="ai-stat"><div class="n red">0</div><div class="l">Structured Data Types<span class="sub">No schema for AI</span></div></div>
+      <div class="ai-stat"><div class="n red">Very Low</div><div class="l">Content Depth<span class="sub">Thin pages don't get cited</span></div></div>
+    </div>
+
+    <div class="info-box">
+      <strong>Why AI visibility matters for dentists:</strong> When someone in Huntington Beach asks ChatGPT, Perplexity, or Google AI Overviews "Who is the best dentist in Huntington Beach?" or "Where can I get gum recession treatment without a graft?" — the AI needs content to cite. Oceanic Dental dominates these AI answers because of their content depth and structured FAQs. Chan Dentistry is invisible to AI engines because there's no content for AI to cite. For the new owner, the Pinhole Surgical Technique vertical is a particularly strong AI play — it's a niche, technical procedure where AI engines actively look for authoritative content to cite, and there's <strong>almost no Pinhole-specific content competition</strong> nationally.
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- TECHNICAL -->
+  <div>
+    <div class="eyebrow">Supporting Detail · On-Site &amp; Technical</div>
+    <h2 class="sec">On-Site &amp; Technical Issues</h2>
+
+    <div class="ai-stats">
+      <div class="ai-stat"><div class="n red">8</div><div class="l">Total Pages<span class="sub">Smallest reviewed</span></div></div>
+      <div class="ai-stat"><div class="n red">2</div><div class="l">Homepage URLs<span class="sub">HTTP &amp; HTTPS both indexed</span></div></div>
+      <div class="ai-stat"><div class="n red">0</div><div class="l">Blog Posts<span class="sub">No content marketing</span></div></div>
+      <div class="ai-stat"><div class="n red">63%</div><div class="l">Traffic on HTTP<span class="sub">Insecure / split equity</span></div></div>
+    </div>
+
+    <div class="issue-grid">
+      <div class="issue red">
+        <div class="h"><span class="ic">🚨</span><span class="t">HTTP/HTTPS Canonicalization (Critical)</span></div>
+        <p>Both http://www.chandentistry.com/ AND https://www.chandentistry.com/ are indexed as separate pages. 63% of organic traffic still routes through the insecure HTTP version. This is splitting link equity, hurting trust signals, and creating duplicate content issues. Must be resolved before any other SEO work.</p>
+      </div>
+      <div class="issue amber">
+        <div class="h"><span class="ic">⚠️</span><span class="t">No Content Strategy</span></div>
+        <p>Zero blog posts. No service-page content beyond surface-level descriptions. No FAQ content. No before/after gallery. The site reads as a 2010-era brochure, not a 2026 patient acquisition asset.</p>
+      </div>
+      <div class="issue amber">
+        <div class="h"><span class="ic">⚠️</span><span class="t">Mobile &amp; Speed</span></div>
+        <p>Full mobile/Core Web Vitals audit recommended. Long-running site likely accumulating bloat. Mobile experience particularly important for a dental practice — most "dentist near me" searches happen on mobile.</p>
+      </div>
+      <div class="issue amber full">
+        <div class="h"><span class="ic">🔗</span><span class="t">Internal Linking &amp; Information Architecture</span></div>
+        <p>With only 8 pages, there is barely an internal link structure to evaluate. Service pages don't cross-link. The homepage doesn't funnel authority to specific treatment pages. The "Meet Dr. Chan" page — which holds all the credential authority — doesn't link to or strengthen any service page. A proper site rebuild for the new owner would treat Dr. Chan's credentials as a topical authority hub linking to every relevant service.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- TIMELINE -->
+  <div>
+    <div class="eyebrow">Implementation</div>
+    <h2 class="sec">Implementation Timeline for the New Owner</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <h4>Weeks 1–2</h4>
+        <p>Resolve HTTP/HTTPS canonicalization (the single most important fix). Deploy Dentist + LocalBusiness + Person schema site-wide. Claim Healthgrades, Zocdoc, ADA, Bing Places, Apple Maps, RealSelf. Set up Google review-generation automation. Verify Pinhole Academy directory listing.</p>
+      </div>
+      <div class="tl-item">
+        <h4>Weeks 3–6</h4>
+        <p>Build the 6 highest-revenue service pages (Pinhole Surgical Technique, dental implants, Invisalign, Zoom whitening, porcelain veneers, cosmetic dentistry). Each page: 1,500–2,500 words, FAQ schema, before/after gallery, cost ranges, internal links to and from the Dr. Chan bio page.</p>
+      </div>
+      <div class="tl-item">
+        <h4>Weeks 7–10</h4>
+        <p>Build the second batch (laser dentistry, oral sedation, crowns/bondings, smile makeover, family dentistry, emergency dentist). Launch Bella Terra / Hamilton / Adams neighborhood pages. Begin Pinhole Surgical Technique content cluster (4–6 supporting articles).</p>
+      </div>
+      <div class="tl-item">
+        <h4>Month 3+</h4>
+        <p>Launch Huntington Beach-specific backlink campaign (Chamber, OC Register, USCF alumni, Pinhole Academy, Implant Seminars alumni). Begin monthly blog cadence (2 posts/month, each linked to a treatment page). Activate GBP posting. Track AI visibility growth and adjust on-page optimization based on rankings movement.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Dental Nerds · chandentistry.com · April 2026
+  </div>
+
+</div>
+</body>
+</html>
