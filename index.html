@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reports Portal | Dentist Nerds</title>
+  <meta name="description" content="Dentist Nerds client reports portal — secure performance reporting for our dental practice partners." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-deep: #0a1628;
+      --bg-mid: #0f2038;
+      --bg-soft: #142a47;
+      --accent-green: #00d084;
+      --accent-green-soft: rgba(0, 208, 132, 0.15);
+      --accent-blue: #4aa3ff;
+      --accent-blue-soft: rgba(74, 163, 255, 0.15);
+      --text-primary: #ffffff;
+      --text-secondary: #a9b9cf;
+      --text-muted: #6d7f99;
+      --border-soft: rgba(255, 255, 255, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100%;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: -20%;
+      right: -10%;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle at center, rgba(0, 208, 132, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -20%;
+      left: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle at center, rgba(74, 163, 255, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .site-header {
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo img {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    .header-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 10px 18px;
+      border: 1px solid var(--border-soft);
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+    .header-link:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-green);
+      background: var(--accent-green-soft);
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px 60px;
+    }
+
+    .hero-inner {
+      max-width: 880px;
+      text-align: center;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-green);
+      padding: 8px 16px;
+      border: 1px solid var(--accent-green-soft);
+      border-radius: 999px;
+      background: var(--accent-green-soft);
+      margin-bottom: 28px;
+    }
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 0 4px rgba(0, 208, 132, 0.25);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(0, 208, 132, 0.25); }
+      50% { box-shadow: 0 0 0 8px rgba(0, 208, 132, 0.05); }
+    }
+
+    .hero h1 {
+      font-family: "Sora", "DM Sans", sans-serif;
+      font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .hero h1 .accent {
+      background: linear-gradient(120deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent-green);
+      color: var(--bg-deep);
+      box-shadow: 0 10px 30px -8px rgba(0, 208, 132, 0.5);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px -8px rgba(0, 208, 132, 0.65);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-soft);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent-blue);
+      background: var(--accent-blue-soft);
+    }
+    .btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .info-row {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .info-card {
+      background: linear-gradient(180deg, rgba(20, 42, 71, 0.6) 0%, rgba(15, 32, 56, 0.4) 100%);
+      border: 1px solid var(--border-soft);
+      border-radius: 18px;
+      padding: 28px 26px;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+    .info-card:hover {
+      border-color: rgba(0, 208, 132, 0.4);
+      transform: translateY(-2px);
+    }
+    .info-card .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--accent-green-soft);
+      color: var(--accent-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .info-card:nth-child(2) .icon {
+      background: var(--accent-blue-soft);
+      color: var(--accent-blue);
+    }
+    .info-card:nth-child(3) .icon {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+    }
+    .info-card h3 {
+      font-family: "Sora", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .info-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .site-footer {
+      padding: 28px 40px;
+      border-top: 1px solid var(--border-soft);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .site-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .site-footer a:hover { color: var(--text-primary); }
+
+    @media (max-width: 780px) {
+      .site-header { padding: 22px 20px; }
+      .hero { padding: 60px 20px 40px; }
+      .info-row {
+        grid-template-columns: 1fr;
+        padding: 0 20px 60px;
+      }
+      .site-footer {
+        padding: 22px 20px;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: rise 0.7s ease forwards;
+    }
+    .fade-in.d1 { animation-delay: 0.05s; }
+    .fade-in.d2 { animation-delay: 0.15s; }
+    .fade-in.d3 { animation-delay: 0.25s; }
+    .fade-in.d4 { animation-delay: 0.35s; }
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <a href="https://www.dentistnerds.com/" class="logo" aria-label="Dentist Nerds">
+        <img src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
+      </a>
+      <a href="https://www.dentistnerds.com/" class="header-link">Main Site →</a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow fade-in d1">
+          <span class="dot"></span>
+          Client Reports Portal
+        </span>
+
+        <h1 class="fade-in d2">
+          Your practice growth, <span class="accent">measured &amp; delivered</span>.
+        </h1>
+
+        <p class="fade-in d3">
+          This is the secure reporting hub for Dentist Nerds partner practices. If you're looking to access your performance report, please use the direct link shared by your account manager.
+        </p>
+
+        <div class="cta-row fade-in d4">
+          <a href="https://www.dentistnerds.com/" class="btn btn-primary">
+            Visit Dentist Nerds
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="https://www.dentistnerds.com/contact" class="btn btn-ghost">
+            Contact Your Team
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-row">
+      <div class="info-card fade-in d2">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"></path>
+            <path d="M7 14l4-4 4 4 5-6"></path>
+          </svg>
+        </div>
+        <h3>Performance Reports</h3>
+        <p>Transparent data on campaigns, traffic, leads, and new-patient conversions — updated in real time.</p>
+      </div>
+
+      <div class="info-card fade-in d3">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+            <path d="M3 10h18"></path>
+            <path d="M8 4v4"></path>
+            <path d="M16 4v4"></path>
+          </svg>
+        </div>
+        <h3>Monthly Summaries</h3>
+        <p>Clear month-over-month breakdowns so you always know what's working and where to double down.</p>
+      </div>
+
+      <div class="info-card fade-in d4">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l2.39 4.84L20 8l-4 3.9.94 5.5L12 14.77 7.06 17.4 8 11.9 4 8l5.61-1.16L12 2z"></path>
+          </svg>
+        </div>
+        <h3>AI-Driven Insights</h3>
+        <p>Data-backed recommendations from our team — the same nerds helping grow dental practices every day.</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div>© 2026 Dentist Nerds. All rights reserved.</div>
+      <div>
+        <a href="https://www.dentistnerds.com/privacy-policy">Privacy Policy</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="https://www.dentistnerds.com/contact">Contact</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
