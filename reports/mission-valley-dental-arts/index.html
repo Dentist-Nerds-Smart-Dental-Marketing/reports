@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Valley Dental Arts — Website Audit | Dentist Nerds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-deep: #0A1422;
+    --navy-soft: #1B2940;
+    --ink: #15202E;
+    --ink-soft: #4A5568;
+    --ink-mute: #7B8794;
+    --line: #E2E8F0;
+    --line-soft: #EDF2F7;
+    --bg: #FFFFFF;
+    --bg-soft: #F7F9FC;
+    --bg-mint: #FDF8E8;
+    --green: #D4A93B;
+    --green-deep: #8B6914;
+    --green-soft: #FAEFCE;
+    --mint: #E5C76E;
+    --coral: #FF5E4D;
+    --coral-soft: #FFE2DE;
+    --amber: #FFB547;
+    --amber-soft: #FFF1D6;
+    --blue: #4D8CFF;
+    --blue-soft: #DCE8FF;
+    --purple: #8B5CF6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* HERO */
+  .hero { background: var(--navy); color: #FFF; padding: 72px 0 64px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -150px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(77,140,255,0.12) 0%, transparent 60%); pointer-events: none; }
+  .hero-wrap { position: relative; z-index: 2; }
+  .audit-strip { display: flex; align-items: center; justify-content: space-between; margin-bottom: 48px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .nerds-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 16px; color: #FFF; letter-spacing: -0.01em; }
+  .nerds-logo .logo-mark { width: 32px; height: 32px; border-radius: 8px; background: var(--green); display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 18px; }
+  .audit-type { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; }
+  .audit-target { display: inline-flex; align-items: center; gap: 10px; background: rgba(212,169,59,0.12); border: 1px solid rgba(212,169,59,0.3); color: var(--green); padding: 8px 16px; border-radius: 100px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px; }
+  .audit-target .pulse { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 0 4px rgba(212,169,59,0.2); }
+  .hero h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.05; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; max-width: 920px; }
+  .hero h1 .accent { color: var(--green); }
+  .hero .lede { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 720px; line-height: 1.55; margin-bottom: 44px; font-weight: 400; }
+  .hero .lede strong { color: #FFF; }
+  .hero-meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .meta-block .meta-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+  .meta-block .meta-value { font-size: 16px; color: #FFF; font-weight: 700; letter-spacing: -0.01em; }
+  .meta-block .meta-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+  /* VERDICT BAR */
+  .verdict { background: linear-gradient(135deg, var(--coral) 0%, #E04535 100%); color: #FFF; padding: 36px 0; position: relative; overflow: hidden; }
+  .verdict-wrap { display: grid; grid-template-columns: 80px 1fr auto; gap: 28px; align-items: center; }
+  .verdict-icon { width: 80px; height: 80px; background: rgba(255,255,255,0.18); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  .verdict-content .verdict-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.8; margin-bottom: 6px; font-weight: 700; }
+  .verdict-content h2 { font-size: 28px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; max-width: 720px; }
+  .verdict-cta { background: #FFF; color: var(--coral); padding: 14px 22px; border-radius: 12px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+
+  /* SECTION SHELL */
+  section { padding: 80px 0; }
+  section.alt { background: var(--bg-soft); }
+  section.dark { background: var(--navy); color: #FFF; }
+  .section-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--green-soft); color: var(--green-deep); padding: 6px 14px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .section-eyebrow .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+  .section-eyebrow.red { background: var(--coral-soft); color: var(--coral); }
+  .section-eyebrow.red .dot { background: var(--coral); }
+  section h2 { font-size: clamp(30px, 4vw, 44px); line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 18px; max-width: 820px; }
+  section h2 .accent { color: var(--green-deep); }
+  section h2 .accent-red { color: var(--coral); }
+  section .section-intro { font-size: 17px; color: var(--ink-soft); max-width: 720px; line-height: 1.55; margin-bottom: 48px; }
+
+  /* HEALTH SCORE */
+  .score-grid { display: grid; grid-template-columns: 380px 1fr; gap: 56px; align-items: center; }
+  .gauge-wrap { background: #FFF; border-radius: 24px; padding: 36px; box-shadow: 0 4px 24px rgba(15,27,45,0.06); border: 1px solid var(--line); text-align: center; }
+  .gauge-label { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
+  .gauge-svg { display: block; margin: 0 auto; }
+  .gauge-num { font-size: 64px; font-weight: 800; color: var(--amber); line-height: 1; margin-top: 8px; letter-spacing: -0.03em; }
+  .gauge-suffix { font-size: 24px; color: var(--ink-mute); font-weight: 600; }
+  .gauge-status { margin-top: 8px; font-size: 13px; color: var(--amber); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .subscore-list { display: flex; flex-direction: column; gap: 16px; }
+  .subscore { background: #FFF; border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; display: grid; grid-template-columns: 36px 1fr auto; gap: 16px; align-items: center; }
+  .subscore-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .subscore-icon.coral { background: var(--coral-soft); }
+  .subscore-icon.amber { background: var(--amber-soft); }
+  .subscore-icon.blue { background: var(--blue-soft); }
+  .subscore-icon.green { background: var(--green-soft); }
+  .subscore-title { font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .subscore-bar { background: var(--line-soft); height: 6px; border-radius: 100px; overflow: hidden; }
+  .subscore-fill { height: 100%; border-radius: 100px; background: var(--coral); }
+  .subscore-fill.amber { background: var(--amber); }
+  .subscore-fill.blue { background: var(--blue); }
+  .subscore-fill.green { background: var(--green); }
+  .subscore-value { font-family: 'Manrope', sans-serif; font-size: 18px; font-weight: 800; color: var(--ink); min-width: 60px; text-align: right; }
+
+  /* ISSUE COUNTERS */
+  .issue-counter { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 48px; }
+  .counter-card { background: #FFF; border-radius: 16px; padding: 26px 22px; border: 1px solid var(--line); position: relative; overflow: hidden; }
+  .counter-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
+  .counter-card.critical::before { background: var(--coral); }
+  .counter-card.high::before { background: var(--amber); }
+  .counter-card.medium::before { background: var(--blue); }
+  .counter-card.good::before { background: var(--green); }
+  .counter-num { font-size: 48px; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 8px; letter-spacing: -0.03em; }
+  .counter-num.coral { color: var(--coral); }
+  .counter-num.amber { color: var(--amber); }
+  .counter-num.blue { color: var(--blue); }
+  .counter-num.green { color: var(--green); }
+  .counter-label { font-size: 13px; color: var(--ink-mute); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* TRAFFIC DONUT */
+  .chart-block { display: grid; grid-template-columns: 360px 1fr; gap: 56px; align-items: center; }
+  .donut-wrap { text-align: center; }
+  .donut-center { position: relative; display: inline-block; }
+  .donut-center .center-num { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+  .donut-center .center-num .big { font-size: 44px; font-weight: 800; color: var(--coral); line-height: 1; letter-spacing: -0.03em; }
+  .donut-center .center-num .small { font-size: 11px; color: var(--ink-mute); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .donut-caption { margin-top: 24px; font-size: 14px; color: var(--ink-soft); }
+  .donut-legend { display: flex; flex-direction: column; gap: 4px; }
+  .legend-row { display: grid; grid-template-columns: 16px 1fr auto; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+  .legend-dot { width: 14px; height: 14px; border-radius: 4px; }
+  .legend-label { font-size: 14.5px; color: var(--ink); font-weight: 500; }
+  .legend-label .leg-sub { color: var(--ink-mute); font-size: 12px; font-weight: 400; }
+  .legend-pct { font-weight: 800; font-size: 16px; color: var(--ink); }
+
+  /* PAGE BAR */
+  .page-bar { display: grid; grid-template-columns: 280px 1fr 80px; gap: 20px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+  .page-name { font-family: 'DM Sans', monospace; font-size: 13px; color: var(--ink); font-weight: 600; }
+  .page-name .pn-sub { display: block; font-size: 11px; color: var(--ink-mute); font-weight: 400; margin-top: 2px; font-family: 'Manrope', sans-serif; }
+  .page-track { background: var(--line-soft); height: 12px; border-radius: 100px; overflow: hidden; }
+  .page-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--coral) 0%, #FF8B7E 100%); }
+  .page-fill.amber { background: linear-gradient(90deg, var(--amber) 0%, #FFD17C 100%); }
+  .page-fill.blue { background: linear-gradient(90deg, var(--blue) 0%, #8AB0FF 100%); }
+  .page-fill.green { background: linear-gradient(90deg, var(--green) 0%, var(--mint) 100%); }
+  .page-fill.empty { background: repeating-linear-gradient(45deg, var(--line-soft), var(--line-soft) 6px, var(--line) 6px, var(--line) 12px); }
+  .page-value { font-size: 14px; font-weight: 800; color: var(--ink); text-align: right; }
+  .page-value.crit { color: var(--coral); }
+  .page-value.zero { color: var(--ink-mute); }
+
+  /* ISSUE CARDS */
+  .issues-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+  .issue-card { background: #FFF; border-radius: 20px; border: 1px solid var(--line); padding: 30px; display: grid; grid-template-columns: 56px 1fr; gap: 24px; }
+  .issue-icon-wrap { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+  .issue-icon-wrap.critical { background: var(--coral-soft); }
+  .issue-icon-wrap.high { background: var(--amber-soft); }
+  .issue-icon-wrap.medium { background: var(--blue-soft); }
+  .issue-card-head { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .issue-card-num { font-size: 11px; color: var(--ink-mute); font-weight: 700; letter-spacing: 0.08em; }
+  .issue-card h3 { font-size: 21px; font-weight: 800; color: var(--ink); line-height: 1.25; flex-basis: 100%; letter-spacing: -0.01em; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 100px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .pill .pill-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .pill.critical { background: var(--coral-soft); color: var(--coral); }
+  .pill.critical .pill-dot { background: var(--coral); }
+  .pill.high { background: var(--amber-soft); color: #B87A0E; }
+  .pill.high .pill-dot { background: var(--amber); }
+  .pill.medium { background: var(--blue-soft); color: #2D5BC2; }
+  .pill.medium .pill-dot { background: var(--blue); }
+  .pill.category { background: var(--bg-soft); color: var(--ink-mute); }
+  .pill.category .pill-dot { background: var(--ink-mute); }
+  .issue-card p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; margin-bottom: 12px; }
+  .issue-card p:last-child { margin-bottom: 0; }
+  .issue-card strong { color: var(--ink); font-weight: 700; }
+  .issue-card code { background: var(--bg-soft); border: 1px solid var(--line); padding: 1px 6px; border-radius: 4px; font-family: 'DM Sans', monospace; font-size: 12.5px; color: var(--navy); word-break: break-all; }
+
+  .fix-box { background: var(--bg-mint); border-radius: 12px; padding: 16px 20px; margin-top: 16px; border-left: 3px solid var(--green); }
+  .fix-box-label { font-size: 11px; font-weight: 700; color: var(--green-deep); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .fix-box p { color: var(--ink); font-size: 14px; margin: 0; }
+
+  .evidence { background: #FFF5F3; border-left: 3px solid var(--coral); padding: 16px 20px; margin: 14px 0; border-radius: 0 12px 12px 0; }
+  .evidence-label { font-size: 11px; font-weight: 700; color: var(--coral); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .evidence-quote { font-family: 'DM Sans', monospace; font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0; }
+
+  /* BRAND SUGGESTION CARD */
+  .brand-suggestion-card { background: #FFF; border-radius: 24px; padding: 44px 48px; border: 1px solid var(--line); margin-top: 40px; box-shadow: 0 8px 32px rgba(15,27,45,0.04); position: relative; overflow: hidden; }
+  .brand-suggestion-card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(180deg, var(--green) 0%, var(--mint) 100%); }
+  .suggestion-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--green-soft); color: var(--green-deep); padding: 7px 14px; border-radius: 100px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .brand-suggestion-card h3 { font-size: 28px; font-weight: 800; color: var(--ink); margin-bottom: 18px; letter-spacing: -0.015em; line-height: 1.2; }
+  .brand-suggestion-card p { color: var(--ink-soft); font-size: 15.5px; line-height: 1.65; margin-bottom: 14px; }
+  .brand-suggestion-card strong { color: var(--ink); font-weight: 700; }
+  .name-comparison { display: grid; grid-template-columns: 1fr 56px 1fr; gap: 16px; align-items: stretch; margin: 32px 0; }
+  .name-card-vs { border-radius: 14px; padding: 24px 26px; border: 1px solid var(--line); background: var(--bg-soft); display: flex; flex-direction: column; justify-content: center; }
+  .name-card-vs.possible { background: linear-gradient(135deg, #FAEFCE 0%, #F7E5B0 100%); border-color: var(--green); }
+  .name-card-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 800; color: var(--ink-mute); margin-bottom: 10px; }
+  .name-card-vs.possible .name-card-label { color: var(--green-deep); }
+  .name-card-name { font-size: 19px; font-weight: 800; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; line-height: 1.25; }
+  .name-card-meta { font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; font-style: italic; }
+  .name-arrow { text-align: center; font-size: 26px; color: var(--green); font-weight: 800; align-self: center; }
+
+  /* REBUILD VS REPAIR */
+  .rebuild-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  .vs-card { background: #FFF; border-radius: 20px; border: 1px solid var(--line); padding: 32px; position: relative; overflow: hidden; }
+  .vs-card.repair { border-color: var(--coral); }
+  .vs-card.rebuild { border-color: var(--green); box-shadow: 0 12px 40px rgba(212,169,59,0.15); }
+  .vs-stamp { position: absolute; top: 24px; right: 24px; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; }
+  .vs-stamp.bad { background: var(--coral-soft); color: var(--coral); }
+  .vs-stamp.good { background: var(--green-soft); color: var(--green-deep); }
+  .vs-label { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
+  .vs-card h3 { font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 18px; letter-spacing: -0.01em; }
+  .vs-list { list-style: none; padding: 0; margin: 0 0 22px; }
+  .vs-list li { padding: 10px 0 10px 30px; position: relative; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; border-bottom: 1px solid var(--line-soft); }
+  .vs-list li:last-child { border-bottom: none; }
+  .vs-list li::before { position: absolute; left: 0; top: 11px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+  .vs-list.bad li::before { content: '✕'; background: var(--coral-soft); color: var(--coral); }
+  .vs-list.good li::before { content: '✓'; background: var(--green-soft); color: var(--green-deep); }
+  .vs-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line-soft); }
+  .vs-metric { text-align: center; padding: 14px; background: var(--bg-soft); border-radius: 10px; }
+  .vs-metric .vm-num { font-size: 24px; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.02em; }
+  .vs-card.rebuild .vs-metric .vm-num { color: var(--green-deep); }
+  .vs-card.repair .vs-metric .vm-num { color: var(--coral); }
+  .vs-metric .vm-label { font-size: 11px; color: var(--ink-mute); margin-top: 4px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* COMPETITOR */
+  .competitor-table { background: #FFF; border-radius: 20px; border: 1px solid var(--line); overflow: hidden; }
+  .ct-head { display: grid; grid-template-columns: 1.7fr 90px 90px 90px 100px; gap: 16px; padding: 18px 28px; background: var(--navy); color: #FFF; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .ct-row { display: grid; grid-template-columns: 1.7fr 90px 90px 90px 100px; gap: 16px; padding: 16px 28px; align-items: center; border-bottom: 1px solid var(--line-soft); font-size: 14px; }
+  .ct-row:last-child { border-bottom: none; }
+  .ct-row.you { background: var(--bg-mint); border-left: 3px solid var(--green); padding-left: 25px; }
+  .ct-domain { font-weight: 700; color: var(--ink); }
+  .ct-domain .ct-sub { display: block; font-size: 11px; color: var(--ink-mute); font-weight: 400; margin-top: 2px; }
+  .ct-num { font-weight: 700; color: var(--ink); }
+  .ct-num.warn { color: var(--coral); }
+  .ct-num.good { color: var(--green-deep); }
+
+  /* SITEMAP */
+  .sitemap-card { background: #FFF; border: 1px solid var(--line); border-radius: 18px; padding: 32px; margin: 24px 0 36px; box-shadow: 0 4px 20px rgba(15,27,45,0.04); }
+  .sitemap-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 14px; }
+  .sitemap-card-title { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; }
+  .sitemap-card-title small { display: block; font-size: 12px; color: var(--ink-mute); font-weight: 500; margin-top: 4px; }
+  .sitemap-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line-soft); }
+  .sitemap-stat { background: var(--bg-soft); border-radius: 10px; padding: 14px 16px; }
+  .sitemap-stat-num { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
+  .sitemap-stat-label { font-size: 11px; color: var(--ink-mute); font-weight: 600; letter-spacing: 0.02em; }
+  .sm-stat-service { color: var(--green-deep); }
+  .sm-stat-flag { color: var(--coral); }
+  .sm-stat-nogeo { color: var(--amber); }
+  .sm-stat-utility { color: var(--ink-mute); }
+
+  .red-flags-banner { background: linear-gradient(135deg, #FFF1EE 0%, #FFFBEC 100%); border: 1px solid #FFDDD6; border-radius: 14px; padding: 22px 26px; margin: 4px 0 24px; }
+  .red-flags-banner-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 800; color: var(--coral); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .red-flags-banner-label::before { content: "⚠"; font-size: 14px; }
+  .red-flags-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .red-flag-cell { background: #FFF; border-radius: 10px; padding: 18px 20px; border-left: 4px solid var(--coral); display: flex; align-items: flex-start; gap: 16px; }
+  .red-flag-num { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: var(--coral); line-height: 1; flex-shrink: 0; font-family: 'Manrope', sans-serif; }
+  .red-flag-num.text-big { font-size: 16px; line-height: 1.15; padding-top: 4px; letter-spacing: -0.005em; text-transform: none; max-width: 110px; text-align: left; font-weight: 800; }
+  .red-flag-body { flex: 1; }
+  .red-flag-headline { font-size: 14.5px; font-weight: 800; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em; line-height: 1.3; }
+  .red-flag-detail { font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; }
+  .red-flag-detail strong { color: var(--ink); }
+
+  .sitemap-rows { display: flex; flex-direction: column; gap: 1px; background: var(--line-soft); border-radius: 10px; overflow: hidden; }
+  .sitemap-row { background: #FFF; display: grid; grid-template-columns: 1fr 130px 60px; align-items: center; padding: 11px 16px; gap: 12px; font-size: 13px; }
+  .sitemap-row .sm-url { font-family: 'DM Sans', monospace; font-size: 12.5px; color: var(--ink); word-break: break-all; }
+  .sitemap-row .sm-url strong { color: var(--ink); font-weight: 700; }
+  .sitemap-row .sm-badge { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; text-align: center; white-space: nowrap; }
+  .sm-badge.service { background: var(--green-soft); color: var(--green-deep); }
+  .sm-badge.flag { background: #FFE2DE; color: var(--coral); }
+  .sm-badge.utility { background: var(--bg-soft); color: var(--ink-mute); }
+  .sm-badge.blog { background: #E0E7FF; color: #4338CA; }
+  .sitemap-row .sm-idx { font-family: 'DM Sans', monospace; font-size: 12px; color: var(--ink-mute); text-align: right; font-weight: 600; }
+  .sitemap-row.flag-row { background: #FFF8F7; border-left: 3px solid var(--coral); }
+
+  /* SERVICE PAGES TABLE */
+  .sp-card { background: #FFF; border: 1px solid var(--line); border-radius: 18px; padding: 32px; margin: 24px 0 36px; box-shadow: 0 4px 20px rgba(15,27,45,0.04); }
+  .sp-list { display: flex; flex-direction: column; gap: 1px; background: var(--line-soft); border-radius: 10px; overflow: hidden; margin-top: 18px; }
+  .sp-row { background: #FFF; display: grid; grid-template-columns: 1fr 130px 90px; align-items: center; padding: 12px 16px; gap: 12px; font-size: 13.5px; }
+  .sp-page { font-weight: 700; color: var(--ink); }
+  .sp-page .sp-sub { display: block; font-size: 11.5px; color: var(--ink-mute); font-weight: 400; margin-top: 2px; }
+  .sp-cat { font-size: 10.5px; padding: 3px 9px; border-radius: 100px; font-weight: 700; background: var(--bg-soft); color: var(--ink-soft); display: inline-block; letter-spacing: 0.04em; text-transform: uppercase; }
+  .sp-pri { font-size: 10.5px; padding: 3px 9px; border-radius: 100px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; display: inline-block; text-align: center; }
+  .sp-pri.high { background: var(--coral-soft); color: var(--coral); }
+  .sp-pri.med { background: var(--amber-soft); color: #B87A0E; }
+  .sp-pri.phase2 { background: var(--blue-soft); color: #2D5BC2; }
+
+  /* GAME PLAN — FEATURED STEP 1 + ENGINES */
+  .step-one-feature { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); color: #FFF; border-radius: 24px; padding: 48px; margin-bottom: 32px; position: relative; overflow: hidden; }
+  .step-one-feature::before { content: ''; position: absolute; top: -120px; right: -80px; width: 420px; height: 420px; background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%); pointer-events: none; }
+  .step-one-feature::after { content: ''; position: absolute; bottom: -100px; left: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(77,140,255,0.08) 0%, transparent 60%); pointer-events: none; }
+  .s1-grid { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; position: relative; z-index: 1; }
+  .s1-badge { display: inline-block; background: var(--green); color: var(--navy-deep); font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; margin-bottom: 18px; }
+  .s1-number { font-size: 96px; font-weight: 800; line-height: 1; color: var(--green); letter-spacing: -0.04em; margin-bottom: 16px; }
+  .s1-step-label { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+  .s1-step-title { font-size: 32px; font-weight: 800; color: #FFF; letter-spacing: -0.02em; line-height: 1.15; }
+  .s1-content h4 { font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin: 22px 0 12px; }
+  .s1-content h4:first-child { margin-top: 0; }
+  .s1-content > p { color: rgba(255,255,255,0.8); font-size: 16px; line-height: 1.6; margin-bottom: 16px; }
+  .s1-content > p strong { color: #FFF; }
+  .s1-todo { list-style: none; padding: 0; margin: 0 0 8px; }
+  .s1-todo li { padding: 12px 0 12px 32px; position: relative; color: rgba(255,255,255,0.85); font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .s1-todo li:last-child { border-bottom: none; }
+  .s1-todo li::before { content: ''; position: absolute; left: 0; top: 17px; width: 16px; height: 16px; border: 2px solid var(--green); border-radius: 4px; background: rgba(212,169,59,0.1); }
+  .s1-todo li strong { color: #FFF; }
+
+  .engines-header { text-align: center; margin: 56px 0 32px; position: relative; }
+  .engines-header::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--line); z-index: 0; }
+  .engines-header span { position: relative; z-index: 1; background: var(--bg); padding: 0 24px; font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); }
+  section.alt .engines-header span { background: var(--bg-soft); }
+  .engines-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .engine-card { background: #FFF; border: 1px solid var(--line); border-radius: 18px; padding: 28px; position: relative; }
+  .engine-num { font-size: 11px; font-weight: 800; color: var(--ink-mute); letter-spacing: 0.1em; margin-bottom: 14px; }
+  .engine-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--green-soft); color: var(--green-deep); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 22px; }
+  .engine-card h4 { font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; line-height: 1.25; }
+  .engine-card p { color: var(--ink-soft); font-size: 14px; line-height: 1.55; margin-bottom: 14px; }
+  .engine-card p:last-child { margin-bottom: 0; }
+  .engine-card strong { color: var(--ink); font-weight: 700; }
+  .engine-target { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-mute); }
+  .engine-target strong { color: var(--green-deep); font-weight: 700; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 3px; }
+
+  /* OPPORTUNITY */
+  .opportunity { background: var(--navy); color: #FFF; border-radius: 28px; padding: 56px 48px; position: relative; overflow: hidden; }
+  .opportunity::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,169,59,0.2) 0%, transparent 60%); }
+  .opp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+  .opp-content h2 { color: #FFF; }
+  .opp-content h2 .accent { color: var(--green); }
+  .opp-content p { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.6; margin-bottom: 14px; }
+  .opp-content p strong { color: #FFF; }
+  .opp-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .opp-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 22px; }
+  .opp-stat .opp-star { font-size: 28px; color: var(--green); line-height: 1; margin-bottom: 8px; }
+  .opp-stat .opp-stat-label { font-size: 11px; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+  .opp-stat .opp-stat-text { font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .opp-disclaimer { margin-top: 32px; padding: 18px 22px; background: rgba(255,255,255,0.04); border-radius: 12px; border-left: 3px solid var(--green); font-size: 13.5px; color: rgba(255,255,255,0.78); line-height: 1.6; position: relative; z-index: 1; }
+  .opp-disclaimer strong { color: var(--green); }
+
+  /* END CTA */
+  .end-cta { background: var(--navy); color: #FFF; padding: 64px 0; text-align: center; }
+  .end-cta h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 auto 16px; color: #FFF; max-width: none; }
+  .end-cta h2 .accent { color: var(--green); }
+  .end-cta p { color: rgba(255,255,255,0.7); max-width: 560px; margin: 0 auto 32px; font-size: 16px; }
+  .end-meta { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+    section { padding: 56px 0; }
+    .hero { padding: 48px 0; }
+    .audit-strip { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .hero-meta-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .verdict-wrap { grid-template-columns: 56px 1fr; gap: 18px; }
+    .verdict-icon { width: 56px; height: 56px; font-size: 28px; }
+    .verdict-content h2 { font-size: 22px; }
+    .verdict-cta { grid-column: 1 / -1; text-align: center; }
+    .score-grid { grid-template-columns: 1fr; gap: 32px; }
+    .chart-block { grid-template-columns: 1fr; gap: 32px; }
+    .issue-counter { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .counter-card { padding: 22px 18px; }
+    .counter-num { font-size: 38px; }
+    .sitemap-summary { grid-template-columns: repeat(2, 1fr); }
+    .red-flags-grid { grid-template-columns: 1fr; gap: 12px; }
+    .red-flag-num { font-size: 42px; }
+    .sitemap-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 14px; }
+    .sitemap-row .sm-idx { text-align: left; }
+    .sp-row { grid-template-columns: 1fr; gap: 6px; padding: 14px; }
+    .opp-grid { grid-template-columns: 1fr; gap: 32px; }
+    .opportunity { padding: 36px 24px; }
+    .rebuild-vs { grid-template-columns: 1fr; gap: 16px; }
+    .name-comparison { grid-template-columns: 1fr; gap: 12px; }
+    .name-arrow { transform: rotate(90deg); padding: 4px 0; }
+    .step-one-feature { padding: 28px 22px; }
+    .s1-grid { grid-template-columns: 1fr; gap: 24px; }
+    .s1-number { font-size: 72px; }
+    .s1-step-title { font-size: 24px; }
+    .engines-grid { grid-template-columns: 1fr; gap: 16px; }
+    .ct-head, .ct-row { grid-template-columns: 1fr; gap: 6px; padding: 14px 18px; }
+    .ct-row.you { padding-left: 18px; }
+    .brand-suggestion-card { padding: 28px 24px; }
+    .brand-suggestion-card h3 { font-size: 22px; }
+    .page-bar { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-wrap">
+    <div class="audit-strip">
+      <div class="nerds-logo"><div class="logo-mark">N</div> Dentist Nerds</div>
+      <div class="audit-type">Website Audit · Confidential</div>
+    </div>
+
+    <div class="audit-target"><span class="pulse"></span> missionvalleydentalarts.com</div>
+
+    <h1>Mission Valley Dental Arts — <span class="accent">San Diego, CA</span></h1>
+    <p class="lede">A practical assessment of the website's technical health, content depth, design language, online reputation, backlink profile, and competitive position in the San Diego dental market. <strong>The practice has a 25-year reputation and 422 5.0★ reviews — the website it sits on isn't currently doing its share of the work.</strong></p>
+
+    <div class="hero-meta-grid">
+      <div class="meta-block"><div class="meta-label">Prepared For</div><div class="meta-value">Dr. Yasaman Sardari</div><div class="meta-sub">"Dr. Yassi" · Established 2000</div></div>
+      <div class="meta-block"><div class="meta-label">Audit Date</div><div class="meta-value">May 2026</div></div>
+      <div class="meta-block"><div class="meta-label">Monthly Visits</div><div class="meta-value">176</div><div class="meta-sub">1,204 ranking keywords</div></div>
+      <div class="meta-block"><div class="meta-label">Reputation</div><div class="meta-value">422 ★ 5.0</div><div class="meta-sub">Google · 482 Birdeye · 110 Yelp</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VERDICT -->
+<section class="verdict">
+  <div class="wrap">
+    <div class="verdict-wrap">
+      <div class="verdict-icon">⚠</div>
+      <div class="verdict-content">
+        <div class="verdict-label">Recommendation</div>
+        <h2>Rebuild off DocGenius — keep the reputation, replace the platform</h2>
+      </div>
+      <div class="verdict-cta">Rebuild · Keep Brand</div>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH SCORE -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow red"><span class="dot"></span>Health Score</div>
+    <h2>The site scores <span class="accent-red">38 out of 100</span> — held back by the platform</h2>
+    <p class="section-intro">Reputation and local-search signal are strong (422 5.0★ Google reviews · 178 referring domains · 25 years in practice). The platform underneath them — DocGenius, with templated stock photography, generic copy, exposed template IDs, no schema markup, and limited conversion design — is what's pulling the overall score down.</p>
+
+    <div class="score-grid">
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="14" stroke-linecap="round"/>
+          <path d="M 20 120 A 100 100 0 0 1 115 22" fill="none" stroke="#FFB547" stroke-width="14" stroke-linecap="round"/>
+        </svg>
+        <div class="gauge-num">38<span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status">Needs Platform Rebuild</div>
+      </div>
+
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon coral">🤖</div>
+          <div>
+            <div class="subscore-title">AI Search Visibility</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width: 20%;"></div></div>
+          </div>
+          <div class="subscore-value">20<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon coral">📸</div>
+          <div>
+            <div class="subscore-title">Treatment-Page Photography</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width: 10%;"></div></div>
+          </div>
+          <div class="subscore-value">10<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon coral">📝</div>
+          <div>
+            <div class="subscore-title">Content Quality &amp; Depth</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width: 25%;"></div></div>
+          </div>
+          <div class="subscore-value">25<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon amber">🎨</div>
+          <div>
+            <div class="subscore-title">Design &amp; Conversion UX</div>
+            <div class="subscore-bar"><div class="subscore-fill amber" style="width: 30%;"></div></div>
+          </div>
+          <div class="subscore-value">30<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon blue">🔗</div>
+          <div>
+            <div class="subscore-title">Backlink Profile Health</div>
+            <div class="subscore-bar"><div class="subscore-fill blue" style="width: 55%;"></div></div>
+          </div>
+          <div class="subscore-value">55<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon green">📍</div>
+          <div>
+            <div class="subscore-title">Local Search &amp; Reputation</div>
+            <div class="subscore-bar"><div class="subscore-fill green" style="width: 85%;"></div></div>
+          </div>
+          <div class="subscore-value">85<span style="color:var(--ink-mute); font-weight: 600;">%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-counter" style="margin-top: 56px;">
+      <div class="counter-card critical">
+        <div class="counter-num coral">5</div>
+        <div class="counter-label">Critical Issues</div>
+      </div>
+      <div class="counter-card high">
+        <div class="counter-num amber">4</div>
+        <div class="counter-label">High Priority</div>
+      </div>
+      <div class="counter-card medium">
+        <div class="counter-num blue">3</div>
+        <div class="counter-label">Medium</div>
+      </div>
+      <div class="counter-card good">
+        <div class="counter-num green">12</div>
+        <div class="counter-label">Total Identified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAFFIC REALITY -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-eyebrow red"><span class="dot"></span>Traffic Reality Check</div>
+    <h2>1,204 keywords · only <span class="accent-red">176 monthly visits</span></h2>
+    <p class="section-intro">Mission Valley Dental Arts ranks for more keywords than any other "Mission Valley" practice — but converts the fewest of those rankings into clicks. The footprint is wide and shallow: lots of page-2 and bottom-of-page-1 rankings that don't draw traffic. The top page on the entire site is the "Find a Dentist" page, not a treatment page.</p>
+
+    <div class="chart-block">
+      <div class="donut-wrap">
+        <div class="donut-center">
+          <svg width="280" height="280" viewBox="0 0 280 280">
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#EDF2F7" stroke-width="40"/>
+            <!-- find-a-dentist 26% -->
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#FFB547" stroke-width="40" stroke-dasharray="163 628" transform="rotate(-90 140 140)" stroke-linecap="butt"/>
+            <!-- homepage 18% -->
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#FF5E4D" stroke-width="40" stroke-dasharray="113 628" stroke-dashoffset="-163" transform="rotate(-90 140 140)"/>
+            <!-- gum disease blog 10% -->
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#4D8CFF" stroke-width="40" stroke-dasharray="63 628" stroke-dashoffset="-276" transform="rotate(-90 140 140)"/>
+            <!-- snap-on smile 9% -->
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#D4A93B" stroke-width="40" stroke-dasharray="56 628" stroke-dashoffset="-339" transform="rotate(-90 140 140)"/>
+            <!-- all other commercial pages 37% (rest is long-tail to zero) -->
+          </svg>
+          <div class="center-num">
+            <div class="big">37%</div>
+            <div class="small">treatment pages</div>
+          </div>
+        </div>
+        <div class="donut-caption">Traffic concentrated on find-a-dentist + homepage · treatment pages weak</div>
+      </div>
+
+      <div class="donut-legend">
+        <div class="legend-row">
+          <div class="legend-dot" style="background: #FFB547;"></div>
+          <div class="legend-label">Find a Dentist<span class="leg-sub">/about/find-a-dentist/ — bio page, not treatment</span></div>
+          <div class="legend-pct">46 / mo</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-dot" style="background: #FF5E4D;"></div>
+          <div class="legend-label">Homepage<span class="leg-sub">/ — utility</span></div>
+          <div class="legend-pct">32 / mo</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-dot" style="background: #4D8CFF;"></div>
+          <div class="legend-label">Gum Disease Blog<span class="leg-sub">/blog/4-signs-and-symptoms-of-gum-disease/ — informational</span></div>
+          <div class="legend-pct">17 / mo</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-dot" style="background: #D4A93B;"></div>
+          <div class="legend-label">Snap-On Smile<span class="leg-sub">/san-diego-ca/snap-on-smile/ — top-ranking treatment page</span></div>
+          <div class="legend-pct">16 / mo</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-dot" style="background: var(--line);"></div>
+          <div class="legend-label">All other commercial pages<span class="leg-sub">cosmetic · veneers · implants · whitening · crowns · etc.</span></div>
+          <div class="legend-pct">~65 / mo</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 22px; font-weight: 800; color: var(--ink); margin: 64px 0 16px; letter-spacing: -0.01em;">Top pages by traffic</h3>
+    <div>
+      <div class="page-bar">
+        <div class="page-name">/about/find-a-dentist/<span class="pn-sub">Find-a-Dentist page · 26% of all visits</span></div>
+        <div class="page-track"><div class="page-fill amber" style="width: 100%;"></div></div>
+        <div class="page-value crit">46</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/ (homepage)<span class="pn-sub">Utility · 18% of all visits</span></div>
+        <div class="page-track"><div class="page-fill" style="width: 70%;"></div></div>
+        <div class="page-value crit">32</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/blog/4-signs-and-symptoms-of-gum-disease/<span class="pn-sub">Blog · informational</span></div>
+        <div class="page-track"><div class="page-fill blue" style="width: 37%;"></div></div>
+        <div class="page-value">17</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/san-diego-ca/snap-on-smile/<span class="pn-sub">Treatment · top-ranking commercial page</span></div>
+        <div class="page-track"><div class="page-fill green" style="width: 35%;"></div></div>
+        <div class="page-value">16</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/san-diego-ca/dental-bonding/<span class="pn-sub">Treatment · 14 kw · DocGenius template</span></div>
+        <div class="page-track"><div class="page-fill amber" style="width: 20%;"></div></div>
+        <div class="page-value">9</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/san-diego-ca/dental-veneers-and-dental-laminates/<span class="pn-sub">Treatment · 26 kw but only 5 visits</span></div>
+        <div class="page-track"><div class="page-fill amber" style="width: 11%;"></div></div>
+        <div class="page-value">5</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/san-diego-ca/cosmetic-dentist/<span class="pn-sub">Treatment · 24 kw but only 2 visits</span></div>
+        <div class="page-track"><div class="page-fill empty" style="width: 100%;"></div></div>
+        <div class="page-value zero">2</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/san-diego-ca/emergency-dental-care/<span class="pn-sub">Treatment · 35 kw but only 1 visit</span></div>
+        <div class="page-track"><div class="page-fill empty" style="width: 100%;"></div></div>
+        <div class="page-value zero">1</div>
+      </div>
+      <div class="page-bar">
+        <div class="page-name">/san-diego-ca/dental-crowns/<span class="pn-sub">Treatment · CEREC same-day not surfaced</span></div>
+        <div class="page-track"><div class="page-fill empty" style="width: 100%;"></div></div>
+        <div class="page-value zero">1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ISSUES -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Issues Ranked by Impact</div>
+    <h2>The 12 issues, in <span class="accent">priority order</span></h2>
+    <p class="section-intro">Each issue includes evidence from the audit crawl and a recommended fix. The top five Critical issues are platform-rooted — they're the reason a 25-year practice with 422 5.0★ reviews and 1,204 keyword rankings only draws 176 monthly visits.</p>
+
+    <div class="issues-grid">
+      <!-- Issue 01 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap critical">📸</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill critical"><span class="pill-dot"></span>Critical</span>
+            <span class="pill category"><span class="pill-dot"></span>Photography &amp; Trust</span>
+            <span class="issue-card-num">Issue #01</span>
+            <h3>Every treatment page uses generic stock photography — zero real practice images</h3>
+          </div>
+          <p>Treatment pages across the site — <code>/san-diego-ca/cosmetic-dentist/</code>, <code>/dental-veneers-and-dental-laminates/</code>, <code>/dental-bridges/</code>, <code>/full-mouth-reconstruction/</code>, <code>/composite-fillings/</code>, <code>/teeth-whitening/</code>, <code>/snap-on-smile/</code> and the rest — carry the DocGenius stock image set: generic patients, generic teeth, generic operatories. Patients researching a $5,000–$50,000 procedure want to see <strong>this doctor, this office, this team, and these results</strong>. Stock photos signal "templated chain site," not "established 25-year San Diego practice."</p>
+          <div class="evidence">
+            <div class="evidence-label">📌 Evidence</div>
+            <p class="evidence-quote">Every URL under <code>/san-diego-ca/[service]/</code> uses identical-style stock photography. The <code>/smile-gallery/</code> page exists with real before/after shots but isn't threaded into the treatment pages where prospective patients evaluate results.</p>
+          </div>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Schedule an in-office photography day: Dr. Yassi and team headshots, operatory and reception, technology in use (CEREC, 3D CBCT, digital impressions, same-day crowns), real before/after smile gallery shots threaded into cosmetic and veneer pages, and patient photography (with consent). Replace the DocGenius stock set on every treatment page.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 02 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap critical">🌐</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill critical"><span class="pill-dot"></span>Critical</span>
+            <span class="pill category"><span class="pill-dot"></span>Platform &amp; URL Architecture</span>
+            <span class="issue-card-num">Issue #02</span>
+            <h3>DocGenius template ID exposed at <code>/dental-practice-sp0036/</code></h3>
+          </div>
+          <p>The platform's internal template ID is publicly indexed at <code>/dental-practice-sp0036/</code> — a clear "templated platform" fingerprint visible to both Google and to savvy patients. Every treatment URL follows the same <code>/san-diego-ca/[service]/</code> pattern, which is the standard DocGenius URL scheme used across hundreds of dental practices on the same platform.</p>
+          <div class="evidence">
+            <div class="evidence-label">📌 Evidence</div>
+            <p class="evidence-quote">/dental-practice-sp0036/ · /find-your-local-dental-center/ · /san-diego-ca/dental-office/ · /san-diego-ca/dental-services/ — generic templated URLs and titles like "Take Care Of Your Smile" indexed and crawlable.</p>
+          </div>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Short-term: noindex and 301-redirect <code>/dental-practice-sp0036/</code> and the generic <code>/find-your-local-dental-center/</code> to the homepage. Long-term: rebuild on a modern platform with practice-specific URLs (<code>/cosmetic-dentistry/</code>, <code>/dental-implants/</code>) instead of the templated <code>/san-diego-ca/[service]/</code> structure.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 03 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap critical">🤖</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill critical"><span class="pill-dot"></span>Critical</span>
+            <span class="pill category"><span class="pill-dot"></span>No Schema</span>
+            <span class="issue-card-num">Issue #03</span>
+            <h3>Zero schema markup deployed — invisible to AI Overviews and rich results</h3>
+          </div>
+          <p>No LocalBusiness, MedicalProcedure, FAQPage, AggregateRating, Person, or Review schema is detectable. Google AI Overviews, ChatGPT, Perplexity, and Copilot all read schema to surface practice information, doctor credentials, ratings, and procedure data. <strong>The 422 Google reviews at 5.0★, the 25-year history, Dr. Yassi's credentials, and the procedure list are all hidden from that layer</strong> — the single biggest asset the practice has is invisible where it matters most.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Deploy LocalBusiness + AggregateRating on the homepage (pulling the 422-review 5.0★ rating), MedicalProcedure + FAQPage on every treatment page, Person schema for Dr. Yassi, and Review schema on the testimonials page.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 04 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap critical">📊</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill critical"><span class="pill-dot"></span>Critical</span>
+            <span class="pill category"><span class="pill-dot"></span>Page-2 Rankings</span>
+            <span class="issue-card-num">Issue #04</span>
+            <h3>Largest keyword footprint in the submarket — lowest traffic</h3>
+          </div>
+          <p>1,204 ranking keywords (more than 2× the next-largest "Mission Valley" competitor) but only 176 monthly visits. The flagship term <strong>"dentist san diego" (2,400 monthly searches) ranks at position 7</strong> — just outside the top 5 where most clicks happen. <strong>"signs of gum disease" (5,400/mo) ranks #13</strong> (page 2). Cosmetic and emergency dentistry pages rank for 24 and 35 keywords respectively but together produce 3 visits/month.</p>
+          <div class="evidence">
+            <div class="evidence-label">📌 Evidence · current rankings</div>
+            <p class="evidence-quote">dentist san diego · #7 · 2,400/mo<br>signs of gum disease · #13 · 5,400/mo<br>mission valley dentists · #9 · 1,000/mo<br>cosmetic dentist page · 24 kw · only 2 visits<br>emergency dental care · 35 kw · only 1 visit</p>
+          </div>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>The fix isn't more pages — it's deepening the existing ones. Real content (1,000–1,500 words per treatment page), schema, FAQs, internal links into <code>/smile-gallery/</code> and <code>/reviews/</code>, embedded testimonials, and CEREC / 3D CBCT technology references move rankings from page 2 to page 1.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 05 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap critical">⭐</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill critical"><span class="pill-dot"></span>Critical</span>
+            <span class="pill category"><span class="pill-dot"></span>Reputation Not Surfaced</span>
+            <span class="issue-card-num">Issue #05</span>
+            <h3>1,000+ reviews at 5.0★ across three platforms — and the website barely shows it</h3>
+          </div>
+          <p>The reputation is exceptional: <strong>422 Google reviews · 482 Birdeye · 110 Yelp — all at 5.0★</strong>. Most San Diego practices peak in the 100–300 review range. The website has a <code>/reviews/</code> page but no above-the-fold review carousel, no AggregateRating schema, no embedded testimonials on treatment pages, no "★ 5.0 — 422 reviews" social-proof bar in the header. The single strongest local-search asset the practice owns is the one its website surfaces least.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Above-the-fold star rating + review count bar on every page. Embedded testimonial carousel on the homepage. Per-procedure testimonials on cosmetic, implants, veneers, and full-mouth reconstruction pages. AggregateRating schema across LocalBusiness markup. Trust badges (Established 2000 · 422 5.0★ · 25 years in Mission Valley) in the first viewport.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 06 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap high">📄</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill high"><span class="pill-dot"></span>High</span>
+            <span class="pill category"><span class="pill-dot"></span>Thin Templated Content</span>
+            <span class="issue-card-num">Issue #06</span>
+            <h3>Treatment-page copy is generic DocGenius templating — not practice-specific</h3>
+          </div>
+          <p>The <code>/san-diego-ca/[service]/</code> pages carry the standard DocGenius copy templates: short, generic, and substitutable for any practice. No mention of Dr. Yassi's procedure experience, no San Diego patient examples, no embedded FAQs, no references to the practice's CEREC same-day crown technology or 3D CBCT scanning, no cost guidance, no financing notes. The same templated copy that produces page-2 rankings instead of page-1 rankings.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Rewrite each treatment page with 1,000–1,500 words of practice-specific content: Dr. Yassi's procedure experience, San Diego patient examples (with consent), 5–8 procedure FAQs, embedded testimonials, before/after gallery integration, cost ranges and financing context, and the practice's technology stack (CEREC, 3D CBCT, digital impressions, same-day crowns).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 07 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap high">📱</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill high"><span class="pill-dot"></span>High</span>
+            <span class="pill category"><span class="pill-dot"></span>Conversion Design</span>
+            <span class="issue-card-num">Issue #07</span>
+            <h3>No sticky CTAs, no above-fold trust signals, weak mobile conversion path</h3>
+          </div>
+          <p><strong>Above the fold:</strong> the 422 5.0★ rating, the 25-year history, Dr. Yassi's name, and the consult-booking CTA aren't surfaced in the first viewport on treatment pages. <strong>Mobile UX:</strong> no persistent sticky phone-number bar or "Book Online" bar pinned to the viewport bottom — the most reliable conversion lever on a dental site. <strong>CTAs:</strong> default DocGenius button styling; no per-procedure consult-request paths.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Sticky phone-number / "Book Consult" bar pinned to mobile viewport bottom. Above-the-fold "Book a Consultation" CTA on every page. Trust signals (★ 5.0 · 422 reviews · 25 years in Mission Valley · Dr. Yassi) in the first viewport. Per-procedure consult-request forms (cosmetic / implants / full-mouth / emergency) with relevant fields rather than one generic form.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 08 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap high">🏷️</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill high"><span class="pill-dot"></span>High</span>
+            <span class="pill category"><span class="pill-dot"></span>Brand Confusion</span>
+            <span class="issue-card-num">Issue #08</span>
+            <h3>Three other "Mission Valley" dental brands in the same submarket</h3>
+          </div>
+          <p>The Mission Valley submarket has at least three other practices using nearly identical naming: <strong>Mission Valley Dentists</strong> (5638 Mission Center Rd · 293 Yelp reviews · missionvalleydentists.com), <strong>Smile Mission Valley Dental Center</strong> (2650 Camino Del Rio N · 126 reviews), and <strong>Dentists of Mission Valley</strong> (Smile Generation chain). A patient searching "Mission Valley dentist" can't easily tell these apart in the map pack, and Google sometimes confuses the entities in branded queries.</p>
+          <div class="evidence">
+            <div class="evidence-label">📌 Evidence · keyword overlap</div>
+            <p class="evidence-quote">Mission Valley Dental Arts ranks #4 for "dental arts san diego" (170/mo) but #9 for "mission valley dentists" (1,000/mo) — the same Mission Valley keyword set is contested by three competitors with confusable names.</p>
+          </div>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Lead the brand with the doctor — "Dr. Yassi · Mission Valley Dental Arts" — across the website header, page titles, GBP, and citations. Dr. Yassi's name and photo above the fold. "Established 2000 · 25 years in Mission Valley" tagline. Consistent Dr. Yassi anchor text across schema and partnership mentions to disambiguate the entity.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 09 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap high">🖼️</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill high"><span class="pill-dot"></span>High</span>
+            <span class="pill category"><span class="pill-dot"></span>Trust Asset Not Threaded</span>
+            <span class="issue-card-num">Issue #09</span>
+            <h3>Smile Gallery exists — but isn't surfaced on the pages where it would convert</h3>
+          </div>
+          <p>The site has a <code>/smile-gallery/</code> before/after page — exactly the kind of trust signal that converts cosmetic and implant patients. Currently it sits as a single linked page rather than being threaded into the cosmetic dentist, veneers, full-mouth reconstruction, snap-on smile, and bonding pages where prospective patients are actively evaluating results.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Per-treatment before/after thumbnail grids embedded directly on cosmetic, veneers, full-mouth reconstruction, and snap-on smile pages — linked through to the full <code>/smile-gallery/</code>. Add Dr. Yassi-attributed case studies (with consent) showing actual treatment outcomes from this practice.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 10 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap medium">🔍</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill medium"><span class="pill-dot"></span>Medium</span>
+            <span class="pill category"><span class="pill-dot"></span>Commercial Page Weakness</span>
+            <span class="issue-card-num">Issue #10</span>
+            <h3>"Find a Dentist" page outperforms every commercial treatment page</h3>
+          </div>
+          <p><code>/about/find-a-dentist/</code> draws 26% of total traffic — more than any treatment page on the site. Traffic is driven by brand and find-a-dentist intent, not procedure evaluation. The dedicated commercial pages that should be the conversion engine (cosmetic dentist, dental implants, veneers, full-mouth reconstruction, emergency) produce 1–16 visits each. The pages exist; they aren't earning the rankings they should.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Internal-linking rebuild: descriptive anchor-text links from <code>/about/find-a-dentist/</code> and the homepage into the cosmetic, implants, emergency, and full-mouth treatment pages. Per-treatment hub structure where Dr. Yassi's bio routes into procedure-specific pages with consult CTAs.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 11 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap medium">☎️</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill medium"><span class="pill-dot"></span>Medium</span>
+            <span class="pill category"><span class="pill-dot"></span>NAP Consistency</span>
+            <span class="issue-card-num">Issue #11</span>
+            <h3>Two phone numbers in circulation across the practice's listings</h3>
+          </div>
+          <p>The website displays <strong>(619) 805-4248</strong> as the primary number, but external listings (patientconnect365 and several directory sites) still carry the older <strong>(619) 574-1810</strong>. NAP (Name · Address · Phone) inconsistency across citations weakens the local-search signal that the map pack depends on.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Citation audit — Yelp, Healthgrades, Zocdoc, BBB, San Diego County Dental Society, Birdeye, patientconnect365, and dental directories. Ensure 2333 Camino del Rio S Suite 140 and the current primary phone number are consistent everywhere. Either retire the legacy number or set up a permanent forward.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 12 -->
+      <div class="issue-card">
+        <div class="issue-icon-wrap medium">📷</div>
+        <div>
+          <div class="issue-card-head">
+            <span class="pill medium"><span class="pill-dot"></span>Medium</span>
+            <span class="pill category"><span class="pill-dot"></span>Visual Assets on Directories</span>
+            <span class="issue-card-num">Issue #12</span>
+            <h3>Only 20 photos on Yelp — low visual asset count across directories</h3>
+          </div>
+          <p>Yelp shows 20 photos for the practice — low for a 25-year-old office with 110 Yelp reviews. By comparison, Smile Mission Valley Dental Center has 31 photos with fewer reviews. Visual asset density on Yelp and Google Business Profile correlates with directory click-through and conversion on mobile.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The fix</div>
+            <p>Use the in-office photo day from Issue #01 to refresh both the website photography and the Yelp / GBP photo libraries simultaneously. Target 40+ photos each: office interior, team, reception, operatory, technology in use, and a curated before/after subset.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SITEMAP AUDIT -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Sitemap Audit</div>
+    <h2>Indexed page set — <span class="accent">DocGenius templated</span>, narrow on real content</h2>
+    <p class="section-intro">The current indexed footprint is dominated by templated DocGenius URLs (<code>/san-diego-ca/[service]/</code>) and platform utility pages. A comprehensive dental practice site for the procedure set Mission Valley Dental Arts offers should run 40–60 substantive pages — the current set is closer to 20 substantive pages plus templated filler.</p>
+
+    <div class="sitemap-card">
+      <div class="sitemap-card-head">
+        <div class="sitemap-card-title">Current sitemap inventory<small>Indexed URLs (Google site: query) · DocGenius platform pattern</small></div>
+      </div>
+
+      <div class="sitemap-summary">
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-service">14</div><div class="sitemap-stat-label">Templated service pages</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-flag">2</div><div class="sitemap-stat-label">Platform-ID URLs exposed</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-nogeo">5+</div><div class="sitemap-stat-label">Utility / generic pages</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-utility">~10</div><div class="sitemap-stat-label">Blog posts indexed</div></div>
+      </div>
+
+      <div class="red-flags-banner">
+        <div class="red-flags-banner-label">Red flags from the sitemap audit</div>
+        <div class="red-flags-grid">
+          <div class="red-flag-cell">
+            <div class="red-flag-num text-big">sp0036</div>
+            <div class="red-flag-body">
+              <div class="red-flag-headline">DocGenius template ID indexed</div>
+              <div class="red-flag-detail"><code>/dental-practice-sp0036/</code> exposes the platform's internal template identifier. Should be noindex'd and 301-redirected to the homepage.</div>
+            </div>
+          </div>
+          <div class="red-flag-cell">
+            <div class="red-flag-num text-big">generic</div>
+            <div class="red-flag-body">
+              <div class="red-flag-headline">"Find your local dental center" page</div>
+              <div class="red-flag-detail"><code>/find-your-local-dental-center/</code> is generic DocGenius copy that doesn't apply to a single-location practice. Remove or rebuild as a Mission Valley-specific page.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sitemap-rows">
+        <div class="sitemap-row"><div class="sm-url"><strong>/</strong> homepage</div><span class="sm-badge utility">Utility</span><span class="sm-idx">32</span></div>
+        <div class="sitemap-row"><div class="sm-url">/about/find-a-dentist/</div><span class="sm-badge utility">Utility</span><span class="sm-idx">46</span></div>
+        <div class="sitemap-row"><div class="sm-url">/about/</div><span class="sm-badge utility">Utility</span><span class="sm-idx">3</span></div>
+        <div class="sitemap-row"><div class="sm-url">/reviews/</div><span class="sm-badge utility">Utility</span><span class="sm-idx">4</span></div>
+        <div class="sitemap-row"><div class="sm-url">/smile-gallery/</div><span class="sm-badge utility">Utility</span><span class="sm-idx">—</span></div>
+        <div class="sitemap-row"><div class="sm-url">/contact-us/</div><span class="sm-badge utility">Utility</span><span class="sm-idx">—</span></div>
+        <div class="sitemap-row"><div class="sm-url">/memberships/</div><span class="sm-badge utility">Utility</span><span class="sm-idx">—</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/snap-on-smile/</div><span class="sm-badge service">Service</span><span class="sm-idx">16</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/dental-bonding/</div><span class="sm-badge service">Service</span><span class="sm-idx">9</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/dentures-and-partial-dentures/</div><span class="sm-badge service">Service</span><span class="sm-idx">6</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/dental-veneers-and-dental-laminates/</div><span class="sm-badge service">Service</span><span class="sm-idx">5</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/full-mouth-reconstruction/</div><span class="sm-badge service">Service</span><span class="sm-idx">4</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/composite-fillings/</div><span class="sm-badge service">Service</span><span class="sm-idx">4</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/teeth-whitening/</div><span class="sm-badge service">Service</span><span class="sm-idx">4</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/cerec-dentist/</div><span class="sm-badge service">Service</span><span class="sm-idx">3</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/dental-bridges/</div><span class="sm-badge service">Service</span><span class="sm-idx">2</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/cosmetic-dentist/</div><span class="sm-badge service">Service · thin</span><span class="sm-idx">2</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/family-dentist/</div><span class="sm-badge service">Service</span><span class="sm-idx">2</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/san-diego-ca/emergency-dental-care/</div><span class="sm-badge flag">35 kw · 1 visit</span><span class="sm-idx">1</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/dental-crowns/</div><span class="sm-badge service">Service</span><span class="sm-idx">1</span></div>
+        <div class="sitemap-row"><div class="sm-url">/san-diego-ca/tooth-extraction/</div><span class="sm-badge service">Service</span><span class="sm-idx">1</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/dental-practice-sp0036/</div><span class="sm-badge flag">Template ID</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/find-your-local-dental-center/</div><span class="sm-badge flag">Generic</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/san-diego-ca/dental-center/</div><span class="sm-badge flag">Generic templated</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/san-diego-ca/dental-office/</div><span class="sm-badge flag">Generic templated</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row flag-row"><div class="sm-url">/san-diego-ca/dental-services/</div><span class="sm-badge flag">Duplicate of /services</span><span class="sm-idx">0</span></div>
+        <div class="sitemap-row"><div class="sm-url">/blog/ (index + ~10 posts)</div><span class="sm-badge blog">Blog</span><span class="sm-idx">~20</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE PAGES TO ADD -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Service Pages to Add</div>
+    <h2>Missing pages for services <span class="accent">Dr. Yassi already performs</span></h2>
+    <p class="section-intro">Each missing page is a San Diego search Mission Valley Dental Arts can't currently win — even though the practice performs the procedure. Several of these procedures are referenced in the practice's "services" copy but don't have dedicated landing pages competing in search.</p>
+
+    <div class="sp-card">
+      <div class="sitemap-summary">
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-service">14</div><div class="sitemap-stat-label">Templated pages today</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-nogeo">10</div><div class="sitemap-stat-label">High-value pages to add</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num" style="color: #2D5BC2;">4</div><div class="sitemap-stat-label">Sub-neighborhood pages</div></div>
+        <div class="sitemap-stat"><div class="sitemap-stat-num sm-stat-flag">~40</div><div class="sitemap-stat-label">Target page count</div></div>
+      </div>
+
+      <div class="sp-list">
+        <div class="sp-row"><div class="sp-page">All-on-4 / Full-Arch Dental Implants<span class="sp-sub">Highest case-value implant procedure — currently only referenced in services copy</span></div><span class="sp-cat">Implants</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Dental Implants (single + multiple)<span class="sp-sub">No dedicated implants page despite "implant crowns" in services list</span></div><span class="sp-cat">Implants</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Same-Day CEREC Crowns<span class="sp-sub">Major tech differentiator — currently buried inside /san-diego-ca/cerec-dentist/</span></div><span class="sp-cat">Restorative</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Smile Makeover<span class="sp-sub">Dedicated page with before/after gallery, cost guidance, treatment process</span></div><span class="sp-cat">Cosmetic</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Sedation Dentistry<span class="sp-sub">Key for anxious patients — high commercial intent term not currently covered</span></div><span class="sp-cat">General</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Invisalign / Clear Aligners<span class="sp-sub">Currently only in /blog/invisalign-teeth-straightening... — needs a real landing page</span></div><span class="sp-cat">Orthodontic</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Children's Dentistry<span class="sp-sub">Practice serves age 10+ — separate page from family dentistry</span></div><span class="sp-cat">Pediatric</span><span class="sp-pri med">Medium</span></div>
+        <div class="sp-row"><div class="sp-page">Root Canal Therapy<span class="sp-sub">Emergency-driven procedure with high San Diego commercial intent</span></div><span class="sp-cat">Restorative</span><span class="sp-pri med">Medium</span></div>
+        <div class="sp-row"><div class="sp-page">Periodontal / Gum Disease Treatment<span class="sp-sub">Currently the #13-ranked blog post is the only related page</span></div><span class="sp-cat">Specialty</span><span class="sp-pri med">Medium</span></div>
+        <div class="sp-row"><div class="sp-page">New Patient · Insurance &amp; Financing<span class="sp-sub">Major conversion lever — typical first-step page for new-patient searches</span></div><span class="sp-cat">Utility</span><span class="sp-pri high">High</span></div>
+        <div class="sp-row"><div class="sp-page">Mission Valley · location hub<span class="sp-sub">Dedicated neighborhood landing page (vs templated /san-diego-ca/)</span></div><span class="sp-cat">Location</span><span class="sp-pri phase2">Phase 2</span></div>
+        <div class="sp-row"><div class="sp-page">Hillcrest, San Diego<span class="sp-sub">Adjacent neighborhood ~2 miles north</span></div><span class="sp-cat">Location</span><span class="sp-pri phase2">Phase 2</span></div>
+        <div class="sp-row"><div class="sp-page">Old Town / Bay Park</div><span class="sp-cat">Location</span><span class="sp-pri phase2">Phase 2</span></div>
+        <div class="sp-row"><div class="sp-page">Fashion Valley / Linda Vista</div><span class="sp-cat">Location</span><span class="sp-pri phase2">Phase 2</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC POSITIONING -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Strategic Positioning</div>
+    <h2>Lead with the <span class="accent">doctor</span> to win the brand-resolution moment</h2>
+    <p class="section-intro">"Mission Valley Dental Arts" lives next door to three other Mission Valley-branded dental practices. A patient on the map pack can't easily tell them apart in 3 seconds. The fastest disambiguation is leading the brand with Dr. Yassi's name across the website, GBP, and citations.</p>
+
+    <div class="brand-suggestion-card">
+      <div class="suggestion-eyebrow"><span class="dot" style="background:var(--green); width:6px; height:6px; border-radius:50%;"></span>Recommended brand treatment</div>
+      <h3>From "Mission Valley Dental Arts" to "Dr. Yassi · Mission Valley Dental Arts"</h3>
+      <p>Leading the brand with Dr. Yassi differentiates the practice from <em>Mission Valley Dentists</em>, <em>Smile Mission Valley Dental Center</em>, and <em>Dentists of Mission Valley</em> — three competitors all using the geographic phrase in their name. The change doesn't require a legal rename — it's about consistent anchor text in the website header, page titles, GBP, schema, citations, and partnership mentions.</p>
+
+      <div class="name-comparison">
+        <div class="name-card-vs">
+          <div class="name-card-label">Current</div>
+          <div class="name-card-name">Mission Valley Dental Arts</div>
+          <div class="name-card-meta">Visually indistinguishable from three nearby competitors using the same Mission Valley naming.</div>
+        </div>
+        <div class="name-arrow">→</div>
+        <div class="name-card-vs possible">
+          <div class="name-card-label">Doctor-led</div>
+          <div class="name-card-name">Dr. Yassi · Mission Valley Dental Arts</div>
+          <div class="name-card-meta">Doctor-led naming wins the 3-second brand-resolution moment in the map pack and AI search.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REBUILD VS REPAIR -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow red"><span class="dot"></span>Strategy Comparison</div>
+    <h2>The <span class="accent-red">DocGenius platform</span> is the ceiling. Patching it won't lift the ceiling.</h2>
+    <p class="section-intro">The reputation, the keyword footprint, the local-search asset — all real. The platform underneath them is what's constraining how much of that signal converts. Patching DocGenius can move things partway. A platform rebuild moves the ceiling itself.</p>
+
+    <div class="rebuild-vs">
+      <div class="vs-card repair">
+        <div class="vs-stamp bad">Partial fix</div>
+        <div class="vs-label">Option A</div>
+        <h3>Patch within DocGenius</h3>
+        <ul class="vs-list bad">
+          <li>Replace stock photography on templated pages (where the platform allows)</li>
+          <li>Rewrite treatment-page copy within DocGenius's content limits</li>
+          <li>Noindex and 301 the exposed <code>/dental-practice-sp0036/</code> template ID</li>
+          <li>Add LocalBusiness + AggregateRating schema (if DocGenius supports custom &lt;head&gt; injection)</li>
+          <li>Retrofit sticky CTAs, trust bars, review carousels using platform CSS overrides</li>
+          <li>Live with templated <code>/san-diego-ca/[service]/</code> URL pattern</li>
+          <li>Conversion ceiling capped by DocGenius's built-in form / CTA limits</li>
+          <li>Remain on shared codebase with hundreds of other DocGenius practices</li>
+        </ul>
+        <div class="vs-metrics">
+          <div class="vs-metric"><div class="vm-num">~10 wks</div><div class="vm-label">Timeline</div></div>
+          <div class="vs-metric"><div class="vm-num">Medium</div><div class="vm-label">Risk Level</div></div>
+        </div>
+      </div>
+
+      <div class="vs-card rebuild">
+        <div class="vs-stamp good">Recommended</div>
+        <div class="vs-label">Option B</div>
+        <h3>Rebuild on a modern platform</h3>
+        <ul class="vs-list good">
+          <li>Practice-specific URL structure: <code>/cosmetic-dentistry/</code>, <code>/dental-implants/</code></li>
+          <li>Schema-ready CMS — LocalBusiness, MedicalProcedure, FAQPage built in</li>
+          <li>Real practice photography across every treatment page (Dr. Yassi + team)</li>
+          <li>Mobile-first UX with sticky phone/book bar + above-fold trust signals</li>
+          <li>Per-procedure consult forms, embedded review carousels, before/after thumbnails</li>
+          <li>10+ new dedicated service pages (All-on-4, smile makeover, sedation, Invisalign, etc.)</li>
+          <li>4 sub-neighborhood location pages (Mission Valley · Hillcrest · Old Town · Fashion Valley)</li>
+          <li>Defined typography system (serif headline + sans body, 6-level scale)</li>
+        </ul>
+        <div class="vs-metrics">
+          <div class="vs-metric"><div class="vm-num">~12 wks</div><div class="vm-label">Timeline</div></div>
+          <div class="vs-metric"><div class="vm-num">Low</div><div class="vm-label">Risk Level</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITORS -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Local Competitive Landscape</div>
+    <h2>The Mission Valley field — <span class="accent">three confusable neighbors</span></h2>
+    <p class="section-intro">All four practices use "Mission Valley" naming and operate within the same San Diego ZIP-code radius. Mission Valley Dental Arts has the largest keyword footprint of any of them — and the lowest organic traffic. Most rankings sit one or two positions below where they would draw real clicks.</p>
+
+    <div class="competitor-table">
+      <div class="ct-head">
+        <div>Practice · Domain</div>
+        <div>Authority</div>
+        <div>Keywords</div>
+        <div>Visits/mo</div>
+        <div>Ref. Domains</div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">Mission Valley Dentists<span class="ct-sub">5638 Mission Center Rd · missionvalleydentists.com</span></div>
+        <div class="ct-num good">—</div>
+        <div class="ct-num good">530</div>
+        <div class="ct-num good">775</div>
+        <div class="ct-num">—</div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">Smile Mission Valley Dental Center<span class="ct-sub">2650 Camino Del Rio N · smilemissionvalley.com</span></div>
+        <div class="ct-num">—</div>
+        <div class="ct-num">402</div>
+        <div class="ct-num">269</div>
+        <div class="ct-num">—</div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">Dentists of Mission Valley<span class="ct-sub">Smile Generation chain · dentistsofmissionvalley.com</span></div>
+        <div class="ct-num">—</div>
+        <div class="ct-num">371</div>
+        <div class="ct-num">265</div>
+        <div class="ct-num">—</div>
+      </div>
+      <div class="ct-row you">
+        <div class="ct-domain">Mission Valley Dental Arts (You)<span class="ct-sub">2333 Camino del Rio S · missionvalleydentalarts.com</span></div>
+        <div class="ct-num warn">9</div>
+        <div class="ct-num good">1,204</div>
+        <div class="ct-num warn">176</div>
+        <div class="ct-num good">178</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 28px; font-size: 16px; color: var(--ink-soft); line-height: 1.6;">Mission Valley Dental Arts has <strong style="color:var(--ink);">2× more ranking keywords than the leader</strong> — and 1/4 the traffic. <em>Mission Valley Dentists</em> ranks for less than half as many terms but converts 4.4× the visits, meaning their average ranking position is materially higher. The keyword footprint is already there; the rankings are sitting on page 2 instead of page 1.</p>
+  </div>
+</section>
+
+<!-- GAME PLAN -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="dot"></span>Game Plan</div>
+    <h2>How the rebuild <span class="accent">moves forward</span></h2>
+    <p class="section-intro">One foundational step that everything depends on, plus seven ongoing engines that compound from there.</p>
+
+    <div class="step-one-feature">
+      <div class="s1-grid">
+        <div class="s1-number-block">
+          <div class="s1-badge">The Foundation</div>
+          <div class="s1-number">01</div>
+          <div class="s1-step-label">Step 1 · the heaviest lift</div>
+          <div class="s1-step-title">Rebuild off DocGenius — design, content, photography, schema</div>
+        </div>
+        <div class="s1-content">
+          <h4>Design &amp; Typography</h4>
+          <ul class="s1-todo">
+            <li>One serif headline font (<strong>Playfair Display</strong>, <strong>Lora</strong>, or <strong>Cormorant Garamond</strong>) paired with one clean sans-serif body font (<strong>Inter</strong>, <strong>Manrope</strong>, or <strong>DM Sans</strong>)</li>
+            <li>6-level typographic scale (44/32/22/16/14/12 px) with line-height 1.5–1.7</li>
+            <li>Cohesive color palette signaling 25-year established San Diego practice — not DocGenius template defaults</li>
+            <li>Doctor-led brand treatment: "Dr. Yassi · Mission Valley Dental Arts" across header and titles</li>
+          </ul>
+          <h4>Photography &amp; Trust Signals</h4>
+          <ul class="s1-todo">
+            <li>In-office photography day: <strong>Dr. Yassi and team headshots, operatory, reception, technology in use (CEREC, 3D CBCT, same-day crowns), real before/after smile gallery shots</strong></li>
+            <li>Replace stock photography on every <code>/san-diego-ca/[service]/</code> page (and the rebuilt equivalents)</li>
+            <li>Above-the-fold trust bar: ★ 5.0 · 422 reviews · Established 2000 · 25 years in Mission Valley</li>
+            <li>Per-treatment before/after grids threaded into cosmetic, veneers, full-mouth reconstruction, snap-on smile</li>
+          </ul>
+          <h4>Layout &amp; Conversion UX</h4>
+          <ul class="s1-todo">
+            <li><strong>Sticky phone-number / Book Online bar</strong> pinned to mobile viewport bottom on every page</li>
+            <li>Above-the-fold "Book a Consultation" CTA on every treatment page</li>
+            <li>Per-procedure consult forms (cosmetic / implants / full-mouth / emergency) with relevant fields</li>
+            <li>Embedded review carousel above the fold pulling from 422 Google + 482 Birdeye + 110 Yelp</li>
+          </ul>
+          <h4>Service-Page Coverage</h4>
+          <ul class="s1-todo">
+            <li>Dedicated pages for: <strong>Dental Implants, All-on-4 / Full-Arch Implants, Same-Day CEREC Crowns, Smile Makeover, Sedation Dentistry, Invisalign / Clear Aligners, Children's Dentistry, Root Canal Therapy, Periodontal Treatment, New Patient / Insurance</strong></li>
+            <li>Sub-neighborhood pages: <strong>Mission Valley, Hillcrest, Old Town / Bay Park, Fashion Valley / Linda Vista</strong></li>
+            <li>1,000–1,500 words per treatment page · 5–8 procedure FAQs · embedded testimonials · before/after · cost guidance</li>
+          </ul>
+          <h4>Technical Foundation</h4>
+          <ul class="s1-todo">
+            <li>Modern CMS · clean URL structure (<code>/cosmetic-dentistry/</code> not <code>/san-diego-ca/cosmetic-dentist/</code>)</li>
+            <li>301-redirect map from every legacy DocGenius URL at launch · noindex <code>/dental-practice-sp0036/</code></li>
+            <li>LocalBusiness · MedicalProcedure · FAQPage · AggregateRating · Person · Review schema deployed at launch</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="engines-header"><span>Then · 7 Ongoing Engines</span></div>
+
+    <div class="engines-grid">
+      <div class="engine-card">
+        <div class="engine-num">Engine 02</div>
+        <div class="engine-icon">📍</div>
+        <h4>Listings &amp; NAP Cleanup</h4>
+        <p><strong>The goal:</strong> consistent practice identity across every directory.</p>
+        <p>Audit Google Business Profile, Yelp, Healthgrades, Zocdoc, BBB, San Diego County Dental Society, Birdeye, patientconnect365. Consolidate the legacy (619) 574-1810 number with the current (619) 805-4248. Refresh Yelp photo library (currently only 20) to 40+.</p>
+        <div class="engine-target"><strong>3-month target</strong>NAP consistency 100% · Yelp photos 40+</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">Engine 03</div>
+        <div class="engine-icon">✍️</div>
+        <h4>Content Engine</h4>
+        <p><strong>The goal:</strong> move the existing 1,204 keywords from page 2 to page 1.</p>
+        <p>Monthly blog cadence focused on San Diego-specific topics, patient questions, cost guidance, procedure explainers. Topics seeded from the keywords already ranking #6–#15 — exactly the positions one or two ranking spots away from material traffic.</p>
+        <div class="engine-target"><strong>12-month target</strong>Visits 176 → 600+ · top-5 rankings doubled</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">Engine 04</div>
+        <div class="engine-icon">🏆</div>
+        <h4>Authority &amp; Backlinks</h4>
+        <p><strong>The goal:</strong> grow on the existing 178 clean referring-domain base.</p>
+        <p>San Diego-specific citations and partnerships: San Diego County Dental Society, San Diego Magazine "Top Dentists" submissions, Mission Valley business directories, Dr. Yassi's alumni network, neighborhood healthcare partnerships.</p>
+        <div class="engine-target"><strong>12-month target</strong>Authority 9 → 16+ · Ref domains 178 → 250+</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">Engine 05</div>
+        <div class="engine-icon">⭐</div>
+        <h4>Review Velocity</h4>
+        <p><strong>The goal:</strong> compound a 1,000-review lead into a moat.</p>
+        <p>Post-visit follow-up via text and email with one-tap review links. Per-procedure review prompts for cosmetic, implants, and full-mouth cases. Quarterly internal review-velocity targets to outpace the three competing Mission Valley practices.</p>
+        <div class="engine-target"><strong>12-month target</strong>Google reviews 422 → 550+</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">Engine 06</div>
+        <div class="engine-icon">📌</div>
+        <h4>Google Business Profile</h4>
+        <p><strong>The goal:</strong> feed the Mission Valley Map Pack with consistent activity.</p>
+        <p>Weekly GBP posts featuring services, Dr. Yassi insights, patient cases (with consent), technology highlights, San Diego community presence. Photo uploads from the practice photography day. Category optimization for cosmetic + implants + same-day CEREC.</p>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">Engine 07</div>
+        <div class="engine-icon">🤖</div>
+        <h4>AI Search Optimization</h4>
+        <p><strong>The goal:</strong> surface in Google AI Overviews, ChatGPT, and Perplexity for San Diego dentist queries.</p>
+        <p>Schema maintenance as new pages launch. FAQPage schema with procedure-specific answers. Person schema for Dr. Yassi with credentials. AggregateRating updates as new reviews come in. Make the 422-review reputation legible to the AI-search layer.</p>
+      </div>
+      <div class="engine-card" style="grid-column: 1 / -1;">
+        <div class="engine-num">Engine 08</div>
+        <div class="engine-icon">📊</div>
+        <h4>Tracking &amp; Reporting</h4>
+        <p><strong>The goal:</strong> measure the rebuild against a fixed May 2026 baseline.</p>
+        <p>Monthly performance report covering keyword position changes, organic traffic, Google Business Profile performance, new reviews, and booked appointments — each tracked against the baseline established in this audit. Competitors tracked: Mission Valley Dentists, Smile Mission Valley Dental Center, Dentists of Mission Valley.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section class="alt">
+  <div class="wrap">
+    <div class="opportunity">
+      <div class="opp-grid">
+        <div class="opp-content">
+          <div class="section-eyebrow" style="background:rgba(212,169,59,0.15); color:var(--green);"><span class="dot"></span>The Opportunity</div>
+          <h2>Where the practice <span class="accent">can grow</span></h2>
+          <p><strong>Not promises — just real openings the website isn't taking advantage of yet.</strong></p>
+          <p>Mission Valley Dental Arts is doing more right than the current 176 visits/month suggests. Real San Diego patients are searching for exactly the procedures Dr. Yassi performs — cosmetic, implants, veneers, same-day crowns, snap-on smile, full-mouth reconstruction — and the practice already shows up on Google for thousands of those searches. The issues this audit identifies are mostly about the website blocking that ranking signal from converting into clicks and booked consultations.</p>
+        </div>
+
+        <div class="opp-stats">
+          <div class="opp-stat">
+            <div class="opp-star">★</div>
+            <div class="opp-stat-label">Reputation</div>
+            <div class="opp-stat-text">422 Google reviews at 5.0★ — rare in San Diego dental — the website barely shows it.</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-star">★</div>
+            <div class="opp-stat-label">Local Patients</div>
+            <div class="opp-stat-text">2,400 monthly searches for "dentist san diego" — ranking #7, just outside the click zone.</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-star">★</div>
+            <div class="opp-stat-label">AI Search</div>
+            <div class="opp-stat-text">When patients ask AI tools for a San Diego dentist, the 25-year practice doesn't surface today.</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-star">★</div>
+            <div class="opp-stat-label">Smile Gallery</div>
+            <div class="opp-stat-text">Before/after asset already exists — just isn't threaded into the cosmetic and veneer pages.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="opp-disclaimer">
+        <strong>What this means:</strong> The reputation foundation and ranking-keyword footprint are already in place. The platform that's supposed to convert them is what needs work. How much growth happens over time depends on the rebuild and the ongoing engines that follow — this audit doesn't promise a specific number.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- END CTA -->
+<section class="end-cta">
+  <div class="wrap">
+    <h2>A <span class="accent">meaningful, achievable</span> direction</h2>
+    <p>The reputation is exceptional. The keyword footprint is real. The DocGenius platform underneath them is what's capping conversion. The recommendation is rebuild — site, design, content, and trust signals together — and keep the 25-year Mission Valley brand.</p>
+    <div class="end-meta">Dentist Nerds · Website Audit · Confidential · May 2026 · missionvalleydentalarts.com</div>
+  </div>
+</section>
+
+</body>
+</html>
