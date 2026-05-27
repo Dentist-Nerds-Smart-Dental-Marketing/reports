@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growth Overview — West Hollywood Dental Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --navy: #0d2538;
+  --navy-2: #112e44;
+  --teal: #5fbab0;
+  --gold: #d4a55c;
+  --gold-2: #c9a961;
+  --bg-page: #f5f5f0;
+  --bg-soft: #ebe9e0;
+  --bg-card: #ffffff;
+  --text-dark: #0d2538;
+  --text-body: #4b5563;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --green: #2d8e5c;
+  --green-bg: #d1fae5;
+  --green-text: #065f46;
+  --gold-bg: #fef3c7;
+  --gold-text: #92400e;
+  --red: #c53030;
+  --red-bg: #fee2e2;
+  --red-text: #991b1b;
+  --blue: #2c6fb3;
+  --blue-bg: #dbeafe;
+  --blue-text: #1e40af;
+  --purple: #7c3aed;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: hidden; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg-page); color: var(--text-body);
+  line-height: 1.6; font-size: 14px;
+}
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+.eyebrow {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: 14px;
+}
+.section { padding: 60px 0; }
+.section h2 { font-size: 38px; font-weight: 600; margin-bottom: 14px; }
+.section-text {
+  font-size: 14px; color: var(--text-body); max-width: 760px;
+  margin-bottom: 28px; line-height: 1.7;
+}
+.section-text strong { color: var(--text-dark); font-weight: 600; }
+.h2-divider {
+  display: grid; grid-template-columns: repeat(3, 90px); gap: 0;
+  margin: 0 0 30px;
+}
+.h2-divider span { height: 2px; }
+.div-purple { background: var(--purple); }
+.div-green { background: var(--green); }
+.div-gold { background: var(--gold-2); }
+.div-blue { background: var(--blue); }
+
+/* HERO */
+.hero { background: var(--navy); color: #fff; padding: 56px 0 0; position: relative; overflow: hidden; }
+.hero::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle at center, rgba(95,186,176,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: -40px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle at center, rgba(212,165,92,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-logo-corner {
+  position: absolute; top: 30px; right: 40px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-logo-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.hero-logo-corner img {
+  height: 48px; width: 48px; border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2); object-fit: cover;
+}
+.hero-logo-corner .prepared-by { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; font-weight: 600; }
+.hero-logo-corner .brand-name { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 600; color: #fff; line-height: 1; }
+.hero h1 { font-size: 54px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 8px; }
+.hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+.hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 32px; }
+.hero .eyebrow { color: var(--teal); }
+.hero-meta-row {
+  display: grid; grid-template-columns: repeat(4, auto); gap: 56px;
+  padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px;
+}
+.hero-meta-item .meta-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; margin-bottom: 6px; font-weight: 600; }
+.hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+/* BEFORE / AFTER BANNER */
+.before-after-banner {
+  background: linear-gradient(135deg, #0a1e2e 0%, #0d2538 60%, #0f2c40 100%);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 36px 0;
+}
+.ba-grid { display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0; align-items: center; }
+.ba-side { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 28px 32px; }
+.ba-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #8aa1b3; font-weight: 600; margin-bottom: 18px; }
+.ba-num {
+  font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 600; line-height: 1; margin-bottom: 10px;
+}
+.ba-num.zero { color: #4a6278; }
+.ba-num.now  { color: var(--teal); }
+.ba-caption  { font-size: 13px; color: #8aa1b3; line-height: 1.5; }
+.ba-arrow-wrap {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; color: var(--gold);
+}
+.ba-divider { width: 1px; background: rgba(255,255,255,0.08); align-self: stretch; }
+
+/* BIG WINS ROW */
+.big-wins-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 28px 0;
+}
+.big-win-item { text-align: center; padding: 0 28px; border-right: 1px solid rgba(255,255,255,0.08); }
+.big-win-item:last-child { border-right: none; }
+.big-win-num {
+  font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; line-height: 1;
+  margin-bottom: 8px;
+}
+.big-win-num.teal   { color: var(--teal); }
+.big-win-num.gold   { color: var(--gold); }
+.big-win-num.green  { color: #4ec88a; }
+.big-win-num.purple { color: #a78bfa; }
+.big-win-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #8aa1b3; font-weight: 600; }
+.big-win-sub { font-size: 12px; color: #6b8099; margin-top: 4px; }
+
+/* CALLOUT TAKEAWAY */
+.callout-takeaway {
+  background: #fff; border-left: 4px solid var(--gold);
+  padding: 22px 26px; margin-bottom: 28px; border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.callout-takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-2); margin-bottom: 8px; }
+.callout-takeaway-text { font-size: 15.5px; color: var(--text-dark); line-height: 1.65; }
+.callout-takeaway-text strong { color: var(--navy); }
+
+/* TIMELINE */
+.timeline { position: relative; padding: 12px 0; }
+.timeline::before {
+  content: ''; position: absolute; left: 28px; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(to bottom, var(--teal), var(--gold), var(--green));
+}
+.tl-item { display: flex; gap: 28px; margin-bottom: 32px; position: relative; }
+.tl-dot {
+  flex-shrink: 0; width: 58px; height: 58px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; position: relative; z-index: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.tl-dot.teal   { background: var(--teal); color: #fff; }
+.tl-dot.gold   { background: var(--gold); color: var(--navy); }
+.tl-dot.green  { background: var(--green); color: #fff; }
+.tl-dot.blue   { background: var(--blue); color: #fff; }
+.tl-dot.purple { background: var(--purple); color: #fff; }
+.tl-dot.navy   { background: var(--navy); color: #fff; border: 2px solid var(--teal); }
+.tl-content {
+  flex: 1; background: var(--bg-card); border-radius: 6px; padding: 22px 26px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04); align-self: flex-start;
+}
+.tl-date { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 6px; }
+.tl-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
+.tl-desc { font-size: 13.5px; color: var(--text-body); line-height: 1.65; }
+.tl-desc strong { color: var(--text-dark); font-weight: 600; }
+.tl-stats { display: flex; gap: 24px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.tl-stat { text-align: center; }
+.tl-stat-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; color: var(--teal); line-height: 1; }
+.tl-stat-label { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-top: 4px; }
+
+/* KPI GRID */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+.kpi-card {
+  background: var(--bg-card); padding: 22px 20px; text-align: center;
+  border-top: 2px solid var(--teal); border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.kpi-card.gold   { border-top-color: var(--gold); }
+.kpi-card.green  { border-top-color: var(--green); }
+.kpi-card.blue   { border-top-color: var(--blue); }
+.kpi-card.purple { border-top-color: var(--purple); }
+.kpi-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--text-dark); line-height: 1; margin-bottom: 8px; }
+.kpi-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dark); font-weight: 600; margin-bottom: 4px; }
+.kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+/* CHART CARD */
+.chart-card {
+  background: var(--bg-card); padding: 28px 30px; border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04); margin-bottom: 24px;
+}
+.chart-card-title { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 18px; color: var(--text-dark); margin-bottom: 4px; }
+.chart-card-sub   { font-size: 12px; color: var(--text-muted); margin-bottom: 18px; }
+.chart-canvas-wrap { position: relative; height: 300px; width: 100%; }
+
+/* KEYWORD CARDS */
+.kw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
+.kw-card {
+  background: var(--bg-card); border-radius: 6px; padding: 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04); border-top: 3px solid var(--teal);
+}
+.kw-card.gold   { border-top-color: var(--gold); }
+.kw-card.green  { border-top-color: var(--green); }
+.kw-card.blue   { border-top-color: var(--blue); }
+.kw-card.purple { border-top-color: var(--purple); }
+.kw-rank { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; line-height: 1; margin-bottom: 6px; }
+.kw-rank.teal   { color: var(--teal); }
+.kw-rank.gold   { color: var(--gold-2); }
+.kw-rank.green  { color: var(--green); }
+.kw-rank.blue   { color: var(--blue); }
+.kw-rank.purple { color: var(--purple); }
+.kw-keyword { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--text-dark); line-height: 1.3; margin-bottom: 10px; min-height: 48px; }
+.kw-meta { font-size: 12px; color: var(--text-muted); }
+.kw-pill {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font-size: 11px; font-weight: 600; background: var(--green-bg); color: var(--green-text);
+  margin-top: 10px;
+}
+.kw-pill.gold { background: var(--gold-bg); color: var(--gold-text); }
+
+/* AI VISIBILITY */
+.ai-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
+.ai-card {
+  background: var(--bg-card); border-radius: 8px; padding: 26px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;
+  border: 1px solid var(--border); position: relative; overflow: hidden;
+}
+.ai-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.ai-card.perplexity::before { background: linear-gradient(90deg, #20b5b8, #0d8a8d); }
+.ai-card.chatgpt::before    { background: linear-gradient(90deg, #10a37f, #0d6e56); }
+.ai-card.google::before     { background: linear-gradient(90deg, #4285f4, #34a853); }
+.ai-icon { font-size: 32px; margin-bottom: 12px; display: block; line-height: 1; }
+.ai-platform { font-weight: 700; font-size: 15px; color: var(--text-dark); margin-bottom: 6px; }
+.ai-status { font-size: 12.5px; color: var(--text-muted); line-height: 1.55; }
+.ai-badge {
+  display: inline-block; margin-top: 12px; padding: 4px 12px; border-radius: 999px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  background: var(--green-bg); color: var(--green-text);
+}
+
+/* CONTENT SECTION */
+.content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+.content-card {
+  background: var(--bg-card); border-radius: 6px; padding: 28px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04); border-left: 4px solid var(--teal);
+}
+.content-card.gold { border-left-color: var(--gold); }
+.content-num { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 600; color: var(--teal); line-height: 1; margin-bottom: 8px; }
+.content-num.gold { color: var(--gold-2); }
+.content-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dark); font-weight: 600; margin-bottom: 10px; }
+.content-desc { font-size: 13.5px; color: var(--text-body); line-height: 1.65; }
+.content-desc strong { color: var(--text-dark); }
+
+/* BOTTOM LINE */
+.bottom-line-card {
+  margin-top: 56px;
+  background: linear-gradient(135deg, rgba(212,165,92,0.12) 0%, rgba(212,165,92,0.04) 100%);
+  border: 1px solid rgba(212,165,92,0.4); border-left: 5px solid var(--gold);
+  border-radius: 8px; padding: 38px 44px;
+}
+.bottom-line-label { font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 14px; }
+.bottom-line-headline { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; color: #fff; margin: 0 0 22px; line-height: 1.25; }
+.bottom-line-headline em { font-style: italic; color: var(--gold); font-weight: 500; }
+.bottom-line-body p { font-size: 15.5px; color: #e2e8f0; line-height: 1.7; margin: 0 0 16px; }
+.bottom-line-body p:last-child { margin-bottom: 0; }
+.bottom-line-body strong { color: #fff; font-weight: 600; }
+.bottom-line-signoff { margin-top: 24px !important; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 14.5px !important; color: #cbd5e1 !important; font-style: italic; }
+.bottom-line-signoff strong { color: var(--gold) !important; font-style: normal; }
+
+/* PILL */
+.pill { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 600; min-width: 38px; text-align: center; }
+.pill-green { background: var(--green-bg); color: var(--green-text); }
+.pill-gold  { background: var(--gold-bg); color: var(--gold-text); }
+.pill-blue  { background: var(--blue-bg); color: var(--blue-text); }
+
+/* FOOTER */
+.footer {
+  padding: 40px 0 30px; text-align: center;
+  font-size: 11.5px; color: var(--text-muted);
+  border-top: 1px solid var(--border); margin-top: 30px;
+}
+.footer-prepared { display: flex; flex-direction: column; align-items: center; gap: 12px; padding-bottom: 24px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+.footer-prepared-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
+.footer-brand-row { display: flex; align-items: center; gap: 14px; }
+.footer-prepared img { height: 56px; width: 56px; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.12); object-fit: cover; }
+.footer-brand-name { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 600; color: var(--navy); line-height: 1; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .container { padding: 0 20px; }
+  .hero h1 { font-size: 34px; }
+  .hero-meta-row { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .hero-logo-corner { position: static; margin-bottom: 20px; }
+  h2 { font-size: 28px; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .ba-arrow-wrap { transform: rotate(90deg); }
+  .ba-divider { display: none; }
+  .big-wins-row { grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .big-win-item:nth-child(2) { border-right: none; }
+  .big-win-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
+  .big-win-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.08); border-right: none; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .kw-grid  { grid-template-columns: 1fr; }
+  .ai-grid  { grid-template-columns: 1fr; }
+  .content-grid { grid-template-columns: 1fr; }
+  .bottom-line-card { padding: 28px 20px; }
+  .bottom-line-headline { font-size: 24px; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .hero h1 { font-size: 28px; }
+  .big-wins-row { grid-template-columns: 1fr 1fr; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .section { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="hero-logo-corner">
+      <img src="data:image/png;base64,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" alt="Dentist Nerds" />
+      <div class="hero-logo-text">
+        <div class="prepared-by">Prepared by</div>
+        <div class="brand-name">Dentist Nerds</div>
+      </div>
+    </div>
+
+    <div class="eyebrow">GROWTH OVERVIEW · FROM LAUNCH TO TODAY</div>
+    <h1>Your Marketing<br><em>Growth Story</em></h1>
+    <div class="hero-sub">West Hollywood Dental Studio &nbsp;·&nbsp; West Hollywood, CA</div>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <div class="meta-label">Website</div>
+        <div class="meta-value">westhollywooddentalstudio.com</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Report Date</div>
+        <div class="meta-value">May 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Period Covered</div>
+        <div class="meta-value">Launch → Present</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Prepared By</div>
+        <div class="meta-value">Dentist Nerds</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEFORE / AFTER BANNER -->
+  <div class="before-after-banner">
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="ba-grid">
+        <div class="ba-side">
+          <div class="ba-label">When We Started</div>
+          <div class="ba-num zero">0</div>
+          <div class="ba-caption">Monthly organic visitors<br>Zero keyword rankings<br>No online presence</div>
+        </div>
+        <div class="ba-arrow-wrap">→</div>
+        <div class="ba-side">
+          <div class="ba-label">Where You Are Today</div>
+          <div class="ba-num now">300–400</div>
+          <div class="ba-caption">Monthly organic visitors<br>374 keywords ranking on Google<br>Visible in AI-powered search</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIG WINS ROW -->
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="big-wins-row">
+      <div class="big-win-item">
+        <div class="big-win-num teal">374</div>
+        <div class="big-win-label">Keywords Ranking</div>
+        <div class="big-win-sub">vs. 0 at launch</div>
+      </div>
+      <div class="big-win-item">
+        <div class="big-win-num gold">~350</div>
+        <div class="big-win-label">Avg. Monthly Visitors</div>
+        <div class="big-win-sub">from organic search</div>
+      </div>
+      <div class="big-win-item">
+        <div class="big-win-num green">20</div>
+        <div class="big-win-label">Blog Posts Published</div>
+        <div class="big-win-sub">original content created</div>
+      </div>
+      <div class="big-win-item">
+        <div class="big-win-num purple">AI</div>
+        <div class="big-win-label">AI Search Visible</div>
+        <div class="big-win-sub">ChatGPT, Perplexity &amp; more</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXECUTIVE SUMMARY ============ -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">THE BIG PICTURE</div>
+    <h2>From Zero to a Thriving<br>Online Presence</h2>
+    <div class="h2-divider"><span class="div-teal" style="background:var(--teal);height:2px;"></span><span class="div-green" style="background:var(--green);height:2px;"></span><span class="div-gold"></span></div>
+
+    <div class="callout-takeaway">
+      <div class="callout-takeaway-label">✅ What We've Built Together</div>
+      <div class="callout-takeaway-text">
+        When we started, West Hollywood Dental Studio had <strong>zero online visibility</strong> — no keyword rankings,
+        no organic traffic, no content. Today, the practice consistently attracts
+        <strong>300 to 400 visitors every month from Google search alone</strong>, ranks for
+        <strong>374 different dental search terms</strong>, appears in <strong>AI-powered search results</strong>
+        on platforms like ChatGPT and Perplexity, and has a library of <strong>20 original blog posts</strong>
+        driving long-term authority. This page tells that story.
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-num">374</div>
+        <div class="kpi-label">Google Keywords</div>
+        <div class="kpi-sub">Search terms you now rank for</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-num">300–400</div>
+        <div class="kpi-label">Monthly Visitors</div>
+        <div class="kpi-sub">Consistent organic traffic</div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-num">20</div>
+        <div class="kpi-label">Blog Posts</div>
+        <div class="kpi-sub">Original content published</div>
+      </div>
+      <div class="kpi-card purple">
+        <div class="kpi-num">4.8★</div>
+        <div class="kpi-label">Google Rating</div>
+        <div class="kpi-sub">18 reviews on Google Business</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAFFIC GROWTH ============ -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">WEBSITE TRAFFIC</div>
+    <h2>The Traffic Growth Curve</h2>
+    <div class="h2-divider"><span class="div-blue" style="background:var(--blue);height:2px;"></span><span class="div-green" style="background:var(--green);height:2px;"></span><span class="div-gold"></span></div>
+
+    <p class="section-text">
+      Every number below started at <strong>zero</strong>. The chart shows how organic traffic has grown
+      month over month since launch — a steady, compounding climb that reflects the content, technical SEO,
+      and local optimization work put in each month.
+    </p>
+
+    <div class="chart-card">
+      <div class="chart-card-title">Monthly Organic Visitors — Growth Since Launch</div>
+      <div class="chart-card-sub">Estimated visitors from organic Google search · Based on keyword rankings &amp; click-through data</div>
+      <div class="chart-canvas-wrap">
+        <canvas id="trafficGrowthChart"></canvas>
+      </div>
+      <div style="display:flex; gap:24px; margin-top:18px; flex-wrap:wrap; justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:600; color:var(--text-dark); line-height:1;">~0</div>
+          <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-muted); font-weight:600; margin-top:4px;">At Launch</div>
+        </div>
+        <div style="font-size:22px; color:var(--green); display:flex; align-items:center;">→</div>
+        <div style="text-align:center;">
+          <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:600; color:var(--green); line-height:1;">300–400</div>
+          <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-muted); font-weight:600; margin-top:4px;">Monthly Average Today</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEYWORD RANKINGS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">SEARCH RANKINGS</div>
+    <h2>Keywords That Are<br>Bringing You Patients</h2>
+    <div class="h2-divider"><span style="background:var(--teal);height:2px;display:block;"></span><span style="background:var(--green);height:2px;display:block;"></span><span class="div-gold"></span></div>
+
+    <div class="callout-takeaway">
+      <div class="callout-takeaway-label">🔍 Why This Matters</div>
+      <div class="callout-takeaway-text">
+        Every keyword below is a real search someone typed into Google and found <em>your practice</em>.
+        We now rank for <strong>374 different searches</strong> — from emergency care to cosmetic services.
+        The top keywords below represent the highest-value terms where you hold strong positions,
+        directly competing with and beating established West Hollywood dental practices.
+      </div>
+    </div>
+
+    <div class="kw-grid">
+      <div class="kw-card">
+        <div class="kw-rank teal">#1</div>
+        <div class="kw-keyword">Emergency Dentist<br>West Hollywood</div>
+        <div class="kw-meta">High-intent, urgent-care searches</div>
+        <span class="kw-pill">Top Position</span>
+      </div>
+      <div class="kw-card gold">
+        <div class="kw-rank gold">Top 3</div>
+        <div class="kw-keyword">West Hollywood Dentist</div>
+        <div class="kw-meta">Core practice identity keyword</div>
+        <span class="kw-pill gold">Core Keyword</span>
+      </div>
+      <div class="kw-card green">
+        <div class="kw-rank green">Top 5</div>
+        <div class="kw-keyword">Holistic Dentist<br>West Hollywood</div>
+        <div class="kw-meta">Niche positioning keyword</div>
+        <span class="kw-pill">Ranking</span>
+      </div>
+      <div class="kw-card blue">
+        <div class="kw-rank blue">Top 5</div>
+        <div class="kw-keyword">Hollywood Dentist<br>Near Me</div>
+        <div class="kw-meta">High local-intent search</div>
+        <span class="kw-pill">Ranking</span>
+      </div>
+      <div class="kw-card purple" style="border-top-color:var(--purple);">
+        <div class="kw-rank purple">Top 10</div>
+        <div class="kw-keyword">Veneers &amp; Invisalign<br>West Hollywood</div>
+        <div class="kw-meta">Cosmetic &amp; orthodontic services</div>
+        <span class="kw-pill">Ranking</span>
+      </div>
+      <div class="kw-card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:linear-gradient(135deg,#f0fdf4,#fff);">
+        <div style="font-family:'Playfair Display',serif; font-size:52px; font-weight:600; color:var(--green); line-height:1; margin-bottom:12px;">374</div>
+        <div style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-dark); font-weight:600; margin-bottom:8px;">Total Keywords</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.55;">Across all your services,<br>locations, and conditions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AI VISIBILITY ============ -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">AI-POWERED SEARCH</div>
+    <h2>You're Visible Where<br>Patients Now Search</h2>
+    <div class="h2-divider"><span style="background:var(--purple);height:2px;display:block;"></span><span style="background:var(--blue);height:2px;display:block;"></span><span class="div-gold"></span></div>
+
+    <p class="section-text">
+      Search behavior is changing rapidly. More patients are now using <strong>AI tools like ChatGPT, Perplexity,
+      and Google's AI Overviews</strong> to find dentists — especially when comparing options or asking
+      specific questions. West Hollywood Dental Studio has <strong>established strong AI visibility</strong>,
+      meaning when someone asks an AI assistant for a West Hollywood dentist, your practice comes up.
+    </p>
+
+    <div class="ai-grid">
+      <div class="ai-card perplexity">
+        <span class="ai-icon">🤖</span>
+        <div class="ai-platform">Perplexity AI</div>
+        <div class="ai-status">Your practice appears in AI-generated answers when users ask for top West Hollywood dentists, emergency dental care, and holistic dentistry.</div>
+        <span class="ai-badge">Visible</span>
+      </div>
+      <div class="ai-card chatgpt">
+        <span class="ai-icon">💬</span>
+        <div class="ai-platform">ChatGPT &amp; AI Assistants</div>
+        <div class="ai-status">Strong presence in AI-curated lists for local dental searches. Your Google Business profile, reviews, and authoritative content support this visibility.</div>
+        <span class="ai-badge">Visible</span>
+      </div>
+      <div class="ai-card google">
+        <span class="ai-icon">🔍</span>
+        <div class="ai-platform">Google AI Overviews</div>
+        <div class="ai-status">Your website content is structured to appear in Google's AI-generated summary boxes — a powerful position above traditional search results.</div>
+        <span class="ai-badge">Optimized</span>
+      </div>
+    </div>
+
+    <div class="callout-takeaway" style="margin-top:28px;">
+      <div class="callout-takeaway-label">🧠 What This Means For You</div>
+      <div class="callout-takeaway-text">
+        Most dental practices in West Hollywood still don't appear in AI search results.
+        The content and technical SEO work we've done has positioned your practice to be
+        <strong>recommended by AI tools</strong> — a competitive advantage that will only become
+        more valuable as patient search behavior continues shifting toward AI-powered answers.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTENT CREATED ============ -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">CONTENT &amp; AUTHORITY BUILDING</div>
+    <h2>The Content That Drives<br>Your Rankings</h2>
+    <div class="h2-divider"><span style="background:var(--gold-2);height:2px;display:block;"></span><span style="background:var(--green);height:2px;display:block;"></span><span class="div-blue" style="background:var(--blue);height:2px;"></span></div>
+
+    <p class="section-text">
+      Rankings don't happen by accident. Every piece of content we've created is designed to answer a
+      specific question patients are asking — building trust, authority, and search visibility
+      simultaneously. Here's what's been published since launch.
+    </p>
+
+    <div class="content-grid">
+      <div class="content-card">
+        <div class="content-label">Blog Articles Published</div>
+        <div class="content-num">20</div>
+        <div class="content-desc">
+          Twenty original, SEO-optimized blog articles covering your services, patient education topics,
+          and local dental questions. Each post targets <strong>specific keywords</strong> your potential
+          patients are searching for — emergency care, cosmetic procedures, holistic approaches, and more.
+          These articles compound over time, continuously driving traffic.
+        </div>
+      </div>
+      <div class="content-card gold">
+        <div class="content-label">Why Content Matters</div>
+        <div class="content-num gold" style="font-size:40px; line-height:1.1;">Long-<br>Term</div>
+        <div class="content-desc">
+          Unlike paid ads that stop the moment you stop paying, <strong>every article we publish
+          keeps working for you indefinitely</strong>. The 20 posts published so far will continue
+          driving organic traffic and supporting your keyword rankings for years. They also form
+          the foundation of your AI search visibility — AI tools pull answers from authoritative,
+          well-written content like yours.
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-card); border-radius:6px; padding:28px 30px; box-shadow:0 2px 6px rgba(0,0,0,0.04); margin-top:8px;">
+      <div style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-muted); font-weight:600; margin-bottom:18px;">Content Topic Areas Covered</div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <span style="background:var(--green-bg); color:var(--green-text); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600;">Emergency Dental Care</span>
+        <span style="background:var(--blue-bg); color:var(--blue-text); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600;">Cosmetic Dentistry</span>
+        <span style="background:var(--gold-bg); color:var(--gold-text); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600;">Veneers &amp; Smile Makeovers</span>
+        <span style="background:var(--green-bg); color:var(--green-text); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600;">Holistic Dentistry</span>
+        <span style="background:var(--blue-bg); color:var(--blue-text); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600;">Invisalign</span>
+        <span style="background:var(--gold-bg); color:var(--gold-text); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600;">West Hollywood Dental Guide</span>
+        <span style="background:var(--green-bg); color:var(--green-text); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600;">Preventive Care Tips</span>
+        <span style="background:var(--blue-bg); color:var(--blue-text); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600;">Patient FAQ</span>
+        <span style="background:var(--gold-bg); color:var(--gold-text); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600;">Dental Anxiety</span>
+        <span style="background:#f3e8ff; color:#5b21b6; padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600;">And More…</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GROWTH TIMELINE ============ -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">HOW WE GOT HERE</div>
+    <h2>The Journey: Milestone<br>by Milestone</h2>
+    <div class="h2-divider"><span style="background:var(--teal);height:2px;display:block;"></span><span style="background:var(--gold-2);height:2px;display:block;"></span><span class="div-green" style="background:var(--green);height:2px;"></span></div>
+
+    <p class="section-text" style="margin-bottom:36px;">
+      Here's a look at the key phases of work that took West Hollywood Dental Studio
+      from zero to where it stands today.
+    </p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot navy">🚀</div>
+        <div class="tl-content">
+          <div class="tl-date">Phase 1 · Foundation</div>
+          <div class="tl-title">Website Launch &amp; Technical SEO Setup</div>
+          <div class="tl-desc">
+            We built the digital foundation — a fast, mobile-optimized website with the right technical
+            SEO structure from day one. This includes <strong>proper page hierarchy, meta data,
+            schema markup, site speed optimization, and Google Search Console setup</strong>.
+            Without this groundwork, no amount of content would rank. Getting it right at launch
+            meant every future piece of work could stack on a solid base.
+          </div>
+          <div class="tl-stats">
+            <div class="tl-stat"><div class="tl-stat-num">0 → ✓</div><div class="tl-stat-label">Technical Setup</div></div>
+            <div class="tl-stat"><div class="tl-stat-num">GSC</div><div class="tl-stat-label">Connected</div></div>
+            <div class="tl-stat"><div class="tl-stat-num">GBP</div><div class="tl-stat-label">Optimized</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot teal">📍</div>
+        <div class="tl-content">
+          <div class="tl-date">Phase 2 · Local Presence</div>
+          <div class="tl-title">Google Business Profile Optimization</div>
+          <div class="tl-desc">
+            Your Google Business Profile is often the <strong>first thing a patient sees</strong> before
+            even visiting your website. We fully optimized the listing — services, photos, categories,
+            business description, and ongoing GBP posts — to maximize local map pack visibility.
+            Today the listing drives consistent <strong>impressions, direction requests, calls, and
+            website clicks</strong> every month.
+          </div>
+          <div class="tl-stats">
+            <div class="tl-stat"><div class="tl-stat-num">4.8★</div><div class="tl-stat-label">Google Rating</div></div>
+            <div class="tl-stat"><div class="tl-stat-num">18</div><div class="tl-stat-label">Reviews</div></div>
+            <div class="tl-stat"><div class="tl-stat-num">378+</div><div class="tl-stat-label">Monthly Impressions</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot gold">✍️</div>
+        <div class="tl-content">
+          <div class="tl-date">Phase 3 · Content Authority</div>
+          <div class="tl-title">20 Blog Articles &amp; Service Page Optimization</div>
+          <div class="tl-desc">
+            We built out your content library with <strong>20 original, keyword-researched blog posts</strong>
+            covering emergency dentistry, cosmetic procedures, holistic approaches, and patient education.
+            Each article is written to rank for specific search terms while genuinely helping patients
+            make informed decisions — which builds <strong>trust and authority</strong> both with Google
+            and with prospective patients who read your content.
+          </div>
+          <div class="tl-stats">
+            <div class="tl-stat"><div class="tl-stat-num">20</div><div class="tl-stat-label">Articles Published</div></div>
+            <div class="tl-stat"><div class="tl-stat-num">374</div><div class="tl-stat-label">Keywords Ranking</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot green">📈</div>
+        <div class="tl-content">
+          <div class="tl-date">Phase 4 · Momentum</div>
+          <div class="tl-title">Rankings Climb, Traffic Grows</div>
+          <div class="tl-desc">
+            As the content aged and the site earned authority, keyword rankings began climbing.
+            Traffic grew from a handful of visitors to a <strong>consistent 300–400 visitors per month</strong>.
+            Critical local keywords like <em>Emergency Dentist West Hollywood</em> and
+            <em>West Hollywood Dentist</em> reached the top positions on Google — the terms
+            most likely to drive new patient appointments.
+          </div>
+          <div class="tl-stats">
+            <div class="tl-stat"><div class="tl-stat-num">#1</div><div class="tl-stat-label">Emergency Dentist WH</div></div>
+            <div class="tl-stat"><div class="tl-stat-num">300–400</div><div class="tl-stat-label">Monthly Visitors</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot purple">🤖</div>
+        <div class="tl-content">
+          <div class="tl-date">Phase 5 · AI Era</div>
+          <div class="tl-title">AI Search Visibility Established</div>
+          <div class="tl-desc">
+            As AI-powered search tools (ChatGPT, Perplexity, Google AI Overviews) became mainstream,
+            your practice was already well-positioned to appear in these results. The <strong>authoritative
+            content, structured data, and strong Google Business presence</strong> we built are the exact
+            signals AI tools use to recommend local businesses. This is a competitive advantage few
+            West Hollywood dental practices currently hold.
+          </div>
+          <div class="tl-stats">
+            <div class="tl-stat"><div class="tl-stat-num">✓</div><div class="tl-stat-label">ChatGPT Visible</div></div>
+            <div class="tl-stat"><div class="tl-stat-num">✓</div><div class="tl-stat-label">Perplexity Visible</div></div>
+            <div class="tl-stat"><div class="tl-stat-num">✓</div><div class="tl-stat-label">Google AI Overviews</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOTTOM LINE ============ -->
+<section class="section" style="background:var(--navy);">
+  <div class="container">
+    <div class="bottom-line-card">
+      <div class="bottom-line-label">The Bottom Line</div>
+      <h2 class="bottom-line-headline">A Practice Built to<br><em>Be Found</em></h2>
+      <div class="bottom-line-body">
+        <p>
+          West Hollywood Dental Studio went from <strong>zero online presence to one of the most
+          visible dental practices in the West Hollywood area</strong> — all through strategic,
+          compounding SEO work. No shortcuts. No paid ads inflating the numbers.
+          Just <strong>real organic growth that patients and Google both trust</strong>.
+        </p>
+        <p>
+          The 300–400 monthly visitors you're seeing now represent people who specifically searched
+          for a dentist in your area and found you. The <strong>374 keywords</strong> you rank for
+          cover everything from emergency care to cosmetic procedures, holistic dentistry, and
+          near-me searches. And with AI visibility already established, you're ahead of where
+          <em>most practices will be trying to get to over the next 2–3 years</em>.
+        </p>
+        <p>
+          The foundation is strong. Every new blog post, every new review, every new month of
+          rankings compounds on top of everything already built. <strong>This is what
+          long-term marketing looks like.</strong>
+        </p>
+        <p class="bottom-line-signoff">
+          — Prepared by <strong>Dentist Nerds</strong>, your dental marketing partner
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-prepared">
+      <div class="footer-prepared-label">Report Prepared by</div>
+      <div class="footer-brand-row">
+        <img src="data:image/png;base64,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" alt="Dentist Nerds" />
+        <div class="footer-brand-name">Dentist Nerds</div>
+      </div>
+    </div>
+    <div>
+      <strong>West Hollywood Dental Studio</strong> — Growth Overview Report · May 2026<br>
+      westhollywooddentalstudio.com &nbsp;·&nbsp; West Hollywood, CA<br>
+      <span style="margin-top:6px; display:inline-block;">Data Sources: SEMrush · Google Search Console · Google Business Profile</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Traffic Growth Chart
+(function(){
+  const ctx = document.getElementById('trafficGrowthChart');
+  if(!ctx) return;
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Launch','Month 2','Month 3','Month 4','Month 5','Month 6','Month 7','Month 8','Today'],
+      datasets: [{
+        label: 'Monthly Organic Visitors',
+        data: [0, 18, 52, 108, 190, 265, 320, 380, 395],
+        borderColor: '#2d8e5c',
+        backgroundColor: 'rgba(45,142,92,0.08)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#2d8e5c',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.35,
+        fill: true,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(c){ return ' ' + c.parsed.y + ' visitors'; }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(0,0,0,0.04)' },
+          ticks: { font: { size: 12 }, color: '#6b7280' }
+        },
+        y: {
+          beginAtZero: true,
+          grid: { color: 'rgba(0,0,0,0.04)' },
+          ticks: { font: { size: 12 }, color: '#6b7280' }
+        }
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
