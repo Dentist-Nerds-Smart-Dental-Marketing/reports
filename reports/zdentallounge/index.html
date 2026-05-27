@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z Dental Lounge — Website Audit | Dentist Nerds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-deep: #0A1422;
+    --navy-soft: #1B2940;
+    --ink: #15202E;
+    --ink-soft: #4A5568;
+    --ink-mute: #7B8794;
+    --line: #E2E8F0;
+    --line-soft: #EDF2F7;
+    --bg: #FFFFFF;
+    --bg-soft: #F7F9FC;
+    --bg-mint: #FDF8E8;
+
+    --green: #D4A93B;
+    --green-deep: #8B6914;
+    --green-soft: #FAEFCE;
+    --mint: #E5C76E;
+
+    --coral: #FF5E4D;
+    --coral-soft: #FFE2DE;
+    --amber: #FFB547;
+    --amber-soft: #FFF1D6;
+    --blue: #4D8CFF;
+    --blue-soft: #DCE8FF;
+    --purple: #8B5CF6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============== HERO ============== */
+  .hero {
+    background: var(--navy);
+    color: #FFF;
+    padding: 72px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(77,140,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-wrap { position: relative; z-index: 2; }
+
+  .audit-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nerds-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #FFF;
+    letter-spacing: -0.01em;
+  }
+  .nerds-logo .logo-mark {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: 18px;
+  }
+  .audit-type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .audit-target {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212,169,59,0.12);
+    border: 1px solid rgba(212,169,59,0.3);
+    color: var(--green);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .audit-target .pulse {
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(212,169,59,0.2);
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5.2vw, 60px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+    max-width: 920px;
+  }
+  .hero h1 .accent { color: var(--green); }
+  .hero-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero .lede {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 44px;
+    font-weight: 400;
+  }
+  .hero .lede strong { color: #FFF; }
+
+  .hero-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .meta-block .meta-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .meta-block .meta-value {
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .meta-block .meta-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  /* ============== VERDICT BAR ============== */
+  .verdict {
+    background: linear-gradient(135deg, var(--coral) 0%, #E04535 100%);
+    color: #FFF;
+    padding: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .verdict-wrap {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .verdict-icon {
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .verdict-content .verdict-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .verdict-content h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    max-width: 720px;
+  }
+  .verdict-cta {
+    background: #FFF;
+    color: var(--coral);
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* ============== SECTION SHELL ============== */
+  section { padding: 80px 0; }
+  section.alt { background: var(--bg-soft); }
+  section.dark { background: var(--navy); color: #FFF; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .section-eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+  .section-eyebrow.red {
+    background: var(--coral-soft);
+    color: var(--coral);
+  }
+  .section-eyebrow.red .dot { background: var(--coral); }
+  section.dark .section-eyebrow {
+    background: rgba(212,169,59,0.15);
+    color: var(--green);
+  }
+  section h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    max-width: 820px;
+  }
+  section h2 .accent { color: var(--green-deep); }
+  section h2 .accent-red { color: var(--coral); }
+  section.dark h2 .accent { color: var(--green); }
+  section .section-intro {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 48px;
+  }
+  section.dark .section-intro { color: rgba(255,255,255,0.7); }
+
+  /* ============== HEALTH SCORE ============== */
+  .score-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .gauge-wrap {
+    background: #FFF;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(15,27,45,0.06);
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .gauge-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .gauge-svg { display: block; margin: 0 auto; }
+  .gauge-num {
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--coral);
+    line-height: 1;
+    margin-top: 8px;
+    letter-spacing: -0.03em;
+  }
+  .gauge-suffix { font-size: 24px; color: var(--ink-mute); font-weight: 600; }
+  .gauge-status {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--coral);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .subscore-list { display: flex; flex-direction: column; gap: 16px; }
+  .subscore {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .subscore-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .subscore-icon.coral { background: var(--coral-soft); }
+  .subscore-icon.amber { background: var(--amber-soft); }
+  .subscore-icon.blue { background: var(--blue-soft); }
+  .subscore-icon.green { background: var(--green-soft); }
+  .subscore-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .subscore-bar {
+    background: var(--line-soft);
+    height: 6px;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .subscore-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: var(--coral);
+  }
+  .subscore-fill.amber { background: var(--amber); }
+  .subscore-fill.blue { background: var(--blue); }
+  .subscore-fill.green { background: var(--green); }
+  .subscore-value {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  /* ============== ISSUE COUNTERS ============== */
+  .issue-counter {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+  .counter-card {
+    background: #FFF;
+    border-radius: 16px;
+    padding: 26px 22px;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .counter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+  }
+  .counter-card.critical::before { background: var(--coral); }
+  .counter-card.high::before { background: var(--amber); }
+  .counter-card.medium::before { background: var(--blue); }
+  .counter-card.good::before { background: var(--green); }
+  .counter-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+  }
+  .counter-num.coral { color: var(--coral); }
+  .counter-num.amber { color: var(--amber); }
+  .counter-num.blue { color: var(--blue); }
+  .counter-num.green { color: var(--green); }
+  .counter-label {
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ============== ISSUE CARDS ============== */
+  .issues-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .issue-card {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .issue-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(15,27,45,0.08);
+  }
+  .issue-icon-wrap {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .issue-icon-wrap.critical { background: var(--coral-soft); }
+  .issue-icon-wrap.high { background: var(--amber-soft); }
+  .issue-icon-wrap.medium { background: var(--blue-soft); }
+  .issue-card-head {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .issue-card-num {
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .issue-card h3 {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.25;
+    flex-basis: 100%;
+    letter-spacing: -0.01em;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pill .pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .pill.critical { background: var(--coral-soft); color: var(--coral); }
+  .pill.critical .pill-dot { background: var(--coral); }
+  .pill.high { background: var(--amber-soft); color: #B87A0E; }
+  .pill.high .pill-dot { background: var(--amber); }
+  .pill.medium { background: var(--blue-soft); color: #2D5BC2; }
+  .pill.medium .pill-dot { background: var(--blue); }
+
+  .issue-card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .issue-card p:last-child { margin-bottom: 0; }
+  .issue-card strong { color: var(--ink); font-weight: 700; }
+  .issue-card code {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    color: var(--navy);
+    word-break: break-all;
+  }
+
+  .fix-box {
+    background: var(--bg-mint);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    border-left: 3px solid var(--green);
+  }
+  .fix-box-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-deep);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fix-box p {
+    color: var(--ink);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* ============== COMPETITOR TABLE ============== */
+  .competitor-table {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .ct-head {
+    display: grid;
+    grid-template-columns: 1.7fr 90px 90px 90px 100px;
+    gap: 16px;
+    padding: 18px 28px;
+    background: var(--navy);
+    color: #FFF;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .ct-row {
+    display: grid;
+    grid-template-columns: 1.7fr 90px 90px 90px 100px;
+    gap: 16px;
+    padding: 16px 28px;
+    align-items: center;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 14px;
+  }
+  .ct-row:last-child { border-bottom: none; }
+  .ct-row.you {
+    background: var(--bg-mint);
+    border-left: 3px solid var(--green);
+    padding-left: 25px;
+  }
+  .ct-domain { font-weight: 700; color: var(--ink); }
+  .ct-domain .ct-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .ct-num { font-weight: 700; color: var(--ink); }
+  .ct-num.warn { color: var(--coral); }
+  .ct-num.good { color: var(--green-deep); }
+
+  /* ============== ROADMAP ============== */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    position: relative;
+  }
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    top: 40px; left: 8%; right: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--coral), var(--amber), var(--green));
+    z-index: 0;
+  }
+  .phase {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 26px;
+    position: relative;
+    z-index: 1;
+  }
+  .phase-number {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0 auto 18px;
+    border: 4px solid var(--bg-soft);
+    position: relative;
+    z-index: 2;
+  }
+  .phase-number.amber { background: var(--amber); color: var(--navy); }
+  .phase-number.green { background: var(--green); }
+  .phase-weeks {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .phase h3 {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .phase ul { list-style: none; padding: 0; }
+  .phase li {
+    padding: 10px 0 10px 24px;
+    position: relative;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .phase li:last-child { border-bottom: none; }
+  .phase li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 16px;
+    width: 12px; height: 12px;
+    border-radius: 4px;
+    background: var(--coral-soft);
+    border: 2px solid var(--coral);
+  }
+  .phase.amber li::before { background: var(--amber-soft); border-color: var(--amber); }
+  .phase.green li::before { background: var(--green-soft); border-color: var(--green); }
+
+  /* ============== OPPORTUNITY BLOCK ============== */
+  .opportunity {
+    background: var(--navy);
+    color: #FFF;
+    border-radius: 28px;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .opportunity::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212,169,59,0.2) 0%, transparent 60%);
+  }
+  .opp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .opp-content h2 { color: #FFF; margin-bottom: 16px; }
+  .opp-content h2 .accent { color: var(--green); }
+  .opp-content p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .opp-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .opp-stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 22px;
+  }
+  .opp-stat-num {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .opp-stat-label {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+
+  /* ============== END CTA ============== */
+  .end-cta {
+    background: var(--navy);
+    color: #FFF;
+    padding: 80px 0;
+  }
+  .end-cta h2 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: none;
+  }
+  .end-cta h2 .accent { color: var(--green); }
+  .end-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.55;
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green);
+    color: var(--navy-deep);
+    padding: 18px 32px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  /* ============== SITEMAP ROWS ============== */
+  .sitemap-card {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 32px;
+    margin: 24px 0 36px;
+    box-shadow: 0 4px 20px rgba(15,27,45,0.04);
+  }
+  .sitemap-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .sitemap-card-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .sitemap-card-title small {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+  .sitemap-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--line-soft);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .sitemap-row {
+    background: #FFF;
+    display: grid;
+    grid-template-columns: 1fr 110px 80px;
+    align-items: center;
+    padding: 11px 16px;
+    gap: 12px;
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+  .sitemap-row:hover { background: #FCFCFD; }
+  .sitemap-row .sm-url {
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    color: var(--ink);
+    word-break: break-all;
+  }
+  .sm-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .sm-badge.flag { background: var(--coral-soft); color: var(--coral); }
+  .sm-badge.bh { background: var(--green-soft); color: var(--green-deep); }
+  .sm-badge.amber { background: var(--amber-soft); color: #9A6520; }
+  .sm-badge.blue { background: var(--blue-soft); color: #2D5BC2; }
+  .sm-idx { font-size: 12px; font-weight: 700; color: var(--ink-mute); text-align: right; }
+  .flag-row { background: #FFFBFA; }
+
+  /* ============== PAGE BAR CHART ============== */
+  .page-bar {
+    display: grid;
+    grid-template-columns: 240px 1fr 80px;
+    gap: 20px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .page-name {
+    font-family: 'DM Sans', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .page-name .pn-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .page-track {
+    background: var(--line-soft);
+    height: 12px;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .page-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--coral) 0%, #FF8B7E 100%);
+  }
+  .page-fill.green { background: linear-gradient(90deg, #8B6914 0%, var(--green) 100%); }
+  .page-fill.empty {
+    background: repeating-linear-gradient(45deg, var(--line-soft), var(--line-soft) 6px, var(--line) 6px, var(--line) 12px);
+    width: 100% !important;
+  }
+  .page-value {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ink);
+    text-align: right;
+  }
+  .page-value.crit { color: var(--coral); }
+  .page-value.zero { color: var(--ink-mute); }
+
+  /* ============== GAP VISUAL ============== */
+  .review-gap-stat {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    border-radius: 20px;
+    padding: 36px 40px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 36px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .review-gap-stat::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -80px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(255,94,77,0.15) 0%, transparent 60%);
+  }
+  .gap-side { position: relative; z-index: 1; text-align: center; }
+  .gap-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    height: 80%;
+    align-self: center;
+    position: relative; z-index: 1;
+  }
+  .gap-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .gap-num {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+  .gap-num.you { color: var(--coral); }
+  .gap-num.them { color: var(--green); }
+  .gap-name { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+  .gap-multiplier {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    position: relative; z-index: 1;
+  }
+  .gap-mult-num {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--coral);
+    letter-spacing: -0.02em;
+  }
+  .gap-mult-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-meta-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .score-grid { grid-template-columns: 1fr; }
+    .issue-counter { grid-template-columns: 1fr 1fr; }
+    .roadmap { grid-template-columns: 1fr; }
+    .ct-head, .ct-row { grid-template-columns: 1fr 70px 70px; }
+    .ct-head > :nth-child(4), .ct-head > :nth-child(5),
+    .ct-row > :nth-child(4), .ct-row > :nth-child(5) { display: none; }
+    .opp-grid { grid-template-columns: 1fr; }
+    .verdict-wrap { grid-template-columns: 1fr; }
+    .verdict-cta { display: none; }
+    .page-bar { grid-template-columns: 180px 1fr 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-wrap">
+
+    <div class="audit-strip">
+      <div class="nerds-logo">
+        <span class="logo-mark">N</span>
+        <span>Dentist Nerds</span>
+      </div>
+      <div class="audit-type">Website Audit · Confidential</div>
+    </div>
+
+    <div class="audit-target">
+      <span class="pulse"></span>
+      Audited: zdentallounge.com
+    </div>
+
+    <h1>
+      Website Audit for <span class="accent">Z Dental Lounge</span>
+    </h1>
+    <p class="hero-subtitle">Prepared by Dentist Nerds · May 2026</p>
+    <p class="lede">
+      Z Dental Lounge is a beautiful, high-tech practice in Orange, CA — with an stunning modern office, cutting-edge equipment like iTero and CBCT, and a team clearly committed to premium care. But the digital presence doesn't yet reflect what the physical practice represents. The site currently ranks for only <strong>82 keywords</strong>, which is critically low and signals thin content across the board. Almost all organic traffic lands on the homepage; service pages drive essentially zero visits. The office you've built deserves a website that matches it — here's the full breakdown and the path forward.
+    </p>
+
+    <div class="hero-meta-grid">
+      <div class="meta-block">
+        <div class="meta-label">Prepared For</div>
+        <div class="meta-value">Z Dental Lounge</div>
+        <div class="meta-sub">Orange, CA · zdentallounge.com</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Audit Date</div>
+        <div class="meta-value">May 2026</div>
+        <div class="meta-sub">Tools: Semrush, Google Maps, manual UX review</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Organic Keywords</div>
+        <div class="meta-value" style="color:var(--coral);">82 keywords</div>
+        <div class="meta-sub">Critical — healthy dental sites rank 500–2,000+</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Primary Recommendation</div>
+        <div class="meta-value" style="color:var(--green);">Content + Visual Rebuild</div>
+        <div class="meta-sub">Expand content · real photos · showcase technology</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ VERDICT BAR ============================================================ -->
+<div class="verdict">
+  <div class="wrap">
+    <div class="verdict-wrap">
+      <div class="verdict-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="verdict-content">
+        <div class="verdict-label">The Bottom Line</div>
+        <h2>A premium practice, held back by a website that doesn't tell its story. 82 keywords means the digital presence is essentially invisible — and the fix is straightforward.</h2>
+      </div>
+      <a href="https://www.dentistnerds.com/contact" class="verdict-cta">Talk to Us →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ HEALTH SCORE ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Health Score Breakdown</span>
+    <h2>Overall site health: <span style="color:var(--coral);">32/100</span>.<br>The practice is premium — the website isn't keeping up.</h2>
+    <p class="section-intro">We graded the site using Semrush organic data (82 ranking keywords, ~140 monthly organic visits), a review of the top-ranking pages, competitive benchmarking against local Orange County dental practices, and a manual UX review. The practice itself has real differentiators — advanced technology, beautiful office, professional team — but none of those strengths are translating into online visibility right now.</p>
+
+    <div class="score-grid">
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="20" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5E4D"/>
+              <stop offset="50%" stop-color="#FFB547"/>
+              <stop offset="100%" stop-color="#D4A93B"/>
+            </linearGradient>
+          </defs>
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="url(#gaugeGrad)" stroke-width="20" stroke-linecap="round" opacity="0.15"/>
+          <path d="M 20 120 A 100 100 0 0 1 77 30" fill="none" stroke="#FF5E4D" stroke-width="20" stroke-linecap="round"/>
+          <text x="20" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">0</text>
+          <text x="120" y="14" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">50</text>
+          <text x="220" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">100</text>
+        </svg>
+        <div class="gauge-num" style="color:var(--coral);">32<span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status" style="color:var(--coral);">Needs Immediate Attention</div>
+      </div>
+
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon coral">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Content Volume &amp; Depth</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:12%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--coral);">12%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon coral">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Local SEO &amp; Keyword Visibility</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:18%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--coral);">18%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Visual Presentation &amp; Trust Signals</div>
+            <div class="subscore-bar amber"><div class="subscore-fill amber" style="width:35%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--amber);">35%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">AI Visibility &amp; FAQ Coverage</div>
+            <div class="subscore-bar amber"><div class="subscore-fill amber" style="width:10%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--coral);">10%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ WHAT'S WORKING ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>What's Working</span>
+    <h2>The practice has <span class="accent">real competitive advantages</span> — the website just isn't showing them yet.</h2>
+    <p class="section-intro">Z Dental Lounge has genuine strengths that most dental practices can't claim: a visually stunning office, advanced technology stack, and a growing organic footprint that only started taking shape in late 2025. These are the foundations to build on.</p>
+
+    <div style="background:linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%); border-left:4px solid var(--green); border-radius:16px; padding:32px 36px; margin:32px 0;">
+      <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:14px;">✓ What Z Dental Lounge Gets Right</div>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Gorgeous physical office</strong> — the Google Maps photos show a truly premium, modern environment. This is a massive conversion asset that isn't yet on the website.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Advanced technology (iTero, CBCT)</strong> — high-tech equipment is a powerful differentiator. Very few patients know their dentist has this. The website should make it central.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Growing organic momentum</strong> — the site went from 8 keywords (Oct 2025) to 82 keywords (May 2026). The trajectory is positive; it just needs a major content investment to accelerate.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Strong treatment page structure</strong> — the site already has dedicated pages for veneers, bonding, implants, sedation, fillings, etc. The architecture is there; the content just needs depth.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Orange County market opportunity</strong> — ranking for local terms like "emergency dentist orange ca" at position 17 shows real local relevance. Getting to the top 3 is achievable with the right strategy.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Specialty treatment coverage</strong> — IV sedation, frenectomy, oral surgery — services that not every dentist offers and that patients specifically search for. A huge opportunity to own these queries.</li>
+      </ul>
+    </div>
+
+    <h3 style="font-size:22px; font-weight:800; margin:48px 0 8px; letter-spacing:-0.01em;">The numbers at a glance</h3>
+    <p style="color:var(--ink-soft); font-size:15px; margin-bottom:24px;">Semrush snapshot — where zdentallounge.com sits today vs. where it should be.</p>
+
+    <div class="hero-meta-grid" style="--label-color:var(--ink-mute); --sub-color:var(--ink-soft);">
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Organic Keywords</div>
+        <div class="meta-value" style="color:var(--coral);">82 keywords</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Benchmark: 500–2,000+ for a healthy dental site</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Monthly Organic Traffic</div>
+        <div class="meta-value" style="color:var(--coral);">~140 visits</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Nearly all from branded/homepage searches</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Service Page Traffic</div>
+        <div class="meta-value" style="color:var(--coral);">0 visits</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Treatment pages rank but drive no traffic</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Keyword Growth (6 months)</div>
+        <div class="meta-value" style="color:var(--green-deep);">8 → 82</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Positive trend — ready to accelerate</div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px; padding:22px 26px; background:#FFF4E5; border-radius:14px; border-left:3px solid var(--amber);">
+      <p style="margin:0; color:var(--ink); font-size:15px; line-height:1.6;"><strong style="color:#9A6520;">The pattern:</strong> Z Dental Lounge has all the right ingredients — advanced technology, beautiful space, skilled team, strong service coverage — but the website isn't telling that story in a way search engines can find. The 82-keyword count directly signals <strong>thin content</strong>: pages exist but don't have enough depth for Google to understand, trust, or rank them. The treatment pages have structure but no substance. The office looks amazing on Google Maps but the website visitor never sees it. The fix is a content and visual rebuild that finally matches the online experience to the in-office reality.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TRAFFIC DISTRIBUTION — THE HOMEPAGE TRAP ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>Critical Finding</span>
+    <h2>99% of all organic traffic lands on <span class="accent-red">one page</span>.</h2>
+    <p class="section-intro">Every treatment page on the site — veneers, bonding, implants, sedation, fillings, bridges — is essentially invisible to organic search. They rank for keywords, but those rankings are so deep in the results (positions 50–95) that no one clicks through. The homepage is doing all the heavy lifting, and it can only take traffic so far.</p>
+
+    <div class="sitemap-card">
+      <div class="sitemap-card-head">
+        <div class="sitemap-card-title">
+          Traffic by Page (Semrush, May 2026)
+          <small>Where organic visitors are actually landing — the homepage monopolizes nearly all traffic</small>
+        </div>
+      </div>
+      <div style="padding:8px 0 16px;">
+        <div class="page-bar">
+          <div class="page-name">
+            zdentallounge.com/
+            <span class="pn-sub">Homepage</span>
+          </div>
+          <div class="page-track"><div class="page-fill" style="width:99%"></div></div>
+          <div class="page-value crit">99.3%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            /our-services/dental-technology/
+            <span class="pn-sub">Dental Technology</span>
+          </div>
+          <div class="page-track"><div class="page-fill" style="width:0.7%"></div></div>
+          <div class="page-value" style="color:var(--amber);">0.7%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            /our-services/cosmetic-dentist/dental-veneers/
+            <span class="pn-sub">Veneers</span>
+          </div>
+          <div class="page-track"><div class="page-fill empty" style="width:100%"></div></div>
+          <div class="page-value zero">0%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            /our-services/cosmetic-dentist/dental-bonding/
+            <span class="pn-sub">Dental Bonding</span>
+          </div>
+          <div class="page-track"><div class="page-fill empty" style="width:100%"></div></div>
+          <div class="page-value zero">0%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            /our-services/general-dentistry/iv-sedation/
+            <span class="pn-sub">IV Sedation</span>
+          </div>
+          <div class="page-track"><div class="page-fill empty" style="width:100%"></div></div>
+          <div class="page-value zero">0%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            /our-services/cosmetic-dentist/
+            <span class="pn-sub">Cosmetic Dentistry hub</span>
+          </div>
+          <div class="page-track"><div class="page-fill empty" style="width:100%"></div></div>
+          <div class="page-value zero">0%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            All other treatment pages
+            <span class="pn-sub">Restorative, Oral Surgery, Endodontics…</span>
+          </div>
+          <div class="page-track"><div class="page-fill empty" style="width:100%"></div></div>
+          <div class="page-value zero">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; padding:22px 26px; background:var(--coral-soft); border-radius:14px; border-left:3px solid var(--coral);">
+      <p style="margin:0; color:var(--ink); font-size:15px; line-height:1.6;"><strong style="color:var(--coral);">Why this matters:</strong> A healthy dental website has <em>every</em> major treatment page pulling in traffic independently. "Dental veneers Orange County," "IV sedation dentist Orange CA," "dental bonding near me" — these are high-intent searches from patients ready to book. When those pages are invisible, the only patients finding you online are the ones who already know your name. You're completely missing the patient discovery funnel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ISSUES BREAKDOWN ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>What Needs Fixing</span>
+    <h2>Six issues holding the site back — <span class="accent-red">all fixable</span>.</h2>
+    <p class="section-intro">Every item below is directly addressable. None require a full site rebuild from scratch — the architecture is already there. What's needed is depth, real visual content, and a content strategy that signals authority to both Google and AI-powered search tools.</p>
+
+    <div class="issue-counter">
+      <div class="counter-card critical">
+        <div class="counter-num coral">2</div>
+        <div class="counter-label">Critical · content</div>
+      </div>
+      <div class="counter-card high">
+        <div class="counter-num amber">3</div>
+        <div class="counter-label">High priority</div>
+      </div>
+      <div class="counter-card medium">
+        <div class="counter-num blue">1</div>
+        <div class="counter-label">Medium · polish</div>
+      </div>
+      <div class="counter-card good">
+        <div class="counter-num green">6</div>
+        <div class="counter-label">Already working well</div>
+      </div>
+    </div>
+
+    <div class="issues-grid">
+
+      <!-- ISSUE 1 — 82 keywords / thin content -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 1</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Content Volume</span>
+            <h3>82 ranking keywords is critically low — a direct signal of thin content across the site.</h3>
+          </div>
+          <p>A well-optimized dental practice website typically ranks for <strong>500 to 2,000+ keywords</strong>. At 82, Z Dental Lounge is at less than 10% of that benchmark. This number is a direct reflection of content depth: Google can only rank pages it can read, understand, and trust. When treatment pages have minimal copy — a short paragraph, a generic list of bullet points, no FAQs, no supporting detail — Google doesn't have enough signal to rank them for the queries patients are actually using.</p>
+          <p>For context, one of your closest local competitors, <strong>michelsendental.com</strong>, ranks for 818 keywords and gets roughly twice the traffic. The gap isn't about the quality of care — it's entirely a content gap.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Each major treatment page needs to be re-evaluated and rebuilt with substantive content: <strong>500–1,000+ words per page</strong>, covering what the treatment is, who it's for, what the process looks like at Z Dental Lounge specifically, what technology you use (iTero, CBCT where relevant), expected outcomes, and frequently asked questions. This is the single highest-leverage action to expand the keyword footprint and get treatment pages pulling their own traffic.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 2 — No FAQs / AI visibility -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 2</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · AI Visibility</span>
+            <h3>No FAQ content means the site is invisible to AI-powered search — ChatGPT, Gemini, Perplexity, and Google's AI Overview.</h3>
+          </div>
+          <p>AI-powered search tools (Google AI Overview, ChatGPT Search, Perplexity, Gemini) increasingly answer dental questions directly in the search result. To be cited in those answers, a page needs to clearly answer specific, well-formed questions. Currently, no treatment page on zdentallounge.com has structured FAQ sections — which means when a patient asks their AI assistant "what is the cost of dental veneers in Orange County" or "does Z Dental Lounge do IV sedation," the site has no content positioned to appear in the answer.</p>
+          <p>This is a growing visibility channel that's separate from traditional Google rankings — and it starts with adding FAQ schema to every service page.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Add a dedicated FAQ section to every treatment page, covering the 5–8 questions patients most commonly ask about that service. Use <strong>FAQ schema markup</strong> (JSON-LD) so that Google can display the questions directly in search results as rich snippets. These FAQs also serve as the answer content that AI tools pull from when patients ask their AI assistant about dental care in Orange, CA. Two benefits from one action: higher CTR in traditional search + AI visibility.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 3 — Stock photos / real visual content -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 3</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Conversion &amp; Trust</span>
+            <h3>Stock photos are leaving conversion on the table — this office looks stunning and the website doesn't show it.</h3>
+          </div>
+          <p>Looking at the Google Maps photos for Z Dental Lounge, the office is <em>genuinely impressive</em> — modern design, premium finishes, clean and welcoming treatment rooms, high-end equipment. This is a major conversion asset. Patients choosing between dental practices heavily weigh what the office looks like before they ever book.</p>
+          <p>Yet the website uses generic stock photography — smiling models, generic close-ups of teeth, images that could belong to any dental practice anywhere. When a prospective patient visits the site and then checks Google Maps, there's a stark disconnect. The real office sells itself. The stock photos don't.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Invest in a professional photography and video session at the office. Photograph the reception area, treatment rooms, technology equipment (iTero scanner, CBCT unit), team members in action, and the building exterior. <strong>Replace all stock images with real photography throughout the site</strong>, starting with the homepage hero. Add a photo gallery page specifically to showcase the office environment — patients looking up "dentist Orange CA" who see a gallery of the actual office are far more likely to book. The office is doing the selling; the website just needs to show it.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 4 — Technology not showcased -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 4</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Differentiation</span>
+            <h3>Advanced technology like iTero and CBCT should be front and center — right now it's buried.</h3>
+          </div>
+          <p>Most patients don't know whether their dentist uses modern digital scanning or traditional impressions. They don't know the difference between a practice with cone-beam CT imaging and one without. But when you explain it — <em>we use a digital iTero scanner, no messy impressions; we have CBCT imaging for precision diagnosis without multiple appointments</em> — patients immediately understand this is a higher level of care.</p>
+          <p>Z Dental Lounge has this technology. The <code>/our-services/dental-technology/</code> page exists and is actually the only non-homepage page getting any organic traffic. But the technology story isn't told prominently enough across the rest of the site — it's not on the homepage, not on treatment pages, and not positioned as a reason to choose Z Dental Lounge over the practice down the street.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Build a dedicated, in-depth technology page that walks through each piece of technology: what it is, why it matters to patients, what problem it solves. Showcase the iTero scanner (no impressions, same-day precision, faster treatment), CBCT imaging (3D X-rays, precise implant planning, better diagnosis), and any other advanced equipment in the office. Add technology callout sections to relevant treatment pages (e.g., mention CBCT on the implants page; mention iTero on the veneers and Invisalign pages). Include real photos of the equipment. This content also ranks — "CBCT dental imaging Orange CA" is a low-competition keyword a page like this can own.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 5 — No video -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 5</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Conversion</span>
+            <h3>No professional video — the highest-converting content type for dental practices isn't being used.</h3>
+          </div>
+          <p>Video converts better than any other format on dental websites. A short walkthrough of the office, a meet-the-doctor video, or a patient story video can reduce the anxiety a new patient feels and dramatically increase the chance they book. For a premium practice like Z Dental Lounge, professional video would pay for itself quickly.</p>
+          <p>The office environment alone is compelling enough to drive bookings if patients could see it in motion — the light, the space, the technology in use. A 60-second office tour video embedded on the homepage would immediately communicate "this is not a typical dentist's office."</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Prioritize professional video as part of the photography investment: <strong>(1) a 60-90 second office tour</strong> for the homepage, <strong>(2) a brief meet-the-doctor video</strong> for the about page, and <strong>(3) technology demo videos</strong> showing the iTero scanner and CBCT in use (patients love seeing the actual technology). These videos also live on YouTube (an SEO channel of their own), get repurposed for Google Business Profile posts, and can run as social content — one shoot, multiple uses.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 6 — Local rankings / office gallery -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap medium">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4D8CFF" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 6</span>
+            <span class="pill medium"><span class="pill-dot"></span>Medium · Local SEO</span>
+            <h3>Google Maps photos aren't reflected on the website — a gallery would close the trust gap for new patients.</h3>
+          </div>
+          <p>The photos on Google Maps for Z Dental Lounge show a genuinely beautiful office. Prospective patients who find you on Google Maps get a great impression. But when they click through to the website, the visual experience drops — they're greeted by stock images instead of the real office they just saw on Maps.</p>
+          <p>Adding a <strong>photo gallery to the website</strong> — pulling those real office photos into a dedicated gallery page, and featuring the best ones on the homepage — creates continuity: the patient's first impression on Maps is confirmed and amplified when they land on the site. That continuity builds trust and reduces bounce.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Upload all high-quality Google Maps photos (and new professional photos) to a dedicated <strong>Office Gallery</strong> page on the website. Organize by category: reception &amp; waiting area, treatment rooms, technology equipment, team. Feature 3–4 of the best shots on the homepage. Name the image files descriptively (e.g., <code>z-dental-lounge-orange-ca-treatment-room.jpg</code>) for image search visibility. Keep Google Business Profile photos synced and regularly updated — a practice that actively updates its GBP photos signals to Google that it's actively maintained.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ COMPETITIVE LANDSCAPE ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Competitive Landscape</span>
+    <h2>Where Z Dental Lounge stands <span class="accent">vs. local competitors</span>.</h2>
+    <p class="section-intro">Here's how zdentallounge.com compares to the closest organic competitors Semrush identified in the Orange / Orange County dental market. The gap is significant — but entirely closable with the right content investment.</p>
+
+    <div class="competitor-table">
+      <div class="ct-head">
+        <div>Practice / Domain</div>
+        <div>Keywords</div>
+        <div>Traffic</div>
+        <div>Traffic $</div>
+        <div>Advantage</div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">
+          michelsendental.com
+          <span class="ct-sub">Closest large competitor</span>
+        </div>
+        <div class="ct-num good">818</div>
+        <div class="ct-num good">300</div>
+        <div class="ct-num good">$220</div>
+        <div><span style="font-size:12px; color:var(--ink-mute);">10× your keywords</span></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">
+          zcaredental.com
+          <span class="ct-sub">"Z" competitor</span>
+        </div>
+        <div class="ct-num">279</div>
+        <div class="ct-num good">282</div>
+        <div class="ct-num good">$621</div>
+        <div><span style="font-size:12px; color:var(--ink-mute);">3× your keywords</span></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">
+          zdentalgroup.com
+          <span class="ct-sub">Similar brand name</span>
+        </div>
+        <div class="ct-num">187</div>
+        <div class="ct-num">20</div>
+        <div class="ct-num">$60</div>
+        <div><span style="font-size:12px; color:var(--ink-mute);">2× your keywords</span></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">
+          smileprofessionalsdentistry.com
+          <span class="ct-sub"></span>
+        </div>
+        <div class="ct-num">93</div>
+        <div class="ct-num">124</div>
+        <div class="ct-num">$283</div>
+        <div><span style="font-size:12px; color:var(--ink-mute);">Similar size</span></div>
+      </div>
+      <div class="ct-row you">
+        <div class="ct-domain">
+          <strong>zdentallounge.com</strong>
+          <span class="ct-sub">Z Dental Lounge — You</span>
+        </div>
+        <div class="ct-num warn">82</div>
+        <div class="ct-num warn">140</div>
+        <div class="ct-num warn">$350</div>
+        <div><span style="font-size:12px; color:var(--green-deep); font-weight:700;">Best office &amp; tech ✓</span></div>
+      </div>
+    </div>
+
+    <div class="review-gap-stat" style="margin-top:36px;">
+      <div class="gap-side">
+        <div class="gap-label">Z Dental Lounge Today</div>
+        <div class="gap-num you">82</div>
+        <div class="gap-name">organic keywords<br>~140 monthly visits</div>
+      </div>
+      <div class="gap-divider"></div>
+      <div class="gap-side">
+        <div class="gap-label">Realistic 12-Month Target</div>
+        <div class="gap-num them">500+</div>
+        <div class="gap-name">organic keywords<br>1,000–2,000+ monthly visits</div>
+      </div>
+      <div class="gap-multiplier">
+        <div class="gap-mult-num">6× growth is achievable in 12 months</div>
+        <div class="gap-mult-label">The site grew from 8 to 82 keywords in 6 months with minimal effort. With a proper content strategy, the trajectory is 500+ keywords within a year — putting Z Dental Lounge ahead of every local competitor listed above.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ THE OPPORTUNITY ============================================================ -->
+<section>
+  <div class="wrap">
+    <div class="opportunity">
+      <div class="opp-grid">
+        <div class="opp-content">
+          <span class="section-eyebrow" style="background:rgba(212,169,59,0.15); color:var(--green); margin-bottom:20px;"><span class="dot"></span>The Upside</span>
+          <h2>The office is already <span class="accent">premium</span>. The website just needs to catch up.</h2>
+          <p>Z Dental Lounge has every competitive advantage needed to dominate local search in Orange, CA: a beautiful physical space, advanced technology, a comprehensive service menu, and a keyword trajectory that's already trending positive. The gap between where the site is now and where it could be is almost entirely a content and visual investment — not a technical overhaul.</p>
+          <p>The 82-keyword baseline actually works in your favor: there's no old content to undo, no cannibalization to fix, no penalty to recover from. It's a clean slate with a solid structural foundation. The practices ranking above you don't have your office or your technology — they just have more content.</p>
+        </div>
+        <div class="opp-stats">
+          <div class="opp-stat">
+            <div class="opp-stat-num">6×</div>
+            <div class="opp-stat-label">Keyword growth potential in 12 months with consistent content</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-num">0</div>
+            <div class="opp-stat-label">Service page traffic today — every treatment page is a new traffic opportunity</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-num">10+</div>
+            <div class="opp-stat-label">High-value local keywords within reach (veneers, implants, sedation…)</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-num">AI</div>
+            <div class="opp-stat-label">Completely untapped channel — FAQ content unlocks AI Overview citations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ACTION ROADMAP ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Action Roadmap</span>
+    <h2>A clear <span class="accent">three-phase plan</span> to transform the digital presence.</h2>
+    <p class="section-intro">Ordered by impact. Phase 1 addresses the biggest visibility gaps; Phase 2 builds the conversion and differentiation layer; Phase 3 compounds it all with ongoing authority-building.</p>
+
+    <div class="roadmap">
+      <div class="phase">
+        <div class="phase-number">1</div>
+        <div class="phase-weeks">Weeks 1–6</div>
+        <h3>Content Foundation</h3>
+        <ul>
+          <li><strong>Re-evaluate every treatment page</strong> — rewrite with 500–1,000 words of substantive, patient-focused content</li>
+          <li><strong>Add FAQ sections</strong> to all major service pages with FAQ schema markup for AI visibility</li>
+          <li><strong>Strengthen homepage</strong> with clear local signals: "Orange, CA" prominent throughout, key treatments named, technology callout</li>
+          <li><strong>Build out dental technology page</strong> with iTero and CBCT detailed explanations, patient benefits, real equipment photos</li>
+          <li><strong>Add internal links</strong> from homepage → treatment pages to distribute link equity and help Google discover page depth</li>
+        </ul>
+      </div>
+      <div class="phase amber">
+        <div class="phase-number amber">2</div>
+        <div class="phase-weeks">Weeks 6–12</div>
+        <h3>Visual &amp; Conversion Rebuild</h3>
+        <ul>
+          <li><strong>Professional photography session</strong> — office interior, treatment rooms, technology equipment, team portraits</li>
+          <li><strong>Replace all stock photos</strong> with real office photography throughout the site</li>
+          <li><strong>Add a photo gallery page</strong> showcasing the office environment — directly address the Google Maps visual gap</li>
+          <li><strong>Professional video</strong> — office tour (homepage), doctor intro (about page), technology demos (tech page)</li>
+          <li><strong>Sync Google Business Profile</strong> with new photos and keep updated monthly</li>
+        </ul>
+      </div>
+      <div class="phase green">
+        <div class="phase-number green">3</div>
+        <div class="phase-weeks">Months 3–12</div>
+        <h3>Authority &amp; Growth</h3>
+        <ul>
+          <li><strong>Monthly blog content</strong> targeting local informational queries ("best cosmetic dentist Orange CA", "dental implants vs dentures Orange County")</li>
+          <li><strong>Patient stories &amp; testimonials</strong> — written and video, embedded on relevant treatment pages</li>
+          <li><strong>Local authority building</strong> — directory citations, community mentions, local business partnerships</li>
+          <li><strong>Track keyword growth</strong> monthly via Semrush — target 200 keywords by month 6, 500+ by month 12</li>
+          <li><strong>Google Business Profile posts</strong> weekly using new photography and technology content</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; padding:28px 32px; background:linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); border-radius:20px; color:#FFF;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); margin-bottom:14px;">The Bottom Line</div>
+      <p style="font-size:17px; line-height:1.6; color:rgba(255,255,255,0.9); margin:0;">Z Dental Lounge has a better office, better technology, and a more premium environment than most of its local competitors. The website just isn't telling that story yet. With a focused content expansion, real photography, and FAQ coverage for AI search — the site can go from 82 keywords to 500+ within a year, treatment pages can start driving their own traffic, and the digital experience will finally match what patients find when they walk through the door.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ END CTA ============================================================ -->
+<section class="end-cta">
+  <div class="wrap">
+    <h2>Ready to make the website <span class="accent">match the practice?</span></h2>
+    <p>We've laid out exactly what needs to happen. The next step is putting the plan into motion — content, photography, video, and the technical SEO layer to support it all.</p>
+    <a href="https://www.dentistnerds.com/contact" class="cta-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.1 2.18 2 2 0 012.09 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.27 7.11a16 16 0 006.72 6.72l1.06-1.06a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Let's Talk — Dentist Nerds
+    </a>
+  </div>
+</section>
+
+</body>
+</html>
