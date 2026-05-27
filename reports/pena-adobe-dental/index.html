@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website Quality Audit — Peña Adobe Dental · Vacaville, CA · May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --navy: #0d2538; --navy-2: #112e44;
+    --teal: #5fbab0; --teal-soft: #a4dad3;
+    --gold: #d4a55c; --gold-2: #c9a961;
+    --bg-page: #f5f5f0; --bg-soft: #ebe9e0; --bg-card: #ffffff;
+    --text-dark: #0d2538; --text-body: #4b5563; --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #2d8e5c; --green-bg: #d1fae5; --green-text: #065f46;
+    --gold-bg: #fef3c7; --gold-text: #92400e;
+    --red: #c53030; --red-bg: #fee2e2; --red-text: #991b1b;
+    --blue: #2c6fb3; --blue-bg: #dbeafe; --blue-text: #1e40af;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-body); line-height: 1.6; font-size: 14px; }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+
+  .hero { background: var(--navy); color: #fff; padding: 56px 0 44px; }
+  .hero .eyebrow { color: var(--teal); }
+  .hero h1 { font-size: 50px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 10px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 28px; max-width: 720px; }
+  .hero-meta-row { display: grid; grid-template-columns: repeat(4, auto); gap: 56px; padding: 22px 0 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px; }
+  .hero-meta-item .meta-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; margin-bottom: 6px; font-weight: 600; }
+  .hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+  .section { padding: 56px 0; }
+  .section h2 { font-size: 36px; font-weight: 600; margin-bottom: 12px; line-height: 1.15; }
+  .section h3 { font-size: 22px; font-weight: 600; margin: 36px 0 14px; }
+  .section-text { font-size: 14.5px; color: var(--text-body); max-width: 760px; margin-bottom: 24px; line-height: 1.7; }
+  .section-text strong { color: var(--text-dark); font-weight: 600; }
+  .h2-divider { display: grid; grid-template-columns: repeat(3, 86px); gap: 0; margin: 0 0 24px; }
+  .h2-divider span { height: 2px; }
+  .div-teal { background: var(--teal); } .div-gold { background: var(--gold-2); }
+  .div-green { background: var(--green); } .div-blue { background: var(--blue); }
+  .div-red { background: var(--red); } .div-navy { background: var(--navy); }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 18px 0 28px; }
+  .kpi-card { background: var(--bg-card); padding: 22px 20px; text-align: center; border-top: 2px solid var(--teal); border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-card.gold { border-top-color: var(--gold); }
+  .kpi-card.green { border-top-color: var(--green); }
+  .kpi-card.blue { border-top-color: var(--blue); }
+  .kpi-card.red { border-top-color: var(--red); }
+  .kpi-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--text-dark); line-height: 1; margin-bottom: 8px; }
+  .kpi-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dark); font-weight: 600; margin-bottom: 4px; }
+  .kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+  .account-chip { display: inline-flex; align-items: center; gap: 10px; background: var(--bg-card); border-left: 3px solid var(--gold); padding: 8px 14px 8px 12px; border-radius: 4px; margin: 8px 0 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .account-chip .slug { font-family: 'Courier New', monospace; font-size: 12px; background: var(--bg-soft); padding: 3px 8px; border-radius: 3px; color: var(--text-dark); font-weight: 600; }
+  .account-chip .label { font-size: 12px; color: var(--text-muted); }
+
+  .focus-3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 22px 0 8px; }
+  .focus-3 { background: var(--bg-card); padding: 22px 22px; border-radius: 4px; border-top: 3px solid var(--teal); box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
+  .focus-3.gold { border-top-color: var(--gold-2); }
+  .focus-3.red { border-top-color: var(--red); }
+  .focus-3.green { border-top-color: var(--green); }
+  .focus-3.blue { border-top-color: var(--blue); }
+  .focus-3.purple { border-top-color: #7c3aed; }
+  .focus-3 .f3-eyebrow { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 10px; }
+  .focus-3.gold .f3-eyebrow { color: var(--gold-text); }
+  .focus-3.red .f3-eyebrow { color: var(--red); }
+  .focus-3.green .f3-eyebrow { color: var(--green); }
+  .focus-3.blue .f3-eyebrow { color: var(--blue); }
+  .focus-3.purple .f3-eyebrow { color: #7c3aed; }
+  .focus-3 h3 { font-family: 'Playfair Display', serif; font-size: 18px; margin: 0 0 14px; color: var(--text-dark); font-weight: 600; line-height: 1.25; }
+  .focus-3 .visual { min-height: 60px; margin: 4px 0 12px; display: flex; align-items: center; }
+  .focus-3 .f3-stat { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600; line-height: 1; margin: 4px 0 8px; color: var(--text-dark); }
+  .focus-3.gold .f3-stat { color: var(--gold-2); }
+  .focus-3.red .f3-stat { color: var(--red); }
+  .focus-3.green .f3-stat { color: var(--green); }
+  .focus-3.blue .f3-stat { color: var(--blue); }
+  .focus-3.purple .f3-stat { color: #7c3aed; }
+  .focus-3 p { font-size: 13px; line-height: 1.55; margin: 0; color: var(--text-body); }
+  .focus-3 code { background: var(--bg-soft); padding: 1px 5px; border-radius: 3px; font-size: 11.5px; color: var(--text-dark); }
+
+  .keyfinding-list { display: grid; gap: 10px; margin: 16px 0 24px; }
+  .kf-card { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kf-card .kf-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .kf-card.purple .kf-icon { background: #ede4ff; color: #7c3aed; }
+  .kf-card.gold .kf-icon { background: var(--gold-bg); color: var(--gold-text); }
+  .kf-card.red .kf-icon { background: var(--red-bg); color: var(--red-text); }
+  .kf-card.green .kf-icon { background: var(--green-bg); color: var(--green-text); }
+  .kf-card.blue .kf-icon { background: var(--blue-bg); color: var(--blue-text); }
+  .kf-card h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; margin: 0 0 4px; color: var(--text-dark); }
+  .kf-card p { font-size: 13px; color: var(--text-body); margin: 0; line-height: 1.55; }
+
+  .gbp-card { background: var(--bg-card); padding: 28px 32px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; margin: 14px 0 24px; border-left: 3px solid #4285f4; }
+  .gbp-card .star-block { text-align: center; }
+  .gbp-card .star-rating { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 600; color: var(--gold-2); line-height: 1; margin-bottom: 6px; }
+  .gbp-card .stars { font-size: 18px; color: var(--gold); letter-spacing: 2px; }
+  .gbp-card .review-count { font-size: 12px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .gbp-card .gbp-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 28px; }
+  .gbp-card .gbp-row .label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 3px; }
+  .gbp-card .gbp-row .value { font-size: 14px; color: var(--text-dark); font-weight: 600; }
+
+  .strategy-box { background: var(--bg-card); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); overflow: hidden; margin: 18px 0 24px; }
+  .strategy-header { background: var(--navy); color: #fff; padding: 18px 24px; }
+  .strategy-header .eyebrow { color: var(--teal); margin-bottom: 6px; }
+  .strategy-header h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: #fff; font-weight: 600; margin: 0; }
+  .strategy-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .strategy-path { padding: 24px 28px; border-top: 3px solid var(--teal); }
+  .strategy-path.gold { border-top-color: var(--gold-2); }
+  .strategy-path .path-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--teal); margin-bottom: 10px; }
+  .strategy-path.gold .path-label { color: var(--gold-text); }
+  .strategy-path h4 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px; }
+  .strategy-path ul { padding-left: 16px; font-size: 13px; color: var(--text-body); line-height: 1.7; }
+  .strategy-path ul li { margin-bottom: 4px; }
+  .strategy-divider { width: 1px; background: var(--border); }
+
+  .directory-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0 22px; }
+  .directory-summary .dir-stat { text-align: left; padding-top: 12px; border-top: 2px solid var(--teal); }
+  .directory-summary .dir-stat.green { border-top-color: var(--green); }
+  .directory-summary .dir-stat.red { border-top-color: var(--red); }
+  .directory-summary .dir-stat .num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; line-height: 1; margin: 4px 0; }
+  .directory-summary .dir-stat.green .num { color: var(--green); }
+  .directory-summary .dir-stat.red .num { color: var(--red); }
+  .directory-summary .dir-stat .dir-label { font-size: 11px; color: var(--text-dark); font-weight: 600; margin-bottom: 2px; }
+  .directory-summary .dir-stat small { font-size: 11px; color: var(--text-muted); }
+  .table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin: 12px 0 20px; background: var(--bg-card); }
+  .directory-table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 12.5px; min-width: 520px; }
+  .directory-table thead { background: var(--navy); color: #fff; }
+  .directory-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .directory-table th:nth-child(2) { text-align: center; }
+  .directory-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .directory-table td:nth-child(2) { text-align: center; }
+  .directory-table tr:last-child td { border-bottom: none; }
+  .dir-status { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 10.5px; font-weight: 600; }
+  .dir-status.listed { background: var(--green-bg); color: var(--green-text); }
+  .dir-status.weak { background: var(--gold-bg); color: var(--gold-text); }
+  .dir-status.missing { background: var(--red-bg); color: var(--red-text); }
+
+  .triage-counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 16px 0 22px; }
+  .triage-counter { text-align: left; padding: 12px 0; border-top: 2px solid var(--gold-2); }
+  .triage-counter.purple { border-top-color: #7c3aed; }
+  .triage-counter.green { border-top-color: var(--green); }
+  .triage-counter.red { border-top-color: var(--red); }
+  .triage-counter .num { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600; line-height: 1; margin: 4px 0; }
+  .triage-counter.purple .num { color: #7c3aed; }
+  .triage-counter.green .num { color: var(--green); }
+  .triage-counter.red .num { color: var(--red); }
+  .triage-counter .triage-label { font-size: 11px; color: var(--text-dark); font-weight: 600; }
+  .pages-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 4px; font-size: 12.5px; min-width: 560px; }
+  .pages-table thead { background: var(--navy); color: #fff; }
+  .pages-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .pages-table th:last-child { text-align: right; }
+  .pages-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); vertical-align: middle; }
+  .pages-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .pages-table .url { font-family: 'Courier New', monospace; font-size: 11.5px; color: var(--text-dark); word-break: break-all; }
+  .pages-table .url.issue { color: var(--gold-text); }
+  .pages-table .url-flag { font-size: 10.5px; color: var(--gold-text); margin-left: 8px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .pages-table tr.flag-row { background: #fffbf0; }
+  .pages-table tr:last-child td { border-bottom: none; }
+  .critical-callout { background: #fffbf0; border-left: 3px solid var(--gold-2); padding: 14px 18px; margin: 10px 0 16px; font-size: 12.5px; color: var(--text-dark); border-radius: 0 4px 4px 0; }
+  .critical-callout strong { color: var(--gold-text); }
+
+  .tech-issues-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 18px 0 14px; }
+  @media (min-width: 700px) { .tech-issues-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .tech-issues-grid { grid-template-columns: repeat(4, 1fr); } }
+  .tech-issue-card { background: var(--bg-card); border-left: 3px solid var(--red); padding: 18px 22px; border-radius: 0 4px 4px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: center; }
+  .tech-issue-card.gold { border-left-color: var(--gold-2); }
+  .tech-issue-card.purple { border-left-color: #7c3aed; }
+  .tech-issue-card.green { border-left-color: var(--green); }
+  .tech-issue-card .tech-num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; color: var(--red); line-height: 1; }
+  .tech-issue-card.gold .tech-num { color: var(--gold-2); }
+  .tech-issue-card.purple .tech-num { color: #7c3aed; }
+  .tech-issue-card.green .tech-num { color: var(--green); }
+  .tech-issue-card h5 { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: var(--text-dark); margin: 0 0 4px; }
+  .tech-issue-card p { font-size: 12px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .tech-callout { background: rgba(197, 48, 48, 0.06); border-left: 3px solid var(--red); padding: 14px 20px; margin: 14px 0 0; font-size: 12.5px; color: var(--text-dark); line-height: 1.55; border-radius: 0 4px 4px 0; }
+  .tech-callout strong { color: var(--red); }
+  .tech-callout code { background: rgba(197,48,48,0.08); padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+
+  .lf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 18px 0 24px; }
+  .lf-card { background: var(--bg-card); padding: 22px; border-radius: 4px; border-top: 3px solid var(--teal); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .lf-card.red { border-top-color: var(--red); }
+  .lf-card.gold { border-top-color: var(--gold-2); }
+  .lf-card .lf-keyword { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; }
+  .lf-card.red .lf-keyword { color: var(--red); }
+  .lf-card.gold .lf-keyword { color: var(--gold-text); }
+  .lf-card .lf-rank { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 600; line-height: 1; margin: 4px 0 8px; color: var(--text-dark); }
+  .lf-card.red .lf-rank { color: var(--red); }
+  .lf-card.gold .lf-rank { color: var(--gold-2); }
+  .lf-card .lf-label { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+  .lf-card a { font-size: 12px; color: var(--teal); text-decoration: none; font-weight: 600; }
+  .lf-card a:hover { text-decoration: underline; }
+
+  .comp-twins { display: grid; grid-template-columns: 1fr; gap: 18px; margin: 14px 0 24px; }
+  .comp-twin { background: var(--bg-card); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .comp-twin thead { background: var(--navy); color: #fff; }
+  .comp-twin table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 580px; }
+  .comp-twin th { padding: 11px 14px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; text-align: left; white-space: nowrap; }
+  .comp-twin th:nth-child(n+2) { text-align: center; }
+  .comp-twin td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .comp-twin td:nth-child(n+2) { text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .comp-twin tr:last-child td { border-bottom: none; }
+  .comp-twin tr.self td { color: var(--red-text); font-weight: 700; background: #fff5f3; }
+
+  .chart-wrap { background: var(--bg-card); padding: 24px; margin: 18px 0 24px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .chart-wrap .chart-caption { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 14px; font-weight: 700; }
+  .chart-wrap canvas { max-height: 280px; }
+
+  .action-list { display: grid; gap: 12px; margin: 14px 0 24px; }
+  .action-item { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 44px 1fr auto; gap: 16px; align-items: center; border-left: 3px solid var(--teal); }
+  .action-item .a-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--gold); line-height: 1; }
+  .action-item .a-body h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-dark); margin: 0 0 4px; }
+  .action-item .a-body p { font-size: 12.5px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .action-item .a-pri { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.14em; padding: 4px 10px; border-radius: 999px; font-weight: 700; white-space: nowrap; }
+  .a-pri.immediate { background: var(--red-bg); color: var(--red-text); }
+  .a-pri.high { background: var(--gold-bg); color: var(--gold-text); }
+  .a-pri.medium { background: var(--blue-bg); color: var(--blue-text); }
+  .a-pri.ongoing { background: var(--green-bg); color: var(--green-text); }
+
+  .loc-banner { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; padding: 40px 0; }
+  .loc-banner .eyebrow { color: var(--teal); }
+  .loc-banner h2 { color: #fff; font-size: 40px; margin-bottom: 8px; }
+  .loc-banner .addr { font-size: 14px; color: #c7d4dd; line-height: 1.8; }
+  .loc-banner .addr a { color: var(--teal); text-decoration: none; }
+
+  footer { background: var(--navy); color: #8aa1b3; padding: 32px 0; text-align: center; font-size: 12px; margin-top: 60px; letter-spacing: 0.06em; }
+  footer .brand { color: var(--gold); font-weight: 600; }
+
+  img, canvas, svg, table { max-width: 100%; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+  .action-item .a-body { min-width: 0; }
+  .action-item .a-body p { word-wrap: break-word; overflow-wrap: anywhere; }
+  .pages-table .url { word-break: break-all; }
+
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .hero h1 { font-size: 42px; }
+    .section h2 { font-size: 32px; }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+    .lf-grid { grid-template-columns: 1fr 1fr; }
+    .strategy-paths { grid-template-columns: 1fr; }
+    .strategy-divider { display: none; }
+  }
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .focus-3:last-child { grid-column: 1 / -1; }
+    .hero h1 { font-size: 36px; line-height: 1.1; }
+    .section h2 { font-size: 26px; }
+    .section { padding: 44px 0; }
+    .hero-meta-row { grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+    .loc-banner h2 { font-size: 32px; } .loc-banner { padding: 32px 0; }
+    .gbp-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr 1fr; }
+    .action-item { grid-template-columns: 44px 1fr; }
+    .action-item .a-pri { grid-column: 2; justify-self: start; margin-top: 6px; }
+    .directory-summary { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .directory-summary .dir-stat .num { font-size: 24px; }
+    .chart-wrap canvas { max-height: 260px; }
+  }
+  @media (max-width: 768px) {
+    .tech-issues-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tech-issue-card { padding: 16px 18px; gap: 14px; grid-template-columns: 50px 1fr; }
+    .tech-issue-card .tech-num { font-size: 34px; }
+    .triage-counters { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .triage-counter .num { font-size: 26px; }
+    .focus-3 { padding: 18px 20px; }
+    .focus-3 h3 { font-size: 16px; }
+    .focus-3 .f3-stat { font-size: 32px; }
+    .lf-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .focus-3-grid { grid-template-columns: 1fr; }
+    .focus-3:last-child { grid-column: auto; }
+    .tech-issues-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    .section { padding: 36px 0; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero h1 { font-size: 30px; } .hero h1 br { display: none; }
+    .hero { padding: 36px 0 32px; }
+    .hero-meta-row { grid-template-columns: 1; gap: 16px; padding: 18px 0 0; }
+    .section h2 { font-size: 24px; }
+    .section h3 { font-size: 18px; margin: 28px 0 10px; }
+    .loc-banner h2 { font-size: 26px; }
+    .kpi-num { font-size: 30px; }
+    .kpi-card { padding: 18px 14px; }
+    .h2-divider { grid-template-columns: repeat(3, 56px); margin-bottom: 18px; }
+    .chart-wrap { padding: 14px; } .chart-wrap canvas { max-height: 220px; }
+    .gbp-card .star-rating { font-size: 52px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr; gap: 12px; }
+    .focus-3 .f3-stat { font-size: 28px; }
+    .action-item { padding: 14px 18px; }
+    .action-item .a-num { font-size: 22px; }
+  }
+  @media (max-width: 480px) {
+    .triage-counters { grid-template-columns: 1fr; }
+    .directory-summary { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 420px) {
+    .container { padding: 0 14px; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 26px; }
+    .section h2 { font-size: 22px; }
+    .h2-divider { grid-template-columns: repeat(3, 48px); }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Website Quality Audit · Single Location Practice</div>
+    <h1>Peña Adobe<br><em>Dental</em></h1>
+    <p class="hero-sub">A focused audit of organic visibility, local map rankings, treatment-page content quality, website strategy, and the practice's competitive standing within the Vacaville, CA market.</p>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item"><div class="meta-label">Report Period</div><div class="meta-value">May 2026</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Prepared By</div><div class="meta-value">Dentist Nerds</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Property Audited</div><div class="meta-value">penaadobedental.com</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Specialty Focus</div><div class="meta-value">Implants · Cosmetic · Restorative</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="loc-banner">
+  <div class="container">
+    <div class="eyebrow">Practice location</div>
+    <h2>Dr. Amani Takher, DMD</h2>
+    <div class="addr">
+      <a href="https://www.penaadobedental.com/" target="_blank" rel="noopener">penaadobedental.com</a> · (707) 448-6456<br>
+      161 Butcher Rd Suite A, Vacaville, CA 95687
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Performance summary</div>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-teal"></span></div>
+    <h2>Strong reputation, weak organic footprint — implant keywords not converting</h2>
+    <p class="section-text">Peña Adobe Dental has an exceptional patient reputation — <strong>904 Google reviews at 4.9 stars</strong> — but the website is almost invisible to new patients searching online. With only <strong>185 organic keywords</strong> and roughly <strong>263 organic visits per month</strong>, the site is dramatically underperforming for a specialty implant and cosmetic practice. The practice's primary revenue-driver — dental implants — ranks at positions 9–10 on Google Search, and the site has only <strong>39 indexed pages</strong>. This is a content deficit and strategy problem, not a technical one. The upside is significant: the reputation asset is already there, it just isn't backed by the online presence needed to convert new patients searching for implants in Vacaville.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card red"><div class="kpi-num">185</div><div class="kpi-label">Organic Keywords</div><div class="kpi-sub">industry avg. is 500–1,000+</div></div>
+      <div class="kpi-card red"><div class="kpi-num">263</div><div class="kpi-label">Monthly Visits</div><div class="kpi-sub">organic traffic, US</div></div>
+      <div class="kpi-card gold"><div class="kpi-num">39</div><div class="kpi-label">Indexed Pages</div><div class="kpi-sub">very thin for specialty practice</div></div>
+      <div class="kpi-card green"><div class="kpi-num">904</div><div class="kpi-label">Google Reviews ★ 4.9</div><div class="kpi-sub">strongest asset in the market</div></div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-caption">Monthly organic traffic · 12-month trend · penaadobedental.com</div>
+      <canvas id="trafficTrend"></canvas>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Top priority fixes</div>
+    <h2>Top Priority Fixes &amp; Issues</h2>
+    <div class="account-chip">
+      <span class="slug">penaadobedental.com</span>
+      <span class="label">· Peña Adobe Dental · Vacaville, CA</span>
+    </div>
+
+    <div class="focus-3-grid">
+      <div class="focus-3 red">
+        <div class="f3-eyebrow">Issue 01 — Content Gap</div>
+        <h3>185 keywords — a fraction of what implant-focused competitors rank for</h3>
+        <div class="visual"><div class="f3-stat">185</div></div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--red);">total organic keywords</div>
+        <p>The site's thin keyword footprint is a direct result of thin content — not enough pages, not enough topical depth, and no strategic targeting of high-intent implant and cosmetic dentistry queries. Competitors like Nut Tree Smiles Dentistry (Vacaville) rank for 206 keywords and generate nearly 4× the monthly traffic. Every additional page of strategic content is a potential new patient acquisition channel.</p>
+      </div>
+      <div class="focus-3 gold">
+        <div class="f3-eyebrow">Issue 02 — Implant Rankings Too Low</div>
+        <h3>Dental implant keywords at positions 9–10 despite being the primary service</h3>
+        <div class="visual"><div class="f3-stat">9–10</div></div>
+        <div class="f3-stat" style="font-size: 22px; color: var(--gold-2);">Google positions for implant terms</div>
+        <p>"Dental implants vacaville" ranks at position 9 (90 monthly searches) and "dental implants vacaville ca" at position 10 (70 searches). These are the highest-value commercial queries for the practice, yet they're sitting at the bottom of the first page — invisible to the majority of searchers. The implant pages need substantially more content depth, FAQs, pricing context, and schema markup to climb into the top 3.</p>
+      </div>
+      <div class="focus-3 blue">
+        <div class="f3-eyebrow">Issue 03 — Website Strategy Decision</div>
+        <h3>Implants-first menu vs. general dentistry — two different conversion psychologies</h3>
+        <div class="visual"><div class="f3-stat" style="font-size: 28px; color: var(--blue);">Identity</div></div>
+        <p>The current menu structure places dental implants <em>before</em> the services section. If the practice is committed to dental implants as its primary revenue driver, the entire website experience needs to be redesigned around implant conversion psychology — which is different from general dentistry. Implant patients require more trust-building, education, and social proof before they book. If the focus shifts to general dentistry, the information architecture and messaging need to be reorganized accordingly. This strategic decision drives every other website change.</p>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top: 36px;">Executive summary</div>
+    <h2 style="font-size: 28px; margin-bottom: 18px;">Other Key Findings · What Needs Improvement</h2>
+    <div class="keyfinding-list">
+      <div class="kf-card red">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>All treatment pages have thin content and no FAQs</h5>
+          <p>Every service page — dental implants, cosmetic dentistry, veneers, Invisalign, sedation — contains minimal text with no FAQ sections. FAQs are critical for implant and cosmetic pages because patients have high anxiety and many questions before booking a consultation. Thin pages also fail to rank for long-tail queries that represent ready-to-book patients. Each treatment page needs 600–1,200 words of strategic content plus at minimum 5–8 FAQs structured with FAQ schema.</p>
+        </div>
+      </div>
+      <div class="kf-card gold">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Treatment pages are using stock photography — replace with real patient imagery</h5>
+          <p>Stock dental imagery signals an impersonal, generic practice experience to prospective patients — especially for implant and cosmetic patients who are evaluating multiple providers and making high-consideration decisions. Authentic before/after photos, photos of Dr. Takher at work, the actual office and team, and real patient success stories dramatically increase trust and conversion rates on treatment pages. This is a conversion issue, not just an aesthetic one.</p>
+        </div>
+      </div>
+      <div class="kf-card purple">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Only 39 indexed pages — significant content expansion opportunity</h5>
+          <p>A specialty implant and cosmetic practice should have 80–150+ indexed pages covering individual procedures (All-on-4, single implants, full-mouth reconstruction, implant-supported dentures), condition pages (missing teeth, bone loss), cosmetic procedures, financing, and location-targeted landing pages. Each missing page is a missed ranking opportunity for high-intent searches. Content expansion should be prioritized around the highest-value procedures.</p>
+        </div>
+      </div>
+      <div class="kf-card blue">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>No schema markup deployed — invisible to AI Overviews and rich results</h5>
+          <p>With 904 reviews at 4.9 stars, the practice has an exceptional reputation signal that isn't surfacing in search results because there's no LocalBusiness, AggregateRating, MedicalProcedure, or FAQPage schema on any page. Google's AI Overviews, rich snippets, and the new AI Mode increasingly reward structured data. The review asset already exists — it just needs to be published in a format search engines can read and display.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">⚠</div>
+        <div>
+          <h5>Flat traffic trend — no growth in 12 months despite review growth</h5>
+          <p>Traffic has oscillated between 247 and 552 visits per month over the last year with no consistent upward trend. The spike in August 2025 (552 visits) did not sustain, indicating it was likely a one-off referral event rather than organic growth. Without a content strategy producing new pages and targeting new keywords each month, traffic will remain flat while competitors grow their footprints.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Reputation snapshot</div>
+    <h2 style="font-size: 28px;">Reputation · Peña Adobe Dental</h2>
+    <div class="gbp-card">
+      <div class="star-block">
+        <div class="star-rating">4.9</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">904 Google reviews</div>
+      </div>
+      <div class="gbp-meta">
+        <div class="gbp-row"><div class="label">Lead Doctor</div><div class="value">Dr. Amani Takher, DMD</div></div>
+        <div class="gbp-row"><div class="label">Phone</div><div class="value">(707) 448-6456</div></div>
+        <div class="gbp-row"><div class="label">Address</div><div class="value">161 Butcher Rd Suite A, Vacaville, CA 95687</div></div>
+        <div class="gbp-row"><div class="label">GBP Categories</div><div class="value">Dentist · Cosmetic Dentist · Dental Implants Provider</div></div>
+        <div class="gbp-row"><div class="label">Primary Specialties</div><div class="value">Advanced Implants · Cosmetic · Restorative</div></div>
+        <div class="gbp-row"><div class="label">Review Rating</div><div class="value">4.9★ — top 5% in Vacaville market</div></div>
+      </div>
+    </div>
+    <p class="section-text">The 4.9-star rating across 904 reviews is the strongest competitive advantage in the local market and a conversion asset that most competitors cannot match. However, this trust signal is not visible in Google Search results because the site lacks AggregateRating schema. Adding it would surface the star rating in organic snippets, directly increasing click-through rates for every page that ranks.</p>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Strategic direction</div>
+    <h2>Website Strategy: Implant-Focused vs. General Dentistry</h2>
+    <p class="section-text">This is the most important strategic question for the website. The current structure positions dental implants prominently in the navigation (before the main services menu), but the website experience, content depth, and conversion design don't yet fully support an implants-first positioning. The right path depends on the practice's revenue goals — and the two directions require very different approaches.</p>
+
+    <div class="strategy-box">
+      <div class="strategy-header">
+        <div class="eyebrow">Choose your direction</div>
+        <h3>Two Strategic Paths — Each Requires a Different Design &amp; Content Approach</h3>
+      </div>
+      <div class="strategy-paths">
+        <div class="strategy-path">
+          <div class="path-label">Path A — Implants First</div>
+          <h4>Design the entire website to convert implant patients</h4>
+          <ul>
+            <li>Implant conversion requires more trust-building psychology — patients need education, before/afters, cost transparency, and multiple touchpoints before booking</li>
+            <li>Homepage hero section speaks directly to implant patients — "Missing teeth? We specialize in dental implants."</li>
+            <li>Dedicated pages for All-on-4, single implants, implant-supported dentures, mini implants, and full-mouth reconstruction</li>
+            <li>Financing/cost page prominently displayed — implant patients always need to see payment options before calling</li>
+            <li>Patient video testimonials and real before/after gallery as primary conversion tools</li>
+            <li>FAQ-rich content addressing fear, cost, and timeline objections on every implant page</li>
+            <li>Navigation restructured: Dental Implants as first and primary menu item with its own mega-menu or dropdown</li>
+          </ul>
+        </div>
+        <div class="strategy-divider"></div>
+        <div class="strategy-path gold">
+          <div class="path-label">Path B — Full-Service General Dentistry</div>
+          <h4>Organize around a broad service menu with implants as a specialty</h4>
+          <ul>
+            <li>Homepage speaks to the full family — routine care, preventive, cosmetic, and specialty services all represented</li>
+            <li>Navigation organized by patient need: "New Patients," "General Care," "Cosmetic," "Implants &amp; Surgery"</li>
+            <li>Implants featured as a highlighted specialty within a broader service structure, not the lead</li>
+            <li>Content strategy covers a wider range of topics including preventive care, pediatric considerations, emergency dental, and cosmetic queries</li>
+            <li>Broader geographic keyword targeting possible — more search queries to target</li>
+            <li>Lower average case value per patient but higher volume potential</li>
+            <li>Conversion psychology is simpler — "book an appointment" works for most general dentistry patients</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="critical-callout">
+      <strong>Our recommendation:</strong> If dental implants represent 40%+ of practice revenue or is the intended growth area, commit fully to <strong>Path A</strong>. The current halfway positioning — implants in the menu but without implant-specific conversion design — captures neither market effectively. A full implant-focused website redesign with the right psychology, content depth, and trust-builders could 3–5× new implant patient inquiries within 6–12 months. If the practice is pivoting toward higher volume general dentistry, Path B with a complete site reorganization is the right call. Discuss with your Dentist Nerds strategist which direction fits the practice growth plan.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Local map rankings · LocalFalcon</div>
+    <h2>Google Maps Local Ranking Scans</h2>
+    <p class="section-text">Local Falcon grid scans measure where Peña Adobe Dental appears in Google Maps across a 7×7 grid centered on the practice location. Each dot on the grid shows the ranking position at that geographic point — a clear picture of where the practice is winning and losing local visibility across Vacaville.</p>
+
+    <div class="lf-grid">
+      <div class="lf-card gold">
+        <div class="lf-keyword">Keyword · dental implants vacaville</div>
+        <div class="lf-rank">~9</div>
+        <div class="lf-label">Average Google organic position · high-value commercial term</div>
+        <a href="https://localrankingtracker.com/scan-report/eae07aec8451a2e/" target="_blank" rel="noopener">View full map scan →</a>
+      </div>
+      <div class="lf-card">
+        <div class="lf-keyword">Keyword · dentist vacaville</div>
+        <div class="lf-rank">~5</div>
+        <div class="lf-label">Average Google organic position · core local query</div>
+        <a href="https://localrankingtracker.com/scan-report/661efdfbc4e1b43/" target="_blank" rel="noopener">View full map scan →</a>
+      </div>
+      <div class="lf-card red">
+        <div class="lf-keyword">Keyword · cosmetic dentist vacaville</div>
+        <div class="lf-rank">~3</div>
+        <div class="lf-label">Average Google organic position · cosmetic queries performing best</div>
+        <a href="https://localrankingtracker.com/scan-report/269957aabbb5879/" target="_blank" rel="noopener">View full map scan →</a>
+      </div>
+    </div>
+
+    <p class="section-text">The cosmetic dentistry terms show the strongest local Map Pack rankings, while the higher-value implant keywords remain below the top-3 positions that drive the majority of clicks. Improving local rankings for implant terms requires more GBP optimization (implant-specific categories, posts, photo updates), consistent citation building, and — critically — deeper content on the implant pages themselves, since Google's local algorithm rewards sites where the page content matches the search query.</p>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Treatment pages · Technical audit</div>
+    <h2>Indexed Page Triage on penaadobedental.com</h2>
+    <div class="triage-counters">
+      <div class="triage-counter green">
+        <div class="num">5</div>
+        <div class="triage-label">Adequately Ranking Pages</div>
+        <small style="font-size: 11px; color: var(--text-muted);">brand + cosmetic terms</small>
+      </div>
+      <div class="triage-counter purple">
+        <div class="num">12+</div>
+        <div class="triage-label">Pages Needing Content Depth</div>
+        <small style="font-size: 11px; color: var(--text-muted);">thin service pages</small>
+      </div>
+      <div class="triage-counter red">
+        <div class="num">20+</div>
+        <div class="triage-label">Missing Pages to Create</div>
+        <small style="font-size: 11px; color: var(--text-muted);">implant subtypes, FAQs, financing</small>
+      </div>
+    </div>
+
+    <div class="table-scroll"><table class="pages-table">
+      <thead><tr><th>URL / Page</th><th>Position</th><th>Monthly Searches</th><th>Est. Visits / mo</th></tr></thead>
+      <tbody>
+        <tr><td class="url">/  (homepage — "pena adobe dental")</td><td style="text-align:right">1</td><td style="text-align:right">170</td><td>88</td></tr>
+        <tr><td class="url">/  (homepage — "vacaville dentist")</td><td style="text-align:right">8</td><td style="text-align:right">1,000</td><td>24</td></tr>
+        <tr><td class="url">/  (homepage — "dentist vacaville")</td><td style="text-align:right">5</td><td style="text-align:right">590</td><td>20</td></tr>
+        <tr><td class="url">/  (homepage — "best dentist in vacaville")</td><td style="text-align:right">1</td><td style="text-align:right">110</td><td>14</td></tr>
+        <tr><td class="url">/invisalign/  (ranking "invisalign vacaville")</td><td style="text-align:right">6</td><td style="text-align:right">70</td><td>2</td></tr>
+        <tr><td class="url">/emergency-care/  (ranking "emergency dentist vacaville")</td><td style="text-align:right">3</td><td style="text-align:right">50</td><td>3</td></tr>
+        <tr><td class="url">/porcelain-veneers/  (ranking "vacaville veneers")</td><td style="text-align:right">8</td><td style="text-align:right">50</td><td>1</td></tr>
+        <tr><td class="url">/sedation-dentistry/  (ranking "sedation dentistry vacaville")</td><td style="text-align:right">5</td><td style="text-align:right">40</td><td>1</td></tr>
+        <tr class="flag-row"><td class="url issue">/  (homepage — "dental implants vacaville") <span class="url-flag">⚠ homepage ranking, not dedicated page</span></td><td style="text-align:right">9</td><td style="text-align:right">90</td><td>1</td></tr>
+        <tr class="flag-row"><td class="url issue">/  (homepage — "dental implants vacaville ca") <span class="url-flag">⚠ homepage ranking, not dedicated page</span></td><td style="text-align:right">10</td><td style="text-align:right">70</td><td>1</td></tr>
+        <tr class="flag-row"><td class="url issue">/do-dental-implants-last-forever/  <span class="url-flag">⚠ pos 91 — no traffic currently</span></td><td style="text-align:right">91</td><td style="text-align:right">40</td><td>0</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="critical-callout">
+      <strong>Critical gap:</strong> The homepage is trying to rank for "dental implants" instead of a dedicated <code>/dental-implants/</code> service page. Google rewards topically-focused pages — a well-structured implants page with 800+ words, FAQ schema, before/after imagery, and internal links to subtypes (All-on-4, single implant, etc.) would dramatically improve rankings for the highest-value terms.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow" style="color: var(--blue);">Triage center</div>
+    <h2>Technical &amp; Content Issues</h2>
+    <p class="section-text">Content and on-page SEO health check. Issues derived from SEMrush keyword analysis, page count audit, and on-page review of service pages.</p>
+
+    <div class="tech-issues-grid">
+      <div class="tech-issue-card">
+        <div class="tech-num">39</div>
+        <div>
+          <h5>Total Indexed Pages — Far Below Market Standard</h5>
+          <p>A specialty implant + cosmetic practice should have 80–150+ pages. Missing: All-on-4, mini implants, implant-supported dentures, full-mouth reconstruction, teeth whitening, smile makeover, financing, and individual condition pages.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card gold">
+        <div class="tech-num">0</div>
+        <div>
+          <h5>Service Pages With FAQ Sections</h5>
+          <p>Not a single treatment page has an FAQ section. FAQs drive long-tail keyword rankings, answer patient objections, and are eligible for Google's FAQ rich results. This is the single fastest content win available.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card gold">
+        <div class="tech-num">0</div>
+        <div>
+          <h5>Schema Markup Deployed Sitewide</h5>
+          <p>No LocalBusiness, AggregateRating (missing 904 reviews from search snippets), MedicalProcedure, or FAQPage schema detected. Structured data is required to compete in AI Overviews and earn rich result features.</p>
+        </div>
+      </div>
+      <div class="tech-issue-card purple">
+        <div class="tech-num">Stock</div>
+        <div>
+          <h5>Treatment Page Photography is Generic Stock Images</h5>
+          <p>All treatment pages use stock dental photography. For high-consideration services like implants and cosmetics, authentic patient photos, real before/afters, and photos of Dr. Takher and the team are required to build the trust needed to convert a consultation request.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-callout">
+      <strong>Highest-leverage content work:</strong> Build a dedicated <code>/dental-implants/</code> page with 800–1,200 words, real patient before/afters, FAQ schema (10+ questions), pricing transparency, and links to subtype pages. Then create subpages for All-on-4, single implants, implant-supported dentures, and implant financing. These five pages alone could move the practice's implant keywords from positions 9–10 into the top 3, where 65%+ of clicks happen.
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Competitive position · Vacaville, CA</div>
+    <h2>Primary Competitors in the Vacaville Market</h2>
+    <p class="section-text">The most-visible dental practices in the Vacaville area by current organic keyword footprint, ranked by SEMrush data. Despite having the strongest reputation (4.9★ / 904 reviews), Peña Adobe Dental's digital footprint is the thinnest in the competitive set — a correctable gap.</p>
+
+    <div class="comp-twins">
+      <div class="comp-twin">
+        <table>
+          <thead><tr><th>Practice · Domain</th><th>Common Keywords</th><th>Their Keywords</th><th>Their Visits / mo</th></tr></thead>
+          <tbody>
+            <tr class="self"><td><strong>Peña Adobe Dental (You)</strong><br><small style="color: var(--red-text); font-weight: 400;">161 Butcher Rd, Vacaville · penaadobedental.com</small></td><td>—</td><td>185</td><td>263</td></tr>
+            <tr><td><strong>Nut Tree Smiles Dentistry</strong><br><small style="color: var(--text-muted); font-weight: 400;">nuttreesmilesdentistry.com</small></td><td>24</td><td>206</td><td>965</td></tr>
+            <tr><td><strong>Vacaville Dental Care</strong><br><small style="color: var(--text-muted); font-weight: 400;">vacavilledentalcare.net</small></td><td>37</td><td>298</td><td>260</td></tr>
+            <tr><td><strong>Vacaville Dental Group</strong><br><small style="color: var(--text-muted); font-weight: 400;">vacavilledentalgroup.com</small></td><td>34</td><td>351</td><td>138</td></tr>
+            <tr><td><strong>Talwar Family Dentistry</strong><br><small style="color: var(--text-muted); font-weight: 400;">talwarfamilydentistry.com</small></td><td>27</td><td>169</td><td>295</td></tr>
+            <tr><td><strong>Vacaville Dental Studio</strong><br><small style="color: var(--text-muted); font-weight: 400;">vacavilledentalstudio.com</small></td><td>26</td><td>183</td><td>233</td></tr>
+            <tr><td><strong>Compassionate Care Dental</strong><br><small style="color: var(--text-muted); font-weight: 400;">compassionatecaredental.com</small></td><td>35</td><td>178</td><td>245</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="section-text" style="margin-top: 4px;">
+      Peña Adobe Dental has the strongest patient reputation of any practice in the Vacaville market — but the weakest online keyword footprint. This is a content and strategy gap that can be closed in 6–12 months with systematic content production. The opportunity is particularly acute for implant queries, where no competitor has fully dominated and the CPC value ($19.96 per click for "dental implants vacaville") reflects the high commercial intent of these searches.
+    </p>
+
+    <h3 style="font-size: 22px; margin: 30px 0 12px;">Top Keywords Ranking — Current Positions</h3>
+    <div class="table-scroll"><table class="pages-table">
+      <thead><tr><th>Keyword</th><th>Current Position</th><th>Monthly Searches</th><th>Opportunity</th></tr></thead>
+      <tbody>
+        <tr><td class="url">vacaville dentist</td><td style="text-align:right">8</td><td style="text-align:right">1,000</td><td style="text-align:right; color: var(--red); font-weight:600">Improve to top 3</td></tr>
+        <tr><td class="url">dentist vacaville</td><td style="text-align:right">5</td><td style="text-align:right">590</td><td style="text-align:right; color: var(--gold-text); font-weight:600">Improve to top 3</td></tr>
+        <tr><td class="url">cosmetic dentist vacaville</td><td style="text-align:right">3</td><td style="text-align:right">140</td><td style="text-align:right; color: var(--green); font-weight:600">Hold &amp; extend</td></tr>
+        <tr><td class="url">dental implants vacaville</td><td style="text-align:right">9</td><td style="text-align:right">90</td><td style="text-align:right; color: var(--red); font-weight:600">Critical — move to top 3</td></tr>
+        <tr><td class="url">dental implants vacaville ca</td><td style="text-align:right">10</td><td style="text-align:right">70</td><td style="text-align:right; color: var(--red); font-weight:600">Critical — move to top 3</td></tr>
+        <tr><td class="url">invisalign vacaville</td><td style="text-align:right">6</td><td style="text-align:right">70</td><td style="text-align:right; color: var(--gold-text); font-weight:600">Improve to top 3</td></tr>
+        <tr><td class="url">emergency dentist vacaville</td><td style="text-align:right">3</td><td style="text-align:right">50</td><td style="text-align:right; color: var(--green); font-weight:600">Hold position</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Where attention is needed first</div>
+    <h2>Priority Action Plan</h2>
+    <p class="section-text">The work ahead, in order of impact. Every item below ties back to new patient acquisition.</p>
+
+    <div class="action-list">
+      <div class="action-item">
+        <div class="a-num">1</div>
+        <div class="a-body">
+          <h5>Decide the website strategy direction: Implants-First or Full-Service General</h5>
+          <p>This decision drives everything else. If dental implants is the growth focus, the entire website experience, navigation, homepage messaging, and content plan need to be rebuilt around implant conversion psychology. If the priority shifts to general dentistry volume, the reorganization is different. This should be decided in conversation with your Dentist Nerds strategist before any other website changes are made.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">2</div>
+        <div class="a-body">
+          <h5>Build a dedicated, content-rich /dental-implants/ page</h5>
+          <p>The homepage is currently trying to rank for implant terms instead of a dedicated page. Create a standalone dental implants page with 800–1,200 words, real patient before/afters, FAQ schema (10+ questions addressing cost, pain, timeline, candidacy), financing CTA, and internal links to All-on-4, single implant, and implant-supported dentures subpages. This is the single highest-ROI content investment available.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">3</div>
+        <div class="a-body">
+          <h5>Add FAQ sections and real imagery to all existing treatment pages</h5>
+          <p>Every service page — veneers, Invisalign, sedation, cosmetics, emergency care — needs FAQ sections with 5–8 questions each, structured with FAQPage schema. Replace all stock photography with authentic photos: Dr. Takher at work, real patient before/afters (with consent), the office and team. These two changes together will improve both search rankings and conversion rates on pages that are already partially ranking.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">4</div>
+        <div class="a-body">
+          <h5>Add LocalBusiness + AggregateRating schema to surface the 4.9★ / 904 reviews in search</h5>
+          <p>The practice's strongest competitive advantage — 904 reviews at 4.9★ — is not visible in Google search results. Adding LocalBusiness schema with AggregateRating on the homepage and location page will enable star ratings to appear in organic snippets, directly improving click-through rates for every page that currently ranks. This is a 30–60 minute technical implementation with outsized visibility impact.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">5</div>
+        <div class="a-body">
+          <h5>Expand to 80+ indexed pages with strategic implant and cosmetic content</h5>
+          <p>Create individual pages for: All-on-4 dental implants, single tooth implants, implant-supported dentures, full-mouth reconstruction, dental implant financing/cost, teeth whitening, smile makeover, dental crowns, and composite bonding. Each page needs to target specific keyword clusters, include FAQs, and use authentic imagery. Monthly content production is required to close the gap with competitors over the next 6–12 months.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">6</div>
+        <div class="a-body">
+          <h5>GBP optimization: photos, posts, and implant-specific category signals</h5>
+          <p>Google Business Profile is the primary driver of local Map Pack rankings. Update GBP with fresh before/after photos monthly, publish weekly posts about implant procedures and patient success stories, ensure the business description leads with implants, and request category review with Google if additional implant/cosmetic categories are available. Consistent GBP activity improves local rankings for the high-value implant map terms.</p>
+        </div>
+        <span class="a-pri high">High</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">7</div>
+        <div class="a-body">
+          <h5>Monthly performance tracking against this baseline</h5>
+          <p>Track: organic keyword count, monthly organic traffic, Map Pack ranking positions for "dental implants vacaville" and "dentist vacaville," new review count and rating, and conversion events (contact form submissions, phone calls from the website). The May 2026 baseline is set — growth should be measurable each month.</p>
+        </div>
+        <span class="a-pri ongoing">Monthly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="brand">Dentist Nerds</span> · Website Quality Audit · Peña Adobe Dental: Advanced Implant and Cosmetic Dentistry · Vacaville, CA · May 2026
+  </div>
+</footer>
+
+<script>
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.color = '#6b7280';
+
+  new Chart(document.getElementById('trafficTrend'), {
+    type: 'line',
+    data: {
+      labels: ['May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26'],
+      datasets: [{
+        label: 'Organic visits',
+        data: [313, 270, 454, 552, 247, 250, 338, 352, 336, 311, 286, 300],
+        borderColor: '#5fbab0',
+        backgroundColor: 'rgba(95,186,176,0.15)',
+        borderWidth: 2.5, tension: 0.3, fill: true,
+        pointBackgroundColor: '#5fbab0', pointRadius: 3, pointHoverRadius: 5
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { backgroundColor: '#0d2538', padding: 10 } },
+      scales: {
+        x: { grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } },
+        y: { beginAtZero: true, grid: { color: '#ebe9e0' }, ticks: { font: { size: 11 } } }
+      }
+    }
+  });
+</script>
+</body>
+</html>
