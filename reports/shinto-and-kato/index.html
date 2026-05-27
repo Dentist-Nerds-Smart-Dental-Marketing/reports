@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shinto &amp; Kato — Website Audit | Dentist Nerds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-deep: #0A1422;
+    --navy-soft: #1B2940;
+    --ink: #15202E;
+    --ink-soft: #4A5568;
+    --ink-mute: #7B8794;
+    --line: #E2E8F0;
+    --line-soft: #EDF2F7;
+    --bg: #FFFFFF;
+    --bg-soft: #F7F9FC;
+    --bg-mint: #FDF8E8;
+
+    --green: #D4A93B;
+    --green-deep: #8B6914;
+    --green-soft: #FAEFCE;
+    --mint: #E5C76E;
+
+    --coral: #FF5E4D;
+    --coral-soft: #FFE2DE;
+    --amber: #FFB547;
+    --amber-soft: #FFF1D6;
+    --blue: #4D8CFF;
+    --blue-soft: #DCE8FF;
+    --purple: #8B5CF6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============== HERO ============== */
+  .hero {
+    background: var(--navy);
+    color: #FFF;
+    padding: 72px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(77,140,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-wrap { position: relative; z-index: 2; }
+
+  .audit-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nerds-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #FFF;
+    letter-spacing: -0.01em;
+  }
+  .nerds-logo .logo-mark {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: 18px;
+  }
+  .audit-type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .audit-target {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212,169,59,0.12);
+    border: 1px solid rgba(212,169,59,0.3);
+    color: var(--green);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .audit-target .pulse {
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(212,169,59,0.2);
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5.2vw, 60px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+    max-width: 920px;
+  }
+  .hero h1 .accent { color: var(--green); }
+  .hero-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero .lede {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 44px;
+    font-weight: 400;
+  }
+  .hero .lede strong { color: #FFF; }
+
+  .hero-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .meta-block .meta-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .meta-block .meta-value {
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .meta-block .meta-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  /* ============== VERDICT BAR ============== */
+  .verdict {
+    background: linear-gradient(135deg, var(--coral) 0%, #E04535 100%);
+    color: #FFF;
+    padding: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .verdict-wrap {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .verdict-icon {
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .verdict-content .verdict-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .verdict-content h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    max-width: 720px;
+  }
+  .verdict-cta {
+    background: #FFF;
+    color: var(--coral);
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* ============== SECTION SHELL ============== */
+  section { padding: 80px 0; }
+  section.alt { background: var(--bg-soft); }
+  section.dark { background: var(--navy); color: #FFF; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .section-eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+  .section-eyebrow.red {
+    background: var(--coral-soft);
+    color: var(--coral);
+  }
+  .section-eyebrow.red .dot { background: var(--coral); }
+  section.dark .section-eyebrow {
+    background: rgba(212,169,59,0.15);
+    color: var(--green);
+  }
+  section h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    max-width: 820px;
+  }
+  section h2 .accent { color: var(--green-deep); }
+  section h2 .accent-red { color: var(--coral); }
+  section.dark h2 .accent { color: var(--green); }
+  section .section-intro {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 48px;
+  }
+  section.dark .section-intro { color: rgba(255,255,255,0.7); }
+
+  /* ============== HEALTH SCORE ============== */
+  .score-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .gauge-wrap {
+    background: #FFF;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(15,27,45,0.06);
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .gauge-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .gauge-svg { display: block; margin: 0 auto; }
+  .gauge-num {
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--coral);
+    line-height: 1;
+    margin-top: 8px;
+    letter-spacing: -0.03em;
+  }
+  .gauge-suffix { font-size: 24px; color: var(--ink-mute); font-weight: 600; }
+  .gauge-status {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--coral);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .subscore-list { display: flex; flex-direction: column; gap: 16px; }
+  .subscore {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .subscore-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .subscore-icon.coral { background: var(--coral-soft); }
+  .subscore-icon.amber { background: var(--amber-soft); }
+  .subscore-icon.blue { background: var(--blue-soft); }
+  .subscore-icon.green { background: var(--green-soft); }
+  .subscore-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .subscore-bar {
+    background: var(--line-soft);
+    height: 6px;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .subscore-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: var(--coral);
+  }
+  .subscore-fill.amber { background: var(--amber); }
+  .subscore-fill.blue { background: var(--blue); }
+  .subscore-fill.green { background: var(--green); }
+  .subscore-value {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  /* ============== ISSUE COUNTERS ============== */
+  .issue-counter {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+  .counter-card {
+    background: #FFF;
+    border-radius: 16px;
+    padding: 26px 22px;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .counter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+  }
+  .counter-card.critical::before { background: var(--coral); }
+  .counter-card.high::before { background: var(--amber); }
+  .counter-card.medium::before { background: var(--blue); }
+  .counter-card.good::before { background: var(--green); }
+  .counter-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+  }
+  .counter-num.coral { color: var(--coral); }
+  .counter-num.amber { color: var(--amber); }
+  .counter-num.blue { color: var(--blue); }
+  .counter-num.green { color: var(--green); }
+  .counter-label {
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ============== ISSUE CARDS ============== */
+  .issues-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .issue-card {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .issue-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(15,27,45,0.08);
+  }
+  .issue-icon-wrap {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .issue-icon-wrap.critical { background: var(--coral-soft); }
+  .issue-icon-wrap.high { background: var(--amber-soft); }
+  .issue-icon-wrap.medium { background: var(--blue-soft); }
+  .issue-card-head {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .issue-card-num {
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .issue-card h3 {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.25;
+    flex-basis: 100%;
+    letter-spacing: -0.01em;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pill .pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .pill.critical { background: var(--coral-soft); color: var(--coral); }
+  .pill.critical .pill-dot { background: var(--coral); }
+  .pill.high { background: var(--amber-soft); color: #B87A0E; }
+  .pill.high .pill-dot { background: var(--amber); }
+  .pill.medium { background: var(--blue-soft); color: #2D5BC2; }
+  .pill.medium .pill-dot { background: var(--blue); }
+
+  .issue-card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .issue-card p:last-child { margin-bottom: 0; }
+  .issue-card strong { color: var(--ink); font-weight: 700; }
+
+  .fix-box {
+    background: var(--bg-mint);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    border-left: 3px solid var(--green);
+  }
+  .fix-box-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-deep);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fix-box p {
+    color: var(--ink);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* ============== ROADMAP ============== */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    position: relative;
+  }
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    top: 40px; left: 8%; right: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--coral), var(--amber), var(--green));
+    z-index: 0;
+  }
+  .phase {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 26px;
+    position: relative;
+    z-index: 1;
+  }
+  .phase-number {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0 auto 18px;
+    border: 4px solid var(--bg-soft);
+    position: relative;
+    z-index: 2;
+  }
+  .phase-number.amber { background: var(--amber); color: var(--navy); }
+  .phase-number.green { background: var(--green); }
+  .phase-weeks {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .phase h3 {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .phase ul { list-style: none; padding: 0; }
+  .phase li {
+    padding: 10px 0 10px 24px;
+    position: relative;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .phase li:last-child { border-bottom: none; }
+  .phase li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 16px;
+    width: 12px; height: 12px;
+    border-radius: 4px;
+    background: var(--coral-soft);
+    border: 2px solid var(--coral);
+  }
+  .phase.amber li::before { background: var(--amber-soft); border-color: var(--amber); }
+  .phase.green li::before { background: var(--green-soft); border-color: var(--green); }
+
+  /* ============== OPPORTUNITY BLOCK ============== */
+  .opportunity {
+    background: var(--navy);
+    color: #FFF;
+    border-radius: 28px;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .opportunity::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212,169,59,0.2) 0%, transparent 60%);
+  }
+  .opp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .opp-content h2 { color: #FFF; margin-bottom: 16px; }
+  .opp-content h2 .accent { color: var(--green); }
+  .opp-content p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .opp-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .opp-stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 22px;
+  }
+  .opp-stat-num {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .opp-stat-label {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+
+  /* ============== END CTA ============== */
+  .end-cta {
+    background: var(--navy);
+    color: #FFF;
+    padding: 80px 0;
+  }
+  .end-cta h2 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: none;
+  }
+  .end-cta h2 .accent { color: var(--green); }
+  .end-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.55;
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green);
+    color: var(--navy-deep);
+    padding: 18px 32px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  /* ============== REVIEW STAR BLOCK ============== */
+  .review-star-block {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #FFF;
+    border-radius: 20px;
+    padding: 36px 40px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 36px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .review-star-block::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -80px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(212,169,59,0.2) 0%, transparent 60%);
+  }
+  .rsb-side { position: relative; z-index: 1; text-align: center; }
+  .rsb-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    height: 80%;
+    align-self: center;
+    position: relative; z-index: 1;
+  }
+  .rsb-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .rsb-num {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+  .rsb-num.gold { color: var(--green); }
+  .rsb-num.coral { color: var(--coral); }
+  .rsb-sub { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .stars svg { fill: var(--green); }
+
+  @media (max-width: 768px) {
+    .hero-meta-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .score-grid { grid-template-columns: 1fr; }
+    .issue-counter { grid-template-columns: 1fr 1fr; }
+    .roadmap { grid-template-columns: 1fr; }
+    .opp-grid { grid-template-columns: 1fr; }
+    .verdict-wrap { grid-template-columns: 1fr; }
+    .verdict-cta { display: none; }
+    .review-star-block { grid-template-columns: 1fr; }
+    .rsb-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-wrap">
+
+    <div class="audit-strip">
+      <div class="nerds-logo">
+        <span class="logo-mark">N</span>
+        <span>Dentist Nerds</span>
+      </div>
+      <div class="audit-type">Website Audit · Confidential</div>
+    </div>
+
+    <div class="audit-target">
+      <span class="pulse"></span>
+      Audited: shintoandkato.com
+    </div>
+
+    <h1>
+      Website Audit for <span class="accent">Shinto &amp; Kato</span>
+    </h1>
+    <p class="hero-subtitle">Prepared by Dentist Nerds · May 2026</p>
+    <p class="lede">
+      Shinto &amp; Kato has one of the most powerful trust assets in dentistry — <strong>370 five-star reviews</strong> — yet the website holding this practice back is outdated, not mobile-friendly, relies on stock imagery, and lists only two treatment pages in the main menu. The site gets just <strong>35 visitors per month</strong> and ranks for only <strong>214 keywords</strong>, far below the 500–600 minimum benchmark for a healthy dental site. The good news: this is entirely fixable. The practice's reputation is already exceptional — it just needs a modern digital home that matches it.
+    </p>
+
+    <div class="hero-meta-grid">
+      <div class="meta-block">
+        <div class="meta-label">Prepared For</div>
+        <div class="meta-value">Shinto &amp; Kato</div>
+        <div class="meta-sub">shintoandkato.com</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Audit Date</div>
+        <div class="meta-value">May 2026</div>
+        <div class="meta-sub">Tools: Semrush, Google Maps, manual UX review</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Monthly Traffic</div>
+        <div class="meta-value" style="color:var(--coral);">35 visits/mo</div>
+        <div class="meta-sub">Critical — healthy dental sites see 300–1,000+</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Google Reviews</div>
+        <div class="meta-value" style="color:var(--green);">370 ★★★★★</div>
+        <div class="meta-sub">Outstanding — the #1 conversion asset you own</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ VERDICT BAR ============================================================ -->
+<div class="verdict">
+  <div class="wrap">
+    <div class="verdict-wrap">
+      <div class="verdict-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="verdict-content">
+        <div class="verdict-label">Our Verdict</div>
+        <h2>The current website is actively working against a practice with 370 five-star reviews. A modern rebuild is the single most impactful move.</h2>
+      </div>
+      <a href="https://www.dentistnerds.com/contact" class="verdict-cta">Let's Talk →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ HEALTH SCORE ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Health Score Breakdown</span>
+    <h2>Overall site health: <span style="color:var(--coral);">28/100</span>.<br>A practice this well-reviewed deserves better online representation.</h2>
+    <p class="section-intro">We graded the site across four categories: content volume and depth, local SEO and keyword visibility, mobile experience and visual presentation, and AI search readiness. The practice has an extraordinary reputation — 370 five-star reviews is genuinely exceptional — but the website is failing to capture any of the new-patient traffic that reputation should generate.</p>
+
+    <div class="score-grid">
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="20" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5E4D"/>
+              <stop offset="50%" stop-color="#FFB547"/>
+              <stop offset="100%" stop-color="#D4A93B"/>
+            </linearGradient>
+          </defs>
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="url(#gaugeGrad)" stroke-width="20" stroke-linecap="round" opacity="0.15"/>
+          <path d="M 20 120 A 100 100 0 0 1 71 35" fill="none" stroke="#FF5E4D" stroke-width="20" stroke-linecap="round"/>
+          <text x="20" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">0</text>
+          <text x="120" y="14" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">50</text>
+          <text x="220" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">100</text>
+        </svg>
+        <div class="gauge-num" style="color:var(--coral);">28<span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status" style="color:var(--coral);">Needs Full Rebuild</div>
+      </div>
+
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon coral">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Content Volume &amp; Depth</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:10%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--coral);">10%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon coral">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Local SEO &amp; Keyword Visibility</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:20%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--coral);">20%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon coral">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Mobile Experience &amp; Visual Presentation</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:8%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--coral);">8%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Review Strength &amp; Local Reputation</div>
+            <div class="subscore-bar amber"><div class="subscore-fill amber" style="width:95%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--green-deep);">95%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ THE REVIEWS ASSET ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>The Bright Spot</span>
+    <h2>370 five-star reviews is <span class="accent">an extraordinary asset</span> — and it's being underutilized.</h2>
+    <p class="section-intro">Let's start with the good news, because it's genuinely impressive. Most dental practices spend years building review volume — Shinto &amp; Kato has already done the hard work. The challenge is that 370 five-star reviews need a worthy website to send patients to.</p>
+
+    <div class="review-star-block">
+      <div class="rsb-side">
+        <div class="rsb-label">Google Reviews</div>
+        <div class="stars">
+          <svg width="28" height="28" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="rsb-num gold">370</div>
+        <div class="rsb-sub">Five-star reviews — a genuine competitive advantage that competitors can't quickly replicate</div>
+      </div>
+      <div class="rsb-divider"></div>
+      <div class="rsb-side">
+        <div class="rsb-label">Monthly Organic Traffic</div>
+        <div class="rsb-num coral">35</div>
+        <div class="rsb-sub">Visitors per month reaching the website — a fraction of what this review profile should be driving</div>
+      </div>
+    </div>
+
+    <div style="padding:22px 26px; background:linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%); border-radius:14px; border-left:3px solid var(--green);">
+      <p style="margin:0; color:var(--ink); font-size:15px; line-height:1.6;"><strong style="color:var(--green-deep);">The disconnect:</strong> When patients find Shinto &amp; Kato on Google Maps and see 370 five-star reviews, they're impressed. Then they click through to the website — and the experience doesn't match. An outdated design, stock photos, no mobile optimization, and only two treatment pages in the navigation sends the wrong signal. A modern website that prominently showcases those 370 reviews could transform this review equity into booked appointments at a significantly higher rate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ISSUES BREAKDOWN ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>What Needs Fixing</span>
+    <h2>Five critical issues holding the practice back — <span class="accent-red">all fixable with a rebuild</span>.</h2>
+    <p class="section-intro">The current website has fundamental problems that go beyond a refresh. The combination of an outdated design, no mobile support, thin content, and stock imagery means this site is actively costing the practice new patients every month. Here's the full breakdown.</p>
+
+    <div class="issue-counter">
+      <div class="counter-card critical">
+        <div class="counter-num coral">3</div>
+        <div class="counter-label">Critical · rebuild</div>
+      </div>
+      <div class="counter-card high">
+        <div class="counter-num amber">2</div>
+        <div class="counter-label">High priority</div>
+      </div>
+      <div class="counter-card medium">
+        <div class="counter-num blue">0</div>
+        <div class="counter-label">Medium · polish</div>
+      </div>
+      <div class="counter-card good">
+        <div class="counter-num green">1</div>
+        <div class="counter-label">Already exceptional</div>
+      </div>
+    </div>
+
+    <div class="issues-grid">
+
+      <!-- ISSUE 1 — Not Mobile Friendly -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 1</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Mobile Experience</span>
+            <h3>The website is not mobile-friendly — and over 60% of dental patients search on their phones.</h3>
+          </div>
+          <p>In 2026, a non-mobile-friendly dental website is effectively invisible to the majority of prospective patients. Most people searching "dentist near me" or looking up a specific practice are doing it on their smartphone. If the website doesn't render properly on mobile — text is too small, buttons are hard to tap, content overflows the screen — patients bounce immediately and call the next practice on the list.</p>
+          <p>Beyond user experience, Google uses mobile-first indexing: it primarily uses the mobile version of a page to determine search rankings. A site that isn't mobile-friendly is directly penalized in search results, compounding the already-low traffic of 35 visits per month.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>The new website will be built mobile-first from the ground up — fully responsive, fast-loading on all screen sizes, and optimized for the thumb-tap interactions patients use on their phones. This is a foundational requirement of the rebuild, not an afterthought.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 2 — Outdated Design / Stock Imagery -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 2</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Trust &amp; Conversion</span>
+            <h3>An outdated design full of stock imagery signals to patients that this practice isn't keeping up — even though it clearly is.</h3>
+          </div>
+          <p>Stock photography is a trust killer. When patients see generic smiling models and generic dental stock photos, they subconsciously register that the practice didn't invest in showing them who they actually are. It reads as impersonal — the opposite of what dental patients need to feel before choosing a provider.</p>
+          <p>Combine that with an outdated site design and the visual impression is that the practice is behind the times. This is especially damaging for a practice with <strong>370 five-star reviews</strong>: patients read those reviews, get excited, visit the website, and the visual experience deflates the enthusiasm those reviews created.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>We will coordinate or guide a professional photo shoot to capture real imagery of the practice — the office, the team, the environment. All stock photography will be replaced with authentic visuals that reflect who Shinto &amp; Kato actually is. Real photos convert dramatically better than stock imagery because they answer the question patients are actually asking: <em>what will it feel like to be a patient here?</em></p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 3 — Only 2 Treatment Pages -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 3</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Content Architecture</span>
+            <h3>Only two treatment pages in the main navigation — Google can't rank what it can't find, and patients can't book services they don't see.</h3>
+          </div>
+          <p>A dental practice typically offers 10–20 distinct services: cleanings, fillings, whitening, veneers, implants, Invisalign, root canals, extractions, emergency care, and more. Each of these should have its own dedicated page with substantive content. Each page is a separate opportunity to rank in Google when a patient searches for that specific service.</p>
+          <p>With only two treatment pages in the navigation, the site has effectively told Google it offers two things. Every patient searching for any other service the practice provides — even services they definitely offer — will never find them organically. This is a direct cause of the 35 visits/month figure and the 214-keyword ceiling.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>The new website will be architected with a complete treatment page structure — every service the practice offers gets its own dedicated, content-rich page with 500–1,000+ words, patient-focused copy, and FAQ sections. This is the most direct path from 214 keywords to 600+ keywords, and from 35 monthly visits to meaningful new-patient traffic.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 4 — 214 keywords / traffic floor -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 4</span>
+            <span class="pill high"><span class="pill-dot"></span>High · SEO Visibility</span>
+            <h3>214 ranking keywords is far below the 500–600 minimum benchmark — the site is missing most patient discovery searches.</h3>
+          </div>
+          <p>The 214-keyword count isn't just a number — it's a direct reflection of how much of the patient search landscape this website is currently visible in. A healthy dental website ranks for 500–600 keywords at minimum; established practices with strong content rank for 1,000–2,000+. At 214, the site is participating in less than half the relevant searches that could be driving new patients.</p>
+          <p>This isn't about gaming Google — it's about having enough content for Google to understand what services the practice offers and where it's located. Every keyword gap is a patient who searched for something the practice offers, didn't find them, and booked with a competitor instead.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>The combination of a complete treatment page structure, strong local SEO signals (consistent NAP, location pages, Google Business Profile alignment), and FAQ content for AI search will organically expand the keyword footprint. The target is 600+ keywords within 6 months of the new site launch and 1,000+ within a year.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 5 — No AI / FAQ visibility -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 5</span>
+            <span class="pill high"><span class="pill-dot"></span>High · AI Search Readiness</span>
+            <h3>No FAQ content means zero presence in AI-powered search — ChatGPT, Gemini, Google AI Overview, and Perplexity.</h3>
+          </div>
+          <p>Search behavior is changing rapidly. A growing share of dental patients now start their research by asking an AI assistant — "who is the best dentist near me," "what does a dental implant procedure involve," "does Shinto and Kato do Invisalign." These AI tools pull answers from structured content on websites: specifically, well-written FAQ sections and clear service descriptions.</p>
+          <p>Without FAQ content on service pages, the practice is completely absent from this growing search channel. The new site will be built with AI visibility as a first-class requirement — not a future consideration.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Every major treatment page in the new site will include a structured FAQ section with 5–8 questions patients commonly ask about that service, formatted with FAQ schema markup. This positions the site to be cited in Google AI Overview results, ChatGPT responses, and other AI-powered search tools — a visibility channel that's entirely untapped today.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ WHAT'S WORKING ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>What's Working</span>
+    <h2>The practice has a <span class="accent">remarkable competitive advantage</span> — now it needs a platform worthy of it.</h2>
+    <p class="section-intro">370 five-star reviews isn't luck — it reflects years of genuine patient care and an exceptional experience that patients feel compelled to write about. That foundation is the hardest thing to build in dentistry. The rest is execution.</p>
+
+    <div style="background:linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%); border-left:4px solid var(--green); border-radius:16px; padding:32px 36px; margin:32px 0;">
+      <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:14px;">✓ What Shinto &amp; Kato Gets Right</div>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">370 five-star reviews</strong> — this is an exceptional achievement. Most dental practices in the same market have a fraction of this. It's the strongest trust signal a new patient can encounter.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Proven patient experience</strong> — 370 people took the time to leave a five-star review. That's a deeply loyal patient base and a referral engine waiting to be amplified by a modern website.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Existing domain and web presence</strong> — shintoandkato.com already exists and carries some domain history. The rebuild starts with an established foundation, not from zero.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">214 baseline keywords</strong> — while below benchmark, this is not zero. The site already has some search footprint that can be rapidly expanded with the rebuild and new content structure.</li>
+      </ul>
+    </div>
+
+    <h3 style="font-size:22px; font-weight:800; margin:48px 0 8px; letter-spacing:-0.01em;">The numbers at a glance</h3>
+    <p style="color:var(--ink-soft); font-size:15px; margin-bottom:24px;">Where shintoandkato.com stands today — and what the benchmark looks like.</p>
+
+    <div class="hero-meta-grid" style="--label-color:var(--ink-mute); --sub-color:var(--ink-soft);">
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Monthly Traffic</div>
+        <div class="meta-value" style="color:var(--coral);">35 visits</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Benchmark: 300–1,000+ for a healthy dental site</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Organic Keywords</div>
+        <div class="meta-value" style="color:var(--coral);">214 keywords</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Benchmark: 500–600+ minimum for dentistry</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Treatment Pages in Nav</div>
+        <div class="meta-value" style="color:var(--coral);">2 pages</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Target: 10–20 dedicated service pages</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Google Reviews</div>
+        <div class="meta-value" style="color:var(--green-deep);">370 ★ 5.0</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Outstanding — top tier in the market</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ THE PLAN ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>The Plan</span>
+    <h2>Here's exactly <span class="accent">how we help</span> — a clear path from outdated to outstanding.</h2>
+    <p class="section-intro">Because the current site needs a complete rebuild rather than a patch, the approach is straightforward: start fresh with a modern, SEO-ready foundation and build everything the right way from day one.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:32px;">
+      <div style="background:#FFF; border:1px solid var(--line); border-radius:20px; padding:30px;">
+        <div style="width:48px; height:48px; background:var(--coral-soft); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:10px; letter-spacing:-0.01em;">Modern Website Rebuild</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px; line-height:1.6; margin:0;">A brand-new, fully modern website built with a strong foundation for both AI and SEO. Mobile-first design, fast loading, complete treatment page architecture, and built to convert the new-patient traffic the 370 reviews deserve to generate.</p>
+      </div>
+      <div style="background:#FFF; border:1px solid var(--line); border-radius:20px; padding:30px;">
+        <div style="width:48px; height:48px; background:var(--amber-soft); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:10px; letter-spacing:-0.01em;">Professional Photo Shoot</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px; line-height:1.6; margin:0;">We will guide and coordinate a professional photo shoot to replace all stock imagery with authentic visuals of the practice — the office, the team, the environment. Real photography is the single biggest conversion driver for any dental website.</p>
+      </div>
+      <div style="background:#FFF; border:1px solid var(--line); border-radius:20px; padding:30px;">
+        <div style="width:48px; height:48px; background:var(--blue-soft); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4D8CFF" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:10px; letter-spacing:-0.01em;">Monthly Local Listings Cleanup</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px; line-height:1.6; margin:0;">Inconsistent business listings across Google, Yelp, Apple Maps, Bing, and other directories directly suppress local search rankings. Every month, we audit and correct listing inaccuracies to ensure the practice information is consistent, up-to-date, and sending the right signals to Google.</p>
+      </div>
+      <div style="background:#FFF; border:1px solid var(--line); border-radius:20px; padding:30px;">
+        <div style="width:48px; height:48px; background:var(--green-soft); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B6914" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:10px; letter-spacing:-0.01em;">Four Monthly SEO Blocks</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px; line-height:1.6; margin:0;">Each month, four focused content and SEO additions are published to the site — new service pages, local landing pages, FAQ sections, or supporting content. These compound over time, steadily growing the keyword footprint and visibility in local search results.</p>
+      </div>
+    </div>
+
+    <div style="background:#FFF; border:1px solid var(--line); border-radius:20px; padding:30px; margin-bottom:22px;">
+      <div style="width:48px; height:48px; background:var(--green-soft); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B6914" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+      </div>
+      <h3 style="font-size:18px; font-weight:800; margin-bottom:10px; letter-spacing:-0.01em;">Monthly Reports &amp; Continuous Improvements</h3>
+      <p style="color:var(--ink-soft); font-size:14.5px; line-height:1.6; margin:0;">Every month you'll receive a clear, readable report showing keyword growth, traffic trends, listing status, and what was done. No jargon, no black box. You'll always know exactly what's happening with the practice's online presence and where the growth is coming from.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ THE OPPORTUNITY ============================================================ -->
+<section>
+  <div class="wrap">
+    <div class="opportunity">
+      <div class="opp-grid">
+        <div class="opp-content">
+          <span class="section-eyebrow" style="background:rgba(212,169,59,0.15); color:var(--green); margin-bottom:20px;"><span class="dot"></span>The Upside</span>
+          <h2>370 five-star reviews is a <span class="accent">rare head start</span>. A modern website finally lets it work.</h2>
+          <p>Most dental practices trying to grow online are fighting on two fronts: building their reputation and building their digital presence simultaneously. Shinto &amp; Kato has already won the reputation battle. The 370 five-star reviews represent years of trust, care, and patient loyalty.</p>
+          <p>The only reason that review equity isn't generating more new patients is that the website isn't giving it a proper platform. A modern site that showcases those reviews prominently, tells the practice's story with real photography, and covers every service in searchable content could significantly move the needle on new patient acquisition — without needing to start from scratch on reputation.</p>
+        </div>
+        <div class="opp-stats">
+          <div class="opp-stat">
+            <div class="opp-stat-num">370</div>
+            <div class="opp-stat-label">Five-star reviews — the trust foundation is already built</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-num">3×</div>
+            <div class="opp-stat-label">Keyword growth target in 6 months with complete content rebuild</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-num">4</div>
+            <div class="opp-stat-label">Monthly SEO content blocks compounding month over month</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-num">AI</div>
+            <div class="opp-stat-label">Completely untapped channel — built into the new site from day one</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ACTION ROADMAP ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Action Roadmap</span>
+    <h2>A clear <span class="accent">three-phase plan</span> to transform the digital presence.</h2>
+    <p class="section-intro">Phase 1 is the new website — the foundation everything else is built on. Phase 2 is the visual and content layer that makes it perform. Phase 3 is the ongoing monthly work that compounds over time.</p>
+
+    <div class="roadmap">
+      <div class="phase">
+        <div class="phase-number">1</div>
+        <div class="phase-weeks">Month 1–2</div>
+        <h3>New Website Foundation</h3>
+        <ul>
+          <li><strong>Modern website rebuild</strong> — fully responsive, mobile-first design with strong AI and SEO architecture from day one</li>
+          <li><strong>Complete treatment page structure</strong> — every service gets its own dedicated, content-rich page with FAQ sections</li>
+          <li><strong>Review integration</strong> — 370 five-star reviews prominently featured throughout the site to maximize conversion</li>
+          <li><strong>Local SEO setup</strong> — NAP consistency, schema markup, Google Business Profile alignment</li>
+          <li><strong>AI-ready content</strong> — FAQ schema on all major service pages for Google AI Overview and AI assistant citations</li>
+        </ul>
+      </div>
+      <div class="phase amber">
+        <div class="phase-number amber">2</div>
+        <div class="phase-weeks">Month 2–3</div>
+        <h3>Photography &amp; Content Layer</h3>
+        <ul>
+          <li><strong>Professional photo shoot</strong> — coordinated and guided to capture the office, team, and environment authentically</li>
+          <li><strong>Replace all stock imagery</strong> — real photos deployed throughout the new site replacing every generic image</li>
+          <li><strong>Local listings audit &amp; cleanup</strong> — first pass on all major directories to correct inconsistencies</li>
+          <li><strong>Google Business Profile refresh</strong> — updated with new photography, services, and posts</li>
+          <li><strong>First four SEO content blocks</strong> — initial monthly additions to begin growing keyword footprint</li>
+        </ul>
+      </div>
+      <div class="phase green">
+        <div class="phase-number green">3</div>
+        <div class="phase-weeks">Month 3 onward</div>
+        <h3>Ongoing Growth Engine</h3>
+        <ul>
+          <li><strong>Four monthly SEO content blocks</strong> — new service pages, local landing pages, or supporting content each month</li>
+          <li><strong>Monthly listing cleanup</strong> — continuous monitoring and correction across all directories</li>
+          <li><strong>Monthly performance reports</strong> — clear tracking of keyword growth, traffic, and ranking improvements</li>
+          <li><strong>Continuous site improvements</strong> — monthly optimizations based on performance data and new opportunities</li>
+          <li><strong>Target: 600+ keywords</strong> by month 6, 1,000+ by month 12</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; padding:28px 32px; background:linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); border-radius:20px; color:#FFF;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); margin-bottom:14px;">The Bottom Line</div>
+      <p style="font-size:17px; line-height:1.6; color:rgba(255,255,255,0.9); margin:0;">Shinto &amp; Kato has already done the hardest part of building a thriving dental practice — earning 370 five-star reviews from genuinely happy patients. The website simply hasn't been a fair partner to that achievement. A modern rebuild with real photography, complete service coverage, strong local SEO, and monthly content additions will finally let that five-star reputation work as hard online as it does in person.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ END CTA ============================================================ -->
+<section class="end-cta">
+  <div class="wrap">
+    <h2>Ready to make the website <span class="accent">match the reviews?</span></h2>
+    <p>The plan is clear. The opportunity is real. Let's build a digital presence that finally reflects what 370 five-star patients already know about this practice.</p>
+    <a href="https://www.dentistnerds.com/contact" class="cta-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.1 2.18 2 2 0 012.09 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.27 7.11a16 16 0 006.72 6.72l1.06-1.06a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Let's Talk — Dentist Nerds
+    </a>
+  </div>
+</section>
+
+</body>
+</html>
