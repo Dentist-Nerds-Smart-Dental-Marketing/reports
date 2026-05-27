@@ -154,12 +154,11 @@
 
   .tech-issues-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 18px 0 14px; }
   @media (min-width: 700px) { .tech-issues-grid { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1024px) { .tech-issues-grid { grid-template-columns: repeat(4, 1fr); } }
-  .tech-issue-card { background: var(--bg-card); border-left: 3px solid var(--red); padding: 18px 22px; border-radius: 0 4px 4px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: center; }
+  .tech-issue-card { background: var(--bg-card); border-left: 3px solid var(--red); padding: 22px 24px; border-radius: 0 4px 4px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 8px; }
   .tech-issue-card.gold { border-left-color: var(--gold-2); }
   .tech-issue-card.purple { border-left-color: #7c3aed; }
   .tech-issue-card.green { border-left-color: var(--green); }
-  .tech-issue-card .tech-num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; color: var(--red); line-height: 1; }
+  .tech-issue-card .tech-num { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 600; color: var(--red); line-height: 1; margin-bottom: 4px; }
   .tech-issue-card.gold .tech-num { color: var(--gold-2); }
   .tech-issue-card.purple .tech-num { color: #7c3aed; }
   .tech-issue-card.green .tech-num { color: var(--green); }
@@ -253,8 +252,8 @@
   }
   @media (max-width: 768px) {
     .tech-issues-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .tech-issue-card { padding: 16px 18px; gap: 14px; grid-template-columns: 50px 1fr; }
-    .tech-issue-card .tech-num { font-size: 34px; }
+    .tech-issue-card { padding: 18px 20px; }
+    .tech-issue-card .tech-num { font-size: 40px; }
     .triage-counters { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .triage-counter .num { font-size: 26px; }
     .focus-3 { padding: 18px 20px; }
