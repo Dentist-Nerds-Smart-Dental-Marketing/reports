@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LA Puente Smiles Dentistry — Website Audit | Dentist Nerds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-deep: #0A1422;
+    --navy-soft: #1B2940;
+    --ink: #15202E;
+    --ink-soft: #4A5568;
+    --ink-mute: #7B8794;
+    --line: #E2E8F0;
+    --line-soft: #EDF2F7;
+    --bg: #FFFFFF;
+    --bg-soft: #F7F9FC;
+    --bg-mint: #FDF8E8;
+
+    --green: #D4A93B;
+    --green-deep: #8B6914;
+    --green-soft: #FAEFCE;
+    --mint: #E5C76E;
+
+    --coral: #FF5E4D;
+    --coral-soft: #FFE2DE;
+    --amber: #FFB547;
+    --amber-soft: #FFF1D6;
+    --blue: #4D8CFF;
+    --blue-soft: #DCE8FF;
+    --purple: #8B5CF6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============== HERO ============== */
+  .hero {
+    background: var(--navy);
+    color: #FFF;
+    padding: 72px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(77,140,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-wrap { position: relative; z-index: 2; }
+
+  .audit-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nerds-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #FFF;
+    letter-spacing: -0.01em;
+  }
+  .nerds-logo .logo-mark {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: 18px;
+  }
+  .audit-type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .audit-target {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212,169,59,0.12);
+    border: 1px solid rgba(212,169,59,0.3);
+    color: var(--green);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .audit-target .pulse {
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(212,169,59,0.2);
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5.2vw, 60px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+    max-width: 920px;
+  }
+  .hero h1 .accent { color: var(--green); }
+  .hero-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero .lede {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 44px;
+    font-weight: 400;
+  }
+  .hero .lede strong { color: #FFF; }
+
+  .hero-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .meta-block .meta-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .meta-block .meta-value {
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .meta-block .meta-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  /* ============== VERDICT BAR ============== */
+  .verdict {
+    background: linear-gradient(135deg, var(--coral) 0%, #E04535 100%);
+    color: #FFF;
+    padding: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .verdict-wrap {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .verdict-icon {
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .verdict-content .verdict-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .verdict-content h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    max-width: 720px;
+  }
+  .verdict-cta {
+    background: #FFF;
+    color: var(--coral);
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* ============== SECTION SHELL ============== */
+  section { padding: 80px 0; }
+  section.alt { background: var(--bg-soft); }
+  section.dark { background: var(--navy); color: #FFF; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .section-eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+  .section-eyebrow.red {
+    background: var(--coral-soft);
+    color: var(--coral);
+  }
+  .section-eyebrow.red .dot { background: var(--coral); }
+  section.dark .section-eyebrow {
+    background: rgba(212,169,59,0.15);
+    color: var(--green);
+  }
+  section h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    max-width: 820px;
+  }
+  section h2 .accent { color: var(--green-deep); }
+  section h2 .accent-red { color: var(--coral); }
+  section.dark h2 .accent { color: var(--green); }
+  section .section-intro {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 48px;
+  }
+  section.dark .section-intro { color: rgba(255,255,255,0.7); }
+
+  /* ============== HEALTH SCORE ============== */
+  .score-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .gauge-wrap {
+    background: #FFF;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(15,27,45,0.06);
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .gauge-label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .gauge-svg { display: block; margin: 0 auto; }
+  .gauge-num {
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--coral);
+    line-height: 1;
+    margin-top: 8px;
+    letter-spacing: -0.03em;
+  }
+  .gauge-suffix { font-size: 24px; color: var(--ink-mute); font-weight: 600; }
+  .gauge-status {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--coral);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .subscore-list { display: flex; flex-direction: column; gap: 16px; }
+  .subscore {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .subscore-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .subscore-icon.coral { background: var(--coral-soft); }
+  .subscore-icon.amber { background: var(--amber-soft); }
+  .subscore-icon.blue { background: var(--blue-soft); }
+  .subscore-icon.green { background: var(--green-soft); }
+  .subscore-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .subscore-bar {
+    background: var(--line-soft);
+    height: 6px;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .subscore-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: var(--coral);
+  }
+  .subscore-fill.amber { background: var(--amber); }
+  .subscore-fill.blue { background: var(--blue); }
+  .subscore-fill.green { background: var(--green); }
+  .subscore-value {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  /* ============== ISSUE COUNTERS ============== */
+  .issue-counter {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+  .counter-card {
+    background: #FFF;
+    border-radius: 16px;
+    padding: 26px 22px;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .counter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+  }
+  .counter-card.critical::before { background: var(--coral); }
+  .counter-card.high::before { background: var(--amber); }
+  .counter-card.medium::before { background: var(--blue); }
+  .counter-card.good::before { background: var(--green); }
+  .counter-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+  }
+  .counter-num.coral { color: var(--coral); }
+  .counter-num.amber { color: var(--amber); }
+  .counter-num.blue { color: var(--blue); }
+  .counter-num.green { color: var(--green); }
+  .counter-label {
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ============== ISSUE CARDS ============== */
+  .issues-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .issue-card {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .issue-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(15,27,45,0.08);
+  }
+  .issue-icon-wrap {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .issue-icon-wrap.critical { background: var(--coral-soft); }
+  .issue-icon-wrap.high { background: var(--amber-soft); }
+  .issue-icon-wrap.medium { background: var(--blue-soft); }
+  .issue-card-head {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .issue-card-num {
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .issue-card h3 {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.25;
+    flex-basis: 100%;
+    letter-spacing: -0.01em;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pill .pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .pill.critical { background: var(--coral-soft); color: var(--coral); }
+  .pill.critical .pill-dot { background: var(--coral); }
+  .pill.high { background: var(--amber-soft); color: #B87A0E; }
+  .pill.high .pill-dot { background: var(--amber); }
+  .pill.medium { background: var(--blue-soft); color: #2D5BC2; }
+  .pill.medium .pill-dot { background: var(--blue); }
+
+  .issue-card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .issue-card p:last-child { margin-bottom: 0; }
+  .issue-card strong { color: var(--ink); font-weight: 700; }
+  .issue-card code {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'DM Sans', monospace;
+    font-size: 12.5px;
+    color: var(--navy);
+    word-break: break-all;
+  }
+
+  .fix-box {
+    background: var(--bg-mint);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    border-left: 3px solid var(--green);
+  }
+  .fix-box-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-deep);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fix-box p {
+    color: var(--ink);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* ============== COMPETITOR TABLE ============== */
+  .competitor-table {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .ct-head {
+    display: grid;
+    grid-template-columns: 1.7fr 90px 90px 100px;
+    gap: 16px;
+    padding: 18px 28px;
+    background: var(--navy);
+    color: #FFF;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .ct-row {
+    display: grid;
+    grid-template-columns: 1.7fr 90px 90px 100px;
+    gap: 16px;
+    padding: 16px 28px;
+    align-items: center;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 14px;
+  }
+  .ct-row:last-child { border-bottom: none; }
+  .ct-row.you {
+    background: var(--bg-mint);
+    border-left: 3px solid var(--green);
+    padding-left: 25px;
+  }
+  .ct-domain { font-weight: 700; color: var(--ink); }
+  .ct-domain .ct-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .ct-num { font-weight: 700; color: var(--ink); }
+  .ct-num.warn { color: var(--coral); }
+  .ct-num.good { color: var(--green-deep); }
+
+  /* ============== ROADMAP ============== */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    position: relative;
+  }
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    top: 40px; left: 8%; right: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--coral), var(--amber), var(--green));
+    z-index: 0;
+  }
+  .phase {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 26px;
+    position: relative;
+    z-index: 1;
+  }
+  .phase-number {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0 auto 18px;
+    border: 4px solid var(--bg-soft);
+    position: relative;
+    z-index: 2;
+  }
+  .phase-number.amber { background: var(--amber); color: var(--navy); }
+  .phase-number.green { background: var(--green); }
+  .phase-weeks {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .phase h3 {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .phase ul { list-style: none; padding: 0; }
+  .phase li {
+    padding: 10px 0 10px 24px;
+    position: relative;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .phase li:last-child { border-bottom: none; }
+  .phase li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 16px;
+    width: 12px; height: 12px;
+    border-radius: 4px;
+    background: var(--coral-soft);
+    border: 2px solid var(--coral);
+  }
+  .phase.amber li::before { background: var(--amber-soft); border-color: var(--amber); }
+  .phase.green li::before { background: var(--green-soft); border-color: var(--green); }
+
+  /* ============== OPPORTUNITY BLOCK ============== */
+  .opportunity {
+    background: var(--navy);
+    color: #FFF;
+    border-radius: 28px;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .opportunity::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212,169,59,0.2) 0%, transparent 60%);
+  }
+  .opp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .opp-content h2 { color: #FFF; margin-bottom: 16px; }
+  .opp-content h2 .accent { color: var(--green); }
+  .opp-content p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .opp-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .opp-stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 22px;
+  }
+  .opp-stat-num {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .opp-stat-label {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+
+  /* ============== END CTA ============== */
+  .end-cta {
+    background: var(--navy);
+    color: #FFF;
+    padding: 80px 0;
+  }
+  .end-cta h2 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: none;
+  }
+  .end-cta h2 .accent { color: var(--green); }
+  .end-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.55;
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green);
+    color: var(--navy-deep);
+    padding: 18px 32px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  /* ============== PAGE BAR CHART ============== */
+  .page-bar {
+    display: grid;
+    grid-template-columns: 240px 1fr 80px;
+    gap: 20px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .page-name {
+    font-family: 'DM Sans', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .page-name .pn-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .page-track {
+    background: var(--line-soft);
+    height: 12px;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .page-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--coral) 0%, #FF8B7E 100%);
+  }
+  .page-fill.green { background: linear-gradient(90deg, #8B6914 0%, var(--green) 100%); }
+  .page-fill.empty {
+    background: repeating-linear-gradient(45deg, var(--line-soft), var(--line-soft) 6px, var(--line) 6px, var(--line) 12px);
+    width: 100% !important;
+  }
+  .page-value {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ink);
+    text-align: right;
+  }
+  .page-value.crit { color: var(--coral); }
+  .page-value.zero { color: var(--ink-mute); }
+
+  /* ============== SITEMAP CARD ============== */
+  .sitemap-card {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 32px;
+    margin: 24px 0 36px;
+    box-shadow: 0 4px 20px rgba(15,27,45,0.04);
+  }
+  .sitemap-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .sitemap-card-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .sitemap-card-title small {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  /* ============== WARNING BOX ============== */
+  .warning-box {
+    background: #FFF8F0;
+    border: 1px solid #FFD9A8;
+    border-left: 4px solid var(--amber);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin: 28px 0;
+  }
+  .warning-box-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #9A6520;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .warning-box p {
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-meta-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .score-grid { grid-template-columns: 1fr; }
+    .issue-counter { grid-template-columns: 1fr 1fr; }
+    .roadmap { grid-template-columns: 1fr; }
+    .ct-head, .ct-row { grid-template-columns: 1fr 70px 70px; }
+    .ct-head > :nth-child(4), .ct-row > :nth-child(4) { display: none; }
+    .opp-grid { grid-template-columns: 1fr; }
+    .verdict-wrap { grid-template-columns: 1fr; }
+    .verdict-cta { display: none; }
+    .page-bar { grid-template-columns: 180px 1fr 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-wrap">
+
+    <div class="audit-strip">
+      <div class="nerds-logo">
+        <span class="logo-mark">N</span>
+        <span>Dentist Nerds</span>
+      </div>
+      <div class="audit-type">Website Audit · Confidential</div>
+    </div>
+
+    <div class="audit-target">
+      <span class="pulse"></span>
+      Audited: lpsmiles.com
+    </div>
+
+    <h1>
+      Website Audit for <span class="accent">LA Puente Smiles Dentistry</span>
+    </h1>
+    <p class="hero-subtitle">Prepared by Dentist Nerds · May 2026</p>
+    <p class="lede">
+      LA Puente Smiles Dentistry has a clean website with service pages that already include FAQs — a genuine head start most dental sites don't have. But after nearly a year online, the site attracts only <strong>8 monthly organic visitors</strong> and ranks for just <strong>49 keywords</strong>, far below what a practice in this market should see. The platform it was built on creates a serious long-term risk: if you ever leave, the website goes with them. Here's the full picture and the plan to fix it.
+    </p>
+
+    <div class="hero-meta-grid">
+      <div class="meta-block">
+        <div class="meta-label">Prepared For</div>
+        <div class="meta-value">LA Puente Smiles Dentistry</div>
+        <div class="meta-sub">La Puente, CA · lpsmiles.com</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Audit Date</div>
+        <div class="meta-value">May 2026</div>
+        <div class="meta-sub">Tools: Semrush, manual UX review</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Organic Keywords</div>
+        <div class="meta-value" style="color:var(--coral);">49 keywords</div>
+        <div class="meta-sub">Critical — healthy dental sites rank 300–1,500+</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Domain Authority</div>
+        <div class="meta-value" style="color:var(--coral);">DA 6</div>
+        <div class="meta-sub">Very low — backlink building is essential</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ HEALTH SCORE ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Health Score Breakdown</span>
+    <h2>Overall site health: <span style="color:var(--coral);">26/100</span>.<br>Strong content structure — but the platform is holding the practice back.</h2>
+    <p class="section-intro">We graded lpsmiles.com using Semrush organic data (49 ranking keywords, ~8 monthly organic visits), competitive benchmarking against La Puente-area dental practices, a review of the platform and ownership model, and a manual assessment of content and conversion signals. The service pages show real effort — FAQs are present, which many practices lack. The problem isn't the content quality; it's the platform, the off-page authority, and the volume of indexed content that needs to grow.</p>
+
+    <div class="score-grid">
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="20" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5E4D"/>
+              <stop offset="50%" stop-color="#FFB547"/>
+              <stop offset="100%" stop-color="#D4A93B"/>
+            </linearGradient>
+          </defs>
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="url(#gaugeGrad)" stroke-width="20" stroke-linecap="round" opacity="0.15"/>
+          <path d="M 20 120 A 100 100 0 0 1 68 36" fill="none" stroke="#FF5E4D" stroke-width="20" stroke-linecap="round"/>
+          <text x="20" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">0</text>
+          <text x="120" y="14" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">50</text>
+          <text x="220" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">100</text>
+        </svg>
+        <div class="gauge-num" style="color:var(--coral);">26<span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status" style="color:var(--coral);">Needs Immediate Attention</div>
+      </div>
+
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon coral">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Platform &amp; Ownership Risk</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:5%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--coral);">5%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon coral">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Local SEO &amp; Keyword Visibility</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:14%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--coral);">14%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">Domain Authority &amp; Backlinks</div>
+            <div class="subscore-bar amber"><div class="subscore-fill amber" style="width:8%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--coral);">8%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon green">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A93B" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="subscore-title">FAQ &amp; AI-Ready Content</div>
+            <div class="subscore-bar green"><div class="subscore-fill green" style="width:55%"></div></div>
+          </div>
+          <div class="subscore-value" style="color:var(--green-deep);">55%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CRITICAL WARNING — PLATFORM OWNERSHIP ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>Critical Warning</span>
+    <h2>You don't own this website — <span class="accent-red">and that changes everything</span>.</h2>
+    <p class="section-intro">Before discussing SEO, traffic, or keywords, this needs to be addressed directly. The company that built lpsmiles.com retains ownership of the website. If you stop paying or decide to move to a different provider, the website disappears — along with every page, every ranking, every piece of content, and any SEO equity that has been built.</p>
+
+    <div class="warning-box">
+      <div class="warning-box-label">⚠ What This Means in Practice</div>
+      <p>You are essentially renting a digital storefront you've been told is yours. The SEO work done on that site, the local rankings you've built for "dentist in La Puente CA," the Google trust signals accumulated over months — all of it belongs to the platform, not the practice. This is a fundamental vulnerability. Any competitor issue, billing dispute, or desire to upgrade your marketing can result in your web presence going dark overnight, with no transition period and no asset to migrate from.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:32px;">
+      <div style="background:#FFF; border:1px solid var(--line); border-radius:16px; padding:28px;">
+        <div style="font-size:12px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--coral); margin-bottom:16px;">What the current platform does</div>
+        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--ink-soft);"><span style="width:20px; height:20px; background:var(--coral-soft); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; font-weight:800; color:var(--coral);">✕</span>Single-interface conversion — one layout, one call-to-action, regardless of patient intent</li>
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--ink-soft);"><span style="width:20px; height:20px; background:var(--coral-soft); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; font-weight:800; color:var(--coral);">✕</span>Copy-paste blog content — not original, not authoritative, penalized by Google's Helpful Content guidelines</li>
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--ink-soft);"><span style="width:20px; height:20px; background:var(--coral-soft); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; font-weight:800; color:var(--coral);">✕</span>Heavy stock imagery throughout — reduces trust and conversion vs. real office/team photos</li>
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--ink-soft);"><span style="width:20px; height:20px; background:var(--coral-soft); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; font-weight:800; color:var(--coral);">✕</span>No website ownership on cancellation — zero equity transfer, zero asset portability</li>
+        </ul>
+      </div>
+      <div style="background:#FFF; border:1px solid var(--line); border-radius:16px; padding:28px;">
+        <div style="font-size:12px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--green-deep); margin-bottom:16px;">What you should have instead</div>
+        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--ink-soft);"><span style="width:20px; height:20px; background:var(--green-soft); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; font-weight:800; color:var(--green-deep);">✓</span>Full ownership — the domain, the code, the content, the SEO equity. It's yours forever.</li>
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--ink-soft);"><span style="width:20px; height:20px; background:var(--green-soft); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; font-weight:800; color:var(--green-deep);">✓</span>Conversion-optimized layout with multiple CTAs tailored to cosmetic, urgent, and family patients</li>
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--ink-soft);"><span style="width:20px; height:20px; background:var(--green-soft); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; font-weight:800; color:var(--green-deep);">✓</span>Original, practice-specific blog content that builds real authority with Google</li>
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--ink-soft);"><span style="width:20px; height:20px; background:var(--green-soft); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; font-weight:800; color:var(--green-deep);">✓</span>Real photography of the office, team, and equipment — not stock photos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ISSUES BREAKDOWN ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>What Needs Fixing</span>
+    <h2>Five issues holding the site back — <span class="accent-red">all fixable</span>.</h2>
+    <p class="section-intro">Beyond the platform issue, every item below is directly addressable. The service pages already have a solid foundation — FAQs exist, which is a genuine advantage. What's needed is a website you own, more content volume, real imagery, backlink authority, and a local content strategy that signals relevance throughout the La Puente and San Gabriel Valley area.</p>
+
+    <div class="issue-counter">
+      <div class="counter-card critical">
+        <div class="counter-num coral">2</div>
+        <div class="counter-label">Critical Issues</div>
+      </div>
+      <div class="counter-card high">
+        <div class="counter-num amber">3</div>
+        <div class="counter-label">High Priority</div>
+      </div>
+      <div class="counter-card medium">
+        <div class="counter-num blue">0</div>
+        <div class="counter-label">Medium · Polish</div>
+      </div>
+      <div class="counter-card good">
+        <div class="counter-num green">3</div>
+        <div class="counter-label">Already Working Well</div>
+      </div>
+    </div>
+
+    <div class="issues-grid">
+
+      <!-- ISSUE 1 — Platform / no ownership -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 1</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Ownership Risk</span>
+            <h3>The website is rented, not owned — any SEO equity built today could disappear tomorrow.</h3>
+          </div>
+          <p>The platform that built lpsmiles.com operates on a model where the website asset belongs to them. Cancel, and the site goes dark. This creates a fundamental problem: every dollar spent on SEO, every backlink earned, every page that climbs the rankings — it's all built on infrastructure the practice doesn't own. Most dental practices don't realize this until it's too late.</p>
+          <p>We know this company well. Their business model depends on retention through dependency: the more SEO work they do on your site, the harder it becomes to leave — because leaving means starting over at zero. That's by design.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Build a new website on a platform you own outright — on your own hosting, with your own domain, with full code access. When you invest in SEO after that, every keyword gained and every backlink earned is a permanent asset of the practice, not the vendor. This is the single most important structural change.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 2 — 49 keywords / 8 visitors -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 2</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Keyword Volume</span>
+            <h3>49 keywords and 8 monthly visitors after nearly a year online — far below where this practice should be.</h3>
+          </div>
+          <p>After roughly 11 months live, lpsmiles.com ranks for only 49 keywords and attracts about 8 organic visits per month. A healthy dental practice website in a market like La Puente should be at <strong>300–1,000+ keywords</strong> within the first year, especially with service pages that already contain FAQ content. The site's top keyword is "dentist in la puente ca" at position 4 — that's genuinely good for a new domain — but it's almost the only thing driving any traffic at all.</p>
+          <p>For comparison, <strong>pareshkumar.com</strong> (a direct local competitor) ranks for 241 keywords and drives 189 monthly visitors. <strong>lapuenteemergency.com</strong> ranks for 172 keywords and drives 89 monthly visitors. The gap is significant but entirely closeable.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>The service pages already have the right structure with FAQs. What they need is more depth: <strong>600–1,200 words per page</strong>, local geographic signals (La Puente, West Covina, Baldwin Park, Covina, Rowland Heights), procedure-specific FAQs, and internal linking between related services. Each service page should be able to rank independently for its own treatment-specific local keywords — that's how you go from 49 to 400+ keywords.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 3 — DA 6 / no backlinks -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 3</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Domain Authority</span>
+            <h3>Domain Authority of 6 limits how high any page can rank, no matter how good the content is.</h3>
+          </div>
+          <p>Domain Authority (DA) is a measure of how much Google trusts a website, based largely on how many credible external sites link to it. At DA 6, lpsmiles.com has very little link equity — meaning Google treats it as a new, unproven domain. In competitive local searches where competitors have built authority over years, a DA 6 site is fighting with one hand tied behind its back.</p>
+          <p>This is separate from content quality — a page can be perfectly written but still not rank if the domain doesn't have enough authority to compete. Building backlinks from local directories, dental associations, community organizations, and relevant local businesses is essential to improve this score.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Launch a structured <strong>local authority campaign</strong>: submit to all major dental and local business directories (Yelp, Healthgrades, ZocDoc, Google Business Profile, Nextdoor Business, Chamber of Commerce, Bing Places), pursue mentions in local La Puente community media and neighborhood sites, and earn links from dental association member directories. Target DA 20+ within 12 months — a realistic goal with consistent effort.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 4 — Copy-paste blogs -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 4</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Content Authenticity</span>
+            <h3>Copy-paste blog content actively hurts rankings — Google's Helpful Content system targets exactly this.</h3>
+          </div>
+          <p>The blog content currently on the site appears to be templated, generic, and not specific to this practice or this community. Google's Helpful Content algorithm specifically evaluates whether content was written primarily to help people or primarily to rank in search engines. Templated, copy-pasted dental blog posts that could appear on any practice's website are a red flag — they can suppress the entire domain's rankings, not just the blog pages.</p>
+          <p>The irony is that the practice almost certainly knows things a generic template never would: what patients in La Puente specifically ask about, what insurances are accepted locally, what makes this neighborhood different from nearby cities. That kind of authentic, localized content is exactly what Google rewards.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Replace all templated blog content with <strong>original, practice-specific articles</strong> written for the La Puente community. Minimum 4 blogs per month, covering local search intent: "best dentist near La Puente CA," "dental implants cost West Covina," "emergency dentist La Puente open Saturday," "Medi-Cal dentist La Puente." Each blog should include the doctors' names, specific services, and local neighborhood references — content that only this practice could have written.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ISSUE 5 — Stock imagery -->
+      <article class="issue-card">
+        <div class="issue-icon-wrap high">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 5</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Conversion &amp; Trust</span>
+            <h3>Stock imagery throughout the site reduces trust and conversion — patients want to see the real practice before they book.</h3>
+          </div>
+          <p>When a prospective patient visits a dental website, the photos tell them whether they can trust the practice. Generic stock photos of smiling models and dental tools look identical to the stock photos on thousands of other dental websites — they signal nothing unique about this practice, this team, or this office.</p>
+          <p>Real photography of the La Puente Smiles team, the treatment rooms, the reception area, and the actual equipment builds immediate credibility. Patients in La Puente who are searching for a neighborhood dentist want to see a neighborhood dentist — not a photoshoot model who's never been in this zip code.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Invest in a <strong>professional photography session</strong> at the office. Photograph the team, the operatories, the reception area, and any technology or equipment the practice uses. Replace every stock image on the site — starting with the homepage hero banner — with real photos. On the new website we build for you, real photography will be a core design requirement, not an afterthought.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ WHAT'S WORKING ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>What's Working</span>
+    <h2>The site has <span class="accent">real strengths to build on</span> — especially the FAQ content.</h2>
+    <p class="section-intro">Not every dental site we audit has this foundation. The FAQ content on service pages is a genuine head start for both traditional SEO and AI-powered search visibility. Combined with the early local keyword traction, there's a real base here to accelerate from.</p>
+
+    <div style="background:linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%); border-left:4px solid var(--green); border-radius:16px; padding:32px 36px; margin:32px 0;">
+      <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:14px;">✓ What LA Puente Smiles Gets Right</div>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Service pages already have FAQs</strong> — this is a meaningful advantage. Most dental sites we audit have none. FAQ content is the primary driver of AI Overview citations and rich snippets.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Ranking position 4 for "dentist in la puente ca"</strong> — a very competitive local term, and being in the top 5 organically as a brand-new domain is a strong early signal.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Service page structure is in place</strong> — cosmetic dentistry, general dentistry, and individual treatment pages already exist. The architecture is there; it needs more depth and authority behind it.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Underserved local market</strong> — the La Puente dental market has relatively low online competition. The top competitor in Semrush data (pareshkumar.com) has only 241 keywords. This market is very winnable.</li>
+      </ul>
+    </div>
+
+    <h3 style="font-size:22px; font-weight:800; margin:48px 0 8px; letter-spacing:-0.01em;">The numbers at a glance</h3>
+    <p style="color:var(--ink-soft); font-size:15px; margin-bottom:24px;">Semrush snapshot — where lpsmiles.com sits today vs. local benchmarks.</p>
+
+    <div class="hero-meta-grid" style="--label-color:var(--ink-mute); --sub-color:var(--ink-soft);">
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Organic Keywords</div>
+        <div class="meta-value" style="color:var(--coral);">49 keywords</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Benchmark: 300–1,000+ at this market size</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Monthly Organic Traffic</div>
+        <div class="meta-value" style="color:var(--coral);">~8 visits/mo</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Almost entirely homepage / branded searches</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Domain Authority</div>
+        <div class="meta-value" style="color:var(--coral);">DA 6</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Target: DA 20–30 within 12 months</div>
+      </div>
+      <div class="meta-block" style="background:#FFF; border:1px solid var(--line); border-radius:14px; padding:20px 22px;">
+        <div class="meta-label" style="color:var(--ink-mute);">Site Age</div>
+        <div class="meta-value" style="color:var(--amber);">~11 months</div>
+        <div class="meta-sub" style="color:var(--ink-soft);">Launch: ~June 2025 — still in growth phase</div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px; padding:22px 26px; background:#FFF4E5; border-radius:14px; border-left:3px solid var(--amber);">
+      <p style="margin:0; color:var(--ink); font-size:15px; line-height:1.6;"><strong style="color:#9A6520;">The core finding:</strong> lpsmiles.com is performing below its potential for a site its age, primarily because the platform is designed for retention rather than growth. The FAQ content on service pages shows the right instinct — that content can anchor a very strong SEO and AI visibility strategy. What's needed is a website the practice owns, expanded content volume across service pages, a real backlink-building program, and local blog content that positions this practice as the authority for dental care in La Puente and the surrounding communities.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TRAFFIC DISTRIBUTION ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>Critical Finding</span>
+    <h2>Nearly all organic traffic lands on <span class="accent-red">one page</span>.</h2>
+    <p class="section-intro">The homepage captures almost all of the site's traffic. Service pages — cosmetic dentistry, dental implants, teeth whitening, emergency dental — are largely invisible to organic search. They're indexed, some even rank, but at positions so low (30+, 50+, 65+) that no patient ever clicks through.</p>
+
+    <div class="sitemap-card">
+      <div class="sitemap-card-head">
+        <div class="sitemap-card-title">
+          Traffic by Page (Semrush, May 2026)
+          <small>Where organic visitors land — the homepage captures nearly everything</small>
+        </div>
+      </div>
+      <div style="padding:8px 0 16px;">
+        <div class="page-bar">
+          <div class="page-name">
+            lpsmiles.com/
+            <span class="pn-sub">Homepage</span>
+          </div>
+          <div class="page-track"><div class="page-fill" style="width:100%"></div></div>
+          <div class="page-value crit">~100%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            /services/cosmetic-dentistry/
+            <span class="pn-sub">Cosmetic Dentistry</span>
+          </div>
+          <div class="page-track"><div class="page-fill empty" style="width:100%"></div></div>
+          <div class="page-value zero">0%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            /contact/
+            <span class="pn-sub">Contact Page</span>
+          </div>
+          <div class="page-track"><div class="page-fill empty" style="width:100%"></div></div>
+          <div class="page-value zero">0%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            /about/
+            <span class="pn-sub">About the Practice</span>
+          </div>
+          <div class="page-track"><div class="page-fill empty" style="width:100%"></div></div>
+          <div class="page-value zero">0%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            /dr-anthony-nguyen/
+            <span class="pn-sub">Doctor Profile</span>
+          </div>
+          <div class="page-track"><div class="page-fill empty" style="width:100%"></div></div>
+          <div class="page-value zero">0%</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">
+            All other service pages
+            <span class="pn-sub">Implants, whitening, emergency, etc.</span>
+          </div>
+          <div class="page-track"><div class="page-fill empty" style="width:100%"></div></div>
+          <div class="page-value zero">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; padding:22px 26px; background:var(--coral-soft); border-radius:14px; border-left:3px solid var(--coral);">
+      <p style="margin:0; color:var(--ink); font-size:15px; line-height:1.6;"><strong style="color:var(--coral);">Why this matters:</strong> A healthy dental website has every major service page pulling in its own traffic. "Dental implants La Puente CA," "teeth whitening near Baldwin Park," "emergency dentist La Puente open now" — these are high-intent searches from patients ready to book. When those pages rank below position 30, they're invisible. The practice is completely missing the patient-discovery funnel; it only captures patients who already know the practice name.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ COMPETITIVE LANDSCAPE ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Competitive Landscape</span>
+    <h2>Where LA Puente Smiles stands <span class="accent">vs. local competitors</span>.</h2>
+    <p class="section-intro">Here's how lpsmiles.com compares to the closest organic competitors Semrush identified in the La Puente and San Gabriel Valley dental market. The encouraging news: this is a relatively low-competition market. The top competitor has only 241 keywords — entirely reachable.</p>
+
+    <div class="competitor-table">
+      <div class="ct-head">
+        <div>Practice / Domain</div>
+        <div>Keywords</div>
+        <div>Traffic</div>
+        <div>Gap</div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">
+          pareshkumar.com
+          <span class="ct-sub">Strongest local competitor</span>
+        </div>
+        <div class="ct-num good">241</div>
+        <div class="ct-num good">189</div>
+        <div><span style="font-size:12px; color:var(--ink-mute);">5× your keywords</span></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">
+          lapuenteemergency.com
+          <span class="ct-sub">Emergency dental competitor</span>
+        </div>
+        <div class="ct-num good">172</div>
+        <div class="ct-num good">89</div>
+        <div><span style="font-size:12px; color:var(--ink-mute);">3.5× your keywords</span></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">
+          azusadentalclinic.com
+          <span class="ct-sub">Adjacent market — Azusa</span>
+        </div>
+        <div class="ct-num">135</div>
+        <div class="ct-num">33</div>
+        <div><span style="font-size:12px; color:var(--ink-mute);">2.7× your keywords</span></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-domain">
+          brightdentalcare.net
+          <span class="ct-sub">Local area competitor</span>
+        </div>
+        <div class="ct-num">104</div>
+        <div class="ct-num">7</div>
+        <div><span style="font-size:12px; color:var(--ink-mute);">2× your keywords</span></div>
+      </div>
+      <div class="ct-row you">
+        <div class="ct-domain">
+          <strong>lpsmiles.com</strong>
+          <span class="ct-sub">LA Puente Smiles — You</span>
+        </div>
+        <div class="ct-num warn">49</div>
+        <div class="ct-num warn">8</div>
+        <div><span style="font-size:12px; color:var(--green-deep); font-weight:700;">FAQs on pages ✓</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px; padding:22px 26px; background:var(--green-soft); border-radius:14px; border-left:3px solid var(--green);">
+      <p style="margin:0; color:var(--ink); font-size:15px; line-height:1.6;"><strong style="color:var(--green-deep);">The market opportunity:</strong> The La Puente dental market is winnable. The top competitor has only 241 keywords — a number that can be matched in 6–9 months with consistent content work and authority building. Most of the competing sites also lack FAQ schema, meaning lpsmiles.com already has a structural AI-visibility advantage that just needs to be fully activated with proper schema markup and content expansion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ THE OPPORTUNITY ============================================================ -->
+<section class="alt">
+  <div class="wrap">
+    <div class="opportunity">
+      <div class="opp-grid">
+        <div class="opp-content">
+          <span class="section-eyebrow" style="background:rgba(212,169,59,0.15); color:var(--green); margin-bottom:20px;"><span class="dot"></span>The Upside</span>
+          <h2>A low-competition market with a <span class="accent">strong FAQ foundation</span> — this is winnable.</h2>
+          <p>The La Puente dental market isn't saturated. The strongest local competitor has only 241 keywords — a number achievable within 9 months with the right strategy. And unlike most practice websites, lpsmiles.com already has FAQ content on service pages, which is the primary signal that drives AI Overview citations, People Also Ask features, and rich snippet appearances.</p>
+          <p>The gap between 8 monthly visitors and 200+ isn't about content quality — it's about content volume, backlink authority, and website ownership. All three are fixable on a defined timeline.</p>
+        </div>
+        <div class="opp-stats">
+          <div class="opp-stat">
+            <div class="opp-stat-num">8×</div>
+            <div class="opp-stat-label">Traffic growth potential in 12 months with content + authority strategy</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-num">DA 6</div>
+            <div class="opp-stat-label">Starting authority — DA 20+ in 12 months is a realistic and achievable goal</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-num">AI</div>
+            <div class="opp-stat-label">FAQs already on pages — proper schema markup unlocks Google AI Overview citations</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-num">#4</div>
+            <div class="opp-stat-label">Current rank for "dentist in La Puente CA" — top 3 is within reach</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ACTION ROADMAP ============================================================ -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Action Roadmap</span>
+    <h2>A clear <span class="accent">three-phase plan</span> to build a digital presence you actually own.</h2>
+    <p class="section-intro">Ordered by impact. Phase 1 is the structural foundation — a website the practice owns. Phase 2 builds the SEO and AI visibility layer on top of that foundation. Phase 3 compounds it all with ongoing authority and content growth.</p>
+
+    <div class="roadmap">
+      <div class="phase">
+        <div class="phase-number">1</div>
+        <div class="phase-weeks">Weeks 1–6</div>
+        <h3>New Website You Own</h3>
+        <ul>
+          <li><strong>Build a new SEO + AI conversion-friendly website</strong> — fully owned by the practice, on your hosting, with your domain</li>
+          <li><strong>Migrate and expand all service pages</strong> — preserve and strengthen FAQ content, add 600–1,200 words of original content per page</li>
+          <li><strong>Add FAQ schema (JSON-LD)</strong> to every service page for AI Overview eligibility and rich snippets</li>
+          <li><strong>Conversion-optimized layout</strong> — multiple CTAs targeting cosmetic, general, urgent, and family patient types, not a single one-size-fits-all interface</li>
+          <li><strong>Replace all stock imagery</strong> with real office and team photography from a professional session</li>
+        </ul>
+      </div>
+      <div class="phase amber">
+        <div class="phase-number amber">2</div>
+        <div class="phase-weeks">Weeks 6–16</div>
+        <h3>SEO &amp; Authority Building</h3>
+        <ul>
+          <li><strong>Local directory submissions</strong> — Yelp, Healthgrades, ZocDoc, Google Business Profile, Bing Places, Nextdoor Business, Vitals, WebMD</li>
+          <li><strong>Citation cleanup</strong> — ensure NAP (name, address, phone) is consistent across all online listings</li>
+          <li><strong>Backlink outreach</strong> — dental associations, La Puente Chamber of Commerce, community health organizations, local media</li>
+          <li><strong>Google Business Profile optimization</strong> — complete all fields, add real photos weekly, enable messaging and booking</li>
+          <li><strong>On-page local SEO</strong> — geographic signals for La Puente, West Covina, Baldwin Park, Covina, Rowland Heights throughout all pages</li>
+        </ul>
+      </div>
+      <div class="phase green">
+        <div class="phase-number green">3</div>
+        <div class="phase-weeks">Months 3–12</div>
+        <h3>Content &amp; Growth Engine</h3>
+        <ul>
+          <li><strong>4 original blogs per month</strong> — locally researched, practice-specific articles targeting La Puente area search intent</li>
+          <li><strong>Monthly reporting</strong> — keyword rankings, traffic, conversions, competitor movements, and a clear month-over-month view</li>
+          <li><strong>Track keyword growth</strong> via Semrush — target 150 keywords by month 6, 300+ by month 12</li>
+          <li><strong>AI visibility monitoring</strong> — track whether service pages appear in Google AI Overview answers for La Puente dental queries</li>
+          <li><strong>Quarterly content audits</strong> — ensure every service page stays current, competitive, and expanding as the practice grows</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; padding:28px 32px; background:linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); border-radius:20px; color:#FFF;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); margin-bottom:14px;">The Bottom Line</div>
+      <p style="font-size:17px; line-height:1.6; color:rgba(255,255,255,0.9); margin:0;">LA Puente Smiles Dentistry is in a good market with low competition and a meaningful structural advantage in its FAQ content. The two things holding it back most are a platform model that means the practice doesn't own its own website, and the low content volume that limits keyword reach. The fix is clear: build a website you own, expand content on service pages you already have, add proper FAQ schema to activate AI visibility, and build backlinks that permanently raise the domain's authority. Everything the practice needs is already there — it just needs to be built on a foundation it actually controls.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ END CTA ============================================================ -->
+<section class="end-cta">
+  <div class="wrap">
+    <h2>Ready to own your website and <span class="accent">grow your practice?</span></h2>
+    <p>We've laid out exactly what needs to happen. The next step is building a website you own, backed by an SEO and AI visibility strategy designed for the La Puente market — and a monthly reporting process so you can see every result we deliver.</p>
+    <a href="https://www.dentistnerds.com/contact" class="cta-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.1 2.18 2 2 0 012.09 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.27 7.11a16 16 0 006.72 6.72l1.06-1.06a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Let's Talk — Dentist Nerds
+    </a>
+  </div>
+</section>
+
+</body>
+</html>
