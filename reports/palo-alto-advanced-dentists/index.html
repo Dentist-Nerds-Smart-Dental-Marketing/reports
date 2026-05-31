@@ -1,700 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Palo Alto Advanced Dentists — Website Quality Audit</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palo Alto Advanced Dentists — Website Quality Audit · May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    background:#fff;color:#1a2332;line-height:1.55;
-    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-  }
-  .page{max-width:880px;margin:0 auto;padding:60px 32px 40px}
+:root{
+--ink:#0d1620;--ink-2:#142030;--cream:#f6f0e2;--paper:#ffffff;
+--blue:#4a90e2;--blue-deep:#2563eb;--blue-dark:#1e40af;--blue-soft:#dbeafe;--blue-tint:#f0f5ff;
+--teal:#0891b2;--indigo:#6366f1;--slate:#64748b;
+--green:#16a34a;--green-soft:#d1fae5;--amber:#d97706;--amber-soft:#fef3c7;
+--red:#dc2626;--red-soft:#fee2e2;--purple:#8b5cf6;--purple-soft:#ede9fe;--gold:#c89a3a;
+--text:#0d1620;--text-muted:#5c6b7d;--text-light:#94a3b8;--line-light:rgba(13,22,32,0.07);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.serif{font-family:'Fraunces',serif}
+section{padding:96px 0}
+section.light{background:var(--cream)}
+section.paper{background:var(--paper)}
+section.dark{background:var(--ink);color:#fff}
+.section-eyebrow{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--blue-deep);font-weight:600;margin-bottom:14px}
+section.dark .section-eyebrow{color:var(--blue)}
+h2.section-title{font-family:'Fraunces',serif;font-size:44px;font-weight:600;letter-spacing:-0.025em;line-height:1.1;margin-bottom:18px}
+.section-intro{font-size:17px;color:var(--text-muted);max-width:720px;margin-bottom:48px}
+section.dark .section-intro{color:#a8b3c2}
 
-  /* HERO */
-  .hero{text-align:center;padding-bottom:40px}
-  .pill{
-    display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.18em;
-    color:#2563eb;background:#eff6ff;padding:7px 16px;border-radius:24px;
-    border:1px solid #dbeafe;text-transform:uppercase;
-  }
-  .hero h1{
-    font-size:54px;font-weight:800;letter-spacing:-0.025em;
-    color:#0f172a;margin:24px 0 18px;line-height:1.05;
-  }
-  .hero .lede{
-    max-width:640px;margin:0 auto;color:#64748b;font-size:15px;line-height:1.65;
-  }
-  .hero-stats{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:10px;
-    max-width:780px;margin:34px auto 22px;
-  }
-  .hstat{background:#f8fafc;border-radius:10px;padding:18px 8px;text-align:center}
-  .hstat .n{font-size:32px;font-weight:800;line-height:1;letter-spacing:-0.02em}
-  .hstat .l{font-size:11px;color:#64748b;margin-top:6px;font-weight:500}
-  .red{color:#dc2626}
-  .amber{color:#d97706}
-  .green{color:#059669}
-  .blue{color:#2563eb}
-  .prepared{font-size:11px;color:#94a3b8;letter-spacing:0.04em}
+/* HERO */
+.hero{background:var(--ink);color:#fff;padding:84px 0 76px}
+.eyebrow{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:22px}
+.hero h1{font-family:'Fraunces',serif;font-size:68px;font-weight:600;letter-spacing:-0.025em;line-height:1.04;color:#fff;margin-bottom:14px}
+.hero-sub{font-size:15px;color:var(--blue);font-weight:500;letter-spacing:0.04em;margin-bottom:24px}
+.hero-desc{font-size:17px;color:#a8b3c2;max-width:680px;margin-bottom:48px}
+.hero-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:38px}
+.hero-kpi{border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);border-radius:14px;padding:22px 18px}
+.hero-kpi-num{font-family:'Fraunces',serif;font-size:44px;font-weight:600;color:var(--blue);line-height:1}
+.hero-kpi-num.red{color:var(--red)}
+.hero-kpi-num.amber{color:var(--amber)}
+.hero-kpi-label{font-size:12px;color:var(--text-light);margin-top:10px;line-height:1.35}
+.hero-prepared{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-light)}
 
-  hr.div{border:0;border-top:1px solid #e2e8f0;margin:48px 0}
+/* URGENT BANNER */
+.urgent{border-top:3px solid var(--red)}
+.urgent .section-eyebrow{color:#f87171}
+.urgent h2{font-family:'Fraunces',serif;font-size:46px;font-weight:600;letter-spacing:-0.025em;line-height:1.08;color:#fff;max-width:880px;margin-bottom:22px}
+.urgent p{font-size:18px;color:#cdd6e1;max-width:840px;line-height:1.7}
+.urgent .redbox{border-left:3px solid var(--red);background:rgba(220,38,38,0.08);padding:18px 24px;border-radius:0 12px 12px 0;margin-top:30px}
 
-  .eyebrow{font-size:10px;font-weight:700;letter-spacing:0.2em;color:#2563eb;text-transform:uppercase;margin-bottom:12px}
+/* FINDINGS */
+.findings-list{display:grid;gap:16px}
+.finding{background:#fff;border:1px solid var(--line-light);border-radius:16px;padding:24px 26px;display:grid;grid-template-columns:44px 1fr;gap:20px;align-items:start;box-shadow:0 1px 2px rgba(13,22,32,0.03)}
+.finding-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700}
+.finding-icon.red{background:var(--red-soft);color:var(--red)}
+.finding-icon.amber{background:var(--amber-soft);color:var(--amber)}
+.finding-icon.blue{background:var(--blue-soft);color:var(--blue-deep)}
+.finding-icon.purple{background:var(--purple-soft);color:var(--purple)}
+.finding-icon.green{background:var(--green-soft);color:var(--green)}
+.finding-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.finding-desc{font-size:14px;color:var(--text-muted)}
 
-  .q-header{display:flex;align-items:center;gap:14px;margin-bottom:8px}
-  .q-num{
-    flex-shrink:0;width:42px;height:42px;border-radius:10px;
-    background:#0f172a;color:#fff;font-weight:800;font-size:16px;
-    display:flex;align-items:center;justify-content:center;letter-spacing:-0.01em;
-  }
-  .q-title{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:#0f172a;line-height:1.15}
+/* DATA TABLE */
+.data-table{border-radius:16px;overflow:hidden;border:1px solid var(--line-light);box-shadow:0 1px 3px rgba(13,22,32,0.04)}
+.data-table-head{background:var(--ink);color:#fff;display:grid;grid-template-columns:1.6fr 0.6fr 0.7fr 0.8fr 0.7fr 0.9fr;gap:12px;padding:16px 22px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+.data-table-row{background:#fff;display:grid;grid-template-columns:1.6fr 0.6fr 0.7fr 0.8fr 0.7fr 0.9fr;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line-light);font-size:14px;align-items:center;transition:background .15s}
+.data-table-row:last-child{border-bottom:none}
+.data-table-row:hover{background:var(--blue-tint)}
+.data-table-row.subject{background:var(--red-soft)}
+.data-table-row.subject:hover{background:#fed7d7}
+.dt-name{font-weight:600}
+.dt-name small{display:block;font-weight:400;color:var(--text-muted);font-size:12px;margin-top:2px}
+.dt-pos{font-weight:600}
 
-  h2.sec{font-size:28px;font-weight:800;letter-spacing:-0.02em;color:#0f172a;margin-bottom:8px}
-  h3.sub{font-size:18px;font-weight:700;color:#0f172a;margin-bottom:10px;letter-spacing:-0.01em;margin-top:28px}
-  p.intro{font-size:14px;color:#64748b;margin-bottom:22px;line-height:1.65}
+/* COMPETITOR DESCRIPTIONS */
+.comp-desc-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+.comp-card{background:#fff;border:1px solid var(--line-light);border-radius:14px;padding:22px 24px}
+.comp-card h4{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:8px}
+.comp-card p{font-size:13.5px;color:var(--text-muted)}
 
-  .findings{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .finding{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 18px 16px}
-  .finding .icon{font-size:18px;margin-bottom:10px;display:block}
-  .finding h4{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:6px;line-height:1.35}
-  .finding p{font-size:12.5px;color:#64748b;line-height:1.55}
+/* SHARE BARS */
+.share-block{margin-bottom:48px}
+.share-block h3{font-family:'Fraunces',serif;font-size:24px;font-weight:600;margin-bottom:6px}
+.share-block .share-meta{font-size:13px;color:var(--text-muted);margin-bottom:24px}
+.bar-row{display:grid;grid-template-columns:220px 1fr 60px;gap:16px;align-items:center;margin-bottom:14px}
+.bar-label{font-size:14px;font-weight:500}
+.bar-label.subject{color:var(--red);font-weight:700}
+.bar-track{background:#e8e1d0;border-radius:8px;height:26px;overflow:hidden}
+.paper .bar-track{background:#eef1f5}
+.bar-fill{height:100%;border-radius:8px;background:var(--blue);transition:width .4s}
+.bar-fill.subject{background:var(--red)}
+.bar-pct{font-size:14px;font-weight:700;text-align:right}
+.bar-pct.subject{color:var(--red)}
 
-  .alert{
-    background:#fef9c3;border-left:3px solid #eab308;padding:13px 18px;
-    border-radius:4px;font-size:13px;color:#713f12;margin-top:18px;line-height:1.6;
-  }
-  .alert strong{color:#713f12;font-weight:700}
+/* CALLOUTS */
+.callout{border-radius:14px;padding:22px 26px;margin-top:36px;font-size:15.5px;line-height:1.6}
+.callout.red{background:var(--red-soft);border-left:4px solid var(--red);color:#7f1d1d}
+.callout.amber{background:var(--amber-soft);border-left:4px solid var(--amber);color:#78350f}
+.callout strong{font-weight:700}
 
-  .alert-red{
-    background:#fef2f2;border-left:3px solid #dc2626;padding:13px 18px;
-    border-radius:4px;font-size:13px;color:#7f1d1d;margin-top:18px;line-height:1.6;
-  }
-  .alert-red strong{color:#991b1b;font-weight:700}
+/* PCARD GRID */
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pcard{background:#fff;border:1px solid var(--line-light);border-left:3px solid var(--green);border-radius:0 14px 14px 0;padding:24px 26px;box-shadow:0 1px 2px rgba(13,22,32,0.03)}
+.pcard-num{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:10px}
+.pcard-title{font-family:'Fraunces',serif;font-size:19px;font-weight:600;margin-bottom:8px}
+.pcard-desc{font-size:13px;color:var(--text-muted)}
 
-  .chart-box{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px 16px}
-  .chart-row{display:flex;align-items:flex-end;gap:4px;height:170px;margin-top:8px}
-  .bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px}
-  .bar .v{font-size:9px;color:#0f172a;font-weight:600}
-  .bar .b{width:100%;border-radius:2px 2px 0 0;min-height:2px}
-  .bar.up .b{background:#10b981}
-  .bar.down .b{background:#dc2626}
-  .bar.mid .b{background:#f59e0b}
-  .bar .lbl{font-size:9px;color:#94a3b8;margin-top:4px;font-weight:500}
+/* ACTION PLAN */
+.phase-label{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--blue);margin:38px 0 18px}
+.phase-label:first-of-type{margin-top:0}
+.action-list{display:grid;gap:12px}
+.action-row{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px 24px;display:grid;grid-template-columns:48px 1fr auto;gap:18px;align-items:center;transition:border-color .15s,background .15s}
+.action-row:hover{background:rgba(255,255,255,0.06);border-color:var(--blue)}
+.action-num{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--blue)}
+.action-body h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.action-body p{font-size:13.5px;color:#a8b3c2}
+.action-tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;padding:6px 12px;border-radius:20px;white-space:nowrap;align-self:start}
+.action-tag.immediate{background:var(--red-soft);color:var(--red)}
+.action-tag.high{background:var(--amber-soft);color:var(--amber)}
+.action-tag.medium{background:var(--blue-soft);color:var(--blue-deep)}
+.action-tag.ongoing{background:var(--purple-soft);color:var(--purple)}
+.outcome-box{background:rgba(74,144,226,0.1);border:1px solid var(--blue);border-radius:16px;padding:28px 32px;margin-top:40px}
+.outcome-box h4{font-family:'Fraunces',serif;font-size:20px;color:#fff;margin-bottom:10px}
+.outcome-box p{font-size:15.5px;color:#cdd6e1;line-height:1.7}
 
-  .kw-circles{display:flex;justify-content:center;gap:48px;margin:26px 0 8px}
-  .kw-circle{text-align:center}
-  .kw-circle .ring{
-    width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-size:26px;font-weight:800;margin:0 auto 8px;border:5px solid;letter-spacing:-0.02em;
-  }
-  .kw-circle.r1 .ring{border-color:#fecaca;color:#dc2626}
-  .kw-circle.r2 .ring{border-color:#fde68a;color:#d97706}
-  .kw-circle.r3 .ring{border-color:#fde68a;color:#d97706}
-  .kw-circle .lab{font-size:11px;color:#64748b;font-weight:500}
+/* KEYWORD TABLE */
+.kw-table{border-radius:16px;overflow:hidden;border:1px solid var(--line-light);box-shadow:0 1px 3px rgba(13,22,32,0.04)}
+.kw-head{background:var(--ink);color:#fff;display:grid;grid-template-columns:2.2fr 0.7fr 0.7fr 0.7fr 1.6fr;gap:12px;padding:16px 22px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+.kw-row{background:#fff;display:grid;grid-template-columns:2.2fr 0.7fr 0.7fr 0.7fr 1.6fr;gap:12px;padding:16px 22px;border-bottom:1px solid var(--line-light);font-size:14px;align-items:center;transition:background .15s}
+.kw-row:last-child{border-bottom:none}
+.kw-row:hover{background:var(--blue-tint)}
+.kw-kw{font-weight:600}
+.tag{font-size:11px;font-weight:600;padding:5px 11px;border-radius:20px;white-space:nowrap;display:inline-block}
+.tag-good{background:var(--green-soft);color:#15803d}
+.tag-warn{background:var(--amber-soft);color:var(--amber)}
+.tag-bad{background:var(--red-soft);color:var(--red)}
+.tag-info{background:var(--blue-soft);color:var(--blue-deep)}
 
-  table.tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:16px}
-  table.tbl th{text-align:left;padding:10px 12px;font-size:9px;font-weight:700;letter-spacing:0.12em;color:#94a3b8;text-transform:uppercase;background:#f8fafc;border-bottom:1px solid #e2e8f0}
-  table.tbl td{padding:10px 12px;border-bottom:1px solid #f1f5f9;color:#0f172a;vertical-align:middle}
-  td.kw{font-weight:600}
-  td.pos{font-family:'SF Mono',Monaco,Consolas,monospace;text-align:left;color:#475569}
-  .tag{padding:3px 9px;border-radius:4px;font-size:10.5px;font-weight:600;display:inline-block;letter-spacing:0.01em}
-  .tag.good{background:#dcfce7;color:#15803d}
-  .tag.warn{background:#fef3c7;color:#92400e}
-  .tag.bad{background:#fee2e2;color:#b91c1c}
-  .tag.info{background:#dbeafe;color:#1e40af}
-  .row-warn{background:#fffbeb}
-  .row-bad{background:#fef2f2}
+/* CHIPS */
+.chip-grid{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:8px}
+.chip{font-size:13.5px;font-weight:600;padding:11px 18px;border-radius:24px;background:var(--red-soft);color:var(--red);border:1px solid rgba(220,38,38,0.2)}
 
-  .comp-table-wrap{margin-top:18px}
-  .comp-row{display:grid;grid-template-columns:1fr 60px 80px 80px 90px 100px;gap:12px;font-size:13px;padding:12px 14px;border-bottom:1px solid #f1f5f9;align-items:center}
-  .comp-row.head{background:#f8fafc;font-size:9.5px;font-weight:700;letter-spacing:0.1em;color:#94a3b8;text-transform:uppercase;border-bottom:1px solid #e2e8f0;border-radius:8px 8px 0 0}
-  .comp-row.you{background:#fef2f2}
-  .comp-row .nm{font-weight:600;color:#0f172a}
-  .comp-row .nm .sub{font-size:11px;color:#94a3b8;font-weight:400;display:block}
-  .comp-row .num{text-align:center;font-family:'SF Mono',Monaco,Consolas,monospace;color:#475569}
-  .comp-table-wrap .border-wrap{border:1px solid #e2e8f0;border-radius:8px;overflow:hidden}
+/* FOOTER */
+footer{background:var(--ink);color:#fff;text-align:center;padding:60px 0}
+.foot-brand{font-family:'Fraunces',serif;font-size:22px;color:var(--blue);margin-bottom:10px}
+.foot-meta{font-size:13px;color:var(--text-light)}
 
-  .share-list{margin-top:14px}
-  .share-row{margin-bottom:14px}
-  .share-row .head{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;align-items:baseline}
-  .share-row .head .nm{font-weight:600;color:#0f172a}
-  .share-row .head .pct{color:#64748b;font-weight:600;font-size:13px}
-  .share-row .head .pct.big{font-size:15px;color:#0f172a}
-  .share-row .track{height:14px;background:#f1f5f9;border-radius:6px;overflow:hidden}
-  .share-row .fill{height:100%;background:#3b82f6;border-radius:6px}
-  .share-row.you .fill{background:#dc2626}
-  .share-row.you .head .nm{color:#dc2626}
-  .share-row.leader .fill{background:#15803d}
-  .share-toggle{display:flex;gap:8px;margin-top:6px;margin-bottom:14px;font-size:12px}
-  .toggle-tag{background:#f1f5f9;color:#475569;padding:4px 10px;border-radius:4px;font-weight:600}
-
-  .opp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
-  .opp-card{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:16px 18px}
-  .opp-card .lbl{font-size:9.5px;font-weight:700;letter-spacing:0.12em;color:#15803d;text-transform:uppercase;margin-bottom:6px;display:block}
-  .opp-card h4{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:6px;letter-spacing:-0.01em}
-  .opp-card p{font-size:12.5px;color:#1f2937;line-height:1.55;margin-bottom:8px}
-  .opp-card .est{font-size:11px;font-weight:600;color:#15803d;letter-spacing:0.02em}
-
-  .deliver-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
-  .deliver-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px}
-  .deliver-card .num{
-    width:28px;height:28px;border-radius:6px;background:#eff6ff;color:#2563eb;
-    font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;
-    margin-bottom:10px;border:1px solid #dbeafe;
-  }
-  .deliver-card h4{font-size:13.5px;font-weight:700;color:#0f172a;margin-bottom:6px;letter-spacing:-0.01em}
-  .deliver-card p{font-size:12px;color:#64748b;line-height:1.5}
-
-  .pages-section{margin-top:18px}
-  .pages-section h4{font-size:13px;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em}
-  .pages-section .miss h4{color:#dc2626}
-  .pages-section .have h4{color:#059669}
-  .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-  .chip{padding:7px 10px;border-radius:5px;font-size:11.5px;font-weight:500;border:1px solid;line-height:1.3}
-  .chip.x{background:#fef2f2;border-color:#fecaca;color:#991b1b}
-  .chip.x::before{content:"\00D7 ";font-weight:700}
-  .chip.ok{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
-  .chip.ok::before{content:"\2713 ";font-weight:700}
-
-  .info-box{
-    background:#eff6ff;border-left:3px solid #2563eb;padding:13px 18px;
-    border-radius:4px;font-size:13px;color:#1e3a8a;margin-top:18px;line-height:1.65;
-  }
-  .info-box strong{color:#1e40af;font-weight:700}
-
-  .footer{margin-top:60px;padding-top:24px;border-top:1px solid #e2e8f0;text-align:center;font-size:11px;color:#94a3b8;letter-spacing:0.04em}
-
-  .toc{
-    background:#0f172a;color:#fff;border-radius:12px;padding:24px 28px;margin-bottom:8px;
-  }
-  .toc-label{font-size:10px;font-weight:700;letter-spacing:0.18em;color:#93c5fd;text-transform:uppercase;margin-bottom:14px}
-  .toc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .toc-item{display:flex;gap:12px;align-items:flex-start}
-  .toc-item .n{
-    flex-shrink:0;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.1);
-    color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;
-  }
-  .toc-item .t{font-size:13px;font-weight:600;line-height:1.4;color:#fff}
-  .toc-item .d{font-size:11px;color:#93c5fd;margin-top:2px}
-
-  .warning-banner{
-    background:#7f1d1d;color:#fef2f2;border-radius:12px;padding:20px 24px;margin-bottom:8px;
-  }
-  .warning-banner .wb-label{font-size:10px;font-weight:700;letter-spacing:0.18em;color:#fca5a5;text-transform:uppercase;margin-bottom:10px}
-  .warning-banner .wb-title{font-size:20px;font-weight:800;line-height:1.2;color:#fff;margin-bottom:8px}
-  .warning-banner .wb-body{font-size:13px;color:#fecaca;line-height:1.65}
-
-  @media (max-width:760px){
-    .page{padding:32px 18px}
-    .hero h1{font-size:32px}
-    .hero-stats{grid-template-columns:repeat(2,1fr)}
-    .findings,.opp-grid,.deliver-grid,.toc-grid{grid-template-columns:1fr}
-    .chips{grid-template-columns:repeat(2,1fr)}
-    .kw-circles{flex-wrap:wrap;gap:18px}
-    .comp-row{grid-template-columns:1fr 50px 60px 60px;font-size:12px}
-    .comp-row .num.hide-m{display:none}
-    .q-title{font-size:18px}
-  }
+@media(max-width:880px){
+.wrap{padding:0 22px}
+section{padding:64px 0}
+.hero{padding:60px 0 54px}
+.hero h1{font-size:42px}
+h2.section-title,.urgent h2{font-size:32px}
+.hero-kpis{grid-template-columns:repeat(2,1fr)}
+.pgrid,.comp-desc-grid{grid-template-columns:1fr}
+.data-table-head{display:none}
+.data-table-row{grid-template-columns:1fr 1fr;gap:8px 12px}
+.kw-head{display:none}
+.kw-row{grid-template-columns:1fr 1fr;gap:8px 12px}
+.bar-row{grid-template-columns:1fr;gap:6px}
+.bar-pct{text-align:left}
+.action-row{grid-template-columns:1fr;gap:10px}
+}
 </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- HERO -->
-  <div class="hero">
-    <span class="pill">Website Quality Audit</span>
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Dentist Nerds · SEO Intelligence</div>
     <h1>Palo Alto Advanced Dentists</h1>
-    <p class="lede">Comprehensive SEO &amp; digital presence audit for paloaltoadvanceddentists.com. Critical situation: a recent website redesign has put years of earned SEO at serious risk. This report explains what's at stake, who the competition is, and exactly how Dentist Nerds will protect and grow this practice's online presence.</p>
-
-    <div class="hero-stats">
-      <div class="hstat"><div class="n amber">705</div><div class="l">Ranking Keywords</div></div>
-      <div class="hstat"><div class="n amber">529</div><div class="l">Organic Sessions/mo</div></div>
-      <div class="hstat"><div class="n red">10</div><div class="l">Authority Score</div></div>
-      <div class="hstat"><div class="n amber">192</div><div class="l">Referring Domains</div></div>
-      <div class="hstat"><div class="n red">1</div><div class="l">Page (New Site)</div></div>
+    <div class="hero-sub">Website Quality Audit · May 2026 · paloaltoadvanceddentists.com</div>
+    <p class="hero-desc">A new single-page website has replaced a mature ProSites site that ranked for over 700 keywords. This audit quantifies what is now at risk and lays out the emergency rescue and rebuild plan to protect years of SEO equity.</p>
+    <div class="hero-kpis">
+      <div class="hero-kpi"><div class="hero-kpi-num amber">705</div><div class="hero-kpi-label">Ranking Keywords</div></div>
+      <div class="hero-kpi"><div class="hero-kpi-num amber">529</div><div class="hero-kpi-label">Organic Sessions / mo</div></div>
+      <div class="hero-kpi"><div class="hero-kpi-num red">10</div><div class="hero-kpi-label">Authority Score</div></div>
+      <div class="hero-kpi"><div class="hero-kpi-num amber">192</div><div class="hero-kpi-label">Referring Domains</div></div>
+      <div class="hero-kpi"><div class="hero-kpi-num red">1</div><div class="hero-kpi-label">Pages (New Site)</div></div>
     </div>
-    <p class="prepared">Prepared May 2026 &middot; Data via Semrush &middot; paloaltoadvanceddentists.com</p>
+    <div class="hero-prepared">Prepared by Dentist Nerds · Data via Semrush · May 2026</div>
   </div>
+</header>
 
-  <hr class="div" />
-
-  <!-- URGENT WARNING BANNER -->
-  <div class="warning-banner">
-    <div class="wb-label">Urgent &mdash; Action Required Now</div>
-    <div class="wb-title">The New Website Is a Risk to Years of Earned SEO</div>
-    <div class="wb-body">The practice recently switched from ProSites to a new single-page website design. The old site had service pages, blog posts, and years of indexed content &mdash; and was ranking for 711 keywords with ~500 monthly visitors. The new site has <strong>one page</strong> and looks AI-generated. Google will begin devaluing the rankings tied to old URLs within weeks. Without action to recreate those pages, the practice will lose all of that SEO equity &mdash; traffic that took years and thousands of dollars to build.</div>
+<!-- URGENT BANNER -->
+<section class="dark urgent">
+  <div class="wrap">
+    <div class="section-eyebrow">Critical Warning</div>
+    <h2>The New Website Is Putting Years of SEO at Risk</h2>
+    <p>The practice recently switched from ProSites to a new single-page website. The old site ranked for 711 keywords with roughly 500 monthly visitors. The new site has ONE page and appears AI-generated — no service pages, no doctor bios, no trust signals. Google will begin devaluing those old URL rankings within weeks. Without action to recreate those pages, years of SEO equity will be lost.</p>
+    <div class="redbox"><strong style="color:#f87171">Time-sensitive:</strong> <span style="color:#cdd6e1">The window to recover the old site from archive and rebuild before rankings collapse is 60–90 days. Every week of delay erodes recoverable equity.</span></div>
   </div>
+</section>
 
-  <hr class="div" />
-
-  <!-- TOC -->
-  <div class="toc">
-    <div class="toc-label">The Four Questions This Report Answers</div>
-    <div class="toc-grid">
-      <div class="toc-item">
-        <div class="n">1</div>
-        <div>
-          <div class="t">Who are the primary competitors?</div>
-          <div class="d">Top Palo Alto dental practices winning your searches</div>
-        </div>
-      </div>
-      <div class="toc-item">
-        <div class="n">2</div>
-        <div>
-          <div class="t">What % of search volume do they get?</div>
-          <div class="d">Semrush share-of-voice: total + commercial-intent</div>
-        </div>
-      </div>
-      <div class="toc-item">
-        <div class="n">3</div>
-        <div>
-          <div class="t">Where are the areas of opportunity?</div>
-          <div class="d">6 specific gaps with growth potential</div>
-        </div>
-      </div>
-      <div class="toc-item">
-        <div class="n">4</div>
-        <div>
-          <div class="t">What can Dentist Nerds do to help?</div>
-          <div class="d">Full rebuild plan across website, SEO, GBP &amp; links</div>
-        </div>
-      </div>
+<!-- KEY FINDINGS -->
+<section class="light">
+  <div class="wrap">
+    <div class="section-eyebrow">Key Findings</div>
+    <h2 class="section-title">Six Findings That Demand Action</h2>
+    <p class="section-intro">The new site looks clean on the surface, but structurally it cannot hold the rankings the old site earned. Here is what the data shows.</p>
+    <div class="findings-list">
+      <div class="finding"><div class="finding-icon red">1</div><div><div class="finding-title">Single-Page Site — Cannot Rank</div><div class="finding-desc">Everything is on one page. Google cannot rank a single URL for multiple keywords. It is architecturally impossible to hold the 711+ keyword rankings on one page.</div></div></div>
+      <div class="finding"><div class="finding-icon amber">2</div><div><div class="finding-title">Looks AI-Generated — Damages Trust</div><div class="finding-desc">No authentic photos, no doctor bios, no patient testimonials. Visitors won’t convert to booked appointments when the site signals are this thin.</div></div></div>
+      <div class="finding"><div class="finding-icon red">3</div><div><div class="finding-title">711 Keywords at Immediate Risk</div><div class="finding-desc">Old ProSites URLs still indexed act as a temporary ranking buffer. Once Google re-crawls and finds them gone, all rankings collapse. There is a 60–90 day window.</div></div></div>
+      <div class="finding"><div class="finding-icon blue">4</div><div><div class="finding-title">529 Visits / Month — Almost All Branded</div><div class="finding-desc">Nearly all traffic is from patients who already know the practice name. Commercial-intent searches (implants, periodontics, dentist palo alto) bring minimal traffic.</div></div></div>
+      <div class="finding"><div class="finding-icon amber">5</div><div><div class="finding-title">Authority Score 10/100</div><div class="finding-desc">Thin relative to local competitors. 192 referring domains but low quality, which makes recovery slower once content is rebuilt.</div></div></div>
+      <div class="finding"><div class="finding-icon purple">6</div><div><div class="finding-title">Strong Services — Zero Online Visibility</div><div class="finding-desc">Implants, periodontics, orthodontics, cosmetic, emergency care — all offered, none rankable. Every high-value service is invisible online.</div></div></div>
     </div>
   </div>
+</section>
 
-  <hr class="div" />
-
-  <!-- KEY FINDINGS -->
-  <div>
-    <div class="eyebrow">Executive Summary</div>
-    <h2 class="sec">Key Findings</h2>
-
-    <div class="findings">
-      <div class="finding">
-        <span class="icon">&#9888;&#65039;</span>
-        <h4>Single-Page Site &mdash; Cannot Rank for Any Keyword</h4>
-        <p>The new website has everything on one page with no dedicated service pages. Google cannot rank a single page for multiple keywords. It is architecturally impossible for this site to hold or grow the 711+ keyword rankings the old site had built.</p>
-      </div>
-      <div class="finding">
-        <span class="icon">&#129302;</span>
-        <h4>Looks AI-Generated &mdash; Damages Trust &amp; Conversions</h4>
-        <p>The new design doesn't look like a real dental practice website. It lacks authentic photos, patient testimonials, doctor bios, and the visual trust signals patients expect. Visitors who land on it are unlikely to convert to booked appointments.</p>
-      </div>
-      <div class="finding">
-        <span class="icon">&#128201;</span>
-        <h4>711 Keywords at Risk of Being Lost</h4>
-        <p>The old ProSites website was indexed across dozens of pages &mdash; each targeting different services and keywords. When Google re-crawls and finds those URLs either gone or redirected to a thin homepage, those rankings will collapse. This is not hypothetical &mdash; it's a predictable outcome.</p>
-      </div>
-      <div class="finding">
-        <span class="icon">&#128269;</span>
-        <h4>529 Visits/Month &mdash; Almost Entirely Branded</h4>
-        <p>Of the ~529 organic monthly sessions, the majority come from people searching the practice name directly. Commercial-intent searches &mdash; &ldquo;dentist palo alto,&rdquo; &ldquo;dental implants palo alto,&rdquo; &ldquo;periodontist palo alto&rdquo; &mdash; bring in minimal traffic because the content to capture them no longer exists.</p>
-      </div>
-      <div class="finding">
-        <span class="icon">&#128202;</span>
-        <h4>Authority Score 10/100 &mdash; Bottom of Market</h4>
-        <p>With 192 referring domains but an Authority Score of just 10, the practice's backlink profile is thin relative to Palo Alto competitors. This makes it even harder to recover rankings quickly once the content gaps are filled.</p>
-      </div>
-      <div class="finding">
-        <span class="icon">&#127973;</span>
-        <h4>Strong Service Footprint &mdash; None of It Online</h4>
-        <p>The practice offers implants, periodontics, orthodontics, cosmetic dentistry, emergency care, and more. These are high-value, high-search-volume services &mdash; but none have a dedicated page. All that revenue opportunity is invisible online.</p>
-      </div>
+<!-- COMPETITORS -->
+<section class="paper">
+  <div class="wrap">
+    <div class="section-eyebrow">Competitive Landscape</div>
+    <h2 class="section-title">Who Is Winning the Searches You Need</h2>
+    <p class="section-intro">Semrush identifies the top Palo Alto and Peninsula dental practices winning the searches this practice needs to win.</p>
+    <div class="data-table">
+      <div class="data-table-head"><div>Practice</div><div>AS</div><div>Keywords</div><div>Traffic/mo</div><div>Backlinks</div><div>Position</div></div>
+      <div class="data-table-row"><div class="dt-name">University Dental PA<small>universitydentalpaloalto.com</small></div><div>18</div><div>820</div><div>1,240</div><div>680</div><div class="dt-pos" style="color:var(--green)">Leader</div></div>
+      <div class="data-table-row"><div class="dt-name">Oshman Family Dentistry<small>oshmanfamilydentistry.com</small></div><div>16</div><div>610</div><div>890</div><div>520</div><div class="dt-pos" style="color:var(--green)">Strong #2</div></div>
+      <div class="data-table-row"><div class="dt-name">Peninsula Perio &amp; Implants<small>peninsulaperioimplants.com</small></div><div>14</div><div>490</div><div>710</div><div>390</div><div class="dt-pos" style="color:var(--blue-deep)">Specialist</div></div>
+      <div class="data-table-row"><div class="dt-name">Menlo Park Cosmetic<small>menloparkcosmeticdentistry.com</small></div><div>12</div><div>380</div><div>560</div><div>290</div><div class="dt-pos" style="color:var(--slate)">Tier 2</div></div>
+      <div class="data-table-row subject"><div class="dt-name">Palo Alto Advanced Dentists <span style="color:var(--red)">(Subject)</span><small>paloaltoadvanceddentists.com</small></div><div>10</div><div>705</div><div>529</div><div>764</div><div class="dt-pos" style="color:var(--red)">AT RISK</div></div>
+    </div>
+    <div class="comp-desc-grid">
+      <div class="comp-card"><h4>University Dental PA</h4><p>The market leader with the deepest content footprint and strongest authority. Dominates broad and commercial-intent queries across Palo Alto.</p></div>
+      <div class="comp-card"><h4>Oshman Family Dentistry</h4><p>A well-rounded family practice with solid service-page coverage and a steady backlink profile. Consistently ranks just behind the leader.</p></div>
+      <div class="comp-card"><h4>Peninsula Perio &amp; Implants</h4><p>A specialist practice that owns high-value implant and periodontal queries. Punches above its size on commercial-intent terms.</p></div>
+      <div class="comp-card"><h4>Menlo Park Cosmetic</h4><p>A focused cosmetic practice with lighter authority but targeted ranking pages. Captures meaningful cosmetic and whitening traffic nearby.</p></div>
     </div>
   </div>
+</section>
 
-  <hr class="div" />
+<!-- SEARCH SHARE -->
+<section class="light">
+  <div class="wrap">
+    <div class="section-eyebrow">Search Share Analysis</div>
+    <h2 class="section-title">Share of the Local Search Market</h2>
+    <p class="section-intro">Two views of search share: total estimated organic sessions, and the commercial-intent searches that actually book high-value treatment.</p>
 
-  <!-- QUESTION 1 -->
-  <div>
-    <div class="eyebrow">Question 1 of 4</div>
-    <div class="q-header">
-      <div class="q-num">01</div>
-      <div class="q-title">Who Are the Primary Competitors?</div>
-    </div>
-    <p class="intro">Semrush identifies the top Palo Alto and nearby Peninsula dental practices currently winning the same searches Palo Alto Advanced Dentists needs to win. These are the practices your prospective patients are finding instead of you.</p>
-
-    <div class="comp-table-wrap">
-      <div class="border-wrap">
-        <div class="comp-row head">
-          <div>Practice</div>
-          <div class="num">AS</div>
-          <div class="num">Keywords</div>
-          <div class="num">Traffic/mo</div>
-          <div class="num">Backlinks</div>
-          <div class="num">Position</div>
-        </div>
-        <div class="comp-row">
-          <div class="nm">universitydentalpaloalto.com<span class="sub">University Dental &mdash; Palo Alto</span></div>
-          <div class="num">18</div>
-          <div class="num">820</div>
-          <div class="num"><strong>1,240</strong></div>
-          <div class="num">680</div>
-          <div class="num"><span class="tag good">Leader</span></div>
-        </div>
-        <div class="comp-row">
-          <div class="nm">oshmanfamilydentistry.com<span class="sub">Oshman Family Dentistry</span></div>
-          <div class="num">16</div>
-          <div class="num">610</div>
-          <div class="num"><strong>890</strong></div>
-          <div class="num">520</div>
-          <div class="num"><span class="tag good">Strong #2</span></div>
-        </div>
-        <div class="comp-row">
-          <div class="nm">peninsulaperioimplants.com<span class="sub">Peninsula Perio &amp; Implants</span></div>
-          <div class="num">14</div>
-          <div class="num">490</div>
-          <div class="num"><strong>710</strong></div>
-          <div class="num">390</div>
-          <div class="num"><span class="tag info">Specialist Competitor</span></div>
-        </div>
-        <div class="comp-row">
-          <div class="nm">menloparkcosmeticdentistry.com<span class="sub">Menlo Park Cosmetic Dentistry</span></div>
-          <div class="num">12</div>
-          <div class="num">380</div>
-          <div class="num"><strong>560</strong></div>
-          <div class="num">290</div>
-          <div class="num"><span class="tag info">Tier 2</span></div>
-        </div>
-        <div class="comp-row you">
-          <div class="nm"><strong>paloaltoadvanceddentists.com</strong> (Subject)<span class="sub">Palo Alto Advanced Dentists</span></div>
-          <div class="num">10</div>
-          <div class="num">705</div>
-          <div class="num"><strong>529</strong></div>
-          <div class="num">764</div>
-          <div class="num"><span class="tag bad">At Risk</span></div>
-        </div>
-      </div>
+    <div class="share-block">
+      <h3>View A — Total Search Share</h3>
+      <div class="share-meta">Across ~3,929 estimated monthly organic sessions among the five practices</div>
+      <div class="bar-row"><div class="bar-label">University Dental PA</div><div class="bar-track"><div class="bar-fill" style="width:31.6%"></div></div><div class="bar-pct">31.6%</div></div>
+      <div class="bar-row"><div class="bar-label">Oshman Family</div><div class="bar-track"><div class="bar-fill" style="width:22.7%"></div></div><div class="bar-pct">22.7%</div></div>
+      <div class="bar-row"><div class="bar-label">Peninsula Perio</div><div class="bar-track"><div class="bar-fill" style="width:18.1%"></div></div><div class="bar-pct">18.1%</div></div>
+      <div class="bar-row"><div class="bar-label">Menlo Park Cosmetic</div><div class="bar-track"><div class="bar-fill" style="width:14.3%"></div></div><div class="bar-pct">14.3%</div></div>
+      <div class="bar-row"><div class="bar-label subject">Palo Alto Advanced (Subject)</div><div class="bar-track"><div class="bar-fill subject" style="width:13.5%"></div></div><div class="bar-pct subject">13.5%</div></div>
     </div>
 
-    <div class="info-box">
-      <strong>The competitive picture at a glance:</strong>
-      <br><br>
-      <strong>University Dental Palo Alto</strong> &mdash; The current local leader. Well-structured site with full service pages, blog content, and a GBP with strong reviews. Ranking for all the key Palo Alto dental terms this practice should be winning.
-      <br><br>
-      <strong>Oshman Family Dentistry</strong> &mdash; Strong second place with a content-rich site and active review acquisition. Visible across both general dentistry and cosmetic terms in the Palo Alto / Menlo Park area.
-      <br><br>
-      <strong>Peninsula Perio &amp; Implants</strong> &mdash; A direct specialist competitor. Ranking for high-value implant and periodontal terms that Palo Alto Advanced Dentists offers but cannot currently rank for due to the single-page site.
-      <br><br>
-      <strong>Menlo Park Cosmetic Dentistry</strong> &mdash; Mid-tier cosmetic competitor capturing cosmetic and aesthetic dentistry searches across the broader Palo Alto / Menlo Park corridor.
+    <div class="share-block">
+      <h3>View B — Commercial-Intent Search Share</h3>
+      <div class="share-meta">Across ~1,800 high-value, treatment-booking sessions (implants, perio, cosmetic, emergency)</div>
+      <div class="bar-row"><div class="bar-label">University Dental PA</div><div class="bar-track"><div class="bar-fill" style="width:38.2%"></div></div><div class="bar-pct">38.2%</div></div>
+      <div class="bar-row"><div class="bar-label">Oshman Family</div><div class="bar-track"><div class="bar-fill" style="width:26.4%"></div></div><div class="bar-pct">26.4%</div></div>
+      <div class="bar-row"><div class="bar-label">Peninsula Perio</div><div class="bar-track"><div class="bar-fill" style="width:17.7%"></div></div><div class="bar-pct">17.7%</div></div>
+      <div class="bar-row"><div class="bar-label">Menlo Park Cosmetic</div><div class="bar-track"><div class="bar-fill" style="width:11.3%"></div></div><div class="bar-pct">11.3%</div></div>
+      <div class="bar-row"><div class="bar-label subject">Palo Alto Advanced (Subject) — LAST</div><div class="bar-track"><div class="bar-fill subject" style="width:6.4%"></div></div><div class="bar-pct subject">6.4%</div></div>
+    </div>
+
+    <div class="callout red"><strong>Only 6.4% of commercial-intent search volume — dead last.</strong> The new single-page site will push this even lower within 60–90 days if action isn’t taken.</div>
+  </div>
+</section>
+
+<!-- OPPORTUNITIES -->
+<section class="paper">
+  <div class="wrap">
+    <div class="section-eyebrow">Opportunities</div>
+    <h2 class="section-title">Where the Recovery Comes From</h2>
+    <p class="section-intro">Six high-leverage opportunities to recover lost equity and grow into the commercial-intent market.</p>
+    <div class="pgrid">
+      <div class="pcard"><div class="pcard-num">Opportunity 01</div><div class="pcard-title">Rescue &amp; Rebuild from Archive</div><div class="pcard-desc">Use Wayback Machine to recover old ProSites pages before Google drops rankings. Protects ~500+ visits/mo.</div></div>
+      <div class="pcard"><div class="pcard-num">Opportunity 02</div><div class="pcard-title">Dental Implants — Top-3 Push</div><div class="pcard-desc">“Dental implants palo alto” (110/mo, $25.47 CPC). Currently ranking but at risk. A dedicated implant page = $3K–$6K per case, 20–40 cases/yr.</div></div>
+      <div class="pcard"><div class="pcard-num">Opportunity 03</div><div class="pcard-title">Periodontics Rankings</div><div class="pcard-desc">Ranks #1 for “gum surgery palo alto” and “gum recession treatment palo alto” — but only on borrowed time. Periodontal cases: $1,500–$4,000 each.</div></div>
+      <div class="pcard"><div class="pcard-num">Opportunity 04</div><div class="pcard-title">GBP &amp; Local Pack</div><div class="pcard-desc">“Dentist palo alto” (390/mo). GBP optimization + reviews = Local Pack entry = 3–5× more clicks than organic position 3.</div></div>
+      <div class="pcard"><div class="pcard-num">Opportunity 05</div><div class="pcard-title">Blog Recovery + AI Visibility</div><div class="pcard-desc">Old blog contributed to the 711-keyword footprint. Recover + add FAQ schema = Google AI Overview citations competitors haven’t optimized for.</div></div>
+      <div class="pcard"><div class="pcard-num">Opportunity 06</div><div class="pcard-title">Backlink Cleanup + Citations</div><div class="pcard-desc">764 BL, AS 10. Disavow toxics + build Healthgrades, Zocdoc, Vitals, Chamber = AS lift to 18–22 within 12 months.</div></div>
     </div>
   </div>
+</section>
 
-  <hr class="div" />
+<!-- ACTION PLAN -->
+<section class="dark">
+  <div class="wrap">
+    <div class="section-eyebrow">The Plan</div>
+    <h2 class="section-title">90-Day Rescue &amp; Rebuild Action Plan</h2>
+    <p class="section-intro">Twelve prioritized actions across four phases — starting with emergency archive recovery and moving through rebuild, expansion, and ongoing management.</p>
 
-  <!-- QUESTION 2 -->
-  <div>
-    <div class="eyebrow">Question 2 of 4</div>
-    <div class="q-header">
-      <div class="q-num">02</div>
-      <div class="q-title">What % of Search Volume Do Competitors Get vs. This Practice?</div>
-    </div>
-    <p class="intro">Two views of share. The first shows total Semrush traffic (branded + commercial). The second strips branded searches to reveal the share of <em>real, prospective-patient demand</em> &mdash; the searches that drive new appointments. This is where the problem becomes most visible.</p>
-
-    <h3 class="sub" style="margin-top:8px">View A: Total Search Volume Share</h3>
-    <p style="font-size:13px;color:#64748b;margin-bottom:8px">All organic sessions per month (branded + commercial), split across the top 5 Palo Alto area dental practices.</p>
-    <div class="share-toggle">
-      <span class="toggle-tag">Total: ~3,929 sessions/mo across all 5 practices</span>
-    </div>
-    <div class="share-list">
-      <div class="share-row leader">
-        <div class="head"><span class="nm">University Dental Palo Alto</span><span class="pct big">31.6%</span></div>
-        <div class="track"><div class="fill" style="width:31.6%"></div></div>
-      </div>
-      <div class="share-row">
-        <div class="head"><span class="nm">Oshman Family Dentistry</span><span class="pct big">22.7%</span></div>
-        <div class="track"><div class="fill" style="width:22.7%"></div></div>
-      </div>
-      <div class="share-row you">
-        <div class="head"><span class="nm">Palo Alto Advanced Dentists (Subject)</span><span class="pct big">13.5%</span></div>
-        <div class="track"><div class="fill" style="width:13.5%"></div></div>
-      </div>
-      <div class="share-row">
-        <div class="head"><span class="nm">Peninsula Perio &amp; Implants</span><span class="pct big">18.1%</span></div>
-        <div class="track"><div class="fill" style="width:18.1%"></div></div>
-      </div>
-      <div class="share-row">
-        <div class="head"><span class="nm">Menlo Park Cosmetic Dentistry</span><span class="pct big">14.3%</span></div>
-        <div class="track"><div class="fill" style="width:14.3%"></div></div>
-      </div>
+    <div class="phase-label">Phase 1 — Emergency Rescue (Days 1–14)</div>
+    <div class="action-list">
+      <div class="action-row"><div class="action-num">1</div><div class="action-body"><h4>Archive Old Website</h4><p>Pull the ProSites site from Wayback Machine. Recover every URL, service page, and blog post before Google fully drops them.</p></div><div class="action-tag immediate">Immediate</div></div>
+      <div class="action-row"><div class="action-num">2</div><div class="action-body"><h4>Map Old URLs → New Structure</h4><p>Build a redirect map. Preserve link equity. Tell Google where content moved.</p></div><div class="action-tag immediate">Immediate</div></div>
+      <div class="action-row"><div class="action-num">3</div><div class="action-body"><h4>New Website Design Brief</h4><p>Define the design standard: professional photos, doctor bios, trust signals, service-page architecture, conversion CTAs.</p></div><div class="action-tag immediate">Immediate</div></div>
     </div>
 
-    <h3 class="sub" style="margin-top:32px">View B: Commercial-Intent Search Share (Non-Branded)</h3>
-    <p style="font-size:13px;color:#64748b;margin-bottom:8px">After stripping branded searches (people who already know the practice name), this is the share of <em>new patient demand</em> &mdash; searches like &ldquo;dentist palo alto,&rdquo; &ldquo;dental implants palo alto,&rdquo; &ldquo;periodontist palo alto ca.&rdquo; This is the number that predicts growth.</p>
-    <div class="share-toggle">
-      <span class="toggle-tag">~1,800 commercial-intent sessions/mo across the top 5</span>
-    </div>
-    <div class="share-list">
-      <div class="share-row leader">
-        <div class="head"><span class="nm">University Dental Palo Alto</span><span class="pct big">38.2%</span></div>
-        <div class="track"><div class="fill" style="width:38.2%"></div></div>
-      </div>
-      <div class="share-row">
-        <div class="head"><span class="nm">Oshman Family Dentistry</span><span class="pct big">26.4%</span></div>
-        <div class="track"><div class="fill" style="width:26.4%"></div></div>
-      </div>
-      <div class="share-row">
-        <div class="head"><span class="nm">Peninsula Perio &amp; Implants</span><span class="pct big">17.7%</span></div>
-        <div class="track"><div class="fill" style="width:17.7%"></div></div>
-      </div>
-      <div class="share-row">
-        <div class="head"><span class="nm">Menlo Park Cosmetic Dentistry</span><span class="pct big">11.3%</span></div>
-        <div class="track"><div class="fill" style="width:11.3%"></div></div>
-      </div>
-      <div class="share-row you">
-        <div class="head"><span class="nm">Palo Alto Advanced Dentists (Subject)</span><span class="pct big">6.4%</span></div>
-        <div class="track"><div class="fill" style="width:6.4%"></div></div>
-      </div>
+    <div class="phase-label">Phase 2 — Rebuild Foundation (Days 15–45)</div>
+    <div class="action-list">
+      <div class="action-row"><div class="action-num">4</div><div class="action-body"><h4>Rebuild All Service Pages</h4><p>Implants, periodontics, gum grafting, cosmetic, Invisalign/braces, emergency, endodontics, bone graft, sinus lift. Each with title tags, meta, H1/H2, FAQ schema.</p></div><div class="action-tag high">High</div></div>
+      <div class="action-row"><div class="action-num">5</div><div class="action-body"><h4>Deploy Schema &amp; E-E-A-T Markup</h4><p>Dentist + LocalBusiness schema, Doctor/Person schema, FAQ schema, breadcrumbs. Critical for rankings and AI Overviews.</p></div><div class="action-tag high">High</div></div>
+      <div class="action-row"><div class="action-num">6</div><div class="action-body"><h4>GBP Optimization</h4><p>Full profile: services, photos, appointment links, Q&amp;A, review acquisition system. Fastest path to Local Pack for “dentist palo alto” (390/mo).</p></div><div class="action-tag high">High</div></div>
     </div>
 
-    <div class="alert-red">
-      <strong>The bottom line:</strong> Palo Alto Advanced Dentists captures only <strong>6.4% of commercial-intent search volume</strong> &mdash; dead last among the top 5 competitors in the market. Nearly all of this practice's current traffic is from people already searching for it by name. The new single-page website guarantees this share will drop further unless immediate action is taken. The old ProSites site was actively competing with 711 keywords &mdash; <strong>that equity will evaporate within 60&ndash;90 days</strong> if the content is not recreated.
+    <div class="phase-label">Phase 3 — Expand Visibility (Days 46–90)</div>
+    <div class="action-list">
+      <div class="action-row"><div class="action-num">7</div><div class="action-body"><h4>Backlink Audit &amp; Cleanup</h4><p>Audit 764 backlinks. Disavow toxic links. Build Healthgrades, Zocdoc, Vitals, 1-800-Dentist, Apple Maps, Nextdoor, Palo Alto Chamber.</p></div><div class="action-tag medium">Medium</div></div>
+      <div class="action-row"><div class="action-num">8</div><div class="action-body"><h4>Link Building Campaign</h4><p>Stanford area directories, Silicon Valley press, dental associations. Target: AS lift from 10 → 18–22 in 12 months.</p></div><div class="action-tag medium">Medium</div></div>
+      <div class="action-row"><div class="action-num">9</div><div class="action-body"><h4>AI Visibility Optimization</h4><p>Structure content for ChatGPT/Perplexity/Google AI Overviews. FAQ schema answering “best dentist palo alto,” “dental implant cost palo alto,” etc.</p></div><div class="action-tag medium">Medium</div></div>
+    </div>
+
+    <div class="phase-label">Phase 4 — Ongoing</div>
+    <div class="action-list">
+      <div class="action-row"><div class="action-num">10</div><div class="action-body"><h4>Monthly Performance Reports</h4><p>Traffic, keyword positions, GBP stats, review count, new backlinks, AI visibility.</p></div><div class="action-tag ongoing">Ongoing</div></div>
+      <div class="action-row"><div class="action-num">11</div><div class="action-body"><h4>Content Engine</h4><p>1–2 blog posts/month targeting Palo Alto patient questions. Every post links to a service page, formatted for AI citation.</p></div><div class="action-tag ongoing">Ongoing</div></div>
+      <div class="action-row"><div class="action-num">12</div><div class="action-body"><h4>GBP Monthly Management</h4><p>Weekly posts, photos, Q&amp;A, review responses. The highest-ROI local SEO activity for dental practices.</p></div><div class="action-tag ongoing">Ongoing</div></div>
+    </div>
+
+    <div class="outcome-box">
+      <h4>Projected Outcome</h4>
+      <p>Commercial search share grows from 6.4% → 18–24%. Organic traffic grows from 529/mo → 1,200–1,800/mo. GBP Local Pack entry for “dentist palo alto” and “dental implants palo alto.” Authority Score lifts to 18–22. All reported monthly.</p>
     </div>
   </div>
+</section>
 
-  <hr class="div" />
-
-  <!-- QUESTION 3 -->
-  <div>
-    <div class="eyebrow">Question 3 of 4</div>
-    <div class="q-header">
-      <div class="q-num">03</div>
-      <div class="q-title">Where Are the Areas of Opportunity?</div>
+<!-- KEYWORD TABLE -->
+<section class="paper">
+  <div class="wrap">
+    <div class="section-eyebrow">Supporting Data</div>
+    <h2 class="section-title">Current Rankings — What’s At Risk</h2>
+    <p class="section-intro">These positions exist today only because the old ProSites pages remain in Google’s index. Most of them have no corresponding page on the new site.</p>
+    <div class="kw-table">
+      <div class="kw-head"><div>Keyword</div><div>Position</div><div>Volume</div><div>CPC</div><div>Status</div></div>
+      <div class="kw-row"><div class="kw-kw">palo alto advanced dentists</div><div>1</div><div>260</div><div>$1.99</div><div><span class="tag tag-good">Branded — Stable</span></div></div>
+      <div class="kw-row"><div class="kw-kw">palo alto dentist</div><div>3</div><div>390</div><div>$5.47</div><div><span class="tag tag-warn">At Risk</span></div></div>
+      <div class="kw-row"><div class="kw-kw">dentist palo alto ca</div><div>1</div><div>170</div><div>$6.37</div><div><span class="tag tag-good">Must Protect</span></div></div>
+      <div class="kw-row"><div class="kw-kw">immediate implants palo alto</div><div>1</div><div>50</div><div>—</div><div><span class="tag tag-bad">Will Drop — No Implant Page</span></div></div>
+      <div class="kw-row"><div class="kw-kw">emergency dentist palo alto</div><div>2</div><div>170</div><div>—</div><div><span class="tag tag-bad">Will Drop — No Emergency Page</span></div></div>
+      <div class="kw-row"><div class="kw-kw">gum surgery palo alto</div><div>1</div><div>40</div><div>—</div><div><span class="tag tag-bad">Will Drop — No Perio Page</span></div></div>
+      <div class="kw-row"><div class="kw-kw">periodontist palo alto</div><div>2</div><div>70</div><div>$6.33</div><div><span class="tag tag-bad">Will Drop — No Perio Page</span></div></div>
+      <div class="kw-row"><div class="kw-kw">dental implants palo alto</div><div>5</div><div>110</div><div>$25.47</div><div><span class="tag tag-bad">Needs Dedicated Page</span></div></div>
+      <div class="kw-row"><div class="kw-kw">ceramic braces palo alto</div><div>2</div><div>50</div><div>—</div><div><span class="tag tag-bad">Will Drop — No Ortho Page</span></div></div>
+      <div class="kw-row"><div class="kw-kw">gum recession treatment palo alto</div><div>1</div><div>40</div><div>—</div><div><span class="tag tag-bad">Will Drop — No Perio Page</span></div></div>
+      <div class="kw-row"><div class="kw-kw">palo alto invisalign</div><div>2</div><div>30</div><div>$7.23</div><div><span class="tag tag-warn">At Risk</span></div></div>
+      <div class="kw-row"><div class="kw-kw">dental bone graft palo alto</div><div>3</div><div>40</div><div>—</div><div><span class="tag tag-bad">Will Drop — No Surgery Page</span></div></div>
+      <div class="kw-row"><div class="kw-kw">teeth whitening palo alto</div><div>8</div><div>90</div><div>$2.70</div><div><span class="tag tag-bad">Needs Cosmetic Page</span></div></div>
     </div>
-    <p class="intro">Six concrete opportunities this practice can capture &mdash; most immediately through rebuilding what existed, then expanding with better SEO architecture than the old site ever had. Each one is sized using real Semrush search-volume data for the Palo Alto market.</p>
-
-    <div class="opp-grid">
-      <div class="opp-card">
-        <span class="lbl">Opportunity 01 &mdash; Immediate</span>
-        <h4>Rescue &amp; Rebuild Service Pages from the Old Site</h4>
-        <p>The old ProSites site ranked for 711 keywords because it had dedicated pages for implants, periodontics, cosmetic dentistry, emergency care, orthodontics, and more. By using the Wayback Machine archive, we can recover every page and rebuild them on the new site before Google fully drops those rankings.</p>
-        <p class="est">Protects: ~500+ existing monthly visits + future ranking growth</p>
-      </div>
-      <div class="opp-card">
-        <span class="lbl">Opportunity 02 &mdash; High Value</span>
-        <h4>Dental Implants Palo Alto &mdash; Top-3 Rankings</h4>
-        <p>&ldquo;Dental implants palo alto&rdquo; (110/mo, $25.47 CPC) and &ldquo;immediate implants palo alto&rdquo; (50/mo) are high-intent, high-value searches. The practice currently ranks for these but the new site puts them at risk. With a proper implants landing page, these can be moved to positions 1&ndash;3 and held.</p>
-        <p class="est">Avg implant case value: $3,000&ndash;$6,000 &middot; 20&ndash;40 cases/yr upside</p>
-      </div>
-      <div class="opp-card">
-        <span class="lbl">Opportunity 03 &mdash; High Value</span>
-        <h4>Periodontics &amp; Gum Treatment Rankings</h4>
-        <p>The practice ranks #1 for &ldquo;gum surgery palo alto&rdquo; (40/mo) and #1 for &ldquo;gum recession treatment palo alto&rdquo; (40/mo) &mdash; but only because of old site equity. These rankings will collapse without a dedicated periodontics page. Rebuilding and expanding this section captures &ldquo;periodontist palo alto&rdquo; (70/mo, $6.33 CPC) too.</p>
-        <p class="est">Periodontal cases: $1,500&ndash;$4,000 each &middot; protect + grow</p>
-      </div>
-      <div class="opp-card">
-        <span class="lbl">Opportunity 04 &mdash; Local Pack</span>
-        <h4>Google Business Profile &amp; Local Pack Domination</h4>
-        <p>&ldquo;Dentist palo alto&rdquo; (390/mo), &ldquo;palo alto dentist&rdquo; &mdash; the practice is currently at position 3 in organic for these terms. With GBP optimization, consistent reviews, local citations, and NAP cleanup, the practice can move into the Local Pack (Map Pack) and capture 30&ndash;40% of clicks for these terms.</p>
-        <p class="est">Local Pack visibility = 3&ndash;5&times; more clicks than organic position 3</p>
-      </div>
-      <div class="opp-card">
-        <span class="lbl">Opportunity 05 &mdash; Content</span>
-        <h4>Blog Recovery + AI Visibility Setup</h4>
-        <p>The old site had blog content that contributed significantly to the 711-keyword ranking footprint. Recovering those posts and reformatting them with FAQ schema, structured headings, and E-E-A-T signals gives the practice a shot at Google AI Overview citations &mdash; a critical visibility channel that competitors have not optimized for yet.</p>
-        <p class="est">AI Overviews = free top-of-page visibility for 50+ high-value queries</p>
-      </div>
-      <div class="opp-card">
-        <span class="lbl">Opportunity 06 &mdash; Authority</span>
-        <h4>Backlink Cleanup + New Local Citations</h4>
-        <p>With 764 backlinks from 192 domains but an Authority Score of just 10, the link profile has quality issues. Cleaning up low-authority and potentially toxic links, while adding new high-authority local citations (Yelp, Healthgrades, Zocdoc, Vitals, local Chamber), raises the floor Authority Score and improves rankings site-wide.</p>
-        <p class="est">Authority Score lift from 10 &rarr; 18&ndash;22 within 12 months</p>
-      </div>
-    </div>
-
-    <div class="info-box">
-      <strong>Combined priority:</strong> The highest-urgency action is the website rebuild &mdash; recovering old ProSites pages before rankings collapse. After that, the GBP and Local Pack represent the fastest path to new patient bookings. The implants and periodontics pages are the highest-revenue opportunities. Together, these actions can grow commercial search share from 6.4% to 20%+ within 12 months.
-    </div>
+    <div class="callout red"><strong>These rankings exist only because Google’s index still contains the old ProSites pages.</strong> Once re-crawled and found gone, all will drop — most within 60–90 days.</div>
   </div>
+</section>
 
-  <hr class="div" />
-
-  <!-- QUESTION 4 -->
-  <div>
-    <div class="eyebrow">Question 4 of 4</div>
-    <div class="q-header">
-      <div class="q-num">04</div>
-      <div class="q-title">What Can Dentist Nerds Do to Help?</div>
+<!-- MISSING PAGES -->
+<section class="light">
+  <div class="wrap">
+    <div class="section-eyebrow">Supporting Data</div>
+    <h2 class="section-title">24 Pages That Must Be Rebuilt</h2>
+    <p class="section-intro">Each of these pages existed on the old ProSites site and earned rankings. None exists on the new single-page site.</p>
+    <div class="chip-grid">
+      <span class="chip">Dental Implants PA</span>
+      <span class="chip">Immediate Implants</span>
+      <span class="chip">All-on-4 / All-on-X</span>
+      <span class="chip">Mini Dental Implants</span>
+      <span class="chip">Periodontics Overview</span>
+      <span class="chip">Gum Grafting / Recession</span>
+      <span class="chip">Pinhole Gum Technique</span>
+      <span class="chip">Sinus Augmentation</span>
+      <span class="chip">Bone Grafting</span>
+      <span class="chip">Cosmetic Dentistry</span>
+      <span class="chip">Teeth Whitening</span>
+      <span class="chip">Invisalign Palo Alto</span>
+      <span class="chip">Orthodontics / Braces</span>
+      <span class="chip">Ceramic Braces</span>
+      <span class="chip">Emergency Dentist</span>
+      <span class="chip">Endodontics / Root Canal</span>
+      <span class="chip">TMJ Treatment</span>
+      <span class="chip">Pediatric Dentistry</span>
+      <span class="chip">Oral Surgery</span>
+      <span class="chip">Blog / Patient Education</span>
+      <span class="chip">Patient FAQs</span>
+      <span class="chip">Financing / Insurance</span>
+      <span class="chip">Before &amp; After Gallery</span>
+      <span class="chip">Doctor Bio / About</span>
     </div>
-    <p class="intro">A structured rescue and growth plan in four phases. Phase 1 stops the bleeding immediately. Phase 2 builds the new foundation. Phase 3 expands visibility. Phase 4 compounds with ongoing SEO and reporting.</p>
-
-    <h3 class="sub" style="margin-top:8px">Phase 1 &middot; Days 1&ndash;14 &mdash; Emergency Rescue</h3>
-    <div class="deliver-grid">
-      <div class="deliver-card">
-        <div class="num">01</div>
-        <h4>Archive the Old Website</h4>
-        <p>Pull the full ProSites site from the Wayback Machine (web.archive.org). Recover every service page, blog post, and URL structure before they fade from Google's index. This is time-sensitive &mdash; every week of delay costs rankings.</p>
-      </div>
-      <div class="deliver-card">
-        <div class="num">02</div>
-        <h4>Map Old URLs &rarr; New Site Plan</h4>
-        <p>Create a complete redirect map and new site architecture that mirrors the old URL structure where possible. This preserves link equity and tells Google exactly where the content has moved. Prevents any remaining ranking loss from the redesign.</p>
-      </div>
-      <div class="deliver-card">
-        <div class="num">03</div>
-        <h4>New Website Design Brief</h4>
-        <p>The new site needs to look and feel like a premium Palo Alto dental practice &mdash; not AI-generated. We'll define a proper design standard: professional photography, authentic doctor bios, patient trust signals, service-page structure, and conversion-optimized CTAs.</p>
-      </div>
-    </div>
-
-    <h3 class="sub">Phase 2 &middot; Days 15&ndash;45 &mdash; Rebuild the Foundation</h3>
-    <div class="deliver-grid">
-      <div class="deliver-card">
-        <div class="num">04</div>
-        <h4>Rebuild Service Pages &amp; Blogs</h4>
-        <p>Recreate all service pages from the old site &mdash; implants, immediate implants, periodontics, gum grafting, cosmetic dentistry, orthodontics/braces, Invisalign, emergency dentistry, endodontics, bone grafting, sinus lift, and more. Recover and update all blog posts. Each page gets proper title tags, meta descriptions, H1/H2 structure, and FAQ schema.</p>
-      </div>
-      <div class="deliver-card">
-        <div class="num">05</div>
-        <h4>Deploy Schema &amp; E-E-A-T Markup</h4>
-        <p>Add Dentist + LocalBusiness schema, Doctor/Person schema for the practice physicians, FAQ schema on every service page, and breadcrumb schema. This is critical for both Google rankings and AI Overview citations &mdash; and the site currently has none of it.</p>
-      </div>
-      <div class="deliver-card">
-        <div class="num">06</div>
-        <h4>Google Business Profile Optimization</h4>
-        <p>Fully optimize the GBP with complete services, photos, appointment links, Q&amp;A, and a review acquisition system. Manage the listing monthly. A well-maintained GBP is the fastest way to appear in the Local Pack for &ldquo;dentist palo alto&rdquo; (390/mo), which drives high-intent new patients.</p>
-      </div>
-    </div>
-
-    <h3 class="sub">Phase 3 &middot; Days 46&ndash;90 &mdash; Expand Visibility</h3>
-    <div class="deliver-grid">
-      <div class="deliver-card">
-        <div class="num">07</div>
-        <h4>Backlink Audit &amp; Cleanup</h4>
-        <p>Audit all 764 backlinks for toxicity and low quality. Disavow harmful links dragging down the Authority Score. Then build new high-authority citations &mdash; Healthgrades, Zocdoc, Vitals, 1-800-Dentist, Bing Places, Apple Maps, Nextdoor, Palo Alto Chamber of Commerce, and local press.</p>
-      </div>
-      <div class="deliver-card">
-        <div class="num">08</div>
-        <h4>Link Building Campaign</h4>
-        <p>Target high-DA dental directories, Stanford area business directories, and local Palo Alto/Silicon Valley press for practice feature mentions. The goal is lifting Authority Score from 10 to 18&ndash;22 within 12 months, which meaningfully improves ranking positions across all keywords site-wide.</p>
-      </div>
-      <div class="deliver-card">
-        <div class="num">09</div>
-        <h4>Optimize for AI Visibility</h4>
-        <p>Structure content to answer the exact questions patients ask ChatGPT, Perplexity, and Google's AI Overviews: &ldquo;best dentist in palo alto,&rdquo; &ldquo;how much do dental implants cost palo alto,&rdquo; &ldquo;what is pinhole gum surgery.&rdquo; FAQ schema + clear, authoritative answers = free AI visibility that competitors aren't pursuing yet.</p>
-      </div>
-    </div>
-
-    <h3 class="sub">Phase 4 &middot; Ongoing &mdash; Monthly SEO &amp; Reporting</h3>
-    <div class="deliver-grid">
-      <div class="deliver-card">
-        <div class="num">10</div>
-        <h4>Monthly Performance Reports</h4>
-        <p>Every month: organic traffic, keyword position tracking, GBP performance, review count, new backlinks acquired, and AI visibility indicators. You'll always know exactly what's working and what's next.</p>
-      </div>
-      <div class="deliver-card">
-        <div class="num">11</div>
-        <h4>Ongoing Content Engine</h4>
-        <p>1&ndash;2 new blog posts per month targeting Palo Alto patient questions, seasonal dental topics, and long-tail keyword opportunities. Every post links to a service page and is formatted for AI Overview citation. This compounds month over month.</p>
-      </div>
-      <div class="deliver-card">
-        <div class="num">12</div>
-        <h4>GBP Monthly Management</h4>
-        <p>Weekly GBP posts, photo uploads, Q&amp;A management, review responses, and appointment link maintenance. Active GBP management is the single highest-ROI local SEO activity for a dental practice &mdash; it directly drives calls and booked appointments.</p>
-      </div>
-    </div>
-
-    <div class="info-box" style="margin-top:24px">
-      <strong>Projected 12-month outcome:</strong> By protecting and rebuilding the old content, the practice holds its existing 705-keyword footprint and expands it. Commercial search share grows from <strong>6.4% &rarr; 18&ndash;24%</strong>. Organic traffic grows from 529/mo &rarr; 1,200&ndash;1,800/mo with growth coming from service pages, not just the homepage. GBP Local Pack presence captures 30&ndash;50% of &ldquo;dentist palo alto&rdquo; and &ldquo;dental implants palo alto&rdquo; searches. Authority Score lifts to 18&ndash;22. All of this is reported monthly so you can see the ROI clearly.
-    </div>
+    <div class="callout amber"><strong>This is not starting from scratch.</strong> The old ProSites site had all of these pages. Rebuilding means recovering a proven asset using Wayback Machine archive data.</div>
   </div>
+</section>
 
-  <hr class="div" />
-
-  <!-- KEYWORD TABLE -->
-  <div>
-    <div class="eyebrow">Supporting Detail &middot; Keyword Analysis</div>
-    <h2 class="sec">Current Keyword Rankings &mdash; What's At Risk</h2>
-    <p class="intro">705 keywords currently ranking &mdash; a footprint built on years of work from the old ProSites site. Below are the most important keywords and their current status. These will collapse without the page rebuild.</p>
-
-    <div class="kw-circles">
-      <div class="kw-circle r1"><div class="ring">28</div><div class="lab">Top 10 Keywords</div></div>
-      <div class="kw-circle r2"><div class="ring">705</div><div class="lab">Total Keywords</div></div>
-      <div class="kw-circle r3"><div class="ring">$1,630</div><div class="lab">Est. Traffic Value/mo</div></div>
-    </div>
-
-    <table class="tbl">
-      <thead>
-        <tr><th>Keyword</th><th>Position</th><th>Volume</th><th>CPC</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="kw">palo alto advanced dentists</td><td class="pos">1</td><td>260</td><td>$1.99</td><td><span class="tag good">Branded &mdash; Stable</span></td></tr>
-        <tr class="row-warn"><td class="kw">palo alto dentist</td><td class="pos">3</td><td>390</td><td>$5.47</td><td><span class="tag warn">At Risk &mdash; No Service Page</span></td></tr>
-        <tr><td class="kw">dentist palo alto ca</td><td class="pos">1</td><td>170</td><td>$6.37</td><td><span class="tag good">Strong &mdash; Must Protect</span></td></tr>
-        <tr class="row-bad"><td class="kw">immediate implants palo alto</td><td class="pos">1</td><td>50</td><td>&mdash;</td><td><span class="tag bad">Will Drop &mdash; No Implant Page</span></td></tr>
-        <tr class="row-bad"><td class="kw">emergency dentist palo alto</td><td class="pos">2</td><td>170</td><td>&mdash;</td><td><span class="tag bad">Will Drop &mdash; No Emergency Page</span></td></tr>
-        <tr class="row-bad"><td class="kw">gum surgery palo alto</td><td class="pos">1</td><td>40</td><td>&mdash;</td><td><span class="tag bad">Will Drop &mdash; No Perio Page</span></td></tr>
-        <tr class="row-bad"><td class="kw">periodontist palo alto</td><td class="pos">2</td><td>70</td><td>$6.33</td><td><span class="tag bad">Will Drop &mdash; No Perio Page</span></td></tr>
-        <tr class="row-bad"><td class="kw">dental implants palo alto</td><td class="pos">5</td><td>110</td><td>$25.47</td><td><span class="tag bad">Needs Dedicated Page</span></td></tr>
-        <tr class="row-bad"><td class="kw">ceramic braces palo alto</td><td class="pos">2</td><td>50</td><td>&mdash;</td><td><span class="tag bad">Will Drop &mdash; No Ortho Page</span></td></tr>
-        <tr class="row-bad"><td class="kw">gum recession treatment palo alto</td><td class="pos">1</td><td>40</td><td>&mdash;</td><td><span class="tag bad">Will Drop &mdash; No Perio Page</span></td></tr>
-        <tr class="row-warn"><td class="kw">palo alto invisalign</td><td class="pos">2</td><td>30</td><td>$7.23</td><td><span class="tag warn">At Risk &mdash; No Invisalign Page</span></td></tr>
-        <tr class="row-bad"><td class="kw">dental bone graft palo alto</td><td class="pos">3</td><td>40</td><td>&mdash;</td><td><span class="tag bad">Will Drop &mdash; No Surgery Page</span></td></tr>
-        <tr class="row-bad"><td class="kw">sinus lift treatment palo alto</td><td class="pos">3</td><td>40</td><td>&mdash;</td><td><span class="tag bad">Will Drop &mdash; No Surgery Page</span></td></tr>
-        <tr class="row-bad"><td class="kw">endodontist palo alto</td><td class="pos">5</td><td>50</td><td>$4.28</td><td><span class="tag bad">Will Drop &mdash; No Endo Page</span></td></tr>
-        <tr class="row-bad"><td class="kw">teeth whitening palo alto</td><td class="pos">8</td><td>90</td><td>$2.70</td><td><span class="tag bad">Needs Cosmetic Page</span></td></tr>
-      </tbody>
-    </table>
-
-    <div class="alert-red">
-      <strong>These rankings are on borrowed time.</strong> The current keyword positions exist because Google's index still contains the old ProSites pages. Once Google re-crawls and finds those URLs gone or replaced by a single thin homepage, all of these will drop &mdash; most within 60&ndash;90 days. Rebuilding the service pages now is the only way to prevent this loss. Every week of delay costs real search visibility.
-    </div>
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">Dentist Nerds</div>
+    <div class="foot-meta">Prepared by Dentist Nerds · May 2026 · dentistnerds.com · Data via Semrush</div>
   </div>
+</footer>
 
-  <hr class="div" />
-
-  <!-- CONTENT GAP -->
-  <div>
-    <div class="eyebrow">Supporting Detail &middot; Content Gaps</div>
-    <h2 class="sec">Missing Pages &mdash; The Full Gap</h2>
-    <p class="intro">The new website has a single page. The old site had dedicated content for every service. Below is the full list of pages that need to be rebuilt to restore and grow search rankings.</p>
-
-    <div class="pages-section miss">
-      <h4>&#10007; Pages That Must Be Rebuilt (Currently Missing)</h4>
-      <div class="chips">
-        <div class="chip x">Dental Implants Palo Alto</div>
-        <div class="chip x">Immediate Implants / Same-Day</div>
-        <div class="chip x">All-on-4 / All-on-X</div>
-        <div class="chip x">Mini Dental Implants</div>
-        <div class="chip x">Periodontics Overview</div>
-        <div class="chip x">Gum Grafting / Recession</div>
-        <div class="chip x">Pinhole Gum Technique</div>
-        <div class="chip x">Sinus Augmentation</div>
-        <div class="chip x">Bone Grafting</div>
-        <div class="chip x">Cosmetic Dentistry</div>
-        <div class="chip x">Teeth Whitening</div>
-        <div class="chip x">Invisalign Palo Alto</div>
-        <div class="chip x">Orthodontics / Braces</div>
-        <div class="chip x">Ceramic Braces</div>
-        <div class="chip x">Emergency Dentist</div>
-        <div class="chip x">Endodontics / Root Canal</div>
-        <div class="chip x">TMJ Treatment</div>
-        <div class="chip x">Pediatric Dentistry</div>
-        <div class="chip x">Oral Surgery</div>
-        <div class="chip x">Blog / Patient Education</div>
-        <div class="chip x">Patient FAQs</div>
-        <div class="chip x">Financing / Insurance</div>
-        <div class="chip x">Before &amp; After Gallery</div>
-        <div class="chip x">Doctor Bio / About</div>
-      </div>
-    </div>
-
-    <div class="alert">
-      <strong>Every one of these pages represents real search volume</strong> in the Palo Alto market &mdash; and real revenue for the practice. The old ProSites site had all of them. Rebuilding is not starting from scratch: it's restoring a proven asset using recoverable archive data. This is a rescue operation, not a rebuild from zero &mdash; and it's entirely achievable.
-    </div>
-  </div>
-
-  <hr class="div" />
-
-  <!-- FOOTER -->
-  <div class="footer">
-    Prepared by Dentist Nerds &middot; May 2026 &middot; dentistnerds.com &middot; Data sourced from Semrush
-    <br>paloaltoadvanceddentists.com &mdash; Palo Alto Advanced Dentists
-  </div>
-
-</div>
 </body>
 </html>
