@@ -764,6 +764,8 @@ const clients = [
   },
 ];
 
+clients.forEach(c => { if (c.seo) c.hosting = true; });
+
 // ─── Render ───────────────────────────────────────────────────────────────────
 let activeFilter = "all";
 let searchQ = "";
