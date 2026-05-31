@@ -5,6 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Internal Clients Tracking — Dentist Nerds</title>
 <style>
+  #pw-gate {
+    position: fixed; inset: 0;
+    background: #0f1117;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999;
+  }
+  #pw-box {
+    background: #1a1d27;
+    border: 1px solid #2e3250;
+    border-radius: 14px;
+    padding: 40px 36px;
+    width: 340px;
+    text-align: center;
+  }
+  #pw-box .lock { font-size: 32px; margin-bottom: 16px; }
+  #pw-box h2 { font-size: 16px; font-weight: 600; color: #e8eaf0; margin-bottom: 6px; }
+  #pw-box p { font-size: 13px; color: #8b90a8; margin-bottom: 24px; }
+  #pw-input {
+    width: 100%; padding: 10px 14px;
+    background: #0f1117; border: 1px solid #2e3250;
+    border-radius: 8px; color: #e8eaf0; font-size: 14px;
+    outline: none; margin-bottom: 12px;
+    text-align: center; letter-spacing: 2px;
+  }
+  #pw-input:focus { border-color: #4f8ef7; }
+  #pw-btn {
+    width: 100%; padding: 10px;
+    background: #4f8ef7; border: none; border-radius: 8px;
+    color: #fff; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: background .15s;
+  }
+  #pw-btn:hover { background: #3a7de8; }
+  #pw-error { color: #f87171; font-size: 12px; margin-top: 10px; display: none; }
+</style>
+<style>
   :root {
     --bg: #0f1117;
     --surface: #1a1d27;
@@ -255,6 +290,40 @@
 </style>
 </head>
 <body>
+
+<div id="pw-gate">
+  <div id="pw-box">
+    <div class="lock">🔒</div>
+    <h2>Dentist Nerds — Internal</h2>
+    <p>Enter the team password to continue</p>
+    <input type="password" id="pw-input" placeholder="Password" autocomplete="off">
+    <button id="pw-btn">Unlock</button>
+    <div id="pw-error">Incorrect password. Try again.</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var KEY = "dn_internal_auth";
+  if (sessionStorage.getItem(KEY) === "1") {
+    document.getElementById("pw-gate").style.display = "none";
+  }
+  function attempt() {
+    if (document.getElementById("pw-input").value === "NerdsTeam") {
+      sessionStorage.setItem(KEY, "1");
+      document.getElementById("pw-gate").style.display = "none";
+    } else {
+      document.getElementById("pw-error").style.display = "block";
+      document.getElementById("pw-input").value = "";
+      document.getElementById("pw-input").focus();
+    }
+  }
+  document.getElementById("pw-btn").addEventListener("click", attempt);
+  document.getElementById("pw-input").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") attempt();
+  });
+})();
+</script>
 
 <header>
   <span class="logo">Dentist Nerds</span>
