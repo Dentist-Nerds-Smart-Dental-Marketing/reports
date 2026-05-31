@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internal Clients Tracking — Dentist Nerds</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --border: #2e3250;
+    --text: #e8eaf0;
+    --muted: #8b90a8;
+    --accent: #4f8ef7;
+    --seo: #22c55e;
+    --meta: #3b82f6;
+    --google: #f59e0b;
+    --social: #a855f7;
+    --hosting: #6b7280;
+    --newlaunch: #ec4899;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    min-height: 100vh;
+  }
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  header .logo {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  header .sep { color: var(--border); font-size: 20px; }
+
+  .toolbar {
+    padding: 20px 32px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 0 0 260px;
+  }
+  .search-wrap svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+  }
+  #search {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 12px 8px 34px;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color .15s;
+  }
+  #search:focus { border-color: var(--accent); }
+  #search::placeholder { color: var(--muted); }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .filter-label { color: var(--muted); font-size: 12px; font-weight: 500; margin-right: 4px; }
+
+  .btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s;
+    letter-spacing: .3px;
+  }
+  .btn:hover { color: var(--text); border-color: #4a5280; }
+  .btn.active { color: #fff; }
+
+  .btn[data-filter="all"].active { background: var(--accent); border-color: var(--accent); }
+  .btn[data-filter="seo"].active { background: var(--seo); border-color: var(--seo); }
+  .btn[data-filter="meta"].active { background: var(--meta); border-color: var(--meta); }
+  .btn[data-filter="google"].active { background: var(--google); border-color: var(--google); }
+  .btn[data-filter="social"].active { background: var(--social); border-color: var(--social); }
+  .btn[data-filter="hosting"].active { background: var(--hosting); border-color: var(--hosting); }
+  .btn[data-filter="newlaunch"].active { background: var(--newlaunch); border-color: var(--newlaunch); }
+
+  .stats-bar {
+    padding: 16px 32px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .stat-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+  }
+  .stat-chip .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .stat-chip .count { font-weight: 700; font-size: 15px; }
+  .stat-chip .lbl { color: var(--muted); }
+
+  .table-wrap {
+    padding: 0 32px 40px;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+  }
+  thead tr {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  th:hover { color: var(--text); }
+  th .sort-icon { margin-left: 4px; opacity: .5; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background .1s;
+  }
+  tbody tr:hover { background: var(--surface2); }
+  tbody tr.hidden { display: none; }
+
+  td {
+    padding: 12px 14px;
+    vertical-align: middle;
+  }
+
+  .client-name {
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .doctor-name {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .website-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .website-link:hover { text-decoration: underline; }
+
+  .email-wrap {
+    font-size: 12px;
+    color: var(--muted);
+    max-width: 200px;
+  }
+  .email-wrap a { color: var(--muted); text-decoration: none; }
+  .email-wrap a:hover { color: var(--text); }
+  .email-wrap .email2 { margin-top: 2px; }
+
+  .tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag {
+    padding: 3px 9px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    white-space: nowrap;
+  }
+  .tag-seo     { background: rgba(34,197,94,.15);  color: #4ade80; border: 1px solid rgba(34,197,94,.3); }
+  .tag-meta    { background: rgba(59,130,246,.15); color: #60a5fa; border: 1px solid rgba(59,130,246,.3); }
+  .tag-google  { background: rgba(245,158,11,.15); color: #fbbf24; border: 1px solid rgba(245,158,11,.3); }
+  .tag-social  { background: rgba(168,85,247,.15); color: #c084fc; border: 1px solid rgba(168,85,247,.3); }
+  .tag-hosting { background: rgba(107,114,128,.15);color: #9ca3af; border: 1px solid rgba(107,114,128,.3);}
+  .tag-newlaunch{ background: rgba(236,72,153,.15); color: #f472b6; border: 1px solid rgba(236,72,153,.3);}
+
+  .blog-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(34,197,94,.12);
+    color: #4ade80;
+    border: 1px solid rgba(34,197,94,.25);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 10px;
+    min-width: 36px;
+  }
+  .blog-dash { color: var(--border); text-align: center; }
+
+  .empty-msg {
+    text-align: center;
+    padding: 60px 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 16px; }
+    .toolbar, .stats-bar, .table-wrap { padding-left: 16px; padding-right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">Dentist Nerds</span>
+  <span class="sep">|</span>
+  <h1>Internal Clients Tracking</h1>
+</header>
+
+<div class="toolbar">
+  <div class="search-wrap">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="search" placeholder="Search clients…">
+  </div>
+  <div class="filters">
+    <span class="filter-label">Filter:</span>
+    <button class="btn active" data-filter="all">All</button>
+    <button class="btn" data-filter="seo">SEO</button>
+    <button class="btn" data-filter="meta">Meta Ads</button>
+    <button class="btn" data-filter="google">Google Ads</button>
+    <button class="btn" data-filter="social">Social Media</button>
+    <button class="btn" data-filter="hosting">Hosting</button>
+    <button class="btn" data-filter="newlaunch">New Launch</button>
+  </div>
+</div>
+
+<div class="stats-bar" id="statsBar"></div>
+
+<div class="table-wrap">
+  <table id="clientTable">
+    <thead>
+      <tr>
+        <th data-col="name">Client <span class="sort-icon">↕</span></th>
+        <th data-col="website">Website</th>
+        <th data-col="contact">Contact</th>
+        <th data-col="email">Email</th>
+        <th data-col="services">Services</th>
+        <th data-col="blogs" style="text-align:center;">SEO Blogs/mo</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <div class="empty-msg" id="emptyMsg" style="display:none;">No clients match the current filter.</div>
+</div>
+
+<script>
+const clients = [
+  // ─── SEO + Meta + Google ───
+  {
+    name: "Woodland Hills Family Dentistry",
+    website: "https://woodlandhillsfamilydentistry.com/",
+    doctor: "Dr. Sanaz",
+    email: "om@whdentist.com",
+    email2: "",
+    seo: true, blogs: 3,
+    meta: true, google: true, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Gardena Dental Group",
+    website: "https://gardenadentalgroup.com/",
+    doctor: "Dr. Sanaz",
+    email: "smile@gardenadentalgroup.com",
+    email2: "",
+    seo: true, blogs: 2,
+    meta: true, google: true, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Orthodontics in Woodland Hills",
+    website: "https://orthodonticsinwoodlandhills.com",
+    doctor: "Dr. Sanaz",
+    email: "",
+    email2: "",
+    seo: true, blogs: 1,
+    meta: true, google: true, social: true, hosting: false, newLaunch: false
+  },
+  {
+    name: "Exceptional Dentistry",
+    website: "https://palmdaleexceptionaldentistry.com/",
+    doctor: "Dr. Ramy",
+    email: "rgarsdean@gmail.com",
+    email2: "",
+    seo: true, blogs: 5,
+    meta: true, google: true, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Camarillo Dental Spa",
+    website: "https://camarillosmiledentistry.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: true, blogs: 6,
+    meta: true, google: true, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "OC Perio & Implants Dental Group",
+    website: "https://ocperioandimplants.com/",
+    doctor: "Dr. Reshad",
+    email: "dr.mreshad@gmail.com",
+    email2: "info@ocperioandimplants.com",
+    seo: true, blogs: 2,
+    meta: true, google: true, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Perio Implant Health Professionals",
+    website: "https://perioimplanthealthpro.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: true, blogs: 4,
+    meta: true, google: true, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "West Grove Dental Care",
+    website: "https://westgrovedentalcare.com/",
+    doctor: "Dr. Brandon Skenandore",
+    email: "westgrovedentalcare@gmail.com",
+    email2: "",
+    seo: true, blogs: 4,
+    meta: true, google: true, social: false, hosting: false, newLaunch: false
+  },
+  // ─── SEO only ───
+  {
+    name: "Canyon Country Dental Care",
+    website: "https://canyoncountrydentalcare.com/",
+    doctor: "Dr. Dabirian",
+    email: "info@canyoncountrydentalcare.com",
+    email2: "",
+    seo: true, blogs: 2,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Cameron Park Family Dentistry",
+    website: "https://cameronparkfamilydentistry.com/",
+    doctor: "Dr. Nav and Yass",
+    email: "info@cameronparkfamilydentistry.com",
+    email2: "dentistsuperdad@gmail.com",
+    seo: true, blogs: 1,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Dental Implants Gardena",
+    website: "https://gardenadentalimplants.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: true, blogs: 2,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "West Hollywood Dental Studio",
+    website: "https://westhollywooddentalstudio.com/",
+    doctor: "Dr. Rivas",
+    email: "lisa.marie.rivas@gmail.com",
+    email2: "",
+    seo: true, blogs: 1,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Seren Advanced Dentistry Oxnard",
+    website: "https://serendentaloxnard.com/",
+    doctor: "Dr. Ntekim",
+    email: "ntekimdr@hotmail.com",
+    email2: "info@serendental.com",
+    seo: true, blogs: 2,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Torrance Dental Spa",
+    website: "http://torrancedentalspa.com/",
+    doctor: "Dr. Maral",
+    email: "maralranjbar1@gmail.com",
+    email2: "info@torrancedentalspa.com",
+    seo: true, blogs: 2,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Malibu Dentistry",
+    website: "https://malibudentistry.com/",
+    doctor: "Dr. Austin",
+    email: "draustin@malibudentistry.com",
+    email2: "gracemyrealtor@gmail.com",
+    seo: true, blogs: 3,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Smile Tustin",
+    website: "https://smiletustin.com/",
+    doctor: "Dr. Ezzy",
+    email: "zahra.ezzy@gmail.com",
+    email2: "Office@smiletustin.com",
+    seo: true, blogs: 3,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Valencia Aesthetic Dentistry",
+    website: "https://valenciaaestheticdentistry.com/",
+    doctor: "Dr. Rayan & Dr. Peyman",
+    email: "kafridmd@gmail.com",
+    email2: "pkafri@yahoo.com",
+    seo: true, blogs: 3,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "The Smile Spa",
+    website: "https://agourahillscosmeticdentists.com/",
+    doctor: "Dr. Joelle & Dr. Shawn",
+    email: "drshawndds@gmail.com",
+    email2: "joelle.dds@gmail.com",
+    seo: true, blogs: 6,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "All Smile Dental Studio",
+    website: "https://www.allsmilesds.com/",
+    doctor: "Dr. Shahrokh",
+    email: "ali00sh@yahoo.com",
+    email2: "",
+    seo: true, blogs: 4,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Elite Dentistry",
+    website: "https://elitedentistryrsm.com/",
+    doctor: "Dr. Rastegar",
+    email: "mehrastegar@gmail.com",
+    email2: "",
+    seo: true, blogs: 4,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Fullerton Smile Dentistry",
+    website: "https://fullertonsmiledentistry.com/",
+    doctor: "Dr. Zhang",
+    email: "chrishang9615@gmail.com",
+    email2: "",
+    seo: true, blogs: 4,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "San Juan Family Dentistry",
+    website: "https://sanjuanfamilydental.com/",
+    doctor: "Dr. Laila",
+    email: "khamsei@yahoo.com",
+    email2: "",
+    seo: true, blogs: 4,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Foothill Ranch Dentistry",
+    website: "https://foothillranchdentistry.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: true, blogs: 4,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Beverly Hills Cosmetic Dentistry",
+    website: "https://beverlyhillscosmeticdentistry.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: true, blogs: 4,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "Pennsylvania Perio & Implants",
+    website: "https://pennsylvaniaperioandimplants.com/",
+    doctor: "Dr. Dennis Sourvanos",
+    email: "d_sourvanos@hotmail.com",
+    email2: "",
+    seo: true, blogs: 4,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  {
+    name: "AZ Dental Laguna Hills",
+    website: "https://azdentallagunahills.com",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: true, blogs: 4,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+  // ─── Meta Ads only ───
+  {
+    name: "Ortega Dental Care",
+    website: "https://www.ortegadentalcare.com",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: true, google: false, social: false, hosting: false, newLaunch: false
+  },
+  // ─── Social Media only ───
+  {
+    name: "Temecula Facial Oral Surgery",
+    website: "https://www.temeculafacialoralsurgery.com/",
+    doctor: "Emma Tsvetov",
+    email: "emma.tsvetov@temeculadentalimplants.com",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: true, hosting: false, newLaunch: false
+  },
+  {
+    name: "Smile Studios Dentistry",
+    website: "https://www.smilestudiosdentistry.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: true, hosting: false, newLaunch: false
+  },
+  // ─── Hosting Only ───
+  {
+    name: "Tustin Aesthetic Dentistry",
+    website: "https://tustinaestheticdentistry.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  {
+    name: "Cypress Dentistry",
+    website: "https://thecypressdentist.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  {
+    name: "Fresno Smile Dentistry",
+    website: "https://fresnosmiledentistry.com",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  {
+    name: "Overhill Dental",
+    website: "https://www.overhilldental.com/",
+    doctor: "Dr. Smith",
+    email: "alexaundreasmithdds@gmail.com",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  {
+    name: "Miramar Smiles Dentistry",
+    website: "https://miramarsmiledentistry.com/",
+    doctor: "Dr. Shisha",
+    email: "sinanshisha@yahoo.com",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  {
+    name: "1st Choice Dental",
+    website: "https://1st-choicedental.com/",
+    doctor: "Dr. Raffi",
+    email: "dadaiandmd@gmail.com",
+    email2: "studiocityorthodontist@gmail.com",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  {
+    name: "Moreno Valley Dentistry",
+    website: "https://morenovalleydentist.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  {
+    name: "San Fernando Dentistry",
+    website: "https://sanfernandodentistry.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  {
+    name: "Colton Pure Dentistry",
+    website: "https://coltonpuredentistry.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  {
+    name: "Sila Dental",
+    website: "https://siladental.com/",
+    doctor: "Dr. Ebrahim & Dr. Ansari",
+    email: "shokouh@gmail.com",
+    email2: "dr@siladental.com",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  {
+    name: "Brea Family Dental",
+    website: "https://breafamilydental.com/",
+    doctor: "",
+    email: "",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: true, newLaunch: false
+  },
+  // ─── Other active clients ───
+  {
+    name: "AV Dental Wellness Group",
+    website: "https://avdentalwellness.com/",
+    doctor: "Dr. Sekhon",
+    email: "dr.sekhondmd@gmail.com",
+    email2: "",
+    seo: false, blogs: 0,
+    meta: false, google: false, social: false, hosting: false, newLaunch: false
+  },
+];
+
+// ─── Render ───────────────────────────────────────────────────────────────────
+let activeFilter = "all";
+let searchQ = "";
+
+function serviceCount(key) {
+  return clients.filter(c => c[key]).length;
+}
+
+function buildStats() {
+  const bar = document.getElementById("statsBar");
+  const defs = [
+    { key: "all",      label: "Total Clients", color: "#4f8ef7", count: clients.length },
+    { key: "seo",      label: "SEO",            color: "#22c55e", count: serviceCount("seo") },
+    { key: "meta",     label: "Meta Ads",        color: "#3b82f6", count: serviceCount("meta") },
+    { key: "google",   label: "Google Ads",      color: "#f59e0b", count: serviceCount("google") },
+    { key: "social",   label: "Social Media",    color: "#a855f7", count: serviceCount("social") },
+    { key: "hosting",  label: "Hosting",         color: "#6b7280", count: serviceCount("hosting") },
+    { key: "newLaunch",label: "New Launch",      color: "#ec4899", count: serviceCount("newLaunch") },
+  ];
+  bar.innerHTML = defs.map(d => `
+    <div class="stat-chip">
+      <span class="dot" style="background:${d.color}"></span>
+      <span class="count" style="color:${d.color}">${d.count}</span>
+      <span class="lbl">${d.label}</span>
+    </div>`).join("");
+}
+
+function tagHTML(key, label, cls) {
+  return `<span class="tag ${cls}">${label}</span>`;
+}
+
+function buildRow(c) {
+  const domain = c.website.replace(/https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  const tags = [];
+  if (c.seo)      tags.push(tagHTML("seo",      "SEO",         "tag-seo"));
+  if (c.meta)     tags.push(tagHTML("meta",     "Meta Ads",    "tag-meta"));
+  if (c.google)   tags.push(tagHTML("google",   "Google Ads",  "tag-google"));
+  if (c.social)   tags.push(tagHTML("social",   "Social",      "tag-social"));
+  if (c.hosting)  tags.push(tagHTML("hosting",  "Hosting",     "tag-hosting"));
+  if (c.newLaunch)tags.push(tagHTML("newlaunch","New Launch",  "tag-newlaunch"));
+  if (!tags.length) tags.push(`<span style="color:var(--muted);font-size:12px;">—</span>`);
+
+  const emailLine = c.email  ? `<a href="mailto:${c.email}">${c.email}</a>` : "";
+  const email2Line = c.email2 ? `<div class="email2"><a href="mailto:${c.email2}">${c.email2}</a></div>` : "";
+  const blogCell = c.seo
+    ? `<td style="text-align:center;"><span class="blog-badge">${c.blogs}</span></td>`
+    : `<td class="blog-dash">—</td>`;
+
+  return `<tr data-seo="${c.seo}" data-meta="${c.meta}" data-google="${c.google}" data-social="${c.social}" data-hosting="${c.hosting}" data-newlaunch="${c.newLaunch}" data-name="${c.name.toLowerCase()}">
+    <td>
+      <div class="client-name">${c.name}</div>
+      ${c.doctor ? `<div class="doctor-name">${c.doctor}</div>` : ""}
+    </td>
+    <td>
+      <a class="website-link" href="${c.website.startsWith("http") ? c.website : "https://"+c.website}" target="_blank" rel="noopener">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        ${domain}
+      </a>
+    </td>
+    <td>
+      <div class="email-wrap" style="color:var(--text);font-size:13px;">${c.doctor || '<span style="color:var(--muted)">—</span>'}</div>
+    </td>
+    <td>
+      <div class="email-wrap">
+        ${emailLine}
+        ${email2Line}
+        ${!emailLine && !email2Line ? '<span style="color:var(--border)">—</span>' : ""}
+      </div>
+    </td>
+    <td><div class="tags">${tags.join("")}</div></td>
+    ${blogCell}
+  </tr>`;
+}
+
+function render() {
+  const tbody = document.getElementById("tbody");
+  tbody.innerHTML = clients.map(buildRow).join("");
+  applyFilters();
+}
+
+function applyFilters() {
+  const rows = document.querySelectorAll("#tbody tr");
+  let visible = 0;
+  rows.forEach(row => {
+    const nameMatch = !searchQ || row.dataset.name.includes(searchQ);
+    let filterMatch = true;
+    if (activeFilter !== "all") {
+      filterMatch = row.dataset[activeFilter] === "true";
+    }
+    if (nameMatch && filterMatch) {
+      row.classList.remove("hidden");
+      visible++;
+    } else {
+      row.classList.add("hidden");
+    }
+  });
+  document.getElementById("emptyMsg").style.display = visible === 0 ? "block" : "none";
+}
+
+// ─── Events ──────────────────────────────────────────────────────────────────
+document.querySelectorAll(".btn[data-filter]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".btn[data-filter]").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = btn.dataset.filter;
+    applyFilters();
+  });
+});
+
+document.getElementById("search").addEventListener("input", e => {
+  searchQ = e.target.value.toLowerCase().trim();
+  applyFilters();
+});
+
+buildStats();
+render();
+</script>
+</body>
+</html>
