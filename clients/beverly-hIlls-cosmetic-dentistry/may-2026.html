@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Performance Report — Beverly Hills Cosmetic Dentistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<style>
+:root {
+  --navy: #0d2538;
+  --gold: #d4a55c;
+  --gold-2: #c8a050;
+  --teal: #5fbab0;
+  --green: #2d8e5c;
+  --green-bg: #e8f5e9;
+  --green-text: #1b5e20;
+  --gold-bg: #fff4d9;
+  --gold-text: #7a5a14;
+  --red-bg: #ffe6e6;
+  --red-text: #a02020;
+  --bg: #faf8f3;
+  --bg-soft: #f0ebe0;
+  --text-dark: #1a2733;
+  --text-muted: #6b7280;
+  --card-bg: #ffffff;
+  --card-border: #e5e0d3;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+.section { padding: 56px 0; }
+.section + .section { border-top: 1px solid var(--card-border); }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #112e44 100%);
+  color: #fff;
+  padding: 56px 0 48px;
+}
+.hero .container { display: flex; flex-direction: column; gap: 16px; }
+.hero-logo-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.hero-logo-row img { height: 40px; width: auto; border-radius: 6px; }
+.hero-logo-text .prepared-by { font-size: 11px; color: #c7d4dd; letter-spacing: 0.08em; text-transform: uppercase; }
+.hero-logo-text .brand-name { font-size: 14px; color: #fff; font-weight: 600; }
+.hero .eyebrow {
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+}
+.hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 44px; font-weight: 600;
+  line-height: 1.1; letter-spacing: -0.01em;
+  color: #fff;
+}
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero-sub { font-size: 16px; color: #c7d4dd; }
+
+.hero-kpis {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.hero-kpi {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.hero-kpi-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 600; color: #fff; line-height: 1;
+}
+.hero-kpi-label { font-size: 11px; color: #c7d4dd; margin-top: 6px; letter-spacing: 0.04em; }
+
+/* SECTION HEADERS */
+.section-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 10px;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px; height: 2px;
+  background: var(--gold);
+  border-radius: 999px;
+}
+.section h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 34px; font-weight: 600; color: var(--navy);
+  letter-spacing: -0.01em; margin-bottom: 8px;
+}
+.section-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.6; }
+
+/* CARDS GRID */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+}
+.card.span-2 { grid-column: span 2; }
+.card-icon { font-size: 22px; margin-bottom: 10px; }
+.card-label {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+}
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 12px;
+}
+.card-body { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+.card-body a { color: var(--navy); font-weight: 600; text-decoration: none; }
+.card-body a:hover { text-decoration: underline; }
+.blog-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.blog-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; }
+.blog-list li::before { content: '✍️'; flex-shrink: 0; margin-top: 1px; }
+.blog-list a { color: var(--navy); font-weight: 500; text-decoration: none; line-height: 1.5; }
+.blog-list a:hover { text-decoration: underline; }
+
+.stat-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 12px; }
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 700; color: var(--navy); line-height: 1;
+}
+.stat-lbl { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+/* INFO BLOCKS */
+.info-block {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.info-block-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px;
+}
+.info-block-icon { font-size: 18px; }
+.info-block-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 600; color: var(--navy);
+}
+
+/* PILLS */
+.pill {
+  display: inline-block;
+  padding: 3px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 600;
+}
+.pill-green { background: var(--green-bg); color: var(--green-text); }
+.pill-gold  { background: var(--gold-bg);  color: var(--gold-text); }
+.pill-red   { background: var(--red-bg);   color: var(--red-text); }
+.status-stable      { background: #e8f5e9; color: #1b5e20; }
+.status-opportunity { background: #fff4d9; color: #7a5a14; }
+.status-new         { background: #e3f2fd; color: #1565c0; }
+
+/* TABLE */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.data-table th {
+  text-align: left; font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted); padding: 10px 14px;
+  border-bottom: 2px solid var(--card-border);
+}
+.data-table td {
+  padding: 11px 14px; border-bottom: 1px solid #f0ebe0;
+  color: var(--text-dark);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: #faf6ee; }
+.center { text-align: center; }
+
+/* HEATMAP */
+.heatmap-wrap { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+.heatmap-meta { font-size: 13px; color: var(--text-muted); display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 14px; }
+.heatmap-meta div strong { color: var(--text-dark); }
+.heatmap-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 16px; }
+.heatmap-stat { background: var(--bg-soft); border-radius: 8px; padding: 12px 14px; text-align: center; }
+.heatmap-stat-num { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--navy); }
+.heatmap-stat-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+.lf-map { height: 480px; border-radius: 10px; overflow: hidden; margin-bottom: 14px; border: 1px solid var(--card-border); }
+.heatmap-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 12px; color: var(--text-muted); }
+.heatmap-legend-item { display: flex; align-items: center; gap: 5px; }
+.heatmap-legend-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; border: 1px solid rgba(0,0,0,0.15); }
+.heat-1-dot   { background: #0f9b58; }
+.heat-2-dot   { background: #4caf50; }
+.heat-4-dot   { background: #8bc34a; }
+.heat-6-dot   { background: #cddc39; }
+.heat-8-dot   { background: #ffc107; }
+.heat-10-dot  { background: #ff5722; }
+.heat-20-dot  { background: #c62828; }
+.heat-x-dot   { background: #9e9e9e; }
+.heat-pin-dot { background: #1565c0; }
+
+/* LEAFLET CIRCLES */
+.heat-1  { fill: #0f9b58 !important; fill-opacity: 0.85 !important; stroke: #fff !important; stroke-width: 1px !important; }
+.heat-2  { fill: #4caf50 !important; fill-opacity: 0.82 !important; stroke: #fff !important; stroke-width: 1px !important; }
+.heat-4  { fill: #8bc34a !important; fill-opacity: 0.82 !important; stroke: #fff !important; stroke-width: 1px !important; }
+.heat-6  { fill: #cddc39 !important; fill-opacity: 0.80 !important; stroke: #555 !important; stroke-width: 0.5px !important; }
+.heat-8  { fill: #ffc107 !important; fill-opacity: 0.82 !important; stroke: #555 !important; stroke-width: 0.5px !important; }
+.heat-10 { fill: #ff5722 !important; fill-opacity: 0.82 !important; stroke: #fff !important; stroke-width: 1px !important; }
+.heat-20 { fill: #c62828 !important; fill-opacity: 0.82 !important; stroke: #fff !important; stroke-width: 1px !important; }
+.heat-x  { fill: #9e9e9e !important; fill-opacity: 0.50 !important; stroke: #fff !important; stroke-width: 0.5px !important; }
+
+/* GBP TABLE */
+.gbp-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.gbp-table th {
+  text-align: left; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-muted); padding: 10px 14px;
+  border-bottom: 2px solid var(--card-border); background: var(--bg-soft);
+}
+.gbp-table td { padding: 11px 14px; border-bottom: 1px solid #f0ebe0; }
+.gbp-table tr:last-child td { border-bottom: none; font-weight: 600; }
+.gbp-table tr:hover td { background: #faf6ee; }
+
+/* NOTICE BOX */
+.notice-box {
+  background: #fffbf0;
+  border: 1px solid #f5d87a;
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.notice-box strong { color: var(--text-dark); }
+
+/* FOOTER */
+.footer {
+  background: var(--navy);
+  color: #c7d4dd;
+  padding: 40px 0;
+  font-size: 13px;
+}
+.footer-inner {
+  max-width: 900px; margin: 0 auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 24px;
+}
+.footer-brand img { height: 36px; }
+.footer-brand p { margin-top: 10px; font-size: 12px; color: #7e98b0; max-width: 260px; line-height: 1.5; }
+.footer-sources h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.footer-sources ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.footer-sources ul li { font-size: 12px; color: #7e98b0; }
+.footer-copy { width: 100%; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07); color: #4e6478; font-size: 12px; }
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 30px; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); }
+  .cards-grid { grid-template-columns: 1fr; }
+  .card.span-2 { grid-column: span 1; }
+  .heatmap-stats { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-logo-row">
+      <img src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds">
+      <div class="hero-logo-text">
+        <div class="prepared-by">Prepared by</div>
+        <div class="brand-name">Dentist Nerds</div>
+      </div>
+    </div>
+    <div class="eyebrow">Monthly SEO Performance Report · May 2026</div>
+    <h1>Beverly Hills<br><em>Cosmetic Dentistry</em></h1>
+    <p class="hero-sub">435 N Bedford Dr Suite 410, Beverly Hills, CA 90210 &nbsp;·&nbsp; beverlyhillscosmeticdentistry.com</p>
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">195</div>
+        <div class="hero-kpi-label">Keywords Ranking</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">666</div>
+        <div class="hero-kpi-label">Total Backlinks</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">5.0★</div>
+        <div class="hero-kpi-label">Google Rating</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">4</div>
+        <div class="hero-kpi-label">Blogs Published</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: WORK DONE -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">May 2026 Deliverables</div>
+    <h2>Work Completed<br>This Month</h2>
+    <p class="section-desc">Content published, link building efforts, and page optimizations for May 2026.</p>
+
+    <div class="cards-grid">
+      <!-- Blogs -->
+      <div class="card">
+        <div class="card-icon">✍️</div>
+        <div class="card-label">Blog Content</div>
+        <div class="card-title">May 2026 Blog Posts</div>
+        <div class="card-body">
+          <ul class="blog-list">
+            <li><a href="https://beverlyhillscosmeticdentistry.com/invisalign-vs-braces-which-one-is-worth-it/" target="_blank">Invisalign vs. Braces: Which One Is Worth It?</a></li>
+            <li><a href="https://beverlyhillscosmeticdentistry.com/can-a-chipped-tooth-become-a-dental-emergency/" target="_blank">Can a Chipped Tooth Become a Dental Emergency?</a></li>
+            <li><a href="https://beverlyhillscosmeticdentistry.com/what-is-a-deep-cleaning-at-the-dentist-and-do-you-really-need-one/" target="_blank">What Is a Deep Cleaning at the Dentist, and Do You Really Need One?</a></li>
+            <li><a href="https://beverlyhillscosmeticdentistry.com/what-should-you-do-if-a-tooth-gets-knocked-loose-but-doesnt-fall-out/" target="_blank">What Should You Do If a Tooth Gets Knocked Loose but Doesn't Fall Out?</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Backlinks -->
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <div class="card-label">Link Building</div>
+        <div class="card-title">Backlink Profile — May 2026</div>
+        <div class="card-body">
+          <div class="stat-row">
+            <div class="stat-item">
+              <div class="stat-num">666</div>
+              <div class="stat-lbl">Total Backlinks</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">185</div>
+              <div class="stat-lbl">Referring Domains</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">6</div>
+              <div class="stat-lbl">Trust Score</div>
+            </div>
+          </div>
+          <p style="margin-top:14px;">Steady backlink growth. Continued link outreach is focused on increasing domain authority and expanding local citation coverage across Beverly Hills and the greater LA area.</p>
+        </div>
+      </div>
+
+      <!-- Top Organic Pages -->
+      <div class="card span-2">
+        <div class="card-icon">📄</div>
+        <div class="card-label">Top Organic Pages</div>
+        <div class="card-title">Highest Traffic Pages — May 2026</div>
+        <div class="card-body">
+          <p style="margin-bottom:14px;">Pages receiving the most organic and AI-driven traffic in May 2026, sourced from Google Analytics 4.</p>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Page</th>
+                <th class="center">Sessions</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><a href="https://beverlyhillscosmeticdentistry.com/" target="_blank">Homepage (/)</a></td><td class="center"><strong>75</strong></td><td style="color:var(--text-muted);font-size:13px;">Google · Yahoo · Bing</td></tr>
+              <tr><td><a href="https://beverlyhillscosmeticdentistry.com/beverly-hills-ca/cosmetic-dentistry/" target="_blank">/beverly-hills-ca/cosmetic-dentistry/</a></td><td class="center">10</td><td style="color:var(--text-muted);font-size:13px;">Organic</td></tr>
+              <tr><td><a href="https://beverlyhillscosmeticdentistry.com/our-dental-team/" target="_blank">/our-dental-team/</a></td><td class="center">10</td><td style="color:var(--text-muted);font-size:13px;">Organic</td></tr>
+              <tr><td><a href="https://beverlyhillscosmeticdentistry.com/our-dental-team/dr-marc-chemla/" target="_blank">/our-dental-team/dr-marc-chemla/</a></td><td class="center">7</td><td style="color:var(--text-muted);font-size:13px;">Organic</td></tr>
+              <tr><td><a href="https://beverlyhillscosmeticdentistry.com/dentist-appointment/" target="_blank">/dentist-appointment/</a></td><td class="center">6</td><td style="color:var(--text-muted);font-size:13px;">Organic</td></tr>
+              <tr><td><a href="https://beverlyhillscosmeticdentistry.com/questions-about-wisdom-teeth-removal-answered/" target="_blank">/questions-about-wisdom-teeth-removal-answered/</a></td><td class="center">5</td><td style="color:var(--text-muted);font-size:13px;">Organic</td></tr>
+              <tr><td style="color:var(--text-muted);">May blog posts (4 posts)</td><td class="center">4 each</td><td style="color:var(--text-muted);font-size:13px;">Organic / AI</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: PERFORMANCE DATA -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">SEO Performance</div>
+    <h2>May 2026<br>Performance Data</h2>
+    <p class="section-desc">Keyword rankings, local map visibility, organic traffic, and Google Business Profile metrics as of May 2026.</p>
+
+    <!-- Keyword Rankings -->
+    <div class="info-block">
+      <div class="info-block-head">
+        <span class="info-block-icon">📊</span>
+        <span class="info-block-title">Keyword Rankings</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+        Organic keyword rankings tracked in Semrush for <strong>beverlyhillscosmeticdentistry.com</strong>. The domain currently ranks for <strong>195 keywords</strong> across cosmetic dentistry, restorative, and practitioner brand terms.
+      </p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th class="center">Position</th>
+            <th class="center">Search Vol.</th>
+            <th class="center">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>marc chemla dds</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">30</td><td class="center"><span class="pill status-stable">Top Rank</span></td></tr>
+          <tr><td>cosmetic dentist beverly hills california</td><td class="center"><span class="pill pill-gold">#10</span></td><td class="center">210</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+          <tr><td>cosmetic dentist in beverly hills ca</td><td class="center"><span class="pill pill-gold">#14</span></td><td class="center">170</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+          <tr><td>all on 4 beverly hills</td><td class="center"><span class="pill pill-gold">#27</span></td><td class="center">90</td><td class="center"><span class="pill status-opportunity">Opportunity</span></td></tr>
+          <tr><td>porcelain crowns beverly hills</td><td class="center"><span class="pill pill-gold">#38</span></td><td class="center">140</td><td class="center"><span class="pill status-opportunity">Opportunity</span></td></tr>
+          <tr><td>cosmetic dentist in beverly hills</td><td class="center"><span class="pill pill-red">#54</span></td><td class="center">260</td><td class="center"><span class="pill status-opportunity">Building</span></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:12px;">
+        ⚡ <strong>Focus:</strong> "cosmetic dentist in beverly hills" (260 searches/mo) is the highest-volume target keyword. Moving this from #54 into the top 10 is a primary objective for the next 60–90 days.
+      </p>
+    </div>
+
+    <!-- Local Map Rankings Heatmap -->
+    <div class="info-block">
+      <div class="info-block-head">
+        <span class="info-block-icon">📍</span>
+        <span class="info-block-title">Local Map Rankings — Google Maps Visibility</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+        Each circle shows where the practice ranks on Google Maps when searched from that geographic point.
+        Greener circles = better ranking. The blue pin marks the office at 435 N Bedford Dr, Beverly Hills. <strong>Click any circle</strong> to see the rank and neighborhood.
+      </p>
+
+      <div class="notice-box" style="margin-bottom:18px;">
+        <strong>⚠️ Local Map Visibility: Opportunity Area</strong><br>
+        Beverly Hills Cosmetic Dentistry does not currently appear in the Google Maps top 20 for "dentist in beverly hills" across any point in the tracked 3-mile grid. This is a significant local SEO growth opportunity. GBP optimization, review acquisition, and local citation building are priority action items for June 2026.
+      </div>
+
+      <div class="heatmap-wrap">
+        <div class="heatmap-meta">
+          <div><strong>Keyword tracked:</strong> dentist in beverly hills</div>
+          <div><strong>Search grid:</strong> 11×11 (3 mile radius)</div>
+          <div><strong>Date:</strong> May 2026</div>
+        </div>
+
+        <div class="heatmap-stats">
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">21.00</div>
+            <div class="heatmap-stat-label">ARP (Avg Rank Position)</div>
+          </div>
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">21.00</div>
+            <div class="heatmap-stat-label">ATRP (Avg Top Rank)</div>
+          </div>
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">0.00%</div>
+            <div class="heatmap-stat-label">SoLV (Share of Voice)</div>
+          </div>
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">121</div>
+            <div class="heatmap-stat-label">Search Points</div>
+          </div>
+        </div>
+
+        <div id="lf-map" class="lf-map"></div>
+
+        <div class="heatmap-legend">
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-1-dot"></span>#1</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-2-dot"></span>#2-3</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-4-dot"></span>#4-5</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-6-dot"></span>#6-7</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-8-dot"></span>#8-9</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-10-dot"></span>#10-19</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-20-dot"></span>#20+</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-x-dot"></span>Not Ranking</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-pin-dot"></span>Office</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Organic Traffic -->
+    <div class="info-block">
+      <div class="info-block-head">
+        <span class="info-block-icon">📈</span>
+        <span class="info-block-title">Organic Traffic</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:16px; line-height:1.55;">
+        Website sessions from organic search and AI referral sources (Google, Yahoo, Bing, AI overviews), as reported by Google Analytics 4 for May 2026.
+      </p>
+      <div style="display:flex; gap:28px; flex-wrap:wrap; margin-bottom:16px;">
+        <div style="text-align:center;">
+          <div style="font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--navy);line-height:1;">101</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Organic + AI Sessions<br>May 2026 · GA4</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--text-muted);">
+        GA4 organic sessions (101) are used as the primary traffic figure — this is higher than SEMrush's estimated 10 sessions, reflecting traffic from non-indexed or recently indexed pages. The homepage drives the majority of traffic (75 sessions), with cosmetic dentistry service pages and team/doctor pages generating the next highest volumes.
+      </p>
+    </div>
+
+    <!-- Reviews -->
+    <div class="info-block">
+      <div class="info-block-head">
+        <span class="info-block-icon">⭐</span>
+        <span class="info-block-title">Reviews &amp; Reputation</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:16px; line-height:1.55;">
+        Google review profile as tracked by Local Falcon — May 2026.
+      </p>
+      <div style="display:flex; gap:28px; flex-wrap:wrap; margin-bottom:12px;">
+        <div style="text-align:center;">
+          <div style="font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--navy);line-height:1;">5.0</div>
+          <div style="font-size:13px;color:#f59e0b;letter-spacing:0.05em;margin-top:2px;">★★★★★</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Average Rating</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--navy);line-height:1;">62</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:8px;">Total Reviews</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--text-muted);">Perfect 5.0★ rating across 62 reviews. Continuing to grow the review count is a priority — each new review strengthens local map visibility and conversion trust.</p>
+    </div>
+
+    <!-- GBP Performance -->
+    <div class="info-block">
+      <div class="info-block-head">
+        <span class="info-block-icon">🏢</span>
+        <span class="info-block-title">Google Business Profile Performance</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:16px; line-height:1.55;">
+        Monthly Google Business Profile metrics sourced from Windsor · Google My Business integration. Data covers impressions, website clicks, call clicks, and direction requests.
+      </p>
+      <table class="gbp-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th class="center">Impressions</th>
+            <th class="center">Website Clicks</th>
+            <th class="center">Calls</th>
+            <th class="center">Direction Requests</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Dec 2025</td><td class="center">105</td><td class="center">12</td><td class="center">5</td><td class="center">67</td></tr>
+          <tr><td>Jan 2026</td><td class="center">113</td><td class="center">16</td><td class="center">6</td><td class="center">47</td></tr>
+          <tr><td>Feb 2026</td><td class="center">88</td><td class="center">13</td><td class="center">7</td><td class="center">48</td></tr>
+          <tr><td>Mar 2026</td><td class="center">157</td><td class="center">15</td><td class="center">10</td><td class="center">43</td></tr>
+          <tr><td>Apr 2026</td><td class="center">132</td><td class="center">17</td><td class="center">15</td><td class="center">61</td></tr>
+          <tr style="background:#f0ebe0;"><td><strong>May 2026</strong></td><td class="center"><strong>141</strong></td><td class="center"><strong>8</strong></td><td class="center"><strong>9</strong></td><td class="center"><strong>62</strong></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:12px;">
+        📞 <strong>9 call clicks</strong> recorded in May 2026. Direction requests (62) remain consistent, suggesting patients are actively looking for the office. Impressions have held steady at 141 — increasing GBP post frequency and photo uploads can help push this higher.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds">
+      <p>Smart dental marketing powered by data, content, and local SEO strategy.</p>
+    </div>
+    <div class="footer-sources">
+      <h4>Data Sources</h4>
+      <ul>
+        <li>✦ Semrush — Organic keyword tracking</li>
+        <li>✦ Local Falcon — Google Maps grid ranking</li>
+        <li>✦ Semrush — Backlink profile</li>
+        <li>✦ Windsor / GA4 — Organic traffic</li>
+        <li>✦ Windsor / GBP — Business profile metrics</li>
+      </ul>
+    </div>
+    <div class="footer-copy">
+      © 2026 Dentist Nerds Smart Dental Marketing. Confidential — prepared for Beverly Hills Cosmetic Dentistry.
+      Report period: May 1–31, 2026.
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function() {
+  var mapEl = document.getElementById('lf-map');
+  if (!mapEl) return;
+
+  // ============ Local Falcon scan data — "dentist in beverly hills" (May 2026) ============
+  var officeLat = 34.0682823;
+  var officeLng = -118.40595;
+  var officeName = 'Beverly Hills Cosmetic Dentistry';
+  var keyword = 'dentist in beverly hills';
+
+  // 11×11 grid, 3 mile radius — ARP 21.00, SoLV 0.00% — all 121 points outside top 20
+  var dataPoints = [
+    {lat:34.0249115,lng:-118.4583068,rank:0},{lat:34.0335856,lng:-118.4583068,rank:0},{lat:34.0422598,lng:-118.4583068,rank:0},{lat:34.050934,lng:-118.4583068,rank:0},{lat:34.0596081,lng:-118.4583068,rank:0},{lat:34.0682823,lng:-118.4583068,rank:0},{lat:34.0769565,lng:-118.4583068,rank:0},{lat:34.0856306,lng:-118.4583068,rank:0},{lat:34.0943048,lng:-118.4583068,rank:0},{lat:34.102979,lng:-118.4583068,rank:0},{lat:34.1116531,lng:-118.4583068,rank:0},
+    {lat:34.0249115,lng:-118.4478354,rank:0},{lat:34.0335856,lng:-118.4478354,rank:0},{lat:34.0422598,lng:-118.4478354,rank:0},{lat:34.050934,lng:-118.4478354,rank:0},{lat:34.0596081,lng:-118.4478354,rank:0},{lat:34.0682823,lng:-118.4478354,rank:0},{lat:34.0769565,lng:-118.4478354,rank:0},{lat:34.0856306,lng:-118.4478354,rank:0},{lat:34.0943048,lng:-118.4478354,rank:0},{lat:34.102979,lng:-118.4478354,rank:0},{lat:34.1116531,lng:-118.4478354,rank:0},
+    {lat:34.0249115,lng:-118.4373641,rank:0},{lat:34.0335856,lng:-118.4373641,rank:0},{lat:34.0422598,lng:-118.4373641,rank:0},{lat:34.050934,lng:-118.4373641,rank:0},{lat:34.0596081,lng:-118.4373641,rank:0},{lat:34.0682823,lng:-118.4373641,rank:0},{lat:34.0769565,lng:-118.4373641,rank:0},{lat:34.0856306,lng:-118.4373641,rank:0},{lat:34.0943048,lng:-118.4373641,rank:0},{lat:34.102979,lng:-118.4373641,rank:0},{lat:34.1116531,lng:-118.4373641,rank:0},
+    {lat:34.0249115,lng:-118.4268927,rank:0},{lat:34.0335856,lng:-118.4268927,rank:0},{lat:34.0422598,lng:-118.4268927,rank:0},{lat:34.050934,lng:-118.4268927,rank:0},{lat:34.0596081,lng:-118.4268927,rank:0},{lat:34.0682823,lng:-118.4268927,rank:0},{lat:34.0769565,lng:-118.4268927,rank:0},{lat:34.0856306,lng:-118.4268927,rank:0},{lat:34.0943048,lng:-118.4268927,rank:0},{lat:34.102979,lng:-118.4268927,rank:0},{lat:34.1116531,lng:-118.4268927,rank:0},
+    {lat:34.0249115,lng:-118.4164214,rank:0},{lat:34.0335856,lng:-118.4164214,rank:0},{lat:34.0422598,lng:-118.4164214,rank:0},{lat:34.050934,lng:-118.4164214,rank:0},{lat:34.0596081,lng:-118.4164214,rank:0},{lat:34.0682823,lng:-118.4164214,rank:0},{lat:34.0769565,lng:-118.4164214,rank:0},{lat:34.0856306,lng:-118.4164214,rank:0},{lat:34.0943048,lng:-118.4164214,rank:0},{lat:34.102979,lng:-118.4164214,rank:0},{lat:34.1116531,lng:-118.4164214,rank:0},
+    {lat:34.0249115,lng:-118.40595,rank:0},{lat:34.0335856,lng:-118.40595,rank:0},{lat:34.0422598,lng:-118.40595,rank:0},{lat:34.050934,lng:-118.40595,rank:0},{lat:34.0596081,lng:-118.40595,rank:0},{lat:34.0682823,lng:-118.40595,rank:0},{lat:34.0769565,lng:-118.40595,rank:0},{lat:34.0856306,lng:-118.40595,rank:0},{lat:34.0943048,lng:-118.40595,rank:0},{lat:34.102979,lng:-118.40595,rank:0},{lat:34.1116531,lng:-118.40595,rank:0},
+    {lat:34.0249115,lng:-118.3954786,rank:0},{lat:34.0335856,lng:-118.3954786,rank:0},{lat:34.0422598,lng:-118.3954786,rank:0},{lat:34.050934,lng:-118.3954786,rank:0},{lat:34.0596081,lng:-118.3954786,rank:0},{lat:34.0682823,lng:-118.3954786,rank:0},{lat:34.0769565,lng:-118.3954786,rank:0},{lat:34.0856306,lng:-118.3954786,rank:0},{lat:34.0943048,lng:-118.3954786,rank:0},{lat:34.102979,lng:-118.3954786,rank:0},{lat:34.1116531,lng:-118.3954786,rank:0},
+    {lat:34.0249115,lng:-118.3850073,rank:0},{lat:34.0335856,lng:-118.3850073,rank:0},{lat:34.0422598,lng:-118.3850073,rank:0},{lat:34.050934,lng:-118.3850073,rank:0},{lat:34.0596081,lng:-118.3850073,rank:0},{lat:34.0682823,lng:-118.3850073,rank:0},{lat:34.0769565,lng:-118.3850073,rank:0},{lat:34.0856306,lng:-118.3850073,rank:0},{lat:34.0943048,lng:-118.3850073,rank:0},{lat:34.102979,lng:-118.3850073,rank:0},{lat:34.1116531,lng:-118.3850073,rank:0},
+    {lat:34.0249115,lng:-118.3745359,rank:0},{lat:34.0335856,lng:-118.3745359,rank:0},{lat:34.0422598,lng:-118.3745359,rank:0},{lat:34.050934,lng:-118.3745359,rank:0},{lat:34.0596081,lng:-118.3745359,rank:0},{lat:34.0682823,lng:-118.3745359,rank:0},{lat:34.0769565,lng:-118.3745359,rank:0},{lat:34.0856306,lng:-118.3745359,rank:0},{lat:34.0943048,lng:-118.3745359,rank:0},{lat:34.102979,lng:-118.3745359,rank:0},{lat:34.1116531,lng:-118.3745359,rank:0},
+    {lat:34.0249115,lng:-118.3640646,rank:0},{lat:34.0335856,lng:-118.3640646,rank:0},{lat:34.0422598,lng:-118.3640646,rank:0},{lat:34.050934,lng:-118.3640646,rank:0},{lat:34.0596081,lng:-118.3640646,rank:0},{lat:34.0682823,lng:-118.3640646,rank:0},{lat:34.0769565,lng:-118.3640646,rank:0},{lat:34.0856306,lng:-118.3640646,rank:0},{lat:34.0943048,lng:-118.3640646,rank:0},{lat:34.102979,lng:-118.3640646,rank:0},{lat:34.1116531,lng:-118.3640646,rank:0},
+    {lat:34.0249115,lng:-118.3535932,rank:0},{lat:34.0335856,lng:-118.3535932,rank:0},{lat:34.0422598,lng:-118.3535932,rank:0},{lat:34.050934,lng:-118.3535932,rank:0},{lat:34.0596081,lng:-118.3535932,rank:0},{lat:34.0682823,lng:-118.3535932,rank:0},{lat:34.0769565,lng:-118.3535932,rank:0},{lat:34.0856306,lng:-118.3535932,rank:0},{lat:34.0943048,lng:-118.3535932,rank:0},{lat:34.102979,lng:-118.3535932,rank:0},{lat:34.1116531,lng:-118.3535932,rank:0}
+  ];
+  // ===================================================================
+
+  function bucketFor(r) {
+    if (!r || r === 0) return 'heat-x';
+    if (r === 1) return 'heat-1';
+    if (r <= 3) return 'heat-2';
+    if (r <= 5) return 'heat-4';
+    if (r <= 7) return 'heat-6';
+    if (r <= 9) return 'heat-8';
+    if (r <= 19) return 'heat-10';
+    return 'heat-20';
+  }
+
+  var geoCache = {};
+  function fetchCity(lat, lng, popup, rank) {
+    var key = lat.toFixed(4) + ',' + lng.toFixed(4);
+    if (geoCache[key]) { popup.setContent(buildPopup(rank, geoCache[key])); return; }
+    fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + lat + '&lon=' + lng + '&zoom=14&addressdetails=1', { headers: { 'Accept': 'application/json' } })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var addr = data.address || {};
+        var area = addr.neighbourhood || addr.suburb || addr.village || addr.town || addr.city || addr.county || '';
+        var state = addr.state_code || addr.state || '';
+        var label = area || 'Unknown area';
+        if (state && area) label += ', ' + state;
+        geoCache[key] = label;
+        popup.setContent(buildPopup(rank, label));
+      })
+      .catch(function() {
+        geoCache[key] = 'Area unavailable';
+        popup.setContent(buildPopup(rank, 'Area unavailable'));
+      });
+  }
+  function buildPopup(rank, area) {
+    var rankHtml = (rank && rank > 0) ? '<div style="font-size:13px;">Rank: <strong style="color:#0d2538;">#' + rank + '</strong></div>' : '<div style="font-size:13px;color:#a02020;"><strong>Not in top 20</strong></div>';
+    var areaHtml = '<div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 ' + area + '</div>';
+    return rankHtml + areaHtml;
+  }
+
+  var map = L.map('lf-map', { scrollWheelZoom: false, zoomControl: true }).setView([officeLat, officeLng], 12);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    maxZoom: 18,
+    subdomains: 'abcd'
+  }).addTo(map);
+
+  var bounds = [];
+
+  dataPoints.forEach(function(pt) {
+    var bucket = bucketFor(pt.rank);
+    var r = pt.rank;
+    var circle = L.circleMarker([pt.lat, pt.lng], {
+      radius: 14,
+      className: bucket,
+      weight: 1.5
+    });
+    var popup = L.popup({ closeButton: false, offset: [0, -8] }).setContent(buildPopup(r, 'Loading…'));
+    circle.bindPopup(popup);
+    circle.on('click', function() {
+      fetchCity(pt.lat, pt.lng, popup, r);
+    });
+    var tooltipText = (r && r > 0) ? '#' + r : '—';
+    circle.bindTooltip(tooltipText, { permanent: true, direction: 'center', className: 'lf-rank-label', offset: [0, 0] });
+    circle.addTo(map);
+    bounds.push([pt.lat, pt.lng]);
+  });
+
+  if (bounds.length) map.fitBounds(bounds, { padding: [24, 24] });
+
+  var officePopup = L.popup({ closeButton: false, offset: [0, -16] })
+    .setContent('<div style="font-size:13px;font-weight:600;color:#0d2538;">' + officeName + '</div><div style="font-size:12px;color:#6b7280;margin-top:3px;">📍 Office Location</div>');
+
+  var officeIcon = L.divIcon({
+    className: '',
+    html: '<div style="width:18px;height:18px;background:#1565c0;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>',
+    iconSize: [18, 18],
+    iconAnchor: [9, 9]
+  });
+  var officeMarker = L.marker([officeLat, officeLng], { icon: officeIcon, zIndexOffset: 1000 }).addTo(map);
+  officeMarker.bindPopup(officePopup);
+  officeMarker.on('click', function() {
+    fetchCity(officeLat, officeLng, officePopup, null);
+  });
+})();
+</script>
+
+<style>
+.lf-rank-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.7) !important;
+  padding: 0 !important;
+  pointer-events: none;
+}
+.leaflet-tooltip.lf-rank-label::before { display: none; }
+</style>
+</body>
+</html>
