@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exceptional Dentistry — May 2026 SEO Report | Dentist Nerds</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    :root {
+      --navy: #0d2538;
+      --navy-mid: #163550;
+      --navy-light: #1e4a6e;
+      --gold: #d4a55c;
+      --gold-light: #e8c280;
+      --gold-soft: rgba(212,165,92,0.12);
+      --cream: #faf8f3;
+      --cream-dark: #f0ece2;
+      --text-dark: #1a2a3a;
+      --text-mid: #4a6070;
+      --text-muted: #7a90a0;
+      --border: rgba(13,37,56,0.10);
+      --border-gold: rgba(212,165,92,0.30);
+      --shadow: 0 4px 24px rgba(13,37,56,0.10);
+      --shadow-lg: 0 8px 40px rgba(13,37,56,0.14);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--text-dark);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--navy);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--gold);
+    }
+    .site-header img { height: 34px; width: auto; }
+    .header-badge {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(212,165,92,0.12);
+      border: 1px solid rgba(212,165,92,0.30);
+      border-radius: 999px;
+      padding: 5px 14px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #0a3a5c 100%);
+      padding: 56px 48px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, rgba(212,165,92,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 12px;
+      color: rgba(212,165,92,0.65);
+      margin-bottom: 14px;
+      letter-spacing: 0.04em;
+    }
+    .breadcrumb a { color: inherit; text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.9rem, 4vw, 2.9rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .hero-title span { color: var(--gold); }
+    .hero-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+    }
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .kpi {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 14px;
+      padding: 20px 22px;
+      backdrop-filter: blur(8px);
+    }
+    .kpi-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .kpi-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+    .kpi-sub { font-size: 11.5px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+
+    /* ── MAIN ── */
+    .main { max-width: 1100px; margin: 0 auto; padding: 48px 48px 80px; }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 52px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .section-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--navy);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .section-desc { font-size: 13px; color: var(--text-muted); margin-top: 1px; }
+
+    /* ── CARD ── */
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    thead th {
+      background: var(--navy);
+      color: rgba(255,255,255,0.75);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    thead th:first-child { border-radius: 0; }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--gold-soft); }
+    tbody td { padding: 11px 16px; color: var(--text-dark); vertical-align: middle; }
+    .td-url { font-size: 12px; color: var(--text-muted); max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .td-url a { color: var(--navy-light); text-decoration: none; }
+    .td-url a:hover { color: var(--gold); }
+
+    /* rank badges */
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .rank-1  { background: #e8f5e9; color: #1b5e20; }
+    .rank-3  { background: #e3f2fd; color: #0d47a1; }
+    .rank-5  { background: #fff8e1; color: #e65100; }
+    .rank-10 { background: #fce4ec; color: #880e4f; }
+    .rank-20 { background: #f3e5f5; color: #4a148c; }
+
+    /* ── TRAFFIC GRID ── */
+    .traffic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .traffic-stat {
+      background: var(--cream-dark);
+      border-radius: 12px;
+      padding: 20px 22px;
+      border: 1px solid var(--border);
+    }
+    .traffic-stat-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+    .traffic-stat-val { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--navy); }
+    .traffic-stat-note { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ── GBP TABLE ── */
+    .gbp-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .gbp-table th {
+      background: var(--navy);
+      color: rgba(255,255,255,0.75);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 11px 18px;
+      text-align: left;
+    }
+    .gbp-table td { padding: 11px 18px; border-bottom: 1px solid var(--border); }
+    .gbp-table tr:last-child td { border-bottom: none; }
+    .gbp-table tr:hover td { background: var(--gold-soft); }
+    .gbp-table .highlight { font-weight: 700; color: var(--navy); }
+    .gbp-table .month-may { background: linear-gradient(90deg, rgba(212,165,92,0.07) 0%, transparent 100%); }
+
+    /* ── MAP ── */
+    #heatmap { height: 480px; border-radius: 14px; overflow: hidden; }
+    .map-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .map-stat {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 12px;
+      padding: 16px 18px;
+      text-align: center;
+    }
+    .map-stat-label { font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .map-stat-val { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold); }
+    .map-stat-note { font-size: 11px; color: rgba(255,255,255,0.40); margin-top: 2px; }
+    .secondary-keywords {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .kw-card {
+      background: var(--cream-dark);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .kw-card-title { font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+    .kw-card-stats { display: flex; gap: 18px; }
+    .kw-stat-lbl { font-size: 10.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .kw-stat-val { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); }
+
+    /* ── LEGEND ── */
+    .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-mid); }
+    .legend-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── BLOGS ── */
+    .blog-list { display: flex; flex-direction: column; gap: 10px; }
+    .blog-item {
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .blog-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--navy);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .blog-title { font-weight: 600; font-size: 13.5px; color: var(--navy); line-height: 1.35; }
+    .blog-url { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+    .blog-url a { color: inherit; text-decoration: none; }
+    .blog-url a:hover { color: var(--gold); }
+
+    /* ── SERVICE PAGES ── */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+    .service-item {
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--navy);
+      font-weight: 500;
+    }
+    .service-item svg { color: var(--gold); flex-shrink: 0; }
+
+    /* ── BACKLINKS ROW ── */
+    .backlinks-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .bl-stat {
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-align: center;
+    }
+    .bl-stat-lbl { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+    .bl-stat-val { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--navy); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--navy);
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 2px solid var(--gold);
+      color: rgba(255,255,255,0.40);
+      font-size: 12.5px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .site-footer a { color: rgba(255,255,255,0.40); text-decoration: none; }
+    .site-footer a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .site-header, .hero, .main, .site-footer { padding-left: 20px; padding-right: 20px; }
+      .kpi-row { grid-template-columns: repeat(2, 1fr); }
+      .traffic-grid, .secondary-keywords { grid-template-columns: 1fr; }
+      .map-stats { grid-template-columns: repeat(2, 1fr); }
+      .backlinks-row { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="/">
+    <img src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
+  </a>
+  <span class="header-badge">Monthly SEO Report</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="/clients/">← All Clients</a> / <a href="/clients/exceptional-dentistry/">Exceptional Dentistry</a></div>
+    <h1 class="hero-title">Exceptional Dentistry<br><span>May 2026 — SEO Performance</span></h1>
+    <p class="hero-sub">palmdaleexceptionaldentistry.com &nbsp;·&nbsp; Palmdale, CA &nbsp;·&nbsp; Reporting period: May 1–31, 2026</p>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-label">Organic Traffic</div>
+        <div class="kpi-value">475</div>
+        <div class="kpi-sub">Search Console clicks</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Keywords Ranking</div>
+        <div class="kpi-value">50+</div>
+        <div class="kpi-sub">Top 100 positions</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Google Rating</div>
+        <div class="kpi-value">4.9★</div>
+        <div class="kpi-sub">467 reviews</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Local Visibility</div>
+        <div class="kpi-value">64%</div>
+        <div class="kpi-sub">SoLV — dentist in palmdale</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- ── KEYWORD RANKINGS ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Keyword Rankings</div>
+        <div class="section-desc">Google organic positions — local &amp; service keywords (SEMrush, May 2026)</div>
+      </div>
+    </div>
+    <div class="card" style="padding:0; overflow:hidden;">
+      <div class="table-wrap" style="border:none; border-radius:0;">
+        <table>
+          <thead>
+            <tr>
+              <th>Keyword</th>
+              <th>Position</th>
+              <th>Prev</th>
+              <th>Search Volume</th>
+              <th>Landing Page</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>exceptional dentistry palmdale</strong></td>
+              <td><span class="rank-badge rank-1">1</span></td>
+              <td style="color:var(--text-muted)">1</td>
+              <td>140</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/" target="_blank">Homepage</a></td>
+            </tr>
+            <tr>
+              <td><strong>exceptional dentistry palmdale ca</strong></td>
+              <td><span class="rank-badge rank-1">1</span></td>
+              <td style="color:var(--text-muted)">1</td>
+              <td>90</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/" target="_blank">Homepage</a></td>
+            </tr>
+            <tr>
+              <td>exceptional dentistry</td>
+              <td><span class="rank-badge rank-5">6</span></td>
+              <td style="color:var(--text-muted)">6</td>
+              <td>2,900</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/" target="_blank">Homepage</a></td>
+            </tr>
+            <tr>
+              <td>cosmetic dentist palmdale ca</td>
+              <td><span class="rank-badge rank-3">3</span></td>
+              <td style="color:var(--text-muted)">3</td>
+              <td>50</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/" target="_blank">Homepage</a></td>
+            </tr>
+            <tr>
+              <td>best dentist palmdale</td>
+              <td><span class="rank-badge rank-5">5</span></td>
+              <td style="color:var(--text-muted)">5</td>
+              <td>70</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/" target="_blank">Homepage</a></td>
+            </tr>
+            <tr>
+              <td>dentist in palmdale</td>
+              <td><span class="rank-badge rank-5">5</span></td>
+              <td style="color:var(--text-muted)">5</td>
+              <td>720</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/" target="_blank">Homepage</a></td>
+            </tr>
+            <tr>
+              <td>family dentist palmdale ca</td>
+              <td><span class="rank-badge rank-5">7</span></td>
+              <td style="color:var(--text-muted)">7</td>
+              <td>50</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/" target="_blank">Homepage</a></td>
+            </tr>
+            <tr>
+              <td>wisdom teeth removal palmdale ca</td>
+              <td><span class="rank-badge rank-5">7</span></td>
+              <td style="color:var(--text-muted)">7</td>
+              <td>90</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/" target="_blank">Homepage</a></td>
+            </tr>
+            <tr>
+              <td>emergency dentist palmdale</td>
+              <td><span class="rank-badge rank-10">8</span></td>
+              <td style="color:var(--text-muted)">8</td>
+              <td>90</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/tooth-abscess-and-dental-emergencies-in-palmdale/" target="_blank">Emergency page</a></td>
+            </tr>
+            <tr>
+              <td>bone grafting palmdale ca</td>
+              <td><span class="rank-badge rank-5">5</span></td>
+              <td style="color:var(--text-muted)">5</td>
+              <td>70</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/palmdale-ca/dental-bone-grafting/" target="_blank">/dental-bone-grafting/</a></td>
+            </tr>
+            <tr>
+              <td>oral surgeon palmdale ca</td>
+              <td><span class="rank-badge rank-20">23</span></td>
+              <td style="color:var(--text-muted)">23</td>
+              <td>90</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/palmdale-ca/oral-surgery/" target="_blank">/oral-surgery/</a></td>
+            </tr>
+            <tr>
+              <td>occlusal orthotic device</td>
+              <td><span class="rank-badge rank-1">1</span></td>
+              <td style="color:var(--text-muted)">1</td>
+              <td>390</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/difference-between-occlusal-guard-and-dental-orthotic/" target="_blank">Blog</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ORGANIC TRAFFIC ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Organic Traffic — May 2026</div>
+        <div class="section-desc">Google Search Console · organic search clicks &amp; impressions</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="traffic-grid" style="margin-bottom:24px;">
+        <div class="traffic-stat">
+          <div class="traffic-stat-label">Total Organic Clicks</div>
+          <div class="traffic-stat-val">475</div>
+          <div class="traffic-stat-note">Search Console — May 2026</div>
+        </div>
+        <div class="traffic-stat">
+          <div class="traffic-stat-label">Total Impressions</div>
+          <div class="traffic-stat-val">133,915</div>
+          <div class="traffic-stat-note">Search Console — May 2026</div>
+        </div>
+      </div>
+      <div style="margin-bottom:14px; font-size:13px; font-weight:600; color:var(--navy);">Top Pages by Organic Clicks</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Page</th>
+              <th>Clicks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--text-muted);font-weight:600;">1</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/mouthwash-with-alcohol-vs-without-which-really-is-better/" target="_blank">Mouthwash with Alcohol vs. Without — Which Really Is Better?</a></td>
+              <td><strong>119</strong></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-weight:600;">2</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/" target="_blank">Homepage (GBP organic)</a></td>
+              <td><strong>64</strong></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-weight:600;">3</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/" target="_blank">Homepage</a></td>
+              <td><strong>49</strong></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-weight:600;">4</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/my-temporary-crown-fell-out-what-should-i-do/" target="_blank">My Temporary Crown Fell Out — What Should I Do?</a></td>
+              <td><strong>40</strong></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-weight:600;">5</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/difference-between-occlusal-guard-and-dental-orthotic/" target="_blank">Occlusal Guard vs. Dental Orthotic</a></td>
+              <td><strong>32</strong></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-weight:600;">6</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/meet-our-dental-team/" target="_blank">Meet Our Dental Team</a></td>
+              <td><strong>27</strong></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-weight:600;">7</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/meet-our-dental-team/dr-ramy-garsdean-dds/" target="_blank">Dr. Ramy Garsdean, DDS</a></td>
+              <td><strong>16</strong></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-weight:600;">8</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/facial-profile-mewing/" target="_blank">Facial Profile Mewing</a></td>
+              <td><strong>13</strong></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-weight:600;">9</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/what-the-heck-is-up-with-dental-insurance-benefits/" target="_blank">What the Heck Is Up With Dental Insurance?</a></td>
+              <td><strong>10</strong></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-weight:600;">10</td>
+              <td class="td-url"><a href="https://palmdaleexceptionaldentistry.com/timeline-from-dental-implant-surgery-to-final-crown/" target="_blank">Timeline: Dental Implant Surgery to Final Crown</a></td>
+              <td><strong>10</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LOCAL MAP RANKINGS ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Local Map Rankings — Palmdale, CA</div>
+        <div class="section-desc">LocalFalcon 11×11 grid · "dentist in palmdale" · May 5, 2026 · Click any point for location details</div>
+      </div>
+    </div>
+    <div class="card" style="padding:20px;">
+      <div id="heatmap"></div>
+      <div class="map-stats">
+        <div class="map-stat">
+          <div class="map-stat-label">Avg. Rank Position</div>
+          <div class="map-stat-val">4.10</div>
+          <div class="map-stat-note">Lower is better</div>
+        </div>
+        <div class="map-stat">
+          <div class="map-stat-label">Share of Local Voice</div>
+          <div class="map-stat-val">64.46%</div>
+          <div class="map-stat-note">Top-3 grid coverage</div>
+        </div>
+        <div class="map-stat">
+          <div class="map-stat-label">Grid Coverage</div>
+          <div class="map-stat-val">121</div>
+          <div class="map-stat-note">Data points (11×11)</div>
+        </div>
+      </div>
+      <div class="secondary-keywords">
+        <div class="kw-card">
+          <div class="kw-card-title">"emergency dentist in palmdale"</div>
+          <div class="kw-card-stats">
+            <div><div class="kw-stat-lbl">ARP</div><div class="kw-stat-val">4.05</div></div>
+            <div><div class="kw-stat-lbl">SoLV</div><div class="kw-stat-val">42.15%</div></div>
+          </div>
+        </div>
+        <div class="kw-card">
+          <div class="kw-card-title">"dentist near me"</div>
+          <div class="kw-card-stats">
+            <div><div class="kw-stat-lbl">ARP</div><div class="kw-stat-val">6.20</div></div>
+            <div><div class="kw-stat-lbl">SoLV</div><div class="kw-stat-val">33.06%</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#0f9b58;"></div> #1–2</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#4caf50;"></div> #3</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#8bc34a;"></div> #4–5</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#cddc39;"></div> #6–7</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#ffc107;"></div> #8–9</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#ff5722;"></div> #10–14</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#c62828;"></div> #15–20</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#9e9e9e;opacity:0.6;"></div> Not ranking</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GBP PERFORMANCE ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Google Business Profile Performance</div>
+        <div class="section-desc">6-month trend · Windsor.ai / Google My Business</div>
+      </div>
+    </div>
+    <div class="card" style="padding:0; overflow:hidden;">
+      <table class="gbp-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>GBP Impressions</th>
+            <th>Website Clicks</th>
+            <th>Direction Requests</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dec 2025</td>
+            <td>1,050</td>
+            <td>54</td>
+            <td>92</td>
+          </tr>
+          <tr>
+            <td>Jan 2026</td>
+            <td>1,020</td>
+            <td>49</td>
+            <td>89</td>
+          </tr>
+          <tr>
+            <td>Feb 2026</td>
+            <td>860</td>
+            <td>55</td>
+            <td>60</td>
+          </tr>
+          <tr>
+            <td>Mar 2026</td>
+            <td>988</td>
+            <td>68</td>
+            <td>98</td>
+          </tr>
+          <tr>
+            <td>Apr 2026</td>
+            <td>1,048</td>
+            <td>67</td>
+            <td>106</td>
+          </tr>
+          <tr class="month-may">
+            <td><strong>May 2026</strong></td>
+            <td class="highlight">925</td>
+            <td class="highlight">78</td>
+            <td class="highlight">84</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:10px; padding-left:4px;">* Calls data not available in connected GBP account for this reporting period.</p>
+  </div>
+
+  <!-- ── CONTENT PUBLISHED ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Content Published in May</div>
+        <div class="section-desc">5 blog posts · 12 service pages created / optimized</div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:13px; font-weight:600; color:var(--navy); margin-bottom:14px;">Blog Posts</div>
+      <div class="blog-list">
+        <div class="blog-item">
+          <div class="blog-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="blog-title">Dental Implants vs. Dental Bridge — Which Is the Better Way to Fill a Gap in Your Smile?</div>
+            <div class="blog-url"><a href="https://palmdaleexceptionaldentistry.com/dental-implants-vs-dental-bridge-which-is-the-better-way-to-fill-a-gap-in-your-smile/" target="_blank">palmdaleexceptionaldentistry.com/dental-implants-vs-dental-bridge…</a></div>
+          </div>
+        </div>
+        <div class="blog-item">
+          <div class="blog-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="blog-title">The Warning Signs of an Infected Tooth That Most People Try to Ignore</div>
+            <div class="blog-url"><a href="https://palmdaleexceptionaldentistry.com/the-warning-signs-of-an-infected-tooth-that-most-people-try-to-ignore/" target="_blank">palmdaleexceptionaldentistry.com/the-warning-signs-of-an-infected-tooth…</a></div>
+          </div>
+        </div>
+        <div class="blog-item">
+          <div class="blog-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="blog-title">Food Keeps Getting Stuck Between the Same Two Teeth — Why?</div>
+            <div class="blog-url"><a href="https://palmdaleexceptionaldentistry.com/food-keeps-getting-stuck-between-the-same-two-teeth-why/" target="_blank">palmdaleexceptionaldentistry.com/food-keeps-getting-stuck-between…</a></div>
+          </div>
+        </div>
+        <div class="blog-item">
+          <div class="blog-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="blog-title">Regular Teeth Cleaning vs. Deep Cleaning — Which One Is Right for the Condition of Your Gums?</div>
+            <div class="blog-url"><a href="https://palmdaleexceptionaldentistry.com/regular-teeth-cleaning-vs-deep-cleaning-which-one-is-right-for-the-condition-of-your-gums/" target="_blank">palmdaleexceptionaldentistry.com/regular-teeth-cleaning-vs-deep-cleaning…</a></div>
+          </div>
+        </div>
+        <div class="blog-item">
+          <div class="blog-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="blog-title">Can Skipping Dental Visits Actually Cause Your Implant to Fail?</div>
+            <div class="blog-url"><a href="https://palmdaleexceptionaldentistry.com/can-skipping-dental-visits-actually-cause-your-implant-to-fail/" target="_blank">palmdaleexceptionaldentistry.com/can-skipping-dental-visits-actually-cause…</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size:13px; font-weight:600; color:var(--navy); margin: 24px 0 14px;">Service Pages Created / Optimized</div>
+      <div class="services-grid">
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Veneers
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Fluoride Treatments
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Dental Implants
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Clear Aligner Therapy
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Root Canals
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Teeth Whitening
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Teeth Cleaning
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Dental Fillings
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Wisdom Teeth Removal
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          All-on-4 Dental Implants
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Periodontal Care
+        </div>
+        <div class="service-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Night Guards
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BACKLINKS ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Backlink Profile</div>
+        <div class="section-desc">SEMrush · palmdaleexceptionaldentistry.com · May 2026</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="backlinks-row">
+        <div class="bl-stat">
+          <div class="bl-stat-lbl">Total Backlinks</div>
+          <div class="bl-stat-val">3,248</div>
+        </div>
+        <div class="bl-stat">
+          <div class="bl-stat-lbl">Referring Domains</div>
+          <div class="bl-stat-val">430</div>
+        </div>
+        <div class="bl-stat">
+          <div class="bl-stat-lbl">Authority Score</div>
+          <div class="bl-stat-val">18</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div>© 2026 Dentist Nerds. All rights reserved.</div>
+  <div>
+    <a href="https://www.dentistnerds.com/privacy-policy">Privacy Policy</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.dentistnerds.com/contact">Contact</a>
+  </div>
+</footer>
+
+<!-- LEAFLET HEATMAP -->
+<script>
+(function() {
+  var map = L.map('heatmap', { zoomControl: true, scrollWheelZoom: false }).setView([34.6322, -118.1497], 11);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap contributors © CARTO',
+    maxZoom: 19
+  }).addTo(map);
+
+  var BUCKET_COLORS = {
+    'heat-1':  'rgba(15,155,88,0.88)',
+    'heat-2':  'rgba(76,175,80,0.85)',
+    'heat-4':  'rgba(139,195,74,0.85)',
+    'heat-6':  'rgba(205,220,57,0.85)',
+    'heat-8':  'rgba(255,193,7,0.88)',
+    'heat-10': 'rgba(255,87,34,0.88)',
+    'heat-20': 'rgba(198,40,40,0.88)',
+    'heat-x':  'rgba(158,158,158,0.50)'
+  };
+  var BUCKET_TEXT = {
+    'heat-1':'#fff','heat-2':'#fff','heat-4':'#fff',
+    'heat-6':'#333','heat-8':'#333',
+    'heat-10':'#fff','heat-20':'#fff','heat-x':'#fff'
+  };
+
+  function getBucket(r) {
+    if (!r || r === 0) return 'heat-x';
+    if (r <= 2) return 'heat-1';
+    if (r <= 3) return 'heat-2';
+    if (r <= 5) return 'heat-4';
+    if (r <= 7) return 'heat-6';
+    if (r <= 9) return 'heat-8';
+    if (r <= 14) return 'heat-10';
+    return 'heat-20';
+  }
+
+  function buildPopup(rank, area) {
+    var rankText = (rank && rank > 0) ? '#' + rank : 'Not ranking';
+    return '<div style="font-family:Inter,sans-serif;font-size:13px;min-width:160px;">' +
+      '<div style="font-weight:700;color:#0d2538;margin-bottom:4px;">' + area + '</div>' +
+      '<div style="color:#4a6070;">Rank: <strong style="color:#0d2538;">' + rankText + '</strong></div>' +
+      '<div style="font-size:11px;color:#7a90a0;margin-top:3px;">dentist in palmdale</div>' +
+      '</div>';
+  }
+
+  function fetchCity(lat, lng, popup, rank) {
+    fetch('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lng)
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        var addr = d.address || {};
+        var area = addr.neighbourhood || addr.suburb || addr.quarter || addr.city_district || addr.county || addr.city || 'Palmdale, CA';
+        popup.setContent(buildPopup(rank, area));
+      })
+      .catch(function() {
+        popup.setContent(buildPopup(rank, 'Palmdale, CA'));
+      });
+  }
+
+  var dataPoints = [{"lat":34.5888042,"lng":-118.2024186,"rank":7},{"lat":34.5974783,"lng":-118.2024186,"rank":7},{"lat":34.6061525,"lng":-118.2024186,"rank":6},{"lat":34.6148267,"lng":-118.2024186,"rank":18},{"lat":34.6235008,"lng":-118.2024186,"rank":3},{"lat":34.632175,"lng":-118.2024186,"rank":2},{"lat":34.6408492,"lng":-118.2024186,"rank":1},{"lat":34.6495233,"lng":-118.2024186,"rank":1},{"lat":34.6581975,"lng":-118.2024186,"rank":1},{"lat":34.6668717,"lng":-118.2024186,"rank":1},{"lat":34.6755458,"lng":-118.2024186,"rank":1},{"lat":34.5888042,"lng":-118.1918765,"rank":7},{"lat":34.5974783,"lng":-118.1918765,"rank":8},{"lat":34.6061525,"lng":-118.1918765,"rank":6},{"lat":34.6148267,"lng":-118.1918765,"rank":4},{"lat":34.6235008,"lng":-118.1918765,"rank":2},{"lat":34.632175,"lng":-118.1918765,"rank":2},{"lat":34.6408492,"lng":-118.1918765,"rank":1},{"lat":34.6495233,"lng":-118.1918765,"rank":1},{"lat":34.6581975,"lng":-118.1918765,"rank":1},{"lat":34.6668717,"lng":-118.1918765,"rank":16},{"lat":34.6755458,"lng":-118.1918765,"rank":1},{"lat":34.5888042,"lng":-118.1813345,"rank":9},{"lat":34.5974783,"lng":-118.1813345,"rank":7},{"lat":34.6061525,"lng":-118.1813345,"rank":6},{"lat":34.6148267,"lng":-118.1813345,"rank":3},{"lat":34.6235008,"lng":-118.1813345,"rank":1},{"lat":34.632175,"lng":-118.1813345,"rank":1},{"lat":34.6408492,"lng":-118.1813345,"rank":1},{"lat":34.6495233,"lng":-118.1813345,"rank":1},{"lat":34.6581975,"lng":-118.1813345,"rank":1},{"lat":34.6668717,"lng":-118.1813345,"rank":1},{"lat":34.6755458,"lng":-118.1813345,"rank":1},{"lat":34.5888042,"lng":-118.1707925,"rank":15},{"lat":34.5974783,"lng":-118.1707925,"rank":9},{"lat":34.6061525,"lng":-118.1707925,"rank":6},{"lat":34.6148267,"lng":-118.1707925,"rank":2},{"lat":34.6235008,"lng":-118.1707925,"rank":1},{"lat":34.632175,"lng":-118.1707925,"rank":1},{"lat":34.6408492,"lng":-118.1707925,"rank":1},{"lat":34.6495233,"lng":-118.1707925,"rank":1},{"lat":34.6581975,"lng":-118.1707925,"rank":1},{"lat":34.6668717,"lng":-118.1707925,"rank":1},{"lat":34.6755458,"lng":-118.1707925,"rank":1},{"lat":34.5888042,"lng":-118.1602504,"rank":17},{"lat":34.5974783,"lng":-118.1602504,"rank":12},{"lat":34.6061525,"lng":-118.1602504,"rank":6},{"lat":34.6148267,"lng":-118.1602504,"rank":2},{"lat":34.6235008,"lng":-118.1602504,"rank":1},{"lat":34.632175,"lng":-118.1602504,"rank":1},{"lat":34.6408492,"lng":-118.1602504,"rank":1},{"lat":34.6495233,"lng":-118.1602504,"rank":1},{"lat":34.6581975,"lng":-118.1602504,"rank":1},{"lat":34.6668717,"lng":-118.1602504,"rank":1},{"lat":34.6755458,"lng":-118.1602504,"rank":1},{"lat":34.5888042,"lng":-118.1497084,"rank":0},{"lat":34.5974783,"lng":-118.1497084,"rank":0},{"lat":34.6061525,"lng":-118.1497084,"rank":11},{"lat":34.6148267,"lng":-118.1497084,"rank":3},{"lat":34.6235008,"lng":-118.1497084,"rank":1},{"lat":34.632175,"lng":-118.1497084,"rank":1},{"lat":34.6408492,"lng":-118.1497084,"rank":1},{"lat":34.6495233,"lng":-118.1497084,"rank":1},{"lat":34.6581975,"lng":-118.1497084,"rank":1},{"lat":34.6668717,"lng":-118.1497084,"rank":1},{"lat":34.6755458,"lng":-118.1497084,"rank":1},{"lat":34.5888042,"lng":-118.1391664,"rank":0},{"lat":34.5974783,"lng":-118.1391664,"rank":19},{"lat":34.6061525,"lng":-118.1391664,"rank":11},{"lat":34.6148267,"lng":-118.1391664,"rank":2},{"lat":34.6235008,"lng":-118.1391664,"rank":1},{"lat":34.632175,"lng":-118.1391664,"rank":1},{"lat":34.6408492,"lng":-118.1391664,"rank":1},{"lat":34.6495233,"lng":-118.1391664,"rank":1},{"lat":34.6581975,"lng":-118.1391664,"rank":1},{"lat":34.6668717,"lng":-118.1391664,"rank":1},{"lat":34.6755458,"lng":-118.1391664,"rank":1},{"lat":34.5888042,"lng":-118.1286243,"rank":0},{"lat":34.5974783,"lng":-118.1286243,"rank":17},{"lat":34.6061525,"lng":-118.1286243,"rank":10},{"lat":34.6148267,"lng":-118.1286243,"rank":5},{"lat":34.6235008,"lng":-118.1286243,"rank":1},{"lat":34.632175,"lng":-118.1286243,"rank":1},{"lat":34.6408492,"lng":-118.1286243,"rank":1},{"lat":34.6495233,"lng":-118.1286243,"rank":1},{"lat":34.6581975,"lng":-118.1286243,"rank":1},{"lat":34.6668717,"lng":-118.1286243,"rank":1},{"lat":34.6755458,"lng":-118.1286243,"rank":1},{"lat":34.5888042,"lng":-118.1180823,"rank":0},{"lat":34.5974783,"lng":-118.1180823,"rank":15},{"lat":34.6061525,"lng":-118.1180823,"rank":11},{"lat":34.6148267,"lng":-118.1180823,"rank":6},{"lat":34.6235008,"lng":-118.1180823,"rank":3},{"lat":34.632175,"lng":-118.1180823,"rank":1},{"lat":34.6408492,"lng":-118.1180823,"rank":1},{"lat":34.6495233,"lng":-118.1180823,"rank":1},{"lat":34.6581975,"lng":-118.1180823,"rank":1},{"lat":34.6668717,"lng":-118.1180823,"rank":1},{"lat":34.6755458,"lng":-118.1180823,"rank":1},{"lat":34.5888042,"lng":-118.1075403,"rank":0},{"lat":34.5974783,"lng":-118.1075403,"rank":16},{"lat":34.6061525,"lng":-118.1075403,"rank":11},{"lat":34.6148267,"lng":-118.1075403,"rank":9},{"lat":34.6235008,"lng":-118.1075403,"rank":20},{"lat":34.632175,"lng":-118.1075403,"rank":3},{"lat":34.6408492,"lng":-118.1075403,"rank":1},{"lat":34.6495233,"lng":-118.1075403,"rank":1},{"lat":34.6581975,"lng":-118.1075403,"rank":1},{"lat":34.6668717,"lng":-118.1075403,"rank":1},{"lat":34.6755458,"lng":-118.1075403,"rank":1},{"lat":34.5888042,"lng":-118.0969982,"rank":0},{"lat":34.5974783,"lng":-118.0969982,"rank":17},{"lat":34.6061525,"lng":-118.0969982,"rank":12},{"lat":34.6148267,"lng":-118.0969982,"rank":0},{"lat":34.6235008,"lng":-118.0969982,"rank":9},{"lat":34.632175,"lng":-118.0969982,"rank":4},{"lat":34.6408492,"lng":-118.0969982,"rank":1},{"lat":34.6495233,"lng":-118.0969982,"rank":1},{"lat":34.6581975,"lng":-118.0969982,"rank":1},{"lat":34.6668717,"lng":-118.0969982,"rank":1},{"lat":34.6755458,"lng":-118.0969982,"rank":1}];
+
+  dataPoints.forEach(function(pt) {
+    var r = pt.rank;
+    var bucket = getBucket(r);
+    var label = (r && r > 0) ? '#' + r : '—';
+    var bg = BUCKET_COLORS[bucket];
+    var fg = BUCKET_TEXT[bucket];
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="width:28px;height:28px;border-radius:50%;background:' + bg + ';border:1.5px solid rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-size:9.5px;font-weight:700;color:' + fg + ';text-shadow:0 1px 2px rgba(0,0,0,0.35);box-shadow:0 1px 4px rgba(0,0,0,0.18);">' + label + '</div>',
+      iconSize: [28, 28],
+      iconAnchor: [14, 14]
+    });
+    var popup = L.popup({ closeButton: false, offset: [0, -14] }).setContent(buildPopup(r, 'Loading…'));
+    var marker = L.marker([pt.lat, pt.lng], { icon: icon });
+    marker.bindPopup(popup);
+    marker.on('click', function() { fetchCity(pt.lat, pt.lng, popup, r); });
+    marker.addTo(map);
+  });
+
+  // Office marker
+  L.circleMarker([34.632175, -118.1497084], {
+    radius: 8, color: '#0d2538', fillColor: '#d4a55c', fillOpacity: 1, weight: 2.5
+  }).bindTooltip('Exceptional Dentistry — Palmdale', { permanent: false, direction: 'top' }).addTo(map);
+})();
+</script>
+
+</body>
+</html>
