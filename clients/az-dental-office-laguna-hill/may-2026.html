@@ -624,25 +624,36 @@ body {
     subdomains: 'abcd'
   }).addTo(map);
 
+  var BUCKET_COLORS = {
+    'heat-1':'#0f9b58','heat-2':'#4caf7d','heat-4':'#8bc34a',
+    'heat-6':'#cddc39','heat-8':'#ffeb3b',
+    'heat-10':'#ff5722','heat-20':'#b71c1c','heat-x':'#9e9e9e'
+  };
+  var BUCKET_TEXT = {
+    'heat-1':'#fff','heat-2':'#fff','heat-4':'#fff',
+    'heat-6':'#333','heat-8':'#333',
+    'heat-10':'#fff','heat-20':'#fff','heat-x':'#fff'
+  };
+
   var bounds = [];
 
   dataPoints.forEach(function(pt) {
     var bucket = bucketFor(pt.rank);
     var r = pt.rank;
-    var label = (r && r > 0) ? String(r) : '—';
-    var circle = L.circleMarker([pt.lat, pt.lng], {
-      radius: 14,
-      className: bucket,
-      weight: 1.5
+    var label = (r && r > 0) ? '#' + r : '—';
+    var bg = BUCKET_COLORS[bucket];
+    var fg = BUCKET_TEXT[bucket];
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="width:28px;height:28px;border-radius:50%;background:' + bg + ';border:1.5px solid rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-size:9.5px;font-weight:700;color:' + fg + ';text-shadow:0 1px 2px rgba(0,0,0,0.35);box-shadow:0 1px 4px rgba(0,0,0,0.18);">' + label + '</div>',
+      iconSize: [28, 28],
+      iconAnchor: [14, 14]
     });
-    var popup = L.popup({ closeButton: false, offset: [0, -8] }).setContent(buildPopup(r, 'Loading…'));
-    circle.bindPopup(popup);
-    circle.on('click', function() {
-      fetchCity(pt.lat, pt.lng, popup, r);
-    });
-    var tooltipText = (r && r > 0) ? '#' + r : '—';
-    circle.bindTooltip(tooltipText, { permanent: true, direction: 'center', className: 'lf-rank-label', offset: [0, 0] });
-    circle.addTo(map);
+    var popup = L.popup({ closeButton: false, offset: [0, -14] }).setContent(buildPopup(r, 'Loading…'));
+    var marker = L.marker([pt.lat, pt.lng], { icon: icon });
+    marker.bindPopup(popup);
+    marker.on('click', function() { fetchCity(pt.lat, pt.lng, popup, r); });
+    marker.addTo(map);
     bounds.push([pt.lat, pt.lng]);
   });
 
