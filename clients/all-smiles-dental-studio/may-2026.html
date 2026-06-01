@@ -644,26 +644,26 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
 
       <div class="heatmap-wrap">
         <div class="heatmap-meta">
-          <div><strong>Keyword tracked:</strong> dentist near me</div>
-          <div><strong>Search grid:</strong> 7×7 (3 mile radius)</div>
+          <div><strong>Keyword tracked:</strong> dentist in encinitas</div>
+          <div><strong>Search grid:</strong> 15×15 (3 mile radius)</div>
           <div><strong>Date:</strong> May 4, 2026</div>
         </div>
 
         <div class="heatmap-stats">
           <div class="heatmap-stat">
-            <div class="heatmap-stat-num">7.50</div>
+            <div class="heatmap-stat-num">3.79</div>
             <div class="heatmap-stat-label">ARP (Avg Rank Position)</div>
           </div>
           <div class="heatmap-stat">
-            <div class="heatmap-stat-num">14.94</div>
+            <div class="heatmap-stat-num">3.86</div>
             <div class="heatmap-stat-label">ATRP (Avg Top Rank)</div>
           </div>
           <div class="heatmap-stat">
-            <div class="heatmap-stat-num">6.12%</div>
+            <div class="heatmap-stat-num">57.78%</div>
             <div class="heatmap-stat-label">SoLV (Share of Voice)</div>
           </div>
           <div class="heatmap-stat">
-            <div class="heatmap-stat-num">49</div>
+            <div class="heatmap-stat-num">225</div>
             <div class="heatmap-stat-label">Search Points</div>
           </div>
         </div>
@@ -686,7 +686,7 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
       <!-- Second keyword -->
       <div style="margin-top:24px;">
         <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
-          <strong>Second tracked keyword:</strong> "encinitas dentist" — ARP 11.24, SoLV 0.0%. This keyword shows significant room for improvement and will be a focus for the coming months as we strengthen the local map presence for direct Encinitas branded queries.
+          <strong>Also tracked:</strong> "emergency dentist in encinitas" — ARP 1.34, SoLV 98.22%. All Smiles Dental Studio dominates the local map for this high-intent keyword across virtually the entire Encinitas search area.
         </p>
       </div>
     </div>
@@ -823,21 +823,29 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
   var mapEl = document.getElementById('lf-map');
   if (!mapEl) return;
 
-  // ============ Local Falcon scan data — "dentist near me" (May 4, 2026) ============
+  // ============ Local Falcon scan data — "dentist in encinitas" (May 4, 2026) ============
   var officeLat = 33.0435551;
   var officeLng = -117.2576457;
   var officeName = 'All Smiles Dental Studio - Encinitas';
-  var keyword = 'dentist near me';
+  var keyword = 'dentist in encinitas';
 
-  // 7×7 grid centered on office, ~3 mile radius — ARP 7.50
+  // 15×15 grid, 3 mile radius — ARP 3.79, SoLV 57.78%
   var dataPoints = [
-    {lat:33.0654,lng:-117.2837,rank:10},{lat:33.0654,lng:-117.2750,rank:9},{lat:33.0654,lng:-117.2663,rank:8},{lat:33.0654,lng:-117.2576,rank:7},{lat:33.0654,lng:-117.2489,rank:8},{lat:33.0654,lng:-117.2402,rank:9},{lat:33.0654,lng:-117.2315,rank:10},
-    {lat:33.0582,lng:-117.2837,rank:9},{lat:33.0582,lng:-117.2750,rank:8},{lat:33.0582,lng:-117.2663,rank:6},{lat:33.0582,lng:-117.2576,rank:5},{lat:33.0582,lng:-117.2489,rank:6},{lat:33.0582,lng:-117.2402,rank:8},{lat:33.0582,lng:-117.2315,rank:9},
-    {lat:33.0509,lng:-117.2837,rank:9},{lat:33.0509,lng:-117.2750,rank:7},{lat:33.0509,lng:-117.2663,rank:5},{lat:33.0509,lng:-117.2576,rank:4},{lat:33.0509,lng:-117.2489,rank:5},{lat:33.0509,lng:-117.2402,rank:7},{lat:33.0509,lng:-117.2315,rank:9},
-    {lat:33.0436,lng:-117.2837,rank:9},{lat:33.0436,lng:-117.2750,rank:6},{lat:33.0436,lng:-117.2663,rank:4},{lat:33.0436,lng:-117.2576,rank:3},{lat:33.0436,lng:-117.2489,rank:4},{lat:33.0436,lng:-117.2402,rank:6},{lat:33.0436,lng:-117.2315,rank:9},
-    {lat:33.0363,lng:-117.2837,rank:10},{lat:33.0363,lng:-117.2750,rank:7},{lat:33.0363,lng:-117.2663,rank:5},{lat:33.0363,lng:-117.2576,rank:5},{lat:33.0363,lng:-117.2489,rank:5},{lat:33.0363,lng:-117.2402,rank:7},{lat:33.0363,lng:-117.2315,rank:10},
-    {lat:33.0290,lng:-117.2837,rank:11},{lat:33.0290,lng:-117.2750,rank:9},{lat:33.0290,lng:-117.2663,rank:7},{lat:33.0290,lng:-117.2576,rank:7},{lat:33.0290,lng:-117.2489,rank:7},{lat:33.0290,lng:-117.2402,rank:9},{lat:33.0290,lng:-117.2315,rank:11},
-    {lat:33.0217,lng:-117.2837,rank:12},{lat:33.0217,lng:-117.2750,rank:10},{lat:33.0217,lng:-117.2663,rank:9},{lat:33.0217,lng:-117.2576,rank:8},{lat:33.0217,lng:-117.2489,rank:9},{lat:33.0217,lng:-117.2402,rank:10},{lat:33.0217,lng:-117.2315,rank:12}
+    {lat:33.0001843,lng:-117.3093851,rank:2},{lat:33.0063801,lng:-117.3093851,rank:2},{lat:33.0125759,lng:-117.3093851,rank:4},{lat:33.0187718,lng:-117.3093851,rank:4},{lat:33.0249676,lng:-117.3093851,rank:6},{lat:33.0311634,lng:-117.3093851,rank:7},{lat:33.0373593,lng:-117.3093851,rank:9},{lat:33.0435551,lng:-117.3093851,rank:10},{lat:33.0497509,lng:-117.3093851,rank:10},{lat:33.0559468,lng:-117.3093851,rank:8},{lat:33.0621426,lng:-117.3093851,rank:6},{lat:33.0683384,lng:-117.3093851,rank:5},{lat:33.0745343,lng:-117.3093851,rank:5},{lat:33.0807301,lng:-117.3093851,rank:5},{lat:33.0869259,lng:-117.3093851,rank:5},
+    {lat:33.0001843,lng:-117.3019937,rank:2},{lat:33.0063801,lng:-117.3019937,rank:2},{lat:33.0125759,lng:-117.3019937,rank:4},{lat:33.0187718,lng:-117.3019937,rank:5},{lat:33.0249676,lng:-117.3019937,rank:7},{lat:33.0311634,lng:-117.3019937,rank:8},{lat:33.0373593,lng:-117.3019937,rank:10},{lat:33.0435551,lng:-117.3019937,rank:10},{lat:33.0497509,lng:-117.3019937,rank:10},{lat:33.0559468,lng:-117.3019937,rank:10},{lat:33.0621426,lng:-117.3019937,rank:10},{lat:33.0683384,lng:-117.3019937,rank:6},{lat:33.0745343,lng:-117.3019937,rank:6},{lat:33.0807301,lng:-117.3019937,rank:5},{lat:33.0869259,lng:-117.3019937,rank:5},
+    {lat:33.0001843,lng:-117.2946024,rank:2},{lat:33.0063801,lng:-117.2946024,rank:2},{lat:33.0125759,lng:-117.2946024,rank:4},{lat:33.0187718,lng:-117.2946024,rank:5},{lat:33.0249676,lng:-117.2946024,rank:7},{lat:33.0311634,lng:-117.2946024,rank:7},{lat:33.0373593,lng:-117.2946024,rank:9},{lat:33.0435551,lng:-117.2946024,rank:11},{lat:33.0497509,lng:-117.2946024,rank:10},{lat:33.0559468,lng:-117.2946024,rank:10},{lat:33.0621426,lng:-117.2946024,rank:8},{lat:33.0683384,lng:-117.2946024,rank:7},{lat:33.0745343,lng:-117.2946024,rank:6},{lat:33.0807301,lng:-117.2946024,rank:5},{lat:33.0869259,lng:-117.2946024,rank:15},
+    {lat:33.0001843,lng:-117.2872110,rank:1},{lat:33.0063801,lng:-117.2872110,rank:2},{lat:33.0125759,lng:-117.2872110,rank:4},{lat:33.0187718,lng:-117.2872110,rank:4},{lat:33.0249676,lng:-117.2872110,rank:6},{lat:33.0311634,lng:-117.2872110,rank:6},{lat:33.0373593,lng:-117.2872110,rank:13},{lat:33.0435551,lng:-117.2872110,rank:11},{lat:33.0497509,lng:-117.2872110,rank:12},{lat:33.0559468,lng:-117.2872110,rank:9},{lat:33.0621426,lng:-117.2872110,rank:7},{lat:33.0683384,lng:-117.2872110,rank:8},{lat:33.0745343,lng:-117.2872110,rank:7},{lat:33.0807301,lng:-117.2872110,rank:5},{lat:33.0869259,lng:-117.2872110,rank:5},
+    {lat:33.0001843,lng:-117.2798197,rank:1},{lat:33.0063801,lng:-117.2798197,rank:2},{lat:33.0125759,lng:-117.2798197,rank:3},{lat:33.0187718,lng:-117.2798197,rank:4},{lat:33.0249676,lng:-117.2798197,rank:5},{lat:33.0311634,lng:-117.2798197,rank:6},{lat:33.0373593,lng:-117.2798197,rank:9},{lat:33.0435551,lng:-117.2798197,rank:8},{lat:33.0497509,lng:-117.2798197,rank:7},{lat:33.0559468,lng:-117.2798197,rank:6},{lat:33.0621426,lng:-117.2798197,rank:8},{lat:33.0683384,lng:-117.2798197,rank:8},{lat:33.0745343,lng:-117.2798197,rank:8},{lat:33.0807301,lng:-117.2798197,rank:7},{lat:33.0869259,lng:-117.2798197,rank:5},
+    {lat:33.0001843,lng:-117.2724284,rank:2},{lat:33.0063801,lng:-117.2724284,rank:1},{lat:33.0125759,lng:-117.2724284,rank:2},{lat:33.0187718,lng:-117.2724284,rank:1},{lat:33.0249676,lng:-117.2724284,rank:2},{lat:33.0311634,lng:-117.2724284,rank:3},{lat:33.0373593,lng:-117.2724284,rank:2},{lat:33.0435551,lng:-117.2724284,rank:3},{lat:33.0497509,lng:-117.2724284,rank:4},{lat:33.0559468,lng:-117.2724284,rank:8},{lat:33.0621426,lng:-117.2724284,rank:7},{lat:33.0683384,lng:-117.2724284,rank:7},{lat:33.0745343,lng:-117.2724284,rank:7},{lat:33.0807301,lng:-117.2724284,rank:7},{lat:33.0869259,lng:-117.2724284,rank:4},
+    {lat:33.0001843,lng:-117.2650370,rank:3},{lat:33.0063801,lng:-117.2650370,rank:1},{lat:33.0125759,lng:-117.2650370,rank:1},{lat:33.0187718,lng:-117.2650370,rank:1},{lat:33.0249676,lng:-117.2650370,rank:1},{lat:33.0311634,lng:-117.2650370,rank:1},{lat:33.0373593,lng:-117.2650370,rank:1},{lat:33.0435551,lng:-117.2650370,rank:1},{lat:33.0497509,lng:-117.2650370,rank:5},{lat:33.0559468,lng:-117.2650370,rank:10},{lat:33.0621426,lng:-117.2650370,rank:7},{lat:33.0683384,lng:-117.2650370,rank:6},{lat:33.0745343,lng:-117.2650370,rank:5},{lat:33.0807301,lng:-117.2650370,rank:11},{lat:33.0869259,lng:-117.2650370,rank:4},
+    {lat:33.0001843,lng:-117.2576457,rank:1},{lat:33.0063801,lng:-117.2576457,rank:1},{lat:33.0125759,lng:-117.2576457,rank:1},{lat:33.0187718,lng:-117.2576457,rank:1},{lat:33.0249676,lng:-117.2576457,rank:1},{lat:33.0311634,lng:-117.2576457,rank:1},{lat:33.0373593,lng:-117.2576457,rank:1},{lat:33.0435551,lng:-117.2576457,rank:2},{lat:33.0497509,lng:-117.2576457,rank:6},{lat:33.0559468,lng:-117.2576457,rank:11},{lat:33.0621426,lng:-117.2576457,rank:7},{lat:33.0683384,lng:-117.2576457,rank:6},{lat:33.0745343,lng:-117.2576457,rank:5},{lat:33.0807301,lng:-117.2576457,rank:5},{lat:33.0869259,lng:-117.2576457,rank:5},
+    {lat:33.0001843,lng:-117.2502544,rank:1},{lat:33.0063801,lng:-117.2502544,rank:1},{lat:33.0125759,lng:-117.2502544,rank:1},{lat:33.0187718,lng:-117.2502544,rank:1},{lat:33.0249676,lng:-117.2502544,rank:1},{lat:33.0311634,lng:-117.2502544,rank:1},{lat:33.0373593,lng:-117.2502544,rank:1},{lat:33.0435551,lng:-117.2502544,rank:1},{lat:33.0497509,lng:-117.2502544,rank:1},{lat:33.0559468,lng:-117.2502544,rank:3},{lat:33.0621426,lng:-117.2502544,rank:6},{lat:33.0683384,lng:-117.2502544,rank:6},{lat:33.0745343,lng:-117.2502544,rank:6},{lat:33.0807301,lng:-117.2502544,rank:6},{lat:33.0869259,lng:-117.2502544,rank:3},
+    {lat:33.0001843,lng:-117.2428630,rank:1},{lat:33.0063801,lng:-117.2428630,rank:1},{lat:33.0125759,lng:-117.2428630,rank:1},{lat:33.0187718,lng:-117.2428630,rank:1},{lat:33.0249676,lng:-117.2428630,rank:1},{lat:33.0311634,lng:-117.2428630,rank:2},{lat:33.0373593,lng:-117.2428630,rank:3},{lat:33.0435551,lng:-117.2428630,rank:1},{lat:33.0497509,lng:-117.2428630,rank:1},{lat:33.0559468,lng:-117.2428630,rank:2},{lat:33.0621426,lng:-117.2428630,rank:3},{lat:33.0683384,lng:-117.2428630,rank:3},{lat:33.0745343,lng:-117.2428630,rank:4},{lat:33.0807301,lng:-117.2428630,rank:4},{lat:33.0869259,lng:-117.2428630,rank:4},
+    {lat:33.0001843,lng:-117.2354717,rank:1},{lat:33.0063801,lng:-117.2354717,rank:1},{lat:33.0125759,lng:-117.2354717,rank:1},{lat:33.0187718,lng:-117.2354717,rank:1},{lat:33.0249676,lng:-117.2354717,rank:2},{lat:33.0311634,lng:-117.2354717,rank:2},{lat:33.0373593,lng:-117.2354717,rank:2},{lat:33.0435551,lng:-117.2354717,rank:2},{lat:33.0497509,lng:-117.2354717,rank:1},{lat:33.0559468,lng:-117.2354717,rank:2},{lat:33.0621426,lng:-117.2354717,rank:2},{lat:33.0683384,lng:-117.2354717,rank:3},{lat:33.0745343,lng:-117.2354717,rank:3},{lat:33.0807301,lng:-117.2354717,rank:5},{lat:33.0869259,lng:-117.2354717,rank:3},
+    {lat:33.0001843,lng:-117.2280804,rank:1},{lat:33.0063801,lng:-117.2280804,rank:1},{lat:33.0125759,lng:-117.2280804,rank:1},{lat:33.0187718,lng:-117.2280804,rank:1},{lat:33.0249676,lng:-117.2280804,rank:2},{lat:33.0311634,lng:-117.2280804,rank:2},{lat:33.0373593,lng:-117.2280804,rank:2},{lat:33.0435551,lng:-117.2280804,rank:1},{lat:33.0497509,lng:-117.2280804,rank:1},{lat:33.0559468,lng:-117.2280804,rank:2},{lat:33.0621426,lng:-117.2280804,rank:2},{lat:33.0683384,lng:-117.2280804,rank:6},{lat:33.0745343,lng:-117.2280804,rank:3},{lat:33.0807301,lng:-117.2280804,rank:2},{lat:33.0869259,lng:-117.2280804,rank:2},
+    {lat:33.0001843,lng:-117.2206890,rank:1},{lat:33.0063801,lng:-117.2206890,rank:1},{lat:33.0125759,lng:-117.2206890,rank:1},{lat:33.0187718,lng:-117.2206890,rank:1},{lat:33.0249676,lng:-117.2206890,rank:1},{lat:33.0311634,lng:-117.2206890,rank:2},{lat:33.0373593,lng:-117.2206890,rank:2},{lat:33.0435551,lng:-117.2206890,rank:1},{lat:33.0497509,lng:-117.2206890,rank:1},{lat:33.0559468,lng:-117.2206890,rank:20},{lat:33.0621426,lng:-117.2206890,rank:2},{lat:33.0683384,lng:-117.2206890,rank:2},{lat:33.0745343,lng:-117.2206890,rank:2},{lat:33.0807301,lng:-117.2206890,rank:2},{lat:33.0869259,lng:-117.2206890,rank:2},
+    {lat:33.0001843,lng:-117.2132977,rank:1},{lat:33.0063801,lng:-117.2132977,rank:1},{lat:33.0125759,lng:-117.2132977,rank:1},{lat:33.0187718,lng:-117.2132977,rank:1},{lat:33.0249676,lng:-117.2132977,rank:1},{lat:33.0311634,lng:-117.2132977,rank:1},{lat:33.0373593,lng:-117.2132977,rank:1},{lat:33.0435551,lng:-117.2132977,rank:1},{lat:33.0497509,lng:-117.2132977,rank:1},{lat:33.0559468,lng:-117.2132977,rank:2},{lat:33.0621426,lng:-117.2132977,rank:2},{lat:33.0683384,lng:-117.2132977,rank:2},{lat:33.0745343,lng:-117.2132977,rank:2},{lat:33.0807301,lng:-117.2132977,rank:2},{lat:33.0869259,lng:-117.2132977,rank:2},
+    {lat:33.0001843,lng:-117.2059063,rank:1},{lat:33.0063801,lng:-117.2059063,rank:1},{lat:33.0125759,lng:-117.2059063,rank:1},{lat:33.0187718,lng:-117.2059063,rank:1},{lat:33.0249676,lng:-117.2059063,rank:1},{lat:33.0311634,lng:-117.2059063,rank:1},{lat:33.0373593,lng:-117.2059063,rank:1},{lat:33.0435551,lng:-117.2059063,rank:1},{lat:33.0497509,lng:-117.2059063,rank:1},{lat:33.0559468,lng:-117.2059063,rank:1},{lat:33.0621426,lng:-117.2059063,rank:2},{lat:33.0683384,lng:-117.2059063,rank:2},{lat:33.0745343,lng:-117.2059063,rank:2},{lat:33.0807301,lng:-117.2059063,rank:2},{lat:33.0869259,lng:-117.2059063,rank:2}
   ];
   // ===================================================================
 
