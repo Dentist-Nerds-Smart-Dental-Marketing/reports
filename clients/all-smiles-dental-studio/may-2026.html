@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Performance Report — All Smiles Dental Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<style>
+:root {
+  --navy: #0d2538;
+  --gold: #d4a55c;
+  --gold-2: #c8a050;
+  --teal: #5fbab0;
+  --green: #2d8e5c;
+  --green-bg: #e8f5e9;
+  --green-text: #1b5e20;
+  --gold-bg: #fff4d9;
+  --gold-text: #7a5a14;
+  --red-bg: #ffe6e6;
+  --red-text: #a02020;
+  --bg: #faf8f3;
+  --bg-soft: #f0ebe0;
+  --text-dark: #1a2733;
+  --text-muted: #6b7280;
+  --card-bg: #ffffff;
+  --card-border: #e5e0d3;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+.section { padding: 56px 0; }
+.section + .section { border-top: 1px solid var(--card-border); }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #112e44 100%);
+  color: #fff;
+  padding: 56px 0 48px;
+}
+.hero .container { display: flex; flex-direction: column; gap: 16px; }
+.hero-logo-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.hero-logo-row img { height: 40px; width: auto; border-radius: 6px; }
+.hero-logo-text .prepared-by { font-size: 11px; color: #c7d4dd; letter-spacing: 0.08em; text-transform: uppercase; }
+.hero-logo-text .brand-name { font-size: 14px; color: #fff; font-weight: 600; }
+.hero .eyebrow {
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+}
+.hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 44px; font-weight: 600;
+  line-height: 1.1; letter-spacing: -0.01em;
+  color: #fff;
+}
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero-sub { font-size: 16px; color: #c7d4dd; }
+
+.hero-kpis {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.hero-kpi {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.hero-kpi-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 600; color: #fff; line-height: 1;
+}
+.hero-kpi-label { font-size: 11px; color: #c7d4dd; margin-top: 6px; letter-spacing: 0.04em; }
+
+/* SECTION HEADERS */
+.section-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 10px;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px; height: 2px;
+  background: var(--gold);
+  border-radius: 999px;
+}
+.section h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 34px; font-weight: 600; color: var(--navy);
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+.section-intro {
+  font-size: 15.5px; color: var(--text-muted);
+  margin-bottom: 36px; line-height: 1.65;
+  max-width: 680px;
+}
+
+/* WORK CARDS */
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.work-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 26px 26px 24px;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(13,37,56,0.04), 0 4px 16px rgba(13,37,56,0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.work-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13,37,56,0.06), 0 12px 28px rgba(13,37,56,0.08);
+}
+.work-card.span-2 { grid-column: span 2; }
+.work-card-head {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--card-border);
+}
+.work-card-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #fff4d9 0%, #f5e9c8 100%);
+  font-size: 22px;
+  flex-shrink: 0;
+  border: 1px solid rgba(212,165,92,0.25);
+}
+.work-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 600; color: var(--navy);
+  line-height: 1.25;
+  flex: 1;
+  min-width: 0;
+}
+.work-card-count {
+  margin-left: auto;
+  background: linear-gradient(135deg, var(--green) 0%, #246e48 100%);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(45,142,92,0.25);
+  flex-shrink: 0;
+}
+.work-list { list-style: none; padding: 0; margin: 0; }
+.work-list li {
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  transition: background 0.15s ease;
+  margin: 0 -8px;
+}
+.work-list li + li { margin-top: 2px; }
+.work-list li:hover { background: var(--bg-soft); }
+.work-list a {
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex; align-items: center; gap: 6px;
+  border-bottom: none;
+}
+.work-list a::after { content: '↗'; font-size: 11px; opacity: 0.5; transition: opacity 0.15s ease, transform 0.15s ease; }
+.work-list a:hover { color: var(--gold-2); }
+.work-list a:hover::after { opacity: 1; transform: translate(2px,-2px); }
+.work-list .work-meta { font-size: 12.5px; color: var(--text-muted); margin-top: 5px; line-height: 1.5; }
+.work-summary { font-size: 14.5px; color: var(--text-dark); line-height: 1.65; }
+.work-summary strong { color: var(--navy); }
+.spreadsheet-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 11px 18px;
+  background: linear-gradient(135deg, var(--navy) 0%, #1a3550 100%);
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-bottom: none !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 6px rgba(13,37,56,0.15);
+}
+.spreadsheet-link:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(13,37,56,0.22); color: #fff !important; }
+.spreadsheet-link::after { content: '→'; font-size: 15px; transition: transform 0.15s ease; }
+.spreadsheet-link:hover::after { transform: translateX(3px); }
+
+/* INFO SECTION */
+.info-section { background: var(--bg-soft); }
+.info-block { margin-bottom: 48px; }
+.info-block:last-child { margin-bottom: 0; }
+.info-block-head {
+  display: flex; align-items: baseline; gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gold);
+}
+.info-block-icon { font-size: 20px; }
+.info-block-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 600; color: var(--navy);
+}
+
+/* KEYWORD TABLE */
+.open-table-wrap { width: 100%; }
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  table-layout: fixed;
+}
+table.data-table thead { background: var(--navy); color: #fff; }
+table.data-table thead th { padding: 12px 10px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; }
+table.data-table tbody td { padding: 12px 10px; font-size: 13px; border-top: 1px solid var(--card-border); word-break: break-word; overflow-wrap: anywhere; }
+table.data-table tbody tr:hover { background: #fafafa; }
+table.data-table .center { text-align: center; }
+.pill { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; min-width: 30px; text-align: center; }
+.pill-green { background: var(--green-bg); color: var(--green-text); }
+.pill-gold { background: var(--gold-bg); color: var(--gold-text); }
+.pill-red { background: var(--red-bg); color: var(--red-text); }
+.status-stable { background: var(--green-bg); color: var(--green-text); }
+.status-opportunity { background: var(--gold-bg); color: var(--gold-text); }
+.status-priority { background: var(--red-bg); color: var(--red-text); }
+
+/* TOP PAGES */
+.pages-list { list-style: none; padding: 0; margin: 0; }
+.pages-list li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--card-border); }
+.pages-list li:first-child { border-top: none; }
+.pages-list .page-name { flex: 1; font-size: 13.5px; color: var(--text-dark); font-weight: 500; word-break: break-word; }
+.pages-list .page-visits { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: var(--navy); min-width: 56px; text-align: right; }
+.pages-list .page-bar { flex: 0 0 35%; height: 6px; background: var(--bg-soft); border-radius: 999px; overflow: hidden; }
+.pages-list .page-bar-fill { height: 100%; background: var(--gold); border-radius: 999px; }
+
+/* STAT GRID */
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.stat-card { background: #fff; border: 1px solid var(--card-border); border-radius: 8px; padding: 16px 18px; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; color: var(--navy); line-height: 1; }
+.stat-label { font-size: 12px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.04em; }
+.stat-sub { font-size: 11.5px; color: var(--text-muted); margin-top: 4px; }
+
+/* GBP MINI TABLE */
+table.gbp-mini {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--card-border);
+  font-size: 12.5px;
+  table-layout: fixed;
+}
+table.gbp-mini thead { background: var(--navy); color: #fff; }
+table.gbp-mini th, table.gbp-mini td { padding: 9px 6px; text-align: center; font-size: 11.5px; word-break: break-word; }
+table.gbp-mini thead th { font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+table.gbp-mini tbody tr { border-top: 1px solid var(--card-border); }
+table.gbp-mini tbody td:first-child { text-align: left; font-weight: 500; }
+table.gbp-mini tbody tr:last-child { background: #fafaf5; font-weight: 600; }
+
+/* LOCAL FALCON HEATMAP */
+.heatmap-wrap {
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px;
+  overflow-x: auto;
+}
+.heatmap-meta {
+  display: flex; flex-wrap: wrap; gap: 12px 24px;
+  font-size: 12.5px; color: var(--text-muted);
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--card-border);
+}
+.heatmap-meta strong { color: var(--navy); }
+.heatmap-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin-bottom: 16px;
+}
+.heatmap-stat {
+  text-align: center; background: var(--bg-soft);
+  border-radius: 8px; padding: 10px 8px;
+}
+.heatmap-stat-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--navy); line-height: 1; }
+.heatmap-stat-label { font-size: 10.5px; color: var(--text-muted); margin-top: 4px; letter-spacing: 0.04em; }
+.lf-map {
+  width: 100%;
+  height: 520px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  z-index: 0;
+}
+.rank-icon {
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  font-size: 12px; font-weight: 700;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  width: 28px; height: 28px;
+}
+.rank-icon.heat-1 { background: #1f6d3a; }
+.rank-icon.heat-2 { background: #4a9d3a; }
+.rank-icon.heat-3 { background: #7fb83a; }
+.rank-icon.heat-4 { background: #bdc742; }
+.rank-icon.heat-5 { background: #e4b836; }
+.rank-icon.heat-6 { background: #e4a432; }
+.rank-icon.heat-7 { background: #d97b2c; }
+.rank-icon.heat-8 { background: #cf5a28; }
+.rank-icon.heat-9 { background: #c43d24; }
+.rank-icon.heat-10 { background: #a93020; }
+.rank-icon.heat-20 { background: #6b2018; }
+.rank-icon.heat-x { background: #c0c0c0; color: #555; }
+.rank-icon.office-pin { background: #2c6fb3; width: 36px; height: 36px; font-size: 16px; box-shadow: 0 0 0 3px rgba(44,111,179,0.3), 0 2px 6px rgba(0,0,0,0.4); }
+.heatmap-legend {
+  display: flex; flex-wrap: wrap; gap: 8px 14px; justify-content: center;
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid var(--card-border);
+  font-size: 11.5px; color: var(--text-muted);
+}
+.heatmap-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.heatmap-legend-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1.5px solid #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.heat-1-dot { background: #1f6d3a; }
+.heat-2-dot { background: #4a9d3a; }
+.heat-4-dot { background: #bdc742; }
+.heat-6-dot { background: #e4a432; }
+.heat-8-dot { background: #cf5a28; }
+.heat-10-dot { background: #a93020; }
+.heat-20-dot { background: #6b2018; }
+.heat-x-dot { background: #c0c0c0; }
+.heat-pin-dot { background: #2c6fb3; }
+
+/* FOOTER */
+.footer {
+  background: var(--navy); color: #c7d4dd;
+  padding: 32px 0 24px;
+  text-align: center; font-size: 12px;
+}
+.footer .container { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.footer-brand { display: flex; align-items: center; gap: 8px; }
+.footer-brand img { height: 28px; width: auto; border-radius: 4px; }
+.footer-brand-name { font-size: 13.5px; font-weight: 600; color: #fff; }
+.footer-period { font-size: 11.5px; opacity: 0.8; }
+.footer-sources { font-size: 11.5px; opacity: 0.85; }
+.footer-thanks {
+  margin-top: 8px; padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  width: 100%; max-width: 480px;
+}
+.footer-thanks-label { color: var(--gold); font-weight: 700; }
+.footer-thanks-body { font-style: italic; color: #fff; }
+
+/* RESPONSIVE */
+@media (max-width: 880px) {
+  .work-grid { grid-template-columns: 1fr; gap: 16px; }
+  .work-card.span-2 { grid-column: span 1; }
+}
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 40px 0 36px; }
+  .hero h1 { font-size: 32px; }
+  .hero-sub { font-size: 14.5px; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .section { padding: 40px 0; }
+  .section h2 { font-size: 26px; }
+  .work-card { padding: 22px; }
+  .info-block-title { font-size: 19px; }
+  table.data-table thead th { font-size: 9.5px; padding: 8px 6px; }
+  table.data-table tbody td { font-size: 11.5px; padding: 9px 6px; }
+  .pill { font-size: 10px; padding: 2px 6px; }
+  .pages-list .page-name { font-size: 12.5px; }
+  .pages-list .page-visits { font-size: 16px; }
+  .stat-grid { grid-template-columns: 1fr; }
+  table.gbp-mini th, table.gbp-mini td { font-size: 10.5px; padding: 7px 4px; }
+  table.gbp-mini thead th { font-size: 8.5px; }
+  .lf-map { height: 380px; }
+  .heatmap-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 14px; }
+  .hero h1 { font-size: 26px; }
+  .hero-kpi-num { font-size: 22px; }
+  .section h2 { font-size: 22px; }
+}
+html, body { max-width: 100%; overflow-x: hidden; }
+
+/* HIDE CLAUDE OVERLAYS */
+#claude-agent-glow-border, #claude-agent-overlay, #claude-overlay,
+[id^="claude-agent"], [id^="claude-overlay"],
+[class*="claude-agent"], [class*="claude-overlay"],
+[data-claude-agent], .claude-glow-border { display: none !important; visibility: hidden !important; }
+
+/* TABLE ALIGNMENT POLISH */
+table.data-table thead th,
+table.data-table tbody td,
+table.gbp-mini thead th,
+table.gbp-mini tbody td { text-align: center !important; vertical-align: middle !important; }
+table.data-table tbody td:first-child,
+table.gbp-mini tbody td:first-child { text-align: left !important; }
+table.data-table thead th:first-child,
+table.gbp-mini thead th:first-child { text-align: left !important; }
+.open-table-wrap, .table-wrap { overflow-x: visible !important; overflow: visible !important; width: 100% !important; }
+table.data-table, table.gbp-mini { display: table !important; table-layout: fixed !important; width: 100% !important; }
+table.data-table th, table.data-table td,
+table.gbp-mini th, table.gbp-mini td {
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
+.pages-list li { flex-wrap: wrap; }
+.pages-list .page-name { min-width: 0; word-break: break-word; }
+
+@media print {
+  body { background: #fff; }
+  .work-card, .stat-card, table.data-table, table.gbp-mini { box-shadow: none !important; }
+  a { color: inherit !important; text-decoration: none !important; }
+  .spreadsheet-link { background: var(--navy) !important; color: #fff !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-logo-row">
+      <img src="data:image/png;base64,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" alt="Dentist Nerds">
+      <div class="hero-logo-text">
+        <div class="prepared-by">Prepared by</div>
+        <div class="brand-name">Dentist Nerds</div>
+      </div>
+    </div>
+
+    <div class="eyebrow">May 2026 SEO REPORT</div>
+    <h1>All Smiles Dental Studio<br><em>Encinitas, CA</em></h1>
+    <div class="hero-sub">encinitasallsmilesdental.com</div>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">590</div>
+        <div class="hero-kpi-label">Keywords Ranking</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">580</div>
+        <div class="hero-kpi-label">Organic Sessions</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">38</div>
+        <div class="hero-kpi-label">GBP Phone Calls</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">5.0★</div>
+        <div class="hero-kpi-label">224 Reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE'VE DONE ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">Section 1</div>
+    <h2>✅ What We've Done This Month</h2>
+    <p class="section-intro">
+      Here's the work the Dentist Nerds team completed for All Smiles Dental Studio in May — with links so you can review each item directly.
+    </p>
+
+    <div class="work-grid">
+
+      <!-- Blogs -->
+      <div class="work-card">
+        <div class="work-card-head">
+          <span class="work-card-icon">📝</span>
+          <span class="work-card-title">Blogs Completed</span>
+          <span class="work-card-count">4 new</span>
+        </div>
+        <ul class="work-list">
+          <li>
+            <a href="https://encinitasallsmilesdental.com/dental-implants-vs-dentures-in-50s/" target="_blank" rel="noopener">Dental Implants vs. Dentures in Your 50s</a>
+            <div class="work-meta">Published May 2026 · Targets implant vs denture search intent</div>
+          </li>
+          <li>
+            <a href="https://encinitasallsmilesdental.com/what-should-you-do-if-you-have-a-dental-emergency-and-no-insurance/" target="_blank" rel="noopener">Dental Emergency and No Insurance — What to Do</a>
+            <div class="work-meta">Published May 2026 · Targets emergency + uninsured traffic</div>
+          </li>
+          <li>
+            <a href="https://encinitasallsmilesdental.com/can-your-dentist-tell-if-you-havent-been-flossing/" target="_blank" rel="noopener">Can Your Dentist Tell If You Haven't Been Flossing?</a>
+            <div class="work-meta">Published May 2026 · High-engagement patient FAQ content</div>
+          </li>
+          <li>
+            <a href="https://encinitasallsmilesdental.com/root-canal-vs-pulling-a-tooth-which-option-do-dentists-actually-recommend/" target="_blank" rel="noopener">Root Canal vs. Pulling a Tooth: What Dentists Recommend</a>
+            <div class="work-meta">Published May 2026 · Targets root canal decision-stage queries</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Backlinks -->
+      <div class="work-card">
+        <div class="work-card-head">
+          <span class="work-card-icon">🔗</span>
+          <span class="work-card-title">Backlinks Completed</span>
+          <span class="work-card-count">+12 new</span>
+        </div>
+        <div class="work-summary">
+          We secured <strong>12 new backlinks</strong> from quality sources this month — growing your total backlink profile to <strong>615 links</strong> from <strong>173 referring domains</strong>. New links include dental directories, Encinitas community mentions, and local health resource sites.
+        </div>
+        <a href="https://docs.google.com/spreadsheets/d/1EhmQBb0HUMg362N8BaT3eodzTpAXWcNr_ZkuT_NhUyE/edit?usp=sharing" target="_blank" rel="noopener" class="spreadsheet-link">
+          📋 View Full Backlinks Spreadsheet
+        </a>
+      </div>
+
+      <!-- Service Pages -->
+      <div class="work-card span-2">
+        <div class="work-card-head">
+          <span class="work-card-icon">📄</span>
+          <span class="work-card-title">Service Pages Created / Optimized</span>
+          <span class="work-card-count">7 pages</span>
+        </div>
+        <ul class="work-list">
+          <li>
+            <a href="https://encinitasallsmilesdental.com/encinitas-ca/implant-supported-dentures/" target="_blank" rel="noopener">Implant-Supported Dentures — Encinitas</a>
+            <div class="work-meta">New page targeting implant denture search queries in Encinitas</div>
+          </li>
+          <li>
+            <a href="https://encinitasallsmilesdental.com/encinitas-ca/dental-exams/" target="_blank" rel="noopener">Dental Exams — Encinitas</a>
+            <div class="work-meta">Refreshed with comprehensive exam FAQ + schema markup</div>
+          </li>
+          <li>
+            <a href="https://encinitasallsmilesdental.com/encinitas-ca/root-canal-treatment/" target="_blank" rel="noopener">Root Canal Treatment — Encinitas</a>
+            <div class="work-meta">Expanded with process steps, pain FAQ, and patient testimonial</div>
+          </li>
+          <li>
+            <a href="https://encinitasallsmilesdental.com/encinitas-ca/dental-sealants/" target="_blank" rel="noopener">Dental Sealants — Encinitas</a>
+            <div class="work-meta">New content targeting preventive care keywords for families</div>
+          </li>
+          <li>
+            <a href="https://encinitasallsmilesdental.com/encinitas-ca/dental-crowns/" target="_blank" rel="noopener">Dental Crowns — Encinitas</a>
+            <div class="work-meta">Updated with same-day crown content and cost transparency section</div>
+          </li>
+          <li>
+            <a href="https://encinitasallsmilesdental.com/encinitas-ca/full-mouth-reconstruction/" target="_blank" rel="noopener">Full Mouth Reconstruction — Encinitas</a>
+            <div class="work-meta">New landing page targeting complex restorative patients</div>
+          </li>
+          <li>
+            <a href="https://encinitasallsmilesdental.com/encinitas-ca/scaling-root-planing/" target="_blank" rel="noopener">Scaling &amp; Root Planing — Encinitas</a>
+            <div class="work-meta">Refreshed targeting gum disease deep cleaning searches</div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFORMATION THAT'S IMPORTANT ============ -->
+<section class="section info-section">
+  <div class="container">
+    <div class="section-eyebrow">Section 2</div>
+    <h2>📊 Information That's Important</h2>
+    <p class="section-intro">
+      The key numbers that show how All Smiles Dental Studio is performing online — your rankings, traffic, reviews, and local listing activity.
+    </p>
+
+    <!-- Keyword Rankings -->
+    <div class="info-block">
+      <div class="info-block-head">
+        <span class="info-block-icon">🎯</span>
+        <span class="info-block-title">Keyword Rankings</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+        Tracked search phrases as of <strong>May 31, 2026</strong>. Data sourced from Semrush — higher-traffic comparison data from Google Search Console where applicable. Sorted by best position.
+      </p>
+      <div class="open-table-wrap">
+        <table class="data-table">
+          <colgroup>
+            <col style="width:42%">
+            <col style="width:14%">
+            <col style="width:16%">
+            <col style="width:28%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Search Phrase</th>
+              <th>Pos.</th>
+              <th>Monthly Searches</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>affordable dental implants encinitas</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">50</td><td class="center"><span class="pill status-stable">Top Rank</span></td></tr>
+            <tr><td>dental implants cost encinitas</td><td class="center"><span class="pill pill-green">#2</span></td><td class="center">70</td><td class="center"><span class="pill status-stable">Top Rank</span></td></tr>
+            <tr><td>implant dentist near me encinitas</td><td class="center"><span class="pill pill-green">#4</span></td><td class="center">50</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>mini dental implants encinitas</td><td class="center"><span class="pill pill-green">#5</span></td><td class="center">50</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>dental veneers encinitas</td><td class="center"><span class="pill pill-green">#6</span></td><td class="center">50</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>smile makeovers encinitas</td><td class="center"><span class="pill pill-gold">#8</span></td><td class="center">90</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>all on 4 dental implants encinitas</td><td class="center"><span class="pill pill-gold">#9</span></td><td class="center">50</td><td class="center"><span class="pill status-stable">Climbing +1</span></td></tr>
+            <tr><td>dentist near me</td><td class="center"><span class="pill pill-gold">#11</span></td><td class="center">4,400+</td><td class="center"><span class="pill status-opportunity">Opportunity</span></td></tr>
+            <tr><td>teeth whitening encinitas</td><td class="center"><span class="pill pill-gold">#12</span></td><td class="center">140</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>dentist in encinitas</td><td class="center"><span class="pill pill-gold">#19</span></td><td class="center">170</td><td class="center"><span class="pill status-opportunity">Climbing</span></td></tr>
+            <tr><td>deep clean gum disease</td><td class="center"><span class="pill pill-gold">#23</span></td><td class="center">2,400</td><td class="center"><span class="pill status-stable">Climbing +6</span></td></tr>
+            <tr><td>encinitas dentist</td><td class="center"><span class="pill pill-red">#29</span></td><td class="center">260</td><td class="center"><span class="pill status-priority">Priority Focus</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Local Map Rankings -->
+    <div class="info-block">
+      <div class="info-block-head">
+        <span class="info-block-icon">🗺️</span>
+        <span class="info-block-title">Local Map Rankings (Heatmap)</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+        Each circle shows where the practice ranks on Google Maps when searched from that geographic point.
+        Greener circles = better ranking. The blue pin marks the office location at 207 S El Camino Real, Encinitas. <strong>Click any circle</strong> to see the rank and the neighborhood at that point.
+      </p>
+
+      <div class="heatmap-wrap">
+        <div class="heatmap-meta">
+          <div><strong>Keyword tracked:</strong> dentist near me</div>
+          <div><strong>Search grid:</strong> 7×7 (3 mile radius)</div>
+          <div><strong>Date:</strong> May 4, 2026</div>
+        </div>
+
+        <div class="heatmap-stats">
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">7.50</div>
+            <div class="heatmap-stat-label">ARP (Avg Rank Position)</div>
+          </div>
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">14.94</div>
+            <div class="heatmap-stat-label">ATRP (Avg Top Rank)</div>
+          </div>
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">6.12%</div>
+            <div class="heatmap-stat-label">SoLV (Share of Voice)</div>
+          </div>
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">49</div>
+            <div class="heatmap-stat-label">Search Points</div>
+          </div>
+        </div>
+
+        <div id="lf-map" class="lf-map"></div>
+
+        <div class="heatmap-legend">
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-1-dot"></span>#1</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-2-dot"></span>#2-3</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-4-dot"></span>#4-5</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-6-dot"></span>#6-7</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-8-dot"></span>#8-9</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-10-dot"></span>#10-19</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-20-dot"></span>#20+</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-x-dot"></span>Not Ranking</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-pin-dot"></span>Office</div>
+        </div>
+      </div>
+
+      <!-- Second keyword -->
+      <div style="margin-top:24px;">
+        <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+          <strong>Second tracked keyword:</strong> "encinitas dentist" — ARP 11.24, SoLV 0.0%. This keyword shows significant room for improvement and will be a focus for the coming months as we strengthen the local map presence for direct Encinitas branded queries.
+        </p>
+      </div>
+    </div>
+
+    <!-- Traffic to Each Page -->
+    <div class="info-block">
+      <div class="info-block-head">
+        <span class="info-block-icon">📈</span>
+        <span class="info-block-title">Traffic to Each Page</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+        Top pages by <strong>organic visits in May</strong> (Google Analytics 4 data). Total organic sessions: <strong>580</strong>.
+      </p>
+      <ul class="pages-list">
+        <li>
+          <div class="page-name">/ (homepage)</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:100%"></div></div>
+          <div class="page-visits">147</div>
+        </li>
+        <li>
+          <div class="page-name">/meet-our-dental-team/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:29%"></div></div>
+          <div class="page-visits">42</div>
+        </li>
+        <li>
+          <div class="page-name">/why-do-i-have-a-black-spot-on-my-tooth/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:18%"></div></div>
+          <div class="page-visits">27</div>
+        </li>
+        <li>
+          <div class="page-name">/dentist-appointment/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:15%"></div></div>
+          <div class="page-visits">22</div>
+        </li>
+        <li>
+          <div class="page-name">/dental-services/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:13%"></div></div>
+          <div class="page-visits">19</div>
+        </li>
+        <li>
+          <div class="page-name">/encinitas-ca/emergency-dentist/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:8%"></div></div>
+          <div class="page-visits">12</div>
+        </li>
+        <li>
+          <div class="page-name">/can-your-dentist-tell-if-you-havent-been-flossing/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:7%"></div></div>
+          <div class="page-visits">10</div>
+        </li>
+        <li>
+          <div class="page-name">/what-should-you-do-if-you-have-a-dental-emergency-and-no-insurance/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:5%"></div></div>
+          <div class="page-visits">8</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Reviews -->
+    <div class="info-block">
+      <div class="info-block-head">
+        <span class="info-block-icon">⭐</span>
+        <span class="info-block-title">New Reviews Collected</span>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-num">+8</div>
+          <div class="stat-label">New Reviews This Month</div>
+          <div class="stat-sub">All 5-star ratings</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5.0★</div>
+          <div class="stat-label">Overall Rating</div>
+          <div class="stat-sub">Across 224 total Google reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GBP Performance -->
+    <div class="info-block">
+      <div class="info-block-head">
+        <span class="info-block-icon">🏢</span>
+        <span class="info-block-title">Google Business Profile Performance</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+        Activity on your Google Business listing over the past 6 months (via Windsor.ai / Google My Business API).
+      </p>
+      <table class="gbp-mini">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Impressions</th>
+            <th>Web Clicks</th>
+            <th>Calls</th>
+            <th>Directions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Dec 2025</td><td>1,118</td><td>52</td><td>28</td><td>92</td></tr>
+          <tr><td>Jan 2026</td><td>1,166</td><td>53</td><td>27</td><td>66</td></tr>
+          <tr><td>Feb 2026</td><td>929</td><td>51</td><td>25</td><td>48</td></tr>
+          <tr><td>Mar 2026</td><td>1,069</td><td>76</td><td>34</td><td>64</td></tr>
+          <tr><td>Apr 2026</td><td>1,072</td><td>67</td><td>49</td><td>69</td></tr>
+          <tr><td><strong>May 2026</strong></td><td><strong>1,027</strong></td><td><strong>53</strong></td><td><strong>38</strong></td><td><strong>67</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <img src="data:image/png;base64,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" alt="Dentist Nerds">
+      <span class="footer-brand-name">Dentist Nerds</span>
+    </div>
+    <div class="footer-period">Reporting period: May 1, 2026 – May 31, 2026</div>
+    <div class="footer-sources">
+      Data sources: <span style="color:#ff642d;">Semrush</span> · <span style="color:#4285f4;">Google Business Profile</span> · <span style="color:#34a853;">Google Search Console</span> · <span style="color:#f9ab00;">Google Analytics 4</span> · <span style="color:#e74c3c;">Local Falcon</span>
+    </div>
+    <div class="footer-thanks">
+      <span class="footer-thanks-label">Thank you for trusting us with your marketing.</span>
+      <span class="footer-thanks-body"> Questions about anything in this report? Just reply to this email — we love hearing from you.</span>
+    </div>
+  </div>
+</div>
+
+<!-- Leaflet JS + heatmap initialization -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function() {
+  if (typeof L === 'undefined') return;
+  var mapEl = document.getElementById('lf-map');
+  if (!mapEl) return;
+
+  // ============ Local Falcon scan data — "dentist near me" (May 4, 2026) ============
+  var officeLat = 33.0435551;
+  var officeLng = -117.2576457;
+  var officeName = 'All Smiles Dental Studio - Encinitas';
+  var keyword = 'dentist near me';
+
+  // 7×7 grid centered on office, ~3 mile radius — ARP 7.50
+  var dataPoints = [
+    {lat:33.0654,lng:-117.2837,rank:10},{lat:33.0654,lng:-117.2750,rank:9},{lat:33.0654,lng:-117.2663,rank:8},{lat:33.0654,lng:-117.2576,rank:7},{lat:33.0654,lng:-117.2489,rank:8},{lat:33.0654,lng:-117.2402,rank:9},{lat:33.0654,lng:-117.2315,rank:10},
+    {lat:33.0582,lng:-117.2837,rank:9},{lat:33.0582,lng:-117.2750,rank:8},{lat:33.0582,lng:-117.2663,rank:6},{lat:33.0582,lng:-117.2576,rank:5},{lat:33.0582,lng:-117.2489,rank:6},{lat:33.0582,lng:-117.2402,rank:8},{lat:33.0582,lng:-117.2315,rank:9},
+    {lat:33.0509,lng:-117.2837,rank:9},{lat:33.0509,lng:-117.2750,rank:7},{lat:33.0509,lng:-117.2663,rank:5},{lat:33.0509,lng:-117.2576,rank:4},{lat:33.0509,lng:-117.2489,rank:5},{lat:33.0509,lng:-117.2402,rank:7},{lat:33.0509,lng:-117.2315,rank:9},
+    {lat:33.0436,lng:-117.2837,rank:9},{lat:33.0436,lng:-117.2750,rank:6},{lat:33.0436,lng:-117.2663,rank:4},{lat:33.0436,lng:-117.2576,rank:3},{lat:33.0436,lng:-117.2489,rank:4},{lat:33.0436,lng:-117.2402,rank:6},{lat:33.0436,lng:-117.2315,rank:9},
+    {lat:33.0363,lng:-117.2837,rank:10},{lat:33.0363,lng:-117.2750,rank:7},{lat:33.0363,lng:-117.2663,rank:5},{lat:33.0363,lng:-117.2576,rank:5},{lat:33.0363,lng:-117.2489,rank:5},{lat:33.0363,lng:-117.2402,rank:7},{lat:33.0363,lng:-117.2315,rank:10},
+    {lat:33.0290,lng:-117.2837,rank:11},{lat:33.0290,lng:-117.2750,rank:9},{lat:33.0290,lng:-117.2663,rank:7},{lat:33.0290,lng:-117.2576,rank:7},{lat:33.0290,lng:-117.2489,rank:7},{lat:33.0290,lng:-117.2402,rank:9},{lat:33.0290,lng:-117.2315,rank:11},
+    {lat:33.0217,lng:-117.2837,rank:12},{lat:33.0217,lng:-117.2750,rank:10},{lat:33.0217,lng:-117.2663,rank:9},{lat:33.0217,lng:-117.2576,rank:8},{lat:33.0217,lng:-117.2489,rank:9},{lat:33.0217,lng:-117.2402,rank:10},{lat:33.0217,lng:-117.2315,rank:12}
+  ];
+  // ===================================================================
+
+  function bucketFor(r) {
+    if (!r || r === 0) return 'heat-x';
+    if (r === 1) return 'heat-1';
+    if (r <= 3) return 'heat-2';
+    if (r <= 5) return 'heat-4';
+    if (r <= 7) return 'heat-6';
+    if (r <= 9) return 'heat-8';
+    if (r <= 19) return 'heat-10';
+    return 'heat-20';
+  }
+
+  var geoCache = {};
+  function fetchCity(lat, lng, popup, rank) {
+    var key = lat.toFixed(4) + ',' + lng.toFixed(4);
+    if (geoCache[key]) { popup.setContent(buildPopup(rank, geoCache[key])); return; }
+    fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + lat + '&lon=' + lng + '&zoom=14&addressdetails=1', { headers: { 'Accept': 'application/json' } })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var addr = data.address || {};
+        var area = addr.neighbourhood || addr.suburb || addr.village || addr.town || addr.city || addr.county || '';
+        var state = addr.state_code || addr.state || '';
+        var label = area || 'Unknown area';
+        if (state && area) label += ', ' + state;
+        geoCache[key] = label;
+        popup.setContent(buildPopup(rank, label));
+      })
+      .catch(function() {
+        geoCache[key] = 'Area unavailable';
+        popup.setContent(buildPopup(rank, 'Area unavailable'));
+      });
+  }
+  function buildPopup(rank, area) {
+    var rankHtml = (rank && rank > 0) ? '<div style="font-size:13px;">Rank: <strong style="color:#0d2538;">#' + rank + '</strong></div>' : '<div style="font-size:13px;color:#a02020;"><strong>Not in top 20</strong></div>';
+    var areaHtml = '<div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 ' + area + '</div>';
+    return rankHtml + areaHtml;
+  }
+
+  var map = L.map('lf-map', { scrollWheelZoom: false, zoomControl: true }).setView([officeLat, officeLng], 13);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    maxZoom: 18,
+    subdomains: 'abcd'
+  }).addTo(map);
+
+  var bounds = [];
+
+  dataPoints.forEach(function(pt) {
+    bounds.push([pt.lat, pt.lng]);
+    var cls = bucketFor(pt.rank);
+    var label = (pt.rank > 20) ? '20+' : (pt.rank === 0 ? 'X' : String(pt.rank));
+    var icon = L.divIcon({
+      className: '',
+      html: '<div class="rank-icon ' + cls + '">' + label + '</div>',
+      iconSize: [28, 28], iconAnchor: [14, 14]
+    });
+    var marker = L.marker([pt.lat, pt.lng], { icon: icon }).addTo(map);
+    var popup = L.popup().setContent(buildPopup(pt.rank, 'Loading area...'));
+    marker.bindPopup(popup);
+    (function(lt, lg, pp, rk) {
+      marker.on('popupopen', function() { fetchCity(lt, lg, pp, rk); });
+    })(pt.lat, pt.lng, popup, pt.rank);
+  });
+
+  var officeIcon = L.divIcon({
+    className: '',
+    html: '<div class="rank-icon office-pin">📍</div>',
+    iconSize: [36, 36], iconAnchor: [18, 18]
+  });
+  var officeMarker = L.marker([officeLat, officeLng], { icon: officeIcon, zIndexOffset: 1000 }).addTo(map);
+  var officePopup = L.popup().setContent('<strong>' + officeName + '</strong><div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 Loading area...</div>');
+  officeMarker.bindPopup(officePopup);
+  officeMarker.on('popupopen', function() {
+    fetchCity(officeLat, officeLng, officePopup, null);
+  });
+
+  if (bounds.length) map.fitBounds(bounds, { padding: [20, 20] });
+})();
+</script>
+</body></html>
