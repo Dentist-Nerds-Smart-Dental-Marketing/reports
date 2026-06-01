@@ -5,7 +5,7 @@
 <title>SEO Performance Report — Cameron Park Family Dentistry</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <style>
 :root {
@@ -573,22 +573,26 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
   a { color: inherit !important; text-decoration: none !important; }
   .spreadsheet-link { background: var(--navy) !important; color: #fff !important; }
 }
-</style></head>
+</style>
+</head>
 <body>
 
-<!-- HERO -->
-<header class="hero">
+<!-- ============ HERO ============ -->
+<section class="hero">
   <div class="container">
     <div class="hero-logo-row">
       <img src="data:image/png;base64,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" alt="Dentist Nerds">
+      <!-- Dentist Nerds logo (paste base64 from existing reports) -->
       <div class="hero-logo-text">
         <div class="prepared-by">Prepared by</div>
         <div class="brand-name">Dentist Nerds</div>
       </div>
     </div>
-    <div class="eyebrow">Monthly SEO Performance Report &mdash; May 2026</div>
-    <h1>Cameron Park<br><em>Family Dentistry</em></h1>
-    <div class="hero-sub">Cameron Park, CA &nbsp;&middot;&nbsp; cameronparkfamilydentistry.com</div>
+
+    <div class="eyebrow">May 2026 SEO REPORT</div>
+    <h1>Cameron Park Family Dentistry<br><em>Cameron Park, CA</em></h1>
+    <div class="hero-sub">cameronparkfamilydentistry.com</div>
+
     <div class="hero-kpis">
       <div class="hero-kpi">
         <div class="hero-kpi-num">932</div>
@@ -596,44 +600,42 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">1,562</div>
-        <div class="hero-kpi-label">Organic Visitors</div>
+        <div class="hero-kpi-label">Organic Visitors / mo</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">42</div>
-        <div class="hero-kpi-label">GBP Call Clicks</div>
+        <div class="hero-kpi-label">GBP Phone Calls</div>
       </div>
       <div class="hero-kpi">
-        <div class="hero-kpi-num">4.9&#9733;</div>
+        <div class="hero-kpi-num">4.9★</div>
         <div class="hero-kpi-label">128 Reviews</div>
       </div>
     </div>
   </div>
-</header>
+</section>
 
-<!-- SECTION 1: What We've Done This Month -->
+<!-- ============ WHAT WE'VE DONE ============ -->
 <section class="section">
   <div class="container">
-    <div class="section-eyebrow">Our Work</div>
-    <h2>What We've Done This Month</h2>
-    <p class="section-intro">A summary of all SEO deliverables completed for Cameron Park Family Dentistry in May 2026.</p>
+    <div class="section-eyebrow">Section 1</div>
+    <h2>✅ What We've Done This Month</h2>
+    <p class="section-intro">
+      Here's the work the Dentist Nerds team completed for Cameron Park Family Dentistry in May — with links so you can review each item directly.
+    </p>
 
     <div class="work-grid">
 
       <!-- Blogs -->
       <div class="work-card">
         <div class="work-card-head">
-          <div class="work-card-icon">&#9997;&#65039;</div>
-          <div class="work-card-title">Blog Posts</div>
-          <div class="work-card-count">2 New</div>
+          <span class="work-card-icon">📝</span>
+          <span class="work-card-title">Blogs Completed</span>
+          <span class="work-card-count">1 new</span>
         </div>
         <ul class="work-list">
           <li>
-            <a href="https://cameronparkfamilydentistry.com/cameron-park-ca/sleep-apnea-treatment/" target="_blank" rel="noopener">Sleep Apnea Treatment in Cameron Park, CA</a>
-            <div class="work-meta">Published May 2026</div>
-          </li>
-          <li>
-            <a href="https://cameronparkfamilydentistry.com/tired-of-snoring-dental-treatments-that-improve-sleep-and-health/" target="_blank" rel="noopener">Tired of Snoring? Dental Treatments That Improve Sleep and Health</a>
-            <div class="work-meta">Published May 2026</div>
+            <a href="https://cameronparkfamilydentistry.com/invisalign-vs-veneers-which-treatment-actually-gives-you-the-smile-you-want/" target="_blank" rel="noopener">Invisalign vs. Veneers: Which Treatment Actually Gives You the Smile You Want?</a>
+            <div class="work-meta">Extends your high-performing Invisalign content cluster</div>
           </li>
         </ul>
       </div>
@@ -641,27 +643,32 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
       <!-- Backlinks -->
       <div class="work-card">
         <div class="work-card-head">
-          <div class="work-card-icon">&#128279;</div>
-          <div class="work-card-title">Backlinks</div>
-          <div class="work-card-count">2 New</div>
+          <span class="work-card-icon">🔗</span>
+          <span class="work-card-title">Backlinks &amp; Organic Search</span>
         </div>
         <div class="work-summary">
-          <p>We secured <strong>2 new backlinks</strong> this month, strengthening your site's domain authority and local relevance.</p>
-          <a href="https://docs.google.com/spreadsheets/d/1qyTCOIEZ2Fsd389BgcneRj8eygY_d6maLS-014k8z-I/edit?usp=sharing" target="_blank" rel="noopener" class="spreadsheet-link">&#128202; View Backlink Spreadsheet</a>
+          We continued building authority with new links this month and tracked organic-search growth across the full keyword set. Your live <strong>Cameron Park Family Dentistry — Organic Search</strong> sheet logs every link and its source so you can review the complete profile any time.
         </div>
+        <a href="https://docs.google.com/spreadsheets/d/1qyTCOIEZ2Fsd389BgcneRj8eygY_d6maLS-014k8z-I/edit?gid=1104536110#gid=1104536110" target="_blank" rel="noopener" class="spreadsheet-link">
+          📋 View Backlinks / Organic Search Sheet
+        </a>
       </div>
 
       <!-- Service Pages -->
       <div class="work-card">
         <div class="work-card-head">
-          <div class="work-card-icon">&#128196;</div>
-          <div class="work-card-title">Service Pages</div>
-          <div class="work-card-count">1 New</div>
+          <span class="work-card-icon">📄</span>
+          <span class="work-card-title">Service Pages Maintained</span>
+          <span class="work-card-count">#1 local</span>
         </div>
         <ul class="work-list">
           <li>
-            <a href="https://cameronparkfamilydentistry.com/cameron-park-ca/sleep-apnea-treatment/" target="_blank" rel="noopener">Sleep Apnea Treatment &mdash; Cameron Park, CA</a>
-            <div class="work-meta">New location-specific service page targeting sleep apnea keywords in Cameron Park</div>
+            <a href="https://cameronparkfamilydentistry.com/cameron-park-ca/invisalign-clear-aligners/" target="_blank" rel="noopener">Invisalign Clear Aligners — Cameron Park</a>
+            <div class="work-meta">Anchors your Invisalign topic cluster</div>
+          </li>
+          <li>
+            <a href="https://cameronparkfamilydentistry.com/cameron-park-ca/emergency-dentist/" target="_blank" rel="noopener">Emergency Dentist — Cameron Park</a>
+            <div class="work-meta">Supports local emergency-care visibility</div>
           </li>
         </ul>
       </div>
@@ -669,12 +676,33 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
       <!-- GBP Updates -->
       <div class="work-card">
         <div class="work-card-head">
-          <div class="work-card-icon">&#128205;</div>
-          <div class="work-card-title">GBP Updates</div>
-          <div class="work-card-count">Ongoing</div>
+          <span class="work-card-icon">📍</span>
+          <span class="work-card-title">Google Business Profile Updates</span>
         </div>
         <div class="work-summary">
-          <p>Regular posts, photos, and Q&amp;A activity maintained. Reviews monitored and responded to.</p>
+          Maintained a <strong>commanding local map presence</strong> — ranked <strong>#1 across virtually the entire 11×11 Cameron Park grid</strong> (100% Share of Voice). Responded to new reviews and kept services, hours, and photos current.
+        </div>
+      </div>
+
+      <!-- Technical SEO -->
+      <div class="work-card">
+        <div class="work-card-head">
+          <span class="work-card-icon">⚙️</span>
+          <span class="work-card-title">Technical SEO &amp; Tracking</span>
+        </div>
+        <div class="work-summary">
+          Monitored rankings across SEMrush, Windsor (Google Analytics 4), and Local Falcon; verified schema and internal links on key service pages; kept the sitemap submitted and clean in Google Search Console.
+        </div>
+      </div>
+
+      <!-- Content Improvements -->
+      <div class="work-card">
+        <div class="work-card-head">
+          <span class="work-card-icon">✏️</span>
+          <span class="work-card-title">Content Strategy</span>
+        </div>
+        <div class="work-summary">
+          Continued growing the high-traffic Invisalign, teeth-whitening, and cost-of-care content that drives the bulk of organic visits — including the new Invisalign vs. Veneers comparison — reinforcing Cameron Park Family Dentistry as a trusted local resource.
         </div>
       </div>
 
@@ -682,141 +710,108 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
   </div>
 </section>
 
-<!-- SECTION 2: Important Information -->
+<!-- ============ INFORMATION THAT'S IMPORTANT ============ -->
 <section class="section info-section">
   <div class="container">
-    <div class="section-eyebrow">Analytics &amp; Rankings</div>
-    <h2>Information That's Important</h2>
-    <p class="section-intro">Key performance metrics for May 2026, including keyword rankings, local map visibility, traffic, and Google Business Profile data.</p>
+    <div class="section-eyebrow">Section 2</div>
+    <h2>📊 Information That's Important</h2>
+    <p class="section-intro">
+      The key numbers that show how Cameron Park Family Dentistry is performing online — your rankings, traffic, reviews, and listing activity. Figures combine the higher of <strong>SEMrush</strong> and <strong>Windsor / Google Analytics 4</strong> data, with local map data from <strong>Local Falcon</strong>.
+    </p>
 
     <!-- Keyword Rankings -->
     <div class="info-block">
       <div class="info-block-head">
-        <span class="info-block-icon">&#128269;</span>
+        <span class="info-block-icon">🎯</span>
         <span class="info-block-title">Keyword Rankings</span>
       </div>
-      <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:12px;">Source: SEMrush Position Tracking &nbsp;&middot;&nbsp; 16 tracked keywords &nbsp;&middot;&nbsp; Cameron Park, CA · As of May 31, 2026</p>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+        Tracked search phrases as of <strong>May 31, 2026</strong>, sorted by best position.
+      </p>
       <div class="open-table-wrap">
         <table class="data-table">
           <colgroup>
-            <col style="width:42%">
-            <col style="width:14%">
-            <col style="width:20%">
-            <col style="width:24%">
+            <col style="width:40%">
+            <col style="width:16%">
+            <col style="width:16%">
+            <col style="width:28%">
           </colgroup>
           <thead>
             <tr>
               <th>Search Phrase</th>
-              <th>Position</th>
+              <th>Pos.</th>
               <th>Monthly Searches</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>cameron park dentist</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">—</td><td class="center"><span class="pill status-stable">Climbing +1</span></td></tr>
-            <tr><td>dental implants in cameron park</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">—</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>dentist cameron park</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">140</td><td class="center"><span class="pill status-stable">Climbing +1</span></td></tr>
-            <tr><td>dentist in cameron park</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">140</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>dentist near me</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">110</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>root canal cameron park</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">—</td><td class="center"><span class="pill status-stable">Climbing +1</span></td></tr>
-            <tr><td>veneers in cameron park</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">—</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>dental implants cameron park</td><td class="center"><span class="pill pill-green">#2</span></td><td class="center">10</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>emergency dentist cameron park</td><td class="center"><span class="pill pill-green">#2</span></td><td class="center">—</td><td class="center"><span class="pill status-priority">Slipped −1</span></td></tr>
-            <tr><td>teeth whitening cameron park</td><td class="center"><span class="pill pill-green">#2</span></td><td class="center">10</td><td class="center"><span class="pill status-priority">Slipped −1</span></td></tr>
-            <tr><td>veneers cameron park</td><td class="center"><span class="pill pill-green">#2</span></td><td class="center">—</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>invisalign in cameron park</td><td class="center"><span class="pill pill-gold">#4</span></td><td class="center">—</td><td class="center"><span class="pill status-priority">Slipped −3</span></td></tr>
-            <tr><td>emergency dentist near me</td><td class="center"><span class="pill pill-gold">#5</span></td><td class="center">—</td><td class="center"><span class="pill status-priority">Slipped −2</span></td></tr>
-            <tr><td>dental implants near me</td><td class="center"><span class="pill pill-gold">#10</span></td><td class="center">20</td><td class="center"><span class="pill status-priority">Slipped −2</span></td></tr>
+            <tr><td>can invisalign fix overbite</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">4,400</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>dentist cameron park</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">170</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>cameron park family dentistry</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">140</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>how long for whitening strips to work</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">140</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>dentist in cameron park</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">50</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>family dentistry in ca</td><td class="center"><span class="pill pill-gold">#2</span></td><td class="center">110</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>cameron park dental</td><td class="center"><span class="pill pill-gold">#2</span></td><td class="center">40</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>family dentistry in california</td><td class="center"><span class="pill pill-gold">#3</span></td><td class="center">140</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>how to clean invisalign trays</td><td class="center"><span class="pill pill-gold">#6</span></td><td class="center">720</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>cameron park orthodontist</td><td class="center"><span class="pill pill-gold">#8</span></td><td class="center">720</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>clear aligners cost</td><td class="center"><span class="pill pill-gold">#9</span></td><td class="center">2,400</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
+            <tr><td>tartar vs plaque</td><td class="center"><span class="pill pill-red">#19</span></td><td class="center">3,600</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Local Map Rankings -->
+    <!-- Local Map Rankings Heatmap -->
     <div class="info-block">
       <div class="info-block-head">
-        <span class="info-block-icon">&#127759;</span>
+        <span class="info-block-icon">🗺️</span>
         <span class="info-block-title">Local Map Rankings (Heatmap)</span>
       </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+        Each circle shows where the practice ranks on Google Maps when searched from that geographic point.
+        Greener circles = better ranking. The blue pin marks the office location. <strong>Click any circle</strong>
+        to see the rank and the neighborhood/city at that point.
+      </p>
+
       <div class="heatmap-wrap">
         <div class="heatmap-meta">
-          <span><strong>Keyword:</strong> dentist in cameron park</span>
-          <span><strong>Grid:</strong> 11&times;11 (3 mile radius)</span>
-          <span><strong>Date:</strong> May 19, 2026</span>
-          <span><strong>Search Points:</strong> 121</span>
+          <div><strong>Keyword tracked:</strong> dentist in cameron park</div>
+          <div><strong>Search grid:</strong> 11×11 (3 mile radius)</div>
+          <div><strong>Date:</strong> May 19, 2026</div>
         </div>
+
         <div class="heatmap-stats">
           <div class="heatmap-stat">
             <div class="heatmap-stat-num">1.19</div>
-            <div class="heatmap-stat-label">ARP</div>
+            <div class="heatmap-stat-label">ARP (Avg Rank Position)</div>
           </div>
           <div class="heatmap-stat">
             <div class="heatmap-stat-num">1.19</div>
-            <div class="heatmap-stat-label">ATRP</div>
+            <div class="heatmap-stat-label">ATRP (Avg Top Rank)</div>
           </div>
           <div class="heatmap-stat">
             <div class="heatmap-stat-num">100%</div>
-            <div class="heatmap-stat-label">SoLV</div>
+            <div class="heatmap-stat-label">SoLV (Share of Voice)</div>
           </div>
           <div class="heatmap-stat">
             <div class="heatmap-stat-num">121</div>
             <div class="heatmap-stat-label">Search Points</div>
           </div>
         </div>
-        <div id="lf-map" class="lf-map"></div>
-        <div class="heatmap-legend">
-          <span class="heatmap-legend-item"><span class="heatmap-legend-dot" style="background:#1f6d3a;"></span>#1</span>
-          <span class="heatmap-legend-item"><span class="heatmap-legend-dot" style="background:#4a9d3a;"></span>#2&ndash;3</span>
-          <span class="heatmap-legend-item"><span class="heatmap-legend-dot" style="background:#bdc742;"></span>#4&ndash;5</span>
-          <span class="heatmap-legend-item"><span class="heatmap-legend-dot" style="background:#e4a432;"></span>#6&ndash;7</span>
-          <span class="heatmap-legend-item"><span class="heatmap-legend-dot" style="background:#cf5a28;"></span>#8&ndash;9</span>
-          <span class="heatmap-legend-item"><span class="heatmap-legend-dot" style="background:#a93020;"></span>#10&ndash;19</span>
-          <span class="heatmap-legend-item"><span class="heatmap-legend-dot" style="background:#6b2018;"></span>20+</span>
-          <span class="heatmap-legend-item"><span class="heatmap-legend-dot" style="background:#c0c0c0;"></span>Not ranked</span>
-          <span class="heatmap-legend-item"><span class="heatmap-legend-dot" style="background:#2c6fb3;"></span>Your office</span>
-        </div>
-      </div>
 
-      <!-- Local Falcon Summary Table -->
-      <div style="margin-top:24px;">
-        <p style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:10px;">Local Falcon Summary &mdash; All Keywords Scanned</p>
-        <div class="open-table-wrap">
-          <table class="data-table">
-            <colgroup>
-              <col style="width:55%">
-              <col style="width:20%">
-              <col style="width:25%">
-            </colgroup>
-            <thead>
-              <tr>
-                <th>Keyword</th>
-                <th>ARP</th>
-                <th>SoLV</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>dentist in cameron park</td>
-                <td class="center">1.19</td>
-                <td class="center"><span class="pill pill-green">100%</span></td>
-              </tr>
-              <tr>
-                <td>emergency dentist in cameron park</td>
-                <td class="center">1.01</td>
-                <td class="center"><span class="pill pill-green">99.17%</span></td>
-              </tr>
-              <tr>
-                <td>dentist near me</td>
-                <td class="center">3.29</td>
-                <td class="center"><span class="pill pill-gold">72.73%</span></td>
-              </tr>
-              <tr>
-                <td>emergency dentist near me</td>
-                <td class="center">3.93</td>
-                <td class="center"><span class="pill pill-gold">70.25%</span></td>
-              </tr>
-            </tbody>
-          </table>
+        <div id="lf-map" class="lf-map"></div>
+
+        <div class="heatmap-legend">
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-1"></span>#1</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-2"></span>#2-3</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-4"></span>#4-5</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-6"></span>#6-7</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-8"></span>#8-9</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-10"></span>#10-19</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-20"></span>#20+</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-x"></span>Not Ranking</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-pin"></span>Office</div>
         </div>
       </div>
     </div>
@@ -824,176 +819,122 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
     <!-- Traffic to Each Page -->
     <div class="info-block">
       <div class="info-block-head">
-        <span class="info-block-icon">&#128200;</span>
+        <span class="info-block-icon">📈</span>
         <span class="info-block-title">Traffic to Each Page</span>
       </div>
-      <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:16px;">SEMrush estimated organic visits &middot; May 2026 &middot; GA4 organic sessions: 18</p>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+        Top pages by organic visits in May.
+      </p>
       <ul class="pages-list">
         <li>
-          <span class="page-name">/can-invisalign-fix-an-overbite/</span>
-          <span class="page-bar"><span class="page-bar-fill" style="width:100%;"></span></span>
-          <span class="page-visits">580</span>
+          <div class="page-name">/can-invisalign-fix-an-overbite/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:100%"></div></div>
+          <div class="page-visits">582</div>
         </li>
         <li>
-          <span class="page-name">/ (homepage)</span>
-          <span class="page-bar"><span class="page-bar-fill" style="width:31%;"></span></span>
-          <span class="page-visits">180</span>
+          <div class="page-name">/cameron-park-ca/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:87%"></div></div>
+          <div class="page-visits">505</div>
         </li>
         <li>
-          <span class="page-name">/cameron-park-ca/</span>
-          <span class="page-bar"><span class="page-bar-fill" style="width:21%;"></span></span>
-          <span class="page-visits">121</span>
+          <div class="page-name">/ (homepage)</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:46%"></div></div>
+          <div class="page-visits">266</div>
         </li>
         <li>
-          <span class="page-name">/how-quickly-can-professional-teeth-whitening-strips-brighten-my-smile/</span>
-          <span class="page-bar"><span class="page-bar-fill" style="width:9%;"></span></span>
-          <span class="page-visits">52</span>
+          <div class="page-name">/how-quickly-can-professional-teeth-whitening-strips.../</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:13%"></div></div>
+          <div class="page-visits">78</div>
         </li>
         <li>
-          <span class="page-name">/plaque-vs-tartar/</span>
-          <span class="page-bar"><span class="page-bar-fill" style="width:3%;"></span></span>
-          <span class="page-visits">17</span>
+          <div class="page-name">/clean-invisalign-trays-properly/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:10%"></div></div>
+          <div class="page-visits">59</div>
+        </li>
+        <li>
+          <div class="page-name">/plaque-vs-tartar/</div>
+          <div class="page-bar"><div class="page-bar-fill" style="width:5%"></div></div>
+          <div class="page-visits">31</div>
         </li>
       </ul>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:12px; line-height:1.5;">
+        Higher of Windsor / GA4 organic sessions and SEMrush estimated traffic per page. Your <em>"Can Invisalign Fix an Overbite?"</em> guide ranks #1 nationally for a 4,400-volume term, and the Cameron Park city page pulls strong tourism-adjacent traffic. SEMrush tracks <strong>932 ranking keywords</strong> domain-wide; GA4 logged 217 organic sessions in May.
+      </p>
     </div>
 
-    <!-- Traffic Sources -->
+    <!-- New Reviews -->
     <div class="info-block">
       <div class="info-block-head">
-        <span class="info-block-icon">&#128268;</span>
-        <span class="info-block-title">Traffic Sources</span>
-      </div>
-      <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:16px;">Windsor / GA4 &middot; May 2026</p>
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-num">18</div>
-          <div class="stat-label">Google Organic Sessions</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">23</div>
-          <div class="stat-label">Direct Sessions</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">8</div>
-          <div class="stat-label">Referral Sessions</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">49</div>
-          <div class="stat-label">Total Sessions</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Reviews -->
-    <div class="info-block">
-      <div class="info-block-head">
-        <span class="info-block-icon">&#11088;</span>
-        <span class="info-block-title">Google Reviews</span>
+        <span class="info-block-icon">⭐</span>
+        <span class="info-block-title">New Reviews Collected</span>
       </div>
       <div class="stat-grid">
         <div class="stat-card">
-          <div class="stat-num">128</div>
-          <div class="stat-label">Total Reviews on Google</div>
+          <div class="stat-num">+1</div>
+          <div class="stat-label">New Reviews This Month</div>
+          <div class="stat-sub">From 127 to 128 total</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">4.9&#9733;</div>
+          <div class="stat-num">4.9★</div>
           <div class="stat-label">Overall Rating</div>
-          <div class="stat-sub">Based on 128 reviews</div>
+          <div class="stat-sub">Across 128 total reviews</div>
         </div>
       </div>
     </div>
 
-    <!-- GBP Performance Table -->
+    <!-- GBP Performance -->
     <div class="info-block">
       <div class="info-block-head">
-        <span class="info-block-icon">&#128205;</span>
-        <span class="info-block-title">GBP Performance (6 Months)</span>
+        <span class="info-block-icon">🏢</span>
+        <span class="info-block-title">Google Business Profile Performance</span>
       </div>
-      <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:12px;">Source: Windsor / GA4</p>
-      <div class="open-table-wrap">
-        <table class="gbp-mini">
-          <colgroup>
-            <col style="width:24%">
-            <col style="width:19%">
-            <col style="width:19%">
-            <col style="width:19%">
-            <col style="width:19%">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Month</th>
-              <th>Impressions</th>
-              <th>Web Clicks</th>
-              <th>Directions</th>
-              <th>Call Clicks</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Dec 2025</td>
-              <td>622</td>
-              <td>40</td>
-              <td>94</td>
-              <td>55</td>
-            </tr>
-            <tr>
-              <td>Jan 2026</td>
-              <td>626</td>
-              <td>58</td>
-              <td>58</td>
-              <td>55</td>
-            </tr>
-            <tr>
-              <td>Feb 2026</td>
-              <td>466</td>
-              <td>48</td>
-              <td>74</td>
-              <td>38</td>
-            </tr>
-            <tr>
-              <td>Mar 2026</td>
-              <td>541</td>
-              <td>41</td>
-              <td>72</td>
-              <td>57</td>
-            </tr>
-            <tr>
-              <td>Apr 2026</td>
-              <td>570</td>
-              <td>70</td>
-              <td>33</td>
-              <td>68</td>
-            </tr>
-            <tr>
-              <td><strong>May 2026</strong></td>
-              <td><strong>454</strong></td>
-              <td><strong>45</strong></td>
-              <td><strong>63</strong></td>
-              <td><strong>42</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+        Activity on your Google Business listing this month and the prior 5 months.
+      </p>
+      <table class="gbp-mini">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Impr.</th>
+            <th>Search</th>
+            <th>Maps</th>
+            <th>Web Clicks</th>
+            <th>Calls</th>
+            <th>Dir.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Dec 2025</td><td>622</td><td>474</td><td>148</td><td>40</td><td>55</td><td>94</td></tr>
+          <tr><td>Jan 2026</td><td>626</td><td>445</td><td>181</td><td>58</td><td>55</td><td>58</td></tr>
+          <tr><td>Feb 2026</td><td>466</td><td>346</td><td>120</td><td>48</td><td>38</td><td>74</td></tr>
+          <tr><td>Mar 2026</td><td>541</td><td>378</td><td>163</td><td>41</td><td>57</td><td>72</td></tr>
+          <tr><td>Apr 2026</td><td>570</td><td>413</td><td>157</td><td>70</td><td>68</td><td>33</td></tr>
+          <tr><td><strong>May 2026</strong></td><td><strong>465</strong></td><td><strong>326</strong></td><td><strong>139</strong></td><td><strong>45</strong></td><td><strong>42</strong></td><td><strong>65</strong></td></tr>
+        </tbody>
+      </table>
     </div>
+
 
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
+<!-- ============ FOOTER ============ -->
+<div class="footer">
   <div class="container">
     <div class="footer-brand">
       <img src="data:image/png;base64,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" alt="Dentist Nerds">
       <span class="footer-brand-name">Dentist Nerds</span>
     </div>
-    <div class="footer-period">Reporting Period: May 1, 2026 &ndash; May 31, 2026</div>
-    <div class="footer-sources">Data Sources: Semrush &middot; Google Business Profile &middot; Google Analytics &middot; Local Falcon</div>
+    <div class="footer-period">Reporting period: May 1, 2026 – May 31, 2026</div>
+    <div class="footer-sources">
+      Data sources: <span style="color:#ff642d;">Semrush</span> · <span style="color:#4285f4;">Google Business Profile</span> · <span style="color:#34a853;">Google Search Console</span> · <span style="color:#f9ab00;">Google Analytics</span>
+    </div>
     <div class="footer-thanks">
-      <div class="footer-thanks-label">Thank You</div>
-      <div class="footer-thanks-body">We appreciate the opportunity to support Cameron Park Family Dentistry's growth. We're committed to delivering consistent, measurable SEO results every month.</div>
+      <span class="footer-thanks-label">Thank you for trusting us with your marketing.</span>
+      <span class="footer-thanks-body"> Questions about anything in this report? Just reply to this email — we love hearing from you.</span>
     </div>
   </div>
-</footer>
+</div>
 
 <!-- Leaflet JS + heatmap initialization -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
@@ -1008,7 +949,8 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
   var officeLng = -120.9971765;
   var officeName = 'Cameron Park Family Dentistry';
   var keyword = 'dentist in cameron park';
-  var dataPoints = [{"lat":38.6119073,"lng":-121.052805,"rank":1},{"lat":38.6119073,"lng":-121.0416793,"rank":1},{"lat":38.6119073,"lng":-121.0305536,"rank":1},{"lat":38.6119073,"lng":-121.0194279,"rank":2},{"lat":38.6119073,"lng":-121.0083022,"rank":1},{"lat":38.6119073,"lng":-120.9971765,"rank":1},{"lat":38.6119073,"lng":-120.9860508,"rank":1},{"lat":38.6119073,"lng":-120.9749251,"rank":1},{"lat":38.6119073,"lng":-120.9637994,"rank":1},{"lat":38.6119073,"lng":-120.9526737,"rank":1},{"lat":38.6119073,"lng":-120.941548,"rank":1},{"lat":38.6205956,"lng":-121.052805,"rank":1},{"lat":38.6205956,"lng":-121.0416793,"rank":1},{"lat":38.6205956,"lng":-121.0305536,"rank":1},{"lat":38.6205956,"lng":-121.0194279,"rank":1},{"lat":38.6205956,"lng":-121.0083022,"rank":1},{"lat":38.6205956,"lng":-120.9971765,"rank":1},{"lat":38.6205956,"lng":-120.9860508,"rank":1},{"lat":38.6205956,"lng":-120.9749251,"rank":1},{"lat":38.6205956,"lng":-120.9637994,"rank":2},{"lat":38.6205956,"lng":-120.9526737,"rank":1},{"lat":38.6205956,"lng":-120.941548,"rank":1},{"lat":38.6292838,"lng":-121.052805,"rank":2},{"lat":38.6292838,"lng":-121.0416793,"rank":1},{"lat":38.6292838,"lng":-121.0305536,"rank":1},{"lat":38.6292838,"lng":-121.0194279,"rank":1},{"lat":38.6292838,"lng":-121.0083022,"rank":1},{"lat":38.6292838,"lng":-120.9971765,"rank":1},{"lat":38.6292838,"lng":-120.9860508,"rank":1},{"lat":38.6292838,"lng":-120.9749251,"rank":2},{"lat":38.6292838,"lng":-120.9637994,"rank":1},{"lat":38.6292838,"lng":-120.9526737,"rank":1},{"lat":38.6292838,"lng":-120.941548,"rank":1},{"lat":38.6379721,"lng":-121.052805,"rank":1},{"lat":38.6379721,"lng":-121.0416793,"rank":1},{"lat":38.6379721,"lng":-121.0305536,"rank":1},{"lat":38.6379721,"lng":-121.0194279,"rank":1},{"lat":38.6379721,"lng":-121.0083022,"rank":1},{"lat":38.6379721,"lng":-120.9971765,"rank":1},{"lat":38.6379721,"lng":-120.9860508,"rank":1},{"lat":38.6379721,"lng":-120.9749251,"rank":1},{"lat":38.6379721,"lng":-120.9637994,"rank":1},{"lat":38.6379721,"lng":-120.9526737,"rank":2},{"lat":38.6379721,"lng":-120.941548,"rank":1},{"lat":38.6466603,"lng":-121.052805,"rank":1},{"lat":38.6466603,"lng":-121.0416793,"rank":1},{"lat":38.6466603,"lng":-121.0305536,"rank":1},{"lat":38.6466603,"lng":-121.0194279,"rank":1},{"lat":38.6466603,"lng":-121.0083022,"rank":2},{"lat":38.6466603,"lng":-120.9971765,"rank":2},{"lat":38.6466603,"lng":-120.9860508,"rank":1},{"lat":38.6466603,"lng":-120.9749251,"rank":1},{"lat":38.6466603,"lng":-120.9637994,"rank":1},{"lat":38.6466603,"lng":-120.9526737,"rank":1},{"lat":38.6466603,"lng":-120.941548,"rank":1},{"lat":38.6553486,"lng":-121.052805,"rank":1},{"lat":38.6553486,"lng":-121.0416793,"rank":2},{"lat":38.6553486,"lng":-121.0305536,"rank":1},{"lat":38.6553486,"lng":-121.0194279,"rank":1},{"lat":38.6553486,"lng":-121.0083022,"rank":2},{"lat":38.6553486,"lng":-120.9971765,"rank":1},{"lat":38.6553486,"lng":-120.9860508,"rank":1},{"lat":38.6553486,"lng":-120.9749251,"rank":1},{"lat":38.6553486,"lng":-120.9637994,"rank":1},{"lat":38.6553486,"lng":-120.9526737,"rank":1},{"lat":38.6553486,"lng":-120.941548,"rank":1},{"lat":38.6640369,"lng":-121.052805,"rank":1},{"lat":38.6640369,"lng":-121.0416793,"rank":1},{"lat":38.6640369,"lng":-121.0305536,"rank":1},{"lat":38.6640369,"lng":-121.0194279,"rank":1},{"lat":38.6640369,"lng":-121.0083022,"rank":1},{"lat":38.6640369,"lng":-120.9971765,"rank":1},{"lat":38.6640369,"lng":-120.9860508,"rank":1},{"lat":38.6640369,"lng":-120.9749251,"rank":1},{"lat":38.6640369,"lng":-120.9637994,"rank":1},{"lat":38.6640369,"lng":-120.9526737,"rank":1},{"lat":38.6640369,"lng":-120.941548,"rank":2},{"lat":38.6727251,"lng":-121.052805,"rank":2},{"lat":38.6727251,"lng":-121.0416793,"rank":1},{"lat":38.6727251,"lng":-121.0305536,"rank":2},{"lat":38.6727251,"lng":-121.0194279,"rank":1},{"lat":38.6727251,"lng":-121.0083022,"rank":2},{"lat":38.6727251,"lng":-120.9971765,"rank":1},{"lat":38.6727251,"lng":-120.9860508,"rank":2},{"lat":38.6727251,"lng":-120.9749251,"rank":1},{"lat":38.6727251,"lng":-120.9637994,"rank":1},{"lat":38.6727251,"lng":-120.9526737,"rank":2},{"lat":38.6727251,"lng":-120.941548,"rank":2},{"lat":38.6814134,"lng":-121.052805,"rank":1},{"lat":38.6814134,"lng":-121.0416793,"rank":2},{"lat":38.6814134,"lng":-121.0305536,"rank":1},{"lat":38.6814134,"lng":-121.0194279,"rank":2},{"lat":38.6814134,"lng":-121.0083022,"rank":1},{"lat":38.6814134,"lng":-120.9971765,"rank":1},{"lat":38.6814134,"lng":-120.9860508,"rank":1},{"lat":38.6814134,"lng":-120.9749251,"rank":1},{"lat":38.6814134,"lng":-120.9637994,"rank":1},{"lat":38.6814134,"lng":-120.9526737,"rank":2},{"lat":38.6814134,"lng":-120.941548,"rank":1},{"lat":38.6901016,"lng":-121.052805,"rank":1},{"lat":38.6901016,"lng":-121.0416793,"rank":1},{"lat":38.6901016,"lng":-121.0305536,"rank":1},{"lat":38.6901016,"lng":-121.0194279,"rank":2},{"lat":38.6901016,"lng":-121.0083022,"rank":2},{"lat":38.6901016,"lng":-120.9971765,"rank":1},{"lat":38.6901016,"lng":-120.9860508,"rank":1},{"lat":38.6901016,"lng":-120.9749251,"rank":1},{"lat":38.6901016,"lng":-120.9637994,"rank":1},{"lat":38.6901016,"lng":-120.9526737,"rank":1},{"lat":38.6901016,"lng":-120.941548,"rank":2},{"lat":38.6987899,"lng":-121.052805,"rank":1},{"lat":38.6987899,"lng":-121.0416793,"rank":1},{"lat":38.6987899,"lng":-121.0305536,"rank":2},{"lat":38.6987899,"lng":-121.0194279,"rank":1},{"lat":38.6987899,"lng":-121.0083022,"rank":1},{"lat":38.6987899,"lng":-120.9971765,"rank":1},{"lat":38.6987899,"lng":-120.9860508,"rank":1},{"lat":38.6987899,"lng":-120.9749251,"rank":1},{"lat":38.6987899,"lng":-120.9637994,"rank":1},{"lat":38.6987899,"lng":-120.9526737,"rank":1},{"lat":38.6987899,"lng":-120.941548,"rank":1}];
+  // ranks[i] = { lat, lng, rank }  (121 points from real LF scan)
+  var dataPoints = [{lat:38.6119778,lng:-121.0527148,rank:1},{lat:38.6206519,lng:-121.0527148,rank:1},{lat:38.6293261,lng:-121.0527148,rank:1},{lat:38.6380003,lng:-121.0527148,rank:1},{lat:38.6466744,lng:-121.0527148,rank:1},{lat:38.6553486,lng:-121.0527148,rank:1},{lat:38.6640228,lng:-121.0527148,rank:1},{lat:38.6726969,lng:-121.0527148,rank:1},{lat:38.6813711,lng:-121.0527148,rank:1},{lat:38.6900453,lng:-121.0527148,rank:1},{lat:38.6987194,lng:-121.0527148,rank:1},{lat:38.6119778,lng:-121.0416072,rank:1},{lat:38.6206519,lng:-121.0416072,rank:1},{lat:38.6293261,lng:-121.0416072,rank:1},{lat:38.6380003,lng:-121.0416072,rank:1},{lat:38.6466744,lng:-121.0416072,rank:1},{lat:38.6553486,lng:-121.0416072,rank:1},{lat:38.6640228,lng:-121.0416072,rank:1},{lat:38.6726969,lng:-121.0416072,rank:1},{lat:38.6813711,lng:-121.0416072,rank:1},{lat:38.6900453,lng:-121.0416072,rank:1},{lat:38.6987194,lng:-121.0416072,rank:1},{lat:38.6119778,lng:-121.0304995,rank:1},{lat:38.6206519,lng:-121.0304995,rank:1},{lat:38.6293261,lng:-121.0304995,rank:1},{lat:38.6380003,lng:-121.0304995,rank:1},{lat:38.6466744,lng:-121.0304995,rank:1},{lat:38.6553486,lng:-121.0304995,rank:1},{lat:38.6640228,lng:-121.0304995,rank:1},{lat:38.6726969,lng:-121.0304995,rank:1},{lat:38.6813711,lng:-121.0304995,rank:1},{lat:38.6900453,lng:-121.0304995,rank:1},{lat:38.6987194,lng:-121.0304995,rank:1},{lat:38.6119778,lng:-121.0193918,rank:1},{lat:38.6206519,lng:-121.0193918,rank:1},{lat:38.6293261,lng:-121.0193918,rank:1},{lat:38.6380003,lng:-121.0193918,rank:1},{lat:38.6466744,lng:-121.0193918,rank:1},{lat:38.6553486,lng:-121.0193918,rank:1},{lat:38.6640228,lng:-121.0193918,rank:1},{lat:38.6726969,lng:-121.0193918,rank:1},{lat:38.6813711,lng:-121.0193918,rank:1},{lat:38.6900453,lng:-121.0193918,rank:1},{lat:38.6987194,lng:-121.0193918,rank:1},{lat:38.6119778,lng:-121.0082842,rank:1},{lat:38.6206519,lng:-121.0082842,rank:1},{lat:38.6293261,lng:-121.0082842,rank:1},{lat:38.6380003,lng:-121.0082842,rank:1},{lat:38.6466744,lng:-121.0082842,rank:1},{lat:38.6553486,lng:-121.0082842,rank:1},{lat:38.6640228,lng:-121.0082842,rank:1},{lat:38.6726969,lng:-121.0082842,rank:1},{lat:38.6813711,lng:-121.0082842,rank:1},{lat:38.6900453,lng:-121.0082842,rank:1},{lat:38.6987194,lng:-121.0082842,rank:1},{lat:38.6119778,lng:-120.9971765,rank:1},{lat:38.6206519,lng:-120.9971765,rank:1},{lat:38.6293261,lng:-120.9971765,rank:1},{lat:38.6380003,lng:-120.9971765,rank:1},{lat:38.6466744,lng:-120.9971765,rank:1},{lat:38.6553486,lng:-120.9971765,rank:1},{lat:38.6640228,lng:-120.9971765,rank:1},{lat:38.6726969,lng:-120.9971765,rank:1},{lat:38.6813711,lng:-120.9971765,rank:1},{lat:38.6900453,lng:-120.9971765,rank:2},{lat:38.6987194,lng:-120.9971765,rank:1},{lat:38.6119778,lng:-120.9860688,rank:1},{lat:38.6206519,lng:-120.9860688,rank:1},{lat:38.6293261,lng:-120.9860688,rank:1},{lat:38.6380003,lng:-120.9860688,rank:1},{lat:38.6466744,lng:-120.9860688,rank:1},{lat:38.6553486,lng:-120.9860688,rank:1},{lat:38.6640228,lng:-120.9860688,rank:1},{lat:38.6726969,lng:-120.9860688,rank:1},{lat:38.6813711,lng:-120.9860688,rank:1},{lat:38.6900453,lng:-120.9860688,rank:2},{lat:38.6987194,lng:-120.9860688,rank:1},{lat:38.6119778,lng:-120.9749612,rank:1},{lat:38.6206519,lng:-120.9749612,rank:1},{lat:38.6293261,lng:-120.9749612,rank:1},{lat:38.6380003,lng:-120.9749612,rank:1},{lat:38.6466744,lng:-120.9749612,rank:1},{lat:38.6553486,lng:-120.9749612,rank:2},{lat:38.6640228,lng:-120.9749612,rank:2},{lat:38.6726969,lng:-120.9749612,rank:2},{lat:38.6813711,lng:-120.9749612,rank:2},{lat:38.6900453,lng:-120.9749612,rank:1},{lat:38.6987194,lng:-120.9749612,rank:1},{lat:38.6119778,lng:-120.9638535,rank:1},{lat:38.6206519,lng:-120.9638535,rank:1},{lat:38.6293261,lng:-120.9638535,rank:1},{lat:38.6380003,lng:-120.9638535,rank:1},{lat:38.6466744,lng:-120.9638535,rank:2},{lat:38.6553486,lng:-120.9638535,rank:3},{lat:38.6640228,lng:-120.9638535,rank:2},{lat:38.6726969,lng:-120.9638535,rank:2},{lat:38.6813711,lng:-120.9638535,rank:2},{lat:38.6900453,lng:-120.9638535,rank:1},{lat:38.6987194,lng:-120.9638535,rank:1},{lat:38.6119778,lng:-120.9527458,rank:1},{lat:38.6206519,lng:-120.9527458,rank:1},{lat:38.6293261,lng:-120.9527458,rank:1},{lat:38.6380003,lng:-120.9527458,rank:1},{lat:38.6466744,lng:-120.9527458,rank:2},{lat:38.6553486,lng:-120.9527458,rank:2},{lat:38.6640228,lng:-120.9527458,rank:2},{lat:38.6726969,lng:-120.9527458,rank:2},{lat:38.6813711,lng:-120.9527458,rank:2},{lat:38.6900453,lng:-120.9527458,rank:2},{lat:38.6987194,lng:-120.9527458,rank:1},{lat:38.6119778,lng:-120.9416382,rank:1},{lat:38.6206519,lng:-120.9416382,rank:1},{lat:38.6293261,lng:-120.9416382,rank:1},{lat:38.6380003,lng:-120.9416382,rank:1},{lat:38.6466744,lng:-120.9416382,rank:2},{lat:38.6553486,lng:-120.9416382,rank:2},{lat:38.6640228,lng:-120.9416382,rank:2},{lat:38.6726969,lng:-120.9416382,rank:2},{lat:38.6813711,lng:-120.9416382,rank:2},{lat:38.6900453,lng:-120.9416382,rank:1},{lat:38.6987194,lng:-120.9416382,rank:1}];
   // ===================================================================
 
   function bucketFor(r) {
@@ -1044,7 +986,7 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
   }
   function buildPopup(rank, area) {
     var rankHtml = (rank && rank > 0) ? '<div style="font-size:13px;">Rank: <strong style="color:#0d2538;">#' + rank + '</strong></div>' : '<div style="font-size:13px;color:#a02020;"><strong>Not in top 20</strong></div>';
-    var areaHtml = '<div style="font-size:12.5px;color:#6b7280;margin-top:4px;">&#128205; ' + area + '</div>';
+    var areaHtml = '<div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 ' + area + '</div>';
     return rankHtml + areaHtml;
   }
 
@@ -1077,19 +1019,18 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
   // Office pin on top
   var officeIcon = L.divIcon({
     className: '',
-    html: '<div class="rank-icon office-pin">&#128205;</div>',
+    html: '<div class="rank-icon office-pin">📍</div>',
     iconSize: [36, 36], iconAnchor: [18, 18]
   });
   var officeMarker = L.marker([officeLat, officeLng], { icon: officeIcon, zIndexOffset: 1000 }).addTo(map);
-  var officePopup = L.popup().setContent('<strong>' + officeName + '</strong><div style="font-size:12.5px;color:#6b7280;margin-top:4px;">&#128205; Loading area...</div>');
+  var officePopup = L.popup().setContent('<strong>' + officeName + '</strong><div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 Loading area...</div>');
   officeMarker.bindPopup(officePopup);
   officeMarker.on('popupopen', function() {
-    officePopup.setContent('<strong>' + officeName + '</strong><div style="font-size:12.5px;color:#6b7280;margin-top:4px;">&#128205; Loading area...</div>');
+    officePopup.setContent('<strong>' + officeName + '</strong><div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 Loading area...</div>');
     fetchCity(officeLat, officeLng, officePopup, null);
   });
 
   if (bounds.length) map.fitBounds(bounds, { padding: [20, 20] });
 })();
 </script>
-</body>
-</html>
+</body></html>
