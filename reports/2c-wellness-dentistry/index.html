@@ -1,1 +1,703 @@
-$(cat /tmp/2c-report.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2C Wellness Dentistry — Website Audit | Dentist Nerds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-deep: #0A1422;
+    --navy-soft: #1B2940;
+    --ink: #15202E;
+    --ink-soft: #4A5568;
+    --ink-mute: #7B8794;
+    --line: #E2E8F0;
+    --line-soft: #EDF2F7;
+    --bg: #FFFFFF;
+    --bg-soft: #F7F9FC;
+    --bg-mint: #FDF8E8;
+    --green: #D4A93B;
+    --green-deep: #8B6914;
+    --green-soft: #FAEFCE;
+    --mint: #E5C76E;
+    --coral: #FF5E4D;
+    --coral-soft: #FFE2DE;
+    --amber: #FFB547;
+    --amber-soft: #FFF1D6;
+    --blue: #4D8CFF;
+    --blue-soft: #DCE8FF;
+    --purple: #8B5CF6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  .hero {
+    background: var(--navy);
+    color: #FFF;
+    padding: 72px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,169,59,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(77,140,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-wrap { position: relative; z-index: 2; }
+  .audit-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nerds-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #FFF;
+    letter-spacing: -0.01em;
+  }
+  .nerds-logo .logo-mark {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: 18px;
+  }
+  .audit-type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .audit-target {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212,169,59,0.12);
+    border: 1px solid rgba(212,169,59,0.3);
+    color: var(--green);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .audit-target .pulse {
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(212,169,59,0.2);
+  }
+  .hero h1 {
+    font-size: clamp(36px, 5.2vw, 60px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+    max-width: 920px;
+  }
+  .hero h1 .accent { color: var(--green); }
+  .hero-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero .lede {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 44px;
+    font-weight: 400;
+  }
+  .hero .lede strong { color: #FFF; }
+  .hero-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .meta-block .meta-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .meta-block .meta-value {
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .meta-block .meta-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+  section { padding: 80px 0; }
+  section.alt { background: var(--bg-soft); }
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .section-eyebrow .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+  .section-eyebrow.red { background: var(--coral-soft); color: var(--coral); }
+  .section-eyebrow.red .dot { background: var(--coral); }
+  section h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    max-width: 820px;
+  }
+  section h2 .accent { color: var(--green-deep); }
+  section h2 .accent-red { color: var(--coral); }
+  section .section-intro {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    line-height: 1.55;
+    margin-bottom: 48px;
+  }
+  .score-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .gauge-wrap {
+    background: #FFF;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(15,27,45,0.06);
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .gauge-label { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
+  .gauge-svg { display: block; margin: 0 auto; }
+  .gauge-num { font-size: 64px; font-weight: 800; color: var(--coral); line-height: 1; margin-top: 8px; letter-spacing: -0.03em; }
+  .gauge-suffix { font-size: 24px; color: var(--ink-mute); font-weight: 600; }
+  .gauge-status { margin-top: 8px; font-size: 13px; color: var(--coral); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .subscore-list { display: flex; flex-direction: column; gap: 16px; }
+  .subscore {
+    background: #FFF;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .subscore-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .subscore-icon.coral { background: var(--coral-soft); }
+  .subscore-icon.amber { background: var(--amber-soft); }
+  .subscore-icon.green { background: var(--green-soft); }
+  .subscore-title { font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .subscore-bar { background: var(--line-soft); height: 6px; border-radius: 100px; overflow: hidden; }
+  .subscore-fill { height: 100%; border-radius: 100px; background: var(--coral); }
+  .subscore-fill.amber { background: var(--amber); }
+  .subscore-fill.green { background: var(--green); }
+  .subscore-value { font-family: 'Manrope', sans-serif; font-size: 18px; font-weight: 800; color: var(--ink); min-width: 60px; text-align: right; }
+  .issue-counter { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 48px; }
+  .counter-card { background: #FFF; border-radius: 16px; padding: 26px 22px; border: 1px solid var(--line); position: relative; overflow: hidden; }
+  .counter-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
+  .counter-card.critical::before { background: var(--coral); }
+  .counter-card.high::before { background: var(--amber); }
+  .counter-card.medium::before { background: var(--blue); }
+  .counter-card.good::before { background: var(--green); }
+  .counter-num { font-size: 48px; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 8px; letter-spacing: -0.03em; }
+  .counter-num.coral { color: var(--coral); }
+  .counter-num.amber { color: var(--amber); }
+  .counter-num.blue { color: var(--blue); }
+  .counter-num.green { color: var(--green); }
+  .counter-label { font-size: 13px; color: var(--ink-mute); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .issues-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+  .issue-card {
+    background: #FFF;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .issue-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(15,27,45,0.08); }
+  .issue-icon-wrap { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+  .issue-icon-wrap.critical { background: var(--coral-soft); }
+  .issue-icon-wrap.high { background: var(--amber-soft); }
+  .issue-card-head { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .issue-card-num { font-size: 11px; color: var(--ink-mute); font-weight: 700; letter-spacing: 0.08em; }
+  .issue-card h3 { font-size: 21px; font-weight: 800; color: var(--ink); line-height: 1.25; flex-basis: 100%; letter-spacing: -0.01em; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 100px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .pill .pill-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .pill.critical { background: var(--coral-soft); color: var(--coral); }
+  .pill.critical .pill-dot { background: var(--coral); }
+  .pill.high { background: var(--amber-soft); color: #B87A0E; }
+  .pill.high .pill-dot { background: var(--amber); }
+  .issue-card p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; margin-bottom: 12px; }
+  .issue-card p:last-child { margin-bottom: 0; }
+  .issue-card strong { color: var(--ink); font-weight: 700; }
+  .fix-box { background: var(--bg-mint); border-radius: 12px; padding: 16px 20px; margin-top: 16px; border-left: 3px solid var(--green); }
+  .fix-box-label { font-size: 11px; font-weight: 700; color: var(--green-deep); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .fix-box p { color: var(--ink); font-size: 14px; margin: 0; }
+  .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; position: relative; }
+  .roadmap::before { content: ''; position: absolute; top: 40px; left: 8%; right: 8%; height: 2px; background: linear-gradient(90deg, var(--coral), var(--amber), var(--green)); z-index: 0; }
+  .phase { background: #FFF; border-radius: 20px; border: 1px solid var(--line); padding: 26px; position: relative; z-index: 1; }
+  .phase-number { width: 56px; height: 56px; border-radius: 50%; background: var(--coral); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; margin: 0 auto 18px; border: 4px solid var(--bg-soft); position: relative; z-index: 2; }
+  .phase-number.amber { background: var(--amber); color: var(--navy); }
+  .phase-number.green { background: var(--green); }
+  .phase-weeks { text-align: center; font-size: 11px; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+  .phase h3 { text-align: center; font-size: 19px; font-weight: 800; color: var(--ink); margin-bottom: 18px; letter-spacing: -0.01em; }
+  .phase ul { list-style: none; padding: 0; }
+  .phase li { padding: 10px 0 10px 24px; position: relative; font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; border-bottom: 1px solid var(--line-soft); }
+  .phase li:last-child { border-bottom: none; }
+  .phase li::before { content: ''; position: absolute; left: 0; top: 16px; width: 12px; height: 12px; border-radius: 4px; background: var(--coral-soft); border: 2px solid var(--coral); }
+  .phase.amber li::before { background: var(--amber-soft); border-color: var(--amber); }
+  .phase.green li::before { background: var(--green-soft); border-color: var(--green); }
+  .opportunity { background: var(--navy); color: #FFF; border-radius: 28px; padding: 56px 48px; position: relative; overflow: hidden; }
+  .opportunity::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,169,59,0.2) 0%, transparent 60%); }
+  .opp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+  .opp-content h2 { color: #FFF; margin-bottom: 16px; }
+  .opp-content h2 .accent { color: var(--green); }
+  .opp-content p { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.6; margin-bottom: 14px; }
+  .opp-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .opp-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 22px; }
+  .opp-stat-num { font-size: 38px; font-weight: 800; color: var(--green); line-height: 1; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .opp-stat-label { font-size: 12.5px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+  .end-cta { background: var(--navy); color: #FFF; padding: 80px 0; }
+  .end-cta h2 { font-size: clamp(32px, 4.5vw, 52px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 20px; }
+  .end-cta h2 .accent { color: var(--green); }
+  .end-cta p { font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.55; max-width: 640px; margin-bottom: 40px; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--green); color: var(--navy-deep); padding: 18px 32px; border-radius: 14px; font-weight: 800; font-size: 16px; letter-spacing: 0.02em; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+  .review-gap-stat { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); color: #FFF; border-radius: 20px; padding: 36px 40px; margin: 32px 0; display: grid; grid-template-columns: 1fr 1px 1fr; gap: 36px; align-items: center; position: relative; overflow: hidden; }
+  .review-gap-stat::before { content: ''; position: absolute; top: -100px; right: -80px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(255,94,77,0.15) 0%, transparent 60%); }
+  .gap-side { position: relative; z-index: 1; text-align: center; }
+  .gap-divider { width: 1px; background: rgba(255,255,255,0.12); height: 80%; align-self: center; position: relative; z-index: 1; }
+  .gap-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 700; margin-bottom: 10px; }
+  .gap-num { font-size: 64px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; margin-bottom: 6px; }
+  .gap-num.you { color: var(--coral); }
+  .gap-num.them { color: var(--green); }
+  .gap-name { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+  .page-bar { display: grid; grid-template-columns: 240px 1fr 80px; gap: 20px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+  .page-name { font-family: 'DM Sans', monospace; font-size: 13px; color: var(--ink); font-weight: 600; }
+  .page-name .pn-sub { display: block; font-size: 11px; color: var(--ink-mute); font-weight: 400; margin-top: 2px; }
+  .page-track { background: var(--line-soft); height: 12px; border-radius: 100px; overflow: hidden; }
+  .page-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--coral) 0%, #FF8B7E 100%); }
+  .page-fill.empty { background: repeating-linear-gradient(45deg, var(--line-soft), var(--line-soft) 6px, var(--line) 6px, var(--line) 12px); width: 100% !important; }
+  .page-value { font-size: 14px; font-weight: 800; color: var(--ink); text-align: right; }
+  .page-value.zero { color: var(--ink-mute); }
+  .sitemap-card { background: #FFF; border: 1px solid var(--line); border-radius: 18px; padding: 32px; margin: 24px 0 36px; box-shadow: 0 4px 20px rgba(15,27,45,0.04); }
+  .sitemap-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 14px; }
+  .sitemap-card-title { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; }
+  .sitemap-card-title small { display: block; font-size: 12px; color: var(--ink-mute); font-weight: 500; margin-top: 4px; }
+  @media (max-width: 768px) {
+    .hero-meta-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .score-grid { grid-template-columns: 1fr; }
+    .issue-counter { grid-template-columns: 1fr 1fr; }
+    .roadmap { grid-template-columns: 1fr; }
+    .opp-grid { grid-template-columns: 1fr; }
+    .page-bar { grid-template-columns: 160px 1fr 60px; }
+    .review-gap-stat { grid-template-columns: 1fr; }
+    .gap-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap hero-wrap">
+    <div class="audit-strip">
+      <div class="nerds-logo">
+        <span class="logo-mark">N</span>
+        <span>Dentist Nerds</span>
+      </div>
+      <div class="audit-type">Website Audit · Confidential</div>
+    </div>
+    <div class="audit-target">
+      <span class="pulse"></span>
+      Audited: 2cdentistry.com
+    </div>
+    <h1>Website Audit for <span class="accent">2C Wellness Dentistry</span></h1>
+    <p class="hero-subtitle">Prepared by Dentist Nerds · June 2026</p>
+    <p class="lede">
+      2C Wellness Dentistry has a <strong>beautiful, well-designed new website</strong> — the look and feel is clean, modern, and professional. But being brand new comes with a real cost: <strong>zero organic traffic, zero ranking keywords, and zero domain authority</strong>. Google hasn’t had time to trust or index the site yet, and that gap needs to be closed strategically. Add in only 9 Google reviews and missing dedicated pages for entire treatment categories, and there’s a clear, executable path to get this practice ranking, converting, and growing.
+    </p>
+    <div class="hero-meta-grid">
+      <div class="meta-block">
+        <div class="meta-label">Prepared For</div>
+        <div class="meta-value">2C Wellness Dentistry</div>
+        <div class="meta-sub">2cdentistry.com</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Audit Date</div>
+        <div class="meta-value">June 2026</div>
+        <div class="meta-sub">Tools: Semrush, Google Maps, manual UX review</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Organic Keywords</div>
+        <div class="meta-value" style="color:var(--coral);">0 keywords</div>
+        <div class="meta-sub">Brand new site — no rankings yet</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Domain Authority</div>
+        <div class="meta-value" style="color:var(--coral);">0 DA</div>
+        <div class="meta-sub">No backlink profile established yet</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Health Score Breakdown</span>
+    <h2>Overall site health: <span style="color:var(--coral);">22/100</span>.<br>The design is excellent — but the SEO foundation is a blank slate.</h2>
+    <p class="section-intro">The website itself looks great — the design is polished, well-structured, and makes a strong first impression. That’s a genuine asset. But design alone doesn’t drive patient discovery. Right now 2cdentistry.com ranks for zero keywords, has no organic traffic, no domain authority, and only 9 Google reviews. The good news: every single one of these gaps is fixable with the right strategy, and starting from zero means there are no bad habits to undo.</p>
+    <div class="score-grid">
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="20" stroke-linecap="round"/>
+          <defs><linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FF5E4D"/><stop offset="50%" stop-color="#FFB547"/><stop offset="100%" stop-color="#D4A93B"/></linearGradient></defs>
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="url(#gaugeGrad)" stroke-width="20" stroke-linecap="round" opacity="0.15"/>
+          <path d="M 20 120 A 100 100 0 0 1 62 38" fill="none" stroke="#FF5E4D" stroke-width="20" stroke-linecap="round"/>
+          <text x="20" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">0</text>
+          <text x="120" y="14" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">50</text>
+          <text x="220" y="138" text-anchor="middle" font-family="Manrope" font-size="11" fill="#7B8794" font-weight="600">100</text>
+        </svg>
+        <div class="gauge-num" style="color:var(--coral);">22<span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status" style="color:var(--coral);">Needs Immediate Attention</div>
+      </div>
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon coral"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div><div class="subscore-title">Organic Visibility &amp; Keyword Rankings</div><div class="subscore-bar"><div class="subscore-fill" style="width:0%"></div></div></div>
+          <div class="subscore-value" style="color:var(--coral);">0%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon coral"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+          <div><div class="subscore-title">Domain Authority &amp; Backlink Profile</div><div class="subscore-bar"><div class="subscore-fill" style="width:0%"></div></div></div>
+          <div class="subscore-value" style="color:var(--coral);">0%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg></div>
+          <div><div class="subscore-title">Content Coverage &amp; Treatment Pages</div><div class="subscore-bar"><div class="subscore-fill amber" style="width:35%"></div></div></div>
+          <div class="subscore-value" style="color:var(--amber);">35%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A93B" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+          <div><div class="subscore-title">Website Design &amp; User Experience</div><div class="subscore-bar"><div class="subscore-fill green" style="width:82%"></div></div></div>
+          <div class="subscore-value" style="color:var(--green-deep);">82%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>What Needs Fixing</span>
+    <h2>Five critical gaps — <span class="accent-red">all addressable</span>.</h2>
+    <p class="section-intro">Each issue below is directly actionable. The website design is already a strong foundation — what’s needed now is SEO infrastructure: rankings, authority, content depth, blog presence, and review volume. None of these require rebuilding the site. They require building on top of it.</p>
+    <div class="issue-counter">
+      <div class="counter-card critical"><div class="counter-num coral">3</div><div class="counter-label">Critical · SEO</div></div>
+      <div class="counter-card high"><div class="counter-num amber">2</div><div class="counter-label">High priority</div></div>
+      <div class="counter-card medium"><div class="counter-num blue">0</div><div class="counter-label">Medium · polish</div></div>
+      <div class="counter-card good"><div class="counter-num green">1</div><div class="counter-label">Already working well</div></div>
+    </div>
+    <div class="issues-grid">
+
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 1</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Organic Visibility</span>
+            <h3>Zero organic traffic and zero keyword rankings — the site is invisible to new patients searching online.</h3>
+          </div>
+          <p>A brand new website starts with no history in Google’s eyes. The site hasn’t yet earned the trust signals Google needs to begin ranking it for competitive dental queries. At zero keywords ranked, every potential new patient searching “dentist near me,” “teeth cleaning,” or any treatment name is finding competitors instead of 2C Wellness Dentistry.</p>
+          <p>This is completely normal for a new site — but it doesn’t fix itself on its own. Google needs to see <strong>consistent, authoritative content</strong>, proper on-page optimization, and incoming links from trusted sources before it starts surfacing the site in search results. The longer this window goes unaddressed, the more ground competitors gain.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Launch a structured SEO campaign immediately: optimize every existing page with proper title tags, meta descriptions, header structure, and local signals (city name, service area). Add substantive written content to every treatment page — <strong>500–1,000 words minimum</strong> — so Google has enough content to understand, trust, and rank each page. Rankings typically begin emerging within 60–120 days of a sustained content and authority campaign.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 2</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Domain Authority</span>
+            <h3>No backlink profile and zero domain authority — Google has no external signals to trust this site yet.</h3>
+          </div>
+          <p>Domain Authority (DA) is a measure of how much Google trusts a website, built primarily through links from other reputable websites pointing to yours. A DA of 0 means the site is brand new and has no external credibility signals. Competitors with DA scores of 20–40+ have a significant ranking head start simply because they’ve been cited, listed, and referenced across the web for years.</p>
+          <p>Without backlinks, even perfectly written content struggles to rank for competitive keywords. A DA of 0 also directly limits <strong>AI visibility</strong> — ChatGPT, Gemini, Perplexity, and Google’s AI Overview all weight domain authority when deciding which practices to surface in AI-generated answers.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Begin building a <strong>starter backlink profile</strong> immediately: get the practice listed on all major dental and local business directories (Yelp, Healthgrades, ZocDoc, WebMD, RateMDs, Bing Places), submit to dental association directories, and pursue local citation building. Dentist Nerds will build and manage this initial backlink foundation to steadily raise DA and improve both Google rankings and AI search visibility.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="issue-card">
+        <div class="issue-icon-wrap critical"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5E4D" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg></div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 3</span>
+            <span class="pill critical"><span class="pill-dot"></span>Critical · Content Gap</span>
+            <h3>No dedicated pages for preventative, cosmetic, and key restorative dentistry — impossible to rank for those treatments without them.</h3>
+          </div>
+          <p>While the site has content and dedicated pages for some treatments, entire service categories are currently missing dedicated pages — specifically <strong>preventative dentistry</strong>, <strong>cosmetic dentistry</strong> (teeth whitening, veneers, bonding, smile makeovers), and several restorative dentistry services. Google ranks pages, not websites. If there’s no page for “teeth whitening,” the site simply cannot appear when a patient searches that term.</p>
+          <p>Each missing treatment category represents a cluster of high-intent local search queries that 2C Wellness Dentistry is currently invisible for. Patients searching “cosmetic dentist near me,” “dental cleaning [city],” or “teeth whitening [city]” will never find this practice until those pages exist.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Build dedicated, content-rich pages for every missing treatment category: <strong>Preventative Care</strong> (cleanings, exams, X-rays, fluoride, sealants), <strong>Cosmetic Dentistry</strong> (veneers, bonding, whitening, smile makeovers), and all remaining restorative services. Each page needs 500–1,000+ words with FAQ sections, local signals, and proper internal linking. Dentist Nerds will research, write, and deliver all missing pages as part of the onboarding campaign.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="issue-card">
+        <div class="issue-icon-wrap high"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 4</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Blog &amp; Content Authority</span>
+            <h3>Only 2 blogs on the site — both don’t meet SEO standards, and blog content is one of the fastest ways to grow keyword rankings.</h3>
+          </div>
+          <p>The site currently has two blog posts that don’t meet the content depth, word count, or structural requirements needed to rank or drive organic traffic. For a new site with zero domain authority, a consistent blogging strategy is one of the fastest levers to pull — each well-written blog post is a new page that can rank for its own keywords and bring in new patients.</p>
+          <p>Practices that publish 4+ quality blog posts per month consistently outgrow competitors in organic keyword count because they’re creating dozens of new ranking opportunities every year. Over 12 months, 4 blogs/month compounds into 48 new indexed pages, each pulling in their own traffic.</p>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Dentist Nerds will publish <strong>4 professionally written, SEO-optimized blog posts per month</strong>. Each post will target specific keywords with real local search volume, include proper internal links to relevant treatment pages, and be structured to rank in both traditional Google search and AI-powered tools like Google AI Overview and ChatGPT.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="issue-card">
+        <div class="issue-icon-wrap high"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div>
+          <div class="issue-card-head">
+            <span class="issue-card-num">ISSUE 5</span>
+            <span class="pill high"><span class="pill-dot"></span>High · Google Business Profile</span>
+            <h3>Only 9 Google reviews — far below the threshold patients and Google need to trust and surface a new practice.</h3>
+          </div>
+          <p>Google reviews are one of the most powerful local ranking signals. Practices with 80–200+ reviews consistently outrank those with fewer reviews for “dentist near me” and service-based local queries. At just 9 reviews, 2C Wellness Dentistry is well below the competitive threshold — and patients comparing practices on Google Maps will gravitate toward those with more social proof.</p>
+          <p>Reviews also directly impact visibility in the local 3-pack — the map results that appear above organic links. Review volume is one of the strongest signals Google uses to decide which practices appear there.</p>
+          <div class="review-gap-stat">
+            <div class="gap-side">
+              <div class="gap-label">Current Reviews</div>
+              <div class="gap-num you">9</div>
+              <div class="gap-name">2C Wellness Dentistry<br>Google Business Profile</div>
+            </div>
+            <div class="gap-divider"></div>
+            <div class="gap-side">
+              <div class="gap-label">2026 Goal</div>
+              <div class="gap-num them">80</div>
+              <div class="gap-name">Target by end of 2026<br>to compete in local 3-pack</div>
+            </div>
+          </div>
+          <div class="fix-box">
+            <div class="fix-box-label">✓ The Fix</div>
+            <p>Dentist Nerds will actively manage the Google Business Profile and implement a <strong>systematic review generation strategy</strong> — post-visit follow-up sequences, review request automation, and GBP optimization — to reach the <strong>goal of 80 reviews by end of 2026</strong>.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>What’s Working</span>
+    <h2>The design is a <span class="accent">genuine competitive asset</span> — now the SEO needs to catch up.</h2>
+    <p class="section-intro">2C Wellness Dentistry has something most new practices don’t: a well-designed, modern website that makes a strong first impression. That design foundation is real and valuable. What’s needed now is building the SEO infrastructure on top of it.</p>
+    <div style="background:linear-gradient(135deg, var(--bg-mint) 0%, #F7E5B0 100%); border-left:4px solid var(--green); border-radius:16px; padding:32px 36px; margin:32px 0;">
+      <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; font-weight:800; color:var(--green-deep); margin-bottom:14px;">✓ What 2C Wellness Dentistry Gets Right</div>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Beautiful website design</strong> — the site looks professional, clean, and modern. It will convert well once patients start landing on it.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Partial treatment page coverage</strong> — several categories already have dedicated pages. These become the foundation to build the missing pages from.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Clean slate advantage</strong> — starting at zero means no penalties, no bad SEO history. Every improvement made from here compounds cleanly.</li>
+        <li style="padding-left:28px; position:relative; font-size:14.5px; color:var(--ink-soft); line-height:1.5;"><span style="position:absolute; left:0; top:0; width:20px; height:20px; background:var(--green); color:#FFF; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;">✓</span><strong style="color:var(--ink);">Early Google Business Profile presence</strong> — already on Google Maps with 9 reviews. Building on this foundation has measurable upside quickly.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>Critical Finding</span>
+    <h2>Entire treatment categories have <span class="accent-red">no dedicated page</span> — can’t rank for what isn’t there.</h2>
+    <p class="section-intro">Google can only rank a page that exists. Without dedicated pages for preventative, cosmetic, and several restorative treatments, these entire keyword clusters are off the table.</p>
+    <div class="sitemap-card">
+      <div class="sitemap-card-head">
+        <div class="sitemap-card-title">Treatment Page Coverage Audit<small>Which treatment categories have dedicated ranking pages — and which are missing entirely</small></div>
+      </div>
+      <div style="padding:8px 0 16px;">
+        <div class="page-bar">
+          <div class="page-name">Preventative Dentistry<span class="pn-sub">Cleanings, exams, X-rays, fluoride, sealants</span></div>
+          <div class="page-track"><div class="page-fill empty"></div></div>
+          <div class="page-value zero">Missing</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">Cosmetic Dentistry<span class="pn-sub">Veneers, bonding, whitening, smile makeovers</span></div>
+          <div class="page-track"><div class="page-fill empty"></div></div>
+          <div class="page-value zero">Missing</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">Restorative Dentistry<span class="pn-sub">Several key services have no dedicated pages</span></div>
+          <div class="page-track"><div class="page-fill empty"></div></div>
+          <div class="page-value zero">Partial</div>
+        </div>
+        <div class="page-bar">
+          <div class="page-name">Existing Treatment Pages<span class="pn-sub">Some services are already covered with content</span></div>
+          <div class="page-track"><div class="page-fill" style="width:40%"></div></div>
+          <div class="page-value" style="color:var(--amber);">~40%</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:16px; padding:22px 26px; background:var(--coral-soft); border-radius:14px; border-left:3px solid var(--coral);">
+      <p style="margin:0; color:var(--ink); font-size:15px; line-height:1.6;"><strong style="color:var(--coral);">Why this matters:</strong> Every missing treatment page is a blocked keyword cluster. “Teeth cleaning near me,” “cosmetic dentist [city],” “teeth whitening near me” — these are high-intent searches from patients ready to book. Without dedicated pages, 2C Wellness Dentistry is invisible for all of them.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="opportunity">
+      <div class="opp-grid">
+        <div class="opp-content">
+          <span class="section-eyebrow" style="background:rgba(212,169,59,0.15); color:var(--green); margin-bottom:20px;"><span class="dot"></span>The Upside</span>
+          <h2>Starting from zero means <span class="accent">every improvement is a win</span>.</h2>
+          <p>There’s a real advantage to starting fresh: no legacy issues to undo, no penalties to recover from. Every page added, every backlink earned, every review collected, every blog published is pure gain. The practices ranking above 2C Wellness Dentistry today don’t have a better website — they just have a head start in time. That gap closes with the right strategy executed consistently.</p>
+          <p>With a complete treatment page library, a starter backlink profile, 4 blogs per month, active GBP management, and a review growth plan, the site can realistically go from zero keywords to 200–500+ within 12 months — and from 9 reviews to 80+ by year end.</p>
+        </div>
+        <div class="opp-stats">
+          <div class="opp-stat"><div class="opp-stat-num">0→500</div><div class="opp-stat-label">Realistic keyword growth in 12 months with the full strategy in place</div></div>
+          <div class="opp-stat"><div class="opp-stat-num">48</div><div class="opp-stat-label">New SEO-optimized pages added in year one from blog content alone</div></div>
+          <div class="opp-stat"><div class="opp-stat-num">80+</div><div class="opp-stat-label">Google reviews target by end of 2026 — competitive 3-pack threshold</div></div>
+          <div class="opp-stat"><div class="opp-stat-num">AI</div><div class="opp-stat-label">Backlink + blog strategy also powers AI Overview and ChatGPT visibility</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Action Roadmap</span>
+    <h2>A clear <span class="accent">three-phase plan</span> to go from zero to ranking.</h2>
+    <p class="section-intro">Ordered by impact. Phase 1 lays the technical and content foundation; Phase 2 builds authority and review momentum; Phase 3 compounds everything into sustainable long-term growth.</p>
+    <div class="roadmap">
+      <div class="phase">
+        <div class="phase-number">1</div>
+        <div class="phase-weeks">Weeks 1–6</div>
+        <h3>SEO Foundation</h3>
+        <ul>
+          <li><strong>On-page optimization</strong> — optimize all existing pages with proper title tags, meta descriptions, H1/H2 structure, and local geo signals</li>
+          <li><strong>Build missing treatment pages</strong> — preventative, cosmetic, and all remaining restorative services (500–1,000+ words each)</li>
+          <li><strong>Add FAQ sections</strong> to every treatment page with FAQ schema markup for AI Overview and rich snippet visibility</li>
+          <li><strong>Launch blog content</strong> — first 4 SEO-optimized blog posts targeting local, high-intent dental queries</li>
+          <li><strong>Optimize Google Business Profile</strong> — photos, services, Q&amp;A, and begin review generation outreach</li>
+        </ul>
+      </div>
+      <div class="phase amber">
+        <div class="phase-number amber">2</div>
+        <div class="phase-weeks">Weeks 6–16</div>
+        <h3>Authority &amp; Reviews</h3>
+        <ul>
+          <li><strong>Starter backlink profile</strong> — submit to all major dental and local business directories; build initial citation network</li>
+          <li><strong>Domain Authority building</strong> — ongoing link acquisition from reputable dental, health, and local sources</li>
+          <li><strong>Review growth campaign</strong> — automated post-visit review requests, GBP monitoring, and response management</li>
+          <li><strong>Continue 4 blogs/month</strong> — expanding keyword coverage across all treatment areas</li>
+          <li><strong>Track keyword emergence</strong> — first rankings typically appear 60–90 days after content and authority work begins</li>
+        </ul>
+      </div>
+      <div class="phase green">
+        <div class="phase-number green">3</div>
+        <div class="phase-weeks">Months 4–12</div>
+        <h3>Growth &amp; Compounding</h3>
+        <ul>
+          <li><strong>Target 200+ keywords ranked</strong> by month 6 as content and authority compound</li>
+          <li><strong>Reach 80 Google reviews</strong> by end of 2026 — competitive 3-pack threshold</li>
+          <li><strong>Expand backlink profile</strong> — move DA from 0 toward 20+ through consistent authority-building</li>
+          <li><strong>Monthly GBP posts</strong> to maintain freshness signals and patient engagement</li>
+          <li><strong>Target 500+ keywords</strong> by month 12 — putting 2C Wellness Dentistry firmly on the map</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:40px; padding:28px 32px; background:linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); border-radius:20px; color:#FFF;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); margin-bottom:14px;">The Bottom Line</div>
+      <p style="font-size:17px; line-height:1.6; color:rgba(255,255,255,0.9); margin:0;">2C Wellness Dentistry has a beautiful website that’s ready to convert patients — it just needs patients to find it. The design is done and it’s excellent. What’s needed now is the SEO engine: missing treatment pages, a backlink profile, monthly blog content, and a Google review strategy. With all four in motion, the site goes from invisible to competitive within 12 months. The website is the car — Dentist Nerds provides the fuel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="end-cta" style="background:var(--navy); color:#FFF; padding:80px 0;">
+  <div class="wrap">
+    <h2 style="font-size:clamp(32px,4.5vw,52px); font-weight:800; letter-spacing:-0.025em; line-height:1.1; margin-bottom:20px;">Ready to turn a great website into a <span class="accent">patient-generating machine?</span></h2>
+    <p style="font-size:18px; color:rgba(255,255,255,0.7); line-height:1.55; max-width:640px; margin-bottom:40px;">The design is already done and it’s strong. Now let’s build the SEO infrastructure — missing pages, backlinks, blogs, and review growth — so the site can do what it was built to do.</p>
+    <a href="https://www.dentistnerds.com/contact" class="cta-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.1 2.18 2 2 0 012.09 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.27 7.11a16 16 0 006.72 6.72l1.06-1.06a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Let’s Talk — Dentist Nerds
+    </a>
+  </div>
+</section>
+
+</body>
+</html>
