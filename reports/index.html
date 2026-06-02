@@ -1,1 +1,531 @@
-$(cat /tmp/reports-index.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Reports | Dentist Nerds</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #0a1628;
+      --bg-mid: #0f2038;
+      --bg-soft: #142a47;
+      --accent-green: #00d084;
+      --accent-green-soft: rgba(0, 208, 132, 0.15);
+      --accent-blue: #4aa3ff;
+      --accent-blue-soft: rgba(74, 163, 255, 0.15);
+      --text-primary: #ffffff;
+      --text-secondary: #a9b9cf;
+      --text-muted: #6d7f99;
+      --border-soft: rgba(255, 255, 255, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      min-height: 100%;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: -20%; right: -10%;
+      width: 60vw; height: 60vw;
+      background: radial-gradient(circle at center, rgba(0, 208, 132, 0.10) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -20%; left: -10%;
+      width: 50vw; height: 50vw;
+      background: radial-gradient(circle at center, rgba(74, 163, 255, 0.08) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .page { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 100vh; }
+
+    .site-header {
+      padding: 24px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo img { height: 43px; width: auto; display: block; }
+    .header-link {
+      color: var(--text-secondary); text-decoration: none; font-size: 14px;
+      font-weight: 500; padding: 9px 18px; border: 1px solid var(--border-soft);
+      border-radius: 999px; transition: all 0.2s ease;
+    }
+    .header-link:hover { color: var(--text-primary); border-color: var(--accent-green); background: var(--accent-green-soft); }
+
+    .main { flex: 1; padding: 48px 40px 64px; max-width: 1200px; margin: 0 auto; width: 100%; }
+
+    .page-title {
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .page-title span {
+      background: linear-gradient(120deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .page-subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 32px; }
+
+    .search-wrap { position: relative; max-width: 400px; margin-bottom: 36px; }
+    .search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
+    #search {
+      width: 100%; padding: 12px 16px 12px 42px;
+      background: var(--bg-soft); border: 1px solid var(--border-soft);
+      border-radius: 12px; color: var(--text-primary); font-size: 14px;
+      font-family: inherit; outline: none; transition: border-color 0.2s ease;
+    }
+    #search::placeholder { color: var(--text-muted); }
+    #search:focus { border-color: var(--accent-green); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(20,42,71,0.7) 0%, rgba(15,32,56,0.5) 100%);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px; padding: 22px 20px;
+      text-decoration: none; color: var(--text-primary);
+      display: flex; align-items: center; gap: 14px;
+      transition: border-color 0.22s ease, transform 0.22s ease, background 0.22s ease;
+    }
+    .card:hover {
+      border-color: rgba(0, 208, 132, 0.5);
+      background: linear-gradient(180deg, rgba(0,208,132,0.07) 0%, rgba(15,32,56,0.5) 100%);
+      transform: translateY(-2px);
+    }
+    .card.hidden { display: none; }
+    .card-icon {
+      flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px;
+      background: var(--accent-green-soft); color: var(--accent-green);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-name { font-weight: 600; font-size: 0.95rem; line-height: 1.3; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+    .card-tag { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .hub-badge {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      background: rgba(255, 140, 0, 0.18); color: #ff8c00;
+      border: 1px solid rgba(255, 140, 0, 0.35);
+      border-radius: 999px; padding: 1px 7px; line-height: 1.6;
+      white-space: nowrap;
+    }
+    .card.hub { border-color: rgba(255, 140, 0, 0.2); }
+    .card.hub .card-icon { background: rgba(255, 140, 0, 0.15); color: #ff8c00; }
+    .card.hub:hover {
+      border-color: rgba(255, 140, 0, 0.6);
+      background: linear-gradient(180deg, rgba(255,140,0,0.07) 0%, rgba(15,32,56,0.5) 100%);
+    }
+
+    .no-results { color: var(--text-muted); font-size: 0.95rem; display: none; padding: 12px 0; }
+
+    .site-footer {
+      padding: 24px 40px; border-top: 1px solid var(--border-soft);
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--text-muted); font-size: 13px; flex-wrap: wrap; gap: 10px;
+    }
+    .site-footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .site-footer a:hover { color: var(--text-primary); }
+
+    @media (max-width: 600px) {
+      .site-header { padding: 18px 20px; }
+      .main { padding: 32px 20px 48px; }
+      .site-footer { padding: 20px; flex-direction: column; text-align: center; }
+    }
+    #gate {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--bg-deep);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #gate::before {
+      content: ""; position: fixed; top: -20%; right: -10%; width: 60vw; height: 60vw;
+      background: radial-gradient(circle at center, rgba(0,208,132,0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .gate-box {
+      width: 100%; max-width: 380px; padding: 0 24px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .gate-logo { height: 36px; margin-bottom: 32px; }
+    .gate-title {
+      font-family: "Sora", sans-serif; font-size: 1.5rem; font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 8px;
+    }
+    .gate-title span {
+      background: linear-gradient(120deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .gate-sub { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 28px; }
+    .gate-input-wrap { position: relative; width: 100%; margin-bottom: 12px; }
+    .gate-input {
+      width: 100%; padding: 14px 48px 14px 16px;
+      background: var(--bg-soft); border: 1px solid var(--border-soft);
+      border-radius: 12px; color: var(--text-primary); font-size: 15px;
+      font-family: inherit; outline: none; transition: border-color 0.2s;
+      letter-spacing: 0.08em;
+    }
+    .gate-input:focus { border-color: var(--accent-green); }
+    .gate-input.error { border-color: #ff5c5c; animation: shake 0.3s ease; }
+    .gate-toggle {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: var(--text-muted);
+      padding: 0; display: flex; align-items: center;
+    }
+    .gate-toggle:hover { color: var(--text-secondary); }
+    .gate-btn {
+      width: 100%; padding: 14px; border-radius: 12px; border: none; cursor: pointer;
+      background: var(--accent-green); color: #0a1628; font-weight: 700;
+      font-size: 15px; font-family: inherit; letter-spacing: 0.01em;
+      transition: opacity 0.2s, transform 0.2s; margin-bottom: 12px;
+    }
+    .gate-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .gate-error { color: #ff5c5c; font-size: 13px; min-height: 18px; }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+  </style>
+</head>
+<body>
+<div id="gate">
+  <div class="gate-box">
+    <img class="gate-logo" src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
+    <h1 class="gate-title"><span>Team</span> Access</h1>
+    <p class="gate-sub">Enter the password to view client reports.</p>
+    <div class="gate-input-wrap">
+      <input class="gate-input" id="pwInput" type="password" placeholder="Password" autocomplete="current-password" />
+      <button class="gate-toggle" id="pwToggle" type="button" aria-label="Show password">
+        <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+    <button class="gate-btn" id="pwBtn">Unlock →</button>
+    <div class="gate-error" id="pwError"></div>
+  </div>
+</div>
+  <div class="page">
+    <header class="site-header">
+      <a href="/" class="logo">
+        <img src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" style="height:43px;width:auto;" />
+      </a>
+      <a href="https://www.dentistnerds.com/" class="header-link">Main Site →</a>
+    </header>
+
+    <main class="main">
+      <h1 class="page-title">Client <span>Reports</span></h1>
+      <p class="page-subtitle">Select a client below to view their report.</p>
+
+      <div class="search-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search" placeholder="Search clients…" autocomplete="off" />
+      </div>
+
+      <p class="no-results" id="noResults">No clients match your search.</p>
+
+      <div class="grid" id="grid">
+
+        <a target="_blank" href="/reports/1-st-choice-dental/seo-report-1st-choice-dental.html" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">1st Choice Dental</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/2c-wellness-dentistry/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">2C Wellness Dentistry</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/adel-dentistry/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Adel Dentistry</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/agoura-dental-arts/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Agoura Dental Arts</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/ashburn/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Ashburn</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/batonrougedentalimplantcenter/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Baton Rouge Dental Implant Center</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/california-coast-dental-arts/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">California Coast Dental Arts</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/Chan-Dentistry/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Chan Dentistry</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/delicate-smiles/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Delicate Smiles</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/Dental-Care-of-Brentwood/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Dental Care of Brentwood</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/dr-afif/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Dr. Afif</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/Dr-Andre-Bruni/" class="card hub">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Dr. Andre Bruni <span class="hub-badge">Hub</span></div><div class="card-tag">Hub Page</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/dr-giri-palani/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Dr. Giri Palani</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/dr-justin-raanan/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Dr. Justin Raanan</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/Dr-Justin-Raanan-Hub/" class="card hub">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Dr. Justin Raanan <span class="hub-badge">Hub</span></div><div class="card-tag">Hub Page</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/dr-keyrolos-bottros/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Dr. Keyrolos Bottros</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/dr-palani/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Dr. Palani</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/dr-tatari/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Dr. Tatari</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/mission-valley-dental-arts/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Mission Valley Dental Arts</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/pena-adobe-dental/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Peña Adobe Dental</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/pearl-dental/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Pearl Dental</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/pearldentalgroup/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Pearl Dental Group</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/perfect-smile/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Perfect Smile</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/rifkinraanan/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Rifkin Raanan</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/skoulas-dds/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Skoulas DDS</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/tranquility-dental-arts/seo-audit-tranquilitydentalarts.html" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Tranquility Dental Arts</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/william-wong-dds/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">William Wong DDS</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/shinto-and-kato/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Shinto &amp; Kato</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/flowdentistryhb/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Flow Dentistry HB</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/lpsmiles/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">LA Puente Smiles Dentistry</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/zdentallounge/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Z Dental Lounge</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+        <a target="_blank" href="/reports/palo-alto-advanced-dentists/" class="card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div><div class="card-name">Palo Alto Advanced Dentists</div><div class="card-tag">SEO Report</div></div>
+        </a>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div>&copy; 2026 Dentist Nerds. All rights reserved.</div>
+      <div>
+        <a href="https://www.dentistnerds.com/privacy-policy">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.dentistnerds.com/contact">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const input = document.getElementById('search');
+    const cards = document.querySelectorAll('.card');
+    const noResults = document.getElementById('noResults');
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase();
+      let visible = 0;
+      cards.forEach(card => {
+        const name = card.querySelector('.card-name').textContent.toLowerCase();
+        const match = name.includes(q);
+        card.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+      noResults.style.display = visible === 0 ? 'block' : 'none';
+    });
+  </script>
+  <script>
+    const PASS = "NerdsTeam";
+    const gate = document.getElementById("gate");
+    const input2 = document.getElementById("pwInput");
+    const btn = document.getElementById("pwBtn");
+    const err = document.getElementById("pwError");
+    const toggle = document.getElementById("pwToggle");
+
+    function unlock() {
+      if (input2.value === PASS) {
+        sessionStorage.setItem("dn_reports_auth", "1");
+        gate.style.display = "none";
+      } else {
+        err.textContent = "Incorrect password. Please try again.";
+        input2.classList.add("error");
+        input2.value = "";
+        setTimeout(() => input2.classList.remove("error"), 400);
+      }
+    }
+
+    if (sessionStorage.getItem("dn_reports_auth") === "1") {
+      gate.style.display = "none";
+    }
+
+    btn.addEventListener("click", unlock);
+    input2.addEventListener("keydown", e => { if (e.key === "Enter") unlock(); });
+    input2.addEventListener("input", () => { err.textContent = ""; });
+
+    toggle.addEventListener("click", () => {
+      const show = input2.type === "password";
+      input2.type = show ? "text" : "password";
+      document.getElementById("eyeIcon").innerHTML = show
+        ? '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/>'
+        : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    });
+  </script>
+</body>
+</html>
