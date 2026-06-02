@@ -573,6 +573,18 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
   a { color: inherit !important; text-decoration: none !important; }
   .spreadsheet-link { background: var(--navy) !important; color: #fff !important; }
 }
+
+/* ===== LOCATION TABS ===== */
+.loc-tabs{display:flex;gap:10px;margin:0 0 30px;}
+.loc-tab-btn{flex:1;padding:14px 16px;border:1px solid var(--card-border);background:#fff;border-radius:11px;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:15px;color:var(--text-muted);cursor:pointer;
+  display:flex;flex-direction:column;gap:3px;align-items:center;transition:all .15s ease;}
+.loc-tab-btn .lt-sub{font-size:11.5px;font-weight:500;letter-spacing:.02em;}
+.loc-tab-btn:hover{border-color:var(--gold);}
+.loc-tab-btn.active{background:linear-gradient(135deg,var(--navy) 0%,#1a3550 100%);color:#fff;border-color:var(--navy);box-shadow:0 2px 8px rgba(13,37,56,.18);}
+.loc-tab-btn.active .lt-sub{color:#c7d4dd;}
+.loc-panel{display:none;}
+.loc-panel.active{display:block;}
 </style>
 </head>
 <body>
@@ -725,207 +737,92 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
 <section class="section info-section">
   <div class="container">
     <div class="section-eyebrow">Section 2</div>
-    <h2>📊 Information That's Important</h2>
-    <p class="section-intro">
-      The key numbers that show how Pennsylvania Perio &amp; Implants is performing online — your rankings, traffic, reviews, and listing activity across both the York and Hanover offices. Figures combine the higher of <strong>SEMrush</strong> and <strong>Windsor / Google Analytics 4</strong> data, with local map data from <strong>Local Falcon</strong>.
-    </p>
-
-    <!-- Keyword Rankings -->
-    <div class="info-block">
-      <div class="info-block-head">
-        <span class="info-block-icon">🎯</span>
-        <span class="info-block-title">Keyword Rankings</span>
-      </div>
-      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
-        Tracked search phrases as of <strong>May 31, 2026</strong>, sorted by best position.
-      </p>
-      <div class="open-table-wrap">
-        <table class="data-table">
-          <colgroup>
-            <col style="width:40%">
-            <col style="width:16%">
-            <col style="width:16%">
-            <col style="width:28%">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Search Phrase</th>
-              <th>Pos.</th>
-              <th>Monthly Searches</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>perio and implants</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">110</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>periodontist york</td><td class="center"><span class="pill pill-gold">#2</span></td><td class="center">50</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>periodontist york pa</td><td class="center"><span class="pill pill-gold">#2</span></td><td class="center">70</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>implants in york pa</td><td class="center"><span class="pill pill-gold">#3</span></td><td class="center">30</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>pennsylvania center for periodontology</td><td class="center"><span class="pill pill-gold">#6</span></td><td class="center">70</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>treatment of dental implant infection</td><td class="center"><span class="pill pill-gold">#7</span></td><td class="center">90</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>dental implants york</td><td class="center"><span class="pill pill-gold">#9</span></td><td class="center">90</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>denture implants near hanover</td><td class="center"><span class="pill pill-gold">#9</span></td><td class="center">50</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>cullen dental</td><td class="center"><span class="pill pill-gold">#12</span></td><td class="center">90</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>can periodontal disease kill you</td><td class="center"><span class="pill pill-gold">#18</span></td><td class="center">880</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>dentists in hanover pa</td><td class="center"><span class="pill pill-red">#22</span></td><td class="center">110</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-            <tr><td>dental implant financing (york-area)</td><td class="center"><span class="pill pill-gold">#17</span></td><td class="center">110</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-          </tbody>
-        </table>
-      </div>
+    <h2>📊 Results by Location</h2>
+    <p class="section-intro">York and Hanover share one website, so keyword rankings and organic traffic are site-wide. The numbers below break out each office's <strong>local map presence, Google Business Profile performance, and reviews</strong>. Switch tabs to view each location.</p>
+    <div class="loc-tabs">
+      <button class="loc-tab-btn active" id="tab-york" onclick="showLoc('york')">York Office<span class="lt-sub">York, PA</span></button>
+      <button class="loc-tab-btn" id="tab-hanover" onclick="showLoc('hanover')">Hanover Office<span class="lt-sub">Hanover, PA</span></button>
     </div>
-
-    <!-- Local Map Rankings Heatmap -->
-    <div class="info-block">
-      <div class="info-block-head">
-        <span class="info-block-icon">🗺️</span>
-        <span class="info-block-title">Local Map Rankings (Heatmap)</span>
-      </div>
-      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
-        Each circle shows where the practice ranks on Google Maps when searched from that geographic point — shown here for the <strong>Hanover office</strong>, your strongest local market.
-        Greener circles = better ranking. The blue pin marks the office location. <strong>Click any circle</strong>
-        to see the rank and the neighborhood/city at that point.
-      </p>
-
-      <div class="heatmap-wrap">
-        <div class="heatmap-meta">
-          <div><strong>Keyword tracked:</strong> periodontist in hanover</div>
-          <div><strong>Search grid:</strong> 11×11 (3 mile radius)</div>
-          <div><strong>Date:</strong> May 19, 2026</div>
-        </div>
-
-        <div class="heatmap-stats">
-          <div class="heatmap-stat">
-            <div class="heatmap-stat-num">1.00</div>
-            <div class="heatmap-stat-label">ARP (Avg Rank Position)</div>
+    
+    <div class="loc-panel active" id="panel-york">
+      <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:36px;"><div class="stat-card"><div class="stat-num">9</div><div class="stat-label">GBP Calls (May)</div><div class="stat-sub">York office</div></div><div class="stat-card"><div class="stat-num">Building</div><div class="stat-label">Reviews</div><div class="stat-sub">Review drive underway</div></div><div class="stat-card"><div class="stat-num">5.97</div><div class="stat-label">Local Map ARP</div><div class="stat-sub">periodontist in york</div></div><div class="stat-card"><div class="stat-num">0.8%</div><div class="stat-label">Local Map SoLV</div><div class="stat-sub">Top-3 share</div></div></div>
+      <div class="info-block"><div class="info-block-head"><span class="info-block-icon">🎯</span><span class="info-block-title">Keyword Rankings — York</span></div>
+      <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:14px;">York-area tracked phrases as of May 31, 2026 (rankings are site-wide; volumes are local).</p><div class="open-table-wrap"><table class="data-table">
+<colgroup><col style="width:40%"><col style="width:16%"><col style="width:16%"><col style="width:28%"></colgroup>
+<thead><tr><th>Search Phrase</th><th>Pos.</th><th>Monthly Searches</th><th>Status</th></tr></thead>
+<tbody><tr><td>perio and implants</td><td class="center"><span class="pill pill-green">#1</span></td><td class="center">110</td><td class="center"><span class="pill status-stable">Stable</span></td></tr><tr><td>periodontist york pa</td><td class="center"><span class="pill pill-gold">#2</span></td><td class="center">70</td><td class="center"><span class="pill status-stable">Stable</span></td></tr><tr><td>periodontist york</td><td class="center"><span class="pill pill-gold">#2</span></td><td class="center">50</td><td class="center"><span class="pill status-stable">Stable</span></td></tr><tr><td>implants in york pa</td><td class="center"><span class="pill pill-gold">#3</span></td><td class="center">30</td><td class="center"><span class="pill status-stable">Stable</span></td></tr><tr><td>dental implants york</td><td class="center"><span class="pill pill-gold">#9</span></td><td class="center">90</td><td class="center"><span class="pill status-stable">Stable</span></td></tr><tr><td>dentist on eastern blvd york pa</td><td class="center"><span class="pill pill-red">#22</span></td><td class="center">40</td><td class="center"><span class="pill status-stable">Stable</span></td></tr></tbody></table></div></div>
+      
+      <div class="info-block">
+        <div class="info-block-head"><span class="info-block-icon">🗺️</span><span class="info-block-title">Local Map Rankings (Heatmap)</span></div>
+        <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.55;">York ranks across the <strong>entire grid (avg ~#5–6)</strong> but not yet in the top 3 — a clear climb opportunity in a competitive York market. Greener = better; click any circle for its rank.</p>
+        <div class="heatmap-wrap">
+          <div class="heatmap-meta"><div><strong>Keyword tracked:</strong> periodontist in york</div><div><strong>Search grid:</strong> 11×11 (3 mile radius)</div><div><strong>Date:</strong> May 19, 2026</div></div>
+          <div class="heatmap-stats">
+            <div class="heatmap-stat"><div class="heatmap-stat-num">5.97</div><div class="heatmap-stat-label">ARP (Avg Rank Position)</div></div>
+            <div class="heatmap-stat"><div class="heatmap-stat-num">5.97</div><div class="heatmap-stat-label">ATRP (Avg Top Rank)</div></div>
+            <div class="heatmap-stat"><div class="heatmap-stat-num">0.8%</div><div class="heatmap-stat-label">SoLV (Share of Voice)</div></div>
+            <div class="heatmap-stat"><div class="heatmap-stat-num">121/121</div><div class="heatmap-stat-label">Points Ranked</div></div>
           </div>
-          <div class="heatmap-stat">
-            <div class="heatmap-stat-num">1.50</div>
-            <div class="heatmap-stat-label">ATRP (Avg Top Rank)</div>
-          </div>
-          <div class="heatmap-stat">
-            <div class="heatmap-stat-num">97.5%</div>
-            <div class="heatmap-stat-label">SoLV (Share of Voice)</div>
-          </div>
-          <div class="heatmap-stat">
-            <div class="heatmap-stat-num">121</div>
-            <div class="heatmap-stat-label">Search Points</div>
+          <div id="lf-map-york" class="lf-map"></div>
+          <div class="heatmap-legend">
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-1"></span>#1</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-2"></span>#2-3</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-4"></span>#4-5</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-6"></span>#6-7</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-8"></span>#8-9</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-10"></span>#10-19</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-20"></span>#20+</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-x"></span>Not Ranking</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-pin"></span>Office</div>
           </div>
         </div>
-
-        <div id="lf-map" class="lf-map"></div>
-
-        <div class="heatmap-legend">
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-1"></span>#1</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-2"></span>#2-3</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-4"></span>#4-5</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-6"></span>#6-7</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-8"></span>#8-9</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-10"></span>#10-19</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-20"></span>#20+</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-x"></span>Not Ranking</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-pin"></span>Office</div>
+      </div>
+      <div class="info-block"><div class="info-block-head"><span class="info-block-icon">🏢</span><span class="info-block-title">Google Business Profile — York</span></div>
+      <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:14px;">York listing activity this month and the prior 5 months.</p><table class="gbp-mini"><thead><tr><th>Month</th><th>Impr.</th><th>Search</th><th>Maps</th><th>Web Clicks</th><th>Calls</th><th>Dir.</th></tr></thead><tbody><tr><td>Dec 2025</td><td>139</td><td>86</td><td>53</td><td>8</td><td>14</td><td>105</td></tr><tr><td>Jan 2026</td><td>138</td><td>76</td><td>62</td><td>6</td><td>5</td><td>42</td></tr><tr><td>Feb 2026</td><td>138</td><td>97</td><td>41</td><td>10</td><td>6</td><td>71</td></tr><tr><td>Mar 2026</td><td>209</td><td>152</td><td>57</td><td>16</td><td>2</td><td>56</td></tr><tr><td>Apr 2026</td><td>202</td><td>134</td><td>68</td><td>19</td><td>11</td><td>52</td></tr><tr style="background:#fafaf5;"><td><strong>May 2026</strong></td><td><strong>163</strong></td><td><strong>99</strong></td><td><strong>64</strong></td><td><strong>7</strong></td><td><strong>9</strong></td><td><strong>77</strong></td></tr></tbody></table></div>
+      <div class="info-block"><div class="info-block-head"><span class="info-block-icon">⭐</span><span class="info-block-title">Reviews — York</span></div>
+      <div class="stat-grid"><div class="stat-card"><div class="stat-num">Building</div><div class="stat-label">Google Reviews</div><div class="stat-sub">York has no reviews on file yet — a review-generation push is the top local-SEO lever here.</div></div>
+      <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">Phone Calls in May</div><div class="stat-sub">Direct calls from the York GBP listing</div></div></div></div>
+    </div>
+    
+    <div class="loc-panel" id="panel-hanover">
+      <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:36px;"><div class="stat-card"><div class="stat-num">11</div><div class="stat-label">GBP Calls (May)</div><div class="stat-sub">Hanover office</div></div><div class="stat-card"><div class="stat-num">5.0★</div><div class="stat-label">Reviews</div><div class="stat-sub">Across 5 reviews</div></div><div class="stat-card"><div class="stat-num">1.00</div><div class="stat-label">Local Map ARP</div><div class="stat-sub">periodontist in hanover</div></div><div class="stat-card"><div class="stat-num">97.5%</div><div class="stat-label">Local Map SoLV</div><div class="stat-sub">Top-3 share</div></div></div>
+      <div class="info-block"><div class="info-block-head"><span class="info-block-icon">🎯</span><span class="info-block-title">Keyword Rankings — Hanover</span></div>
+      <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:14px;">Hanover-area &amp; condition-led tracked phrases as of May 31, 2026 (rankings are site-wide; volumes are local).</p><div class="open-table-wrap"><table class="data-table">
+<colgroup><col style="width:40%"><col style="width:16%"><col style="width:16%"><col style="width:28%"></colgroup>
+<thead><tr><th>Search Phrase</th><th>Pos.</th><th>Monthly Searches</th><th>Status</th></tr></thead>
+<tbody><tr><td>pennsylvania center for periodontology</td><td class="center"><span class="pill pill-gold">#6</span></td><td class="center">70</td><td class="center"><span class="pill status-stable">Stable</span></td></tr><tr><td>treatment of dental implant infection</td><td class="center"><span class="pill pill-gold">#7</span></td><td class="center">90</td><td class="center"><span class="pill status-stable">Stable</span></td></tr><tr><td>denture implants near hanover</td><td class="center"><span class="pill pill-gold">#9</span></td><td class="center">50</td><td class="center"><span class="pill status-stable">Stable</span></td></tr><tr><td>can periodontal disease kill you</td><td class="center"><span class="pill pill-gold">#18</span></td><td class="center">880</td><td class="center"><span class="pill status-stable">Stable</span></td></tr><tr><td>dentists in hanover pa</td><td class="center"><span class="pill pill-red">#22</span></td><td class="center">110</td><td class="center"><span class="pill status-stable">Stable</span></td></tr><tr><td>dentists hanover pa</td><td class="center"><span class="pill pill-red">#50</span></td><td class="center">70</td><td class="center"><span class="pill status-stable">Stable</span></td></tr></tbody></table></div></div>
+      
+      <div class="info-block">
+        <div class="info-block-head"><span class="info-block-icon">🗺️</span><span class="info-block-title">Local Map Rankings (Heatmap)</span></div>
+        <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.55;">Hanover <strong>dominates the local map</strong> — ranked #1 at 118 of 121 points. Greener = better; click any circle for its rank.</p>
+        <div class="heatmap-wrap">
+          <div class="heatmap-meta"><div><strong>Keyword tracked:</strong> periodontist in hanover</div><div><strong>Search grid:</strong> 11×11 (3 mile radius)</div><div><strong>Date:</strong> May 19, 2026</div></div>
+          <div class="heatmap-stats">
+            <div class="heatmap-stat"><div class="heatmap-stat-num">1.00</div><div class="heatmap-stat-label">ARP (Avg Rank Position)</div></div>
+            <div class="heatmap-stat"><div class="heatmap-stat-num">1.50</div><div class="heatmap-stat-label">ATRP (Avg Top Rank)</div></div>
+            <div class="heatmap-stat"><div class="heatmap-stat-num">97.5%</div><div class="heatmap-stat-label">SoLV (Share of Voice)</div></div>
+            <div class="heatmap-stat"><div class="heatmap-stat-num">121</div><div class="heatmap-stat-label">Search Points</div></div>
+          </div>
+          <div id="lf-map-hanover" class="lf-map"></div>
+          <div class="heatmap-legend">
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-1"></span>#1</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-2"></span>#2-3</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-4"></span>#4-5</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-6"></span>#6-7</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-8"></span>#8-9</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-10"></span>#10-19</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-20"></span>#20+</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-x"></span>Not Ranking</div>
+            <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-pin"></span>Office</div>
+          </div>
         </div>
       </div>
+      <div class="info-block"><div class="info-block-head"><span class="info-block-icon">🏢</span><span class="info-block-title">Google Business Profile — Hanover</span></div>
+      <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:14px;">Hanover listing activity this month and the prior 5 months.</p><table class="gbp-mini"><thead><tr><th>Month</th><th>Impr.</th><th>Search</th><th>Maps</th><th>Web Clicks</th><th>Calls</th><th>Dir.</th></tr></thead><tbody><tr><td>Dec 2025</td><td>343</td><td>270</td><td>73</td><td>37</td><td>14</td><td>58</td></tr><tr><td>Jan 2026</td><td>389</td><td>312</td><td>77</td><td>41</td><td>10</td><td>74</td></tr><tr><td>Feb 2026</td><td>391</td><td>330</td><td>61</td><td>52</td><td>10</td><td>39</td></tr><tr><td>Mar 2026</td><td>396</td><td>331</td><td>65</td><td>59</td><td>26</td><td>44</td></tr><tr><td>Apr 2026</td><td>366</td><td>301</td><td>65</td><td>58</td><td>13</td><td>69</td></tr><tr style="background:#fafaf5;"><td><strong>May 2026</strong></td><td><strong>354</strong></td><td><strong>283</strong></td><td><strong>71</strong></td><td><strong>36</strong></td><td><strong>11</strong></td><td><strong>56</strong></td></tr></tbody></table></div>
+      <div class="info-block"><div class="info-block-head"><span class="info-block-icon">⭐</span><span class="info-block-title">Reviews — Hanover</span></div>
+      <div class="stat-grid"><div class="stat-card"><div class="stat-num">5.0★</div><div class="stat-label">Overall Rating</div><div class="stat-sub">Across 5 reviews — a perfect score</div></div>
+      <div class="stat-card"><div class="stat-num">11</div><div class="stat-label">Phone Calls in May</div><div class="stat-sub">Direct calls from the Hanover GBP listing</div></div></div></div>
     </div>
-
-    <!-- Traffic to Each Page -->
-    <div class="info-block">
-      <div class="info-block-head">
-        <span class="info-block-icon">📈</span>
-        <span class="info-block-title">Traffic to Each Page</span>
-      </div>
-      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
-        Top pages by organic visits in May.
-      </p>
-      <ul class="pages-list">
-        <li>
-          <div class="page-name">/ (homepage)</div>
-          <div class="page-bar"><div class="page-bar-fill" style="width:100%"></div></div>
-          <div class="page-visits">134</div>
-        </li>
-        <li>
-          <div class="page-name">/meet-the-doctor/dr-dennis-sourvanos/</div>
-          <div class="page-bar"><div class="page-bar-fill" style="width:46%"></div></div>
-          <div class="page-visits">61</div>
-        </li>
-        <li>
-          <div class="page-name">/how-long-can-you-live-with-periodontal-disease/</div>
-          <div class="page-bar"><div class="page-bar-fill" style="width:41%"></div></div>
-          <div class="page-visits">55</div>
-        </li>
-        <li>
-          <div class="page-name">/meet-the-doctor/dr-veasey-cullen/</div>
-          <div class="page-bar"><div class="page-bar-fill" style="width:9%"></div></div>
-          <div class="page-visits">12</div>
-        </li>
-        <li>
-          <div class="page-name">/locations/york-dental-office/</div>
-          <div class="page-bar"><div class="page-bar-fill" style="width:6%"></div></div>
-          <div class="page-visits">8</div>
-        </li>
-        <li>
-          <div class="page-name">/locations/hanover-dental-office/</div>
-          <div class="page-bar"><div class="page-bar-fill" style="width:4%"></div></div>
-          <div class="page-visits">5</div>
-        </li>
-      </ul>
-      <p style="font-size:12px; color:var(--text-muted); margin-top:12px; line-height:1.5;">
-        Higher of Windsor / GA4 organic sessions and SEMrush estimated traffic per page. Organic search was the #1 channel in May with <strong>339 GA4 sessions</strong>; SEMrush tracks <strong>176 ranking keywords</strong> across the domain.
-      </p>
-    </div>
-
-    <!-- New Reviews -->
-    <div class="info-block">
-      <div class="info-block-head">
-        <span class="info-block-icon">⭐</span>
-        <span class="info-block-title">New Reviews Collected</span>
-      </div>
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-num">5.0★</div>
-          <div class="stat-label">Hanover Office Rating</div>
-          <div class="stat-sub">Across 5 reviews · perfect score</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">York</div>
-          <div class="stat-label">Building Reviews</div>
-          <div class="stat-sub">Review-generation underway for York</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- GBP Performance -->
-    <div class="info-block">
-      <div class="info-block-head">
-        <span class="info-block-icon">🏢</span>
-        <span class="info-block-title">Google Business Profile Performance</span>
-      </div>
-      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
-        Combined activity across the <strong>York and Hanover</strong> Google Business listings this month and the prior 5 months.
-      </p>
-      <table class="gbp-mini">
-        <thead>
-          <tr>
-            <th>Month</th>
-            <th>Impr.</th>
-            <th>Search</th>
-            <th>Maps</th>
-            <th>Web Clicks</th>
-            <th>Calls</th>
-            <th>Dir.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Dec 2025</td><td>482</td><td>356</td><td>126</td><td>45</td><td>28</td><td>163</td></tr>
-          <tr><td>Jan 2026</td><td>527</td><td>388</td><td>139</td><td>47</td><td>15</td><td>116</td></tr>
-          <tr><td>Feb 2026</td><td>529</td><td>427</td><td>102</td><td>62</td><td>16</td><td>110</td></tr>
-          <tr><td>Mar 2026</td><td>605</td><td>483</td><td>122</td><td>75</td><td>28</td><td>100</td></tr>
-          <tr><td>Apr 2026</td><td>568</td><td>435</td><td>133</td><td>77</td><td>24</td><td>121</td></tr>
-          <tr><td><strong>May 2026</strong></td><td><strong>515</strong></td><td><strong>382</strong></td><td><strong>133</strong></td><td><strong>43</strong></td><td><strong>20</strong></td><td><strong>133</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-
   </div>
 </section>
 
@@ -952,96 +849,24 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
 <script>
 (function() {
   if (typeof L === 'undefined') return;
-  var mapEl = document.getElementById('lf-map');
-  if (!mapEl) return;
-
-  // ============ REAL Local Falcon scan data (May 19, 2026) ============
-  var officeLat = 39.7830471;
-  var officeLng = -76.9648501;
-  var officeName = 'Pennsylvania Perio & Implants - Hanover';
-  var keyword = 'periodontist in hanover';
-  // ranks[i] = { lat, lng, rank }  (121 points from real LF scan)
-  var dataPoints = [{lat:39.7396763,lng:-77.0212878,rank:0},{lat:39.7483504,lng:-77.0212878,rank:1},{lat:39.7570246,lng:-77.0212878,rank:1},{lat:39.7656988,lng:-77.0212878,rank:1},{lat:39.7743729,lng:-77.0212878,rank:1},{lat:39.7830471,lng:-77.0212878,rank:1},{lat:39.7917213,lng:-77.0212878,rank:1},{lat:39.8003954,lng:-77.0212878,rank:1},{lat:39.8090696,lng:-77.0212878,rank:1},{lat:39.8177438,lng:-77.0212878,rank:1},{lat:39.8264179,lng:-77.0212878,rank:1},{lat:39.7396763,lng:-77.0100003,rank:1},{lat:39.7483504,lng:-77.0100003,rank:1},{lat:39.7570246,lng:-77.0100003,rank:1},{lat:39.7656988,lng:-77.0100003,rank:1},{lat:39.7743729,lng:-77.0100003,rank:1},{lat:39.7830471,lng:-77.0100003,rank:1},{lat:39.7917213,lng:-77.0100003,rank:1},{lat:39.8003954,lng:-77.0100003,rank:1},{lat:39.8090696,lng:-77.0100003,rank:1},{lat:39.8177438,lng:-77.0100003,rank:1},{lat:39.8264179,lng:-77.0100003,rank:1},{lat:39.7396763,lng:-76.9987127,rank:1},{lat:39.7483504,lng:-76.9987127,rank:1},{lat:39.7570246,lng:-76.9987127,rank:1},{lat:39.7656988,lng:-76.9987127,rank:1},{lat:39.7743729,lng:-76.9987127,rank:1},{lat:39.7830471,lng:-76.9987127,rank:1},{lat:39.7917213,lng:-76.9987127,rank:1},{lat:39.8003954,lng:-76.9987127,rank:1},{lat:39.8090696,lng:-76.9987127,rank:0},{lat:39.8177438,lng:-76.9987127,rank:1},{lat:39.8264179,lng:-76.9987127,rank:1},{lat:39.7396763,lng:-76.9874252,rank:1},{lat:39.7483504,lng:-76.9874252,rank:1},{lat:39.7570246,lng:-76.9874252,rank:1},{lat:39.7656988,lng:-76.9874252,rank:1},{lat:39.7743729,lng:-76.9874252,rank:1},{lat:39.7830471,lng:-76.9874252,rank:1},{lat:39.7917213,lng:-76.9874252,rank:1},{lat:39.8003954,lng:-76.9874252,rank:1},{lat:39.8090696,lng:-76.9874252,rank:1},{lat:39.8177438,lng:-76.9874252,rank:1},{lat:39.8264179,lng:-76.9874252,rank:1},{lat:39.7396763,lng:-76.9761376,rank:1},{lat:39.7483504,lng:-76.9761376,rank:1},{lat:39.7570246,lng:-76.9761376,rank:1},{lat:39.7656988,lng:-76.9761376,rank:1},{lat:39.7743729,lng:-76.9761376,rank:1},{lat:39.7830471,lng:-76.9761376,rank:1},{lat:39.7917213,lng:-76.9761376,rank:1},{lat:39.8003954,lng:-76.9761376,rank:1},{lat:39.8090696,lng:-76.9761376,rank:1},{lat:39.8177438,lng:-76.9761376,rank:1},{lat:39.8264179,lng:-76.9761376,rank:1},{lat:39.7396763,lng:-76.9648501,rank:1},{lat:39.7483504,lng:-76.9648501,rank:1},{lat:39.7570246,lng:-76.9648501,rank:0},{lat:39.7656988,lng:-76.9648501,rank:1},{lat:39.7743729,lng:-76.9648501,rank:1},{lat:39.7830471,lng:-76.9648501,rank:1},{lat:39.7917213,lng:-76.9648501,rank:1},{lat:39.8003954,lng:-76.9648501,rank:1},{lat:39.8090696,lng:-76.9648501,rank:1},{lat:39.8177438,lng:-76.9648501,rank:1},{lat:39.8264179,lng:-76.9648501,rank:1},{lat:39.7396763,lng:-76.9535626,rank:1},{lat:39.7483504,lng:-76.9535626,rank:1},{lat:39.7570246,lng:-76.9535626,rank:1},{lat:39.7656988,lng:-76.9535626,rank:1},{lat:39.7743729,lng:-76.9535626,rank:1},{lat:39.7830471,lng:-76.9535626,rank:1},{lat:39.7917213,lng:-76.9535626,rank:1},{lat:39.8003954,lng:-76.9535626,rank:1},{lat:39.8090696,lng:-76.9535626,rank:1},{lat:39.8177438,lng:-76.9535626,rank:1},{lat:39.8264179,lng:-76.9535626,rank:1},{lat:39.7396763,lng:-76.942275,rank:1},{lat:39.7483504,lng:-76.942275,rank:1},{lat:39.7570246,lng:-76.942275,rank:1},{lat:39.7656988,lng:-76.942275,rank:1},{lat:39.7743729,lng:-76.942275,rank:1},{lat:39.7830471,lng:-76.942275,rank:1},{lat:39.7917213,lng:-76.942275,rank:1},{lat:39.8003954,lng:-76.942275,rank:1},{lat:39.8090696,lng:-76.942275,rank:1},{lat:39.8177438,lng:-76.942275,rank:1},{lat:39.8264179,lng:-76.942275,rank:1},{lat:39.7396763,lng:-76.9309875,rank:1},{lat:39.7483504,lng:-76.9309875,rank:1},{lat:39.7570246,lng:-76.9309875,rank:1},{lat:39.7656988,lng:-76.9309875,rank:1},{lat:39.7743729,lng:-76.9309875,rank:1},{lat:39.7830471,lng:-76.9309875,rank:1},{lat:39.7917213,lng:-76.9309875,rank:1},{lat:39.8003954,lng:-76.9309875,rank:1},{lat:39.8090696,lng:-76.9309875,rank:1},{lat:39.8177438,lng:-76.9309875,rank:1},{lat:39.8264179,lng:-76.9309875,rank:1},{lat:39.7396763,lng:-76.9196999,rank:1},{lat:39.7483504,lng:-76.9196999,rank:1},{lat:39.7570246,lng:-76.9196999,rank:1},{lat:39.7656988,lng:-76.9196999,rank:1},{lat:39.7743729,lng:-76.9196999,rank:1},{lat:39.7830471,lng:-76.9196999,rank:1},{lat:39.7917213,lng:-76.9196999,rank:1},{lat:39.8003954,lng:-76.9196999,rank:1},{lat:39.8090696,lng:-76.9196999,rank:1},{lat:39.8177438,lng:-76.9196999,rank:1},{lat:39.8264179,lng:-76.9196999,rank:1},{lat:39.7396763,lng:-76.9084124,rank:1},{lat:39.7483504,lng:-76.9084124,rank:1},{lat:39.7570246,lng:-76.9084124,rank:1},{lat:39.7656988,lng:-76.9084124,rank:1},{lat:39.7743729,lng:-76.9084124,rank:1},{lat:39.7830471,lng:-76.9084124,rank:1},{lat:39.7917213,lng:-76.9084124,rank:1},{lat:39.8003954,lng:-76.9084124,rank:1},{lat:39.8090696,lng:-76.9084124,rank:1},{lat:39.8177438,lng:-76.9084124,rank:1},{lat:39.8264179,lng:-76.9084124,rank:1}];
-  // ===================================================================
-
-  function bucketFor(r) {
-    if (!r || r === 0) return 'heat-x';
-    if (r === 1) return 'heat-1';
-    if (r <= 3) return 'heat-2';
-    if (r <= 5) return 'heat-4';
-    if (r <= 7) return 'heat-6';
-    if (r <= 9) return 'heat-8';
-    if (r <= 19) return 'heat-10';
-    return 'heat-20';
-  }
-
-  var geoCache = {};
-  function fetchCity(lat, lng, popup, rank) {
-    var key = lat.toFixed(4) + ',' + lng.toFixed(4);
-    if (geoCache[key]) { popup.setContent(buildPopup(rank, geoCache[key])); return; }
-    fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + lat + '&lon=' + lng + '&zoom=14&addressdetails=1', { headers: { 'Accept': 'application/json' } })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        var addr = data.address || {};
-        var area = addr.neighbourhood || addr.suburb || addr.village || addr.town || addr.city || addr.county || '';
-        var state = addr.state_code || addr.state || '';
-        var label = area || 'Unknown area';
-        if (state && area) label += ', ' + state;
-        geoCache[key] = label;
-        popup.setContent(buildPopup(rank, label));
-      })
-      .catch(function() {
-        geoCache[key] = 'Area unavailable';
-        popup.setContent(buildPopup(rank, 'Area unavailable'));
-      });
-  }
-  function buildPopup(rank, area) {
-    var rankHtml = (rank && rank > 0) ? '<div style="font-size:13px;">Rank: <strong style="color:#0d2538;">#' + rank + '</strong></div>' : '<div style="font-size:13px;color:#a02020;"><strong>Not in top 20</strong></div>';
-    var areaHtml = '<div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 ' + area + '</div>';
-    return rankHtml + areaHtml;
-  }
-
-  var map = L.map('lf-map', { scrollWheelZoom: false, zoomControl: true }).setView([officeLat, officeLng], 13);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    maxZoom: 18,
-    subdomains: 'abcd'
-  }).addTo(map);
-
-  var bounds = [];
-
-  dataPoints.forEach(function(pt) {
-    bounds.push([pt.lat, pt.lng]);
-    var cls = bucketFor(pt.rank);
-    var label = (pt.rank > 20) ? '20+' : (pt.rank === 0 ? 'X' : String(pt.rank));
-    var icon = L.divIcon({
-      className: '',
-      html: '<div class="rank-icon ' + cls + '">' + label + '</div>',
-      iconSize: [28, 28], iconAnchor: [14, 14]
+  var YORK = [{lat:39.9285411,lng:-76.7381582,rank:9},{lat:39.9372152,lng:-76.7381582,rank:9},{lat:39.9458894,lng:-76.7381582,rank:10},{lat:39.9545636,lng:-76.7381582,rank:9},{lat:39.9632377,lng:-76.7381582,rank:9},{lat:39.9719119,lng:-76.7381582,rank:9},{lat:39.9805861,lng:-76.7381582,rank:9},{lat:39.9892602,lng:-76.7381582,rank:9},{lat:39.9979344,lng:-76.7381582,rank:7},{lat:40.0066086,lng:-76.7381582,rank:6},{lat:40.0152827,lng:-76.7381582,rank:6},{lat:39.9285411,lng:-76.7268396,rank:8},{lat:39.9372152,lng:-76.7268396,rank:10},{lat:39.9458894,lng:-76.7268396,rank:9},{lat:39.9545636,lng:-76.7268396,rank:9},{lat:39.9632377,lng:-76.7268396,rank:9},{lat:39.9719119,lng:-76.7268396,rank:8},{lat:39.9805861,lng:-76.7268396,rank:8},{lat:39.9892602,lng:-76.7268396,rank:8},{lat:39.9979344,lng:-76.7268396,rank:6},{lat:40.0066086,lng:-76.7268396,rank:6},{lat:40.0152827,lng:-76.7268396,rank:5},{lat:39.9285411,lng:-76.7155209,rank:9},{lat:39.9372152,lng:-76.7155209,rank:9},{lat:39.9458894,lng:-76.7155209,rank:9},{lat:39.9545636,lng:-76.7155209,rank:8},{lat:39.9632377,lng:-76.7155209,rank:8},{lat:39.9719119,lng:-76.7155209,rank:7},{lat:39.9805861,lng:-76.7155209,rank:7},{lat:39.9892602,lng:-76.7155209,rank:7},{lat:39.9979344,lng:-76.7155209,rank:5},{lat:40.0066086,lng:-76.7155209,rank:5},{lat:40.0152827,lng:-76.7155209,rank:4},{lat:39.9285411,lng:-76.7042022,rank:9},{lat:39.9372152,lng:-76.7042022,rank:9},{lat:39.9458894,lng:-76.7042022,rank:9},{lat:39.9545636,lng:-76.7042022,rank:6},{lat:39.9632377,lng:-76.7042022,rank:6},{lat:39.9719119,lng:-76.7042022,rank:7},{lat:39.9805861,lng:-76.7042022,rank:5},{lat:39.9892602,lng:-76.7042022,rank:5},{lat:39.9979344,lng:-76.7042022,rank:5},{lat:40.0066086,lng:-76.7042022,rank:5},{lat:40.0152827,lng:-76.7042022,rank:5},{lat:39.9285411,lng:-76.6928836,rank:7},{lat:39.9372152,lng:-76.6928836,rank:7},{lat:39.9458894,lng:-76.6928836,rank:7},{lat:39.9545636,lng:-76.6928836,rank:5},{lat:39.9632377,lng:-76.6928836,rank:5},{lat:39.9719119,lng:-76.6928836,rank:4},{lat:39.9805861,lng:-76.6928836,rank:5},{lat:39.9892602,lng:-76.6928836,rank:5},{lat:39.9979344,lng:-76.6928836,rank:5},{lat:40.0066086,lng:-76.6928836,rank:5},{lat:40.0152827,lng:-76.6928836,rank:5},{lat:39.9285411,lng:-76.6815649,rank:7},{lat:39.9372152,lng:-76.6815649,rank:7},{lat:39.9458894,lng:-76.6815649,rank:6},{lat:39.9545636,lng:-76.6815649,rank:5},{lat:39.9632377,lng:-76.6815649,rank:4},{lat:39.9719119,lng:-76.6815649,rank:3},{lat:39.9805861,lng:-76.6815649,rank:4},{lat:39.9892602,lng:-76.6815649,rank:5},{lat:39.9979344,lng:-76.6815649,rank:5},{lat:40.0066086,lng:-76.6815649,rank:5},{lat:40.0152827,lng:-76.6815649,rank:5},{lat:39.9285411,lng:-76.6702462,rank:7},{lat:39.9372152,lng:-76.6702462,rank:6},{lat:39.9458894,lng:-76.6702462,rank:6},{lat:39.9545636,lng:-76.6702462,rank:5},{lat:39.9632377,lng:-76.6702462,rank:4},{lat:39.9719119,lng:-76.6702462,rank:5},{lat:39.9805861,lng:-76.6702462,rank:4},{lat:39.9892602,lng:-76.6702462,rank:5},{lat:39.9979344,lng:-76.6702462,rank:5},{lat:40.0066086,lng:-76.6702462,rank:5},{lat:40.0152827,lng:-76.6702462,rank:5},{lat:39.9285411,lng:-76.6589276,rank:7},{lat:39.9372152,lng:-76.6589276,rank:6},{lat:39.9458894,lng:-76.6589276,rank:5},{lat:39.9545636,lng:-76.6589276,rank:5},{lat:39.9632377,lng:-76.6589276,rank:5},{lat:39.9719119,lng:-76.6589276,rank:4},{lat:39.9805861,lng:-76.6589276,rank:6},{lat:39.9892602,lng:-76.6589276,rank:5},{lat:39.9979344,lng:-76.6589276,rank:5},{lat:40.0066086,lng:-76.6589276,rank:5},{lat:40.0152827,lng:-76.6589276,rank:5},{lat:39.9285411,lng:-76.6476089,rank:6},{lat:39.9372152,lng:-76.6476089,rank:6},{lat:39.9458894,lng:-76.6476089,rank:6},{lat:39.9545636,lng:-76.6476089,rank:5},{lat:39.9632377,lng:-76.6476089,rank:5},{lat:39.9719119,lng:-76.6476089,rank:5},{lat:39.9805861,lng:-76.6476089,rank:6},{lat:39.9892602,lng:-76.6476089,rank:6},{lat:39.9979344,lng:-76.6476089,rank:6},{lat:40.0066086,lng:-76.6476089,rank:5},{lat:40.0152827,lng:-76.6476089,rank:5},{lat:39.9285411,lng:-76.6362902,rank:5},{lat:39.9372152,lng:-76.6362902,rank:5},{lat:39.9458894,lng:-76.6362902,rank:5},{lat:39.9545636,lng:-76.6362902,rank:5},{lat:39.9632377,lng:-76.6362902,rank:6},{lat:39.9719119,lng:-76.6362902,rank:5},{lat:39.9805861,lng:-76.6362902,rank:5},{lat:39.9892602,lng:-76.6362902,rank:5},{lat:39.9979344,lng:-76.6362902,rank:5},{lat:40.0066086,lng:-76.6362902,rank:4},{lat:40.0152827,lng:-76.6362902,rank:4},{lat:39.9285411,lng:-76.6249716,rank:5},{lat:39.9372152,lng:-76.6249716,rank:4},{lat:39.9458894,lng:-76.6249716,rank:4},{lat:39.9545636,lng:-76.6249716,rank:4},{lat:39.9632377,lng:-76.6249716,rank:4},{lat:39.9719119,lng:-76.6249716,rank:5},{lat:39.9805861,lng:-76.6249716,rank:5},{lat:39.9892602,lng:-76.6249716,rank:5},{lat:39.9979344,lng:-76.6249716,rank:5},{lat:40.0066086,lng:-76.6249716,rank:4},{lat:40.0152827,lng:-76.6249716,rank:4}];
+  var HAN = [{lat:39.7396763,lng:-77.0212878,rank:0},{lat:39.7483504,lng:-77.0212878,rank:1},{lat:39.7570246,lng:-77.0212878,rank:1},{lat:39.7656988,lng:-77.0212878,rank:1},{lat:39.7743729,lng:-77.0212878,rank:1},{lat:39.7830471,lng:-77.0212878,rank:1},{lat:39.7917213,lng:-77.0212878,rank:1},{lat:39.8003954,lng:-77.0212878,rank:1},{lat:39.8090696,lng:-77.0212878,rank:1},{lat:39.8177438,lng:-77.0212878,rank:1},{lat:39.8264179,lng:-77.0212878,rank:1},{lat:39.7396763,lng:-77.0100003,rank:1},{lat:39.7483504,lng:-77.0100003,rank:1},{lat:39.7570246,lng:-77.0100003,rank:1},{lat:39.7656988,lng:-77.0100003,rank:1},{lat:39.7743729,lng:-77.0100003,rank:1},{lat:39.7830471,lng:-77.0100003,rank:1},{lat:39.7917213,lng:-77.0100003,rank:1},{lat:39.8003954,lng:-77.0100003,rank:1},{lat:39.8090696,lng:-77.0100003,rank:1},{lat:39.8177438,lng:-77.0100003,rank:1},{lat:39.8264179,lng:-77.0100003,rank:1},{lat:39.7396763,lng:-76.9987127,rank:1},{lat:39.7483504,lng:-76.9987127,rank:1},{lat:39.7570246,lng:-76.9987127,rank:1},{lat:39.7656988,lng:-76.9987127,rank:1},{lat:39.7743729,lng:-76.9987127,rank:1},{lat:39.7830471,lng:-76.9987127,rank:1},{lat:39.7917213,lng:-76.9987127,rank:1},{lat:39.8003954,lng:-76.9987127,rank:1},{lat:39.8090696,lng:-76.9987127,rank:0},{lat:39.8177438,lng:-76.9987127,rank:1},{lat:39.8264179,lng:-76.9987127,rank:1},{lat:39.7396763,lng:-76.9874252,rank:1},{lat:39.7483504,lng:-76.9874252,rank:1},{lat:39.7570246,lng:-76.9874252,rank:1},{lat:39.7656988,lng:-76.9874252,rank:1},{lat:39.7743729,lng:-76.9874252,rank:1},{lat:39.7830471,lng:-76.9874252,rank:1},{lat:39.7917213,lng:-76.9874252,rank:1},{lat:39.8003954,lng:-76.9874252,rank:1},{lat:39.8090696,lng:-76.9874252,rank:1},{lat:39.8177438,lng:-76.9874252,rank:1},{lat:39.8264179,lng:-76.9874252,rank:1},{lat:39.7396763,lng:-76.9761376,rank:1},{lat:39.7483504,lng:-76.9761376,rank:1},{lat:39.7570246,lng:-76.9761376,rank:1},{lat:39.7656988,lng:-76.9761376,rank:1},{lat:39.7743729,lng:-76.9761376,rank:1},{lat:39.7830471,lng:-76.9761376,rank:1},{lat:39.7917213,lng:-76.9761376,rank:1},{lat:39.8003954,lng:-76.9761376,rank:1},{lat:39.8090696,lng:-76.9761376,rank:1},{lat:39.8177438,lng:-76.9761376,rank:1},{lat:39.8264179,lng:-76.9761376,rank:1},{lat:39.7396763,lng:-76.9648501,rank:1},{lat:39.7483504,lng:-76.9648501,rank:1},{lat:39.7570246,lng:-76.9648501,rank:0},{lat:39.7656988,lng:-76.9648501,rank:1},{lat:39.7743729,lng:-76.9648501,rank:1},{lat:39.7830471,lng:-76.9648501,rank:1},{lat:39.7917213,lng:-76.9648501,rank:1},{lat:39.8003954,lng:-76.9648501,rank:1},{lat:39.8090696,lng:-76.9648501,rank:1},{lat:39.8177438,lng:-76.9648501,rank:1},{lat:39.8264179,lng:-76.9648501,rank:1},{lat:39.7396763,lng:-76.9535626,rank:1},{lat:39.7483504,lng:-76.9535626,rank:1},{lat:39.7570246,lng:-76.9535626,rank:1},{lat:39.7656988,lng:-76.9535626,rank:1},{lat:39.7743729,lng:-76.9535626,rank:1},{lat:39.7830471,lng:-76.9535626,rank:1},{lat:39.7917213,lng:-76.9535626,rank:1},{lat:39.8003954,lng:-76.9535626,rank:1},{lat:39.8090696,lng:-76.9535626,rank:1},{lat:39.8177438,lng:-76.9535626,rank:1},{lat:39.8264179,lng:-76.9535626,rank:1},{lat:39.7396763,lng:-76.942275,rank:1},{lat:39.7483504,lng:-76.942275,rank:1},{lat:39.7570246,lng:-76.942275,rank:1},{lat:39.7656988,lng:-76.942275,rank:1},{lat:39.7743729,lng:-76.942275,rank:1},{lat:39.7830471,lng:-76.942275,rank:1},{lat:39.7917213,lng:-76.942275,rank:1},{lat:39.8003954,lng:-76.942275,rank:1},{lat:39.8090696,lng:-76.942275,rank:1},{lat:39.8177438,lng:-76.942275,rank:1},{lat:39.8264179,lng:-76.942275,rank:1},{lat:39.7396763,lng:-76.9309875,rank:1},{lat:39.7483504,lng:-76.9309875,rank:1},{lat:39.7570246,lng:-76.9309875,rank:1},{lat:39.7656988,lng:-76.9309875,rank:1},{lat:39.7743729,lng:-76.9309875,rank:1},{lat:39.7830471,lng:-76.9309875,rank:1},{lat:39.7917213,lng:-76.9309875,rank:1},{lat:39.8003954,lng:-76.9309875,rank:1},{lat:39.8090696,lng:-76.9309875,rank:1},{lat:39.8177438,lng:-76.9309875,rank:1},{lat:39.8264179,lng:-76.9309875,rank:1},{lat:39.7396763,lng:-76.9196999,rank:1},{lat:39.7483504,lng:-76.9196999,rank:1},{lat:39.7570246,lng:-76.9196999,rank:1},{lat:39.7656988,lng:-76.9196999,rank:1},{lat:39.7743729,lng:-76.9196999,rank:1},{lat:39.7830471,lng:-76.9196999,rank:1},{lat:39.7917213,lng:-76.9196999,rank:1},{lat:39.8003954,lng:-76.9196999,rank:1},{lat:39.8090696,lng:-76.9196999,rank:1},{lat:39.8177438,lng:-76.9196999,rank:1},{lat:39.8264179,lng:-76.9196999,rank:1},{lat:39.7396763,lng:-76.9084124,rank:1},{lat:39.7483504,lng:-76.9084124,rank:1},{lat:39.7570246,lng:-76.9084124,rank:1},{lat:39.7656988,lng:-76.9084124,rank:1},{lat:39.7743729,lng:-76.9084124,rank:1},{lat:39.7830471,lng:-76.9084124,rank:1},{lat:39.7917213,lng:-76.9084124,rank:1},{lat:39.8003954,lng:-76.9084124,rank:1},{lat:39.8090696,lng:-76.9084124,rank:1},{lat:39.8177438,lng:-76.9084124,rank:1},{lat:39.8264179,lng:-76.9084124,rank:1}];
+  function bucketFor(r){ if(!r||r===0)return 'heat-x'; if(r===1)return 'heat-1'; if(r<=3)return 'heat-2'; if(r<=5)return 'heat-4'; if(r<=7)return 'heat-6'; if(r<=9)return 'heat-8'; if(r<=19)return 'heat-10'; return 'heat-20'; }
+  var geoCache={};
+  function buildPopup(rank,area){ var rh=(rank&&rank>0)?'<div style="font-size:13px;">Rank: <strong style="color:#0d2538;">#'+rank+'</strong></div>':'<div style="font-size:13px;color:#a02020;"><strong>Not in top 20</strong></div>'; return rh+'<div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 '+area+'</div>'; }
+  function fetchCity(lat,lng,popup,rank){ var key=lat.toFixed(4)+','+lng.toFixed(4); if(geoCache[key]){popup.setContent(buildPopup(rank,geoCache[key]));return;} fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+lat+'&lon='+lng+'&zoom=14&addressdetails=1',{headers:{'Accept':'application/json'}}).then(function(r){return r.json();}).then(function(data){var a=data.address||{};var area=a.neighbourhood||a.suburb||a.village||a.town||a.city||a.county||'';var st=a.state_code||a.state||'';var label=area||'Unknown area';if(st&&area)label+=', '+st;geoCache[key]=label;popup.setContent(buildPopup(rank,label));}).catch(function(){geoCache[key]='Area unavailable';popup.setContent(buildPopup(rank,'Area unavailable'));}); }
+  function initMap(id,lat,lng,pts,name){ var el=document.getElementById(id); if(!el)return null; var map=L.map(id,{scrollWheelZoom:false,zoomControl:true}).setView([lat,lng],12); L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',maxZoom:18,subdomains:'abcd'}).addTo(map); var bounds=[]; pts.forEach(function(pt){ bounds.push([pt.lat,pt.lng]); var cls=bucketFor(pt.rank); var label=(pt.rank>20)?'20+':(pt.rank===0?'X':String(pt.rank)); var icon=L.divIcon({className:'',html:'<div class="rank-icon '+cls+'">'+label+'</div>',iconSize:[28,28],iconAnchor:[14,14]}); var marker=L.marker([pt.lat,pt.lng],{icon:icon}).addTo(map); var popup=L.popup().setContent(buildPopup(pt.rank,'Loading area...')); marker.bindPopup(popup); (function(lt,lg,pp,rk){marker.on('popupopen',function(){fetchCity(lt,lg,pp,rk);});})(pt.lat,pt.lng,popup,pt.rank); }); var oi=L.divIcon({className:'',html:'<div class="rank-icon office-pin">📍</div>',iconSize:[36,36],iconAnchor:[18,18]}); var om=L.marker([lat,lng],{icon:oi,zIndexOffset:1000}).addTo(map); var op=L.popup().setContent('<strong>'+name+'</strong>'); om.bindPopup(op); if(bounds.length)map.fitBounds(bounds,{padding:[20,20]}); return map; }
+  var maps={york:null,hanover:null};
+  maps.york=initMap('lf-map-york',39.9719119,-76.6815649,YORK,'Pennsylvania Perio & Implants — York');
+  maps.hanover=initMap('lf-map-hanover',39.7830471,-76.9648501,HAN,'Pennsylvania Perio & Implants — Hanover');
+  window.showLoc=function(loc){
+    ['york','hanover'].forEach(function(l){
+      document.getElementById('panel-'+l).classList.toggle('active',l===loc);
+      document.getElementById('tab-'+l).classList.toggle('active',l===loc);
     });
-    var marker = L.marker([pt.lat, pt.lng], { icon: icon }).addTo(map);
-    var popup = L.popup().setContent(buildPopup(pt.rank, 'Loading area...'));
-    marker.bindPopup(popup);
-    (function(lt, lg, pp, rk) {
-      marker.on('popupopen', function() { fetchCity(lt, lg, pp, rk); });
-    })(pt.lat, pt.lng, popup, pt.rank);
-  });
-
-  // Office pin on top
-  var officeIcon = L.divIcon({
-    className: '',
-    html: '<div class="rank-icon office-pin">📍</div>',
-    iconSize: [36, 36], iconAnchor: [18, 18]
-  });
-  var officeMarker = L.marker([officeLat, officeLng], { icon: officeIcon, zIndexOffset: 1000 }).addTo(map);
-  var officePopup = L.popup().setContent('<strong>' + officeName + '</strong><div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 Loading area...</div>');
-  officeMarker.bindPopup(officePopup);
-  officeMarker.on('popupopen', function() {
-    officePopup.setContent('<strong>' + officeName + '</strong><div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 Loading area...</div>');
-    fetchCity(officeLat, officeLng, officePopup, null);
-  });
-
-  if (bounds.length) map.fitBounds(bounds, { padding: [20, 20] });
+    if(maps[loc]) setTimeout(function(){maps[loc].invalidateSize();},60);
+  };
+  setTimeout(function(){ if(maps.york) maps.york.invalidateSize(); },200);
 })();
 </script>
 </body></html>
