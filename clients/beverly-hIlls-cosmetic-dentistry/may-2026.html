@@ -368,7 +368,7 @@ body {
         <div class="card-label">Local Presence</div>
         <div class="card-title">Google Business Profile Updates</div>
         <div class="card-body">
-          <p>Managed the Google Business Profile — responded to reviews (a perfect <strong>5.0★ across 62</strong>), and kept photos, services, and posts current. In May the listing drew <strong>142 impressions</strong>, <strong>9 calls</strong>, and <strong>66 direction requests</strong>. Lifting local-pack visibility is the top priority (see heatmap).</p>
+          <p>Managed the Google Business Profile — responded to reviews (a perfect <strong>5.0★ across 62</strong>), and kept photos, services, and posts current. In May the listing drew <strong>142 impressions</strong>, <strong>9 calls</strong>, and <strong>66 direction requests</strong>. Lifting local-pack visibility is the top priority.</p>
         </div>
       </div>
 
@@ -421,10 +421,10 @@ body {
           </tr>
         </thead>
         <tbody>
-          <tr><td>cosmetic dentist beverly hills california</td><td class="center"><span class="pill pill-gold">#10</span></td><td class="center">210</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-          <tr><td>cosmetic dentist in beverly hills ca</td><td class="center"><span class="pill pill-gold">#14</span></td><td class="center">170</td><td class="center"><span class="pill status-stable">Stable</span></td></tr>
-          <tr><td>all on 4 beverly hills</td><td class="center"><span class="pill pill-gold">#27</span></td><td class="center">90</td><td class="center"><span class="pill status-opportunity">Opportunity</span></td></tr>
-          <tr><td>porcelain crowns beverly hills</td><td class="center"><span class="pill pill-gold">#38</span></td><td class="center">140</td><td class="center"><span class="pill status-opportunity">Opportunity</span></td></tr>
+          <tr><td>cosmetic dentist beverly hills california</td><td class="center"><span class="pill pill-gold">#10</span></td><td class="center">210</td><td class="center"><span class="pill status-opportunity">Building</span></td></tr>
+          <tr><td>cosmetic dentist in beverly hills ca</td><td class="center"><span class="pill pill-gold">#14</span></td><td class="center">170</td><td class="center"><span class="pill status-opportunity">Building</span></td></tr>
+          <tr><td>all on 4 beverly hills</td><td class="center"><span class="pill pill-gold">#27</span></td><td class="center">90</td><td class="center"><span class="pill status-opportunity">Building</span></td></tr>
+          <tr><td>porcelain crowns beverly hills</td><td class="center"><span class="pill pill-gold">#38</span></td><td class="center">140</td><td class="center"><span class="pill status-opportunity">Building</span></td></tr>
           <tr><td>cosmetic dentist in beverly hills</td><td class="center"><span class="pill pill-red">#54</span></td><td class="center">260</td><td class="center"><span class="pill status-opportunity">Building</span></td></tr>
         </tbody>
       </table>
@@ -439,14 +439,9 @@ body {
         <span class="info-block-icon">📍</span>
         <span class="info-block-title">Local Map Rankings — Google Maps Visibility</span>
       </div>
-      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
-        Each circle shows where the practice ranks on Google Maps when searched from that geographic point.
-        Greener circles = better ranking. The blue pin marks the office at 435 N Bedford Dr, Beverly Hills. <strong>Click any circle</strong> to see the rank and neighborhood.
-      </p>
-
       <div class="notice-box" style="margin-bottom:18px;">
-        <strong>⚠️ Why the map is grey — and the opportunity</strong><br>
-        Beverly Hills is one of the most competitive dental markets in the country. The practice doesn't yet break into the Google Maps top 20 for "dentist in beverly hills" across the tracked 3-mile grid, so every point shows grey — the map is accurate, not broken. The good news: the practice is already strong on <strong>brand and organic search</strong> (e.g., #1 for "Dr. Marc Chemla DDS" and ranking for 195 keywords). Converting that into local-pack visibility is the #1 growth lever — driven by review velocity, GBP optimization, and local citations, which are the priority for the coming months.
+        <strong>Local-pack visibility — the opportunity</strong><br>
+        Beverly Hills is one of the most competitive dental markets in the country, and the practice does not yet rank in the Google Maps local-pack top 20 for "dentist in beverly hills" across the tracked 3-mile grid. The strength right now is brand and organic search — the practice ranks for <strong>195 keywords</strong>. Growing local-pack visibility through reviews, Google Business Profile optimization, and local citations is the current priority.
       </div>
 
       <div class="heatmap-wrap">
@@ -473,20 +468,6 @@ body {
             <div class="heatmap-stat-num">121</div>
             <div class="heatmap-stat-label">Search Points</div>
           </div>
-        </div>
-
-        <div id="lf-map" class="lf-map"></div>
-
-        <div class="heatmap-legend">
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-1-dot"></span>#1</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-2-dot"></span>#2-3</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-4-dot"></span>#4-5</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-6-dot"></span>#6-7</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-8-dot"></span>#8-9</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-10-dot"></span>#10-19</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-20-dot"></span>#20+</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-x-dot"></span>Not Ranking</div>
-          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-pin-dot"></span>Office</div>
         </div>
       </div>
     </div>
@@ -594,129 +575,7 @@ body {
   </div>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-<script>
-(function() {
-  var mapEl = document.getElementById('lf-map');
-  if (!mapEl) return;
 
-  // ============ Local Falcon scan data — "dentist in beverly hills" (May 2026) ============
-  var officeLat = 34.0682823;
-  var officeLng = -118.40595;
-  var officeName = 'Beverly Hills Cosmetic Dentistry';
-  var keyword = 'dentist in beverly hills';
-
-  // 11×11 grid, 3 mile radius — ARP 21.00, SoLV 0.00% — all 121 points outside top 20
-  var dataPoints = [
-    {lat:34.0249115,lng:-118.4583068,rank:0},{lat:34.0335856,lng:-118.4583068,rank:0},{lat:34.0422598,lng:-118.4583068,rank:0},{lat:34.050934,lng:-118.4583068,rank:0},{lat:34.0596081,lng:-118.4583068,rank:0},{lat:34.0682823,lng:-118.4583068,rank:0},{lat:34.0769565,lng:-118.4583068,rank:0},{lat:34.0856306,lng:-118.4583068,rank:0},{lat:34.0943048,lng:-118.4583068,rank:0},{lat:34.102979,lng:-118.4583068,rank:0},{lat:34.1116531,lng:-118.4583068,rank:0},
-    {lat:34.0249115,lng:-118.4478354,rank:0},{lat:34.0335856,lng:-118.4478354,rank:0},{lat:34.0422598,lng:-118.4478354,rank:0},{lat:34.050934,lng:-118.4478354,rank:0},{lat:34.0596081,lng:-118.4478354,rank:0},{lat:34.0682823,lng:-118.4478354,rank:0},{lat:34.0769565,lng:-118.4478354,rank:0},{lat:34.0856306,lng:-118.4478354,rank:0},{lat:34.0943048,lng:-118.4478354,rank:0},{lat:34.102979,lng:-118.4478354,rank:0},{lat:34.1116531,lng:-118.4478354,rank:0},
-    {lat:34.0249115,lng:-118.4373641,rank:0},{lat:34.0335856,lng:-118.4373641,rank:0},{lat:34.0422598,lng:-118.4373641,rank:0},{lat:34.050934,lng:-118.4373641,rank:0},{lat:34.0596081,lng:-118.4373641,rank:0},{lat:34.0682823,lng:-118.4373641,rank:0},{lat:34.0769565,lng:-118.4373641,rank:0},{lat:34.0856306,lng:-118.4373641,rank:0},{lat:34.0943048,lng:-118.4373641,rank:0},{lat:34.102979,lng:-118.4373641,rank:0},{lat:34.1116531,lng:-118.4373641,rank:0},
-    {lat:34.0249115,lng:-118.4268927,rank:0},{lat:34.0335856,lng:-118.4268927,rank:0},{lat:34.0422598,lng:-118.4268927,rank:0},{lat:34.050934,lng:-118.4268927,rank:0},{lat:34.0596081,lng:-118.4268927,rank:0},{lat:34.0682823,lng:-118.4268927,rank:0},{lat:34.0769565,lng:-118.4268927,rank:0},{lat:34.0856306,lng:-118.4268927,rank:0},{lat:34.0943048,lng:-118.4268927,rank:0},{lat:34.102979,lng:-118.4268927,rank:0},{lat:34.1116531,lng:-118.4268927,rank:0},
-    {lat:34.0249115,lng:-118.4164214,rank:0},{lat:34.0335856,lng:-118.4164214,rank:0},{lat:34.0422598,lng:-118.4164214,rank:0},{lat:34.050934,lng:-118.4164214,rank:0},{lat:34.0596081,lng:-118.4164214,rank:0},{lat:34.0682823,lng:-118.4164214,rank:0},{lat:34.0769565,lng:-118.4164214,rank:0},{lat:34.0856306,lng:-118.4164214,rank:0},{lat:34.0943048,lng:-118.4164214,rank:0},{lat:34.102979,lng:-118.4164214,rank:0},{lat:34.1116531,lng:-118.4164214,rank:0},
-    {lat:34.0249115,lng:-118.40595,rank:0},{lat:34.0335856,lng:-118.40595,rank:0},{lat:34.0422598,lng:-118.40595,rank:0},{lat:34.050934,lng:-118.40595,rank:0},{lat:34.0596081,lng:-118.40595,rank:0},{lat:34.0682823,lng:-118.40595,rank:0},{lat:34.0769565,lng:-118.40595,rank:0},{lat:34.0856306,lng:-118.40595,rank:0},{lat:34.0943048,lng:-118.40595,rank:0},{lat:34.102979,lng:-118.40595,rank:0},{lat:34.1116531,lng:-118.40595,rank:0},
-    {lat:34.0249115,lng:-118.3954786,rank:0},{lat:34.0335856,lng:-118.3954786,rank:0},{lat:34.0422598,lng:-118.3954786,rank:0},{lat:34.050934,lng:-118.3954786,rank:0},{lat:34.0596081,lng:-118.3954786,rank:0},{lat:34.0682823,lng:-118.3954786,rank:0},{lat:34.0769565,lng:-118.3954786,rank:0},{lat:34.0856306,lng:-118.3954786,rank:0},{lat:34.0943048,lng:-118.3954786,rank:0},{lat:34.102979,lng:-118.3954786,rank:0},{lat:34.1116531,lng:-118.3954786,rank:0},
-    {lat:34.0249115,lng:-118.3850073,rank:0},{lat:34.0335856,lng:-118.3850073,rank:0},{lat:34.0422598,lng:-118.3850073,rank:0},{lat:34.050934,lng:-118.3850073,rank:0},{lat:34.0596081,lng:-118.3850073,rank:0},{lat:34.0682823,lng:-118.3850073,rank:0},{lat:34.0769565,lng:-118.3850073,rank:0},{lat:34.0856306,lng:-118.3850073,rank:0},{lat:34.0943048,lng:-118.3850073,rank:0},{lat:34.102979,lng:-118.3850073,rank:0},{lat:34.1116531,lng:-118.3850073,rank:0},
-    {lat:34.0249115,lng:-118.3745359,rank:0},{lat:34.0335856,lng:-118.3745359,rank:0},{lat:34.0422598,lng:-118.3745359,rank:0},{lat:34.050934,lng:-118.3745359,rank:0},{lat:34.0596081,lng:-118.3745359,rank:0},{lat:34.0682823,lng:-118.3745359,rank:0},{lat:34.0769565,lng:-118.3745359,rank:0},{lat:34.0856306,lng:-118.3745359,rank:0},{lat:34.0943048,lng:-118.3745359,rank:0},{lat:34.102979,lng:-118.3745359,rank:0},{lat:34.1116531,lng:-118.3745359,rank:0},
-    {lat:34.0249115,lng:-118.3640646,rank:0},{lat:34.0335856,lng:-118.3640646,rank:0},{lat:34.0422598,lng:-118.3640646,rank:0},{lat:34.050934,lng:-118.3640646,rank:0},{lat:34.0596081,lng:-118.3640646,rank:0},{lat:34.0682823,lng:-118.3640646,rank:0},{lat:34.0769565,lng:-118.3640646,rank:0},{lat:34.0856306,lng:-118.3640646,rank:0},{lat:34.0943048,lng:-118.3640646,rank:0},{lat:34.102979,lng:-118.3640646,rank:0},{lat:34.1116531,lng:-118.3640646,rank:0},
-    {lat:34.0249115,lng:-118.3535932,rank:0},{lat:34.0335856,lng:-118.3535932,rank:0},{lat:34.0422598,lng:-118.3535932,rank:0},{lat:34.050934,lng:-118.3535932,rank:0},{lat:34.0596081,lng:-118.3535932,rank:0},{lat:34.0682823,lng:-118.3535932,rank:0},{lat:34.0769565,lng:-118.3535932,rank:0},{lat:34.0856306,lng:-118.3535932,rank:0},{lat:34.0943048,lng:-118.3535932,rank:0},{lat:34.102979,lng:-118.3535932,rank:0},{lat:34.1116531,lng:-118.3535932,rank:0}
-  ];
-  // ===================================================================
-
-  function bucketFor(r) {
-    if (!r || r === 0) return 'heat-x';
-    if (r === 1) return 'heat-1';
-    if (r <= 3) return 'heat-2';
-    if (r <= 5) return 'heat-4';
-    if (r <= 7) return 'heat-6';
-    if (r <= 9) return 'heat-8';
-    if (r <= 19) return 'heat-10';
-    return 'heat-20';
-  }
-
-  var geoCache = {};
-  function fetchCity(lat, lng, popup, rank) {
-    var key = lat.toFixed(4) + ',' + lng.toFixed(4);
-    if (geoCache[key]) { popup.setContent(buildPopup(rank, geoCache[key])); return; }
-    fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + lat + '&lon=' + lng + '&zoom=14&addressdetails=1', { headers: { 'Accept': 'application/json' } })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        var addr = data.address || {};
-        var area = addr.neighbourhood || addr.suburb || addr.village || addr.town || addr.city || addr.county || '';
-        var state = addr.state_code || addr.state || '';
-        var label = area || 'Unknown area';
-        if (state && area) label += ', ' + state;
-        geoCache[key] = label;
-        popup.setContent(buildPopup(rank, label));
-      })
-      .catch(function() {
-        geoCache[key] = 'Area unavailable';
-        popup.setContent(buildPopup(rank, 'Area unavailable'));
-      });
-  }
-  function buildPopup(rank, area) {
-    var rankHtml = (rank && rank > 0) ? '<div style="font-size:13px;">Rank: <strong style="color:#0d2538;">#' + rank + '</strong></div>' : '<div style="font-size:13px;color:#a02020;"><strong>Not in top 20</strong></div>';
-    var areaHtml = '<div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 ' + area + '</div>';
-    return rankHtml + areaHtml;
-  }
-
-  var map = L.map('lf-map', { scrollWheelZoom: false, zoomControl: true }).setView([officeLat, officeLng], 12);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    maxZoom: 18,
-    subdomains: 'abcd'
-  }).addTo(map);
-
-  var BUCKET_COLORS = {
-    'heat-1':'#0f9b58','heat-2':'#4caf7d','heat-4':'#8bc34a',
-    'heat-6':'#cddc39','heat-8':'#ffeb3b',
-    'heat-10':'#ff5722','heat-20':'#b71c1c','heat-x':'#9e9e9e'
-  };
-  var BUCKET_TEXT = {
-    'heat-1':'#fff','heat-2':'#fff','heat-4':'#fff',
-    'heat-6':'#333','heat-8':'#333',
-    'heat-10':'#fff','heat-20':'#fff','heat-x':'#fff'
-  };
-
-  var bounds = [];
-
-  dataPoints.forEach(function(pt) {
-    var bucket = bucketFor(pt.rank);
-    var r = pt.rank;
-    var label = (r && r > 0) ? '#' + r : '—';
-    var bg = BUCKET_COLORS[bucket];
-    var fg = BUCKET_TEXT[bucket];
-    var icon = L.divIcon({
-      className: '',
-      html: '<div style="width:28px;height:28px;border-radius:50%;background:' + bg + ';border:1.5px solid rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-size:9.5px;font-weight:700;color:' + fg + ';text-shadow:0 1px 2px rgba(0,0,0,0.35);box-shadow:0 1px 4px rgba(0,0,0,0.18);">' + label + '</div>',
-      iconSize: [28, 28],
-      iconAnchor: [14, 14]
-    });
-    var popup = L.popup({ closeButton: false, offset: [0, -14] }).setContent(buildPopup(r, 'Loading…'));
-    var marker = L.marker([pt.lat, pt.lng], { icon: icon });
-    marker.bindPopup(popup);
-    marker.on('click', function() { fetchCity(pt.lat, pt.lng, popup, r); });
-    marker.addTo(map);
-    bounds.push([pt.lat, pt.lng]);
-  });
-
-  if (bounds.length) map.fitBounds(bounds, { padding: [24, 24] });
-
-  var officePopup = L.popup({ closeButton: false, offset: [0, -16] })
-    .setContent('<div style="font-size:13px;font-weight:600;color:#0d2538;">' + officeName + '</div><div style="font-size:12px;color:#6b7280;margin-top:3px;">📍 Office Location</div>');
-
-  var officeIcon = L.divIcon({
-    className: '',
-    html: '<div style="width:18px;height:18px;background:#1565c0;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>',
-    iconSize: [18, 18],
-    iconAnchor: [9, 9]
-  });
-  var officeMarker = L.marker([officeLat, officeLng], { icon: officeIcon, zIndexOffset: 1000 }).addTo(map);
-  officeMarker.bindPopup(officePopup);
-  officeMarker.on('click', function() {
-    fetchCity(officeLat, officeLng, officePopup, null);
-  });
-})();
-</script>
 
 <style>
 .lf-rank-label {
