@@ -775,26 +775,71 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
         <span class="info-block-icon">🗺️</span>
         <span class="info-block-title">Local Map Rankings (Heatmap)</span>
       </div>
-      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px; line-height:1.55;">
+      <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:20px; line-height:1.55;">
         Each circle shows where the practice ranks on Google Maps when searched from that geographic point.
         Greener circles = better ranking. The blue pin marks the office location. <strong>Click any circle</strong>
-        to see the rank and the neighborhood/city at that point.
+        to see the rank and the neighborhood/city at that point. Data from <strong>Local Falcon · June 5, 2026</strong>.
       </p>
 
-      <div class="heatmap-wrap">
+      <!-- Heatmap 1: dentist near me -->
+      <p style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:10px;">Keyword: dentist near me</p>
+      <div class="heatmap-wrap" style="margin-bottom:28px;">
         <div class="heatmap-meta">
-          <div><strong>Keyword tracked:</strong> emergency dentist in palmdale</div>
+          <div><strong>Keyword tracked:</strong> dentist near me</div>
           <div><strong>Search grid:</strong> 11×11 (3 mile radius)</div>
-          <div><strong>Date:</strong> May 5, 2026</div>
+          <div><strong>Date:</strong> June 5, 2026</div>
         </div>
 
         <div class="heatmap-stats">
           <div class="heatmap-stat">
-            <div class="heatmap-stat-num">4.05</div>
+            <div class="heatmap-stat-num">6.42</div>
             <div class="heatmap-stat-label">ARP (Avg Rank Position)</div>
           </div>
           <div class="heatmap-stat">
-            <div class="heatmap-stat-num">4.19</div>
+            <div class="heatmap-stat-num">10.03</div>
+            <div class="heatmap-stat-label">ATRP (Avg Top Rank)</div>
+          </div>
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">35.54%</div>
+            <div class="heatmap-stat-label">SoLV (Share of Voice)</div>
+          </div>
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">91 / 121</div>
+            <div class="heatmap-stat-label">Points Ranking</div>
+          </div>
+        </div>
+
+        <div id="lf-map-1" class="lf-map"></div>
+
+        <div class="heatmap-legend">
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-1"></span>#1</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-2"></span>#2-3</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-4"></span>#4-5</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-6"></span>#6-7</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-8"></span>#8-9</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-10"></span>#10-19</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-20"></span>#20+</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-x"></span>Not Ranking</div>
+          <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-pin"></span>Office</div>
+        </div>
+      </div>
+
+      <!-- Heatmap 2: emergency dentist in palmdale -->
+      <p style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:10px;">Keyword: emergency dentist in palmdale</p>
+      <div class="heatmap-wrap">
+        <div class="heatmap-meta">
+          <div><strong>Keyword tracked:</strong> emergency dentist in palmdale</div>
+          <div><strong>Search grid:</strong> 11×11 (3 mile radius)</div>
+          <div><strong>Date:</strong> June 5, 2026</div>
+        </div>
+
+        <div class="heatmap-stats">
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">4.36</div>
+            <div class="heatmap-stat-label">ARP (Avg Rank Position)</div>
+          </div>
+          <div class="heatmap-stat">
+            <div class="heatmap-stat-num">4.36</div>
             <div class="heatmap-stat-label">ATRP (Avg Top Rank)</div>
           </div>
           <div class="heatmap-stat">
@@ -802,12 +847,12 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
             <div class="heatmap-stat-label">SoLV (Share of Voice)</div>
           </div>
           <div class="heatmap-stat">
-            <div class="heatmap-stat-num">121</div>
-            <div class="heatmap-stat-label">Search Points</div>
+            <div class="heatmap-stat-num">121 / 121</div>
+            <div class="heatmap-stat-label">Points Ranking</div>
           </div>
         </div>
 
-        <div id="lf-map" class="lf-map"></div>
+        <div id="lf-map-2" class="lf-map"></div>
 
         <div class="heatmap-legend">
           <div class="heatmap-legend-item"><span class="heatmap-legend-dot heat-1"></span>#1</div>
@@ -948,17 +993,14 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
 <script>
 (function() {
   if (typeof L === 'undefined') return;
-  var mapEl = document.getElementById('lf-map');
-  if (!mapEl) return;
 
-  // ============ REAL Local Falcon scan data — "emergency dentist in palmdale" (May 5, 2026) ============
   var officeLat = 34.632175;
   var officeLng = -118.1497084;
   var officeName = 'Exceptional Dentistry - Palmdale';
-  var keyword = 'emergency dentist in palmdale';
-  // ranks[i] = { lat, lng, rank }  (121 points from real LF scan)
-  var dataPoints = [{lat:34.5888042,lng:-118.2024186,rank:5},{lat:34.5974783,lng:-118.2024186,rank:5},{lat:34.6061525,lng:-118.2024186,rank:4},{lat:34.6148267,lng:-118.2024186,rank:4},{lat:34.6235008,lng:-118.2024186,rank:4},{lat:34.632175,lng:-118.2024186,rank:4},{lat:34.6408492,lng:-118.2024186,rank:4},{lat:34.6495233,lng:-118.2024186,rank:3},{lat:34.6581975,lng:-118.2024186,rank:2},{lat:34.6668717,lng:-118.2024186,rank:2},{lat:34.6755458,lng:-118.2024186,rank:2},{lat:34.5888042,lng:-118.1918765,rank:5},{lat:34.5974783,lng:-118.1918765,rank:5},{lat:34.6061525,lng:-118.1918765,rank:4},{lat:34.6148267,lng:-118.1918765,rank:4},{lat:34.6235008,lng:-118.1918765,rank:4},{lat:34.632175,lng:-118.1918765,rank:4},{lat:34.6408492,lng:-118.1918765,rank:3},{lat:34.6495233,lng:-118.1918765,rank:2},{lat:34.6581975,lng:-118.1918765,rank:2},{lat:34.6668717,lng:-118.1918765,rank:2},{lat:34.6755458,lng:-118.1918765,rank:2},{lat:34.5888042,lng:-118.1813345,rank:5},{lat:34.5974783,lng:-118.1813345,rank:5},{lat:34.6061525,lng:-118.1813345,rank:4},{lat:34.6148267,lng:-118.1813345,rank:4},{lat:34.6235008,lng:-118.1813345,rank:4},{lat:34.632175,lng:-118.1813345,rank:4},{lat:34.6408492,lng:-118.1813345,rank:3},{lat:34.6495233,lng:-118.1813345,rank:2},{lat:34.6581975,lng:-118.1813345,rank:2},{lat:34.6668717,lng:-118.1813345,rank:2},{lat:34.6755458,lng:-118.1813345,rank:2},{lat:34.5888042,lng:-118.1707925,rank:5},{lat:34.5974783,lng:-118.1707925,rank:5},{lat:34.6061525,lng:-118.1707925,rank:4},{lat:34.6148267,lng:-118.1707925,rank:4},{lat:34.6235008,lng:-118.1707925,rank:4},{lat:34.632175,lng:-118.1707925,rank:3},{lat:34.6408492,lng:-118.1707925,rank:2},{lat:34.6495233,lng:-118.1707925,rank:2},{lat:34.6581975,lng:-118.1707925,rank:2},{lat:34.6668717,lng:-118.1707925,rank:2},{lat:34.6755458,lng:-118.1707925,rank:2},{lat:34.5888042,lng:-118.1602504,rank:9},{lat:34.5974783,lng:-118.1602504,rank:6},{lat:34.6061525,lng:-118.1602504,rank:4},{lat:34.6148267,lng:-118.1602504,rank:4},{lat:34.6235008,lng:-118.1602504,rank:5},{lat:34.632175,lng:-118.1602504,rank:2},{lat:34.6408492,lng:-118.1602504,rank:2},{lat:34.6495233,lng:-118.1602504,rank:2},{lat:34.6581975,lng:-118.1602504,rank:2},{lat:34.6668717,lng:-118.1602504,rank:2},{lat:34.6755458,lng:-118.1602504,rank:5},{lat:34.5888042,lng:-118.1497084,rank:10},{lat:34.5974783,lng:-118.1497084,rank:9},{lat:34.6061525,lng:-118.1497084,rank:5},{lat:34.6148267,lng:-118.1497084,rank:4},{lat:34.6235008,lng:-118.1497084,rank:4},{lat:34.632175,lng:-118.1497084,rank:2},{lat:34.6408492,lng:-118.1497084,rank:2},{lat:34.6495233,lng:-118.1497084,rank:2},{lat:34.6581975,lng:-118.1497084,rank:2},{lat:34.6668717,lng:-118.1497084,rank:2},{lat:34.6755458,lng:-118.1497084,rank:2},{lat:34.5888042,lng:-118.1391664,rank:13},{lat:34.5974783,lng:-118.1391664,rank:9},{lat:34.6061525,lng:-118.1391664,rank:5},{lat:34.6148267,lng:-118.1391664,rank:4},{lat:34.6235008,lng:-118.1391664,rank:4},{lat:34.632175,lng:-118.1391664,rank:2},{lat:34.6408492,lng:-118.1391664,rank:2},{lat:34.6495233,lng:-118.1391664,rank:2},{lat:34.6581975,lng:-118.1391664,rank:2},{lat:34.6668717,lng:-118.1391664,rank:2},{lat:34.6755458,lng:-118.1391664,rank:2},{lat:34.5888042,lng:-118.1286243,rank:10},{lat:34.5974783,lng:-118.1286243,rank:7},{lat:34.6061525,lng:-118.1286243,rank:5},{lat:34.6148267,lng:-118.1286243,rank:4},{lat:34.6235008,lng:-118.1286243,rank:4},{lat:34.632175,lng:-118.1286243,rank:4},{lat:34.6408492,lng:-118.1286243,rank:2},{lat:34.6495233,lng:-118.1286243,rank:0},{lat:34.6581975,lng:-118.1286243,rank:2},{lat:34.6668717,lng:-118.1286243,rank:2},{lat:34.6755458,lng:-118.1286243,rank:2},{lat:34.5888042,lng:-118.1180823,rank:11},{lat:34.5974783,lng:-118.1180823,rank:7},{lat:34.6061525,lng:-118.1180823,rank:5},{lat:34.6148267,lng:-118.1180823,rank:5},{lat:34.6235008,lng:-118.1180823,rank:4},{lat:34.632175,lng:-118.1180823,rank:4},{lat:34.6408492,lng:-118.1180823,rank:4},{lat:34.6495233,lng:-118.1180823,rank:2},{lat:34.6581975,lng:-118.1180823,rank:2},{lat:34.6668717,lng:-118.1180823,rank:2},{lat:34.6755458,lng:-118.1180823,rank:2},{lat:34.5888042,lng:-118.1075403,rank:11},{lat:34.5974783,lng:-118.1075403,rank:10},{lat:34.6061525,lng:-118.1075403,rank:6},{lat:34.6148267,lng:-118.1075403,rank:5},{lat:34.6235008,lng:-118.1075403,rank:5},{lat:34.632175,lng:-118.1075403,rank:4},{lat:34.6408492,lng:-118.1075403,rank:4},{lat:34.6495233,lng:-118.1075403,rank:4},{lat:34.6581975,lng:-118.1075403,rank:2},{lat:34.6668717,lng:-118.1075403,rank:2},{lat:34.6755458,lng:-118.1075403,rank:2},{lat:34.5888042,lng:-118.0969982,rank:11},{lat:34.5974783,lng:-118.0969982,rank:9},{lat:34.6061525,lng:-118.0969982,rank:8},{lat:34.6148267,lng:-118.0969982,rank:6},{lat:34.6235008,lng:-118.0969982,rank:5},{lat:34.632175,lng:-118.0969982,rank:5},{lat:34.6408492,lng:-118.0969982,rank:4},{lat:34.6495233,lng:-118.0969982,rank:4},{lat:34.6581975,lng:-118.0969982,rank:3},{lat:34.6668717,lng:-118.0969982,rank:2},{lat:34.6755458,lng:-118.0969982,rank:2}];
-  // ===================================================================
+
+  var dataPointsDNM = [{"lat":34.5888042,"lng":-118.2024186,"rank":6},{"lat":34.5974783,"lng":-118.2024186,"rank":3},{"lat":34.6061525,"lng":-118.2024186,"rank":3},{"lat":34.6148267,"lng":-118.2024186,"rank":2},{"lat":34.6235008,"lng":-118.2024186,"rank":2},{"lat":34.632175,"lng":-118.2024186,"rank":4},{"lat":34.6408492,"lng":-118.2024186,"rank":13},{"lat":34.6495233,"lng":-118.2024186,"rank":10},{"lat":34.6581975,"lng":-118.2024186,"rank":17},{"lat":34.6668717,"lng":-118.2024186,"rank":20},{"lat":34.6755458,"lng":-118.2024186,"rank":0},{"lat":34.5888042,"lng":-118.1918765,"rank":6},{"lat":34.5974783,"lng":-118.1918765,"rank":4},{"lat":34.6061525,"lng":-118.1918765,"rank":4},{"lat":34.6148267,"lng":-118.1918765,"rank":2},{"lat":34.6235008,"lng":-118.1918765,"rank":2},{"lat":34.632175,"lng":-118.1918765,"rank":4},{"lat":34.6408492,"lng":-118.1918765,"rank":6},{"lat":34.6495233,"lng":-118.1918765,"rank":19},{"lat":34.6581975,"lng":-118.1918765,"rank":0},{"lat":34.6668717,"lng":-118.1918765,"rank":0},{"lat":34.6755458,"lng":-118.1918765,"rank":0},{"lat":34.5888042,"lng":-118.1813345,"rank":8},{"lat":34.5974783,"lng":-118.1813345,"rank":6},{"lat":34.6061525,"lng":-118.1813345,"rank":4},{"lat":34.6148267,"lng":-118.1813345,"rank":2},{"lat":34.6235008,"lng":-118.1813345,"rank":1},{"lat":34.632175,"lng":-118.1813345,"rank":1},{"lat":34.6408492,"lng":-118.1813345,"rank":1},{"lat":34.6495233,"lng":-118.1813345,"rank":15},{"lat":34.6581975,"lng":-118.1813345,"rank":0},{"lat":34.6668717,"lng":-118.1813345,"rank":0},{"lat":34.6755458,"lng":-118.1813345,"rank":0},{"lat":34.5888042,"lng":-118.1707925,"rank":12},{"lat":34.5974783,"lng":-118.1707925,"rank":10},{"lat":34.6061525,"lng":-118.1707925,"rank":4},{"lat":34.6148267,"lng":-118.1707925,"rank":2},{"lat":34.6235008,"lng":-118.1707925,"rank":1},{"lat":34.632175,"lng":-118.1707925,"rank":1},{"lat":34.6408492,"lng":-118.1707925,"rank":1},{"lat":34.6495233,"lng":-118.1707925,"rank":12},{"lat":34.6581975,"lng":-118.1707925,"rank":20},{"lat":34.6668717,"lng":-118.1707925,"rank":0},{"lat":34.6755458,"lng":-118.1707925,"rank":0},{"lat":34.5888042,"lng":-118.1602504,"rank":19},{"lat":34.5974783,"lng":-118.1602504,"rank":14},{"lat":34.6061525,"lng":-118.1602504,"rank":6},{"lat":34.6148267,"lng":-118.1602504,"rank":1},{"lat":34.6235008,"lng":-118.1602504,"rank":1},{"lat":34.632175,"lng":-118.1602504,"rank":1},{"lat":34.6408492,"lng":-118.1602504,"rank":2},{"lat":34.6495233,"lng":-118.1602504,"rank":6},{"lat":34.6581975,"lng":-118.1602504,"rank":15},{"lat":34.6668717,"lng":-118.1602504,"rank":0},{"lat":34.6755458,"lng":-118.1602504,"rank":0},{"lat":34.5888042,"lng":-118.1497084,"rank":0},{"lat":34.5974783,"lng":-118.1497084,"rank":0},{"lat":34.6061525,"lng":-118.1497084,"rank":11},{"lat":34.6148267,"lng":-118.1497084,"rank":2},{"lat":34.6235008,"lng":-118.1497084,"rank":1},{"lat":34.632175,"lng":-118.1497084,"rank":3},{"lat":34.6408492,"lng":-118.1497084,"rank":1},{"lat":34.6495233,"lng":-118.1497084,"rank":6},{"lat":34.6581975,"lng":-118.1497084,"rank":15},{"lat":34.6668717,"lng":-118.1497084,"rank":0},{"lat":34.6755458,"lng":-118.1497084,"rank":0},{"lat":34.5888042,"lng":-118.1391664,"rank":0},{"lat":34.5974783,"lng":-118.1391664,"rank":20},{"lat":34.6061525,"lng":-118.1391664,"rank":12},{"lat":34.6148267,"lng":-118.1391664,"rank":3},{"lat":34.6235008,"lng":-118.1391664,"rank":1},{"lat":34.632175,"lng":-118.1391664,"rank":1},{"lat":34.6408492,"lng":-118.1391664,"rank":1},{"lat":34.6495233,"lng":-118.1391664,"rank":6},{"lat":34.6581975,"lng":-118.1391664,"rank":13},{"lat":34.6668717,"lng":-118.1391664,"rank":0},{"lat":34.6755458,"lng":-118.1391664,"rank":0},{"lat":34.5888042,"lng":-118.1286243,"rank":0},{"lat":34.5974783,"lng":-118.1286243,"rank":16},{"lat":34.6061525,"lng":-118.1286243,"rank":7},{"lat":34.6148267,"lng":-118.1286243,"rank":2},{"lat":34.6235008,"lng":-118.1286243,"rank":1},{"lat":34.632175,"lng":-118.1286243,"rank":1},{"lat":34.6408492,"lng":-118.1286243,"rank":1},{"lat":34.6495233,"lng":-118.1286243,"rank":10},{"lat":34.6581975,"lng":-118.1286243,"rank":0},{"lat":34.6668717,"lng":-118.1286243,"rank":0},{"lat":34.6755458,"lng":-118.1286243,"rank":0},{"lat":34.5888042,"lng":-118.1180823,"rank":20},{"lat":34.5974783,"lng":-118.1180823,"rank":15},{"lat":34.6061525,"lng":-118.1180823,"rank":8},{"lat":34.6148267,"lng":-118.1180823,"rank":2},{"lat":34.6235008,"lng":-118.1180823,"rank":1},{"lat":34.632175,"lng":-118.1180823,"rank":1},{"lat":34.6408492,"lng":-118.1180823,"rank":1},{"lat":34.6495233,"lng":-118.1180823,"rank":12},{"lat":34.6581975,"lng":-118.1180823,"rank":0},{"lat":34.6668717,"lng":-118.1180823,"rank":0},{"lat":34.6755458,"lng":-118.1180823,"rank":0},{"lat":34.5888042,"lng":-118.1075403,"rank":19},{"lat":34.5974783,"lng":-118.1075403,"rank":16},{"lat":34.6061525,"lng":-118.1075403,"rank":9},{"lat":34.6148267,"lng":-118.1075403,"rank":5},{"lat":34.6235008,"lng":-118.1075403,"rank":1},{"lat":34.632175,"lng":-118.1075403,"rank":1},{"lat":34.6408492,"lng":-118.1075403,"rank":1},{"lat":34.6495233,"lng":-118.1075403,"rank":1},{"lat":34.6581975,"lng":-118.1075403,"rank":4},{"lat":34.6668717,"lng":-118.1075403,"rank":0},{"lat":34.6755458,"lng":-118.1075403,"rank":0},{"lat":34.5888042,"lng":-118.0969982,"rank":0},{"lat":34.5974783,"lng":-118.0969982,"rank":14},{"lat":34.6061525,"lng":-118.0969982,"rank":11},{"lat":34.6148267,"lng":-118.0969982,"rank":6},{"lat":34.6235008,"lng":-118.0969982,"rank":2},{"lat":34.632175,"lng":-118.0969982,"rank":1},{"lat":34.6408492,"lng":-118.0969982,"rank":1},{"lat":34.6495233,"lng":-118.0969982,"rank":2},{"lat":34.6581975,"lng":-118.0969982,"rank":3},{"lat":34.6668717,"lng":-118.0969982,"rank":0},{"lat":34.6755458,"lng":-118.0969982,"rank":0}];
+
+  var dataPointsEDP = [{"lat":34.5888042,"lng":-118.2024186,"rank":5},{"lat":34.5974783,"lng":-118.2024186,"rank":5},{"lat":34.6061525,"lng":-118.2024186,"rank":5},{"lat":34.6148267,"lng":-118.2024186,"rank":4},{"lat":34.6235008,"lng":-118.2024186,"rank":4},{"lat":34.632175,"lng":-118.2024186,"rank":4},{"lat":34.6408492,"lng":-118.2024186,"rank":4},{"lat":34.6495233,"lng":-118.2024186,"rank":3},{"lat":34.6581975,"lng":-118.2024186,"rank":3},{"lat":34.6668717,"lng":-118.2024186,"rank":3},{"lat":34.6755458,"lng":-118.2024186,"rank":2},{"lat":34.5888042,"lng":-118.1918765,"rank":5},{"lat":34.5974783,"lng":-118.1918765,"rank":5},{"lat":34.6061525,"lng":-118.1918765,"rank":5},{"lat":34.6148267,"lng":-118.1918765,"rank":4},{"lat":34.6235008,"lng":-118.1918765,"rank":4},{"lat":34.632175,"lng":-118.1918765,"rank":4},{"lat":34.6408492,"lng":-118.1918765,"rank":3},{"lat":34.6495233,"lng":-118.1918765,"rank":3},{"lat":34.6581975,"lng":-118.1918765,"rank":3},{"lat":34.6668717,"lng":-118.1918765,"rank":2},{"lat":34.6755458,"lng":-118.1918765,"rank":2},{"lat":34.5888042,"lng":-118.1813345,"rank":6},{"lat":34.5974783,"lng":-118.1813345,"rank":5},{"lat":34.6061525,"lng":-118.1813345,"rank":4},{"lat":34.6148267,"lng":-118.1813345,"rank":4},{"lat":34.6235008,"lng":-118.1813345,"rank":4},{"lat":34.632175,"lng":-118.1813345,"rank":4},{"lat":34.6408492,"lng":-118.1813345,"rank":3},{"lat":34.6495233,"lng":-118.1813345,"rank":3},{"lat":34.6581975,"lng":-118.1813345,"rank":2},{"lat":34.6668717,"lng":-118.1813345,"rank":2},{"lat":34.6755458,"lng":-118.1813345,"rank":2},{"lat":34.5888042,"lng":-118.1707925,"rank":8},{"lat":34.5974783,"lng":-118.1707925,"rank":6},{"lat":34.6061525,"lng":-118.1707925,"rank":4},{"lat":34.6148267,"lng":-118.1707925,"rank":4},{"lat":34.6235008,"lng":-118.1707925,"rank":4},{"lat":34.632175,"lng":-118.1707925,"rank":3},{"lat":34.6408492,"lng":-118.1707925,"rank":3},{"lat":34.6495233,"lng":-118.1707925,"rank":2},{"lat":34.6581975,"lng":-118.1707925,"rank":2},{"lat":34.6668717,"lng":-118.1707925,"rank":2},{"lat":34.6755458,"lng":-118.1707925,"rank":2},{"lat":34.5888042,"lng":-118.1602504,"rank":9},{"lat":34.5974783,"lng":-118.1602504,"rank":8},{"lat":34.6061525,"lng":-118.1602504,"rank":4},{"lat":34.6148267,"lng":-118.1602504,"rank":4},{"lat":34.6235008,"lng":-118.1602504,"rank":4},{"lat":34.632175,"lng":-118.1602504,"rank":3},{"lat":34.6408492,"lng":-118.1602504,"rank":2},{"lat":34.6495233,"lng":-118.1602504,"rank":2},{"lat":34.6581975,"lng":-118.1602504,"rank":2},{"lat":34.6668717,"lng":-118.1602504,"rank":2},{"lat":34.6755458,"lng":-118.1602504,"rank":2},{"lat":34.5888042,"lng":-118.1497084,"rank":11},{"lat":34.5974783,"lng":-118.1497084,"rank":9},{"lat":34.6061525,"lng":-118.1497084,"rank":4},{"lat":34.6148267,"lng":-118.1497084,"rank":4},{"lat":34.6235008,"lng":-118.1497084,"rank":4},{"lat":34.632175,"lng":-118.1497084,"rank":3},{"lat":34.6408492,"lng":-118.1497084,"rank":2},{"lat":34.6495233,"lng":-118.1497084,"rank":2},{"lat":34.6581975,"lng":-118.1497084,"rank":2},{"lat":34.6668717,"lng":-118.1497084,"rank":2},{"lat":34.6755458,"lng":-118.1497084,"rank":2},{"lat":34.5888042,"lng":-118.1391664,"rank":11},{"lat":34.5974783,"lng":-118.1391664,"rank":9},{"lat":34.6061525,"lng":-118.1391664,"rank":6},{"lat":34.6148267,"lng":-118.1391664,"rank":4},{"lat":34.6235008,"lng":-118.1391664,"rank":4},{"lat":34.632175,"lng":-118.1391664,"rank":3},{"lat":34.6408492,"lng":-118.1391664,"rank":2},{"lat":34.6495233,"lng":-118.1391664,"rank":2},{"lat":34.6581975,"lng":-118.1391664,"rank":2},{"lat":34.6668717,"lng":-118.1391664,"rank":2},{"lat":34.6755458,"lng":-118.1391664,"rank":2},{"lat":34.5888042,"lng":-118.1286243,"rank":13},{"lat":34.5974783,"lng":-118.1286243,"rank":8},{"lat":34.6061525,"lng":-118.1286243,"rank":6},{"lat":34.6148267,"lng":-118.1286243,"rank":4},{"lat":34.6235008,"lng":-118.1286243,"rank":4},{"lat":34.632175,"lng":-118.1286243,"rank":4},{"lat":34.6408492,"lng":-118.1286243,"rank":3},{"lat":34.6495233,"lng":-118.1286243,"rank":2},{"lat":34.6581975,"lng":-118.1286243,"rank":2},{"lat":34.6668717,"lng":-118.1286243,"rank":2},{"lat":34.6755458,"lng":-118.1286243,"rank":2},{"lat":34.5888042,"lng":-118.1180823,"rank":14},{"lat":34.5974783,"lng":-118.1180823,"rank":9},{"lat":34.6061525,"lng":-118.1180823,"rank":6},{"lat":34.6148267,"lng":-118.1180823,"rank":5},{"lat":34.6235008,"lng":-118.1180823,"rank":4},{"lat":34.632175,"lng":-118.1180823,"rank":4},{"lat":34.6408492,"lng":-118.1180823,"rank":4},{"lat":34.6495233,"lng":-118.1180823,"rank":3},{"lat":34.6581975,"lng":-118.1180823,"rank":3},{"lat":34.6668717,"lng":-118.1180823,"rank":2},{"lat":34.6755458,"lng":-118.1180823,"rank":2},{"lat":34.5888042,"lng":-118.1075403,"rank":12},{"lat":34.5974783,"lng":-118.1075403,"rank":10},{"lat":34.6061525,"lng":-118.1075403,"rank":8},{"lat":34.6148267,"lng":-118.1075403,"rank":5},{"lat":34.6235008,"lng":-118.1075403,"rank":5},{"lat":34.632175,"lng":-118.1075403,"rank":4},{"lat":34.6408492,"lng":-118.1075403,"rank":4},{"lat":34.6495233,"lng":-118.1075403,"rank":4},{"lat":34.6581975,"lng":-118.1075403,"rank":3},{"lat":34.6668717,"lng":-118.1075403,"rank":2},{"lat":34.6755458,"lng":-118.1075403,"rank":2},{"lat":34.5888042,"lng":-118.0969982,"rank":13},{"lat":34.5974783,"lng":-118.0969982,"rank":11},{"lat":34.6061525,"lng":-118.0969982,"rank":8},{"lat":34.6148267,"lng":-118.0969982,"rank":6},{"lat":34.6235008,"lng":-118.0969982,"rank":6},{"lat":34.632175,"lng":-118.0969982,"rank":5},{"lat":34.6408492,"lng":-118.0969982,"rank":4},{"lat":34.6495233,"lng":-118.0969982,"rank":4},{"lat":34.6581975,"lng":-118.0969982,"rank":4},{"lat":34.6668717,"lng":-118.0969982,"rank":4},{"lat":34.6755458,"lng":-118.0969982,"rank":3}];
 
   function bucketFor(r) {
     if (!r || r === 0) return 'heat-x';
@@ -993,51 +1035,41 @@ table.data-table .pill, table.gbp-mini .pill { white-space: nowrap !important; }
   }
   function buildPopup(rank, area) {
     var rankHtml = (rank && rank > 0) ? '<div style="font-size:13px;">Rank: <strong style="color:#0d2538;">#' + rank + '</strong></div>' : '<div style="font-size:13px;color:#a02020;"><strong>Not in top 20</strong></div>';
-    var areaHtml = '<div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 ' + area + '</div>';
+    var areaHtml = '<div style="font-size:12.5px;color:#6b7280;margin-top:4px;">&#x1F4CD; ' + area + '</div>';
     return rankHtml + areaHtml;
   }
 
-  var map = L.map('lf-map', { scrollWheelZoom: false, zoomControl: true }).setView([officeLat, officeLng], 13);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    maxZoom: 18,
-    subdomains: 'abcd'
-  }).addTo(map);
-
-  var bounds = [];
-
-  dataPoints.forEach(function(pt) {
-    bounds.push([pt.lat, pt.lng]);
-    var cls = bucketFor(pt.rank);
-    var label = (pt.rank > 20) ? '20+' : (pt.rank === 0 ? 'X' : String(pt.rank));
-    var icon = L.divIcon({
-      className: '',
-      html: '<div class="rank-icon ' + cls + '">' + label + '</div>',
-      iconSize: [28, 28], iconAnchor: [14, 14]
+  function initMap(elId, dataPoints) {
+    var mapEl = document.getElementById(elId);
+    if (!mapEl) return;
+    var map = L.map(elId, { scrollWheelZoom: false, zoomControl: true }).setView([officeLat, officeLng], 13);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      maxZoom: 18, subdomains: 'abcd'
+    }).addTo(map);
+    var bounds = [];
+    dataPoints.forEach(function(pt) {
+      bounds.push([pt.lat, pt.lng]);
+      var cls = bucketFor(pt.rank);
+      var label = (pt.rank > 20) ? '20+' : (pt.rank === 0 ? 'X' : String(pt.rank));
+      var icon = L.divIcon({ className: '', html: '<div class="rank-icon ' + cls + '">' + label + '</div>', iconSize: [28, 28], iconAnchor: [14, 14] });
+      var marker = L.marker([pt.lat, pt.lng], { icon: icon }).addTo(map);
+      var popup = L.popup().setContent(buildPopup(pt.rank, 'Loading area...'));
+      marker.bindPopup(popup);
+      (function(lt, lg, pp, rk) {
+        marker.on('popupopen', function() { fetchCity(lt, lg, pp, rk); });
+      })(pt.lat, pt.lng, popup, pt.rank);
     });
-    var marker = L.marker([pt.lat, pt.lng], { icon: icon }).addTo(map);
-    var popup = L.popup().setContent(buildPopup(pt.rank, 'Loading area...'));
-    marker.bindPopup(popup);
-    (function(lt, lg, pp, rk) {
-      marker.on('popupopen', function() { fetchCity(lt, lg, pp, rk); });
-    })(pt.lat, pt.lng, popup, pt.rank);
-  });
+    var officeIcon = L.divIcon({ className: '', html: '<div class="rank-icon office-pin">&#x1F4CD;</div>', iconSize: [36, 36], iconAnchor: [18, 18] });
+    var officeMarker = L.marker([officeLat, officeLng], { icon: officeIcon, zIndexOffset: 1000 }).addTo(map);
+    var officePopup = L.popup().setContent('<strong>' + officeName + '</strong>');
+    officeMarker.bindPopup(officePopup);
+    officeMarker.on('popupopen', function() { fetchCity(officeLat, officeLng, officePopup, null); });
+    if (bounds.length) map.fitBounds(bounds, { padding: [20, 20] });
+  }
 
-  // Office pin on top
-  var officeIcon = L.divIcon({
-    className: '',
-    html: '<div class="rank-icon office-pin">📍</div>',
-    iconSize: [36, 36], iconAnchor: [18, 18]
-  });
-  var officeMarker = L.marker([officeLat, officeLng], { icon: officeIcon, zIndexOffset: 1000 }).addTo(map);
-  var officePopup = L.popup().setContent('<strong>' + officeName + '</strong><div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 Loading area...</div>');
-  officeMarker.bindPopup(officePopup);
-  officeMarker.on('popupopen', function() {
-    officePopup.setContent('<strong>' + officeName + '</strong><div style="font-size:12.5px;color:#6b7280;margin-top:4px;">📍 Loading area...</div>');
-    fetchCity(officeLat, officeLng, officePopup, null);
-  });
-
-  if (bounds.length) map.fitBounds(bounds, { padding: [20, 20] });
+  initMap('lf-map-1', dataPointsDNM);
+  initMap('lf-map-2', dataPointsEDP);
 })();
 </script>
 </body></html>
