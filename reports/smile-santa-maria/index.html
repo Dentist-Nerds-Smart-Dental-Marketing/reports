@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SEO Performance Report — Smile Santa Maria Dental · Santa Maria, CA · June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --navy: #0d2538; --navy-2: #112e44;
+    --teal: #5fbab0; --teal-soft: #a4dad3;
+    --gold: #d4a55c; --gold-2: #c9a961;
+    --bg-page: #f5f5f0; --bg-soft: #ebe9e0; --bg-card: #ffffff;
+    --text-dark: #0d2538; --text-body: #4b5563; --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #2d8e5c; --green-bg: #d1fae5; --green-text: #065f46;
+    --gold-bg: #fef3c7; --gold-text: #92400e;
+    --red: #c53030; --red-bg: #fee2e2; --red-text: #991b1b;
+    --blue: #2c6fb3; --blue-bg: #dbeafe; --blue-text: #1e40af;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-body); line-height: 1.6; font-size: 14px; }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+
+  .hero { background: var(--navy); color: #fff; padding: 56px 0 44px; }
+  .hero .eyebrow { color: var(--teal); }
+  .hero h1 { font-size: 50px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 10px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 28px; max-width: 720px; }
+  .hero-meta-row { display: grid; grid-template-columns: repeat(4, auto); gap: 56px; padding: 22px 0 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px; }
+  .hero-meta-item .meta-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; margin-bottom: 6px; font-weight: 600; }
+  .hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+  .section { padding: 56px 0; }
+  .section h2 { font-size: 36px; font-weight: 600; margin-bottom: 12px; line-height: 1.15; }
+  .section h3 { font-size: 22px; font-weight: 600; margin: 36px 0 14px; }
+  .section-text { font-size: 14.5px; color: var(--text-body); max-width: 760px; margin-bottom: 24px; line-height: 1.7; }
+  .section-text strong { color: var(--text-dark); font-weight: 600; }
+  .h2-divider { display: grid; grid-template-columns: repeat(3, 86px); gap: 0; margin: 0 0 24px; }
+  .h2-divider span { height: 2px; }
+  .div-teal { background: var(--teal); } .div-gold { background: var(--gold-2); }
+  .div-green { background: var(--green); } .div-blue { background: var(--blue); }
+  .div-red { background: var(--red); } .div-navy { background: var(--navy); }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 18px 0 28px; }
+  .kpi-card { background: var(--bg-card); padding: 22px 20px; text-align: center; border-top: 2px solid var(--teal); border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-card.gold { border-top-color: var(--gold); }
+  .kpi-card.green { border-top-color: var(--green); }
+  .kpi-card.blue { border-top-color: var(--blue); }
+  .kpi-card.red { border-top-color: var(--red); }
+  .kpi-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--text-dark); line-height: 1; margin-bottom: 8px; }
+  .kpi-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dark); font-weight: 600; margin-bottom: 4px; }
+  .kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+  .focus-3-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 22px 0 8px; }
+  .focus-3 { background: var(--bg-card); padding: 20px 20px; border-radius: 4px; border-top: 3px solid var(--teal); box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
+  .focus-3.gold { border-top-color: var(--gold-2); }
+  .focus-3.red { border-top-color: var(--red); }
+  .focus-3.green { border-top-color: var(--green); }
+  .focus-3.blue { border-top-color: var(--blue); }
+  .focus-3.purple { border-top-color: #7c3aed; }
+  .focus-3 .f3-eyebrow { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 10px; }
+  .focus-3.gold .f3-eyebrow { color: var(--gold-text); }
+  .focus-3.red .f3-eyebrow { color: var(--red); }
+  .focus-3.green .f3-eyebrow { color: var(--green); }
+  .focus-3.blue .f3-eyebrow { color: var(--blue); }
+  .focus-3.purple .f3-eyebrow { color: #7c3aed; }
+  .focus-3 h3 { font-family: 'Playfair Display', serif; font-size: 16.5px; margin: 0 0 14px; color: var(--text-dark); font-weight: 600; line-height: 1.25; }
+  .focus-3 .f3-stat { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600; line-height: 1; margin: 4px 0 8px; color: var(--text-dark); }
+  .focus-3.gold .f3-stat { color: var(--gold-2); }
+  .focus-3.red .f3-stat { color: var(--red); }
+  .focus-3.green .f3-stat { color: var(--green); }
+  .focus-3.blue .f3-stat { color: var(--blue); }
+  .focus-3.purple .f3-stat { color: #7c3aed; }
+  .focus-3 p { font-size: 13px; line-height: 1.55; margin: 0; color: var(--text-body); }
+
+  .keyfinding-list { display: grid; gap: 10px; margin: 16px 0 24px; }
+  .kf-card { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kf-card .kf-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .kf-card.purple .kf-icon { background: #ede4ff; color: #7c3aed; }
+  .kf-card.gold .kf-icon { background: var(--gold-bg); color: var(--gold-text); }
+  .kf-card.red .kf-icon { background: var(--red-bg); color: var(--red-text); }
+  .kf-card.green .kf-icon { background: var(--green-bg); color: var(--green-text); }
+  .kf-card.blue .kf-icon { background: var(--blue-bg); color: var(--blue-text); }
+  .kf-card h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; margin: 0 0 4px; color: var(--text-dark); }
+  .kf-card p { font-size: 13px; color: var(--text-body); margin: 0; line-height: 1.55; }
+
+  .gbp-card { background: var(--bg-card); padding: 28px 32px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; margin: 14px 0 24px; border-left: 3px solid #4285f4; }
+  .gbp-card .star-block { text-align: center; }
+  .gbp-card .star-rating { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 600; color: var(--gold-2); line-height: 1; margin-bottom: 6px; }
+  .gbp-card .stars { font-size: 18px; color: var(--gold); letter-spacing: 2px; }
+  .gbp-card .review-count { font-size: 12px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .gbp-card .gbp-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 28px; }
+  .gbp-card .gbp-row .label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 3px; }
+  .gbp-card .gbp-row .value { font-size: 14px; color: var(--text-dark); font-weight: 600; }
+
+  .speed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0 28px; }
+  .speed-card { background: var(--bg-card); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); padding: 28px 28px 22px; text-align: center; }
+  .speed-card .device-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 14px; }
+  .speed-circle { width: 110px; height: 110px; border-radius: 50%; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .speed-circle.orange { background: conic-gradient(#f97316 0% 74%, #e5e7eb 74% 100%); }
+  .speed-circle.red-circle { background: conic-gradient(#ef4444 0% 68%, #e5e7eb 68% 100%); }
+  .speed-circle .score-inner { width: 82px; height: 82px; background: #fff; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .speed-circle .score-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; line-height: 1; }
+  .speed-circle.orange .score-num { color: #f97316; }
+  .speed-circle.red-circle .score-num { color: #ef4444; }
+  .speed-circle .score-word { font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--text-muted); }
+  .speed-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; text-align: left; margin-top: 14px; }
+  .speed-metric .sm-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+  .speed-metric .sm-value { font-size: 13px; font-weight: 700; color: var(--text-dark); }
+  .speed-metric .sm-value.green { color: var(--green); }
+  .speed-metric .sm-value.red { color: var(--red); }
+  .speed-metric .sm-value.orange { color: #f97316; }
+  .speed-screenshot { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.12); margin: 20px 0 0; }
+  .speed-screenshot img { width: 100%; display: block; }
+
+  .comp-twin { background: var(--bg-card); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0 24px; }
+  .comp-twin table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 580px; }
+  .comp-twin thead { background: var(--navy); color: #fff; }
+  .comp-twin th { padding: 11px 14px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; text-align: left; white-space: nowrap; }
+  .comp-twin th:nth-child(n+2) { text-align: center; }
+  .comp-twin td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .comp-twin td:nth-child(n+2) { text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .comp-twin tr:last-child td { border-bottom: none; }
+  .comp-twin tr.self td { color: var(--teal); font-weight: 700; background: #f0fafa; }
+
+  .chart-wrap { background: var(--bg-card); padding: 24px; margin: 18px 0 24px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .chart-wrap .chart-caption { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 14px; font-weight: 700; }
+  .chart-wrap canvas { max-height: 280px; }
+
+  .action-list { display: grid; gap: 12px; margin: 14px 0 24px; }
+  .action-item { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 44px 1fr auto; gap: 16px; align-items: center; border-left: 3px solid var(--teal); }
+  .action-item .a-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--gold); line-height: 1; }
+  .action-item .a-body h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-dark); margin: 0 0 4px; }
+  .action-item .a-body p { font-size: 12.5px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .action-item .a-pri { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.14em; padding: 4px 10px; border-radius: 999px; font-weight: 700; white-space: nowrap; }
+  .a-pri.immediate { background: var(--red-bg); color: var(--red-text); }
+  .a-pri.high { background: var(--gold-bg); color: var(--gold-text); }
+  .a-pri.medium { background: var(--blue-bg); color: var(--blue-text); }
+  .a-pri.ongoing { background: var(--green-bg); color: var(--green-text); }
+
+  .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 22px 0 28px; }
+  .plan-card { background: var(--bg-card); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); padding: 24px 22px; border-top: 3px solid var(--teal); }
+  .plan-card.gold { border-top-color: var(--gold); }
+  .plan-card.purple { border-top-color: #7c3aed; }
+  .plan-card .plan-icon { font-size: 28px; margin-bottom: 12px; }
+  .plan-card h4 { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-dark); margin: 0 0 10px; }
+  .plan-card p { font-size: 13px; color: var(--text-body); line-height: 1.6; margin: 0; }
+
+  .warning-banner { background: linear-gradient(135deg, #fff5f3, #fef3c7); border: 1px solid #fcd34d; border-radius: 4px; padding: 20px 24px; margin: 18px 0 24px; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
+  .warning-banner .wb-icon { font-size: 24px; }
+  .warning-banner h5 { font-size: 14px; font-weight: 700; color: var(--text-dark); margin: 0 0 6px; }
+  .warning-banner p { font-size: 13px; color: var(--text-body); margin: 0; line-height: 1.55; }
+
+  .keyword-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 4px; font-size: 12.5px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .keyword-table thead { background: var(--navy); color: #fff; }
+  .keyword-table th { padding: 11px 14px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .keyword-table th:nth-child(n+2) { text-align: center; }
+  .keyword-table td { padding: 9px 14px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
+  .keyword-table td:nth-child(n+2) { text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .keyword-table tr:last-child td { border-bottom: none; }
+  .pos-badge { display: inline-block; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-size: 12px; font-weight: 700; }
+  .pos-1 { background: var(--green-bg); color: var(--green-text); }
+  .pos-2 { background: var(--blue-bg); color: var(--blue-text); }
+  .pos-3-5 { background: var(--gold-bg); color: var(--gold-text); }
+  .pos-6plus { background: #f3f4f6; color: var(--text-muted); }
+
+  .loc-banner { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; padding: 40px 0; }
+  .loc-banner .eyebrow { color: var(--teal); }
+  .loc-banner h2 { color: #fff; font-size: 40px; margin-bottom: 8px; }
+  .loc-banner .addr { font-size: 14px; color: #c7d4dd; }
+  .loc-banner .addr a { color: var(--teal); text-decoration: none; }
+
+  .ai-callout { background: linear-gradient(135deg, #0d2538, #1e3a5f); border-radius: 6px; padding: 28px 32px; margin: 20px 0 28px; color: #fff; }
+  .ai-callout .eyebrow { color: #a78bfa; }
+  .ai-callout h3 { color: #fff; font-size: 20px; margin: 0 0 12px; }
+  .ai-callout p { font-size: 13.5px; color: #c7d4dd; line-height: 1.65; margin: 0; }
+  .ai-callout ul { margin: 12px 0 0; padding-left: 18px; }
+  .ai-callout ul li { font-size: 13px; color: #c7d4dd; margin-bottom: 6px; line-height: 1.5; }
+
+  footer { background: var(--navy); color: #8aa1b3; padding: 32px 0; text-align: center; font-size: 12px; margin-top: 60px; letter-spacing: 0.06em; }
+  footer .brand { color: var(--gold); font-weight: 600; }
+
+  img, canvas, svg, table { max-width: 100%; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+  .action-item .a-body { min-width: 0; }
+  .action-item .a-body p { word-wrap: break-word; overflow-wrap: anywhere; }
+
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .hero h1 { font-size: 42px; }
+    .section h2 { font-size: 32px; }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .hero h1 { font-size: 36px; line-height: 1.1; }
+    .section h2 { font-size: 26px; }
+    .section { padding: 44px 0; }
+    .hero-meta-row { grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+    .loc-banner h2 { font-size: 32px; } .loc-banner { padding: 32px 0; }
+    .gbp-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+    .gbp-card .gbp-meta { grid-template-columns: 1fr 1fr; }
+    .action-item { grid-template-columns: 44px 1fr; }
+    .action-item .a-pri { grid-column: 2; justify-self: start; margin-top: 6px; }
+    .speed-grid { grid-template-columns: 1fr; }
+    .plan-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .focus-3-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    .section { padding: 36px 0; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero h1 { font-size: 30px; } .hero h1 br { display: none; }
+    .hero { padding: 36px 0 32px; }
+    .hero-meta-row { grid-template-columns: 1fr; gap: 16px; padding: 18px 0 0; }
+    .section h2 { font-size: 24px; }
+    .section h3 { font-size: 18px; margin: 28px 0 10px; }
+    .loc-banner h2 { font-size: 26px; }
+    .kpi-num { font-size: 30px; }
+    .kpi-card { padding: 18px 14px; }
+    .h2-divider { grid-template-columns: repeat(3, 56px); margin-bottom: 18px; }
+    .chart-wrap { padding: 14px; } .chart-wrap canvas { max-height: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Dentist Nerds · SEO Performance Report</div>
+    <h1>Smile <em>Santa Maria</em> Dental</h1>
+    <p class="hero-sub">A comprehensive review of your search visibility, website performance, local rankings, and the clear roadmap to get you from 234 keywords to 400+ — and in front of AI-powered search.</p>
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <div class="meta-label">Website</div>
+        <div class="meta-value">smilesantamaria.com</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Location</div>
+        <div class="meta-value">Santa Maria, CA 93454</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Report Date</div>
+        <div class="meta-value">June 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Prepared By</div>
+        <div class="meta-value">Dentist Nerds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SNAPSHOT KPIs -->
+<section class="section" style="background: var(--bg-soft); padding: 44px 0;">
+  <div class="container">
+    <div class="eyebrow">At a Glance</div>
+    <h2>Your SEO Snapshot — June 2026</h2>
+    <div class="h2-divider"><span class="div-teal"></span><span class="div-gold"></span><span class="div-navy"></span></div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Organic Keywords</div>
+        <div class="kpi-num">234</div>
+        <div class="kpi-sub">Goal: 400+ by Q4 2026</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Est. Monthly Traffic</div>
+        <div class="kpi-num">812</div>
+        <div class="kpi-sub">↑ 37% vs. June 2025 (592)</div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-label">Google Reviews</div>
+        <div class="kpi-num">528</div>
+        <div class="kpi-sub">4.8 ★ — Excellent</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-label">Page Speed (Mobile)</div>
+        <div class="kpi-num">68</div>
+        <div class="kpi-sub">Needs improvement (target 90+)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: TRAFFIC & KEYWORDS -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Section 01 — Organic Search</div>
+    <h2>Traffic Is Growing. <em>Keywords Are the Bottleneck.</em></h2>
+    <div class="h2-divider"><span class="div-green"></span><span class="div-gold"></span><span class="div-navy"></span></div>
+    <p class="section-text">
+      The good news: your organic traffic has grown <strong>37% year-over-year</strong>, rising from ~592 monthly visitors last June to <strong>812 this month</strong>. You rank <strong>#1 on Google</strong> for high-intent terms like "dentist in santa maria," "dentist santa maria," and "dental santa maria" — that is a strong foundation.
+    </p>
+    <p class="section-text">
+      The gap: you currently rank for only <strong>234 keywords</strong>. Practices in competitive markets like yours typically rank for <strong>400–600 keywords</strong>. The primary reason is a thin content library — no blog, no FAQ content on treatment pages, and no location-specific supporting pages. Every unpublished blog post is a keyword you're missing out on.
+    </p>
+
+    <!-- Trend Chart -->
+    <div class="chart-wrap">
+      <div class="chart-caption">Organic Keyword Growth — June 2025 to May 2026 (Semrush)</div>
+      <canvas id="keywordChart"></canvas>
+    </div>
+
+    <h3>Top Ranking Keywords</h3>
+    <div style="overflow-x:auto; border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+    <table class="keyword-table">
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th>Position</th>
+          <th>Search Volume/mo</th>
+          <th>Traffic Share</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>dentist in santa maria</td>
+          <td><span class="pos-badge pos-1">#1</span></td>
+          <td>880</td>
+          <td>14.3%</td>
+        </tr>
+        <tr>
+          <td>dentist santa maria</td>
+          <td><span class="pos-badge pos-1">#1</span></td>
+          <td>720</td>
+          <td>11.7%</td>
+        </tr>
+        <tr>
+          <td>smile santa maria dental</td>
+          <td><span class="pos-badge pos-1">#1</span></td>
+          <td>260</td>
+          <td>25.6%</td>
+        </tr>
+        <tr>
+          <td>santa maria dentist</td>
+          <td><span class="pos-badge pos-2">#2</span></td>
+          <td>260</td>
+          <td>2.6%</td>
+        </tr>
+        <tr>
+          <td>santa maria dental</td>
+          <td><span class="pos-badge pos-3-5">#5</span></td>
+          <td>320</td>
+          <td>1.1%</td>
+        </tr>
+        <tr>
+          <td>clear aligners santa maria</td>
+          <td><span class="pos-badge pos-1">#1</span></td>
+          <td>40</td>
+          <td>1.1%</td>
+        </tr>
+        <tr>
+          <td>emergency dentist santa maria</td>
+          <td><span class="pos-badge pos-3-5">#4</span></td>
+          <td>140</td>
+          <td>0.5%</td>
+        </tr>
+        <tr>
+          <td>cosmetic dentist santa maria</td>
+          <td><span class="pos-badge pos-3-5">#4</span></td>
+          <td>40</td>
+          <td>0.1%</td>
+        </tr>
+        <tr>
+          <td>orthodontist santa maria</td>
+          <td><span class="pos-badge pos-6plus">#48</span></td>
+          <td>170</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>family dentistry santa maria</td>
+          <td><span class="pos-badge pos-3-5">#4</span></td>
+          <td>170</td>
+          <td>0.9%</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="warning-banner" style="margin-top:28px;">
+      <div class="wb-icon">⚠️</div>
+      <div>
+        <h5>234 keywords today — goal is 400+ by Q4 2026</h5>
+        <p>You're missing rankings for dozens of valuable terms: "dental implants santa maria," "teeth whitening santa maria," "invisalign santa maria," "sedation dentist santa maria," and hundreds of long-tail variations. Without a blog and FAQ strategy, these remain invisible to Google.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: COMPETITORS -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Section 02 — Competitive Landscape</div>
+    <h2>Where You Stand <em>vs. Competitors</em></h2>
+    <div class="h2-divider"><span class="div-blue"></span><span class="div-gold"></span><span class="div-navy"></span></div>
+    <p class="section-text">
+      Your closest organic competitors — practices targeting overlapping keywords in the Santa Maria and Santa Barbara market — have significantly larger keyword footprints. The gap is almost entirely content-driven: blogs, service FAQs, and location pages they publish that you haven't yet.
+    </p>
+
+    <div class="comp-twin">
+      <table>
+        <thead>
+          <tr>
+            <th>Practice Website</th>
+            <th>Common Keywords</th>
+            <th>Their Total Keywords</th>
+            <th>Their Est. Traffic</th>
+            <th>Keyword Overlap</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="self">
+            <td>smilesantamaria.com (You)</td>
+            <td>—</td>
+            <td>234</td>
+            <td>812</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>maidentalcares.com</td>
+            <td>38</td>
+            <td>232</td>
+            <td>370</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td>everlydental.com</td>
+            <td>33</td>
+            <td>176</td>
+            <td>216</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td>santabarbarafamilydentistry.com</td>
+            <td>41</td>
+            <td>505</td>
+            <td>1,307</td>
+            <td>Medium</td>
+          </tr>
+          <tr>
+            <td>modernsmiledentistry.com</td>
+            <td>31</td>
+            <td>220</td>
+            <td>64</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td>santamariafamilydentist.com</td>
+            <td>28</td>
+            <td>128</td>
+            <td>40</td>
+            <td>High</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="section-text" style="margin-top:0;">
+      Notice that <strong>santabarbarafamilydentistry.com</strong> has 505 keywords and generates 1,307 monthly visitors — more than 60% more traffic than you, almost entirely because of their content depth. With a focused blog and FAQ strategy, that gap closes fast.
+    </p>
+  </div>
+</section>
+
+<!-- SECTION 3: LOCAL / GBP -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Section 03 — Google Business Profile</div>
+    <h2>Strong Reputation. <em>Local Presence Is Solid.</em></h2>
+    <div class="h2-divider"><span class="div-gold"></span><span class="div-teal"></span><span class="div-navy"></span></div>
+    <p class="section-text">
+      Your Google Business Profile is performing well. A <strong>4.8-star rating across 528 reviews</strong> is outstanding — this is one of your biggest competitive advantages for converting searchers into booked patients. Patients trust you before they even visit your website.
+    </p>
+    <div class="gbp-card">
+      <div class="star-block">
+        <div class="star-rating">4.8</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">528 Reviews</div>
+      </div>
+      <div class="gbp-meta">
+        <div class="gbp-row">
+          <div class="label">Business Name</div>
+          <div class="value">Smile Santa Maria Dental</div>
+        </div>
+        <div class="gbp-row">
+          <div class="label">Address</div>
+          <div class="value">2528 S Broadway Suite C, Santa Maria, CA 93454</div>
+        </div>
+        <div class="gbp-row">
+          <div class="label">Phone</div>
+          <div class="value">(805) 925-2628</div>
+        </div>
+        <div class="gbp-row">
+          <div class="label">Primary Category</div>
+          <div class="value">Dentist · Cosmetic Dentist · Implants · Emergency</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="keyfinding-list" style="margin-top:8px;">
+      <div class="kf-card green">
+        <div class="kf-icon">✅</div>
+        <div>
+          <h5>528 reviews at 4.8 stars — top 5% in Santa Maria</h5>
+          <p>This is an exceptional review profile. Most competing practices in Santa Maria have under 200 reviews. Keep responding to all new reviews — both positive and negative — to signal engagement to Google.</p>
+        </div>
+      </div>
+      <div class="kf-card gold">
+        <div class="kf-icon">📋</div>
+        <div>
+          <h5>GBP posts and Q&amp;A should be updated monthly</h5>
+          <p>Regular Google posts (promotions, new services, seasonal content) and answered Q&amp;A questions increase your GBP engagement signals and local pack visibility. Aim for 2 posts per month.</p>
+        </div>
+      </div>
+      <div class="kf-card blue">
+        <div class="kf-icon">📍</div>
+        <div>
+          <h5>Local map pack — you rank #1 for core "dentist santa maria" terms</h5>
+          <p>Your map pack presence is strong for your primary keywords. The opportunity is expanding that visibility to specialty terms: implants, Invisalign, sedation, whitening — services with dedicated content pages and optimized GBP attributes will increase your pack presence for those terms.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: WEBSITE SPEED -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Section 04 — Website Performance</div>
+    <h2>Your Website Is <em>Slowing You Down</em></h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-navy"></span></div>
+    <p class="section-text">
+      Google's PageSpeed Insights reveals a significant technical problem. Your website — built on <strong>WordPress + Elementor</strong> — scores <strong>74 on Desktop</strong> and only <strong>68 on Mobile</strong>. Mobile is especially critical: over 70% of dental searches happen on a phone. A score below 70 means patients are waiting, getting frustrated, and leaving before they ever call.
+    </p>
+    <p class="section-text">
+      The root cause is Elementor. It is a visual page builder that generates bloated, heavy code loaded with unused CSS and JavaScript — a known issue across the industry. The site loads slowly not because of the content, but because of the underlying platform.
+    </p>
+
+    <div class="speed-grid">
+      <div class="speed-card">
+        <div class="device-label">🖥 Desktop Performance</div>
+        <div class="speed-circle orange">
+          <div class="score-inner">
+            <span class="score-num">74</span>
+            <span class="score-word">Needs Work</span>
+          </div>
+        </div>
+        <div class="speed-metrics">
+          <div class="speed-metric">
+            <div class="sm-label">First Contentful Paint</div>
+            <div class="sm-value green">0.7s</div>
+          </div>
+          <div class="speed-metric">
+            <div class="sm-label">Largest Contentful Paint</div>
+            <div class="sm-value green">0.9s</div>
+          </div>
+          <div class="speed-metric">
+            <div class="sm-label">Total Blocking Time</div>
+            <div class="sm-value red">High ⚠</div>
+          </div>
+          <div class="speed-metric">
+            <div class="sm-label">Cumulative Layout Shift</div>
+            <div class="sm-value green">Good</div>
+          </div>
+        </div>
+      </div>
+      <div class="speed-card">
+        <div class="device-label">📱 Mobile Performance</div>
+        <div class="speed-circle red-circle">
+          <div class="score-inner">
+            <span class="score-num">68</span>
+            <span class="score-word">Poor</span>
+          </div>
+        </div>
+        <p style="font-size:13px; color:var(--text-body); margin-top:16px; line-height:1.6;">
+          Mobile score of 68 is a <strong style="color:var(--red);">failing grade</strong> by Google's standards. Google uses mobile-first indexing — meaning your mobile score directly impacts your search rankings, not just user experience. Patients on phones are your most important audience. This needs to be fixed.
+        </p>
+      </div>
+    </div>
+
+    <!-- Screenshot placeholder -->
+    <div style="background:var(--bg-card); border-radius:8px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.1); margin:24px 0;">
+      <div style="background:var(--navy); padding:12px 16px; display:flex; align-items:center; gap:8px;">
+        <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#ffbd2e;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#28ca41;display:inline-block;"></span>
+        <span style="font-size:11px;color:#8aa1b3;margin-left:8px;font-family:'Courier New',monospace;">pagespeed.web.dev — smilesantamaria.com</span>
+      </div>
+      <div style="padding:24px; display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center;">
+        <div>
+          <p style="font-size:13px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; font-weight:600; margin-bottom:12px;">Performance Scores</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div style="text-align:center;">
+              <div style="font-family:'Playfair Display',serif; font-size:52px; font-weight:700; color:#f97316; line-height:1;">74</div>
+              <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Performance</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-family:'Playfair Display',serif; font-size:52px; font-weight:700; color:#22c55e; line-height:1;">85</div>
+              <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Accessibility</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-family:'Playfair Display',serif; font-size:52px; font-weight:700; color:#22c55e; line-height:1;">100</div>
+              <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Best Practices</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-family:'Playfair Display',serif; font-size:52px; font-weight:700; color:#22c55e; line-height:1;">92</div>
+              <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">SEO</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:13px; color:var(--text-body); line-height:1.65;">
+            These scores are captured from <strong>Google's own PageSpeed Insights tool</strong>. The 74 Performance score on Desktop (and 68 on Mobile) is directly caused by Elementor's bloated JavaScript and CSS output. A modern lightweight platform easily achieves 90+ on both devices — which translates to better rankings and more booked appointments.
+          </p>
+          <div style="margin-top:12px; background:#fff5f3; border-left:3px solid var(--red); padding:10px 14px; border-radius:0 4px 4px 0;">
+            <p style="font-size:12px; color:var(--red-text); margin:0; font-weight:600;">Mobile score of 68 = Google ranking penalty. This is affecting your ability to rank higher right now.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: WEBSITE CONVERSION -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Section 05 — Website Conversion & User Experience</div>
+    <h2>Getting Traffic Is One Thing. <em>Converting It Is Another.</em></h2>
+    <div class="h2-divider"><span class="div-gold"></span><span class="div-teal"></span><span class="div-navy"></span></div>
+    <p class="section-text">
+      Beyond speed, your website has several conversion barriers that are causing visitors — especially new patients — to leave without booking an appointment. These are fixable, and fixing them will directly increase the number of calls and form submissions you receive from the same traffic you're already getting.
+    </p>
+
+    <div class="focus-3-grid">
+      <div class="focus-3 red">
+        <div class="f3-eyebrow">Issue</div>
+        <h3>Too Many Stock Photos</h3>
+        <p>Generic stock imagery signals inauthenticity to patients comparing multiple dentists. Real photos of your team, your office, and your actual patients (with consent) build trust and dramatically increase conversion rates. Studies show practices with authentic imagery convert 2–3× better than those with stock photos.</p>
+      </div>
+      <div class="focus-3 gold">
+        <div class="f3-eyebrow">Issue</div>
+        <h3>Header Is Too Narrow &amp; Navigation Too Small</h3>
+        <p>The top section of the website is visually tight and the navigation text is small. For your demographic — which includes many older adults seeking family and restorative dentistry — small text and a compact header creates friction. A clear, spacious header with a prominent "Book Appointment" button is essential.</p>
+      </div>
+      <div class="focus-3 blue">
+        <div class="f3-eyebrow">Issue</div>
+        <h3>No FAQ Sections on Treatment Pages</h3>
+        <p>Treatment pages (implants, Invisalign, whitening, etc.) lack FAQ sections. This hurts in two ways: (1) Google uses FAQs to understand page depth and relevance, and (2) AI platforms like ChatGPT and Google's AI Overviews pull directly from FAQ-style content to answer patient questions. No FAQs = invisible to AI search.</p>
+      </div>
+      <div class="focus-3 purple">
+        <div class="f3-eyebrow">Issue</div>
+        <h3>No /llms.txt File</h3>
+        <p>An <code style="font-family:monospace; background:#f3f4f6; padding:1px 4px; border-radius:3px; font-size:11px;">/llms.txt</code> file tells AI systems (ChatGPT, Gemini, Perplexity) how to understand and represent your practice. Without it, AI platforms may describe your practice inaccurately or skip you entirely. This is a simple addition — one file — that future-proofs your AI visibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: AI VISIBILITY -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Section 06 — AI Search Visibility</div>
+    <h2>The New Battlefield: <em>AI Platforms</em></h2>
+    <div class="h2-divider"><span class="div-navy"></span><span class="div-teal"></span><span class="div-gold"></span></div>
+    <p class="section-text">
+      ChatGPT, Google AI Overviews, and Perplexity are now answering dental questions for millions of patients every day. When someone asks "who is the best dentist in Santa Maria for dental implants?" — the answer they get comes from AI, not a list of blue links. If your website isn't structured for AI consumption, you won't appear in those answers.
+    </p>
+
+    <div class="ai-callout">
+      <div class="eyebrow" style="color:#a78bfa; margin-bottom:10px;">AI Readiness Assessment</div>
+      <h3>Three Things Blocking Your AI Visibility</h3>
+      <ul>
+        <li><strong style="color:#e2d9f3;">/llms.txt missing:</strong> AI crawlers don't have a clear guide to your practice. Add this file to your domain root to tell AI systems who you are, what you do, and what content to surface.</li>
+        <li><strong style="color:#e2d9f3;">No FAQ content on service pages:</strong> AI models extract Q&amp;A pairs to answer user questions. Your implant, whitening, and Invisalign pages need structured FAQ sections with real patient questions.</li>
+        <li><strong style="color:#e2d9f3;">No blog = no AI training data:</strong> Regular blog posts about dental topics give AI platforms content to associate with your practice. Practices publishing 4+ posts/month consistently show up in AI-generated recommendations.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: THE PLAN -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Section 07 — Our Recommendation</div>
+    <h2>Here Is Exactly <em>How We Fix This</em></h2>
+    <div class="h2-divider"><span class="div-teal"></span><span class="div-gold"></span><span class="div-green"></span></div>
+    <p class="section-text">
+      Your website is currently built on <strong>WordPress + Elementor</strong>. Elementor is a page builder known for generating heavy, redundant code — it's why your mobile score is 68. We have two paths forward, and we recommend the second:
+    </p>
+
+    <div class="keyfinding-list">
+      <div class="kf-card gold">
+        <div class="kf-icon">🔧</div>
+        <div>
+          <h5>Option A — Fix the Current Site</h5>
+          <p>We can optimize the existing WordPress/Elementor site: caching, image compression, script deferral, and code cleanup. This typically gets you to 80–85 on Desktop, 72–76 on Mobile. It improves the situation but doesn't fully solve it — Elementor's structural bloat is the ceiling.</p>
+        </div>
+      </div>
+      <div class="kf-card green">
+        <div class="kf-icon">🚀</div>
+        <div>
+          <h5>Option B — Rebuild on a Modern, Lightweight Platform (Recommended)</h5>
+          <p>We rebuild your site on a modern platform with clean, hand-crafted code. Performance scores of <strong>95–100 on Desktop, 90+ on Mobile</strong>. Faster page loads, better Core Web Vitals, stronger SEO foundation. This is the approach that sets you up to win — not just compete.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>The Full Growth Plan</h3>
+    <div class="plan-grid">
+      <div class="plan-card">
+        <div class="plan-icon">⚡</div>
+        <h4>New Modern Website</h4>
+        <p>Rebuilt from the ground up on a lightweight, fast platform. Mobile-first design with a spacious header, clear navigation, real photography placeholders, and prominent call-to-action buttons throughout. Target: 95+ PageSpeed on Desktop, 90+ on Mobile.</p>
+      </div>
+      <div class="plan-card gold">
+        <div class="plan-icon">✍️</div>
+        <h4>4 Monthly SEO &amp; AI-Optimized Blog Posts</h4>
+        <p>Every month, Dentist Nerds writes and publishes 4 blog posts targeting keywords you don't yet rank for. Each post is structured for both Google and AI platforms — with FAQ sections, internal links, and local relevance. This is the direct path from 234 to 400+ keywords.</p>
+      </div>
+      <div class="plan-card purple">
+        <div class="plan-icon">🔗</div>
+        <h4>High-Authority Backlink Building</h4>
+        <p>Marty will build backlinks from high-authority dental, local business, and health publications. Quality backlinks increase your Domain Authority and directly improve how high you rank for competitive terms like "dental implants santa maria" and "invisalign santa maria."</p>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-card); border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,0.04); padding:28px 32px; margin:28px 0; border-left:3px solid var(--teal);">
+      <div class="eyebrow" style="margin-bottom:8px;">Monthly Reporting</div>
+      <h4 style="font-size:18px; margin-bottom:10px;">You'll Always Know What We've Done &amp; What's Coming</h4>
+      <p style="font-size:13.5px; color:var(--text-body); line-height:1.7;">
+        Every month you receive a report like this one — showing your keyword growth, traffic changes, new backlinks built, blog posts published, and what we're targeting next. No guessing. No black boxes. Full transparency on everything we do, and the results it's producing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: ACTION ITEMS -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Section 08 — Priority Action Items</div>
+    <h2>Your <em>Action Roadmap</em></h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-teal"></span></div>
+    <p class="section-text">These are ranked by urgency and impact. Items 1–3 are foundational and will be addressed immediately upon engagement.</p>
+    <div class="action-list">
+      <div class="action-item">
+        <div class="a-num">1</div>
+        <div class="a-body">
+          <h5>Rebuild Website on a Fast, Modern Platform</h5>
+          <p>Replace WordPress/Elementor with a lightweight codebase. Target: Desktop 95+, Mobile 90+. This directly improves rankings and conversion.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">2</div>
+        <div class="a-body">
+          <h5>Add FAQ Sections to All Treatment Pages</h5>
+          <p>Implants, Invisalign, whitening, veneers, emergency dentistry — every service page needs a structured FAQ section. Boosts both Google rankings and AI visibility.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">3</div>
+        <div class="a-body">
+          <h5>Create and Publish /llms.txt</h5>
+          <p>A simple one-page file at smilesantamaria.com/llms.txt that describes your practice for AI crawlers. Takes under an hour to set up, future-proofs your AI visibility.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">4</div>
+        <div class="a-body">
+          <h5>Launch 4 Monthly SEO Blog Posts</h5>
+          <p>Begin publishing 4 optimized blog posts per month targeting untapped keywords: dental implants cost, Invisalign vs braces, teeth whitening options, dental anxiety tips, etc.</p>
+        </div>
+        <span class="a-pri high">High Priority</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">5</div>
+        <div class="a-body">
+          <h5>Replace Stock Photography with Authentic Images</h5>
+          <p>Schedule a professional photo session for your team, office, and (consented) patient results. Authentic imagery significantly increases trust and conversion rates.</p>
+        </div>
+        <span class="a-pri high">High Priority</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">6</div>
+        <div class="a-body">
+          <h5>Redesign Header for Accessibility &amp; Conversion</h5>
+          <p>Larger navigation text, more spacious header layout, prominent "Book Appointment" CTA button. Especially important for older patients who represent a significant portion of dental patients.</p>
+        </div>
+        <span class="a-pri high">High Priority</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">7</div>
+        <div class="a-body">
+          <h5>High-Authority Backlink Outreach</h5>
+          <p>Build 3–5 quality backlinks per month from dental directories, local news, and health publications. Increases Domain Authority and competitive rankings for high-value terms.</p>
+        </div>
+        <span class="a-pri medium">Ongoing</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">8</div>
+        <div class="a-body">
+          <h5>Maintain Google Business Profile Activity</h5>
+          <p>Publish 2 GBP posts per month, answer Q&amp;A questions, update photos seasonally. Keeps your local pack rankings strong as competition increases.</p>
+        </div>
+        <span class="a-pri ongoing">Ongoing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION BANNER -->
+<div class="loc-banner">
+  <div class="container">
+    <div class="eyebrow">Your Practice</div>
+    <h2>Smile Santa Maria Dental</h2>
+    <p class="addr">2528 S Broadway Suite C, Santa Maria, CA 93454 &nbsp;·&nbsp; <a href="tel:+18059252628">(805) 925-2628</a> &nbsp;·&nbsp; <a href="http://smilesantamaria.com" target="_blank">smilesantamaria.com</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>Prepared by <span class="brand">Dentist Nerds</span> &nbsp;·&nbsp; SEO &amp; Digital Marketing for Dental Practices &nbsp;·&nbsp; <a href="mailto:amin@dentistnerds.com" style="color:var(--teal); text-decoration:none;">amin@dentistnerds.com</a> &nbsp;·&nbsp; June 2026</p>
+    <p style="margin-top:8px; font-size:11px; opacity:0.6;">Data sourced from Semrush, Google PageSpeed Insights, Google Business Profile, and Local Falcon. Traffic estimates are indicative and based on search volume models.</p>
+  </div>
+</footer>
+
+<script>
+// Keyword Trend Chart
+const ctx = document.getElementById('keywordChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26'],
+    datasets: [
+      {
+        label: 'Organic Keywords',
+        data: [134, 137, 151, 173, 168, 162, 140, 153, 158, 175, 217, 234],
+        backgroundColor: 'rgba(95,186,176,0.7)',
+        borderColor: '#5fbab0',
+        borderWidth: 1,
+        borderRadius: 3,
+        yAxisID: 'y'
+      },
+      {
+        label: 'Est. Monthly Traffic',
+        data: [788, 740, 681, 668, 690, 763, 673, 530, 523, 550, 592, 824],
+        type: 'line',
+        borderColor: '#d4a55c',
+        backgroundColor: 'rgba(212,165,92,0.1)',
+        borderWidth: 2.5,
+        pointRadius: 4,
+        pointBackgroundColor: '#d4a55c',
+        tension: 0.35,
+        fill: true,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position: 'top', labels: { font: { family: 'Inter', size: 11 }, color: '#4b5563' } }
+    },
+    scales: {
+      y: {
+        type: 'linear',
+        position: 'left',
+        title: { display: true, text: 'Keywords', font: { size: 11, family: 'Inter' }, color: '#5fbab0' },
+        grid: { color: 'rgba(0,0,0,0.04)' },
+        ticks: { font: { family: 'Inter', size: 11 }, color: '#6b7280' }
+      },
+      y1: {
+        type: 'linear',
+        position: 'right',
+        title: { display: true, text: 'Traffic', font: { size: 11, family: 'Inter' }, color: '#d4a55c' },
+        grid: { drawOnChartArea: false },
+        ticks: { font: { family: 'Inter', size: 11 }, color: '#6b7280' }
+      },
+      x: { ticks: { font: { family: 'Inter', size: 11 }, color: '#6b7280' }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
