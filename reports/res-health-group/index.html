@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SEO Audit Report — RES Health Group · June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2538; --navy-2: #112e44;
+    --teal: #5fbab0; --teal-soft: #a4dad3;
+    --gold: #d4a55c; --gold-2: #c9a961;
+    --bg-page: #f5f5f0; --bg-soft: #ebe9e0; --bg-card: #ffffff;
+    --text-dark: #0d2538; --text-body: #4b5563; --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #2d8e5c; --green-bg: #d1fae5; --green-text: #065f46;
+    --gold-bg: #fef3c7; --gold-text: #92400e;
+    --red: #c53030; --red-bg: #fee2e2; --red-text: #991b1b;
+    --blue: #2c6fb3; --blue-bg: #dbeafe; --blue-text: #1e40af;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-body); line-height: 1.6; font-size: 14px; }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+
+  .hero { background: var(--navy); color: #fff; padding: 56px 0 44px; }
+  .hero .eyebrow { color: var(--teal); }
+  .hero h1 { font-size: 50px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 10px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 28px; max-width: 720px; }
+  .hero-meta-row { display: grid; grid-template-columns: repeat(4, auto); gap: 56px; padding: 22px 0 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px; }
+  .hero-meta-item .meta-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; margin-bottom: 6px; font-weight: 600; }
+  .hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+  .section { padding: 56px 0; }
+  .section h2 { font-size: 36px; font-weight: 600; margin-bottom: 12px; line-height: 1.15; }
+  .section h3 { font-size: 22px; font-weight: 600; margin: 36px 0 14px; }
+  .section-text { font-size: 14.5px; color: var(--text-body); max-width: 760px; margin-bottom: 24px; line-height: 1.7; }
+  .section-text strong { color: var(--text-dark); font-weight: 600; }
+  .h2-divider { display: grid; grid-template-columns: repeat(3, 86px); gap: 0; margin: 0 0 24px; }
+  .h2-divider span { height: 2px; }
+  .div-teal { background: var(--teal); } .div-gold { background: var(--gold-2); }
+  .div-green { background: var(--green); } .div-blue { background: var(--blue); }
+  .div-red { background: var(--red); } .div-navy { background: var(--navy); }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 18px 0 28px; }
+  .kpi-card { background: var(--bg-card); padding: 22px 20px; text-align: center; border-top: 2px solid var(--red); border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-card.gold { border-top-color: var(--gold); }
+  .kpi-card.teal { border-top-color: var(--teal); }
+  .kpi-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--red); line-height: 1; margin-bottom: 8px; }
+  .kpi-card.gold .kpi-num { color: var(--gold-2); }
+  .kpi-card.teal .kpi-num { color: var(--teal); }
+  .kpi-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dark); font-weight: 600; margin-bottom: 4px; }
+  .kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+  .zero-banner { background: #0d2538; border-radius: 6px; padding: 36px 40px; margin: 24px 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; text-align: center; }
+  .zero-banner .zb-item { padding: 0 24px; }
+  .zero-banner .zb-item + .zb-item { border-left: 1px solid rgba(255,255,255,0.08); }
+  .zero-banner .zb-num { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 700; color: var(--red); line-height: 1; margin-bottom: 10px; }
+  .zero-banner .zb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8aa1b3; font-weight: 600; margin-bottom: 6px; }
+  .zero-banner .zb-desc { font-size: 12.5px; color: #6b8399; line-height: 1.5; }
+
+  .focus-3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0 8px; }
+  .focus-3 { background: var(--bg-card); padding: 24px 22px; border-radius: 4px; border-top: 3px solid var(--red); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .focus-3.gold { border-top-color: var(--gold-2); }
+  .focus-3.blue { border-top-color: var(--blue); }
+  .focus-3.purple { border-top-color: #7c3aed; }
+  .focus-3 .f3-eyebrow { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 10px; }
+  .focus-3.gold .f3-eyebrow { color: var(--gold-text); }
+  .focus-3.blue .f3-eyebrow { color: var(--blue); }
+  .focus-3.purple .f3-eyebrow { color: #7c3aed; }
+  .focus-3 h3 { font-family: 'Playfair Display', serif; font-size: 17px; margin: 0 0 12px; color: var(--text-dark); font-weight: 600; line-height: 1.25; }
+  .focus-3 p { font-size: 13px; line-height: 1.6; margin: 0; color: var(--text-body); }
+
+  .keyfinding-list { display: grid; gap: 10px; margin: 16px 0 24px; }
+  .kf-card { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kf-card .kf-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .kf-card.red .kf-icon { background: var(--red-bg); color: var(--red-text); }
+  .kf-card.gold .kf-icon { background: var(--gold-bg); color: var(--gold-text); }
+  .kf-card.blue .kf-icon { background: var(--blue-bg); color: var(--blue-text); }
+  .kf-card.purple .kf-icon { background: #ede4ff; color: #7c3aed; }
+  .kf-card h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; margin: 0 0 4px; color: var(--text-dark); }
+  .kf-card p { font-size: 13px; color: var(--text-body); margin: 0; line-height: 1.55; }
+
+  .split-callout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0 32px; }
+  .split-card { border-radius: 4px; padding: 28px 26px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .split-card.problem { background: #fff5f3; border: 1px solid #fecaca; }
+  .split-card.solution { background: #f0fdf4; border: 1px solid #86efac; }
+  .split-card .sc-eyebrow { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
+  .split-card.problem .sc-eyebrow { color: var(--red); }
+  .split-card.solution .sc-eyebrow { color: var(--green); }
+  .split-card h4 { font-size: 17px; margin: 0 0 12px; }
+  .split-card p { font-size: 13px; line-height: 1.65; color: var(--text-body); margin: 0; }
+  .split-card ul { margin: 10px 0 0; padding-left: 16px; }
+  .split-card ul li { font-size: 13px; color: var(--text-body); margin-bottom: 6px; line-height: 1.5; }
+
+  .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 22px 0 28px; }
+  .plan-card { background: var(--bg-card); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); padding: 24px 22px; border-top: 3px solid var(--teal); }
+  .plan-card.gold { border-top-color: var(--gold); }
+  .plan-card.purple { border-top-color: #7c3aed; }
+  .plan-card .plan-icon { font-size: 28px; margin-bottom: 12px; }
+  .plan-card h4 { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-dark); margin: 0 0 10px; }
+  .plan-card p { font-size: 13px; color: var(--text-body); line-height: 1.6; margin: 0; }
+
+  .action-list { display: grid; gap: 12px; margin: 14px 0 24px; }
+  .action-item { background: var(--bg-card); padding: 18px 22px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: grid; grid-template-columns: 44px 1fr auto; gap: 16px; align-items: center; border-left: 3px solid var(--teal); }
+  .action-item .a-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--gold); line-height: 1; }
+  .action-item .a-body h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-dark); margin: 0 0 4px; }
+  .action-item .a-body p { font-size: 12.5px; color: var(--text-body); margin: 0; line-height: 1.5; }
+  .action-item .a-pri { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.14em; padding: 4px 10px; border-radius: 999px; font-weight: 700; white-space: nowrap; }
+  .a-pri.immediate { background: var(--red-bg); color: var(--red-text); }
+  .a-pri.high { background: var(--gold-bg); color: var(--gold-text); }
+  .a-pri.medium { background: var(--blue-bg); color: var(--blue-text); }
+  .a-pri.ongoing { background: var(--green-bg); color: var(--green-text); }
+
+  .ai-callout { background: linear-gradient(135deg, #0d2538, #1e3a5f); border-radius: 6px; padding: 28px 32px; margin: 20px 0 28px; color: #fff; }
+  .ai-callout .eyebrow { color: #a78bfa; margin-bottom: 10px; }
+  .ai-callout h3 { color: #fff; font-size: 20px; margin: 0 0 12px; }
+  .ai-callout p { font-size: 13.5px; color: #c7d4dd; line-height: 1.65; margin: 0 0 12px; }
+  .ai-callout ul { padding-left: 18px; }
+  .ai-callout ul li { font-size: 13px; color: #c7d4dd; margin-bottom: 6px; line-height: 1.5; }
+
+  .verdict-box { background: var(--navy); color: #fff; border-radius: 6px; padding: 36px 40px; margin: 28px 0; }
+  .verdict-box .eyebrow { color: var(--gold); margin-bottom: 12px; }
+  .verdict-box h3 { color: #fff; font-size: 26px; margin: 0 0 16px; line-height: 1.2; }
+  .verdict-box p { font-size: 14px; color: #c7d4dd; line-height: 1.7; margin: 0; }
+  .verdict-box p + p { margin-top: 12px; }
+
+  .loc-banner { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; padding: 40px 0; }
+  .loc-banner .eyebrow { color: var(--teal); }
+  .loc-banner h2 { color: #fff; font-size: 40px; margin-bottom: 8px; }
+  .loc-banner .addr { font-size: 14px; color: #c7d4dd; }
+  .loc-banner .addr a { color: var(--teal); text-decoration: none; }
+
+  footer { background: var(--navy); color: #8aa1b3; padding: 32px 0; text-align: center; font-size: 12px; margin-top: 60px; letter-spacing: 0.06em; }
+  footer .brand { color: var(--gold); font-weight: 600; }
+
+  img, canvas, svg { max-width: 100%; }
+  .action-item .a-body { min-width: 0; }
+  .action-item .a-body p { word-wrap: break-word; overflow-wrap: anywhere; }
+
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .hero h1 { font-size: 42px; }
+    .section h2 { font-size: 32px; }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .focus-3-grid { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 36px; line-height: 1.1; }
+    .section h2 { font-size: 26px; }
+    .section { padding: 44px 0; }
+    .hero-meta-row { grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+    .loc-banner h2 { font-size: 32px; }
+    .split-callout { grid-template-columns: 1fr; }
+    .plan-grid { grid-template-columns: 1fr; }
+    .zero-banner { grid-template-columns: 1fr; gap: 28px; }
+    .zero-banner .zb-item + .zb-item { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; }
+    .action-item { grid-template-columns: 44px 1fr; }
+    .action-item .a-pri { grid-column: 2; justify-self: start; margin-top: 6px; }
+  }
+  @media (max-width: 700px) {
+    .focus-3-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    .section { padding: 36px 0; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero h1 { font-size: 30px; }
+    .hero { padding: 36px 0 32px; }
+    .hero-meta-row { grid-template-columns: 1fr; gap: 16px; padding: 18px 0 0; }
+    .section h2 { font-size: 24px; }
+    .zero-banner { padding: 24px 20px; }
+    .zero-banner .zb-num { font-size: 52px; }
+    .verdict-box { padding: 24px; }
+    .ai-callout { padding: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Dentist Nerds · SEO Audit Report</div>
+    <h1>RES <em>Health Group</em></h1>
+    <p class="hero-sub">A full audit of your current digital presence — and an honest assessment of what it will take to compete, rank, and convert patients in today's market.</p>
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <div class="meta-label">Website</div>
+        <div class="meta-value">reshealthgroup.com</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Services</div>
+        <div class="meta-value">Dental &amp; Wellness</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Report Date</div>
+        <div class="meta-value">June 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Prepared By</div>
+        <div class="meta-value">Dentist Nerds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SNAPSHOT KPIs -->
+<section class="section" style="background: var(--bg-soft); padding: 44px 0;">
+  <div class="container">
+    <div class="eyebrow">At a Glance</div>
+    <h2>Current SEO Snapshot</h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-navy"></span></div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Organic Keywords</div>
+        <div class="kpi-num">0</div>
+        <div class="kpi-sub">Not ranking for any search term</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Organic Traffic</div>
+        <div class="kpi-num">0</div>
+        <div class="kpi-sub">No patients arriving from Google</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">AI Visibility</div>
+        <div class="kpi-num">0</div>
+        <div class="kpi-sub">Invisible to ChatGPT, Gemini, AI Search</div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-label">Domain Authority</div>
+        <div class="kpi-num">—</div>
+        <div class="kpi-sub">No established SEO footprint</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: THE NUMBERS -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Section 01 — Search Visibility</div>
+    <h2>Not One Patient Is Finding You <em>Through Google.</em></h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-navy"></span></div>
+    <p class="section-text">
+      When we ran reshealthgroup.com through Semrush — the same tool used to track every dental practice in the country — the result was a blank page. <strong>Zero organic keywords. Zero monthly traffic. Zero domain authority.</strong> The website exists, but as far as Google is concerned, it is invisible.
+    </p>
+    <p class="section-text">
+      Every day a patient in your area searches "dentist near me," "dental implants," or "wellness clinic" — they find your competitors. Not you. There is no amount of optimization or tweaking the current website that changes this, because the problem starts at the foundation: the website was not built with search in mind.
+    </p>
+
+    <div class="zero-banner">
+      <div class="zb-item">
+        <div class="zb-num">0</div>
+        <div class="zb-label">Keywords Ranking</div>
+        <div class="zb-desc">Not a single search term places reshealthgroup.com in Google's results</div>
+      </div>
+      <div class="zb-item">
+        <div class="zb-num">0</div>
+        <div class="zb-label">Monthly Organic Visitors</div>
+        <div class="zb-desc">No patient has discovered this practice through a Google search</div>
+      </div>
+      <div class="zb-item">
+        <div class="zb-num">0</div>
+        <div class="zb-label">AI Platform Mentions</div>
+        <div class="zb-desc">ChatGPT, Gemini, and Perplexity have no data to recommend this practice</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: WEBSITE PROBLEMS -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Section 02 — Website Audit</div>
+    <h2>Why the Current Website <em>Cannot Work</em></h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-navy"></span></div>
+    <p class="section-text">
+      The website has several fundamental problems that go beyond SEO. Even if a patient did find the site, the experience would not convert them into a booked appointment. These issues are structural — they cannot be patched. They require a new foundation.
+    </p>
+
+    <div class="focus-3-grid">
+      <div class="focus-3">
+        <div class="f3-eyebrow">Critical Issue</div>
+        <h3>Dental &amp; Wellness Mixed on One Site</h3>
+        <p>Combining two distinct services — dental and wellness — under one website confuses every visitor. A patient looking for a dentist doesn't know if they've landed at the right place. A patient seeking wellness services feels the same. Confused visitors don't book appointments. Search engines also struggle to categorize a site that tries to serve two different audiences, which directly suppresses rankings for both.</p>
+      </div>
+      <div class="focus-3 gold">
+        <div class="f3-eyebrow">Critical Issue</div>
+        <h3>Virtually No Written Content</h3>
+        <p>Google ranks pages based on content — words that answer patient questions and signal expertise. The current website has minimal text. There are no service descriptions, no treatment explanations, no FAQs, no blog. Without content, there is nothing for Google to index and nothing to build rankings from. The site is essentially a digital business card, not a patient acquisition tool.</p>
+      </div>
+      <div class="focus-3 blue">
+        <div class="f3-eyebrow">Critical Issue</div>
+        <h3>Script Fonts &amp; Image Overlays Block Readability</h3>
+        <p>The use of decorative script fonts and text placed over images makes the site extremely difficult to read — especially on mobile. For patients who are older or have any visual impairment, this is an immediate barrier. Readability directly affects both conversion (whether someone stays and books) and accessibility compliance. It also signals poor quality to new patients comparing multiple providers.</p>
+      </div>
+    </div>
+
+    <div class="keyfinding-list" style="margin-top: 8px;">
+      <div class="kf-card red">
+        <div class="kf-icon">🚫</div>
+        <div>
+          <h5>No SEO architecture</h5>
+          <p>No title tags, meta descriptions, H1 structure, internal linking, or schema markup. The site has no technical SEO foundation whatsoever. Search engines cannot understand what the business offers or who it serves.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">🚫</div>
+        <div>
+          <h5>No call-to-action or conversion path</h5>
+          <p>There is no clear "Book Appointment," "Call Now," or contact prompt that guides a visitor toward becoming a patient. Anyone who does land on the site has no obvious next step — so they leave.</p>
+        </div>
+      </div>
+      <div class="kf-card red">
+        <div class="kf-icon">🚫</div>
+        <div>
+          <h5>No /llms.txt — completely invisible to AI platforms</h5>
+          <p>With no structured content and no AI guidance file, ChatGPT, Google AI Overviews, and Perplexity have no way to discover, understand, or recommend this practice. AI-driven patient searches return zero results for RES Health Group.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: TWO WEBSITES -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Section 03 — Strategic Recommendation</div>
+    <h2>One Website Is Holding <em>Two Businesses Hostage</em></h2>
+    <div class="h2-divider"><span class="div-blue"></span><span class="div-gold"></span><span class="div-navy"></span></div>
+    <p class="section-text">
+      The single most important strategic decision is this: <strong>dental and wellness need to be separate websites.</strong> This isn't a preference — it is a requirement for either service to rank, convert, or grow online.
+    </p>
+
+    <div class="split-callout">
+      <div class="split-card problem">
+        <div class="sc-eyebrow">The Problem — One Mixed Site</div>
+        <h4>Competing against yourself</h4>
+        <ul>
+          <li>Google can't categorize the site — dental or wellness?</li>
+          <li>Dental patients don't trust a site that's also promoting wellness services</li>
+          <li>Wellness patients feel the same in reverse</li>
+          <li>Every page competes with itself for relevance</li>
+          <li>No focused keyword strategy is possible</li>
+          <li>Two audiences = zero clear messaging for either</li>
+        </ul>
+      </div>
+      <div class="split-card solution">
+        <div class="sc-eyebrow">The Solution — Two Focused Websites</div>
+        <h4>Each site built to win its own market</h4>
+        <ul>
+          <li>Dedicated dental site — ranks for dentist, implants, whitening, Invisalign</li>
+          <li>Dedicated wellness site — ranks for its own services and audience</li>
+          <li>Clear messaging for each patient type from the first second</li>
+          <li>Twice the SEO surface area, twice the ranking potential</li>
+          <li>Each site can have its own content strategy and blog</li>
+          <li>Visitors immediately know they're in the right place</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: AI VISIBILITY -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Section 04 — AI Search Visibility</div>
+    <h2>The AI Era Has Started. <em>You're Not In It.</em></h2>
+    <div class="h2-divider"><span class="div-navy"></span><span class="div-teal"></span><span class="div-gold"></span></div>
+    <p class="section-text">
+      Patients are increasingly asking ChatGPT, Google's AI Overviews, and Perplexity to recommend local dentists and wellness providers. These platforms pull answers from structured, content-rich websites. With zero content and no AI-readable structure, RES Health Group does not appear in any of these answers — today or in the near future without a complete rebuild.
+    </p>
+    <div class="ai-callout">
+      <div class="eyebrow">AI Visibility Assessment</div>
+      <h3>Three Reasons AI Platforms Cannot Recommend You</h3>
+      <ul>
+        <li><strong style="color:#e2d9f3;">No content to read:</strong> AI platforms index and learn from written content — service descriptions, FAQs, blog posts. With minimal text on the site, there is nothing for AI to surface when a patient asks for a recommendation.</li>
+        <li><strong style="color:#e2d9f3;">No /llms.txt:</strong> This file tells AI crawlers who you are and what you offer. Without it, even AI systems that do find the site cannot properly understand or represent your practice.</li>
+        <li><strong style="color:#e2d9f3;">No structured data or schema:</strong> Search engines and AI platforms rely on structured markup to understand business type, location, services, and reviews. None of this is present on the current site.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: VERDICT -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Section 05 — Our Assessment</div>
+    <h2>The Honest Truth <em>About Where You Stand</em></h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-navy"></span><span class="div-gold"></span></div>
+
+    <div class="verdict-box">
+      <div class="eyebrow">Bottom Line</div>
+      <h3>The current website cannot compete. It needs to be replaced, not repaired.</h3>
+      <p>Patching the existing site — adjusting fonts, moving images around, adding a few lines of text — will not move the needle. The problems are foundational: the wrong platform, the wrong structure, the wrong strategy. Competitors who have built proper dental websites with content, SEO architecture, and conversion design are years ahead. Continuing with the current site means continuing with zero visibility and zero growth.</p>
+      <p>The market for dental and wellness services in your area is competitive. Patients have multiple options and are searching for them every day. The practices winning that traffic have invested in the right foundation. That same foundation is exactly what we recommend building here — starting fresh, with clarity, focus, and a strategy built to win.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: THE PLAN -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">Section 06 — Our Recommendation</div>
+    <h2>A Clean Start. <em>A Winning Strategy.</em></h2>
+    <div class="h2-divider"><span class="div-teal"></span><span class="div-gold"></span><span class="div-green"></span></div>
+    <p class="section-text">
+      We recommend a full rebuild — not a revision of what exists. Two focused websites, each built with the right foundation, content strategy, and conversion design to actually grow each business.
+    </p>
+
+    <div class="plan-grid">
+      <div class="plan-card">
+        <div class="plan-icon">🦷</div>
+        <h4>New Dedicated Dental Website</h4>
+        <p>A clean, fast, modern dental website built from the ground up. Focused entirely on dental patients: clear services, easy booking, strong local SEO targeting, and a design that converts visitors into appointments. Target: 90+ PageSpeed, full SEO architecture, /llms.txt included.</p>
+      </div>
+      <div class="plan-card gold">
+        <div class="plan-icon">✍️</div>
+        <h4>Content Strategy &amp; Monthly Blogs</h4>
+        <p>4 SEO and AI-optimized blog posts per month per site — targeting the keywords your competitors already rank for. Service page FAQs, location content, and treatment guides that give Google and AI platforms the depth they need to rank and recommend you.</p>
+      </div>
+      <div class="plan-card purple">
+        <div class="plan-icon">🔗</div>
+        <h4>Backlinks &amp; Authority Building</h4>
+        <p>Marty will build backlinks from high-authority health, dental, and local publications. Domain authority is the long-term competitive moat. Starting from zero means the opportunity to build it the right way — clean, relevant, and durable.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-card); border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,0.04); padding:28px 32px; margin:8px 0 0; border-left:3px solid var(--teal);">
+      <div class="eyebrow" style="margin-bottom:8px;">Monthly Reporting</div>
+      <h4 style="font-size:18px; margin-bottom:10px;">Full Transparency, Every Month</h4>
+      <p style="font-size:13.5px; color:var(--text-body); line-height:1.7;">
+        Every month you receive a report like this one showing keyword growth from zero, traffic milestones, new content published, backlinks built, and what's coming next. You'll see exactly when the investment starts working — and we'll be accountable to the numbers every step of the way.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: ACTION ITEMS -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Section 07 — Priority Action Items</div>
+    <h2>Your <em>Roadmap to Visibility</em></h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-teal"></span></div>
+    <div class="action-list">
+      <div class="action-item">
+        <div class="a-num">1</div>
+        <div class="a-body">
+          <h5>Separate Dental and Wellness into Two Websites</h5>
+          <p>Each business needs its own domain, brand, content, and SEO strategy. This is the single most impactful decision — everything else depends on it.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">2</div>
+        <div class="a-body">
+          <h5>Build the Dental Website on a Modern, Fast Platform</h5>
+          <p>New site with proper SEO architecture: title tags, meta descriptions, schema markup, H1/H2 structure, internal linking, and 90+ PageSpeed scores on both desktop and mobile.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">3</div>
+        <div class="a-body">
+          <h5>Write Full Service Pages with Real Content</h5>
+          <p>Every treatment needs a dedicated page: implants, whitening, Invisalign, emergency dentistry, cleanings. Each page needs 400–800 words, patient FAQs, and structured data. This is what Google indexes and ranks.</p>
+        </div>
+        <span class="a-pri immediate">Immediate</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">4</div>
+        <div class="a-body">
+          <h5>Add /llms.txt and AI-Readable Structure</h5>
+          <p>Create the /llms.txt file, implement FAQ schema, and structure content so AI platforms can understand and recommend your practice when patients ask for a dentist.</p>
+        </div>
+        <span class="a-pri high">High Priority</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">5</div>
+        <div class="a-body">
+          <h5>Launch 4 Monthly SEO Blog Posts</h5>
+          <p>Begin building the keyword footprint from zero. Consistent blog content is the engine that grows rankings over time — from 0 keywords today to 400+ within 12–18 months.</p>
+        </div>
+        <span class="a-pri high">High Priority</span>
+      </div>
+      <div class="action-item">
+        <div class="a-num">6</div>
+        <div class="a-body">
+          <h5>Backlink Building from High-Authority Sources</h5>
+          <p>Marty will build quality backlinks to establish domain authority for the new dental site. Starting from zero is actually an advantage — the authority built will be clean and future-proof.</p>
+        </div>
+        <span class="a-pri medium">Ongoing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION BANNER -->
+<div class="loc-banner">
+  <div class="container">
+    <div class="eyebrow">Your Website</div>
+    <h2>RES Health Group</h2>
+    <p class="addr"><a href="https://www.reshealthgroup.com" target="_blank">reshealthgroup.com</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>Prepared by <span class="brand">Dentist Nerds</span> &nbsp;·&nbsp; SEO &amp; Digital Marketing for Dental Practices &nbsp;·&nbsp; <a href="mailto:amin@dentistnerds.com" style="color:var(--teal); text-decoration:none;">amin@dentistnerds.com</a> &nbsp;·&nbsp; June 2026</p>
+    <p style="margin-top:8px; font-size:11px; opacity:0.6;">Data sourced from Semrush and Google PageSpeed Insights. Zero keyword and traffic figures confirmed via Semrush organic research database.</p>
+  </div>
+</footer>
+
+</body>
+</html>
