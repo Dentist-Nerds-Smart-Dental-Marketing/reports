@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO & Website Audit — Seattle Biomimetic Dentistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0d2538;
+  --navy-2: #112e44;
+  --teal: #5fbab0;
+  --gold: #d4a55c;
+  --gold-2: #c9a961;
+  --bg-page: #f5f5f0;
+  --bg-soft: #ebe9e0;
+  --bg-card: #ffffff;
+  --text-dark: #0d2538;
+  --text-body: #4b5563;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --green: #2d8e5c;
+  --green-bg: #d1fae5;
+  --green-text: #065f46;
+  --gold-bg: #fef3c7;
+  --gold-text: #92400e;
+  --red: #c53030;
+  --red-bg: #fee2e2;
+  --red-text: #991b1b;
+  --blue: #2c6fb3;
+  --blue-bg: #dbeafe;
+  --blue-text: #1e40af;
+  --purple: #7c3aed;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg-page); color: var(--text-body);
+  line-height: 1.6; font-size: 14px;
+}
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; color: var(--text-dark); letter-spacing: -0.01em; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+.eyebrow {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: 14px;
+}
+
+/* HERO */
+.hero { background: var(--navy); color: #fff; padding: 56px 0 0; position: relative; }
+.hero-logo-corner {
+  position: absolute; top: 30px; right: 40px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-logo-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.hero-logo-corner img {
+  height: 48px; width: 48px; border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2); object-fit: cover;
+}
+.hero-logo-corner .prepared-by {
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #8aa1b3; font-weight: 600;
+}
+.hero-logo-corner .brand-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px; font-weight: 600; color: #fff;
+  line-height: 1; letter-spacing: -0.01em;
+}
+.hero h1 { font-size: 54px; font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 8px; }
+.hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+.hero-sub { font-size: 15px; color: #c7d4dd; margin-bottom: 32px; }
+.hero .eyebrow { color: var(--teal); }
+.hero-meta-row {
+  display: grid; grid-template-columns: repeat(4, auto); gap: 56px;
+  padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 28px;
+}
+.hero-meta-item .meta-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #8aa1b3; margin-bottom: 6px; font-weight: 600;
+}
+.hero-meta-item .meta-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+/* SECTIONS */
+.section { padding: 60px 0; }
+.section h2 { font-size: 38px; font-weight: 600; margin-bottom: 14px; }
+.section-text {
+  font-size: 14px; color: var(--text-body); max-width: 760px;
+  margin-bottom: 28px; line-height: 1.7;
+}
+.section-text strong { color: var(--text-dark); font-weight: 600; }
+.h2-divider {
+  display: grid; grid-template-columns: repeat(3, 90px); gap: 0;
+  margin: 0 0 30px;
+}
+.h2-divider span { height: 2px; }
+.div-purple { background: var(--purple); }
+.div-green { background: var(--green); }
+.div-gold { background: var(--gold-2); }
+.div-blue { background: var(--blue); }
+.div-red { background: var(--red); }
+
+/* KPI CARDS */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+.kpi-card {
+  background: var(--bg-card); padding: 22px 20px; text-align: center;
+  border-top: 2px solid var(--teal); border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.kpi-card.gold { border-top-color: var(--gold); }
+.kpi-card.green { border-top-color: var(--green); }
+.kpi-card.blue { border-top-color: var(--blue); }
+.kpi-card.red { border-top-color: var(--red); }
+.kpi-num {
+  font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600;
+  color: var(--text-dark); line-height: 1; margin-bottom: 8px;
+}
+.kpi-num.red { color: var(--red); }
+.kpi-num.gold { color: var(--gold-2); }
+.kpi-num.green { color: var(--green); }
+.kpi-label {
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-dark); font-weight: 600; margin-bottom: 4px;
+}
+.kpi-sub { font-size: 11px; color: var(--text-muted); }
+
+/* CALLOUTS */
+.callout-takeaway {
+  background: #fff; border-left: 4px solid var(--gold);
+  padding: 22px 26px; margin-bottom: 28px; border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.callout-takeaway-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-2); margin-bottom: 8px;
+}
+.callout-takeaway-text {
+  font-size: 15.5px; color: var(--text-dark); line-height: 1.65;
+}
+.callout-takeaway-text strong { color: var(--navy); }
+
+.callout-dark {
+  background: var(--navy); color: #d8d4c8;
+  padding: 20px 26px; border-radius: 4px; margin-top: 24px;
+  font-size: 13px; line-height: 1.65;
+}
+.callout-dark strong { color: #fff; }
+
+.callout-alert {
+  background: var(--red-bg); border-left: 4px solid var(--red);
+  padding: 18px 22px; border-radius: 4px; margin-bottom: 18px;
+  font-size: 13.5px; color: var(--red-text); line-height: 1.6;
+}
+.callout-alert strong { color: var(--red); }
+
+.callout-green {
+  background: #eaf5ee; border-left: 4px solid var(--green);
+  padding: 14px 22px; border-radius: 4px;
+  font-size: 12.5px; font-weight: 500; margin-top: 18px; color: var(--green-text);
+}
+
+/* ISSUE CARDS */
+.issue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 28px; }
+.issue-card {
+  background: var(--bg-card); padding: 24px 26px; border-radius: 6px;
+  border-top: 3px solid var(--red); box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+.issue-card.gold-top { border-top-color: var(--gold); }
+.issue-card.blue-top { border-top-color: var(--blue); }
+.issue-card.teal-top { border-top-color: var(--teal); }
+.issue-icon { font-size: 28px; margin-bottom: 10px; }
+.issue-title {
+  font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600;
+  color: var(--text-dark); margin-bottom: 10px; line-height: 1.3;
+}
+.issue-body { font-size: 13px; color: var(--text-body); line-height: 1.65; }
+.issue-body strong { color: var(--text-dark); font-weight: 600; }
+
+/* PLAN STEPS */
+.plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 28px 0; }
+.plan-card {
+  background: var(--bg-card); padding: 26px 24px; border-radius: 6px;
+  border-top: 3px solid var(--teal); box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+.plan-card.gold-top { border-top-color: var(--gold); }
+.plan-card.green-top { border-top-color: var(--green); }
+.plan-card.blue-top { border-top-color: var(--blue); }
+.plan-card.purple-top { border-top-color: var(--purple); }
+.plan-num {
+  font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 600;
+  color: var(--bg-soft); line-height: 1; margin-bottom: 10px;
+}
+.plan-title {
+  font-weight: 700; font-size: 14.5px; color: var(--text-dark); margin-bottom: 8px;
+}
+.plan-body { font-size: 13px; color: var(--text-body); line-height: 1.6; }
+.plan-body strong { color: var(--text-dark); font-weight: 600; }
+
+/* DELIVERABLES LIST */
+.deliverable-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.deliverable-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; color: var(--text-dark); line-height: 1.6;
+}
+.deliverable-list li::before {
+  content: "✓"; flex-shrink: 0;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--green-bg); color: var(--green);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.deliverable-list li strong { color: var(--navy); font-weight: 600; }
+
+/* COMPETITOR TABLE */
+.data-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--bg-card); border-radius: 4px;
+  font-size: 13px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.data-table thead { background: var(--navy); color: #fff; }
+.data-table th {
+  text-align: left; padding: 14px 18px;
+  font-weight: 600; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.data-table th.num, .data-table td.num { text-align: right; }
+.data-table td { padding: 14px 18px; border-bottom: 1px solid #f0f0eb; color: var(--text-dark); }
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background: #fafafa; }
+.pill {
+  display: inline-block; padding: 4px 10px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 600; min-width: 38px; text-align: center;
+}
+.pill-green { background: var(--green-bg); color: var(--green-text); }
+.pill-gold  { background: var(--gold-bg); color: var(--gold-text); }
+.pill-red   { background: var(--red-bg); color: var(--red-text); }
+.pill-blue  { background: var(--blue-bg); color: var(--blue-text); }
+
+/* OPPORTUNITY BIG NUMBERS */
+.opp-numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; margin: 28px 0 40px; }
+.opp-num { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 600; line-height: 1; margin-bottom: 8px; }
+.opp-num.green { color: var(--green); }
+.opp-num.gold  { color: var(--gold-2); }
+.opp-num.blue  { color: var(--blue); }
+.opp-label { font-size: 13px; color: var(--text-dark); font-weight: 500; }
+.opp-sub { font-size: 11.5px; color: var(--text-muted); margin-top: 4px; }
+
+/* BOTTOM LINE (dark section) */
+.bottom-line-card {
+  margin-top: 56px;
+  background: linear-gradient(135deg, rgba(212,165,92,0.12) 0%, rgba(212,165,92,0.04) 100%);
+  border: 1px solid rgba(212,165,92,0.4);
+  border-left: 5px solid var(--gold);
+  border-radius: 8px; padding: 38px 44px;
+}
+.bottom-line-label {
+  font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; color: var(--gold); margin-bottom: 14px;
+}
+.bottom-line-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px; font-weight: 600; color: #fff;
+  margin: 0 0 22px; line-height: 1.25;
+}
+.bottom-line-headline em { font-style: italic; color: var(--gold); font-weight: 500; }
+.bottom-line-body p {
+  font-size: 15.5px; color: #e2e8f0; line-height: 1.7; margin: 0 0 16px;
+}
+.bottom-line-body p:last-child { margin-bottom: 0; }
+.bottom-line-body strong { color: #fff; font-weight: 600; }
+.bottom-line-signoff {
+  margin-top: 24px !important; padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 14.5px !important; color: #cbd5e1 !important; font-style: italic;
+}
+.bottom-line-signoff strong { color: var(--gold) !important; font-style: normal; }
+
+/* CTA BUTTON */
+.cta-btn {
+  display: inline-block; margin-top: 28px;
+  background: var(--gold); color: var(--navy);
+  font-size: 14px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 16px 36px; border-radius: 4px;
+}
+
+/* WIN CARDS (dark section) */
+.atp-block-label {
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; color: var(--gold); margin: 36px 0 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.atp-label-icon { font-size: 18px; }
+.atp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.atp-win-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(212,165,92,0.2);
+  border-left: 3px solid var(--green);
+  padding: 24px; border-radius: 6px;
+}
+.atp-win-card.gold-left { border-left-color: var(--gold); }
+.atp-win-card.teal-left { border-left-color: var(--teal); }
+.atp-win-num {
+  font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600;
+  color: var(--green); line-height: 1; margin-bottom: 8px;
+}
+.atp-win-num.gold { color: var(--gold); }
+.atp-win-num.teal { color: var(--teal); }
+.atp-win-title { font-weight: 700; font-size: 14.5px; color: #fff; margin-bottom: 8px; }
+.atp-win-desc { font-size: 13.5px; color: #cbd5e1; line-height: 1.6; }
+.atp-win-desc strong { color: #fff; font-weight: 600; }
+
+/* FOCUS CARDS */
+.atp-focus-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-top: 3px solid var(--gold);
+  padding: 24px; border-radius: 6px;
+}
+.atp-focus-priority {
+  font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;
+  color: var(--gold); margin-bottom: 10px;
+}
+.atp-focus-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 600; color: #fff; margin-bottom: 10px; line-height: 1.3;
+}
+.atp-focus-desc { font-size: 13.5px; color: #cbd5e1; line-height: 1.6; }
+.atp-focus-desc strong { color: var(--gold); font-weight: 600; }
+
+/* FOOTER */
+.footer {
+  background: var(--navy); color: #8aa1b3;
+  padding: 28px 40px; font-size: 12px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+}
+.footer-prepared { display: flex; align-items: center; gap: 14px; }
+.footer-prepared-label {
+  font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #8aa1b3;
+}
+.footer-brand-row { display: flex; align-items: center; gap: 10px; }
+.footer-prepared img { height: 36px; width: 36px; border-radius: 50%; object-fit: cover; }
+.footer-brand-name {
+  font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: #fff;
+}
+.footer .sources { font-size: 11.5px; color: #8aa1b3; }
+.footer .sources span { font-weight: 600; }
+
+@media (max-width: 900px) {
+  .hero h1 { font-size: 38px; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .issue-grid { grid-template-columns: 1fr; }
+  .plan-grid { grid-template-columns: 1fr; }
+  .atp-grid { grid-template-columns: 1fr; }
+  .opp-numbers { grid-template-columns: 1fr; }
+  .container { padding: 0 20px; }
+  .hero-meta-row { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .hero-logo-corner { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-logo-corner">
+      <img src="data:image/png;base64,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" alt="Dentist Nerds" />
+      <div class="hero-logo-text">
+        <div class="prepared-by">Prepared by</div>
+        <div class="brand-name">Dentist Nerds</div>
+      </div>
+    </div>
+
+    <div class="eyebrow">WEBSITE &amp; SEO AUDIT · GROWTH PROPOSAL</div>
+    <h1>Your Website &amp; SEO<br><em>Audit Report</em></h1>
+    <div class="hero-sub">Seattle Biomimetic Dentistry &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; Brendan Lopez, DDS</div>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <div class="meta-label">Website</div>
+        <div class="meta-value">seattlebiomimeticdentistry.com</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Report Date</div>
+        <div class="meta-value">June 8, 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Current Monthly Traffic</div>
+        <div class="meta-value">~1 Visitor / Month</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Prepared By</div>
+        <div class="meta-value">Dentist Nerds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CURRENT STATE SNAPSHOT ============ -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">WHERE YOU STAND TODAY</div>
+    <h2>The Honest Picture</h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-purple"></span></div>
+
+    <div class="callout-takeaway">
+      <div class="callout-takeaway-label">📊 The Bottom Line</div>
+      <div class="callout-takeaway-text">
+        Your website at <strong>seattlebiomimeticdentistry.com</strong> currently receives <strong>approximately 1 visitor per month</strong> from Google and ranks for only <strong>17 keywords</strong> — virtually no organic SEO presence. The site was built on Squarespace and while it has a clean aesthetic, <strong>it is not built to attract, convert, or retain patients from search</strong>. This report explains why — and exactly what we'll do about it.
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card red">
+        <div class="kpi-num red">~1</div>
+        <div class="kpi-label">Monthly Visitors</div>
+        <div class="kpi-sub">From all organic search</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-num red">17</div>
+        <div class="kpi-label">Keywords Ranked</div>
+        <div class="kpi-sub">Industry avg: 300–800+</div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-num gold">0</div>
+        <div class="kpi-label">Service Pages</div>
+        <div class="kpi-sub">No treatment-specific pages</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">Squarespace</div>
+        <div class="kpi-label">Platform</div>
+        <div class="kpi-sub">Limits SEO flexibility</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WEBSITE ISSUES ============ -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">WEBSITE ANALYSIS</div>
+    <h2>What's Holding the Site Back</h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-blue"></span></div>
+
+    <p class="section-text">
+      We reviewed <strong>seattlebiomimeticdentistry.com</strong> in detail. You built it on Squarespace, and you did a great job — the design shows real care for the brand. But based on our experience with hundreds of dental websites, several factors are making it very hard for this site to attract new patients or convert the ones who do find it. Here's what we found:
+    </p>
+
+    <div class="issue-grid">
+      <div class="issue-card">
+        <div class="issue-icon">🎮</div>
+        <div class="issue-title">Typography That Fights the Brand</div>
+        <div class="issue-body">
+          The font choices read more like a <strong>gaming or tech startup</strong> than a trusted healthcare provider. Patients searching for a dentist need to feel <strong>safe, professional, and cared for</strong> the moment they land. Typography is one of the first signals that builds — or breaks — that trust in under two seconds.
+        </div>
+      </div>
+
+      <div class="issue-card gold-top">
+        <div class="issue-icon">📐</div>
+        <div class="issue-title">Layout &amp; Calls-to-Action Need Rebuilding</div>
+        <div class="issue-body">
+          The page layout doesn't guide visitors toward a <strong>phone call or booking</strong>. Clear CTAs — "Book an Appointment," "Call Us Today," "Request a Consultation" — need to appear in the hero, mid-page, and footer. Right now, patients who land on the site have no obvious next step.
+        </div>
+      </div>
+
+      <div class="issue-card blue-top">
+        <div class="issue-icon">📄</div>
+        <div class="issue-title">No Treatment / Service Pages</div>
+        <div class="issue-body">
+          Google ranks <strong>individual service pages</strong> — not homepages — for specific searches like "biomimetic dentist Seattle," "tooth-colored fillings Seattle," or "CEREC same-day crowns Seattle." Without dedicated pages for each treatment, you can't rank for any of those searches, no matter how good the homepage is.
+        </div>
+      </div>
+
+      <div class="issue-card teal-top">
+        <div class="issue-icon">⌨️</div>
+        <div class="issue-title">Not Written for Search Engines</div>
+        <div class="issue-body">
+          SEO is largely a <strong>text-based game</strong>. Google reads words. Right now, the site doesn't have enough written content explaining your services, your philosophy, or your credentials in a way that Google can index. A great website needs rich, keyword-targeted copy on every page so search engines understand exactly what you offer and who you serve.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-alert">
+      <strong>Note on Squarespace:</strong> Squarespace is a capable platform, but it has real limitations for SEO — from how it handles page structure and schema markup to restrictions on custom code and page speed optimization. For a practice that wants to compete seriously on Google, a purpose-built website gives you far more control and better results.
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEO ANALYSIS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">SEO ANALYSIS · SEMRUSH DATA</div>
+    <h2>Your Search Presence Today</h2>
+    <div class="h2-divider"><span class="div-red"></span><span class="div-gold"></span><span class="div-green"></span></div>
+
+    <p class="section-text">
+      We ran your domain through Semrush, the same tool we use to track all of our clients. The results confirm what the traffic data shows: <strong>seattlebiomimeticdentistry.com has essentially no SEO foundation built yet.</strong>
+    </p>
+
+    <table class="data-table" style="margin-bottom:28px;">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Your Site Today</th>
+          <th>Healthy Dental Practice</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Organic Keywords Ranked</td>
+          <td><strong>17</strong></td>
+          <td>300–800+</td>
+          <td><span class="pill pill-red">Critical</span></td>
+        </tr>
+        <tr>
+          <td>Est. Monthly Organic Traffic</td>
+          <td><strong>~1 visitor</strong></td>
+          <td>200–1,000+</td>
+          <td><span class="pill pill-red">Critical</span></td>
+        </tr>
+        <tr>
+          <td>Service / Treatment Pages</td>
+          <td><strong>0</strong></td>
+          <td>8–20+</td>
+          <td><span class="pill pill-red">Critical</span></td>
+        </tr>
+        <tr>
+          <td>Blog / Content Posts</td>
+          <td><strong>0</strong></td>
+          <td>12–50+</td>
+          <td><span class="pill pill-red">Missing</span></td>
+        </tr>
+        <tr>
+          <td>Backlinks (referring domains)</td>
+          <td><strong>Very few</strong></td>
+          <td>20–100+</td>
+          <td><span class="pill pill-gold">Weak</span></td>
+        </tr>
+        <tr>
+          <td>Page Speed (Mobile)</td>
+          <td><strong>Limited by Squarespace</strong></td>
+          <td>85+ score</td>
+          <td><span class="pill pill-gold">At Risk</span></td>
+        </tr>
+        <tr>
+          <td>Local SEO / Listing Consistency</td>
+          <td><strong>Not managed</strong></td>
+          <td>All major directories synced</td>
+          <td><span class="pill pill-gold">Needs Work</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout-dark">
+      <strong>What this means in plain English:</strong> Right now, when someone in Seattle searches "biomimetic dentist," "mercury-free dentist Seattle," or even "Brendan Lopez dentist Seattle," your website is not showing up. Every day without an SEO foundation is a day those patients are calling your competitors instead.
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE OPPORTUNITY ============ -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">THE OPPORTUNITY</div>
+    <h2>What Seattle Patients Are Searching For</h2>
+    <div class="h2-divider"><span class="div-green"></span><span class="div-gold"></span><span class="div-blue"></span></div>
+
+    <p class="section-text">
+      Biomimetic dentistry is a <strong>high-value, low-competition niche</strong> in Seattle. Most general dentists don't offer it or explain it well online — which means the first practice to own this digital space wins. Here are the types of searches your future patients are already making:
+    </p>
+
+    <table class="data-table" style="margin-bottom:28px;">
+      <thead>
+        <tr>
+          <th>Search Term</th>
+          <th class="num">Est. Monthly Searches</th>
+          <th>Intent</th>
+          <th>You Rank?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>biomimetic dentist Seattle</td>
+          <td class="num">50–100</td>
+          <td>High intent — ready to book</td>
+          <td><span class="pill pill-red">No</span></td>
+        </tr>
+        <tr>
+          <td>holistic dentist Seattle</td>
+          <td class="num">200–500</td>
+          <td>High intent — values-aligned patient</td>
+          <td><span class="pill pill-red">No</span></td>
+        </tr>
+        <tr>
+          <td>mercury free dentist Seattle</td>
+          <td class="num">100–300</td>
+          <td>High intent — safety-conscious patient</td>
+          <td><span class="pill pill-red">No</span></td>
+        </tr>
+        <tr>
+          <td>tooth colored fillings Seattle</td>
+          <td class="num">100–250</td>
+          <td>Treatment search</td>
+          <td><span class="pill pill-red">No</span></td>
+        </tr>
+        <tr>
+          <td>CEREC crowns Seattle</td>
+          <td class="num">50–150</td>
+          <td>Same-day treatment search</td>
+          <td><span class="pill pill-red">No</span></td>
+        </tr>
+        <tr>
+          <td>minimally invasive dentist Seattle</td>
+          <td class="num">50–100</td>
+          <td>Philosophy-driven patient</td>
+          <td><span class="pill pill-red">No</span></td>
+        </tr>
+        <tr>
+          <td>dental inlays onlays Seattle</td>
+          <td class="num">50–100</td>
+          <td>Specific treatment search</td>
+          <td><span class="pill pill-red">No</span></td>
+        </tr>
+        <tr>
+          <td>cosmetic dentist Seattle</td>
+          <td class="num">500–1,000</td>
+          <td>Broad cosmetic intent</td>
+          <td><span class="pill pill-red">No</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="opp-numbers">
+      <div>
+        <div class="opp-num green">1,000+</div>
+        <div class="opp-label">Monthly searches your future patients are making</div>
+        <div class="opp-sub">Across the keywords above — none currently going to you</div>
+      </div>
+      <div>
+        <div class="opp-num gold">$0</div>
+        <div class="opp-label">Revenue from organic search today</div>
+        <div class="opp-sub">With only ~1 visitor/month from Google</div>
+      </div>
+      <div>
+        <div class="opp-num blue">12–18</div>
+        <div class="opp-label">Months to strong SEO results</div>
+        <div class="opp-sub">If we start building the foundation today</div>
+      </div>
+    </div>
+
+    <div class="callout-green">
+      ✅ <strong>The good news:</strong> Biomimetic and holistic dentistry searches in Seattle are underserved. There is no dominant competitor owning this niche online. The opportunity to be #1 in Seattle for these searches is wide open — but only for whoever builds first.
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR PLAN ============ -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">THE DENTIST NERDS GROWTH PLAN</div>
+    <h2>Here's Exactly What We'll Do</h2>
+    <div class="h2-divider"><span class="div-teal" style="background:var(--teal);height:2px;display:block;"></span><span class="div-gold"></span><span class="div-green"></span></div>
+
+    <p class="section-text">
+      Our plan is built in phases, starting with a solid foundation and expanding from there. Every element is designed to work together — the website, the content, the backlinks, and the local presence all reinforce each other.
+    </p>
+
+    <div class="plan-grid">
+      <div class="plan-card">
+        <div class="plan-num">01</div>
+        <div class="plan-title">Rebuild the Website</div>
+        <div class="plan-body">
+          We will design and build a <strong>brand-new website</strong> purpose-built for SEO and patient conversion. Professional fonts and typography that build trust. Clean layout with clear calls-to-action on every page. Fast-loading, mobile-first, and fully optimized for Google indexing from day one.
+        </div>
+      </div>
+
+      <div class="plan-card gold-top">
+        <div class="plan-num">02</div>
+        <div class="plan-title">Add All Treatment Pages</div>
+        <div class="plan-body">
+          We will create <strong>dedicated service pages</strong> for every treatment you offer — biomimetic fillings, tooth-colored restorations, CEREC crowns, inlays &amp; onlays, mercury-free dentistry, ozone therapy, and more. Each page written with targeted keywords so Google knows exactly what you do.
+        </div>
+      </div>
+
+      <div class="plan-card green-top">
+        <div class="plan-num">03</div>
+        <div class="plan-title">4 Blog Posts Per Month</div>
+        <div class="plan-body">
+          Once the site is live, we post <strong>four SEO-optimized blog articles every month</strong>. Each post targets a specific search query your ideal patients are typing. Over 12 months, this creates 48+ pages of content that expand your keyword footprint and build Google authority month by month.
+        </div>
+      </div>
+
+      <div class="plan-card blue-top">
+        <div class="plan-num">04</div>
+        <div class="plan-title">Authority Backlink Building</div>
+        <div class="plan-body">
+          We will build <strong>high-quality backlinks</strong> from our own authority dental websites and partner networks directly to your site. Backlinks are one of Google's top ranking factors. Every link we build raises your domain authority and pushes you higher in search results.
+        </div>
+      </div>
+
+      <div class="plan-card purple-top">
+        <div class="plan-num">05</div>
+        <div class="plan-title">Local Listing Management</div>
+        <div class="plan-body">
+          We will <strong>claim, optimize, and sync</strong> your practice across all major local directories — Google Business Profile, Yelp, Healthgrades, Zocdoc, Vitals, and 50+ more. Consistent NAP (Name, Address, Phone) data across the web is a critical local SEO signal Google uses to decide if you show up in map results.
+        </div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-num">06</div>
+        <div class="plan-title">Monthly Reports &amp; Strategy</div>
+        <div class="plan-body">
+          Every month you'll receive a <strong>detailed performance report</strong> — like this one — showing keyword rankings, traffic, GBP insights, and what we're doing next. We track, analyze, and adjust strategy based on real data so you always know what's working and where we're headed.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED ============ -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="eyebrow">COMPLETE DELIVERABLES</div>
+    <h2>Everything Included in Your Plan</h2>
+    <div class="h2-divider"><span class="div-green"></span><span class="div-teal" style="background:var(--teal);height:2px;display:block;"></span><span class="div-gold"></span></div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 28px;">
+      <div>
+        <div style="font-size:12px; letter-spacing:0.16em; text-transform:uppercase; font-weight:700; color:var(--navy); margin-bottom:16px;">Website &amp; Technical SEO</div>
+        <ul class="deliverable-list">
+          <li><strong>Complete website rebuild</strong> — professional, conversion-focused design</li>
+          <li><strong>Treatment &amp; service pages</strong> — one for every procedure you offer</li>
+          <li><strong>SEO copywriting</strong> — keyword-targeted content written for Google and patients</li>
+          <li><strong>On-page optimization</strong> — title tags, meta descriptions, header structure, schema</li>
+          <li><strong>Mobile-first &amp; fast</strong> — optimized for Core Web Vitals and page speed</li>
+          <li><strong>Technical audit &amp; fixes</strong> — crawlability, sitemap, robots.txt, canonical tags</li>
+          <li><strong>Google Analytics &amp; Search Console setup</strong></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:12px; letter-spacing:0.16em; text-transform:uppercase; font-weight:700; color:var(--navy); margin-bottom:16px;">Ongoing SEO &amp; Growth</div>
+        <ul class="deliverable-list">
+          <li><strong>4 blog posts per month</strong> — researched, written, and published for you</li>
+          <li><strong>Backlink building</strong> — authority links from dental media and partner networks</li>
+          <li><strong>Local listing management</strong> — 50+ directories synced and monitored</li>
+          <li><strong>Google Business Profile optimization</strong> — posts, photos, Q&amp;A, review strategy</li>
+          <li><strong>Monthly ranking reports</strong> — track every keyword we're targeting</li>
+          <li><strong>Monthly strategy calls</strong> — review results, set next month's priorities</li>
+          <li><strong>Competitor monitoring</strong> — know what your Seattle competitors are doing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT THIS MEANS FOR YOU (dark) ============ -->
+<section class="section" style="background:var(--navy); color:#fff; padding-top:80px; padding-bottom:80px;">
+  <div class="container">
+
+    <div class="atp-block-label" style="margin-top:0;">
+      <span class="atp-label-icon">🚀</span> WHY THIS MATTERS FOR YOUR PRACTICE
+    </div>
+
+    <div class="atp-grid">
+      <div class="atp-win-card teal-left">
+        <div class="atp-win-num teal">Niche</div>
+        <div class="atp-win-title">First-Mover Advantage</div>
+        <div class="atp-win-desc">
+          Biomimetic dentistry is <strong>completely underserved on Google in Seattle</strong>. No competitor has built a dominant SEO presence for this niche. The practice that moves first wins the top spots — and top spots in Google are extremely difficult to displace once established.
+        </div>
+      </div>
+      <div class="atp-win-card gold-left">
+        <div class="atp-win-num gold">$0</div>
+        <div class="atp-win-title">No Paid Ads Required</div>
+        <div class="atp-win-desc">
+          Organic SEO delivers patients at <strong>no cost per click</strong>. Unlike Google Ads that stop the moment you stop paying, SEO compounds over time. Every blog post, every service page, every backlink continues working for you for years. It's the highest-ROI marketing channel in dentistry.
+        </div>
+      </div>
+      <div class="atp-win-card">
+        <div class="atp-win-num">12mo</div>
+        <div class="atp-win-title">Realistic Timeline to Results</div>
+        <div class="atp-win-desc">
+          SEO is not overnight, but it is predictable. <strong>Within 3–6 months</strong> of launching the new site you'll start ranking for low-competition terms. Within <strong>12–18 months</strong> you can realistically be the top result for "biomimetic dentist Seattle" — a search that signals a patient who already knows exactly what they want.
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;">
+      <div class="atp-block-label">
+        <span class="atp-label-icon">📌</span> YOUR PHASE-BY-PHASE ROADMAP
+      </div>
+      <div class="atp-grid">
+        <div class="atp-focus-card">
+          <div class="atp-focus-priority">Phase 1 · Months 1–2</div>
+          <div class="atp-focus-title">Build the Foundation</div>
+          <div class="atp-focus-desc">New website designed and launched. All treatment pages live. Google Search Console and Analytics connected. Local listings claimed and synced. This phase sets the technical and structural foundation everything else is built on. <strong>Nothing ranks without this.</strong></div>
+        </div>
+        <div class="atp-focus-card">
+          <div class="atp-focus-priority">Phase 2 · Months 3–9</div>
+          <div class="atp-focus-title">Content &amp; Authority Growth</div>
+          <div class="atp-focus-desc">Four new blog posts published every month. Backlinks built consistently from authority dental sites. GBP optimized with weekly posts and photo updates. <strong>Keywords start appearing</strong> in the top 30–50 and climbing toward page one as Google indexes and trusts the new content.</div>
+        </div>
+        <div class="atp-focus-card">
+          <div class="atp-focus-priority">Phase 3 · Months 10–18+</div>
+          <div class="atp-focus-title">Dominate &amp; Convert</div>
+          <div class="atp-focus-desc">The site has 50+ pages of targeted content. Keyword rankings are on page one for your most valuable terms. <strong>New patients are finding you daily</strong> from organic search — patients who searched for exactly what you offer and are ready to book. Monthly reports track every gain.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-line-card">
+      <div class="bottom-line-label">📌 THE BOTTOM LINE</div>
+      <div class="bottom-line-headline">You've built something <em>worth finding</em> — let's make sure people can find it.</div>
+      <div class="bottom-line-body">
+        <p>
+          You took the time to build a practice around <strong>biomimetic dentistry</strong> — a specialized, patient-first approach that genuinely sets you apart. That's the hard part, and you've already done it. The problem right now is simple: <strong>almost no one outside your existing network can find you.</strong>
+        </p>
+        <p>
+          With 1 visitor per month and 17 keywords ranked, your website is essentially invisible on Google. Patients who would love what you offer — who are already searching for holistic, mercury-free, biomimetic dental care in Seattle — are landing on your competitors' websites instead.
+        </p>
+        <p>
+          Our plan will change that. We'll rebuild the site to convert, add every treatment page, publish consistent content, build backlinks, manage your local presence, and send you a detailed report every single month so you can see exactly how your investment is performing.
+        </p>
+        <p class="bottom-line-signoff">
+          <strong>Ready to get started?</strong> Reply to this report or reach out directly to Amin at <strong>amin@dentistnerds.com</strong> — we'll walk you through next steps and get the project kicked off.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="footer">
+  <div class="footer-prepared">
+    <div>
+      <div class="footer-prepared-label">Prepared by</div>
+      <div class="footer-brand-row">
+        <img src="data:image/png;base64,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" alt="Dentist Nerds" />
+        <div class="footer-brand-name">Dentist Nerds</div>
+      </div>
+      <div style="font-size:11px; color:var(--text-muted);">
+        <a href="https://www.dentistnerds.com" target="_blank" rel="noopener noreferrer" style="color:#8aa1b3; text-decoration:none;">dentistnerds.com</a>
+      </div>
+    </div>
+  </div>
+  Generated June 8, 2026 · Website &amp; SEO Audit Report for Seattle Biomimetic Dentistry
+  <div class="sources">
+    Data sources: <span style="color:#ff642d;">Semrush</span> · <span style="color:#4285f4;">Google Search</span> · <span style="color:#34a853;">Manual Site Audit</span>
+  </div>
+</div>
+
+</body>
+</html>
