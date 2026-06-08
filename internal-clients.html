@@ -54,6 +54,7 @@
     --social: #a855f7;
     --hosting: #6b7280;
     --newlaunch: #ec4899;
+    --former: #ef4444;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -149,6 +150,7 @@
   .btn[data-filter="social"].active { background: var(--social); border-color: var(--social); }
   .btn[data-filter="hosting"].active { background: var(--hosting); border-color: var(--hosting); }
   .btn[data-filter="newlaunch"].active { background: var(--newlaunch); border-color: var(--newlaunch); }
+  .btn[data-filter="former"].active   { background: var(--former);   border-color: var(--former); }
 
   .stats-bar {
     padding: 16px 32px;
@@ -260,6 +262,7 @@
   .tag-social  { background: rgba(168,85,247,.15); color: #c084fc; border: 1px solid rgba(168,85,247,.3); }
   .tag-hosting { background: rgba(107,114,128,.15);color: #9ca3af; border: 1px solid rgba(107,114,128,.3);}
   .tag-newlaunch{ background: rgba(236,72,153,.15); color: #f472b6; border: 1px solid rgba(236,72,153,.3);}
+  .tag-former   { background: rgba(239,68,68,.15);  color: #f87171; border: 1px solid rgba(239,68,68,.3); }
 
   .blog-badge {
     display: inline-flex;
@@ -345,6 +348,7 @@
     <button class="btn" data-filter="social">Social Media</button>
     <button class="btn" data-filter="hosting">Hosting</button>
     <button class="btn" data-filter="newlaunch">New Launch</button>
+    <button class="btn" data-filter="former">No Longer Client</button>
   </div>
 </div>
 
@@ -723,7 +727,7 @@ const clients = [
     email: "",
     email2: "",
     seo: false, blogs: 0,
-    meta: false, google: false, social: false, hosting: true, newLaunch: false
+    meta: false, google: false, social: false, hosting: false, newLaunch: false, former: true
   },
   {
     name: "Big Smilez Texas",
@@ -802,6 +806,7 @@ function buildStats() {
     { key: "social",   label: "Social Media",    color: "#a855f7", count: serviceCount("social") },
     { key: "hosting",  label: "Hosting",         color: "#6b7280", count: serviceCount("hosting") },
     { key: "newLaunch",label: "New Launch",      color: "#ec4899", count: serviceCount("newLaunch") },
+    { key: "former",   label: "No Longer Client",color: "#ef4444", count: serviceCount("former") },
   ];
   bar.innerHTML = defs.map(d => `
     <div class="stat-chip">
@@ -824,6 +829,7 @@ function buildRow(c) {
   if (c.social)   tags.push(tagHTML("social",   "Social",      "tag-social"));
   if (c.hosting)  tags.push(tagHTML("hosting",  "Hosting",     "tag-hosting"));
   if (c.newLaunch)tags.push(tagHTML("newlaunch","New Launch",  "tag-newlaunch"));
+  if (c.former)   tags.push(tagHTML("former",  "No Longer Client","tag-former"));
   if (!tags.length) tags.push(`<span style="color:var(--muted);font-size:12px;">—</span>`);
 
   const emailLine = c.email  ? `<a href="mailto:${c.email}">${c.email}</a>` : "";
@@ -832,7 +838,7 @@ function buildRow(c) {
     ? `<td style="text-align:center;"><span class="blog-badge">${c.blogs}</span></td>`
     : `<td class="blog-dash">—</td>`;
 
-  return `<tr data-seo="${c.seo}" data-meta="${c.meta}" data-google="${c.google}" data-social="${c.social}" data-hosting="${c.hosting}" data-newlaunch="${c.newLaunch}" data-name="${c.name.toLowerCase()}">
+  return `<tr data-seo="${c.seo}" data-meta="${c.meta}" data-google="${c.google}" data-social="${c.social}" data-hosting="${c.hosting}" data-newlaunch="${c.newLaunch}" data-former="${c.former||false}" data-name="${c.name.toLowerCase()}">
     <td>
       <div class="client-name">${c.name}</div>
       ${c.doctor ? `<div class="doctor-name">${c.doctor}</div>` : ""}
