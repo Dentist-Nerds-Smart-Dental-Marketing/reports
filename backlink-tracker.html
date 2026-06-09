@@ -930,11 +930,7 @@ function buildRow(c) {
     const vArr = Array.isArray(v) ? v : null;
     const vPrimary = vArr ? vArr[0] : v;
     if (vArr) {
-      const links = vArr.map((u,i) => {
-        const lang = (u.match(/https?:\/\/(\w+)\.wikipedia\.org/) || [])[1] || (i+1);
-        return `<a class="bl-yes" href="${u}" target="_blank" rel="noopener" title="${lang}.wikipedia.org" style="font-size:10px;padding:1px 3px;display:block;line-height:1.5;">${lang}</a>`;
-      }).join("");
-      cells += `<td class="cell-wrap" style="vertical-align:top;padding:3px 2px;">${links}</td>`;
+      cells += `<td class="cell-wrap"><a class="bl-yes" href="${vArr[0]}" target="_blank" rel="noopener" title="${s.name} — ${vArr.length} links">✓ <span style="font-size:10px;opacity:.8">${vArr.length}</span></a></td>`;
     } else if (vPrimary && vPrimary !== "pending" && vPrimary !== "yes") {
       cells += `<td class="cell-wrap"><a class="bl-yes" href="${vPrimary}" target="_blank" rel="noopener" title="${s.name}">✓</a></td>`;
     } else if (vPrimary === "yes") {
