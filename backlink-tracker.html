@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backlink Tracker — Dentist Nerds</title>
+<style>
+  #pw-gate {
+    position: fixed; inset: 0;
+    background: #0f1117;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999;
+  }
+  #pw-box {
+    background: #1a1d27;
+    border: 1px solid #2e3250;
+    border-radius: 14px;
+    padding: 40px 36px;
+    width: 340px;
+    text-align: center;
+  }
+  #pw-box .lock { font-size: 32px; margin-bottom: 16px; }
+  #pw-box h2 { font-size: 16px; font-weight: 600; color: #e8eaf0; margin-bottom: 6px; }
+  #pw-box p { font-size: 13px; color: #8b90a8; margin-bottom: 24px; }
+  #pw-input {
+    width: 100%; padding: 10px 14px;
+    background: #0f1117; border: 1px solid #2e3250;
+    border-radius: 8px; color: #e8eaf0; font-size: 14px;
+    outline: none; margin-bottom: 12px;
+    text-align: center; letter-spacing: 2px;
+  }
+  #pw-input:focus { border-color: #4f8ef7; }
+  #pw-btn {
+    width: 100%; padding: 10px;
+    background: #4f8ef7; border: none; border-radius: 8px;
+    color: #fff; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: background .15s;
+  }
+  #pw-btn:hover { background: #3a7de8; }
+  #pw-error { color: #f87171; font-size: 12px; margin-top: 10px; display: none; }
+</style>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --border: #2e3250;
+    --text: #e8eaf0;
+    --muted: #8b90a8;
+    --accent: #4f8ef7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    min-height: 100vh;
+  }
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  header .logo { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
+  header h1 { font-size: 18px; font-weight: 600; color: var(--text); }
+  header .sep { color: var(--border); font-size: 20px; }
+
+  .toolbar {
+    padding: 20px 32px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .search-wrap { position: relative; flex: 0 0 260px; }
+  .search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+  #search {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 8px 12px 8px 34px;
+    border-radius: 8px; font-size: 13px; outline: none; transition: border-color .15s;
+  }
+  #search:focus { border-color: var(--accent); }
+  #search::placeholder { color: var(--muted); }
+
+  .legend {
+    padding: 16px 32px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+
+  .stats-bar {
+    padding: 0 32px 16px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .stat-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stat-chip .count { font-weight: 700; font-size: 14px; }
+
+  .table-wrap {
+    padding: 0 32px 40px;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead tr {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  th.src-header {
+    text-align: center;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    height: 120px;
+    padding: 10px 8px;
+    font-size: 10px;
+    vertical-align: bottom;
+    cursor: default;
+  }
+  th.src-header .src-name { display: block; }
+  th.src-header .src-price { display: block; color: #4ade80; font-size: 9px; margin-top: 3px; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background .1s;
+  }
+  tbody tr:hover { background: var(--surface2); }
+  tbody tr.hidden { display: none; }
+
+  td { padding: 10px 12px; vertical-align: middle; }
+
+  .client-name { font-weight: 600; white-space: nowrap; }
+  .client-url { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .client-url a { color: var(--muted); text-decoration: none; }
+  .client-url a:hover { color: var(--accent); }
+
+  .progress-cell { min-width: 80px; }
+  .progress-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+    margin-top: 4px;
+    overflow: hidden;
+  }
+  .progress-fill { height: 100%; border-radius: 3px; transition: width .3s; }
+  .progress-label { font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+  .cell-wrap { text-align: center; }
+
+  .bl-yes {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: rgba(34,197,94,.15);
+    border: 1px solid rgba(34,197,94,.3);
+    color: #4ade80;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all .15s;
+  }
+  .bl-yes:hover { background: rgba(34,197,94,.3); transform: scale(1.1); }
+
+  .bl-pending {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: rgba(245,158,11,.1);
+    border: 1px solid rgba(245,158,11,.3);
+    color: #fbbf24;
+    font-size: 12px;
+    cursor: default;
+    title: "Ordered / In Progress";
+  }
+
+  .bl-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    color: var(--border);
+    font-size: 16px;
+  }
+
+  .src-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 16px; }
+    .toolbar, .stats-bar, .table-wrap, .legend { padding-left: 16px; padding-right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="pw-gate">
+  <div id="pw-box">
+    <div class="lock">🔒</div>
+    <h2>Dentist Nerds — Internal</h2>
+    <p>Enter the team password to continue</p>
+    <input type="password" id="pw-input" placeholder="Password" autocomplete="off">
+    <button id="pw-btn">Unlock</button>
+    <div id="pw-error">Incorrect password. Try again.</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var KEY = "dn_internal_auth";
+  if (sessionStorage.getItem(KEY) === "1") {
+    document.getElementById("pw-gate").style.display = "none";
+  }
+  function attempt() {
+    if (document.getElementById("pw-input").value === "NerdsTeam") {
+      sessionStorage.setItem(KEY, "1");
+      document.getElementById("pw-gate").style.display = "none";
+    } else {
+      document.getElementById("pw-error").style.display = "block";
+      document.getElementById("pw-input").value = "";
+      document.getElementById("pw-input").focus();
+    }
+  }
+  document.getElementById("pw-btn").addEventListener("click", attempt);
+  document.getElementById("pw-input").addEventListener("keydown", function(e) { if (e.key === "Enter") attempt(); });
+})();
+</script>
+
+<header>
+  <span class="logo">Dentist Nerds</span>
+  <span class="sep">|</span>
+  <h1>Backlink Tracker</h1>
+</header>
+
+<div class="toolbar">
+  <div class="search-wrap">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="search" placeholder="Search clients…">
+  </div>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#4ade80;font-size:12px;">✓</span> Backlink acquired</span>
+  <span class="legend-item"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:#fbbf24;font-size:11px;">⏳</span> Ordered / pending URL</span>
+  <span class="legend-item"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;color:#2e3250;font-size:16px;">—</span> Not started</span>
+  <span class="legend-item" style="margin-left:8px;color:var(--accent);">Click ✓ to open the backlink</span>
+</div>
+
+<div class="stats-bar" id="statsBar"></div>
+
+<div class="table-wrap">
+  <table id="blTable">
+    <thead id="thead"></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<script>
+// ─── Sources ────────────────────────────────────────────────────────────────
+const SOURCES = [
+  { id: "burg",       name: "Burg Network",       price: "$25",  color: "#06b6d4" },
+  { id: "wiki",       name: "Wikipedia",           price: "$162", color: "#8b5cf6" },
+  { id: "canyon",     name: "Canyon News",         price: "$140", color: "#f59e0b" },
+  { id: "mywow",      name: "MyWow Health",        price: "",     color: "#10b981" },
+  { id: "doctiplus",  name: "Doctiplus",           price: "",     color: "#3b82f6" },
+  { id: "wellhealth", name: "WellHealth Organic",  price: "",     color: "#22c55e" },
+  { id: "emedi",      name: "eMedicoDiary",        price: "",     color: "#ec4899" },
+  { id: "iheart",     name: "iHeart Podcast",      price: "$50",  color: "#ef4444" },
+  { id: "chamber",    name: "Chamber / Directory", price: "$390", color: "#a855f7" },
+];
+
+// ─── Client Data ─────────────────────────────────────────────────────────────
+// Each backlink value: string URL = acquired, "pending" = ordered/in-progress, null = not started
+const CLIENTS = [
+  {
+    name: "All Smiles Dental Studio",
+    website: "https://encinitasallsmilesdental.com/",
+    bl: {
+      burg:       "https://encinitas.burgnetwork.com/business/8477/all-smiles-dental-studio/health-medical-dental/encinitas-california/",
+      wiki:       "https://ky.wikipedia.org/wiki/%D0%A2%D0%B8%D1%88_%D0%BE%D0%BE%D1%80%D1%83%D0%BB%D0%B0%D1%80%D1%8B",
+      canyon:     "https://www.canyon-news.com/how-modern-dentistry-is-changing-the-way-encinitas-residents-approach-severe-tooth-pain/",
+      mywow:      "https://www.mywowhealth.com/exceptional-dental-care-dr-joelle-abed-elahad/",
+      doctiplus:  "https://doctiplus.net/dentist-in-encinitas-for-tooth-sensitivity/",
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    "https://local.encinitaschamber.com/list/member/all-smile-dental-studio-4630",
+    }
+  },
+  {
+    name: "AZ Dental Laguna Hills",
+    website: "https://azdentallagunahills.com/",
+    bl: {
+      burg:       null,
+      wiki:       "https://en.wikipedia.org/wiki/Fluoride_varnish#Indications_for_use",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    null,
+    }
+  },
+  {
+    name: "Beverly Hills Cosmetic Dentistry",
+    website: "https://beverlyhillscosmeticdentistry.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       null,
+      canyon:     "https://www.canyon-news.com/when-a-chipped-tooth-becomes-a-dental-emergency/",
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     "https://www.iheart.com/podcast/269-postsphere-312672273/episode/dentist-in-beverly-hills-327646003/",
+      chamber:    null,
+    }
+  },
+  {
+    name: "Cameron Park Family Dentistry",
+    website: "https://cameronparkfamilydentistry.com/",
+    bl: {
+      burg: null, wiki: null, canyon: null, mywow: null, doctiplus: null,
+      wellhealth: null, emedi: null, iheart: null, chamber: null,
+    }
+  },
+  {
+    name: "Canyon Country Dental Care",
+    website: "https://canyoncountrydentalcare.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Dental_school",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    null,
+    }
+  },
+  {
+    name: "Elite Dentistry",
+    website: "https://elitedentistryrsm.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Dental_porcelain",
+      canyon:     "https://www.canyon-news.com/what-to-know-about-the-right-age-for-teeth-whitening-treatment/",
+      mywow:      "https://www.mywowhealth.com/meet-dr-mehran-rastegar-lari-25-years-of-dental-excellence-in-rancho-santa-margarita/",
+      doctiplus:  "https://doctiplus.net/finding-the-right-dentist-in-rsm-ca/",
+      wellhealth: "https://wellhealthorganic.com/how-everyday-choices-shape-long-term-dental-wellness/",
+      emedi:      null,
+      iheart:     null,
+      chamber:    "https://www.rsmchamber.org/Sys/PublicProfile/77747330/4359071",
+    }
+  },
+  {
+    name: "Exceptional Dentistry",
+    website: "https://palmdaleexceptionaldentistry.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Temporary_restoration",
+      canyon:     "https://www.canyon-news.com/dental-implants-vs-dental-bridges-how-to-decide-which-tooth-replacement-is-right-for-you/",
+      mywow:      "https://www.mywowhealth.com/exceptional-dentistrys-committed-team-dr-ramy-garsdean/",
+      doctiplus:  "https://doctiplus.net/trusted-dentist-in-palmdale-ca-for-complete-family-cosmetic-dental-care/",
+      wellhealth: "https://wellhealthorganic.com/what-people-should-know-about-building-a-strong-oral-health-routine/",
+      emedi:      null,
+      iheart:     null,
+      chamber:    "https://docu.team/mtiodew/index.php?store=177944",
+    }
+  },
+  {
+    name: "Foothill Ranch Dentistry",
+    website: "https://foothillranchdentistry.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Dental_emergency",
+      canyon:     "https://www.canyon-news.com/how-often-a-deep-dental-cleaning-is-recommended-and-what-determines-frequency/",
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     "https://www.iheart.com/podcast/269-postsphere-312672273/episode/dentist-in-foothill-ranch-327646007/",
+      chamber:    null,
+    }
+  },
+  {
+    name: "Fullerton Smile Dentistry",
+    website: "https://fullertonsmiledentistry.com/",
+    bl: {
+      burg:       null,
+      wiki:       null,
+      canyon:     "https://www.canyon-news.com/dental-implants-vs-dentures-how-to-decide-which-tooth-replacement-fits-your-life/",
+      mywow:      null,
+      doctiplus:  "https://doctiplus.net/dentist-in-fullerton-ca-for-gum-disease-checkup/",
+      wellhealth: "https://wellhealthorganic.com/everyday-oral-habits-that-support-a-healthier-mouth/",
+      emedi:      null,
+      iheart:     "https://www.iheart.com/podcast/269-postsphere-312672273/episode/dentist-in-fullerton-327646006/",
+      chamber:    "https://business.nocchamber.com/list/member/fullerton-smile-dentistry-25251",
+    }
+  },
+  {
+    name: "Gardena Dental Group",
+    website: "https://gardenadentalgroup.com/",
+    bl: {
+      burg:       null,
+      wiki:       "https://en.wikipedia.org/wiki/Tooth_pathology",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    "https://docu.team/mtiodew/index.php?store=85640",
+    }
+  },
+  {
+    name: "Malibu Dentistry",
+    website: "https://malibudentistry.com/",
+    bl: {
+      burg:       null,
+      wiki:       "https://en.wikipedia.org/wiki/Dental_prosthesis",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    null,
+    }
+  },
+  {
+    name: "OC Perio & Implants Dental Group",
+    website: "https://ocperioandimplants.com/",
+    bl: {
+      burg:       "https://missionviejo.burgnetwork.com/business/8478/oc-perio-implants-dental-group/health-medical-dental/mission-viejo-california/",
+      wiki:       "https://en.wikipedia.org/wiki/Implant_bars",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: "https://wellhealthorganic.com/how-dental-implants-compare-with-other-tooth-replacement-options-an-educational-overview/",
+      emedi:      null,
+      iheart:     null,
+      chamber:    null,
+    }
+  },
+  {
+    name: "Orthodontics in Woodland Hills",
+    website: "https://orthodonticsinwoodlandhills.com/",
+    bl: {
+      burg:       null,
+      wiki:       null,
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    "https://www.woodlandhillscc.net/profile.php?view_id=15647",
+    }
+  },
+  {
+    name: "Pennsylvania Perio & Implants",
+    website: "https://pennsylvaniaperioandimplants.com/",
+    bl: {
+      burg:       null,
+      wiki:       "https://lv.wikipedia.org/wiki/Zobu_implants",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: "https://wellhealthorganic.com/how-dental-implants-compare-with-other-tooth-replacement-options-an-educational-overview/",
+      emedi:      null,
+      iheart:     null,
+      chamber:    null,
+    }
+  },
+  {
+    name: "Perio Implant Health Professionals",
+    website: "https://perioimplanthealthpro.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://da.wikipedia.org/wiki/Tandimplantat",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    null,
+    }
+  },
+  {
+    name: "San Juan Family Dentistry",
+    website: "https://sanjuanfamilydental.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       null,
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    null,
+    }
+  },
+  {
+    name: "Seren Advanced Dentistry Oxnard",
+    website: "https://serendentaloxnard.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Interdental_cleaning",
+      canyon:     null,
+      mywow:      "https://www.mywowhealth.com/meet-dr-ette-ntekim-over-20-years-of-advanced-dentistry-in-oxnard/",
+      doctiplus:  null,
+      wellhealth: "https://wellhealthorganic.com/teeth-cleaning-vs-deep-cleaning-dentist-in-oxnard/",
+      emedi:      "https://emedicodiary.com/post/1608/your-search-for-the-perfect-smile-finding-a-great-dental-clinic-in-oxnard-ca",
+      iheart:     null,
+      chamber:    "https://web.wvcba.org/Health-Wellness-Dental-Services/Seren-Advanced-Dentistry-Oxnard-10616",
+    }
+  },
+  {
+    name: "Smile Spa Camarillo",
+    website: "https://camarillosmiledentistry.com/",
+    bl: {
+      burg:       null,
+      wiki:       "https://en.wikipedia.org/wiki/Tooth_discoloration",
+      canyon:     "https://www.canyon-news.com/smart-options-for-addressing-a-cracked-tooth-comfortably/",
+      mywow:      "https://www.mywowhealth.com/exceptional-dental-care-dr-joelle-abed-elahad/",
+      doctiplus:  "https://doctiplus.net/choosing-the-right-dentist-in-camarillo-ca-complete-guide/",
+      wellhealth: "https://wellhealthorganic.com/understanding-modern-dental-care-a-helpful-guide-for-everyday-oral-health/",
+      emedi:      "https://emedicodiary.com/post/1609/achieving-your-best-smile-how-to-choose-a-trusted-family-cosmetic-dentist-in-camarillo",
+      iheart:     null,
+      chamber:    "https://web.wvcba.org/Health-Wellness-Dental-Services/Smile-Spa-Camarillo--10729",
+    }
+  },
+  {
+    name: "Smile Tustin",
+    website: "https://smiletustin.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       null,
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    null,
+    }
+  },
+  {
+    name: "The Smile Spa",
+    website: "https://agourahillscosmeticdentists.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Abutment_(dentistry)",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: "https://wellhealthorganic.com/what-people-should-know-about-essential-dental-hygiene/",
+      emedi:      null,
+      iheart:     null,
+      chamber:    "https://www.conejochamber.org/list/member/the-smile-spa-24817",
+    }
+  },
+  {
+    name: "Torrance Dental Spa",
+    website: "https://torrancedentalspa.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Periodontal_probe",
+      canyon:     null,
+      mywow:      "https://www.mywowhealth.com/meet-dr-maral-ranjbar-your-trusted-dentist-at-torrance-dental-spa/",
+      doctiplus:  null,
+      wellhealth: "https://wellhealthorganic.com/why-gum-health-matters-more-than-you-think/",
+      emedi:      null,
+      iheart:     null,
+      chamber:    "https://www.torrancechamber.com/member-directory/name/torrance-dental-spa/",
+    }
+  },
+  {
+    name: "Valencia Aesthetic Dentistry",
+    website: "https://valenciaaestheticdentistry.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Gum_depigmentation",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     "https://www.iheart.com/podcast/269-postsphere-312672273/episode/dentist-in-valencia-327646004/",
+      chamber:    "https://www.scvchamber.com/companies/valencia-aesthetic-dentistry",
+    }
+  },
+  {
+    name: "West Grove Dental Care",
+    website: "https://westgrovedentalcare.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Halimeter",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    "https://gardengrovechamber.org/",
+    }
+  },
+  {
+    name: "West Hollywood Dental Studio",
+    website: "https://westhollywooddentalstudio.com/",
+    bl: {
+      burg: null, wiki: null, canyon: null, mywow: null, doctiplus: null,
+      wellhealth: null, emedi: null, iheart: null, chamber: null,
+    }
+  },
+  {
+    name: "Westwood Oral Luxe Dental Studio",
+    website: "https://westwoodoraluxedentalstudio.com/",
+    bl: {
+      burg: null, wiki: null, canyon: null, mywow: null, doctiplus: null,
+      wellhealth: null, emedi: null, iheart: null, chamber: null,
+    }
+  },
+  {
+    name: "Woodland Hills Family Dentistry",
+    website: "https://woodlandhillsfamilydentistry.com/",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Restorative_dentistry",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    null,
+    }
+  },
+];
+
+// ─── Build Header ─────────────────────────────────────────────────────────────
+function buildHeader() {
+  const thead = document.getElementById("thead");
+  let html = `<tr>
+    <th style="min-width:200px;">Client</th>
+    <th class="progress-cell" style="min-width:90px;">Progress</th>`;
+  SOURCES.forEach(s => {
+    html += `<th class="src-header" title="${s.name}${s.price ? ' · ' + s.price : ''}">
+      <span class="src-name" style="color:${s.color}">${s.name}</span>
+      ${s.price ? `<span class="src-price">${s.price}</span>` : ''}
+    </th>`;
+  });
+  html += `</tr>`;
+  thead.innerHTML = html;
+}
+
+// ─── Build Stats ──────────────────────────────────────────────────────────────
+function buildStats() {
+  const bar = document.getElementById("statsBar");
+  let totalAcquired = 0, totalPending = 0, totalMissing = 0;
+  const perSource = {};
+  SOURCES.forEach(s => perSource[s.id] = 0);
+
+  CLIENTS.forEach(c => {
+    SOURCES.forEach(s => {
+      const v = c.bl[s.id];
+      if (v && v !== "pending") { totalAcquired++; perSource[s.id]++; }
+      else if (v === "pending") totalPending++;
+      else totalMissing++;
+    });
+  });
+
+  const total = CLIENTS.length * SOURCES.length;
+  const pct = Math.round(totalAcquired / total * 100);
+
+  bar.innerHTML = `
+    <div class="stat-chip">
+      <span class="count" style="color:#4f8ef7">${CLIENTS.length}</span>
+      <span style="color:var(--muted)">Clients tracked</span>
+    </div>
+    <div class="stat-chip">
+      <span class="count" style="color:#4ade80">${totalAcquired}</span>
+      <span style="color:var(--muted)">Backlinks acquired</span>
+    </div>
+    <div class="stat-chip">
+      <span class="count" style="color:#fbbf24">${totalPending}</span>
+      <span style="color:var(--muted)">Pending / ordered</span>
+    </div>
+    <div class="stat-chip">
+      <span class="count" style="color:#4f8ef7">${pct}%</span>
+      <span style="color:var(--muted)">Overall coverage</span>
+    </div>
+  `;
+}
+
+// ─── Build Rows ───────────────────────────────────────────────────────────────
+function buildRow(c) {
+  let acquired = 0, pending = 0;
+  SOURCES.forEach(s => {
+    const v = c.bl[s.id];
+    if (v && v !== "pending") acquired++;
+    else if (v === "pending") pending++;
+  });
+  const total = SOURCES.length;
+  const pct = Math.round(acquired / total * 100);
+  const fillColor = pct >= 75 ? "#4ade80" : pct >= 40 ? "#fbbf24" : "#ef4444";
+
+  const domain = c.website.replace(/https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+
+  let cells = "";
+  SOURCES.forEach(s => {
+    const v = c.bl[s.id];
+    if (v && v !== "pending") {
+      cells += `<td class="cell-wrap"><a class="bl-yes" href="${v}" target="_blank" rel="noopener" title="${s.name}">✓</a></td>`;
+    } else if (v === "pending") {
+      cells += `<td class="cell-wrap"><span class="bl-pending" title="Ordered — URL pending">⏳</span></td>`;
+    } else {
+      cells += `<td class="cell-wrap"><span class="bl-no">—</span></td>`;
+    }
+  });
+
+  return `<tr data-name="${c.name.toLowerCase()}">
+    <td>
+      <div class="client-name">${c.name}</div>
+      <div class="client-url"><a href="${c.website}" target="_blank" rel="noopener">${domain}</a></div>
+    </td>
+    <td class="progress-cell">
+      <div class="progress-label" style="color:${fillColor}">${acquired}/${total}</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:${pct}%;background:${fillColor}"></div>
+      </div>
+    </td>
+    ${cells}
+  </tr>`;
+}
+
+function render() {
+  document.getElementById("tbody").innerHTML = CLIENTS.map(buildRow).join("");
+}
+
+function applySearch() {
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  document.querySelectorAll("#tbody tr").forEach(row => {
+    row.classList.toggle("hidden", q && !row.dataset.name.includes(q));
+  });
+}
+
+document.getElementById("search").addEventListener("input", applySearch);
+
+buildHeader();
+buildStats();
+render();
+</script>
+</body>
+</html>
