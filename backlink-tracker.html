@@ -226,6 +226,78 @@
     margin-top: 3px;
   }
 
+  .select-wrap {
+    position: relative;
+    flex: 0 0 240px;
+  }
+  #sourceFilter {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 12px 8px 34px;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    transition: border-color .15s;
+  }
+  #sourceFilter:focus { border-color: var(--accent); }
+  #sourceFilter option { background: var(--surface); }
+
+  .focus-col { }
+  .focus-col h3 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .focus-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .focus-card.has {
+    background: rgba(34,197,94,.08);
+    border: 1px solid rgba(34,197,94,.2);
+  }
+  .focus-card.pending {
+    background: rgba(245,158,11,.08);
+    border: 1px solid rgba(245,158,11,.2);
+  }
+  .focus-card.missing {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .focus-card a {
+    color: #4ade80;
+    font-size: 11px;
+    text-decoration: none;
+    opacity: .8;
+  }
+  .focus-card a:hover { opacity: 1; text-decoration: underline; }
+  .focus-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    margin-left: 10px;
+  }
+  .focus-badge.has   { background: rgba(34,197,94,.2);  color: #4ade80; }
+  .focus-badge.pend  { background: rgba(245,158,11,.2); color: #fbbf24; }
+  .focus-badge.miss  { background: rgba(239,68,68,.1);  color: #f87171; }
+
   .src-dot {
     display: inline-block;
     width: 8px; height: 8px;
@@ -284,6 +356,12 @@
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     <input type="text" id="search" placeholder="Search clients…">
   </div>
+  <div class="select-wrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    <select id="sourceFilter">
+      <option value="">— View by source —</option>
+    </select>
+  </div>
 </div>
 
 <div class="legend">
@@ -295,7 +373,13 @@
 
 <div class="stats-bar" id="statsBar"></div>
 
-<div class="table-wrap">
+<!-- Source focus view (shown when a source is selected from dropdown) -->
+<div id="focusView" style="display:none;padding:0 32px 40px;">
+  <div id="focusHeader" style="margin-bottom:20px;"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" id="focusGrid"></div>
+</div>
+
+<div class="table-wrap" id="matrixWrap">
   <table id="blTable">
     <thead id="thead"></thead>
     <tbody id="tbody"></tbody>
@@ -868,6 +952,94 @@ function applySearch() {
 
 document.getElementById("search").addEventListener("input", applySearch);
 
+// ─── Source Dropdown ──────────────────────────────────────────────────────────
+function buildDropdown() {
+  const sel = document.getElementById("sourceFilter");
+  SOURCES.forEach(s => {
+    const opt = document.createElement("option");
+    opt.value = s.id;
+    opt.textContent = s.name + (s.price ? ` (${s.price})` : "");
+    sel.appendChild(opt);
+  });
+}
+
+function renderFocusView(sourceId) {
+  const src = SOURCES.find(s => s.id === sourceId);
+  if (!src) return;
+
+  const hasList    = CLIENTS.filter(c => c.bl[sourceId] && c.bl[sourceId] !== "pending");
+  const pendList   = CLIENTS.filter(c => c.bl[sourceId] === "pending");
+  const missList   = CLIENTS.filter(c => !c.bl[sourceId]);
+
+  document.getElementById("focusHeader").innerHTML = `
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+      <span style="width:10px;height:10px;border-radius:50%;background:${src.color};display:inline-block;flex-shrink:0;"></span>
+      <span style="font-size:18px;font-weight:700;color:var(--text);">${src.name}</span>
+      ${src.price ? `<span style="font-size:13px;color:#4ade80;font-weight:600;">${src.price} / link</span>` : ""}
+      <span style="font-size:12px;color:var(--muted);margin-left:4px;">
+        <span style="color:#4ade80;font-weight:700;">${hasList.length}</span> acquired &nbsp;·&nbsp;
+        <span style="color:#fbbf24;font-weight:700;">${pendList.length}</span> pending &nbsp;·&nbsp;
+        <span style="color:#f87171;font-weight:700;">${missList.length}</span> missing
+      </span>
+    </div>`;
+
+  function cardHtml(c, type) {
+    const v = c.bl[sourceId];
+    const hasLink = v && v !== "pending" && v !== "yes";
+    const domain = c.website.replace(/https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+    const badge = type === "has"
+      ? `<span class="focus-badge has">✓ Got it</span>`
+      : type === "pending"
+      ? `<span class="focus-badge pend">⏳ Pending</span>`
+      : `<span class="focus-badge miss">✗ Missing</span>`;
+    const linkEl = hasLink ? `<a href="${v}" target="_blank" rel="noopener">↗ view</a>` : "";
+    return `<div class="focus-card ${type}">
+      <div>
+        <div style="font-weight:600;color:var(--text);">${c.name}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px;">${domain} ${linkEl}</div>
+      </div>
+      ${badge}
+    </div>`;
+  }
+
+  const hasSection = `
+    <div class="focus-col">
+      <h3 style="color:#4ade80;">✓ Has Backlink (${hasList.length + pendList.length})</h3>
+      ${hasList.map(c => cardHtml(c, "has")).join("")}
+      ${pendList.map(c => cardHtml(c, "pending")).join("")}
+      ${hasList.length + pendList.length === 0 ? `<div style="color:var(--muted);font-size:13px;padding:12px 0;">None yet</div>` : ""}
+    </div>`;
+
+  const missSection = `
+    <div class="focus-col">
+      <h3 style="color:#f87171;">✗ Missing Backlink (${missList.length})</h3>
+      ${missList.map(c => cardHtml(c, "missing")).join("")}
+      ${missList.length === 0 ? `<div style="color:#4ade80;font-size:13px;padding:12px 0;">All clients covered! 🎉</div>` : ""}
+    </div>`;
+
+  document.getElementById("focusGrid").innerHTML = hasSection + missSection;
+}
+
+document.getElementById("sourceFilter").addEventListener("change", function() {
+  const val = this.value;
+  const matrix = document.getElementById("matrixWrap");
+  const focus  = document.getElementById("focusView");
+  const search = document.querySelector(".search-wrap");
+  if (val) {
+    matrix.style.display = "none";
+    focus.style.display  = "block";
+    search.style.opacity = "0.4";
+    search.style.pointerEvents = "none";
+    renderFocusView(val);
+  } else {
+    matrix.style.display = "";
+    focus.style.display  = "none";
+    search.style.opacity = "";
+    search.style.pointerEvents = "";
+  }
+});
+
+buildDropdown();
 buildHeader();
 buildStats();
 render();
