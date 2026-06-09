@@ -214,6 +214,18 @@
     font-size: 16px;
   }
 
+  .client-note {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    color: #8b90a8;
+    background: rgba(139,144,168,.1);
+    border: 1px solid rgba(139,144,168,.2);
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-top: 3px;
+  }
+
   .src-dot {
     display: inline-block;
     width: 8px; height: 8px;
@@ -676,6 +688,80 @@ const CLIENTS = [
       chamber:    null,
     }
   },
+  // ─── Other / Former Clients with tracked backlinks ───
+  {
+    name: "AV Dental Wellness Group",
+    website: "https://avdentalwellness.com/",
+    note: "Former client",
+    bl: {
+      burg:       "pending",
+      wiki:       "https://en.wikipedia.org/wiki/Dental_anesthesiology",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    "https://docu.team/mtiodew/index.php?store=161521",
+    }
+  },
+  {
+    name: "Carlsbad Dental Care",
+    website: "https://carlsbaddentalcareinc.com/",
+    note: "Former client",
+    bl: {
+      burg:       null,
+      wiki:       null,
+      canyon:     null,
+      mywow:      "https://www.mywowhealth.com/meet-dr-raymond-ngo-carlsbads-trusted-dental-care-expert/",
+      doctiplus:  null,
+      wellhealth: "https://wellhealthorganic.com/understanding-modern-teeth-whitening-and-what-to-expect/",
+      emedi:      "https://emedicodiary.com/post/1599/caring-for-every-smile-find-the-best-dentist-in-carlsbad-california",
+      iheart:     null,
+      chamber:    "https://web.carlsbad.org/atlas/directory/category/dentistry---general-&-cosmetic/Carlsbad-Dental-Care-5265",
+    }
+  },
+  {
+    name: "Overhill Dental",
+    website: "https://www.overhilldental.com/",
+    note: "Hosting client",
+    bl: {
+      burg: null, wiki: null, canyon: null, mywow: null, doctiplus: null,
+      wellhealth: null, emedi: null, iheart: null, chamber: null,
+    }
+  },
+  {
+    name: "Rancho Cucamonga Dentistry",
+    website: "https://ranchocucamongadentistry.com/",
+    note: "In spreadsheet",
+    bl: {
+      burg:       null,
+      wiki:       "https://en.wikipedia.org/wiki/Dental_attrition",
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: null,
+      emedi:      null,
+      iheart:     null,
+      chamber:    null,
+    }
+  },
+  {
+    name: "Sila Dental",
+    website: "https://siladental.com/",
+    note: "Hosting client",
+    bl: {
+      burg:       null,
+      wiki:       null,
+      canyon:     null,
+      mywow:      null,
+      doctiplus:  null,
+      wellhealth: "https://wellhealthorganic.com/understanding-routine-dental-visits-a-simple-guide-for-patients/",
+      emedi:      null,
+      iheart:     null,
+      chamber:    "https://cmbusiness.sanjuanchamber.com/list/member/sila-dental-1272",
+    }
+  },
 ];
 
 // ─── Build Header ─────────────────────────────────────────────────────────────
@@ -684,7 +770,7 @@ function buildHeader() {
   let html = `<tr>
     <th style="min-width:200px;">Client</th>
     <th class="progress-cell" style="min-width:90px;">Progress</th>
-    <th style="min-width:90px;text-align:right;">Spend</th>`;
+    <th style="min-width:90px;text-align:right;">2026 Spend</th>`;
   SOURCES.forEach(s => {
     html += `<th class="src-header" title="${s.name}${s.price ? ' · ' + s.price : ''}">
       <span class="src-name" style="color:${s.color}">${s.name}</span>
@@ -730,7 +816,7 @@ function buildStats() {
     </div>
     <div class="stat-chip">
       <span class="count" style="color:#4ade80">$${totalSpend.toLocaleString()}</span>
-      <span style="color:var(--muted)">Total spend (paid links)</span>
+      <span style="color:var(--muted)">2026 spend (paid links)</span>
     </div>
   `;
 }
@@ -767,6 +853,7 @@ function buildRow(c) {
     <td>
       <div class="client-name">${c.name}</div>
       <div class="client-url"><a href="${c.website}" target="_blank" rel="noopener">${domain}</a></div>
+      ${c.note ? `<div><span class="client-note">${c.note}</span></div>` : ''}
     </td>
     <td class="progress-cell">
       <div class="progress-label" style="color:${fillColor}">${acquired}/${total}</div>
