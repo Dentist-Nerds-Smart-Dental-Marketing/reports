@@ -309,6 +309,80 @@
     header { padding: 16px; }
     .toolbar, .stats-bar, .table-wrap, .legend { padding-left: 16px; padding-right: 16px; }
   }
+
+  /* ── Client Detail Panel ── */
+  #panel-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 800;
+    backdrop-filter: blur(2px);
+  }
+  #client-panel {
+    position: fixed;
+    top: 0; right: -520px;
+    width: 500px; max-width: 95vw;
+    height: 100vh;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    z-index: 801;
+    overflow-y: auto;
+    transition: right .28s cubic-bezier(.4,0,.2,1);
+    padding: 0;
+  }
+  #client-panel.open { right: 0; }
+  .panel-header {
+    position: sticky; top: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px 16px;
+    z-index: 1;
+  }
+  .panel-close {
+    position: absolute; top: 16px; right: 20px;
+    background: none; border: none;
+    color: var(--muted); font-size: 22px;
+    cursor: pointer; line-height: 1;
+    padding: 4px 8px; border-radius: 6px;
+    transition: color .15s, background .15s;
+  }
+  .panel-close:hover { color: var(--text); background: var(--surface2); }
+  .panel-body { padding: 20px 24px 40px; }
+  .panel-section { margin-bottom: 24px; }
+  .panel-section-title {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .8px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 10px;
+    padding-bottom: 6px; border-bottom: 1px solid var(--border);
+  }
+  .panel-bl-card {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: 9px 12px; border-radius: 8px;
+    margin-bottom: 5px; font-size: 13px;
+  }
+  .panel-bl-card.acquired {
+    background: rgba(34,197,94,.08);
+    border: 1px solid rgba(34,197,94,.2);
+  }
+  .panel-bl-card.pending {
+    background: rgba(245,158,11,.08);
+    border: 1px solid rgba(245,158,11,.2);
+  }
+  .panel-bl-card.missing {
+    background: rgba(255,255,255,.02);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .panel-src-name { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+  .panel-src-links { display: flex; gap: 6px; flex-wrap: wrap; }
+  .panel-src-links a {
+    color: #4ade80; font-size: 11px; text-decoration: none;
+    background: rgba(34,197,94,.12); border-radius: 4px;
+    padding: 2px 7px; transition: background .15s;
+  }
+  .panel-src-links a:hover { background: rgba(34,197,94,.25); }
+  tbody tr { cursor: pointer; }
 </style>
 </head>
 <body>
@@ -322,6 +396,18 @@
     <button id="pw-btn">Unlock</button>
     <div id="pw-error">Incorrect password. Try again.</div>
   </div>
+</div>
+
+<!-- Client Detail Panel -->
+<div id="panel-overlay"></div>
+<div id="client-panel">
+  <div class="panel-header">
+    <button class="panel-close" id="panel-close">✕</button>
+    <div id="panel-title" style="font-size:17px;font-weight:700;color:var(--text);padding-right:36px;"></div>
+    <div id="panel-url" style="font-size:12px;color:var(--muted);margin-top:3px;"></div>
+    <div id="panel-progress" style="margin-top:12px;"></div>
+  </div>
+  <div class="panel-body" id="panel-body"></div>
 </div>
 
 <script>
@@ -1068,6 +1154,109 @@ buildDropdown();
 buildHeader();
 buildStats();
 render();
+
+// ─── Client Detail Panel ──────────────────────────────────────────────────────
+function openPanel(clientIndex) {
+  const c = CLIENTS[clientIndex];
+  if (!c) return;
+
+  let acquired = 0, pending = 0, spend = 0;
+  SOURCES.forEach(s => {
+    const v = c.bl[s.id];
+    const vv = Array.isArray(v) ? v[0] : v;
+    if (vv && vv !== "pending") { acquired++; spend += s.cost; }
+    else if (vv === "pending") pending++;
+  });
+  const total = SOURCES.length;
+  const pct = Math.round(acquired / total * 100);
+  const fillColor = pct >= 75 ? "#4ade80" : pct >= 30 ? "#fbbf24" : "#ef4444";
+  const domain = c.website.replace(/https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+
+  document.getElementById("panel-title").textContent = c.name;
+  document.getElementById("panel-url").innerHTML = `<a href="${c.website}" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;">${domain} ↗</a>`;
+  document.getElementById("panel-progress").innerHTML = `
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <span style="font-size:13px;color:${fillColor};font-weight:700;">${acquired}/${total} acquired</span>
+      ${pending ? `<span style="font-size:12px;color:#fbbf24;">${pending} pending</span>` : ""}
+      ${spend ? `<span style="font-size:12px;color:#4ade80;">$${spend.toLocaleString()} spend</span>` : ""}
+    </div>
+    <div style="height:6px;border-radius:3px;background:var(--border);margin-top:8px;overflow:hidden;">
+      <div style="width:${pct}%;height:100%;border-radius:3px;background:${fillColor};"></div>
+    </div>`;
+
+  const acquiredList = [], pendingList = [], missingList = [];
+  SOURCES.forEach(s => {
+    const v = c.bl[s.id];
+    const vArr = Array.isArray(v) ? v : null;
+    const vv = vArr ? vArr[0] : v;
+    if (vArr || (vv && vv !== "pending")) acquiredList.push({ s, v, vArr });
+    else if (vv === "pending") pendingList.push({ s });
+    else missingList.push({ s });
+  });
+
+  function srcCard(item, type) {
+    const { s, v, vArr } = item;
+    const dot = `<span class="src-dot" style="background:${s.color}"></span>`;
+    const nameHtml = `<span class="panel-src-name">${dot}${s.name}${s.price ? `<span style="font-size:10px;color:#4ade80;margin-left:4px;">${s.price}</span>` : ""}</span>`;
+    let linksHtml = "";
+    if (vArr) {
+      const langLinks = vArr.map((u, i) => {
+        const lang = (u.match(/https?:\/\/(\w+)\.wikipedia\.org/) || [])[1] || (i + 1);
+        return `<a href="${u}" target="_blank" rel="noopener">${lang}</a>`;
+      }).join("");
+      linksHtml = `<span class="panel-src-links">${langLinks}</span>`;
+    } else if (v && v !== "pending" && v !== "yes") {
+      linksHtml = `<span class="panel-src-links"><a href="${v}" target="_blank" rel="noopener">↗ view</a></span>`;
+    }
+    const badge = type === "acquired"
+      ? `<span class="focus-badge has" style="flex-shrink:0;">✓</span>`
+      : type === "pending"
+      ? `<span class="focus-badge pend" style="flex-shrink:0;">⏳</span>`
+      : `<span class="focus-badge miss" style="flex-shrink:0;">—</span>`;
+    return `<div class="panel-bl-card ${type}">
+      <div style="display:flex;flex-direction:column;gap:4px;min-width:0;">
+        ${nameHtml}
+        ${linksHtml}
+      </div>
+      ${badge}
+    </div>`;
+  }
+
+  let html = "";
+  if (acquiredList.length) {
+    html += `<div class="panel-section"><div class="panel-section-title">✓ Acquired (${acquiredList.length})</div>`;
+    html += acquiredList.map(i => srcCard(i, "acquired")).join("") + "</div>";
+  }
+  if (pendingList.length) {
+    html += `<div class="panel-section"><div class="panel-section-title">⏳ Pending (${pendingList.length})</div>`;
+    html += pendingList.map(i => srcCard(i, "pending")).join("") + "</div>";
+  }
+  if (missingList.length) {
+    html += `<div class="panel-section"><div class="panel-section-title">✗ Missing (${missingList.length})</div>`;
+    html += missingList.map(i => srcCard(i, "missing")).join("") + "</div>";
+  }
+
+  document.getElementById("panel-body").innerHTML = html;
+  document.getElementById("client-panel").classList.add("open");
+  document.getElementById("panel-overlay").style.display = "block";
+}
+
+function closePanel() {
+  document.getElementById("client-panel").classList.remove("open");
+  document.getElementById("panel-overlay").style.display = "none";
+}
+
+document.getElementById("panel-close").addEventListener("click", closePanel);
+document.getElementById("panel-overlay").addEventListener("click", closePanel);
+document.addEventListener("keydown", e => { if (e.key === "Escape") closePanel(); });
+
+document.getElementById("tbody").addEventListener("click", function(e) {
+  const row = e.target.closest("tr");
+  if (!row || e.target.tagName === "A") return;
+  const name = row.dataset.name;
+  const idx = CLIENTS.findIndex(c => c.name.toLowerCase() === name);
+  if (idx !== -1) openPanel(idx);
+});
 </script>
 </body>
 </html>
