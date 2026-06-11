@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Systemic Dentist — Website Quality & AI Visibility Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d1620;
+    --ink-2: #142030;
+
+    --cream: #f6f0e2;
+    --paper: #ffffff;
+
+    --blue: #4a90e2;
+    --blue-deep: #2563eb;
+    --blue-dark: #1e40af;
+    --blue-soft: #dbeafe;
+    --blue-tint: #f0f5ff;
+    --teal: #0891b2;
+    --indigo: #6366f1;
+    --slate: #64748b;
+    --green: #16a34a;
+    --green-soft: #d1fae5;
+    --amber: #d97706;
+    --amber-soft: #fef3c7;
+    --red: #dc2626;
+    --red-soft: #fee2e2;
+    --purple: #8b5cf6;
+    --purple-soft: #ede9fe;
+    --gold: #c89a3a;
+
+    --text: #0d1620;
+    --text-muted: #5c6b7d;
+    --text-light: #94a3b8;
+    --line-light: rgba(13,22,32,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: white;
+    padding: 96px 0 112px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(74, 144, 226, 0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 6vw, 68px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    margin-bottom: 32px;
+    color: white;
+  }
+  .hero-desc {
+    font-size: 17px;
+    color: #a8b3c2;
+    max-width: 720px;
+    line-height: 1.65;
+    margin-bottom: 56px;
+  }
+  .hero-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .hero-kpi {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 28px 26px;
+    transition: all 0.25s;
+  }
+  .hero-kpi:hover {
+    background: rgba(74, 144, 226, 0.05);
+    border-color: rgba(74, 144, 226, 0.25);
+  }
+  .hero-kpi-num {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--blue);
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+  .hero-kpi-label {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+  .hero-prepared {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  section.light { background: var(--cream); padding: 96px 0; }
+  section.paper { background: var(--paper); padding: 96px 0; }
+  section.dark { background: var(--ink); color: white; padding: 96px 0; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  section.dark .section-eyebrow { color: var(--blue); }
+
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 48px;
+    color: var(--text);
+  }
+  section.dark h2.section-title { color: white; }
+
+  /* FOCUS AREAS */
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 16px;
+  }
+  .focus-card {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 32px 28px 28px;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .focus-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(13,22,32,0.08);
+  }
+  .focus-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .focus-card.f1::before { background: var(--red); }
+  .focus-card.f2::before { background: var(--amber); }
+  .focus-card.f3::before { background: var(--purple); }
+  .focus-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .focus-card.f1 .focus-num { color: var(--red); }
+  .focus-card.f2 .focus-num { color: var(--amber); }
+  .focus-card.f3 .focus-num { color: var(--purple); }
+  .focus-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  .focus-chart {
+    margin: 16px 0 18px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+  }
+  .focus-stat { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+  .focus-big {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .focus-card.f1 .focus-big { color: var(--red); }
+  .focus-card.f2 .focus-big { color: var(--amber); }
+  .focus-card.f3 .focus-big { color: var(--purple); }
+  .focus-of { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+  .focus-line {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-light);
+  }
+  .mini-stack {
+    width: 100%;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: inset 0 0 0 1px var(--line-light);
+  }
+  .mini-stack-seg {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .mini-gauge { width: 140px; height: 140px; }
+  .mini-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    width: 100%;
+    height: 100px;
+    padding: 0 4px;
+  }
+  .mini-bar {
+    flex: 1;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+  }
+  .mini-bar-label {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* FINDINGS */
+  .findings-list { display: flex; flex-direction: column; gap: 14px; }
+  .finding {
+    background: var(--paper);
+    border-radius: 12px;
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 20px;
+    align-items: start;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+    transition: all 0.25s;
+  }
+  .finding:hover {
+    box-shadow: 0 6px 16px rgba(13,22,32,0.06);
+    transform: translateY(-1px);
+  }
+  .finding-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .finding-icon.red { background: var(--red-soft); color: var(--red); }
+  .finding-icon.amber { background: var(--amber-soft); color: var(--amber); }
+  .finding-icon.blue { background: var(--blue-soft); color: var(--blue-deep); }
+  .finding-icon.purple { background: var(--purple-soft); color: var(--purple); }
+  .finding-icon.green { background: var(--green-soft); color: var(--green); }
+  .finding-icon svg { width: 18px; height: 18px; }
+  .finding-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .finding-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* TRIPLE STATS */
+  .triple-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 16px;
+    margin-bottom: 56px;
+  }
+  .triple-stat { padding-right: 40px; }
+  .triple-stat .rule {
+    height: 4px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 56px;
+  }
+  .triple-stat:nth-child(1) .rule { background: var(--red); }
+  .triple-stat:nth-child(2) .rule { background: var(--amber); }
+  .triple-stat:nth-child(3) .rule { background: var(--purple); }
+  .triple-num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    margin-bottom: 8px;
+  }
+  .triple-stat:nth-child(1) .triple-num { color: var(--red); }
+  .triple-stat:nth-child(2) .triple-num { color: var(--amber); }
+  .triple-stat:nth-child(3) .triple-num { color: var(--purple); }
+  .triple-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* DELTA */
+  .delta-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 36px;
+  }
+  .delta-item { padding-right: 32px; }
+  .delta-rule { height: 4px; border-radius: 4px; margin-bottom: 16px; width: 48px; }
+  .delta-item:nth-child(1) .delta-rule { background: var(--red); }
+  .delta-item:nth-child(2) .delta-rule { background: var(--amber); }
+  .delta-item:nth-child(3) .delta-rule { background: var(--purple); }
+  .delta-item:nth-child(4) .delta-rule { background: var(--blue-deep); }
+  .delta-num {
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .delta-item:nth-child(1) .delta-num { color: var(--red); }
+  .delta-item:nth-child(2) .delta-num { color: var(--amber); }
+  .delta-item:nth-child(3) .delta-num { color: var(--purple); }
+  .delta-item:nth-child(4) .delta-num { color: var(--blue-deep); }
+  .delta-label { font-size: 13px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.005em; }
+  .delta-sub { font-size: 12px; color: var(--text-muted); }
+
+  /* CHART */
+  .chart-wrap {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 40px 44px;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+  }
+  .trend-svg { width: 100%; height: auto; }
+  svg .grid { stroke: rgba(13,22,32,0.06); stroke-width: 1; }
+  svg .axis { stroke: rgba(13,22,32,0.2); stroke-width: 1; }
+  svg .lbl { font-family: 'Inter', sans-serif; font-size: 11px; fill: var(--text-muted); font-weight: 500; }
+  .trend-legend {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-light);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .trend-legend-item { display: flex; align-items: center; gap: 10px; }
+  .trend-legend-line { display: inline-block; }
+
+  /* TABLES */
+  .table-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .data-table {
+    background: var(--paper);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+  }
+  .data-table-head {
+    background: var(--ink);
+    color: white;
+    padding: 16px 22px;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .data-table-row {
+    padding: 14px 22px;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    gap: 12px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--line-light);
+    align-items: center;
+  }
+  .data-table-row:hover { background: var(--blue-tint); }
+  .data-table-row:last-child { border-bottom: none; }
+  .data-cell-text {
+    color: var(--text);
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.45;
+  }
+  .data-cell-num {
+    text-align: right;
+    font-weight: 700;
+    color: var(--text);
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+  }
+  .table-note {
+    background: var(--red-soft);
+    border-radius: 10px;
+    padding: 16px 24px;
+    color: var(--red);
+    font-size: 13px;
+    margin-top: 20px;
+    line-height: 1.6;
+    border-left: 3px solid var(--red);
+  }
+
+  /* CONV CARDS */
+  .conv-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+    margin-bottom: 48px;
+  }
+  .conv-card {
+    background: var(--paper);
+    border-radius: 12px;
+    padding: 26px;
+    border-top: 3px solid;
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+    transition: all 0.2s;
+  }
+  .conv-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(13,22,32,0.06); }
+  .conv-card:nth-child(1) { border-top-color: var(--red); }
+  .conv-card:nth-child(2) { border-top-color: var(--amber); }
+  .conv-card:nth-child(3) { border-top-color: var(--green); }
+  .conv-card:nth-child(4) { border-top-color: var(--blue-deep); }
+  .conv-num {
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .conv-card:nth-child(1) .conv-num { color: var(--red); }
+  .conv-card:nth-child(2) .conv-num { color: var(--amber); }
+  .conv-card:nth-child(3) .conv-num { color: var(--green); }
+  .conv-card:nth-child(4) .conv-num { color: var(--blue-deep); }
+  .conv-label {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .conv-sub { font-size: 11px; color: var(--text-muted); }
+
+  /* TECH ROWS */
+  .tech-row {
+    background: var(--paper);
+    border-radius: 10px;
+    padding: 20px 28px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 28px;
+    align-items: center;
+    border-left: 3px solid var(--red);
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+  }
+  .tech-row.amber { border-left-color: var(--amber); }
+  .tech-row.purple { border-left-color: var(--purple); }
+  .tech-row.green { border-left-color: var(--green); }
+  .tech-num {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .tech-row .tech-num { color: var(--red); }
+  .tech-row.amber .tech-num { color: var(--amber); }
+  .tech-row.purple .tech-num { color: var(--purple); }
+  .tech-row.green .tech-num { color: var(--green); }
+  .tech-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .tech-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+  /* ACTION PLAN */
+  .action-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .action-row {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 22px 28px;
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    transition: all 0.2s;
+  }
+  .action-row:hover {
+    background: rgba(74,144,226,0.06);
+    border-color: rgba(74,144,226,0.2);
+    transform: translateX(4px);
+  }
+  .action-num {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-light);
+  }
+  .action-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: white; }
+  .action-desc { font-size: 13px; color: #94a3b8; line-height: 1.55; }
+  .action-tag {
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: white;
+    white-space: nowrap;
+  }
+  .action-tag.immediate { background: var(--red); }
+  .action-tag.high { background: var(--amber); }
+  .action-tag.medium { background: var(--blue); }
+  .action-tag.ongoing { background: var(--purple); }
+
+  /* PROCESS SECTIONS */
+  .process-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 12px;
+  }
+  .process-header h2.section-title { margin-bottom: 0; }
+  .process-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border-radius: 100px;
+    white-space: nowrap;
+    margin-top: 8px;
+    color: white;
+  }
+  .process-badge.organic { background: var(--blue-deep); }
+  .process-badge.ai { background: var(--purple); }
+  .process-intro {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 760px;
+    margin-bottom: 40px;
+  }
+  .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .pcard {
+    background: var(--paper);
+    border-radius: 12px;
+    padding: 26px;
+    border-left: 3px solid var(--blue);
+    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+    transition: all 0.2s;
+  }
+  .pcard:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(13,22,32,0.06); }
+  .pcard:nth-child(1) { border-left-color: var(--blue); }
+  .pcard:nth-child(2) { border-left-color: var(--blue-deep); }
+  .pcard:nth-child(3) { border-left-color: var(--indigo); }
+  .pcard:nth-child(4) { border-left-color: var(--purple); }
+  .pcard:nth-child(5) { border-left-color: var(--teal); }
+  .pcard:nth-child(6) { border-left-color: var(--blue-dark); }
+  .pgrid-ai .pcard { border-left-color: var(--purple); }
+  .pgrid-ai .pcard:nth-child(1) { border-left-color: #a78bfa; }
+  .pgrid-ai .pcard:nth-child(2) { border-left-color: var(--purple); }
+  .pgrid-ai .pcard:nth-child(3) { border-left-color: #7c3aed; }
+  .pgrid-ai .pcard:nth-child(4) { border-left-color: var(--indigo); }
+  .pgrid-ai .pcard:nth-child(5) { border-left-color: #4f46e5; }
+  .pgrid-ai .pcard:nth-child(6) { border-left-color: #4338ca; }
+  .pgrid-ai .pcard-num { color: var(--purple); }
+  .pcard-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--blue-deep);
+    margin-bottom: 10px;
+  }
+  .pcard-title {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .pcard-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: white;
+    padding: 56px 0;
+    text-align: center;
+  }
+  .foot-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+  .foot-meta {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .container { padding: 0 32px; }
+    .hero { padding: 80px 0 96px; }
+    section.light, section.paper, section.dark { padding: 80px 0; }
+    h2.section-title { font-size: 38px; }
+    .hero-kpis { grid-template-columns: repeat(2, 1fr); }
+    .focus-grid { grid-template-columns: 1fr; gap: 16px; }
+    .triple-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .triple-stat { padding-right: 16px; }
+    .delta-row { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
+    .delta-item { padding-right: 16px; }
+    .conv-grid { grid-template-columns: repeat(2, 1fr); }
+    .pgrid { grid-template-columns: repeat(2, 1fr); }
+    .table-grid { grid-template-columns: 1fr; gap: 20px; }
+    .process-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .process-badge { margin-top: 0; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 18px; }
+    body { font-size: 14px; }
+    .hero { padding: 56px 0 64px; }
+    section.light, section.paper, section.dark { padding: 56px 0; }
+    .hero h1 { font-size: 36px; line-height: 1.05; margin-bottom: 24px; }
+    .hero-desc { font-size: 15px; margin-bottom: 32px; }
+    h2.section-title { font-size: 26px; line-height: 1.15; margin-bottom: 24px; }
+    .hero-kpis,
+    .conv-grid,
+    .delta-row,
+    .pgrid,
+    .focus-grid,
+    .triple-stats,
+    .table-grid {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+    .triple-stat, .delta-item { padding-right: 0; }
+    .action-row { grid-template-columns: 36px 1fr; gap: 12px; padding: 16px 18px; }
+    .action-tag { grid-column: 2; justify-self: start; margin-top: 6px; padding: 5px 10px; font-size: 9px; }
+    .action-title { font-size: 14px; }
+    .action-desc { font-size: 12px; }
+    .pcard { padding: 20px; }
+    .tech-row { grid-template-columns: 50px 1fr; gap: 14px; padding: 14px 18px; }
+    .tech-num { font-size: 28px; }
+    .data-table-head, .data-table-row { padding: 12px 14px; grid-template-columns: 1fr 70px; gap: 8px; }
+    .data-table-head { font-size: 10px; }
+    .data-cell-text { font-size: 12px; line-height: 1.4; }
+    .data-cell-num { font-size: 14px; }
+    .finding { grid-template-columns: 36px 1fr; gap: 14px; padding: 18px 20px; }
+    .finding-icon { width: 32px; height: 32px; border-radius: 8px; }
+    .finding-icon svg { width: 14px; height: 14px; }
+    .finding-title { font-size: 14px; }
+    .finding-desc { font-size: 12px; }
+    .triple-num { font-size: 40px; }
+    .delta-num, .conv-num { font-size: 30px; }
+    .focus-big { font-size: 36px; }
+    .hero-kpi-num { font-size: 32px; }
+    .chart-wrap { padding: 20px 14px; }
+    .trend-legend { flex-wrap: wrap; gap: 14px; justify-content: flex-start; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Website Quality &amp; AI Visibility Audit</div>
+    <h1>The Systemic Dentist</h1>
+    <p class="hero-desc">Comprehensive SEO and AI-visibility audit of systemicdds.com — the Santa Monica biological &amp; holistic dental practice of Dr. Alireza Panahpour, "The Systemic Dentist." The site has built a deep library of educational content on cavitations, mercury removal, root-canal alternatives and biomimetic dentistry, yet it pulls just 23 organic visits a month, ranks for only 71 keywords (down from a peak of 161), and has no dedicated treatment pages, no FAQ content and no schema markup for AI search. This audit shows exactly what is capping growth — and the path to 400+ ranking keywords.</p>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">7</div>
+        <div class="hero-kpi-label">Authority Score</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">23</div>
+        <div class="hero-kpi-label">Visits / mo</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">71</div>
+        <div class="hero-kpi-label">Ranking Keywords</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">127</div>
+        <div class="hero-kpi-label">Referring Domains</div>
+      </div>
+    </div>
+
+    <div class="hero-prepared">systemicdds.com · Santa Monica / Los Angeles, CA · Live Semrush Data · June 2026</div>
+  </div>
+</header>
+
+<!-- 3 FOCUS AREAS -->
+<section class="paper">
+  <div class="container">
+    <div class="section-eyebrow">Where to Focus</div>
+    <h2 class="section-title">3 Priorities That Will Move the Needle</h2>
+    <div style="display: inline-flex; align-items: center; gap: 10px; background: var(--blue-tint); border-left: 3px solid var(--blue-deep); padding: 10px 18px; border-radius: 0 8px 8px 0; margin-bottom: 40px; flex-wrap: wrap;">
+      <span style="font-family: monospace; font-size: 10px; font-weight: 700; color: var(--blue-deep); letter-spacing: 0.15em; text-transform: uppercase;">Account</span>
+      <span style="font-family: monospace; font-size: 13px; color: var(--text); font-weight: 600;">systemicdds.com</span>
+      <span style="font-size: 12px; color: var(--text-muted);">· Dr. Alireza Panahpour · Santa Monica, CA</span>
+    </div>
+
+    <div class="focus-grid">
+
+      <!-- Focus 01: Near-Invisible -->
+      <div class="focus-card f1">
+        <div class="focus-num">Focus 01 · Low Visibility</div>
+        <div class="focus-title">Just 23 organic visits a month — Authority Score of 7</div>
+        <div class="focus-chart">
+          <div style="width: 100%;">
+            <div class="mini-bars">
+              <div class="mini-bar" style="height: 6%; background: var(--red);"><span class="mini-bar-label">Today · 23</span></div>
+              <div class="mini-bar" style="height: 100%; background: rgba(220, 38, 38, 0.22);"><span class="mini-bar-label">Healthy practice</span></div>
+            </div>
+            <div style="display:flex; justify-content: space-around; margin-top: 32px; font-size: 13px;">
+              <div style="text-align: center;"><div style="font-family: Fraunces, serif; font-size: 22px; font-weight: 600; color: var(--red); line-height: 1;">23</div><div style="font-size: 10px; color: var(--text-muted); margin-top: 4px; letter-spacing: 0.05em; font-weight: 600;">/ MO</div></div>
+              <div style="text-align: center;"><div style="font-family: Fraunces, serif; font-size: 22px; font-weight: 600; color: var(--text-muted); line-height: 1;">AS 7</div><div style="font-size: 10px; color: var(--text-muted); margin-top: 4px; letter-spacing: 0.05em; font-weight: 600;">AUTHORITY</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="focus-stat">
+          <div class="focus-big">23</div>
+          <div class="focus-of">organic visits / month</div>
+        </div>
+        <div class="focus-line">The site earns just 23 organic visits a month on an Authority Score of 7 — far below what an established Los Angeles specialty practice should command. Over half of that traffic comes from a single page (/cavitation/), and most ranking terms sit on page 3–10 where they bring essentially no new patients.</div>
+      </div>
+
+      <!-- Focus 02: Keyword Decline -->
+      <div class="focus-card f2">
+        <div class="focus-num">Focus 02 · Keyword Decline</div>
+        <div class="focus-title">Only 71 keywords rank — down from a peak of 161</div>
+        <div class="focus-chart">
+          <svg class="mini-gauge" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="70" cy="70" r="55" fill="none" stroke="#fef3c7" stroke-width="14"/>
+            <circle cx="70" cy="70" r="55" fill="none" stroke="#d97706" stroke-width="14"
+                    stroke-dasharray="61 285" stroke-dashoffset="0"
+                    transform="rotate(-90 70 70)" stroke-linecap="round"/>
+            <text x="70" y="66" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="600" fill="#d97706" letter-spacing="-1">71</text>
+            <text x="70" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#5c6b7d" font-weight="600" letter-spacing="2">OF 400+ TARGET</text>
+          </svg>
+        </div>
+        <div class="focus-stat">
+          <div class="focus-big">71</div>
+          <div class="focus-of">keywords ranking today</div>
+        </div>
+        <div class="focus-line">The site ranks for just 71 keywords — and the count has fallen sharply from a peak of 161 in April 2025. A Los Angeles biological &amp; cosmetic practice should rank for 400+. The footprint is contracting year-over-year, not growing.</div>
+      </div>
+
+      <!-- Focus 03: No Treatment Pages / No FAQ -->
+      <div class="focus-card f3">
+        <div class="focus-num">Focus 03 · No Service Layer</div>
+        <div class="focus-title">No treatment pages, no FAQs — invisible to AI</div>
+        <div class="focus-chart">
+          <svg class="mini-gauge" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="70" cy="70" r="55" fill="none" stroke="#ede9fe" stroke-width="14"/>
+            <circle cx="70" cy="70" r="55" fill="none" stroke="#8b5cf6" stroke-width="14"
+                    stroke-dasharray="0 346" stroke-dashoffset="0"
+                    transform="rotate(-90 70 70)" stroke-linecap="round"/>
+            <text x="70" y="68" text-anchor="middle" font-family="Fraunces, serif" font-size="28" font-weight="600" fill="#8b5cf6" letter-spacing="-1">0</text>
+            <text x="70" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#5c6b7d" font-weight="600" letter-spacing="2">FAQ / SCHEMA PAGES</text>
+          </svg>
+        </div>
+        <div class="focus-stat">
+          <div class="focus-big">0</div>
+          <div class="focus-of">treatment pages &amp; FAQ sections</div>
+        </div>
+        <div class="focus-line">The site is built from blog posts and condition articles — there are no dedicated, conversion-focused treatment pages, no FAQ content and no FAQ/Service schema. Search engines and AI assistants (ChatGPT, Gemini, Perplexity, Google AI Overviews) have nothing structured to read, trust or cite.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- KEY FINDINGS -->
+<section class="light">
+  <div class="container">
+    <div class="section-eyebrow">Executive Summary</div>
+    <h2 class="section-title">Key Findings</h2>
+
+    <div class="findings-list">
+
+      <div class="finding">
+        <div class="finding-icon red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+        </div>
+        <div>
+          <div class="finding-title">Very Low Organic Traffic &amp; Authority — 23 Visits / mo, AS 7</div>
+          <div class="finding-desc">The practice earns roughly 23 organic visits a month on an Authority Score of just 7. Over half of that traffic lands on a single educational page (/cavitation/, 12 visits), with the rest spread thin across a TMJ FAQ post and a technology page. For an established Los Angeles biological-dentistry practice, this is a fraction of the visibility it should hold.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-icon amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </div>
+        <div>
+          <div class="finding-title">Only 71 Keywords Ranking — and Declining from 161</div>
+          <div class="finding-desc">A practice spanning cavitation surgery, mercury (amalgam) removal, root-canal alternatives, biomimetic and cosmetic dentistry, and TMJ should rank for hundreds of keywords. It ranks for 71 — down from a peak of 161 in April 2025. The keyword footprint is shrinking year-over-year, and almost every term sits on page 3–10 with no real traffic. Position tracking in Semrush should be set up to monitor this monthly.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-icon purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </div>
+        <div>
+          <div class="finding-title">No Treatment Pages &amp; No FAQ Content — Hurting AI Visibility</div>
+          <div class="finding-desc">The site is built almost entirely from blog and condition articles. There are no dedicated, conversion-focused treatment/service pages, and no FAQ sections or FAQ/Service schema anywhere. This is one of the biggest reasons the practice is invisible to AI search — ChatGPT, Gemini, Perplexity and Google AI Overviews rely on structured Q&amp;A content to understand, trust and cite a dental practice. Without it, these pages stay buried on page 3–10.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-icon red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div>
+          <div class="finding-title">Usability &amp; ADA Accessibility Issues</div>
+          <div class="finding-desc">The site carries usability problems and ADA (accessibility) compliance gaps that both frustrate visitors and create legal exposure — a real risk for healthcare websites. Poor usability also suppresses conversions and sends weak engagement signals to Google, compounding the ranking problem. The foundation needs to be rebuilt to be accessible, fast and conversion-friendly.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-icon amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div>
+          <div class="finding-title">Backlink Profile Needs a Spam Clean-Up</div>
+          <div class="finding-desc">There are 224 backlinks across 127 referring domains, but much of the profile is low-quality and spam-adjacent — links that pass little authority and can actively hold the domain back. The profile needs a full evaluation and clean-up of toxic/spam links, paired with a deliberate, monthly high-authority link-building plan so the practice finally accrues the authority it needs to rank.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SITE ARCHITECTURE -->
+<section class="paper">
+  <div class="container">
+    <div class="section-eyebrow">Site Architecture</div>
+    <h2 class="section-title">Educational Content — but No Service Layer</h2>
+
+    <div class="triple-stats">
+      <div class="triple-stat">
+        <div class="rule"></div>
+        <div class="triple-num">12</div>
+        <div class="triple-label">Pages Indexed with Keywords</div>
+      </div>
+      <div class="triple-stat">
+        <div class="rule"></div>
+        <div class="triple-num">0</div>
+        <div class="triple-label">Dedicated Treatment Pages</div>
+      </div>
+      <div class="triple-stat">
+        <div class="rule"></div>
+        <div class="triple-num">0</div>
+        <div class="triple-label">Pages with FAQ &amp; Schema</div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow">Top Indexed Pages with Traffic Data</div>
+
+    <div class="table-grid" style="grid-template-columns: 1fr;">
+      <div class="data-table">
+        <div class="data-table-head">
+          <div>URL</div>
+          <div style="text-align:right;">Visits / mo</div>
+        </div>
+        <div class="data-table-row" style="background: #f0fdf4;"><div class="data-cell-text" style="color: var(--green); font-weight: 600;">/cavitation/ <span style="font-weight: 700;">(52% of all organic traffic)</span></div><div class="data-cell-num" style="color: var(--green);">12</div></div>
+        <div class="data-table-row"><div class="data-cell-text">/tmj-dental-deprogrammer-faq/ <span style="color: var(--text-muted);">(blog / FAQ-style post)</span></div><div class="data-cell-num">5</div></div>
+        <div class="data-table-row"><div class="data-cell-text">/our-dential-technology/</div><div class="data-cell-num">5</div></div>
+        <div class="data-table-row"><div class="data-cell-text">/los-angeles-location/</div><div class="data-cell-num">1</div></div>
+        <div class="data-table-row"><div class="data-cell-text">/breast-cancer-root-canal-connection/ <span style="color: var(--text-muted);">(10 keywords, all page 3+)</span></div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+        <div class="data-table-row"><div class="data-cell-text">/3-great-alternatives-to-root-canals/ <span style="color: var(--text-muted);">(7 keywords, all page 3+)</span></div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+        <div class="data-table-row"><div class="data-cell-text">/what-is-biomimetic-dentistry/</div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+        <div class="data-table-row"><div class="data-cell-text">/services/ <span style="color: var(--text-muted);">(generic — ranks pos 84, no traffic)</span></div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+      </div>
+    </div>
+
+    <div class="table-note"><strong>Critical issue:</strong> the site's traffic depends almost entirely on a few educational blog posts, while there are no dedicated, optimized treatment pages for the practice's core services — cavitation surgery, mercury/amalgam removal, biological root-canal alternatives, biomimetic &amp; cosmetic dentistry, ozone therapy and TMJ treatment. The one generic /services/ page ranks on page 8+ and drives zero traffic. Patients searching for these treatments in Los Angeles have nothing optimized and conversion-focused to land on.</div>
+  </div>
+</section>
+
+<!-- TECHNICAL ISSUES -->
+<section class="light">
+  <div class="container">
+    <div class="section-eyebrow">Triage Center</div>
+    <h2 class="section-title">Technical &amp; On-Page Issues</h2>
+
+    <div class="tech-row purple">
+      <div class="tech-num">0</div>
+      <div>
+        <div class="tech-name">No FAQ Content &amp; No Schema Markup</div>
+        <div class="tech-desc">Zero FAQ sections and no FAQ, Service, Dentist or LocalBusiness schema across the site. This is the #1 reason the practice is invisible to AI search — ChatGPT, Gemini, Perplexity and Google AI Overviews rely on structured data and Q&amp;A content to surface and cite a practice.</div>
+      </div>
+    </div>
+
+    <div class="tech-row">
+      <div class="tech-num">!</div>
+      <div>
+        <div class="tech-name">Usability &amp; ADA Accessibility Issues</div>
+        <div class="tech-desc">The site has usability friction and ADA (WCAG) accessibility gaps — a compliance and legal risk for a healthcare website, and a drag on both conversions and Google engagement signals. The foundation needs to be rebuilt to be accessible, fast and conversion-friendly.</div>
+      </div>
+    </div>
+
+    <div class="tech-row">
+      <div class="tech-num">0</div>
+      <div>
+        <div class="tech-name">No Dedicated Treatment / Service Pages</div>
+        <div class="tech-desc">Core services — cavitation surgery, mercury removal, biological root-canal alternatives, biomimetic &amp; cosmetic dentistry, ozone therapy, TMJ — have no individual, optimized landing pages. Discovery and high-intent search has nowhere to land, so the practice captures almost no new-patient traffic.</div>
+      </div>
+    </div>
+
+    <div class="tech-row amber">
+      <div class="tech-num">224</div>
+      <div>
+        <div class="tech-name">Backlink Profile Needs a Spam Clean-Up</div>
+        <div class="tech-desc">224 backlinks across 127 referring domains, but much of the profile is low-quality and spam-adjacent. It needs a full evaluation, disavow/clean-up of toxic links, and a deliberate monthly high-authority link-building plan so the referring domains finally translate into ranking power.</div>
+      </div>
+    </div>
+
+    <div class="tech-row green">
+      <div class="tech-num">127</div>
+      <div>
+        <div class="tech-name">A Distinctive Brand &amp; Content Library to Build On</div>
+        <div class="tech-desc">127 referring domains and a deep, genuinely unique content library — "The Systemic Dentist," cavitations, mercury removal, root-canal alternatives — give the site a real foundation and a defensible niche. Once accessibility, treatment pages, FAQ &amp; schema, and clean high-authority backlinks are in place, rankings can climb quickly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TREND CHART -->
+<section class="paper">
+  <div class="container">
+    <div class="section-eyebrow">Traffic Trends</div>
+    <h2 class="section-title">Organic Traffic — 13-Month Trend</h2>
+    <p style="font-size: 16px; color: var(--text-muted); line-height: 1.65; max-width: 820px; margin-bottom: 32px;">Organic traffic has been erratic and low for over a year — bouncing between 5 and 29 visits a month and never breaking out. More telling is the keyword count: it peaked at 161 ranking keywords in April 2025 and has since fallen to 71. The site can rank — it has a unique brand and a deep content library — it simply lacks the optimized treatment pages, FAQ &amp; schema layer, accessibility fixes and clean link authority needed to grow.</p>
+
+    <div class="chart-wrap">
+      <svg class="trend-svg" viewBox="0 0 1100 540" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2563eb" stop-opacity="0.20"/>
+            <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <line class="grid" x1="80" y1="60" x2="1060" y2="60"/>
+        <line class="grid" x1="80" y1="136" x2="1060" y2="136"/>
+        <line class="grid" x1="80" y1="212" x2="1060" y2="212"/>
+        <line class="grid" x1="80" y1="288" x2="1060" y2="288"/>
+        <line class="grid" x1="80" y1="364" x2="1060" y2="364"/>
+        <line class="axis" x1="80" y1="440" x2="1060" y2="440"/>
+
+        <text class="lbl" x="70" y="64" text-anchor="end" font-size="12">40</text>
+        <text class="lbl" x="70" y="140" text-anchor="end" font-size="12">32</text>
+        <text class="lbl" x="70" y="216" text-anchor="end" font-size="12">24</text>
+        <text class="lbl" x="70" y="292" text-anchor="end" font-size="12">16</text>
+        <text class="lbl" x="70" y="368" text-anchor="end" font-size="12">8</text>
+        <text class="lbl" x="70" y="444" text-anchor="end" font-size="12">0</text>
+
+        <!-- Year separator: 2025 | 2026 -->
+        <line x1="649.5" y1="60" x2="649.5" y2="440" stroke="rgba(13,22,32,0.08)" stroke-dasharray="3 4"/>
+        <text class="lbl" x="360" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2025</text>
+        <text class="lbl" x="865" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2026</text>
+
+        <!-- Filled area -->
+        <path fill="url(#blueGrad)" d="M 110.0,193.0 L 181.9,212.0 L 253.8,364.0 L 325.8,354.5 L 397.7,307.0 L 469.6,164.5 L 541.5,183.5 L 613.5,392.5 L 685.4,383.0 L 757.3,345.0 L 829.2,345.0 L 901.2,164.5 L 973.1,193.0 L 1045.0,221.5 L 1045.0,440 L 110.0,440 Z"/>
+
+        <!-- Main line -->
+        <path fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M 110.0,193.0 L 181.9,212.0 L 253.8,364.0 L 325.8,354.5 L 397.7,307.0 L 469.6,164.5 L 541.5,183.5 L 613.5,392.5 L 685.4,383.0 L 757.3,345.0 L 829.2,345.0 L 901.2,164.5 L 973.1,193.0 L 1045.0,221.5"/>
+
+        <!-- Ceiling annotation -->
+        <text x="430" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#d97706" opacity="0.85" font-weight="700" letter-spacing="3">ERRATIC &amp; LOW · NEVER ABOVE ~29 VISITS / MO</text>
+
+        <!-- Peak callout: Apr 2026 -->
+        <circle cx="901.2" cy="164.5" r="8" fill="#2563eb" stroke="white" stroke-width="3"/>
+        <line x1="901.2" y1="164.5" x2="901.2" y2="440" stroke="#2563eb" stroke-width="1" stroke-dasharray="4 4" opacity="0.30"/>
+        <rect x="803" y="116" width="196" height="48" rx="8" fill="white" stroke="#2563eb" stroke-width="1.5"/>
+        <text x="901" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#2563eb" letter-spacing="2">RECENT PEAK · APR 2026</text>
+        <text x="901" y="154" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="600" fill="#2563eb" letter-spacing="-0.5">29 visits / month</text>
+
+        <!-- Current marker: Jun 2026 -->
+        <circle cx="1045" cy="221.5" r="6" fill="#dc2626" stroke="white" stroke-width="3"/>
+        <rect x="945" y="231" width="100" height="38" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+        <text x="995" y="248" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#dc2626" letter-spacing="2">CURRENT</text>
+        <text x="995" y="262" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="600" fill="#dc2626">23 / mo</text>
+      </svg>
+
+      <div class="trend-legend">
+        <div class="trend-legend-item"><span class="trend-legend-line" style="background:#2563eb; width: 28px; height: 3px; border-radius: 2px;"></span>Total Organic · 13 months</div>
+        <div class="trend-legend-item"><span class="trend-legend-line" style="background:#2563eb; width: 12px; height: 12px; border-radius: 50%;"></span>Recent Peak</div>
+        <div class="trend-legend-item"><span class="trend-legend-line" style="background:#dc2626; width: 12px; height: 12px; border-radius: 50%;"></span>Current</div>
+      </div>
+    </div>
+
+    <div class="delta-row">
+      <div class="delta-item">
+        <div class="delta-rule"></div>
+        <div class="delta-num">71</div>
+        <div class="delta-label">Ranking Keywords Today</div>
+        <div class="delta-sub">down from 161 · target 400+</div>
+      </div>
+      <div class="delta-item">
+        <div class="delta-rule"></div>
+        <div class="delta-num">23</div>
+        <div class="delta-label">Organic Visits / mo</div>
+        <div class="delta-sub">very low · Authority Score 7</div>
+      </div>
+      <div class="delta-item">
+        <div class="delta-rule"></div>
+        <div class="delta-num">12</div>
+        <div class="delta-label">Pages Indexed w/ Keywords</div>
+        <div class="delta-sub">no dedicated treatment pages</div>
+      </div>
+      <div class="delta-item">
+        <div class="delta-rule"></div>
+        <div class="delta-num">0</div>
+        <div class="delta-label">FAQ &amp; Schema in Place</div>
+        <div class="delta-sub">no AI-visibility signals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE TRAFFIC COMES FROM -->
+<section class="light">
+  <div class="container">
+    <div class="section-eyebrow">Organic Performance</div>
+    <h2 class="section-title">Where Traffic Actually Comes From</h2>
+
+    <div class="conv-grid">
+      <div class="conv-card">
+        <div class="conv-num">12</div>
+        <div class="conv-label">cavitation_page_visits</div>
+        <div class="conv-sub">52% of all organic</div>
+      </div>
+      <div class="conv-card">
+        <div class="conv-num">0</div>
+        <div class="conv-label">treatment_page_visits</div>
+        <div class="conv-sub">no service pages exist</div>
+      </div>
+      <div class="conv-card">
+        <div class="conv-num">127</div>
+        <div class="conv-label">referring_domains</div>
+        <div class="conv-sub">needs spam clean-up</div>
+      </div>
+      <div class="conv-card">
+        <div class="conv-num">7</div>
+        <div class="conv-label">authority_score</div>
+        <div class="conv-sub">very low</div>
+      </div>
+    </div>
+
+    <div class="table-grid">
+      <div>
+        <div class="data-table">
+          <div class="data-table-head">
+            <div>Top Pages by Organic Traffic</div>
+            <div style="text-align:right;">Visits</div>
+          </div>
+          <div class="data-table-row"><div class="data-cell-text">/cavitation/</div><div class="data-cell-num">12</div></div>
+          <div class="data-table-row"><div class="data-cell-text">/tmj-dental-deprogrammer-faq/</div><div class="data-cell-num">5</div></div>
+          <div class="data-table-row"><div class="data-cell-text">/our-dential-technology/</div><div class="data-cell-num">5</div></div>
+          <div class="data-table-row"><div class="data-cell-text">/los-angeles-location/</div><div class="data-cell-num">1</div></div>
+          <div class="data-table-row"><div class="data-cell-text">/breast-cancer-root-canal-connection/</div><div class="data-cell-num">0</div></div>
+          <div class="data-table-row"><div class="data-cell-text">/3-great-alternatives-to-root-canals/</div><div class="data-cell-num">0</div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="data-table">
+          <div class="data-table-head">
+            <div>Top Ranking Keywords</div>
+            <div style="text-align:right;">Position</div>
+          </div>
+          <div class="data-table-row"><div class="data-cell-text">2701 ocean park blvd santa monica <span style="color: var(--text-muted);">(location)</span></div><div class="data-cell-num">7</div></div>
+          <div class="data-table-row"><div class="data-cell-text">cavitation of wisdom teeth</div><div class="data-cell-num">13</div></div>
+          <div class="data-table-row"><div class="data-cell-text">root canal and breast cancer</div><div class="data-cell-num">16</div></div>
+          <div class="data-table-row"><div class="data-cell-text">tooth cavitation symptoms</div><div class="data-cell-num">18</div></div>
+          <div class="data-table-row"><div class="data-cell-text">infection from wisdom teeth removal</div><div class="data-cell-num">23</div></div>
+          <div class="data-table-row"><div class="data-cell-text">infections after wisdom tooth removal</div><div class="data-cell-num">28</div></div>
+          <div class="data-table-row"><div class="data-cell-text">root canal linked to breast cancer</div><div class="data-cell-num">30</div></div>
+          <div class="data-table-row"><div class="data-cell-text">cavitation in dentistry</div><div class="data-cell-num">48</div></div>
+          <div class="data-table-row"><div class="data-cell-text">biomimetic dentistry los angeles</div><div class="data-cell-num">41</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-note" style="background: var(--blue-tint); color: var(--blue-dark); border-left-color: var(--blue-deep);">The few keywords on page 1–2 are either the location address or low-volume informational terms. Every commercial discovery term — "biomimetic dentistry los angeles" (pos 41), "cavitation in dentistry" (pos 48), "cavitation surgery" (pos 87), "dental cavitation surgery" (pos 84) — sits on page 3–10. These are exactly the keywords that, with optimized treatment pages, FAQ content, schema and clean authority backlinks, can reach page 1 and bring in new patients. We recommend setting up Semrush position tracking to monitor these every month.</div>
+  </div>
+</section>
+
+<!-- 6-STEP PROCESSES -->
+<section class="paper">
+  <div class="container">
+    <div class="process-header">
+      <div>
+        <div class="section-eyebrow">Implementation Approach · Process 01</div>
+        <h2 class="section-title">Organic Search Optimization</h2>
+      </div>
+      <div class="process-badge organic">6-Step Process</div>
+    </div>
+    <p class="process-intro">A proven six-step process that combines expert strategy and advanced tools to dominate organic search across Google, Maps, and local directories in Santa Monica, Los Angeles and the surrounding communities.</p>
+
+    <div class="pgrid">
+      <div class="pcard">
+        <div class="pcard-num">STEP 01</div>
+        <div class="pcard-title">Comprehensive Audit</div>
+        <div class="pcard-desc">Analyze current strategy, target ZIP codes across Santa Monica and greater Los Angeles, and top biological-dentistry competitors to identify growth opportunities.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num">STEP 02</div>
+        <div class="pcard-title">Fix the Foundation</div>
+        <div class="pcard-desc">Rebuild the website on a strong technical foundation for SEO and AI visibility — resolve usability and ADA accessibility issues, fix the schema markup, and make every page fast and conversion-friendly.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num">STEP 03</div>
+        <div class="pcard-title">Local Listings &amp; NAP Accuracy</div>
+        <div class="pcard-desc">Clean up and optimize listings across all major directories, keeping Name, Address, and Phone consistent, and manage the Google Business Profile &amp; Maps every month.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num">STEP 04</div>
+        <div class="pcard-title">Treatment Pages + Schema</div>
+        <div class="pcard-desc">Build and optimize a dedicated page for every service — cavitation surgery, mercury removal, root-canal alternatives, biomimetic &amp; cosmetic dentistry, TMJ — with proper H1/H2 structure, FAQ content, and Dentist/LocalBusiness/Service schema.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num">STEP 05</div>
+        <div class="pcard-title">Backlink Clean-Up &amp; Authority</div>
+        <div class="pcard-desc">Evaluate the profile, clean up spam and toxic links, then build high-quality follow backlinks from high-authority websites every month so the 127 referring domains finally translate into ranking power.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num">STEP 06</div>
+        <div class="pcard-title">Monthly Reporting &amp; Tracking</div>
+        <div class="pcard-desc">Detailed monthly reports and Semrush position tracking to monitor rankings, traffic and conversions — analyzing and improving the site every single month.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="container">
+    <div class="process-header">
+      <div>
+        <div class="section-eyebrow" style="color: var(--purple);">Implementation Approach · Process 02</div>
+        <h2 class="section-title">AI Search Visibility</h2>
+      </div>
+      <div class="process-badge ai">6-Step Process</div>
+    </div>
+    <p class="process-intro">A parallel six-step process that ensures the practice is recognized, cited, and recommended by ChatGPT, Gemini, Perplexity, and Google AI Overviews — the next layer of patient discovery.</p>
+
+    <div class="pgrid pgrid-ai">
+      <div class="pcard">
+        <div class="pcard-num">STEP 01</div>
+        <div class="pcard-title">AI Discovery Audit</div>
+        <div class="pcard-desc">Evaluate how the practice currently appears across ChatGPT, Gemini, and Perplexity for Los Angeles biological, holistic and cosmetic dentistry searches.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num">STEP 02</div>
+        <div class="pcard-title">Data Structuring &amp; Schema</div>
+        <div class="pcard-desc">Add schema markup and structured data across every treatment page so AI engines can read, trust, and cite the practice.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num">STEP 03</div>
+        <div class="pcard-title">FAQ &amp; AI-Ready Content</div>
+        <div class="pcard-desc">Publish FAQ sections and AI-friendly copy that answer real patient questions — the content AI assistants pull from to recommend a dentist.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num">STEP 04</div>
+        <div class="pcard-title">Brand Mentions &amp; Citations</div>
+        <div class="pcard-desc">Distribute trusted mentions and citations that help AI engines recognize "The Systemic Dentist" as an authoritative local provider.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num">STEP 05</div>
+        <div class="pcard-title">Review &amp; Reputation</div>
+        <div class="pcard-desc">Strengthen online reviews and brand sentiment — key signals AI uses to recommend a business to patients.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num">STEP 06</div>
+        <div class="pcard-title">Performance Tracking</div>
+        <div class="pcard-desc">Monitor visibility across multiple AI tools and refine strategy each month to maintain top positioning.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTION PLAN -->
+<section class="dark">
+  <div class="container">
+    <div class="section-eyebrow">How We Help</div>
+    <h2 class="section-title">Priority Action Plan</h2>
+
+    <div class="action-list">
+
+      <div class="action-row">
+        <div class="action-num">01</div>
+        <div>
+          <div class="action-title">Fix the Website Foundation — Usability, ADA &amp; Conversion</div>
+          <div class="action-desc">Rebuild the site on a strong SEO + AI-ready foundation: resolve the usability problems and ADA accessibility gaps, improve speed, and make every page conversion-friendly so visitors actually become patients.</div>
+        </div>
+        <div class="action-tag immediate">Immediate</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">02</div>
+        <div>
+          <div class="action-title">Fix &amp; Add Schema Markup Across the Site</div>
+          <div class="action-desc">Implement proper Dentist, LocalBusiness, Service, Article and FAQ schema everywhere so Google and AI engines can finally read, trust and rank the content.</div>
+        </div>
+        <div class="action-tag immediate">Immediate</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">03</div>
+        <div>
+          <div class="action-title">Add FAQ Content to Every Page for AI Visibility</div>
+          <div class="action-desc">The site has no FAQ content — a primary reason it isn't surfaced by ChatGPT, Gemini, or Google AI Overviews. We'll answer real patient questions on every key page to power AI visibility and content strategy.</div>
+        </div>
+        <div class="action-tag immediate">Immediate</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">04</div>
+        <div>
+          <div class="action-title">Build Dedicated Treatment &amp; Service Pages</div>
+          <div class="action-desc">Create optimized, conversion-focused pages for every core service — cavitation surgery, mercury/amalgam removal, biological root-canal alternatives, biomimetic &amp; cosmetic dentistry, ozone therapy, TMJ — plus location pages around Santa Monica &amp; LA.</div>
+        </div>
+        <div class="action-tag high">High</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">05</div>
+        <div>
+          <div class="action-title">Grow from 71 → 400+ Ranking Keywords + Position Tracking</div>
+          <div class="action-desc">Optimize the terms stuck on page 3–10 — "biomimetic dentistry los angeles" (41), "cavitation in dentistry" (48), "cavitation surgery" (87) — target new discovery keywords, and set up Semrush position tracking to monitor rankings every month.</div>
+        </div>
+        <div class="action-tag high">High</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">06</div>
+        <div>
+          <div class="action-title">Clean Up Spam Backlinks + Build High-Authority Links Monthly</div>
+          <div class="action-desc">Run a full backlink evaluation, clean up and disavow spam/toxic links, then source high-quality follow backlinks from high-authority websites every month to lift domain authority and organic visibility.</div>
+        </div>
+        <div class="action-tag high">High</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">07</div>
+        <div>
+          <div class="action-title">Publish 4 Strategic Blogs Per Month</div>
+          <div class="action-desc">Four AI-ready, patient-question blog posts every month — mapped to high-intent searches like "alternatives to root canal" and "cavitation surgery cost" — each written to rank on Google and be cited by AI engines, improving keyword ranking and visibility.</div>
+        </div>
+        <div class="action-tag medium">Medium</div>
+      </div>
+
+      <div class="action-row">
+        <div class="action-num">08</div>
+        <div>
+          <div class="action-title">Optimize Google Business Profile &amp; Monthly Reporting</div>
+          <div class="action-desc">Optimize and manage the Google Business Profile and Maps every month, send detailed monthly reports, and track, analyze and improve the website on an ongoing basis.</div>
+        </div>
+        <div class="action-tag ongoing">Ongoing</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-brand">Dentist Nerds</div>
+    <div class="foot-meta">Website Quality &amp; AI Visibility Audit · Dr. Alireza Panahpour · The Systemic Dentist · Santa Monica, CA · June 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
