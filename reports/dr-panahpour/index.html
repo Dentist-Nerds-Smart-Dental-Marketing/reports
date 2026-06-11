@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Systemic Dentist — Website Quality & AI Visibility Audit</title>
+<title>Dr. Panahpour — The Systemic Dentist · Website Quality & AI Visibility Audit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -57,11 +57,53 @@
     padding: 0 48px;
   }
 
+  /* DOMAIN TABS */
+  .domain-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #080d14;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .domain-tabs-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .dt-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .dt-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .dt-btn {
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: #a8b3c2;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 9px 18px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .dt-btn:hover { color: #fff; border-color: rgba(74,144,226,0.45); }
+  .dt-btn.active { background: var(--blue-deep); color: #fff; border-color: var(--blue-deep); }
+  .report-panel[hidden] { display: none; }
+
   /* HERO */
   .hero {
     background: var(--ink);
     color: white;
-    padding: 96px 0 112px;
+    padding: 80px 0 112px;
     position: relative;
     overflow: hidden;
   }
@@ -533,6 +575,7 @@
     color: var(--text-light);
     letter-spacing: 0.15em;
     text-transform: uppercase;
+    line-height: 1.8;
   }
 
   /* ===== RESPONSIVE ===== */
@@ -540,7 +583,7 @@
   /* Tablet */
   @media (max-width: 1024px) {
     .container { padding: 0 32px; }
-    .hero { padding: 80px 0 96px; }
+    .hero { padding: 64px 0 96px; }
     section.light, section.paper, section.dark { padding: 80px 0; }
     h2.section-title { font-size: 36px; }
     .hero-kpis { grid-template-columns: repeat(4, 1fr); gap: 12px; }
@@ -568,7 +611,10 @@
   @media (max-width: 600px) {
     .container { padding: 0 18px; }
     body { font-size: 14px; }
-    .hero { padding: 52px 0 60px; }
+    .domain-tabs-inner { justify-content: center; gap: 10px; }
+    .dt-label { width: 100%; text-align: center; }
+    .dt-btn { font-size: 12px; padding: 8px 14px; }
+    .hero { padding: 44px 0 56px; }
     section.light, section.paper, section.dark { padding: 52px 0; }
     .hero h1 { font-size: 34px; line-height: 1.06; margin-bottom: 22px; }
     .hero-desc { font-size: 15px; margin-bottom: 36px; }
@@ -605,10 +651,26 @@
 </head>
 <body>
 
+<!-- DOMAIN TABS -->
+<nav class="domain-tabs">
+  <div class="container domain-tabs-inner">
+    <span class="dt-label">Dr. Panahpour · Audits</span>
+    <div class="dt-btns">
+      <button class="dt-btn active" data-target="panel-dds" type="button">systemicdds.com</button>
+      <button class="dt-btn" data-target="panel-dentist" type="button">systemicdentist.com</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================= -->
+<!-- PANEL 1 · systemicdds.com                                     -->
+<!-- ============================================================= -->
+<div class="report-panel" id="panel-dds">
+
 <!-- HERO -->
 <header class="hero">
   <div class="container">
-    <div class="eyebrow">Website Quality &amp; AI Visibility Audit</div>
+    <div class="eyebrow">Website Quality &amp; AI Visibility Audit · systemicdds.com</div>
     <h1>The Systemic Dentist</h1>
     <p class="hero-desc">Comprehensive SEO and AI-visibility audit of systemicdds.com — the Santa Monica biological &amp; holistic dental practice of Dr. Alireza Panahpour, "The Systemic Dentist." The site has built a deep library of educational content on cavitations, mercury removal, root-canal alternatives and biomimetic dentistry, yet it pulls just 23 organic visits a month, ranks for only 71 keywords (down from a peak of 161), and has no dedicated treatment pages, no FAQ content and no schema markup for AI search. This audit shows exactly what is capping growth — and the path to 400+ ranking keywords.</p>
 
@@ -635,7 +697,7 @@
   </div>
 </header>
 
-<!-- 3 PRIORITIES (executive summary, visual) -->
+<!-- 3 PRIORITIES -->
 <section class="paper">
   <div class="container">
     <div class="section-eyebrow">Executive Summary · Where to Focus</div>
@@ -648,7 +710,6 @@
 
     <div class="focus-grid">
 
-      <!-- Priority 01: Low Visibility -->
       <div class="focus-card f1">
         <div class="focus-num">Priority 01 · Low Visibility</div>
         <div class="focus-title">Just 23 organic visits a month — Authority Score 7</div>
@@ -656,8 +717,7 @@
           <svg class="mini-gauge" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
             <circle cx="70" cy="70" r="55" fill="none" stroke="#fee2e2" stroke-width="14"/>
             <circle cx="70" cy="70" r="55" fill="none" stroke="#dc2626" stroke-width="14"
-                    stroke-dasharray="20 326" stroke-dashoffset="0"
-                    transform="rotate(-90 70 70)" stroke-linecap="round"/>
+                    stroke-dasharray="20 326" transform="rotate(-90 70 70)" stroke-linecap="round"/>
             <text x="70" y="66" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="600" fill="#dc2626" letter-spacing="-1">23</text>
             <text x="70" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#5c6b7d" font-weight="600" letter-spacing="2">VISITS / MONTH</text>
           </svg>
@@ -669,7 +729,6 @@
         <div class="focus-line">The site earns just 23 organic visits a month on an Authority Score of 7 — far below what an established Los Angeles specialty practice should command. Over half of that traffic lands on a single page (/cavitation/), and most ranking terms sit on page 3–10 where they bring essentially no new patients.</div>
       </div>
 
-      <!-- Priority 02: Keyword Decline -->
       <div class="focus-card f2">
         <div class="focus-num">Priority 02 · Keyword Decline</div>
         <div class="focus-title">Only 71 keywords rank — down from a peak of 161</div>
@@ -677,8 +736,7 @@
           <svg class="mini-gauge" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
             <circle cx="70" cy="70" r="55" fill="none" stroke="#fef3c7" stroke-width="14"/>
             <circle cx="70" cy="70" r="55" fill="none" stroke="#d97706" stroke-width="14"
-                    stroke-dasharray="61 285" stroke-dashoffset="0"
-                    transform="rotate(-90 70 70)" stroke-linecap="round"/>
+                    stroke-dasharray="61 285" transform="rotate(-90 70 70)" stroke-linecap="round"/>
             <text x="70" y="66" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="600" fill="#d97706" letter-spacing="-1">71</text>
             <text x="70" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#5c6b7d" font-weight="600" letter-spacing="2">OF 400+ TARGET</text>
           </svg>
@@ -690,7 +748,6 @@
         <div class="focus-line">The site ranks for just 71 keywords — and the count has fallen sharply from a peak of 161 in April 2025. A Los Angeles biological &amp; cosmetic practice should rank for 400+. The footprint is contracting year-over-year, not growing.</div>
       </div>
 
-      <!-- Priority 03: No Treatment Pages / No FAQ -->
       <div class="focus-card f3">
         <div class="focus-num">Priority 03 · No Service Layer</div>
         <div class="focus-title">No treatment pages, no FAQs — invisible to AI</div>
@@ -698,8 +755,7 @@
           <svg class="mini-gauge" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
             <circle cx="70" cy="70" r="55" fill="none" stroke="#ede9fe" stroke-width="14"/>
             <circle cx="70" cy="70" r="55" fill="none" stroke="#8b5cf6" stroke-width="14"
-                    stroke-dasharray="0 346" stroke-dashoffset="0"
-                    transform="rotate(-90 70 70)" stroke-linecap="round"/>
+                    stroke-dasharray="0 346" transform="rotate(-90 70 70)" stroke-linecap="round"/>
             <text x="70" y="66" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="600" fill="#8b5cf6" letter-spacing="-1">0</text>
             <text x="70" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#5c6b7d" font-weight="600" letter-spacing="2">FAQ / SCHEMA PAGES</text>
           </svg>
@@ -759,7 +815,7 @@
   </div>
 </section>
 
-<!-- ORGANIC PERFORMANCE: TREND + KEYWORDS -->
+<!-- ORGANIC PERFORMANCE -->
 <section class="paper">
   <div class="container">
     <div class="section-eyebrow">Organic Performance</div>
@@ -769,54 +825,39 @@
     <div class="chart-wrap">
       <svg class="trend-svg" viewBox="0 0 1100 540" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="blueGrad1" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="#2563eb" stop-opacity="0.20"/>
             <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
           </linearGradient>
         </defs>
-
         <line class="grid" x1="80" y1="60" x2="1060" y2="60"/>
         <line class="grid" x1="80" y1="136" x2="1060" y2="136"/>
         <line class="grid" x1="80" y1="212" x2="1060" y2="212"/>
         <line class="grid" x1="80" y1="288" x2="1060" y2="288"/>
         <line class="grid" x1="80" y1="364" x2="1060" y2="364"/>
         <line class="axis" x1="80" y1="440" x2="1060" y2="440"/>
-
         <text class="lbl" x="70" y="64" text-anchor="end" font-size="12">40</text>
         <text class="lbl" x="70" y="140" text-anchor="end" font-size="12">32</text>
         <text class="lbl" x="70" y="216" text-anchor="end" font-size="12">24</text>
         <text class="lbl" x="70" y="292" text-anchor="end" font-size="12">16</text>
         <text class="lbl" x="70" y="368" text-anchor="end" font-size="12">8</text>
         <text class="lbl" x="70" y="444" text-anchor="end" font-size="12">0</text>
-
-        <!-- Year separator: 2025 | 2026 -->
         <line x1="649.5" y1="60" x2="649.5" y2="440" stroke="rgba(13,22,32,0.08)" stroke-dasharray="3 4"/>
         <text class="lbl" x="360" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2025</text>
         <text class="lbl" x="865" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2026</text>
-
-        <!-- Filled area -->
-        <path fill="url(#blueGrad)" d="M 110.0,193.0 L 181.9,212.0 L 253.8,364.0 L 325.8,354.5 L 397.7,307.0 L 469.6,164.5 L 541.5,183.5 L 613.5,392.5 L 685.4,383.0 L 757.3,345.0 L 829.2,345.0 L 901.2,164.5 L 973.1,193.0 L 1045.0,221.5 L 1045.0,440 L 110.0,440 Z"/>
-
-        <!-- Main line -->
+        <path fill="url(#blueGrad1)" d="M 110.0,193.0 L 181.9,212.0 L 253.8,364.0 L 325.8,354.5 L 397.7,307.0 L 469.6,164.5 L 541.5,183.5 L 613.5,392.5 L 685.4,383.0 L 757.3,345.0 L 829.2,345.0 L 901.2,164.5 L 973.1,193.0 L 1045.0,221.5 L 1045.0,440 L 110.0,440 Z"/>
         <path fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M 110.0,193.0 L 181.9,212.0 L 253.8,364.0 L 325.8,354.5 L 397.7,307.0 L 469.6,164.5 L 541.5,183.5 L 613.5,392.5 L 685.4,383.0 L 757.3,345.0 L 829.2,345.0 L 901.2,164.5 L 973.1,193.0 L 1045.0,221.5"/>
-
-        <!-- Ceiling annotation -->
         <text x="430" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#d97706" opacity="0.85" font-weight="700" letter-spacing="3">ERRATIC &amp; LOW · NEVER ABOVE ~29 VISITS / MO</text>
-
-        <!-- Peak callout: Apr 2026 -->
         <circle cx="901.2" cy="164.5" r="8" fill="#2563eb" stroke="white" stroke-width="3"/>
         <line x1="901.2" y1="164.5" x2="901.2" y2="440" stroke="#2563eb" stroke-width="1" stroke-dasharray="4 4" opacity="0.30"/>
         <rect x="803" y="116" width="196" height="48" rx="8" fill="white" stroke="#2563eb" stroke-width="1.5"/>
         <text x="901" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#2563eb" letter-spacing="2">RECENT PEAK · APR 2026</text>
         <text x="901" y="154" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="600" fill="#2563eb" letter-spacing="-0.5">29 visits / month</text>
-
-        <!-- Current marker: Jun 2026 -->
         <circle cx="1045" cy="221.5" r="6" fill="#dc2626" stroke="white" stroke-width="3"/>
         <rect x="945" y="231" width="100" height="38" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
         <text x="995" y="248" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#dc2626" letter-spacing="2">CURRENT</text>
         <text x="995" y="262" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="600" fill="#dc2626">23 / mo</text>
       </svg>
-
       <div class="trend-legend">
         <div class="trend-legend-item"><span class="trend-legend-line" style="background:#2563eb; width: 28px; height: 3px; border-radius: 2px;"></span>Total Organic · 13 months</div>
         <div class="trend-legend-item"><span class="trend-legend-line" style="background:#2563eb; width: 12px; height: 12px; border-radius: 50%;"></span>Recent Peak</div>
@@ -844,7 +885,7 @@
   </div>
 </section>
 
-<!-- TECHNICAL & ON-PAGE ISSUES (detailed findings) -->
+<!-- TECHNICAL ISSUES -->
 <section class="light">
   <div class="container">
     <div class="section-eyebrow">Triage Center</div>
@@ -893,7 +934,7 @@
   </div>
 </section>
 
-<!-- 6-STEP PROCESSES -->
+<!-- PROCESS 01 -->
 <section class="paper">
   <div class="container">
     <div class="process-header">
@@ -906,40 +947,17 @@
     <p class="process-intro">A proven six-step process that combines expert strategy and advanced tools to dominate organic search across Google, Maps, and local directories in Santa Monica, Los Angeles and the surrounding communities.</p>
 
     <div class="pgrid">
-      <div class="pcard">
-        <div class="pcard-num">STEP 01</div>
-        <div class="pcard-title">Comprehensive Audit</div>
-        <div class="pcard-desc">Analyze current strategy, target ZIP codes across Santa Monica and greater Los Angeles, and top biological-dentistry competitors to identify growth opportunities.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 02</div>
-        <div class="pcard-title">Fix the Foundation</div>
-        <div class="pcard-desc">Rebuild the website on a strong technical foundation for SEO and AI visibility — resolve usability and ADA accessibility issues, fix the schema markup, and make every page fast and conversion-friendly.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 03</div>
-        <div class="pcard-title">Local Listings &amp; NAP Accuracy</div>
-        <div class="pcard-desc">Clean up and optimize listings across all major directories, keeping Name, Address, and Phone consistent, and manage the Google Business Profile &amp; Maps every month.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 04</div>
-        <div class="pcard-title">Treatment Pages + Schema</div>
-        <div class="pcard-desc">Build and optimize a dedicated page for every service — cavitation surgery, mercury removal, root-canal alternatives, biomimetic &amp; cosmetic dentistry, TMJ — with proper H1/H2 structure, FAQ content, and Dentist/LocalBusiness/Service schema.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 05</div>
-        <div class="pcard-title">Backlink Clean-Up &amp; Authority</div>
-        <div class="pcard-desc">Evaluate the profile, clean up spam and toxic links, then build high-quality follow backlinks from high-authority websites every month so the 127 referring domains finally translate into ranking power.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 06</div>
-        <div class="pcard-title">Monthly Reporting &amp; Tracking</div>
-        <div class="pcard-desc">Detailed monthly reports and Semrush position tracking to monitor rankings, traffic and conversions — analyzing and improving the site every single month.</div>
-      </div>
+      <div class="pcard"><div class="pcard-num">STEP 01</div><div class="pcard-title">Comprehensive Audit</div><div class="pcard-desc">Analyze current strategy, target ZIP codes across Santa Monica and greater Los Angeles, and top biological-dentistry competitors to identify growth opportunities.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 02</div><div class="pcard-title">Fix the Foundation</div><div class="pcard-desc">Rebuild the website on a strong technical foundation for SEO and AI visibility — resolve usability and ADA accessibility issues, fix the schema markup, and make every page fast and conversion-friendly.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 03</div><div class="pcard-title">Local Listings &amp; NAP Accuracy</div><div class="pcard-desc">Clean up and optimize listings across all major directories, keeping Name, Address, and Phone consistent, and manage the Google Business Profile &amp; Maps every month.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 04</div><div class="pcard-title">Treatment Pages + Schema</div><div class="pcard-desc">Build and optimize a dedicated page for every service — cavitation surgery, mercury removal, root-canal alternatives, biomimetic &amp; cosmetic dentistry, TMJ — with proper H1/H2 structure, FAQ content, and Dentist/LocalBusiness/Service schema.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 05</div><div class="pcard-title">Backlink Clean-Up &amp; Authority</div><div class="pcard-desc">Evaluate the profile, clean up spam and toxic links, then build high-quality follow backlinks from high-authority websites every month so the 127 referring domains finally translate into ranking power.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 06</div><div class="pcard-title">Monthly Reporting &amp; Tracking</div><div class="pcard-desc">Detailed monthly reports and Semrush position tracking to monitor rankings, traffic and conversions — analyzing and improving the site every single month.</div></div>
     </div>
   </div>
 </section>
 
+<!-- PROCESS 02 -->
 <section class="light">
   <div class="container">
     <div class="process-header">
@@ -952,36 +970,12 @@
     <p class="process-intro">A parallel six-step process that ensures the practice is recognized, cited, and recommended by ChatGPT, Gemini, Perplexity, and Google AI Overviews — the next layer of patient discovery.</p>
 
     <div class="pgrid pgrid-ai">
-      <div class="pcard">
-        <div class="pcard-num">STEP 01</div>
-        <div class="pcard-title">AI Discovery Audit</div>
-        <div class="pcard-desc">Evaluate how the practice currently appears across ChatGPT, Gemini, and Perplexity for Los Angeles biological, holistic and cosmetic dentistry searches.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 02</div>
-        <div class="pcard-title">Data Structuring &amp; Schema</div>
-        <div class="pcard-desc">Add schema markup and structured data across every treatment page so AI engines can read, trust, and cite the practice.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 03</div>
-        <div class="pcard-title">FAQ &amp; AI-Ready Content</div>
-        <div class="pcard-desc">Publish FAQ sections and AI-friendly copy that answer real patient questions — the content AI assistants pull from to recommend a dentist.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 04</div>
-        <div class="pcard-title">Brand Mentions &amp; Citations</div>
-        <div class="pcard-desc">Distribute trusted mentions and citations that help AI engines recognize "The Systemic Dentist" as an authoritative local provider.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 05</div>
-        <div class="pcard-title">Review &amp; Reputation</div>
-        <div class="pcard-desc">Strengthen online reviews and brand sentiment — key signals AI uses to recommend a business to patients.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 06</div>
-        <div class="pcard-title">Performance Tracking</div>
-        <div class="pcard-desc">Monitor visibility across multiple AI tools and refine strategy each month to maintain top positioning.</div>
-      </div>
+      <div class="pcard"><div class="pcard-num">STEP 01</div><div class="pcard-title">AI Discovery Audit</div><div class="pcard-desc">Evaluate how the practice currently appears across ChatGPT, Gemini, and Perplexity for Los Angeles biological, holistic and cosmetic dentistry searches.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 02</div><div class="pcard-title">Data Structuring &amp; Schema</div><div class="pcard-desc">Add schema markup and structured data across every treatment page so AI engines can read, trust, and cite the practice.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 03</div><div class="pcard-title">FAQ &amp; AI-Ready Content</div><div class="pcard-desc">Publish FAQ sections and AI-friendly copy that answer real patient questions — the content AI assistants pull from to recommend a dentist.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 04</div><div class="pcard-title">Brand Mentions &amp; Citations</div><div class="pcard-desc">Distribute trusted mentions and citations that help AI engines recognize "The Systemic Dentist" as an authoritative local provider.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 05</div><div class="pcard-title">Review &amp; Reputation</div><div class="pcard-desc">Strengthen online reviews and brand sentiment — key signals AI uses to recommend a business to patients.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 06</div><div class="pcard-title">Performance Tracking</div><div class="pcard-desc">Monitor visibility across multiple AI tools and refine strategy each month to maintain top positioning.</div></div>
     </div>
   </div>
 </section>
@@ -993,89 +987,381 @@
     <h2 class="section-title">Priority Action Plan</h2>
 
     <div class="action-list">
+      <div class="action-row"><div class="action-num">01</div><div><div class="action-title">Fix the Website Foundation — Usability, ADA &amp; Conversion</div><div class="action-desc">Rebuild the site on a strong SEO + AI-ready foundation: resolve the usability problems and ADA accessibility gaps, improve speed, and make every page conversion-friendly so visitors actually become patients.</div></div><div class="action-tag immediate">Immediate</div></div>
+      <div class="action-row"><div class="action-num">02</div><div><div class="action-title">Fix &amp; Add Schema Markup Across the Site</div><div class="action-desc">Implement proper Dentist, LocalBusiness, Service, Article and FAQ schema everywhere so Google and AI engines can finally read, trust and rank the content.</div></div><div class="action-tag immediate">Immediate</div></div>
+      <div class="action-row"><div class="action-num">03</div><div><div class="action-title">Add FAQ Content to Every Page for AI Visibility</div><div class="action-desc">The site has no FAQ content — a primary reason it isn't surfaced by ChatGPT, Gemini, or Google AI Overviews. We'll answer real patient questions on every key page to power AI visibility and content strategy.</div></div><div class="action-tag immediate">Immediate</div></div>
+      <div class="action-row"><div class="action-num">04</div><div><div class="action-title">Build Dedicated Treatment &amp; Service Pages</div><div class="action-desc">Create optimized, conversion-focused pages for every core service — cavitation surgery, mercury/amalgam removal, biological root-canal alternatives, biomimetic &amp; cosmetic dentistry, ozone therapy, TMJ — plus location pages around Santa Monica &amp; LA.</div></div><div class="action-tag high">High</div></div>
+      <div class="action-row"><div class="action-num">05</div><div><div class="action-title">Grow from 71 → 400+ Ranking Keywords + Position Tracking</div><div class="action-desc">Optimize the terms stuck on page 3–10 — "biomimetic dentistry los angeles" (41), "cavitation in dentistry" (48), "cavitation surgery" (87) — target new discovery keywords, and set up Semrush position tracking to monitor rankings every month.</div></div><div class="action-tag high">High</div></div>
+      <div class="action-row"><div class="action-num">06</div><div><div class="action-title">Clean Up Spam Backlinks + Build High-Authority Links Monthly</div><div class="action-desc">Run a full backlink evaluation, clean up and disavow spam/toxic links, then source high-quality follow backlinks from high-authority websites every month to lift domain authority and organic visibility.</div></div><div class="action-tag high">High</div></div>
+      <div class="action-row"><div class="action-num">07</div><div><div class="action-title">Publish 4 Strategic Blogs Per Month</div><div class="action-desc">Four AI-ready, patient-question blog posts every month — mapped to high-intent searches like "alternatives to root canal" and "cavitation surgery cost" — each written to rank on Google and be cited by AI engines, improving keyword ranking and visibility.</div></div><div class="action-tag medium">Medium</div></div>
+      <div class="action-row"><div class="action-num">08</div><div><div class="action-title">Optimize Google Business Profile &amp; Monthly Reporting</div><div class="action-desc">Optimize and manage the Google Business Profile and Maps every month, send detailed monthly reports, and track, analyze and improve the website on an ongoing basis.</div></div><div class="action-tag ongoing">Ongoing</div></div>
+    </div>
+  </div>
+</section>
 
-      <div class="action-row">
-        <div class="action-num">01</div>
-        <div>
-          <div class="action-title">Fix the Website Foundation — Usability, ADA &amp; Conversion</div>
-          <div class="action-desc">Rebuild the site on a strong SEO + AI-ready foundation: resolve the usability problems and ADA accessibility gaps, improve speed, and make every page conversion-friendly so visitors actually become patients.</div>
+</div><!-- /panel-dds -->
+
+<!-- ============================================================= -->
+<!-- PANEL 2 · systemicdentist.com                                 -->
+<!-- ============================================================= -->
+<div class="report-panel" id="panel-dentist" hidden>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Website Quality &amp; AI Visibility Audit · systemicdentist.com</div>
+    <h1>The Systemic Dentist</h1>
+    <p class="hero-desc">A second audit — this time of systemicdentist.com, the legacy website of Dr. Alireza Panahpour, "The Systemic Dentist." This older .php site once pulled real traffic — a peak of 47 visits and 106 keywords in early 2025 — but has since collapsed to just 6 organic visits a month and 48 keywords. Core content is trapped in PDFs and unoptimized legacy pages, with no FAQ content and no schema for AI search. This audit shows what's driving the decline — and the path to 400+ ranking keywords.</p>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">6</div>
+        <div class="hero-kpi-label">Authority Score</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">6</div>
+        <div class="hero-kpi-label">Organic Visits / mo</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">48</div>
+        <div class="hero-kpi-label">Ranking Keywords</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">202</div>
+        <div class="hero-kpi-label">Referring Domains</div>
+      </div>
+    </div>
+
+    <div class="hero-prepared">systemicdentist.com · Santa Monica / Los Angeles, CA · Live Semrush Data · June 2026</div>
+  </div>
+</header>
+
+<!-- 3 PRIORITIES -->
+<section class="paper">
+  <div class="container">
+    <div class="section-eyebrow">Executive Summary · Where to Focus</div>
+    <h2 class="section-title">3 Priorities That Will Move the Needle</h2>
+    <div class="account-chip">
+      <span class="lbl">Account</span>
+      <span class="dom">systemicdentist.com</span>
+      <span class="meta">· Dr. Alireza Panahpour · Santa Monica, CA</span>
+    </div>
+
+    <div class="focus-grid">
+
+      <div class="focus-card f1">
+        <div class="focus-num">Priority 01 · Near-Zero Visibility</div>
+        <div class="focus-title">Just 6 organic visits a month — Authority Score 6</div>
+        <div class="focus-chart">
+          <svg class="mini-gauge" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="70" cy="70" r="55" fill="none" stroke="#fee2e2" stroke-width="14"/>
+            <circle cx="70" cy="70" r="55" fill="none" stroke="#dc2626" stroke-width="14"
+                    stroke-dasharray="5 341" transform="rotate(-90 70 70)" stroke-linecap="round"/>
+            <text x="70" y="66" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="600" fill="#dc2626" letter-spacing="-1">6</text>
+            <text x="70" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#5c6b7d" font-weight="600" letter-spacing="2">VISITS / MONTH</text>
+          </svg>
         </div>
-        <div class="action-tag immediate">Immediate</div>
+        <div class="focus-stat">
+          <div class="focus-big">6</div>
+          <div class="focus-of">organic visits / month · AS 6</div>
+        </div>
+        <div class="focus-line">The site is all but invisible — just 6 organic visits a month on an Authority Score of 6. A single educational article (the heart-disease/dental connection page) drives 100% of that traffic, while every treatment page and local term sits on page 4–10.</div>
       </div>
 
-      <div class="action-row">
-        <div class="action-num">02</div>
-        <div>
-          <div class="action-title">Fix &amp; Add Schema Markup Across the Site</div>
-          <div class="action-desc">Implement proper Dentist, LocalBusiness, Service, Article and FAQ schema everywhere so Google and AI engines can finally read, trust and rank the content.</div>
+      <div class="focus-card f2">
+        <div class="focus-num">Priority 02 · Steep Collapse</div>
+        <div class="focus-title">Only 48 keywords rank — collapsed from 106</div>
+        <div class="focus-chart">
+          <svg class="mini-gauge" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="70" cy="70" r="55" fill="none" stroke="#fef3c7" stroke-width="14"/>
+            <circle cx="70" cy="70" r="55" fill="none" stroke="#d97706" stroke-width="14"
+                    stroke-dasharray="42 304" transform="rotate(-90 70 70)" stroke-linecap="round"/>
+            <text x="70" y="66" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="600" fill="#d97706" letter-spacing="-1">48</text>
+            <text x="70" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#5c6b7d" font-weight="600" letter-spacing="2">OF 400+ TARGET</text>
+          </svg>
         </div>
-        <div class="action-tag immediate">Immediate</div>
+        <div class="focus-stat">
+          <div class="focus-big">48</div>
+          <div class="focus-of">keywords ranking today</div>
+        </div>
+        <div class="focus-line">The site ranks for just 48 keywords — collapsed from 106 in February 2025, while traffic fell from 47 to 6 over the same window. The footprint is shrinking fast, and a Los Angeles holistic practice should be ranking for 400+.</div>
       </div>
 
-      <div class="action-row">
-        <div class="action-num">03</div>
-        <div>
-          <div class="action-title">Add FAQ Content to Every Page for AI Visibility</div>
-          <div class="action-desc">The site has no FAQ content — a primary reason it isn't surfaced by ChatGPT, Gemini, or Google AI Overviews. We'll answer real patient questions on every key page to power AI visibility and content strategy.</div>
+      <div class="focus-card f3">
+        <div class="focus-num">Priority 03 · Legacy Architecture</div>
+        <div class="focus-title">Legacy .php site, content stuck in PDFs — invisible to AI</div>
+        <div class="focus-chart">
+          <svg class="mini-gauge" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="70" cy="70" r="55" fill="none" stroke="#ede9fe" stroke-width="14"/>
+            <circle cx="70" cy="70" r="55" fill="none" stroke="#8b5cf6" stroke-width="14"
+                    stroke-dasharray="0 346" transform="rotate(-90 70 70)" stroke-linecap="round"/>
+            <text x="70" y="66" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="600" fill="#8b5cf6" letter-spacing="-1">0</text>
+            <text x="70" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#5c6b7d" font-weight="600" letter-spacing="2">FAQ / SCHEMA PAGES</text>
+          </svg>
         </div>
-        <div class="action-tag immediate">Immediate</div>
-      </div>
-
-      <div class="action-row">
-        <div class="action-num">04</div>
-        <div>
-          <div class="action-title">Build Dedicated Treatment &amp; Service Pages</div>
-          <div class="action-desc">Create optimized, conversion-focused pages for every core service — cavitation surgery, mercury/amalgam removal, biological root-canal alternatives, biomimetic &amp; cosmetic dentistry, ozone therapy, TMJ — plus location pages around Santa Monica &amp; LA.</div>
+        <div class="focus-stat">
+          <div class="focus-big">0</div>
+          <div class="focus-of">FAQ &amp; schema · content in PDFs</div>
         </div>
-        <div class="action-tag high">High</div>
-      </div>
-
-      <div class="action-row">
-        <div class="action-num">05</div>
-        <div>
-          <div class="action-title">Grow from 71 → 400+ Ranking Keywords + Position Tracking</div>
-          <div class="action-desc">Optimize the terms stuck on page 3–10 — "biomimetic dentistry los angeles" (41), "cavitation in dentistry" (48), "cavitation surgery" (87) — target new discovery keywords, and set up Semrush position tracking to monitor rankings every month.</div>
-        </div>
-        <div class="action-tag high">High</div>
-      </div>
-
-      <div class="action-row">
-        <div class="action-num">06</div>
-        <div>
-          <div class="action-title">Clean Up Spam Backlinks + Build High-Authority Links Monthly</div>
-          <div class="action-desc">Run a full backlink evaluation, clean up and disavow spam/toxic links, then source high-quality follow backlinks from high-authority websites every month to lift domain authority and organic visibility.</div>
-        </div>
-        <div class="action-tag high">High</div>
-      </div>
-
-      <div class="action-row">
-        <div class="action-num">07</div>
-        <div>
-          <div class="action-title">Publish 4 Strategic Blogs Per Month</div>
-          <div class="action-desc">Four AI-ready, patient-question blog posts every month — mapped to high-intent searches like "alternatives to root canal" and "cavitation surgery cost" — each written to rank on Google and be cited by AI engines, improving keyword ranking and visibility.</div>
-        </div>
-        <div class="action-tag medium">Medium</div>
-      </div>
-
-      <div class="action-row">
-        <div class="action-num">08</div>
-        <div>
-          <div class="action-title">Optimize Google Business Profile &amp; Monthly Reporting</div>
-          <div class="action-desc">Optimize and manage the Google Business Profile and Maps every month, send detailed monthly reports, and track, analyze and improve the website on an ongoing basis.</div>
-        </div>
-        <div class="action-tag ongoing">Ongoing</div>
+        <div class="focus-line">Built on an old .php architecture, with several key topics ranking only as downloadable PDFs instead of real web pages. No FAQ content and no schema means search engines and AI assistants (ChatGPT, Gemini, Perplexity, Google AI Overviews) can't properly read, trust or cite it.</div>
       </div>
 
     </div>
   </div>
 </section>
 
+<!-- SITE ARCHITECTURE -->
+<section class="light">
+  <div class="container">
+    <div class="section-eyebrow">Site Architecture</div>
+    <h2 class="section-title">A Legacy Site — Content Trapped in PDFs</h2>
+    <p class="section-lead">The site runs on an older .php architecture. Several key topics rank only as downloadable PDFs rather than real, indexable pages, and the treatment pages that do exist are legacy and unoptimized — none drive any traffic.</p>
+
+    <div class="triple-stats">
+      <div class="triple-stat">
+        <div class="rule"></div>
+        <div class="triple-num">11</div>
+        <div class="triple-label">Pages Indexed with Keywords</div>
+      </div>
+      <div class="triple-stat">
+        <div class="rule"></div>
+        <div class="triple-num">3</div>
+        <div class="triple-label">Key Resources Stuck in PDFs</div>
+      </div>
+      <div class="triple-stat">
+        <div class="rule"></div>
+        <div class="triple-num">0</div>
+        <div class="triple-label">Pages with FAQ &amp; Schema</div>
+      </div>
+    </div>
+
+    <div class="data-table">
+      <div class="data-table-head">
+        <div>Top Indexed Pages</div>
+        <div style="text-align:right;">Visits / mo</div>
+      </div>
+      <div class="data-table-row" style="background: #f0fdf4;"><div class="data-cell-text" style="color: var(--green); font-weight: 600;">/heart-disease-dential-connection.php <span style="font-weight: 700;">(100% of all organic traffic)</span></div><div class="data-cell-num" style="color: var(--green);">6</div></div>
+      <div class="data-table-row"><div class="data-cell-text">/treatments/cavitation.php <span style="color: var(--text-muted);">(11 keywords, all page 5+)</span></div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+      <div class="data-table-row"><div class="data-cell-text">/breast-cancer-root-canal-connection.php <span style="color: var(--text-muted);">(12 keywords, all page 2+)</span></div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+      <div class="data-table-row"><div class="data-cell-text">/ <span style="color: var(--text-muted);">(homepage — 8 keywords)</span></div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+      <div class="data-table-row"><div class="data-cell-text">/treatments/ozone-therapy.php</div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+      <div class="data-table-row"><div class="data-cell-text">/treatments/chirodontics-and-tmj.php</div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+      <div class="data-table-row"><div class="data-cell-text">/what-is-biomimetic-dentistry.php</div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+      <div class="data-table-row"><div class="data-cell-text">/pdf/cavitation-and-wisdom-tooth-removal.pdf <span style="color: var(--text-muted);">(content ranking as a PDF!)</span></div><div class="data-cell-num" style="color: var(--red);">0</div></div>
+    </div>
+
+    <div class="table-note">The treatment pages exist but are legacy .php, unoptimized and stuck on page 5+. Worse, key content — cavitation &amp; wisdom-tooth info, "holistic dentist" guides — ranks only as downloadable PDFs, which can't convert, can't carry schema and can't be cited by AI. The whole architecture needs a modern rebuild.</div>
+  </div>
+</section>
+
+<!-- ORGANIC PERFORMANCE -->
+<section class="paper">
+  <div class="container">
+    <div class="section-eyebrow">Organic Performance</div>
+    <h2 class="section-title">Rankings &amp; The Traffic Collapse</h2>
+    <p class="section-lead">Organic traffic collapsed roughly 90% through 2025 — from a peak of 47 visits and 106 keywords in early 2025 down to just 6 visits and 48 keywords today. The aging .php site lost rankings it never rebuilt. With a modern, optimized foundation, FAQ &amp; schema, and clean authority links, that lost ground can be recovered and grown well past its old peak.</p>
+
+    <div class="chart-wrap">
+      <svg class="trend-svg" viewBox="0 0 1100 540" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="redGrad2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#dc2626" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#dc2626" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line class="grid" x1="80" y1="60" x2="1060" y2="60"/>
+        <line class="grid" x1="80" y1="136" x2="1060" y2="136"/>
+        <line class="grid" x1="80" y1="212" x2="1060" y2="212"/>
+        <line class="grid" x1="80" y1="288" x2="1060" y2="288"/>
+        <line class="grid" x1="80" y1="364" x2="1060" y2="364"/>
+        <line class="axis" x1="80" y1="440" x2="1060" y2="440"/>
+        <text class="lbl" x="70" y="64" text-anchor="end" font-size="12">50</text>
+        <text class="lbl" x="70" y="140" text-anchor="end" font-size="12">40</text>
+        <text class="lbl" x="70" y="216" text-anchor="end" font-size="12">30</text>
+        <text class="lbl" x="70" y="292" text-anchor="end" font-size="12">20</text>
+        <text class="lbl" x="70" y="368" text-anchor="end" font-size="12">10</text>
+        <text class="lbl" x="70" y="444" text-anchor="end" font-size="12">0</text>
+        <line x1="723.6" y1="60" x2="723.6" y2="440" stroke="rgba(13,22,32,0.08)" stroke-dasharray="3 4"/>
+        <text class="lbl" x="402" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2025</text>
+        <text class="lbl" x="898" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2026</text>
+        <path fill="url(#redGrad2)" d="M 110.0,82.8 L 168.4,166.4 L 226.9,196.8 L 285.3,402.0 L 343.8,409.6 L 402.2,440.0 L 460.6,424.8 L 519.1,424.8 L 577.5,424.8 L 636.0,432.4 L 694.4,432.4 L 752.8,432.4 L 811.3,440.0 L 869.7,394.4 L 928.1,402.0 L 986.6,394.4 L 1045.0,394.4 L 1045.0,440 L 110.0,440 Z"/>
+        <path fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M 110.0,82.8 L 168.4,166.4 L 226.9,196.8 L 285.3,402.0 L 343.8,409.6 L 402.2,440.0 L 460.6,424.8 L 519.1,424.8 L 577.5,424.8 L 636.0,432.4 L 694.4,432.4 L 752.8,432.4 L 811.3,440.0 L 869.7,394.4 L 928.1,402.0 L 986.6,394.4 L 1045.0,394.4"/>
+        <text x="600" y="250" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#d97706" opacity="0.9" font-weight="700" letter-spacing="2">ORGANIC TRAFFIC COLLAPSED ~90% IN MID-2025</text>
+        <circle cx="110" cy="82.8" r="8" fill="#dc2626" stroke="white" stroke-width="3"/>
+        <rect x="130" y="60" width="190" height="48" rx="8" fill="white" stroke="#dc2626" stroke-width="1.5"/>
+        <text x="225" y="78" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#dc2626" letter-spacing="2">PEAK · FEB 2025</text>
+        <text x="225" y="98" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="600" fill="#dc2626" letter-spacing="-0.5">47 visits / month</text>
+        <circle cx="1045" cy="394.4" r="6" fill="#0d1620" stroke="white" stroke-width="3"/>
+        <rect x="945" y="350" width="100" height="38" rx="6" fill="#e5e7eb" stroke="#0d1620" stroke-width="1"/>
+        <text x="995" y="367" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#0d1620" letter-spacing="2">CURRENT</text>
+        <text x="995" y="381" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="600" fill="#0d1620">6 / mo</text>
+      </svg>
+      <div class="trend-legend">
+        <div class="trend-legend-item"><span class="trend-legend-line" style="background:#dc2626; width: 28px; height: 3px; border-radius: 2px;"></span>Total Organic · 17 months</div>
+        <div class="trend-legend-item"><span class="trend-legend-line" style="background:#dc2626; width: 12px; height: 12px; border-radius: 50%;"></span>Peak (Feb 2025)</div>
+        <div class="trend-legend-item"><span class="trend-legend-line" style="background:#0d1620; width: 12px; height: 12px; border-radius: 50%;"></span>Current</div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow">Top Ranking Keywords</div>
+    <div class="data-table">
+      <div class="data-table-head">
+        <div>Keyword</div>
+        <div style="text-align:right;">Position</div>
+      </div>
+      <div class="data-table-row"><div class="data-cell-text">cavitation surgery saved my life <span style="color: var(--text-muted);">(drives 100% of traffic)</span></div><div class="data-cell-num">3</div></div>
+      <div class="data-table-row"><div class="data-cell-text">deprogrammer for tmj</div><div class="data-cell-num">9</div></div>
+      <div class="data-table-row"><div class="data-cell-text">ozone therapy sacramento</div><div class="data-cell-num">9</div></div>
+      <div class="data-table-row"><div class="data-cell-text">holistic dentist santa monica ca <span style="color: var(--text-muted);">(local)</span></div><div class="data-cell-num">24</div></div>
+      <div class="data-table-row"><div class="data-cell-text">holistic dentist altadena <span style="color: var(--text-muted);">(local)</span></div><div class="data-cell-num">39</div></div>
+      <div class="data-table-row"><div class="data-cell-text">biological dentist los angeles ca <span style="color: var(--text-muted);">(commercial)</span></div><div class="data-cell-num" style="color: var(--red);">52</div></div>
+      <div class="data-table-row"><div class="data-cell-text">holistic dentistry pasadena <span style="color: var(--text-muted);">(commercial)</span></div><div class="data-cell-num" style="color: var(--red);">62</div></div>
+      <div class="data-table-row"><div class="data-cell-text">tmj specialist santa monica <span style="color: var(--text-muted);">(commercial)</span></div><div class="data-cell-num" style="color: var(--red);">67</div></div>
+    </div>
+
+    <div class="table-note" style="background: var(--blue-tint); color: var(--blue-dark); border-left-color: var(--blue-deep);">The handful of page-1 rankings are niche informational terms — and one of them ("holistic dentist bellevue") only ranks because of a PDF. The valuable local &amp; commercial terms — "biological dentist los angeles ca" (52), "holistic dentistry pasadena" (62), "tmj specialist santa monica" (67) — all sit on page 5–7. With real optimized treatment pages, FAQ content, schema and clean backlinks, these can climb to page 1. We recommend Semrush position tracking to monitor them monthly.</div>
+  </div>
+</section>
+
+<!-- TECHNICAL ISSUES -->
+<section class="light">
+  <div class="container">
+    <div class="section-eyebrow">Triage Center</div>
+    <h2 class="section-title">Technical &amp; On-Page Issues</h2>
+    <p class="section-lead">Beyond the three headline priorities above, these are the specific technical and foundational issues holding the legacy site back — and the one asset already worth building on.</p>
+
+    <div class="tech-row purple">
+      <div class="tech-num">0</div>
+      <div>
+        <div class="tech-name">No FAQ Content &amp; No Schema Markup</div>
+        <div class="tech-desc">Zero FAQ sections and no FAQ, Service, Dentist or LocalBusiness schema. This is a primary reason the practice is invisible to AI search — ChatGPT, Gemini, Perplexity and Google AI Overviews rely on structured data and Q&amp;A content to surface and cite a practice.</div>
+      </div>
+    </div>
+
+    <div class="tech-row">
+      <div class="tech-num">!</div>
+      <div>
+        <div class="tech-name">Legacy .php Architecture &amp; Content Trapped in PDFs</div>
+        <div class="tech-desc">The site runs on aging .php pages, and several key topics — cavitation &amp; wisdom-tooth info, "holistic dentist" guides — rank only as downloadable PDFs. PDFs can't convert visitors, can't carry schema and can't be cited by AI. The architecture needs a modern, indexable rebuild.</div>
+      </div>
+    </div>
+
+    <div class="tech-row">
+      <div class="tech-num">!</div>
+      <div>
+        <div class="tech-name">Usability &amp; ADA Accessibility Issues</div>
+        <div class="tech-desc">The site has usability friction and ADA (WCAG) accessibility gaps — a compliance and legal risk for a healthcare website, and a drag on both conversions and Google engagement signals. The foundation needs to be rebuilt to be accessible, fast and conversion-friendly.</div>
+      </div>
+    </div>
+
+    <div class="tech-row amber">
+      <div class="tech-num">1003</div>
+      <div>
+        <div class="tech-name">Backlink Profile Needs a Spam Clean-Up</div>
+        <div class="tech-desc">1,003 backlinks across 202 referring domains, yet the Authority Score is just 6 — a sign the profile is heavy on low-quality, spam-adjacent links. It needs a full evaluation, disavow/clean-up of toxic links, and a deliberate monthly high-authority link-building plan to convert that volume into real ranking power.</div>
+      </div>
+    </div>
+
+    <div class="tech-row green">
+      <div class="tech-num">202</div>
+      <div>
+        <div class="tech-name">A Real Link Footprint &amp; Content Library to Build On</div>
+        <div class="tech-desc">202 referring domains and a genuinely unique content library — "The Systemic Dentist," cavitations, mercury removal, root-canal/cancer research — give the site a strong foundation and a defensible niche. Once the architecture, treatment pages, FAQ &amp; schema, and clean backlinks are in place, rankings can recover quickly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS 01 -->
+<section class="paper">
+  <div class="container">
+    <div class="process-header">
+      <div>
+        <div class="section-eyebrow">Implementation Approach · Process 01</div>
+        <h2 class="section-title">Organic Search Optimization</h2>
+      </div>
+      <div class="process-badge organic">6-Step Process</div>
+    </div>
+    <p class="process-intro">A proven six-step process that combines expert strategy and advanced tools to dominate organic search across Google, Maps, and local directories in Santa Monica, Los Angeles and the surrounding communities.</p>
+
+    <div class="pgrid">
+      <div class="pcard"><div class="pcard-num">STEP 01</div><div class="pcard-title">Comprehensive Audit</div><div class="pcard-desc">Analyze current strategy, target ZIP codes across Santa Monica and greater Los Angeles, and top biological-dentistry competitors to identify growth opportunities.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 02</div><div class="pcard-title">Rebuild Off Legacy .php</div><div class="pcard-desc">Migrate the site off aging .php, pull content out of PDFs into real optimized pages, and rebuild on a strong technical foundation for SEO and AI visibility — fixing usability, ADA accessibility and schema.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 03</div><div class="pcard-title">Local Listings &amp; NAP Accuracy</div><div class="pcard-desc">Clean up and optimize listings across all major directories, keeping Name, Address, and Phone consistent, and manage the Google Business Profile &amp; Maps every month.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 04</div><div class="pcard-title">Treatment Pages + Schema</div><div class="pcard-desc">Rebuild every service page — cavitation surgery, ozone therapy, mercury removal, biomimetic dentistry, TMJ/chirodontics — with proper H1/H2 structure, FAQ content, and Dentist/LocalBusiness/Service schema.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 05</div><div class="pcard-title">Backlink Clean-Up &amp; Authority</div><div class="pcard-desc">Evaluate the profile, clean up spam and toxic links, then build high-quality follow backlinks from high-authority websites every month so the 202 referring domains finally translate into ranking power.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 06</div><div class="pcard-title">Monthly Reporting &amp; Tracking</div><div class="pcard-desc">Detailed monthly reports and Semrush position tracking to monitor rankings, traffic and conversions — analyzing and improving the site every single month.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS 02 -->
+<section class="light">
+  <div class="container">
+    <div class="process-header">
+      <div>
+        <div class="section-eyebrow" style="color: var(--purple);">Implementation Approach · Process 02</div>
+        <h2 class="section-title">AI Search Visibility</h2>
+      </div>
+      <div class="process-badge ai">6-Step Process</div>
+    </div>
+    <p class="process-intro">A parallel six-step process that ensures the practice is recognized, cited, and recommended by ChatGPT, Gemini, Perplexity, and Google AI Overviews — the next layer of patient discovery.</p>
+
+    <div class="pgrid pgrid-ai">
+      <div class="pcard"><div class="pcard-num">STEP 01</div><div class="pcard-title">AI Discovery Audit</div><div class="pcard-desc">Evaluate how the practice currently appears across ChatGPT, Gemini, and Perplexity for Los Angeles biological, holistic and cosmetic dentistry searches.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 02</div><div class="pcard-title">Data Structuring &amp; Schema</div><div class="pcard-desc">Move content out of PDFs into structured pages and add schema markup across every treatment page so AI engines can read, trust, and cite the practice.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 03</div><div class="pcard-title">FAQ &amp; AI-Ready Content</div><div class="pcard-desc">Publish FAQ sections and AI-friendly copy that answer real patient questions — the content AI assistants pull from to recommend a dentist.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 04</div><div class="pcard-title">Brand Mentions &amp; Citations</div><div class="pcard-desc">Distribute trusted mentions and citations that help AI engines recognize "The Systemic Dentist" as an authoritative local provider.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 05</div><div class="pcard-title">Review &amp; Reputation</div><div class="pcard-desc">Strengthen online reviews and brand sentiment — key signals AI uses to recommend a business to patients.</div></div>
+      <div class="pcard"><div class="pcard-num">STEP 06</div><div class="pcard-title">Performance Tracking</div><div class="pcard-desc">Monitor visibility across multiple AI tools and refine strategy each month to maintain top positioning.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTION PLAN -->
+<section class="dark">
+  <div class="container">
+    <div class="section-eyebrow">How We Help</div>
+    <h2 class="section-title">Priority Action Plan</h2>
+
+    <div class="action-list">
+      <div class="action-row"><div class="action-num">01</div><div><div class="action-title">Rebuild Off Legacy .php — Usability, ADA &amp; Conversion</div><div class="action-desc">Migrate the site off aging .php onto a modern, fast, accessible (ADA/WCAG) and conversion-friendly foundation built for SEO and AI visibility from the ground up.</div></div><div class="action-tag immediate">Immediate</div></div>
+      <div class="action-row"><div class="action-num">02</div><div><div class="action-title">Pull Content Out of PDFs + Add Schema Markup</div><div class="action-desc">Migrate the cavitation, wisdom-tooth and "holistic dentist" content out of downloadable PDFs into real, indexable pages, and implement Dentist, LocalBusiness, Service, Article and FAQ schema everywhere.</div></div><div class="action-tag immediate">Immediate</div></div>
+      <div class="action-row"><div class="action-num">03</div><div><div class="action-title">Add FAQ Content to Every Page for AI Visibility</div><div class="action-desc">The site has no FAQ content — a primary reason it isn't surfaced by ChatGPT, Gemini, or Google AI Overviews. We'll answer real patient questions on every key page to power AI visibility and content strategy.</div></div><div class="action-tag immediate">Immediate</div></div>
+      <div class="action-row"><div class="action-num">04</div><div><div class="action-title">Rebuild Treatment &amp; Service Pages</div><div class="action-desc">Rebuild optimized, conversion-focused pages for every core service — cavitation surgery, ozone therapy, mercury/amalgam removal, biomimetic dentistry, TMJ/chirodontics — plus location pages around Santa Monica &amp; LA.</div></div><div class="action-tag high">High</div></div>
+      <div class="action-row"><div class="action-num">05</div><div><div class="action-title">Grow from 48 → 400+ Ranking Keywords + Position Tracking</div><div class="action-desc">Recover and grow the terms stuck on page 5–10 — "biological dentist los angeles ca" (52), "holistic dentistry pasadena" (62), "tmj specialist santa monica" (67) — and set up Semrush position tracking to monitor rankings every month.</div></div><div class="action-tag high">High</div></div>
+      <div class="action-row"><div class="action-num">06</div><div><div class="action-title">Clean Up Spam Backlinks + Build High-Authority Links Monthly</div><div class="action-desc">Run a full backlink evaluation across the 202 referring domains, clean up and disavow spam/toxic links, then source high-quality follow backlinks from high-authority websites every month to lift domain authority.</div></div><div class="action-tag high">High</div></div>
+      <div class="action-row"><div class="action-num">07</div><div><div class="action-title">Publish 4 Strategic Blogs Per Month</div><div class="action-desc">Four AI-ready, patient-question blog posts every month — mapped to high-intent searches like "biological dentist near me" and "cavitation surgery recovery" — each written to rank on Google and be cited by AI engines.</div></div><div class="action-tag medium">Medium</div></div>
+      <div class="action-row"><div class="action-num">08</div><div><div class="action-title">Optimize Google Business Profile &amp; Monthly Reporting</div><div class="action-desc">Optimize and manage the Google Business Profile and Maps every month, send detailed monthly reports, and track, analyze and improve the website on an ongoing basis.</div></div><div class="action-tag ongoing">Ongoing</div></div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /panel-dentist -->
+
 <footer>
   <div class="container">
     <div class="foot-brand">Dentist Nerds</div>
-    <div class="foot-meta">Website Quality &amp; AI Visibility Audit · Dr. Alireza Panahpour · The Systemic Dentist · Santa Monica, CA · June 2026</div>
+    <div class="foot-meta">Website Quality &amp; AI Visibility Audit · Dr. Alireza Panahpour · The Systemic Dentist · Santa Monica, CA · June 2026<br>systemicdds.com &amp; systemicdentist.com · Live Semrush Data</div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var btns = document.querySelectorAll('.dt-btn');
+    var panels = document.querySelectorAll('.report-panel');
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        btns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        panels.forEach(function (p) { p.hidden = true; });
+        var target = document.getElementById(btn.getAttribute('data-target'));
+        if (target) { target.hidden = false; }
+        window.scrollTo(0, 0);
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
