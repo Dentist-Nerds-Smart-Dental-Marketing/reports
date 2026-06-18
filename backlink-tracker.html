@@ -521,6 +521,7 @@ const SOURCES = [
   { id: "ada",           name: "ADA Find-a-Dentist",   price: "",     cost: 0,   color: "#1565c0" },
   { id: "healthgrades",  name: "Healthgrades",         price: "",     cost: 0,   color: "#059669" },
   { id: "zocdoc",        name: "ZocDoc",               price: "",     cost: 0,   color: "#7c3aed" },
+  { id: "carecredit",    name: "CareCredit",           price: "",     cost: 0,   color: "#0891b2" },
   { id: "usadentist",    name: "USA Dentist",          price: "$29.90", cost: 29.9, added: "06/18/2026", color: "#e11d48" },
   { id: "pressrelease",  name: "Press Release",        price: "$598", cost: 598, color: "#d97706" },
   { id: "iheart",        name: "iHeart Podcast",       price: "$50",  cost: 50,  color: "#dc2626" },
@@ -1130,6 +1131,50 @@ const USADENTIST = {
 Object.keys(USADENTIST).forEach(domain => {
   const c = CLIENTS.find(x => x.website.replace(/https?:\/\/(www\.)?/, "").replace(/\/$/, "") === domain);
   if (c) c.bl.usadentist = USADENTIST[domain];
+});
+
+// ─── ZocDoc profiles ──────────────────────────────────────────────────────────
+const ZOCDOC = {
+  "azdentallagunahills.com":           "https://www.zocdoc.com/dentist/amro-albaghdadi-dds-361839",
+  "beverlyhillscosmeticdentistry.com": "https://www.zocdoc.com/dentist/marc-chemla-dds-430725",
+  "foothillranchdentistry.com":        "https://www.zocdoc.com/dentist/aria-irvani-dds-19913",
+  "ocperioandimplants.com":            "https://www.zocdoc.com/dentist/mohammad-reshad-dds-ms-639304",
+  "perioimplanthealthpro.com":         "https://www.zocdoc.com/dentist/angel-emmanuel-rodr-guez-pe-a-dds-568601",
+  "sanjuanfamilydental.com":           "https://www.zocdoc.com/practice/san-juan-family-dentistry-176005",
+  "serendentaloxnard.com":             "https://www.zocdoc.com/dentist/ette-ntekim-dds-567064",
+  "torrancedentalspa.com":             "https://www.zocdoc.com/dentist/maral-ranjbar-aghdam-dds-492079",
+  "valenciaaestheticdentistry.com":    "https://www.zocdoc.com/dentist/rayan-kafri-dds-580379",
+  "westgrovedentalcare.com":           "https://www.zocdoc.com/dentist/john-brandon-skenandore-dds-754618",
+  "westhollywooddentalstudio.com":     "https://www.zocdoc.com/dentist/lisa-rivas-dmd-580450",
+};
+Object.keys(ZOCDOC).forEach(domain => {
+  const c = CLIENTS.find(x => x.website.replace(/https?:\/\/(www\.)?/, "").replace(/\/$/, "") === domain);
+  if (c) c.bl.zocdoc = ZOCDOC[domain];
+});
+
+// ─── CareCredit listings ──────────────────────────────────────────────────────
+const CARECREDIT = {
+  "encinitasallsmilesdental.com":      "https://www.carecredit.com/doctor-locator/encinitas-ca/all-smiles-dental-studio-748thc/",
+  "beverlyhillscosmeticdentistry.com": "https://www.carecredit.com/doctor-locator/beverly-hills-ca/beverly-hills-cosmetic-dentistry-pmm324/",
+  "canyoncountrydentalcare.com":       "https://www.carecredit.com/doctor-locator/canyon-country-ca/canyon-country-dental-care-325ksc/",
+  "palmdaleexceptionaldentistry.com":  "https://www.carecredit.com/doctor-locator/palmdale-ca/exceptional-dentistry-752mkm/",
+  "foothillranchdentistry.com":        "https://www.carecredit.com/doctor-locator/foothill-ranch-ca/aria-irvani-dds-xhb699/",
+  "fullertonsmiledentistry.com":       "https://www.carecredit.com/doctor-locator/fullerton-ca/fullerton-smile-dentistry-446vfb/",
+  "gardenadentalgroup.com":            "https://www.carecredit.com/doctor-locator/gardena-ca/gardena-dental-group-788nks/",
+  "malibudentistry.com":               "https://www.carecredit.com/doctor-locator/malibu-ca/malibu-dentistry-876wkj/",
+  "ocperioandimplants.com":            "https://www.carecredit.com/doctor-locator/mission-viejo-ca/dr-reshad-corp-624vts/",
+  "orthodonticsinwoodlandhills.com":   "https://www.carecredit.com/doctor-locator/woodland-hills-ca/kourosh-zarrinnia-dmd-ms-vqk634/",
+  "pennsylvaniaperioandimplants.com":  "https://www.carecredit.com/doctor-locator/york-pa/pennsylvania-perio-implants-437cdh/",
+  "sanjuanfamilydental.com":           "https://www.carecredit.com/doctor-locator/san-juan-capistrano-ca/san-juan-family-dentistry-267qph/",
+  "serendentaloxnard.com":             "https://www.carecredit.com/doctor-locator/oxnard-ca/serenadvanced-dentistry-oxnard-634gtb/",
+  "agourahillscosmeticdentists.com":   "https://www.carecredit.com/doctor-locator/Dental-in-AGOURA-HILLS-CA-91301/The-Smile-Spa/",
+  "torrancedentalspa.com":             "https://www.carecredit.com/doctor-locator/torrance-ca/torrance-dental-spa-827fpg/",
+  "westgrovedentalcare.com":           "https://www.carecredit.com/doctor-locator/garden-grove-ca/westgrove-dental-care-364nft/",
+  "woodlandhillsfamilydentistry.com":  "https://www.carecredit.com/doctor-locator/woodland-hills-ca/woodland-hills-family-dentistry-wrp296/",
+};
+Object.keys(CARECREDIT).forEach(domain => {
+  const c = CLIENTS.find(x => x.website.replace(/https?:\/\/(www\.)?/, "").replace(/\/$/, "") === domain);
+  if (c) c.bl.carecredit = CARECREDIT[domain];
 });
 
 // ─── Build Header ─────────────────────────────────────────────────────────────
