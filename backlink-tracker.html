@@ -175,6 +175,7 @@
   .progress-label { font-size: 11px; color: var(--muted); white-space: nowrap; }
 
   .cell-wrap { text-align: center; }
+  .cell-date { font-size: 9px; color: var(--muted); margin-top: 3px; white-space: nowrap; }
 
   .bl-yes {
     display: inline-flex;
@@ -1189,12 +1190,13 @@ function buildRow(c) {
     const v = c.bl[s.id];
     const vArr = Array.isArray(v) ? v : null;
     const vPrimary = vArr ? vArr[0] : v;
+    const dateTag = s.added ? `<div class="cell-date">${s.added}</div>` : "";
     if (vArr) {
-      cells += `<td class="cell-wrap"><a class="bl-yes" href="${vArr[0]}" target="_blank" rel="noopener" title="${s.name} — ${vArr.length} links">✓ <span style="font-size:10px;opacity:.8">${vArr.length}</span></a></td>`;
+      cells += `<td class="cell-wrap"><a class="bl-yes" href="${vArr[0]}" target="_blank" rel="noopener" title="${s.name} — ${vArr.length} links">✓ <span style="font-size:10px;opacity:.8">${vArr.length}</span></a>${dateTag}</td>`;
     } else if (vPrimary && vPrimary !== "pending" && vPrimary !== "yes") {
-      cells += `<td class="cell-wrap"><a class="bl-yes" href="${vPrimary}" target="_blank" rel="noopener" title="${s.name}">✓</a></td>`;
+      cells += `<td class="cell-wrap"><a class="bl-yes" href="${vPrimary}" target="_blank" rel="noopener" title="${s.name}">✓</a>${dateTag}</td>`;
     } else if (vPrimary === "yes") {
-      cells += `<td class="cell-wrap"><span class="bl-yes" style="cursor:default;" title="${s.name} — acquired (no URL)">✓</span></td>`;
+      cells += `<td class="cell-wrap"><span class="bl-yes" style="cursor:default;" title="${s.name} — acquired (no URL)">✓</span>${dateTag}</td>`;
     } else if (vPrimary === "pending") {
       cells += `<td class="cell-wrap"><span class="bl-pending" title="Ordered — URL pending">⏳</span></td>`;
     } else {
@@ -1372,7 +1374,7 @@ function openPanel(clientIndex) {
   function srcCard(item, type) {
     const { s, v, vArr } = item;
     const dot = `<span class="src-dot" style="background:${s.color}"></span>`;
-    const nameHtml = `<span class="panel-src-name">${dot}${s.name}${s.price ? `<span style="font-size:10px;color:#4ade80;margin-left:4px;">${s.price}</span>` : ""}</span>`;
+    const nameHtml = `<span class="panel-src-name">${dot}${s.name}${s.price ? `<span style="font-size:10px;color:#4ade80;margin-left:4px;">${s.price}</span>` : ""}${s.added && type === "acquired" ? `<span style="font-size:10px;color:var(--muted);margin-left:6px;">added ${s.added}</span>` : ""}</span>`;
     let linksHtml = "";
     if (vArr) {
       const langLinks = vArr.map((u, i) => {
