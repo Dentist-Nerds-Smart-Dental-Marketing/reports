@@ -147,6 +147,7 @@
   }
   th.src-header .src-name { display: block; }
   th.src-header .src-price { display: block; color: #4ade80; font-size: 9px; margin-top: 3px; }
+  th.src-header .src-date { display: block; color: var(--muted); font-size: 8px; margin-top: 2px; }
 
   tbody tr {
     border-bottom: 1px solid var(--border);
@@ -1120,6 +1121,7 @@ function buildHeader() {
     html += `<th class="src-header" title="${s.name}${s.price ? ' · ' + s.price : ''}${s.added ? ' · added ' + s.added : ''}">
       <span class="src-name" style="color:${s.color}">${s.name}</span>
       ${s.price ? `<span class="src-price">${s.price}</span>` : ''}
+      ${s.added ? `<span class="src-date">added ${s.added}</span>` : ''}
     </th>`;
   });
   html += `</tr>`;
