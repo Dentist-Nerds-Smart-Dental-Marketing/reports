@@ -115,7 +115,8 @@
 
   .table-wrap {
     padding: 0 32px 40px;
-    overflow-x: auto;
+    overflow: auto;
+    max-height: calc(100vh - 230px);
   }
   table {
     width: 100%;
@@ -158,6 +159,15 @@
 
   td { padding: 10px 12px; vertical-align: middle; }
 
+  /* Freeze the header row to the top during vertical scroll */
+  thead th {
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    z-index: 3;
+  }
+
   /* Freeze the Client column to the left during horizontal scroll */
   thead th:first-child,
   tbody td:first-child {
@@ -165,7 +175,7 @@
     left: 0;
     border-right: 1px solid var(--border);
   }
-  thead th:first-child { z-index: 3; background: var(--surface); }
+  thead th:first-child { z-index: 5; background: var(--surface); } /* top-left corner: above both */
   tbody td:first-child { z-index: 2; background: var(--bg); }
   tbody tr:hover td:first-child { background: var(--surface2); }
 
