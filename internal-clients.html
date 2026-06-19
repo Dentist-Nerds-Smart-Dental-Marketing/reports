@@ -824,6 +824,7 @@ const clients = [
   {
     name: "Littleton Dental Collective",
     website: "https://www.littletondentalco.com/",
+    website2: "https://www.groutfamilydentistry.com/",
     doctor: "Dr. Park",
     email: "euijoonpark0112@gmail.com",
     email2: "",
@@ -921,8 +922,16 @@ function tagHTML(key, label, cls) {
   return `<span class="tag ${cls}">${label}</span>`;
 }
 
+function websiteLink(url) {
+  const domain = url.replace(/https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  const href = url.startsWith("http") ? url : "https://" + url;
+  return `<a class="website-link" href="${href}" target="_blank" rel="noopener">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        ${domain}
+      </a>`;
+}
+
 function buildRow(c) {
-  const domain = c.website.replace(/https?:\/\/(www\.)?/, "").replace(/\/$/, "");
   const tags = [];
   if (c.seo)      tags.push(tagHTML("seo",      "SEO",         "tag-seo"));
   if (c.meta)     tags.push(tagHTML("meta",     "Meta Ads",    "tag-meta"));
@@ -945,10 +954,8 @@ function buildRow(c) {
       ${c.doctor ? `<div class="doctor-name">${c.doctor}</div>` : ""}
     </td>
     <td>
-      <a class="website-link" href="${c.website.startsWith("http") ? c.website : "https://"+c.website}" target="_blank" rel="noopener">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        ${domain}
-      </a>
+      ${websiteLink(c.website)}
+      ${c.website2 ? `<div style="margin-top:4px;">${websiteLink(c.website2)}</div>` : ""}
     </td>
     <td>
       <div class="email-wrap" style="color:var(--text);font-size:13px;">${c.doctor || '<span style="color:var(--muted)">—</span>'}</div>
