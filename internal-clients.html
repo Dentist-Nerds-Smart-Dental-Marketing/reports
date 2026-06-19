@@ -152,6 +152,36 @@
   .btn[data-filter="newlaunch"].active { background: var(--newlaunch); border-color: var(--newlaunch); }
   .btn[data-filter="former"].active   { background: var(--former);   border-color: var(--former); }
 
+  .toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    cursor: pointer;
+    user-select: none;
+  }
+  .toggle-wrap span { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .toggle-switch { position: relative; width: 38px; height: 20px; flex-shrink: 0; }
+  .toggle-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+  .toggle-track {
+    position: absolute; inset: 0;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: .15s;
+  }
+  .toggle-track::before {
+    content: "";
+    position: absolute;
+    height: 14px; width: 14px;
+    left: 2px; top: 2px;
+    background: var(--muted);
+    border-radius: 50%;
+    transition: .15s;
+  }
+  .toggle-switch input:checked + .toggle-track { background: var(--former); border-color: var(--former); }
+  .toggle-switch input:checked + .toggle-track::before { transform: translateX(18px); background: #fff; }
+
   .stats-bar {
     padding: 16px 32px;
     display: flex;
@@ -350,6 +380,13 @@
     <button class="btn" data-filter="newlaunch">New Launch</button>
     <button class="btn" data-filter="former">No Longer Client</button>
   </div>
+  <label class="toggle-wrap" for="showFormer">
+    <span>Show former clients</span>
+    <span class="toggle-switch">
+      <input type="checkbox" id="showFormer">
+      <span class="toggle-track"></span>
+    </span>
+  </label>
 </div>
 
 <div class="stats-bar" id="statsBar"></div>
@@ -936,14 +973,18 @@ function render() {
 
 function applyFilters() {
   const rows = document.querySelectorAll("#tbody tr");
+  const showFormer = document.getElementById("showFormer").checked;
   let visible = 0;
   rows.forEach(row => {
+    const isFormer = row.dataset.former === "true";
     const nameMatch = !searchQ || row.dataset.name.includes(searchQ);
     let filterMatch = true;
     if (activeFilter !== "all") {
       filterMatch = row.dataset[activeFilter] === "true";
     }
-    if (nameMatch && filterMatch) {
+    // Hide former clients unless the toggle is on or the "No Longer Client" filter is active
+    const formerOk = !isFormer || showFormer || activeFilter === "former";
+    if (nameMatch && filterMatch && formerOk) {
       row.classList.remove("hidden");
       visible++;
     } else {
@@ -967,6 +1008,8 @@ document.getElementById("search").addEventListener("input", e => {
   searchQ = e.target.value.toLowerCase().trim();
   applyFilters();
 });
+
+document.getElementById("showFormer").addEventListener("change", applyFilters);
 
 buildStats();
 render();
