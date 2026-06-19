@@ -632,6 +632,7 @@ const clients = [
     name: "AZ Dental Laguna Hills",
     website: "https://azdentallagunahills.com",
     doctor: "Dr. Amro Albaghdadi",
+    phone: "949-537-6166",
     email: "amro.albaghdadi@gmail.com",
     email2: "",
     seo: true, blogs: 4,
@@ -853,6 +854,7 @@ const clients = [
     name: "Saddleback Valley Endodontics",
     website: "https://www.sbvendo.com/",
     doctor: "Dr. Lars Bjorn Jonsson",
+    phone: "949-355-2296",
     email: "lbjendo@mac.com",
     email2: "",
     seo: false, blogs: 0,
@@ -959,6 +961,7 @@ function buildRow(c) {
     </td>
     <td>
       <div class="email-wrap" style="color:var(--text);font-size:13px;">${c.doctor || '<span style="color:var(--muted)">—</span>'}</div>
+      ${c.phone ? `<div class="email-wrap" style="margin-top:2px;"><a href="tel:${c.phone.replace(/[^0-9+]/g,'')}">${c.phone}</a></div>` : ""}
     </td>
     <td>
       <div class="email-wrap">
