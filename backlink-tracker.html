@@ -573,7 +573,7 @@ const CLIENTS = [
     bl: {
       brightlocal: "yes", yourhealthmag: null, medicalnews: null,
       burg:        "pending",
-      wiki:        ["https://sv.wikipedia.org/wiki/Tandv%C3%A4rk","https://ko.wikipedia.org/wiki/%EC%8B%AC%EB%AF%B8%EC%B9%98%EA%B3%BC%ED%95%99"],
+      wiki:        [{ url: "https://sv.wikipedia.org/wiki/Tandv%C3%A4rk", cost: 90, date: "06/21/2026" },{ url: "https://ko.wikipedia.org/wiki/%EC%8B%AC%EB%AF%B8%EC%B9%98%EA%B3%BC%ED%95%99", cost: 90, date: "06/21/2026" }],
       canyon:      "https://www.canyon-news.com/when-a-chipped-tooth-becomes-a-dental-emergency/",
       reddit: null, belmont: null, googlesite: null,
       mywow: null, doctiplus: null, rankmydentist: null, cloudstack: null,
@@ -591,7 +591,7 @@ const CLIENTS = [
     bl: {
       brightlocal: "yes", yourhealthmag: null, medicalnews: null,
       burg: null,
-      wiki: ["https://he.wikipedia.org/wiki/%D7%A8%D7%A4%D7%95%D7%90%D7%AA_%D7%A9%D7%99%D7%A0%D7%99%D7%99%D7%9D_%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99%D7%AA","https://el.wikipedia.org/wiki/%CE%91%CE%B9%CF%83%CE%B8%CE%B7%CF%84%CE%B9%CE%BA%CE%AE_%CE%BF%CE%B4%CE%BF%CE%BD%CF%84%CE%B9%CE%B1%CF%84%CF%81%CE%B9%CE%BA%CE%AE"],
+      wiki: [{ url: "https://he.wikipedia.org/wiki/%D7%A8%D7%A4%D7%95%D7%90%D7%AA_%D7%A9%D7%99%D7%A0%D7%99%D7%99%D7%9D_%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99%D7%AA", cost: 90, date: "06/21/2026" },{ url: "https://el.wikipedia.org/wiki/%CE%91%CE%B9%CF%83%CE%B8%CE%B7%CF%84%CE%B9%CE%BA%CE%AE_%CE%BF%CE%B4%CE%BF%CE%BD%CF%84%CE%B9%CE%B1%CF%84%CF%81%CE%B9%CE%BA%CE%AE", cost: 90, date: "06/21/2026" }],
       canyon: null, reddit: null, belmont: null,
       googlesite: null, mywow: null, doctiplus: null, rankmydentist: null,
       cloudstack: null, wellhealth: null,
@@ -1180,6 +1180,28 @@ Object.keys(CARECREDIT).forEach(domain => {
   if (c) c.bl.carecredit = CARECREDIT[domain];
 });
 
+// ─── Link helpers ─────────────────────────────────────────────────────────────
+// A backlink entry is either a plain URL string or a { url, cost, date } object.
+function linkUrl(x)  { return (x && typeof x === "object") ? x.url : x; }
+function linkCost(x) { return (x && typeof x === "object" && typeof x.cost === "number") ? x.cost : null; }
+function linkDate(x) { return (x && typeof x === "object") ? (x.date || null) : null; }
+// Spend a client incurs for one source. Per-link costs (object entries) are summed;
+// otherwise the source's flat cost is counted once when acquired (legacy behavior).
+function sourceSpend(s, v) {
+  if (!v || v === "pending") return 0;
+  if (Array.isArray(v)) {
+    let sum = 0, hasExplicit = false, hasPlain = false;
+    v.forEach(item => {
+      const c = linkCost(item);
+      if (c != null) { sum += c; hasExplicit = true; }
+      else if (item && item !== "pending") hasPlain = true;
+    });
+    if (hasExplicit) return sum + (hasPlain ? s.cost : 0);
+    return s.cost;
+  }
+  return s.cost;
+}
+
 // ─── Build Header ─────────────────────────────────────────────────────────────
 function buildHeader() {
   const thead = document.getElementById("thead");
@@ -1207,8 +1229,9 @@ function buildStats() {
     SOURCES.forEach(s => {
       const v = c.bl[s.id];
       const vv = Array.isArray(v) ? v[0] : v;
-      if (vv && vv !== "pending") { totalAcquired++; totalSpend += s.cost; }
+      if (vv && vv !== "pending") totalAcquired++;
       else if (v === "pending") totalPending++;
+      totalSpend += sourceSpend(s, v);
     });
   });
 
@@ -1245,8 +1268,9 @@ function buildRow(c) {
   SOURCES.forEach(s => {
     const v = c.bl[s.id];
     const vv = Array.isArray(v) ? v[0] : v;
-    if (vv && vv !== "pending") { acquired++; spend += s.cost; }
+    if (vv && vv !== "pending") acquired++;
     else if (vv === "pending") pending++;
+    spend += sourceSpend(s, v);
   });
   const total = SOURCES.length;
   const pct = Math.round(acquired / total * 100);
@@ -1261,9 +1285,13 @@ function buildRow(c) {
     const vPrimary = vArr ? vArr[0] : v;
     const dateTag = s.added ? `<div class="cell-date">${s.added}</div>` : "";
     if (vArr) {
-      cells += `<td class="cell-wrap"><a class="bl-yes" href="${vArr[0]}" target="_blank" rel="noopener" title="${s.name} — ${vArr.length} links">✓ <span style="font-size:10px;opacity:.8">${vArr.length}</span></a>${dateTag}</td>`;
+      const arrDate = vArr.map(linkDate).find(Boolean) || null;
+      const arrCost = sourceSpend(s, vArr);
+      const arrDateTag = arrDate ? `<div class="cell-date">${arrDate}</div>` : dateTag;
+      const costTitle = arrCost ? ` · $${arrCost}` : "";
+      cells += `<td class="cell-wrap"><a class="bl-yes" href="${linkUrl(vArr[0])}" target="_blank" rel="noopener" title="${s.name} — ${vArr.length} links${costTitle}">✓ <span style="font-size:10px;opacity:.8">${vArr.length}</span></a>${arrDateTag}</td>`;
     } else if (vPrimary && vPrimary !== "pending" && vPrimary !== "yes") {
-      cells += `<td class="cell-wrap"><a class="bl-yes" href="${vPrimary}" target="_blank" rel="noopener" title="${s.name}">✓</a>${dateTag}</td>`;
+      cells += `<td class="cell-wrap"><a class="bl-yes" href="${linkUrl(vPrimary)}" target="_blank" rel="noopener" title="${s.name}">✓</a>${dateTag}</td>`;
     } else if (vPrimary === "yes") {
       cells += `<td class="cell-wrap"><span class="bl-yes" style="cursor:default;" title="${s.name} — acquired (no URL)">✓</span>${dateTag}</td>`;
     } else if (vPrimary === "pending") {
@@ -1346,7 +1374,11 @@ function renderFocusView(sourceId) {
       : `<span class="focus-badge miss">✗ Missing</span>`;
     let linkEl = "";
     if (vArr) {
-      linkEl = vArr.map((u,i) => `<a href="${u}" target="_blank" rel="noopener">↗ ${i+1}</a>`).join(" ");
+      linkEl = vArr.map((item,i) => {
+        const u = linkUrl(item), c = linkCost(item), d = linkDate(item);
+        const meta = `${c != null ? ` $${c}` : ""}${d ? ` ${d}` : ""}`;
+        return `<a href="${u}" target="_blank" rel="noopener">↗ ${i+1}${meta}</a>`;
+      }).join(" ");
     } else if (v && v !== "pending" && v !== "yes") {
       linkEl = `<a href="${v}" target="_blank" rel="noopener">↗ view</a>`;
     }
@@ -1410,8 +1442,9 @@ function openPanel(clientIndex) {
   SOURCES.forEach(s => {
     const v = c.bl[s.id];
     const vv = Array.isArray(v) ? v[0] : v;
-    if (vv && vv !== "pending") { acquired++; spend += s.cost; }
+    if (vv && vv !== "pending") acquired++;
     else if (vv === "pending") pending++;
+    spend += sourceSpend(s, v);
   });
   const total = SOURCES.length;
   const pct = Math.round(acquired / total * 100);
@@ -1446,9 +1479,12 @@ function openPanel(clientIndex) {
     const nameHtml = `<span class="panel-src-name">${dot}${s.name}${s.price ? `<span style="font-size:10px;color:#4ade80;margin-left:4px;">${s.price}</span>` : ""}${s.added && type === "acquired" ? `<span style="font-size:10px;color:var(--muted);margin-left:6px;">added ${s.added}</span>` : ""}</span>`;
     let linksHtml = "";
     if (vArr) {
-      const langLinks = vArr.map((u, i) => {
+      const langLinks = vArr.map((item, i) => {
+        const u = linkUrl(item);
         const lang = (u.match(/https?:\/\/(\w+)\.wikipedia\.org/) || [])[1] || (i + 1);
-        return `<a href="${u}" target="_blank" rel="noopener">${lang}</a>`;
+        const c = linkCost(item), d = linkDate(item);
+        const meta = `${c != null ? ` · $${c}` : ""}${d ? ` · ${d}` : ""}`;
+        return `<a href="${u}" target="_blank" rel="noopener" title="${lang}${meta}">${lang}${meta}</a>`;
       }).join("");
       linksHtml = `<span class="panel-src-links">${langLinks}</span>`;
     } else if (v && v !== "pending" && v !== "yes") {
