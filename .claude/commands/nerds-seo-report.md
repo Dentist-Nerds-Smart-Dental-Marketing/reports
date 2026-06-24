@@ -57,6 +57,7 @@ If a metric can't be retrieved, leave the template placeholder and tell the user
 - **Ranking keywords below 80** → flag the Ranking Keywords dial as low and call out that **there isn't enough content / no keyword strategy** (a top weakness, and a driver for the Content Engine).
 - **Many backlinks but low Domain Authority** → call out that the profile is **probably spammy / toxic backlinks dragging authority down**; recommend a disavow + cleanup (make it a Top 3 Weakness when the gap is severe).
 - Reflect these in both the dial flags/notes and the Top 3 Weaknesses.
+- **Google Maps grid & Traffic mix must be REAL or marked pending — never placeholder.** The 5×5 map grid must come from an actual Local Falcon scan, and the Traffic channel mix from real analytics (GA4 / Windsor). **Never reuse the template's default grid or default traffic percentages** — that ships identical, fake data across every client. If Local Falcon or analytics data is not available in the session, set that section to a clear "Pending — from your latest Local Falcon scan / GA4" state and tell the user which sections need real data, rather than filling placeholders.
 
 ---
 
