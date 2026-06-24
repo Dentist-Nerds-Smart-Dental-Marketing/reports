@@ -42,9 +42,7 @@
   }
   h1,h2,h3,h4{font-family:"Anton",sans-serif;font-weight:400;letter-spacing:.005em}
   .wrap{max-width:1220px;margin:0 auto;padding:0 32px}
-  .edit{outline:none;border-radius:5px;transition:background .15s;box-shadow:inset 0 -1px 0 rgba(10,107,255,.4)}
-  .edit:hover{background:var(--blue-50)}
-  .edit:focus{background:#fff;box-shadow:0 0 0 2px var(--blue)}
+  .edit{outline:none}
 
   /* ============== HERO ============== */
   .hero{
@@ -196,17 +194,29 @@
   .fill-bar.you{background:linear-gradient(90deg,var(--blue),var(--blue-700))}
   .bar-row .num{font-family:"Anton",sans-serif;font-size:18px;text-align:right;color:var(--ink)}
 
-  /* ============== MAP GRID ============== */
-  .map-wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
-  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;width:320px}
-  .cell{aspect-ratio:1;border-radius:11px;display:grid;place-items:center;font-family:"Anton",sans-serif;
-    font-size:17px;cursor:pointer;user-select:none;color:#fff;transition:transform .08s}
-  .cell:active{transform:scale(.9)}
+  /* ============== MAP (Local Falcon style) ============== */
+  .map-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) 1fr;gap:44px;align-items:center}
+  .lf-map{position:relative;width:100%;max-width:480px;aspect-ratio:1;border-radius:20px;overflow:hidden;
+    border:1px solid var(--line);background:#e7edf1;box-shadow:0 10px 32px rgba(15,27,45,.12)}
+  .lf-bg{position:absolute;inset:0}
+  .lf-bg span{position:absolute;display:block}
+  .lf-park{left:-4%;top:-4%;width:34%;height:30%;background:#d8e9cf;border-radius:0 0 36px 0}
+  .lf-water{right:-6%;bottom:-6%;width:42%;height:38%;background:#c7def0;border-radius:48px 0 0 0}
+  .lf-road{background:#ffffff;box-shadow:0 0 0 1px rgba(15,27,45,.04)}
+  .lf-road.h1{top:24%;left:-6%;width:112%;height:8px;transform:rotate(-3deg)}
+  .lf-road.h2{top:55%;left:-6%;width:112%;height:11px}
+  .lf-road.h3{top:82%;left:-6%;width:112%;height:7px;transform:rotate(2deg)}
+  .lf-road.v1{left:30%;top:-6%;height:112%;width:9px}
+  .lf-road.v2{left:64%;top:-6%;height:112%;width:7px;transform:rotate(2deg)}
+  .grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);place-items:center;padding:16px}
+  .cell{width:clamp(38px,9vw,54px);height:clamp(38px,9vw,54px);border-radius:50%;display:grid;place-items:center;
+    font-family:"Anton",sans-serif;font-size:18px;color:#fff;border:3px solid #fff;
+    box-shadow:0 3px 8px rgba(15,27,45,.35)}
   .cell[data-s="good"]{background:var(--good)}
   .cell[data-s="warn"]{background:var(--warn)}
   .cell[data-s="bad"]{background:var(--bad)}
   .map-legend{font-size:15.5px;color:var(--ink-soft);line-height:2}
-  .map-legend .dot{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:9px;vertical-align:middle}
+  .map-legend .dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:9px;vertical-align:middle;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
   .map-legend b{color:var(--ink);font-family:"Anton",sans-serif;font-weight:400}
 
   /* ============== TRAFFIC STACK ============== */
@@ -268,7 +278,7 @@
     .weak-other ul{columns:1}
     .map-wrap{grid-template-columns:1fr;gap:28px}
     .score-grid{grid-template-columns:1fr;gap:32px}
-    .grid{width:260px}
+    .lf-map{max-width:none}
     .bar-row{grid-template-columns:120px 1fr 50px;gap:12px}
     .s1-grid{grid-template-columns:1fr;gap:28px}
     .step-one-feature{padding:32px}
@@ -293,35 +303,35 @@
 
     <div class="audit-target">
       <span class="pulse"></span>
-      <span contenteditable="true">Audited: marconidentalgroup.com</span>
+      <span>Audited: marconidentalgroup.com</span>
     </div>
 
-    <h1 contenteditable="true">Website Audit for <span class="accent">Marconi Dental Group</span></h1>
-    <p class="hero-subtitle" contenteditable="true">Prepared for Carmichael, CA · Jun 2026</p>
-    <p class="lede" contenteditable="true">
+    <h1>Website Audit for <span class="accent">Marconi Dental Group</span></h1>
+    <p class="hero-subtitle">Prepared for Carmichael, CA · Jun 2026</p>
+    <p class="lede">
       We reviewed every signal — page-by-page content, Semrush rankings, Local Falcon coverage, schema markup, Google Business Profile configuration, and the manual user experience. The site already has a deep content library — the audit shows what's keeping it off page 1 for the searches that bring in patients. <strong>This report explains what's holding the site back, and exactly how we'd fix it.</strong>
     </p>
 
     <div class="hero-meta-grid">
       <div class="meta-block">
         <div class="meta-label">Prepared For</div>
-        <div class="meta-value edit" contenteditable="true">Marconi Dental Group</div>
-        <div class="meta-sub edit" contenteditable="true">Carmichael, CA</div>
+        <div class="meta-value edit">Marconi Dental Group</div>
+        <div class="meta-sub edit">Carmichael, CA</div>
       </div>
       <div class="meta-block">
         <div class="meta-label">Report Date</div>
-        <div class="meta-value edit" contenteditable="true">Jun 2026</div>
-        <div class="meta-sub edit" contenteditable="true">Tools: Semrush, Local Falcon, manual UX</div>
+        <div class="meta-value edit">Jun 2026</div>
+        <div class="meta-sub edit">Tools: Semrush, Local Falcon, manual UX</div>
       </div>
       <div class="meta-block">
         <div class="meta-label">Issues Found</div>
-        <div class="meta-value edit" contenteditable="true">3 critical · 6 other</div>
-        <div class="meta-sub edit" contenteditable="true">across the site</div>
+        <div class="meta-value edit">3 critical · 6 other</div>
+        <div class="meta-sub edit">across the site</div>
       </div>
       <div class="meta-block">
         <div class="meta-label">Our Recommendation</div>
-        <div class="meta-value edit" contenteditable="true" style="color:#cfe0ff">Optimize &amp; Grow</div>
-        <div class="meta-sub edit" contenteditable="true">content is there — unlock it</div>
+        <div class="meta-value edit" style="color:#cfe0ff">Optimize &amp; Grow</div>
+        <div class="meta-sub edit">content is there — unlock it</div>
       </div>
     </div>
   </div>
@@ -331,7 +341,7 @@
 <section>
   <div class="wrap">
     <span class="section-eyebrow red"><span class="dot"></span>Health Score Breakdown</span>
-    <h2>Overall site health: <span class="accent" style="color:var(--bad)" contenteditable="true">50/100</span>.<br>Strong content library — let down by local visibility &amp; ADA.</h2>
+    <h2>Overall site health: <span class="accent" style="color:var(--bad)">50/100</span>.<br>Strong content library — let down by local visibility &amp; ADA.</h2>
     <p class="section-intro">We graded the site across four categories using Semrush data, manual review, and Core Web Vitals testing. The numbers below show the percentage of best-practice items the site currently meets in each pillar.</p>
     <div class="score-grid">
       <div class="gauge-wrap">
@@ -343,41 +353,41 @@
           <text x="120" y="14" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">50</text>
           <text x="220" y="138" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">100</text>
         </svg>
-        <div class="gauge-num"><span contenteditable="true">50</span><span class="gauge-suffix">/100</span></div>
-        <div class="gauge-status" contenteditable="true">Needs Work · Optimize &amp; Grow</div>
+        <div class="gauge-num"><span>50</span><span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status">Needs Work · Optimize &amp; Grow</div>
       </div>
       <div class="subscore-list">
         <div class="subscore">
           <div class="subscore-icon warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
           <div>
-            <div class="subscore-title" contenteditable="true">Content Quality &amp; Accuracy</div>
+            <div class="subscore-title">Content Quality &amp; Accuracy</div>
             <div class="subscore-bar"><div class="subscore-fill warn" style="width:60%"></div></div>
           </div>
-          <div class="subscore-value warn" contenteditable="true">60%</div>
+          <div class="subscore-value warn">60%</div>
         </div>
         <div class="subscore">
           <div class="subscore-icon bad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
           <div>
-            <div class="subscore-title" contenteditable="true">User Experience &amp; Navigation</div>
+            <div class="subscore-title">User Experience &amp; Navigation</div>
             <div class="subscore-bar"><div class="subscore-fill" style="width:40%"></div></div>
           </div>
-          <div class="subscore-value bad" contenteditable="true">40%</div>
+          <div class="subscore-value bad">40%</div>
         </div>
         <div class="subscore">
           <div class="subscore-icon warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div>
           <div>
-            <div class="subscore-title" contenteditable="true">AI Search Visibility (AEO)</div>
+            <div class="subscore-title">AI Search Visibility (AEO)</div>
             <div class="subscore-bar"><div class="subscore-fill warn" style="width:45%"></div></div>
           </div>
-          <div class="subscore-value warn" contenteditable="true">45%</div>
+          <div class="subscore-value warn">45%</div>
         </div>
         <div class="subscore">
           <div class="subscore-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
-            <div class="subscore-title" contenteditable="true">Local Search &amp; Maps</div>
+            <div class="subscore-title">Local Search &amp; Maps</div>
             <div class="subscore-bar"><div class="subscore-fill blue" style="width:45%"></div></div>
           </div>
-          <div class="subscore-value blue" contenteditable="true">45%</div>
+          <div class="subscore-value blue">45%</div>
         </div>
       </div>
     </div>
@@ -422,7 +432,7 @@
         <span class="flag bad">Weak</span>
       </div>
     </div>
-    <p class="hint" contenteditable="true">1,553 ranking keywords is a real asset — but most are informational blog terms ranking on page 2+. The job is converting that footprint into page-1 local rankings, not creating content from scratch.</p>
+    <p class="hint">1,553 ranking keywords is a real asset — but most are informational blog terms ranking on page 2+. The job is converting that footprint into page-1 local rankings, not creating content from scratch.</p>
   </div>
 </section>
 
@@ -463,7 +473,7 @@
         <div class="note">confirm via Backlink Audit</div>
       </div>
     </div>
-    <p class="hint" contenteditable="true">The issue here isn't toxic links — it's too few of them. Just 223 referring domains gives an Authority Score of 11, which caps how high even well-optimized pages can climb. Quality link building &amp; citations are the lever. (Toxic % is a placeholder — confirm with a Semrush Backlink Audit.)</p>
+    <p class="hint">The issue here isn't toxic links — it's too few of them. Just 223 referring domains gives an Authority Score of 11, which caps how high even well-optimized pages can climb. Quality link building &amp; citations are the lever. (Toxic % is a placeholder — confirm with a Semrush Backlink Audit.)</p>
   </div>
 </section>
 
@@ -478,29 +488,29 @@
       <div class="weak">
         <div class="weak-rank">01</div>
         <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h4 contenteditable="true">Local money pages buried</h4>
-        <p contenteditable="true">The pages that win patients rank on page 5+ — "dental implants Sacramento" sits at #50 and "dental hygienist near me" at #56. The pages exist; they're just not optimized to rank.</p>
-        <span class="sev" data-s="bad" contenteditable="true">Critical</span>
+        <h4>Local money pages buried</h4>
+        <p>The pages that win patients rank on page 5+ — "dental implants Sacramento" sits at #50 and "dental hygienist near me" at #56. The pages exist; they're just not optimized to rank.</p>
+        <span class="sev" data-s="bad">Critical</span>
       </div>
       <div class="weak">
         <div class="weak-rank">02</div>
         <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
-        <h4 contenteditable="true">ADA accessibility non-compliance</h4>
-        <p contenteditable="true">Manual review flagged the site as non-compliant — contrast, alt text and labeled forms are missing. That's both a patient-access barrier and a real legal exposure.</p>
-        <span class="sev" data-s="bad" contenteditable="true">Critical</span>
+        <h4>ADA accessibility non-compliance</h4>
+        <p>Manual review flagged the site as non-compliant — contrast, alt text and labeled forms are missing. That's both a patient-access barrier and a real legal exposure.</p>
+        <span class="sev" data-s="bad">Critical</span>
       </div>
       <div class="weak high">
         <div class="weak-rank">03</div>
         <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
-        <h4 contenteditable="true">Low domain authority</h4>
-        <p contenteditable="true">Authority Score of 11 from just 223 referring domains. The link profile is too thin to push pages onto page 1 — quality links &amp; citations are the unlock.</p>
-        <span class="sev" data-s="warn" contenteditable="true">High</span>
+        <h4>Low domain authority</h4>
+        <p>Authority Score of 11 from just 223 referring domains. The link profile is too thin to push pages onto page 1 — quality links &amp; citations are the unlock.</p>
+        <span class="sev" data-s="warn">High</span>
       </div>
     </div>
 
     <div class="weak-other">
       <span class="weak-other-label">Other issues we found</span>
-      <ul contenteditable="true">
+      <ul>
         <li>FAQs present but missing FAQPage schema (no AI/AEO markup)</li>
         <li>Heavy stock imagery — add real doctor, team &amp; office photos</li>
         <li>Content skews informational — realign toward local commercial terms</li>
@@ -525,39 +535,39 @@
         </thead>
         <tbody>
           <tr>
-            <td class="kw-name" contenteditable="true">tmd</td>
-            <td contenteditable="true">TMD article</td>
-            <td class="kw-num" contenteditable="true">14,800</td>
-            <td><span class="rk warn" contenteditable="true">Page 3 (#24)</span></td>
+            <td class="kw-name">tmd</td>
+            <td>TMD article</td>
+            <td class="kw-num">14,800</td>
+            <td><span class="rk warn">Page 3 (#24)</span></td>
           </tr>
           <tr>
-            <td class="kw-name" contenteditable="true">diastema</td>
-            <td contenteditable="true">What Is a Diastema</td>
-            <td class="kw-num" contenteditable="true">9,900</td>
-            <td><span class="rk" contenteditable="true">Page 5 (#46)</span></td>
+            <td class="kw-name">diastema</td>
+            <td>What Is a Diastema</td>
+            <td class="kw-num">9,900</td>
+            <td><span class="rk">Page 5 (#46)</span></td>
           </tr>
           <tr>
-            <td class="kw-name" contenteditable="true">what causes tmj</td>
-            <td contenteditable="true">TMJ disorder article</td>
-            <td class="kw-num" contenteditable="true">5,400</td>
-            <td><span class="rk" contenteditable="true">Page 6 (#58)</span></td>
+            <td class="kw-name">what causes tmj</td>
+            <td>TMJ disorder article</td>
+            <td class="kw-num">5,400</td>
+            <td><span class="rk">Page 6 (#58)</span></td>
           </tr>
           <tr>
-            <td class="kw-name" contenteditable="true">dental hygienist near me</td>
-            <td contenteditable="true">Hygienist page</td>
-            <td class="kw-num" contenteditable="true">3,600</td>
-            <td><span class="rk" contenteditable="true">Page 6 (#56)</span></td>
+            <td class="kw-name">dental hygienist near me</td>
+            <td>Hygienist page</td>
+            <td class="kw-num">3,600</td>
+            <td><span class="rk">Page 6 (#56)</span></td>
           </tr>
           <tr>
-            <td class="kw-name" contenteditable="true">dental implants sacramento</td>
-            <td contenteditable="true">Implants page</td>
-            <td class="kw-num" contenteditable="true">720</td>
-            <td><span class="rk" contenteditable="true">Page 5 (#50)</span></td>
+            <td class="kw-name">dental implants sacramento</td>
+            <td>Implants page</td>
+            <td class="kw-num">720</td>
+            <td><span class="rk">Page 5 (#50)</span></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="hint" contenteditable="true">These pages already exist and rank just off page 1 — stronger on-page content, internal links, schema and domain authority will push them up.</p>
+    <p class="hint">These pages already exist and rank just off page 1 — stronger on-page content, internal links, schema and domain authority will push them up.</p>
   </div>
 </section>
 
@@ -569,27 +579,27 @@
     <p class="section-intro">How the practice's keyword footprint compares to nearby competitors.</p>
     <div class="bars">
       <div class="bar-row">
-        <span class="who you" contenteditable="true">Marconi Dental Group</span>
+        <span class="who you">Marconi Dental Group</span>
         <div class="track-bar"><div class="fill-bar you" style="width:26%"></div></div>
-        <span class="num" contenteditable="true">1,553</span>
+        <span class="num">1,553</span>
       </div>
       <div class="bar-row">
-        <span class="who" contenteditable="true">San Marin Dental</span>
+        <span class="who">San Marin Dental</span>
         <div class="track-bar"><div class="fill-bar" style="width:100%"></div></div>
-        <span class="num" contenteditable="true">5,915</span>
+        <span class="num">5,915</span>
       </div>
       <div class="bar-row">
-        <span class="who" contenteditable="true">Andler Dental</span>
+        <span class="who">Andler Dental</span>
         <div class="track-bar"><div class="fill-bar" style="width:34%"></div></div>
-        <span class="num" contenteditable="true">2,036</span>
+        <span class="num">2,036</span>
       </div>
       <div class="bar-row">
-        <span class="who" contenteditable="true">West Park Village Dental</span>
+        <span class="who">West Park Village Dental</span>
         <div class="track-bar"><div class="fill-bar" style="width:26%"></div></div>
-        <span class="num" contenteditable="true">1,551</span>
+        <span class="num">1,551</span>
       </div>
     </div>
-    <p class="hint" contenteditable="true">Keyword counts from Semrush organic research. Marconi is mid-pack — within reach of the leaders once authority and on-page optimization catch up.</p>
+    <p class="hint">Keyword counts from Semrush organic research. Marconi is mid-pack — within reach of the leaders once authority and on-page optimization catch up.</p>
   </div>
 </section>
 
@@ -599,14 +609,25 @@
     <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
     <h2>Google Maps <span class="accent">Visibility</span></h2>
     <p class="section-intro">Where the practice shows up in the map pack across the local grid.</p>
-    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword scanned: <span contenteditable="true">dentist Carmichael</span></div>
+    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword scanned: <span>dentist Carmichael</span></div>
     <div class="map-wrap">
-      <div class="grid" id="mapgrid"></div>
+      <div class="lf-map">
+        <div class="lf-bg">
+          <span class="lf-park"></span>
+          <span class="lf-water"></span>
+          <span class="lf-road h1"></span>
+          <span class="lf-road h2"></span>
+          <span class="lf-road h3"></span>
+          <span class="lf-road v1"></span>
+          <span class="lf-road v2"></span>
+        </div>
+        <div class="grid" id="mapgrid"></div>
+      </div>
       <div class="map-legend">
         <div><span class="dot" style="background:var(--good)"></span> Top 3 in the map pack</div>
         <div><span class="dot" style="background:var(--warn)"></span> Page 1 (4–10)</div>
         <div><span class="dot" style="background:var(--bad)"></span> Not ranking (11+)</div>
-        <p style="margin-top:14px">Average map rank <b contenteditable="true" class="edit">8.4</b> &nbsp;·&nbsp; Visible in <b contenteditable="true" class="edit">36%</b> of the grid</p>
+        <p style="margin-top:14px">Average map rank <b class="edit">8.4</b> &nbsp;·&nbsp; Visible in <b class="edit">36%</b> of the grid</p>
         <p style="margin-top:8px;font-size:13px;font-style:italic;color:var(--ink-mute)">Grid is illustrative — run a live Local Falcon scan for "dentist Carmichael" to set real cell ranks, average &amp; % visible.</p>
       </div>
     </div>
@@ -626,7 +647,7 @@
       <span style="width:12%;background:#9ec7ff;color:var(--ink)">Referral 12%</span>
       <span style="width:6%;background:var(--ink-mute)">Paid 6%</span>
     </div>
-    <p class="hint" contenteditable="true">Channel mix is an illustrative placeholder — connect GA4 / Search Console to populate real percentages. With 2,300+ organic visits/mo, organic is already a meaningful channel to build on.</p>
+    <p class="hint">Channel mix is an illustrative placeholder — connect GA4 / Search Console to populate real percentages. With 2,300+ organic visits/mo, organic is already a meaningful channel to build on.</p>
   </div>
 </section>
 
@@ -644,14 +665,14 @@
           <span class="s1-badge">⚡ Start Here</span>
           <div class="s1-number">01</div>
           <div class="s1-step-label">The Foundation</div>
-          <div class="s1-step-title" contenteditable="true">Optimize the foundation you already have.</div>
+          <div class="s1-step-title">Optimize the foundation you already have.</div>
         </div>
 
         <div class="s1-content">
           <h4>What we'd do in Step 1</h4>
-          <p contenteditable="true">Marconi already has a deep content library — over 1,500 ranking keywords. This isn't a rebuild; it's an unlock. We fix what's keeping those pages off page 1 and close the compliance gaps, so the ongoing engines below have a clean base to compound on.</p>
+          <p>Marconi already has a deep content library — over 1,500 ranking keywords. This isn't a rebuild; it's an unlock. We fix what's keeping those pages off page 1 and close the compliance gaps, so the ongoing engines below have a clean base to compound on.</p>
 
-          <ul class="s1-todo" contenteditable="true">
+          <ul class="s1-todo">
             <li><strong>Fix ADA accessibility.</strong> The site came back non-compliant — close the contrast, alt-text and labeled-form gaps our review flagged.</li>
             <li><strong>Optimize the local money pages.</strong> Implants, hygienist and core service pages exist but rank page 5+ — rework on-page content, titles and internal links so they can climb.</li>
             <li><strong>Add FAQPage schema to treatment pages.</strong> The FAQs are already written — they just need structured markup for rich results and AI answers.</li>
@@ -751,17 +772,6 @@
   }
   document.querySelectorAll(".dial svg").forEach(svg=>{
     paint(svg);
-    const t=svg.querySelector(".val");
-    t.setAttribute("contenteditable","true");
-    t.style.cursor="text";
-    t.addEventListener("blur",()=>{
-      let raw=t.textContent.replace(/[^0-9.k]/gi,"");
-      let n=parseFloat(raw)||0;
-      if(/k/i.test(raw))n*=1000;
-      svg.dataset.value=n;
-      if(n>svg.dataset.max)svg.dataset.max=n;
-      paint(svg);
-    });
   });
 
   // ---- Local Falcon grid (5x5) ----
@@ -779,12 +789,6 @@
   seed.forEach((s,i)=>{
     const c=document.createElement("div");
     c.className="cell";c.dataset.s=s;c.textContent=ranks[i];
-    c.setAttribute("contenteditable","true");
-    c.addEventListener("click",e=>{
-      if(e.detail>0 && !window.getSelection().toString()){
-        c.dataset.s=ORDER[(ORDER.indexOf(c.dataset.s)+1)%3];
-      }
-    });
     g.appendChild(c);
   });
 </script>

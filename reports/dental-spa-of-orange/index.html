@@ -42,9 +42,7 @@
   }
   h1,h2,h3,h4{font-family:"Anton",sans-serif;font-weight:400;letter-spacing:.005em}
   .wrap{max-width:1220px;margin:0 auto;padding:0 32px}
-  .edit{outline:none;border-radius:5px;transition:background .15s;box-shadow:inset 0 -1px 0 rgba(10,107,255,.4)}
-  .edit:hover{background:var(--blue-50)}
-  .edit:focus{background:#fff;box-shadow:0 0 0 2px var(--blue)}
+  .edit{outline:none}
 
   /* ============== HERO ============== */
   .hero{
@@ -196,17 +194,29 @@
   .fill-bar.you{background:linear-gradient(90deg,var(--blue),var(--blue-700))}
   .bar-row .num{font-family:"Anton",sans-serif;font-size:18px;text-align:right;color:var(--ink)}
 
-  /* ============== MAP GRID ============== */
-  .map-wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
-  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;width:320px}
-  .cell{aspect-ratio:1;border-radius:11px;display:grid;place-items:center;font-family:"Anton",sans-serif;
-    font-size:17px;cursor:pointer;user-select:none;color:#fff;transition:transform .08s}
-  .cell:active{transform:scale(.9)}
+  /* ============== MAP (Local Falcon style) ============== */
+  .map-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) 1fr;gap:44px;align-items:center}
+  .lf-map{position:relative;width:100%;max-width:480px;aspect-ratio:1;border-radius:20px;overflow:hidden;
+    border:1px solid var(--line);background:#e7edf1;box-shadow:0 10px 32px rgba(15,27,45,.12)}
+  .lf-bg{position:absolute;inset:0}
+  .lf-bg span{position:absolute;display:block}
+  .lf-park{left:-4%;top:-4%;width:34%;height:30%;background:#d8e9cf;border-radius:0 0 36px 0}
+  .lf-water{right:-6%;bottom:-6%;width:42%;height:38%;background:#c7def0;border-radius:48px 0 0 0}
+  .lf-road{background:#ffffff;box-shadow:0 0 0 1px rgba(15,27,45,.04)}
+  .lf-road.h1{top:24%;left:-6%;width:112%;height:8px;transform:rotate(-3deg)}
+  .lf-road.h2{top:55%;left:-6%;width:112%;height:11px}
+  .lf-road.h3{top:82%;left:-6%;width:112%;height:7px;transform:rotate(2deg)}
+  .lf-road.v1{left:30%;top:-6%;height:112%;width:9px}
+  .lf-road.v2{left:64%;top:-6%;height:112%;width:7px;transform:rotate(2deg)}
+  .grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);place-items:center;padding:16px}
+  .cell{width:clamp(38px,9vw,54px);height:clamp(38px,9vw,54px);border-radius:50%;display:grid;place-items:center;
+    font-family:"Anton",sans-serif;font-size:18px;color:#fff;border:3px solid #fff;
+    box-shadow:0 3px 8px rgba(15,27,45,.35)}
   .cell[data-s="good"]{background:var(--good)}
   .cell[data-s="warn"]{background:var(--warn)}
   .cell[data-s="bad"]{background:var(--bad)}
   .map-legend{font-size:15.5px;color:var(--ink-soft);line-height:2}
-  .map-legend .dot{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:9px;vertical-align:middle}
+  .map-legend .dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:9px;vertical-align:middle;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
   .map-legend b{color:var(--ink);font-family:"Anton",sans-serif;font-weight:400}
 
   /* ============== TRAFFIC STACK ============== */
@@ -268,7 +278,7 @@
     .weak-other ul{columns:1}
     .map-wrap{grid-template-columns:1fr;gap:28px}
     .score-grid{grid-template-columns:1fr;gap:32px}
-    .grid{width:260px}
+    .lf-map{max-width:none}
     .bar-row{grid-template-columns:120px 1fr 50px;gap:12px}
     .s1-grid{grid-template-columns:1fr;gap:28px}
     .step-one-feature{padding:32px}
@@ -293,35 +303,35 @@
 
     <div class="audit-target">
       <span class="pulse"></span>
-      <span contenteditable="true">Audited: dentalspaorange.com</span>
+      <span>Audited: dentalspaorange.com</span>
     </div>
 
-    <h1 contenteditable="true">Website Audit for <span class="accent">Dental Spa of Orange</span></h1>
-    <p class="hero-subtitle" contenteditable="true">Prepared for Orange, CA · Jun 2026</p>
-    <p class="lede" contenteditable="true">
+    <h1>Website Audit for <span class="accent">Dental Spa of Orange</span></h1>
+    <p class="hero-subtitle">Prepared for Orange, CA · Jun 2026</p>
+    <p class="lede">
       We reviewed every signal — page-by-page content, Semrush rankings, Local Falcon coverage, schema markup, Google Business Profile configuration, and the manual user experience. The audit surfaced the issues below. <strong>This report explains what's holding the site back, and exactly how we'd fix it.</strong>
     </p>
 
     <div class="hero-meta-grid">
       <div class="meta-block">
         <div class="meta-label">Prepared For</div>
-        <div class="meta-value edit" contenteditable="true">Dental Spa of Orange</div>
-        <div class="meta-sub edit" contenteditable="true">Orange, CA</div>
+        <div class="meta-value edit">Dental Spa of Orange</div>
+        <div class="meta-sub edit">Orange, CA</div>
       </div>
       <div class="meta-block">
         <div class="meta-label">Report Date</div>
-        <div class="meta-value edit" contenteditable="true">June 2026</div>
-        <div class="meta-sub edit" contenteditable="true">Tools: Semrush, Local Falcon, manual UX</div>
+        <div class="meta-value edit">June 2026</div>
+        <div class="meta-sub edit">Tools: Semrush, Local Falcon, manual UX</div>
       </div>
       <div class="meta-block">
         <div class="meta-label">Issues Found</div>
-        <div class="meta-value edit" contenteditable="true">3 critical · 7 other</div>
-        <div class="meta-sub edit" contenteditable="true">across the site</div>
+        <div class="meta-value edit">3 critical · 7 other</div>
+        <div class="meta-sub edit">across the site</div>
       </div>
       <div class="meta-block">
         <div class="meta-label">Our Recommendation</div>
-        <div class="meta-value edit" contenteditable="true" style="color:#cfe0ff">Optimize &amp; Grow</div>
-        <div class="meta-sub edit" contenteditable="true">positions-first plan</div>
+        <div class="meta-value edit" style="color:#cfe0ff">Optimize &amp; Grow</div>
+        <div class="meta-sub edit">positions-first plan</div>
       </div>
     </div>
   </div>
@@ -331,7 +341,7 @@
 <section>
   <div class="wrap">
     <span class="section-eyebrow red"><span class="dot"></span>Health Score Breakdown</span>
-    <h2>Overall site health: <span class="accent" style="color:var(--bad)" contenteditable="true">48/100</span>.<br>A real content footprint — held back by weak positions &amp; ADA gaps.</h2>
+    <h2>Overall site health: <span class="accent" style="color:var(--bad)">48/100</span>.<br>A real content footprint — held back by weak positions &amp; ADA gaps.</h2>
     <p class="section-intro">We graded the site across four categories using Semrush data, manual review, and Core Web Vitals testing. The numbers below show the percentage of best-practice items the site currently meets in each pillar.</p>
     <div class="score-grid">
       <div class="gauge-wrap">
@@ -343,41 +353,41 @@
           <text x="120" y="14" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">50</text>
           <text x="220" y="138" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">100</text>
         </svg>
-        <div class="gauge-num"><span contenteditable="true">48</span><span class="gauge-suffix">/100</span></div>
-        <div class="gauge-status" contenteditable="true">Needs Work · Optimize &amp; Grow</div>
+        <div class="gauge-num"><span>48</span><span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status">Needs Work · Optimize &amp; Grow</div>
       </div>
       <div class="subscore-list">
         <div class="subscore">
           <div class="subscore-icon warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
           <div>
-            <div class="subscore-title" contenteditable="true">Content Quality &amp; Accuracy</div>
+            <div class="subscore-title">Content Quality &amp; Accuracy</div>
             <div class="subscore-bar"><div class="subscore-fill warn" style="width:55%"></div></div>
           </div>
-          <div class="subscore-value warn" contenteditable="true">55%</div>
+          <div class="subscore-value warn">55%</div>
         </div>
         <div class="subscore">
           <div class="subscore-icon bad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
           <div>
-            <div class="subscore-title" contenteditable="true">User Experience &amp; Navigation</div>
+            <div class="subscore-title">User Experience &amp; Navigation</div>
             <div class="subscore-bar"><div class="subscore-fill" style="width:38%"></div></div>
           </div>
-          <div class="subscore-value bad" contenteditable="true">38%</div>
+          <div class="subscore-value bad">38%</div>
         </div>
         <div class="subscore">
           <div class="subscore-icon warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div>
           <div>
-            <div class="subscore-title" contenteditable="true">AI Search Visibility (AEO)</div>
+            <div class="subscore-title">AI Search Visibility (AEO)</div>
             <div class="subscore-bar"><div class="subscore-fill warn" style="width:45%"></div></div>
           </div>
-          <div class="subscore-value warn" contenteditable="true">45%</div>
+          <div class="subscore-value warn">45%</div>
         </div>
         <div class="subscore">
           <div class="subscore-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
-            <div class="subscore-title" contenteditable="true">Local Search &amp; Maps</div>
+            <div class="subscore-title">Local Search &amp; Maps</div>
             <div class="subscore-bar"><div class="subscore-fill blue" style="width:52%"></div></div>
           </div>
-          <div class="subscore-value blue" contenteditable="true">52%</div>
+          <div class="subscore-value blue">52%</div>
         </div>
       </div>
     </div>
@@ -422,7 +432,7 @@
         <span class="flag bad">No FAQ schema</span>
       </div>
     </div>
-    <p class="hint" contenteditable="true">The site already ranks for 519 keywords — a strong footprint — but most sit on page 2+ (positions 13–98), so only ~177 visits/mo land. The pages exist; they need on-page optimization, internal links &amp; schema to break onto page 1.</p>
+    <p class="hint">The site already ranks for 519 keywords — a strong footprint — but most sit on page 2+ (positions 13–98), so only ~177 visits/mo land. The pages exist; they need on-page optimization, internal links &amp; schema to break onto page 1.</p>
   </div>
 </section>
 
@@ -462,7 +472,7 @@
         <div class="note">placeholder — confirm in Audit</div>
       </div>
     </div>
-    <p class="hint" contenteditable="true">Authority Score of 9 is low for a competitive Orange County market — competitors are out-linking the practice. The profile is broad (903 links / 382 domains) rather than flagrantly toxic; the fix is consistent quality link building &amp; citations. <strong>Toxic % is a placeholder — run Semrush's Backlink Audit to confirm the real figure.</strong></p>
+    <p class="hint">Authority Score of 9 is low for a competitive Orange County market — competitors are out-linking the practice. The profile is broad (903 links / 382 domains) rather than flagrantly toxic; the fix is consistent quality link building &amp; citations. <strong>Toxic % is a placeholder — run Semrush's Backlink Audit to confirm the real figure.</strong></p>
   </div>
 </section>
 
@@ -477,29 +487,29 @@
       <div class="weak">
         <div class="weak-rank">01</div>
         <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/><path d="M19 15l3 3-3 3"/></svg></div>
-        <h4 contenteditable="true">Rankings stuck on page 2+</h4>
-        <p contenteditable="true">519 keywords ranked, but almost none on page 1 — so only ~177 visits land each month. High-value pages (implants, veneers, cosmetic) sit on page 4+.</p>
-        <span class="sev" data-s="bad" contenteditable="true">Critical</span>
+        <h4>Rankings stuck on page 2+</h4>
+        <p>519 keywords ranked, but almost none on page 1 — so only ~177 visits land each month. High-value pages (implants, veneers, cosmetic) sit on page 4+.</p>
+        <span class="sev" data-s="bad">Critical</span>
       </div>
       <div class="weak">
         <div class="weak-rank">02</div>
         <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
-        <h4 contenteditable="true">ADA accessibility non-compliance</h4>
-        <p contenteditable="true">Manual review flagged the site as non-compliant — contrast, alt text and labeled forms are missing. That's both a patient-access barrier and a real legal exposure.</p>
-        <span class="sev" data-s="bad" contenteditable="true">Critical</span>
+        <h4>ADA accessibility non-compliance</h4>
+        <p>Manual review flagged the site as non-compliant — contrast, alt text and labeled forms are missing. That's both a patient-access barrier and a real legal exposure.</p>
+        <span class="sev" data-s="bad">Critical</span>
       </div>
       <div class="weak high">
         <div class="weak-rank">03</div>
         <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
-        <h4 contenteditable="true">No FAQ schema · weak AEO</h4>
-        <p contenteditable="true">Treatment pages have some FAQs but no FAQPage schema, so they don't earn rich results or get cited in AI answers — a growing source of patient discovery.</p>
-        <span class="sev" data-s="warn" contenteditable="true">High</span>
+        <h4>No FAQ schema · weak AEO</h4>
+        <p>Treatment pages have some FAQs but no FAQPage schema, so they don't earn rich results or get cited in AI answers — a growing source of patient discovery.</p>
+        <span class="sev" data-s="warn">High</span>
       </div>
     </div>
 
     <div class="weak-other">
       <span class="weak-other-label">Other issues we found</span>
-      <ul contenteditable="true">
+      <ul>
         <li>Low domain authority (Score 9) — needs citations &amp; link building</li>
         <li>Mixed stock imagery — add real doctor, team &amp; office photos</li>
         <li>Average usability — book/call CTAs could be stronger</li>
@@ -525,39 +535,39 @@
         </thead>
         <tbody>
           <tr>
-            <td class="kw-name" contenteditable="true">oral pathology</td>
-            <td contenteditable="true">Oral Pathology page</td>
-            <td class="kw-num" contenteditable="true">5,400</td>
-            <td><span class="rk" contenteditable="true">Page 4 (#37)</span></td>
+            <td class="kw-name">oral pathology</td>
+            <td>Oral Pathology page</td>
+            <td class="kw-num">5,400</td>
+            <td><span class="rk">Page 4 (#37)</span></td>
           </tr>
           <tr>
-            <td class="kw-name" contenteditable="true">braces orange</td>
-            <td contenteditable="true">Clear Braces page</td>
-            <td class="kw-num" contenteditable="true">720</td>
-            <td><span class="rk" contenteditable="true">Page 8 (#79)</span></td>
+            <td class="kw-name">braces orange</td>
+            <td>Clear Braces page</td>
+            <td class="kw-num">720</td>
+            <td><span class="rk">Page 8 (#79)</span></td>
           </tr>
           <tr>
-            <td class="kw-name" contenteditable="true">orange county dentistry</td>
-            <td contenteditable="true">Homepage</td>
-            <td class="kw-num" contenteditable="true">720</td>
-            <td><span class="rk" contenteditable="true">Page 5 (#47)</span></td>
+            <td class="kw-name">orange county dentistry</td>
+            <td>Homepage</td>
+            <td class="kw-num">720</td>
+            <td><span class="rk">Page 5 (#47)</span></td>
           </tr>
           <tr>
-            <td class="kw-name" contenteditable="true">dental implants orange county</td>
-            <td contenteditable="true">Dental Implants page</td>
-            <td class="kw-num" contenteditable="true">390</td>
-            <td><span class="rk" contenteditable="true">Page 5 (#44)</span></td>
+            <td class="kw-name">dental implants orange county</td>
+            <td>Dental Implants page</td>
+            <td class="kw-num">390</td>
+            <td><span class="rk">Page 5 (#44)</span></td>
           </tr>
           <tr>
-            <td class="kw-name" contenteditable="true">dentist orange ca</td>
-            <td contenteditable="true">Homepage</td>
-            <td class="kw-num" contenteditable="true">320</td>
-            <td><span class="rk warn" contenteditable="true">Page 2 (#13)</span></td>
+            <td class="kw-name">dentist orange ca</td>
+            <td>Homepage</td>
+            <td class="kw-num">320</td>
+            <td><span class="rk warn">Page 2 (#13)</span></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="hint" contenteditable="true">These are pages you already have — they only need stronger content, internal links &amp; schema to rank. "dentist orange ca" is already on page 2 (#13) — the closest quick win.</p>
+    <p class="hint">These are pages you already have — they only need stronger content, internal links &amp; schema to rank. "dentist orange ca" is already on page 2 (#13) — the closest quick win.</p>
   </div>
 </section>
 
@@ -569,27 +579,27 @@
     <p class="section-intro">How the practice's keyword footprint compares to nearby Orange competitors.</p>
     <div class="bars">
       <div class="bar-row">
-        <span class="who you" contenteditable="true">Dental Spa of Orange</span>
+        <span class="who you">Dental Spa of Orange</span>
         <div class="track-bar"><div class="fill-bar you" style="width:82%"></div></div>
-        <span class="num" contenteditable="true">519</span>
+        <span class="num">519</span>
       </div>
       <div class="bar-row">
-        <span class="who" contenteditable="true">Newport Dental Orange</span>
+        <span class="who">Newport Dental Orange</span>
         <div class="track-bar"><div class="fill-bar" style="width:100%"></div></div>
-        <span class="num" contenteditable="true">636</span>
+        <span class="num">636</span>
       </div>
       <div class="bar-row">
-        <span class="who" contenteditable="true">Orange Cosmetic Dentistry</span>
+        <span class="who">Orange Cosmetic Dentistry</span>
         <div class="track-bar"><div class="fill-bar" style="width:55%"></div></div>
-        <span class="num" contenteditable="true">347</span>
+        <span class="num">347</span>
       </div>
       <div class="bar-row">
-        <span class="who" contenteditable="true">Orange Village Dentistry</span>
+        <span class="who">Orange Village Dentistry</span>
         <div class="track-bar"><div class="fill-bar" style="width:47%"></div></div>
-        <span class="num" contenteditable="true">299</span>
+        <span class="num">299</span>
       </div>
     </div>
-    <p class="hint" contenteditable="true">Bar widths are set relative to the top competitor (Newport Dental Orange, 636 keywords). The footprint is competitive — the gap is positions, not page count. Source: Semrush organic competitors, US database.</p>
+    <p class="hint">Bar widths are set relative to the top competitor (Newport Dental Orange, 636 keywords). The footprint is competitive — the gap is positions, not page count. Source: Semrush organic competitors, US database.</p>
   </div>
 </section>
 
@@ -599,14 +609,25 @@
     <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
     <h2>Google Maps <span class="accent">Visibility</span></h2>
     <p class="section-intro">Where the practice shows up in the map pack across the local grid.</p>
-    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword scanned: <span contenteditable="true">dentist orange</span></div>
+    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword scanned: <span>dentist orange</span></div>
     <div class="map-wrap">
-      <div class="grid" id="mapgrid"></div>
+      <div class="lf-map">
+        <div class="lf-bg">
+          <span class="lf-park"></span>
+          <span class="lf-water"></span>
+          <span class="lf-road h1"></span>
+          <span class="lf-road h2"></span>
+          <span class="lf-road h3"></span>
+          <span class="lf-road v1"></span>
+          <span class="lf-road v2"></span>
+        </div>
+        <div class="grid" id="mapgrid"></div>
+      </div>
       <div class="map-legend">
         <div><span class="dot" style="background:var(--good)"></span> Top 3 in the map pack</div>
         <div><span class="dot" style="background:var(--warn)"></span> Page 1 (4–10)</div>
         <div><span class="dot" style="background:var(--bad)"></span> Not ranking (11+)</div>
-        <p style="margin-top:14px">Average map rank <b contenteditable="true" class="edit">8.4</b> &nbsp;·&nbsp; Visible in <b contenteditable="true" class="edit">36%</b> of the grid</p>
+        <p style="margin-top:14px">Average map rank <b class="edit">8.4</b> &nbsp;·&nbsp; Visible in <b class="edit">36%</b> of the grid</p>
         <p style="margin-top:10px;font-size:13px;color:var(--ink-mute);font-style:italic">Placeholder grid — run a live Local Falcon scan for "dentist orange" and drop the real cell ranks, average and % visible in here.</p>
       </div>
     </div>
@@ -626,7 +647,7 @@
       <span style="width:12%;background:#9ec7ff;color:var(--ink)">Referral 12%</span>
       <span style="width:6%;background:var(--ink-mute)">Paid 6%</span>
     </div>
-    <p class="hint" contenteditable="true">Channel mix is an illustrative placeholder — connect GA4 (Windsor) to drop in the real Direct / GBP / Organic / Referral / Paid split. Either way, with 519 keywords ranked but only ~177 organic visits, organic search is the biggest untapped growth lever.</p>
+    <p class="hint">Channel mix is an illustrative placeholder — connect GA4 (Windsor) to drop in the real Direct / GBP / Organic / Referral / Paid split. Either way, with 519 keywords ranked but only ~177 organic visits, organic search is the biggest untapped growth lever.</p>
   </div>
 </section>
 
@@ -644,14 +665,14 @@
           <span class="s1-badge">⚡ Start Here</span>
           <div class="s1-number">01</div>
           <div class="s1-step-label">The Foundation</div>
-          <div class="s1-step-title" contenteditable="true">Optimize the foundation so existing rankings can climb.</div>
+          <div class="s1-step-title">Optimize the foundation so existing rankings can climb.</div>
         </div>
 
         <div class="s1-content">
           <h4>What we'd do in Step 1</h4>
-          <p contenteditable="true">The site already has a real content footprint — 519 ranking keywords across dozens of service pages. The problem isn't a missing website; it's that almost everything sits on page 2+. Step 1 strengthens the technical, accessibility and on-page foundation so those pages can finally break onto page 1.</p>
+          <p>The site already has a real content footprint — 519 ranking keywords across dozens of service pages. The problem isn't a missing website; it's that almost everything sits on page 2+. Step 1 strengthens the technical, accessibility and on-page foundation so those pages can finally break onto page 1.</p>
 
-          <ul class="s1-todo" contenteditable="true">
+          <ul class="s1-todo">
             <li><strong>On-page optimization of the page-2 pages.</strong> Rework titles, headings, content depth and internal links on the service pages already ranking #11–50 so they climb to page 1.</li>
             <li><strong>Add FAQ schema to every treatment page</strong> — the FAQs are partly there; they need FAQPage markup so Google and AI engines can use them.</li>
             <li><strong>Fix ADA accessibility.</strong> The site came back non-compliant — close the contrast, alt-text and labeled-form gaps our review flagged.</li>
@@ -751,17 +772,6 @@
   }
   document.querySelectorAll(".dial svg").forEach(svg=>{
     paint(svg);
-    const t=svg.querySelector(".val");
-    t.setAttribute("contenteditable","true");
-    t.style.cursor="text";
-    t.addEventListener("blur",()=>{
-      let raw=t.textContent.replace(/[^0-9.k]/gi,"");
-      let n=parseFloat(raw)||0;
-      if(/k/i.test(raw))n*=1000;
-      svg.dataset.value=n;
-      if(n>svg.dataset.max)svg.dataset.max=n;
-      paint(svg);
-    });
   });
 
   // ---- Local Falcon grid (5x5) ----
@@ -779,12 +789,6 @@
   seed.forEach((s,i)=>{
     const c=document.createElement("div");
     c.className="cell";c.dataset.s=s;c.textContent=ranks[i];
-    c.setAttribute("contenteditable","true");
-    c.addEventListener("click",e=>{
-      if(e.detail>0 && !window.getSelection().toString()){
-        c.dataset.s=ORDER[(ORDER.indexOf(c.dataset.s)+1)%3];
-      }
-    });
     g.appendChild(c);
   });
 </script>

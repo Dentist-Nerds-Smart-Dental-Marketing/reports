@@ -76,6 +76,7 @@ If a metric can't be retrieved, leave the template placeholder and tell the user
    - **Traffic** stack: the channel percentages and bar widths.
    - Tailor the **Game Plan** copy (Step 01 + engines) to the client where relevant.
 4. Keep all branding, fonts, and interactive JS intact.
+5. **Reports are final deliverables — keep them non-editable.** The template has no `contenteditable` anywhere; never add it. Just replace the placeholder values directly in the HTML.
 
 ## Step 4 — Drop it on the hub page
 
