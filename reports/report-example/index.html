@@ -37,7 +37,7 @@
     padding:32px 16px;
   }
   .sheet{
-    max-width:1180px;margin:0 auto;background:var(--paper);
+    max-width:1280px;margin:0 auto;background:var(--paper);
     border-radius:18px;overflow:hidden;
     box-shadow:0 24px 60px -28px rgba(10,79,208,.35);
   }
@@ -58,7 +58,7 @@
   .head::after{content:"";position:absolute;left:0;bottom:0;height:5px;width:100%;
     background:linear-gradient(90deg,#0c0c0c 0%,#0c0c0c 60%,#fff 60%,#fff 100%)}
   .brand{display:flex;align-items:center;gap:11px;margin-bottom:24px}
-  .brand-logo{height:50px;width:auto;display:block}
+  .brand-logo{height:74px;width:auto;display:block}
   .head .eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#fff;font-weight:600;opacity:.85}
   .head h1{font-size:46px;margin:8px 0 18px;line-height:.98}
   .meta{display:flex;flex-wrap:wrap;gap:10px 32px;font-size:13px;color:#dbe7ff}
@@ -154,13 +154,45 @@
   footer{padding:24px 52px;background:#fff;text-align:center;color:var(--muted);font-size:12px}
   footer b{color:var(--ink);font-family:"Anton",sans-serif;font-weight:400;letter-spacing:.02em}
 
+  /* ---------- TOP 3 WEAKNESSES ---------- */
+  .weakness{background:#fbfcfe}
+  .weak-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .weak{display:flex;gap:14px;padding:18px 18px 16px;background:#fff;border:1px solid var(--line);
+    border-left:4px solid var(--bad);border-radius:12px}
+  .weak-rank{font-family:"Anton",sans-serif;font-size:30px;line-height:1;color:var(--blue);flex:none}
+  .weak h4{font-size:15px;margin-bottom:4px;color:var(--ink)}
+  .weak p{font-size:12.5px;color:var(--muted);line-height:1.45}
+  .sev{display:inline-block;margin-top:9px;font-size:10.5px;font-weight:700;letter-spacing:.05em;
+    text-transform:uppercase;padding:3px 10px;border-radius:20px}
+  .sev[data-s="bad"]{background:var(--bad-soft);color:var(--bad)}
+  .sev[data-s="warn"]{background:var(--warn-soft);color:var(--warn)}
+  .sev[data-s="good"]{background:var(--good-soft);color:var(--good)}
+  .weak-other{margin-top:18px;padding:16px 18px;background:#fff;border:1px dashed var(--line);border-radius:12px}
+  .weak-other-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px}
+  .weak-other ul{margin:0;padding-left:20px;columns:2;column-gap:32px;font-size:13px;color:var(--ink)}
+  .weak-other li{margin-bottom:5px;break-inside:avoid}
+
+  /* ---------- KEYWORD GAP TABLE ---------- */
+  .table-wrap{overflow-x:auto}
+  .kw{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
+  .kw th{text-align:left;font-family:"DM Sans",sans-serif;font-weight:700;color:var(--muted);
+    font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:9px 12px;border-bottom:2px solid var(--line)}
+  .kw td{padding:12px;border-bottom:1px solid var(--line);vertical-align:middle}
+  .kw tbody tr:last-child td{border-bottom:none}
+  .kw .kw-name{font-weight:600;color:var(--ink)}
+  .kw .kw-num{font-family:"Anton",sans-serif;font-size:15px;color:var(--ink)}
+  .rk{display:inline-block;font-weight:700;font-size:11px;padding:3px 10px;border-radius:20px;white-space:nowrap;
+    background:var(--bad-soft);color:var(--bad)}
+  .rk.warn{background:var(--warn-soft);color:var(--warn)}
+
   /* edit hint banner */
-  .howto{max-width:1180px;margin:0 auto 14px;font-size:12.5px;color:var(--muted);
+  .howto{max-width:1280px;margin:0 auto 14px;font-size:12.5px;color:var(--muted);
     background:#fff;border:1px dashed var(--line);border-radius:10px;padding:10px 16px;text-align:center}
   .howto b{color:var(--ink)}
 
   @media(max-width:760px){
-    .checks,.dials,.cards{grid-template-columns:1fr}
+    .checks,.dials,.cards,.weak-grid{grid-template-columns:1fr}
+    .weak-other ul{columns:1}
     .map-wrap{grid-template-columns:1fr}
     .grid{width:230px}
     .bar-row{grid-template-columns:100px 1fr 46px}
@@ -198,10 +230,56 @@
     </div>
   </header>
 
-  <!-- 1. WEBSITE HEALTH -->
-  <section>
+  <!-- 1. TOP 3 WEAKNESSES -->
+  <section class="weakness">
     <div class="sec-head">
       <div class="sec-num">1</div>
+      <h2>Top 3 Weaknesses</h2>
+      <span class="tag">Biggest priorities</span>
+    </div>
+    <div class="weak-grid">
+      <div class="weak">
+        <div class="weak-rank">01</div>
+        <div>
+          <h4 contenteditable="true">Toxic backlink profile</h4>
+          <p contenteditable="true">High link volume but low authority — spammy links are capping rankings until they're disavowed.</p>
+          <span class="sev" data-s="bad" contenteditable="true">Critical</span>
+        </div>
+      </div>
+      <div class="weak">
+        <div class="weak-rank">02</div>
+        <div>
+          <h4 contenteditable="true">Thin treatment pages</h4>
+          <p contenteditable="true">Service pages are too short and missing FAQ schema, so they don't rank or earn AI citations.</p>
+          <span class="sev" data-s="bad" contenteditable="true">Critical</span>
+        </div>
+      </div>
+      <div class="weak">
+        <div class="weak-rank">03</div>
+        <div>
+          <h4 contenteditable="true">Weak local visibility</h4>
+          <p contenteditable="true">Outside the map pack across most of the grid — GBP isn't optimized for the target area.</p>
+          <span class="sev" data-s="warn" contenteditable="true">High</span>
+        </div>
+      </div>
+    </div>
+    <div class="weak-other">
+      <span class="weak-other-label">Other issues we found</span>
+      <ul contenteditable="true">
+        <li>ADA / accessibility gaps (alt text, labels, contrast)</li>
+        <li>No keyword strategy — under 80 ranking keywords</li>
+        <li>Meta titles &amp; descriptions need a rewrite sitewide</li>
+        <li>Underdeveloped organic search channel</li>
+        <li>Limited internal linking between service pages</li>
+        <li>Few recent Google reviews / GBP posts</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2. WEBSITE HEALTH -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">2</div>
       <h2>Website Foundation</h2>
       <span class="tag">Usability · ADA · Content</span>
     </div>
@@ -226,10 +304,10 @@
     <p class="hint" contenteditable="true">Note: thin treatment pages with no FAQ schema limit both rankings and AI answer eligibility.</p>
   </section>
 
-  <!-- 2. SEARCH VISIBILITY -->
+  <!-- 3. SEARCH VISIBILITY -->
   <section>
     <div class="sec-head">
-      <div class="sec-num">2</div>
+      <div class="sec-num">3</div>
       <h2>Search Visibility</h2>
       <span class="tag">Semrush</span>
     </div>
@@ -268,10 +346,60 @@
     <p class="hint" contenteditable="true">Ranking under 80 keywords points to thin content and no keyword strategy — not a technical block.</p>
   </section>
 
-  <!-- 3. LOCAL KEYWORD COMPETITION -->
+  <!-- 4. KEYWORD GAP -->
   <section>
     <div class="sec-head">
-      <div class="sec-num">3</div>
+      <div class="sec-num">4</div>
+      <h2>Keywords On Your Site You Don't Rank For</h2>
+      <span class="tag">Content gap</span>
+    </div>
+    <p class="hint" style="margin-top:0;margin-bottom:16px">These terms already appear in your website's content, but the site isn't ranking on page 1 for them — fast wins once the pages are optimized.</p>
+    <div class="table-wrap">
+      <table class="kw">
+        <thead>
+          <tr><th>Keyword</th><th>Appears On</th><th>Monthly Searches</th><th>Current Rank</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="kw-name" contenteditable="true">dental implants [city]</td>
+            <td contenteditable="true">Implants page</td>
+            <td class="kw-num" contenteditable="true">720</td>
+            <td><span class="rk" contenteditable="true">Not in top 100</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">invisalign [city]</td>
+            <td contenteditable="true">Invisalign page</td>
+            <td class="kw-num" contenteditable="true">480</td>
+            <td><span class="rk" contenteditable="true">Not in top 100</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">emergency dentist [city]</td>
+            <td contenteditable="true">Homepage</td>
+            <td class="kw-num" contenteditable="true">390</td>
+            <td><span class="rk warn" contenteditable="true">Page 4 (#34)</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">teeth whitening [city]</td>
+            <td contenteditable="true">Cosmetic page</td>
+            <td class="kw-num" contenteditable="true">320</td>
+            <td><span class="rk" contenteditable="true">Not in top 100</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">veneers [city]</td>
+            <td contenteditable="true">Cosmetic page</td>
+            <td class="kw-num" contenteditable="true">260</td>
+            <td><span class="rk warn" contenteditable="true">Page 3 (#28)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="hint" contenteditable="true">Add rows as needed — these are pages you already have, so they only need stronger content, internal links &amp; schema to rank.</p>
+  </section>
+
+  <!-- 5. LOCAL KEYWORD COMPETITION -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">5</div>
       <h2>You vs. Local Competition</h2>
       <span class="tag">Ranking keywords</span>
     </div>
@@ -300,10 +428,10 @@
     <p class="hint">Bar widths are illustrative — set each bar's <code>width:%</code> relative to the top competitor.</p>
   </section>
 
-  <!-- 4. AUTHORITY & BACKLINKS -->
+  <!-- 6. AUTHORITY & BACKLINKS -->
   <section>
     <div class="sec-head">
-      <div class="sec-num">4</div>
+      <div class="sec-num">6</div>
       <h2>Authority &amp; Backlinks</h2>
       <span class="tag">Semrush</span>
     </div>
@@ -340,10 +468,10 @@
     <p class="hint" contenteditable="true">Many backlinks but low authority = a toxic profile dragging the site down. Disavow &amp; clean up first.</p>
   </section>
 
-  <!-- 5. GOOGLE MAPS -->
+  <!-- 7. GOOGLE MAPS -->
   <section>
     <div class="sec-head">
-      <div class="sec-num">5</div>
+      <div class="sec-num">7</div>
       <h2>Google Maps Visibility</h2>
       <span class="tag">Local Falcon grid</span>
     </div>
@@ -358,10 +486,10 @@
     </div>
   </section>
 
-  <!-- 6. TRAFFIC SOURCES -->
+  <!-- 8. TRAFFIC SOURCES -->
   <section>
     <div class="sec-head">
-      <div class="sec-num">6</div>
+      <div class="sec-num">8</div>
       <h2>Where Traffic Comes From</h2>
       <span class="tag">Current mix</span>
     </div>
@@ -375,10 +503,10 @@
     <p class="hint" contenteditable="true">Most traffic is direct &amp; GBP — organic search is underdeveloped and the biggest growth lever.</p>
   </section>
 
-  <!-- 7. HOW DENTIST NERDS HELPS -->
+  <!-- 9. HOW DENTIST NERDS HELPS -->
   <section class="solve">
     <div class="sec-head">
-      <div class="sec-num">7</div>
+      <div class="sec-num">9</div>
       <h2>How Dentist Nerds Fixes This</h2>
     </div>
     <p class="lead">A foundation-first plan that turns the site into a ranking, AI-visible asset — then compounds authority every month.</p>
