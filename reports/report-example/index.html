@@ -144,6 +144,32 @@
   .flag.bad{background:var(--bad-soft);color:var(--bad)}
   .flag.good{background:var(--good-soft);color:var(--good-deep)}
 
+  /* ============== HEALTH SCORE ============== */
+  .score-grid{display:grid;grid-template-columns:380px 1fr;gap:48px;align-items:center}
+  .gauge-wrap{background:#fff;border-radius:24px;padding:36px;box-shadow:0 4px 24px rgba(15,27,45,.06);border:1px solid var(--line);text-align:center}
+  .gauge-label{font-size:11px;color:var(--ink-mute);letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .gauge-svg{display:block;margin:0 auto}
+  .gauge-num{font-family:"Anton",sans-serif;font-size:64px;color:var(--bad);line-height:1;margin-top:8px}
+  .gauge-suffix{font-size:24px;color:var(--ink-mute)}
+  .gauge-status{margin-top:8px;font-size:13px;color:var(--bad);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .subscore-list{display:flex;flex-direction:column;gap:16px}
+  .subscore{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;display:grid;grid-template-columns:40px 1fr auto;gap:18px;align-items:center}
+  .subscore-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:none}
+  .subscore-icon.bad{background:var(--bad-soft);color:var(--bad)}
+  .subscore-icon.warn{background:var(--warn-soft);color:var(--warn)}
+  .subscore-icon.blue{background:var(--blue-50);color:var(--blue)}
+  .subscore-icon.good{background:var(--good-soft);color:var(--good-deep)}
+  .subscore-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:9px;font-family:"DM Sans",sans-serif}
+  .subscore-bar{background:var(--line-soft);height:6px;border-radius:100px;overflow:hidden}
+  .subscore-fill{height:100%;border-radius:100px;background:var(--bad)}
+  .subscore-fill.warn{background:var(--warn)}
+  .subscore-fill.blue{background:var(--blue)}
+  .subscore-fill.good{background:var(--good)}
+  .subscore-value{font-family:"Anton",sans-serif;font-size:22px;color:var(--ink);min-width:60px;text-align:right}
+  .subscore-value.bad{color:var(--bad)}
+  .subscore-value.warn{color:var(--warn)}
+  .subscore-value.blue{color:var(--blue)}
+
   /* ============== KEYWORD GAP TABLE ============== */
   .table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line)}
   .kw{width:100%;border-collapse:collapse;font-size:14.5px;min-width:560px;background:#fff}
@@ -241,6 +267,7 @@
     .checks,.dials,.weak-grid,.engines-grid{grid-template-columns:1fr}
     .weak-other ul{columns:1}
     .map-wrap{grid-template-columns:1fr;gap:28px}
+    .score-grid{grid-template-columns:1fr;gap:32px}
     .grid{width:260px}
     .bar-row{grid-template-columns:120px 1fr 50px;gap:12px}
     .s1-grid{grid-template-columns:1fr;gap:28px}
@@ -299,6 +326,63 @@
     </div>
   </div>
 </header>
+
+<!-- ============== HEALTH SCORE ============== -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>Health Score Breakdown</span>
+    <h2>Overall site health: <span class="accent" style="color:var(--bad)" contenteditable="true">28/100</span>.<br>Three of four pillars are in the red.</h2>
+    <p class="section-intro">We graded the site across four categories using Semrush data, manual review, and Core Web Vitals testing. The numbers below show the percentage of best-practice items the site currently meets in each pillar.</p>
+    <div class="score-grid">
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="20" stroke-linecap="round"/>
+          <path d="M 20 120 A 100 100 0 0 1 98 36" fill="none" stroke="#D94436" stroke-width="20" stroke-linecap="round"/>
+          <text x="20" y="138" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">0</text>
+          <text x="120" y="14" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">50</text>
+          <text x="220" y="138" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">100</text>
+        </svg>
+        <div class="gauge-num"><span contenteditable="true">28</span><span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status" contenteditable="true">Critical · Rebuild Recommended</div>
+      </div>
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon bad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">Content Quality &amp; Accuracy</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:18%"></div></div>
+          </div>
+          <div class="subscore-value bad" contenteditable="true">18%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon bad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">User Experience &amp; Navigation</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:25%"></div></div>
+          </div>
+          <div class="subscore-value bad" contenteditable="true">25%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">AI Search Visibility (AEO)</div>
+            <div class="subscore-bar"><div class="subscore-fill warn" style="width:32%"></div></div>
+          </div>
+          <div class="subscore-value warn" contenteditable="true">32%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">Local Search &amp; Maps</div>
+            <div class="subscore-bar"><div class="subscore-fill blue" style="width:42%"></div></div>
+          </div>
+          <div class="subscore-value blue" contenteditable="true">42%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============== SEARCH VISIBILITY ============== -->
 <section class="alt">
