@@ -1,7 +1,7 @@
 ---
 description: Generate a Dentist Nerds SEO audit & growth report for a client from a manual site review + live Semrush & Local Falcon data
 argument-hint: <practice name> | <website> | <city, ST> [| keyword to scan]
-allowed-tools: Read, Write, Edit, Bash, Glob, Grep, WebFetch, WebSearch, mcp__Semrush_MCP_Server__*, mcp__Local_Falcon__*, mcp__Windsor_ai__*
+allowed-tools: Read, Write, Edit, Bash, Glob, Grep, mcp__Semrush_MCP_Server__*, mcp__Local_Falcon__*, mcp__Windsor_ai__*
 ---
 
 # Nerds SEO Report
@@ -23,20 +23,20 @@ Derive the **client slug** from the practice name: lowercase, spaces → hyphens
 
 ---
 
-## Step 1 — Manual website review (ALWAYS do this first)
+## Step 1 — Ask the team the review questions (ALWAYS do this first)
 
-**Before pulling any data tools**, open the client's website (use `WebFetch` on the homepage and 2–3 key treatment/service pages) and work through the qualitative review below. This human-style review is what drives the Health Score pillars and the Top 3 Weaknesses — the automated data comes *after*.
+**Before pulling any data tools**, ask the **team** to do a quick eyes-on review of the client's website and answer the questions below. Present the questions, then **wait for their answers** — do not judge these yourself or fetch the site. Their answers are what drive the Health Score pillars and the Top 3 Weaknesses; the automated data comes *after*.
 
-Assess each item. Where the page content makes it clear, judge it yourself; where you genuinely can't tell from the fetched pages (e.g. true color-contrast ratios, image licensing), **ask the user** directly rather than guessing.
+Ask the team:
 
-1. **Usability** — Is the site easy to navigate? Clear menu, obvious "book/call" CTAs, mobile-friendly, fast, logical structure? → *How is the usability?*
-2. **ADA & color scheme** — Accessible color contrast, readable text, alt text on images, labeled forms, keyboard/nav friendliness? → *How is the ADA compliance and color scheme?*
-3. **Stock imagery** — Does it rely heavily on generic stock photos vs. real photos of the doctors, team, and office? → *Does it include a lot of stock imagery?*
-4. **Treatment-page FAQs (AI / AEO)** — Do the treatment/service pages include FAQs (ideally with FAQ schema), written in patient language so they're eligible for AI answers and rich results? → *Do treatments include FAQs for AI visibility?*
+1. **Usability** — How is the usability? Open the website: is it easy to navigate, clear menu, obvious "book/call" CTAs, mobile-friendly, fast?
+2. **ADA & color scheme** — How is the ADA compliance and color scheme? Readable contrast, alt text, labeled forms, accessible navigation?
+3. **Stock imagery** — Does it include a lot of stock imagery (vs. real photos of the doctors, team, and office)?
+4. **Treatment-page FAQs (AI / AEO)** — Do the treatment pages include FAQs for AI visibility (ideally with FAQ schema, in patient language)?
 
-Add anything else notable you spot (thin content, broken links, missing schema, weak internal linking, outdated design, no reviews surfaced, etc.).
+Invite any other notes (thin content, broken links, missing schema, weak internal linking, outdated design, etc.).
 
-**Summarize your findings back to the user and confirm before continuing.** These findings populate:
+Once the team has answered, use those answers to populate:
 - the **Health Score** pillars (Content Quality & Accuracy, User Experience & Navigation, AI Search Visibility / AEO, Local Search & Maps),
 - the **Top 3 Weaknesses** + the "other issues we found" list.
 
@@ -56,6 +56,12 @@ Pull for the client's domain:
 - **Google Maps** (Local Falcon): run/read a grid scan for the chosen keyword; capture each cell's rank, the average rank, and % of grid where the practice is visible.
 
 If a specific metric can't be retrieved, leave the template's placeholder and tell the user which fields need manual entry — don't fabricate.
+
+### Data interpretation rules (apply automatically)
+
+- **Ranking keywords below 80** → flag the Ranking Keywords dial as low and call out in the report that **there isn't enough content / no keyword strategy** (a top weakness, and a driver for the Content Engine in the Game Plan).
+- **Many backlinks but low Domain Authority** (high backlink count paired with a low authority score) → call out that the profile is **probably spammy / toxic backlinks dragging authority down**, and recommend a disavow + cleanup (make it a Top 3 Weakness when the gap is severe).
+- Reflect these calls in both the relevant dial flags/notes and the Top 3 Weaknesses.
 
 ---
 
