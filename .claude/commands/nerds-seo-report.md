@@ -47,7 +47,7 @@ Pull for the client's domain:
 - **Authority & Backlinks** (Semrush backlinks): total backlinks, Authority/Domain score, toxic/spam %.
 - **Keyword gap** (Semrush): keywords the site has pages for but ranks poorly (page 2+ or unranked). Capture keyword, the page it lives on, monthly search volume, current rank. Pick the 5 highest-volume.
 - **Local competition** (Semrush): 3 nearby competitors and each one's ranking-keyword count, for the comparison bars.
-- **Organic Search Traffic** (Semrush `domain_rank` overview): organic visits/mo, ranking keywords, and est. monthly traffic value (organic cost). This populates the "Organic Search Traffic" section — a real Semrush snapshot, NOT a Direct/GBP/Organic channel mix (that needs GA4, which isn't available).
+- **Local Keyword Rankings** (Semrush `domain_organic` with `display_filter` `+|Ph|Co|<city>`): the client's Google organic position for the core local terms — dentist in [city], dentist near me, dental implants in [city], emergency dentist in [city], dental veneers in [city], dental cleaning in [city], invisalign in [city], all-on-4 in [city], root canal in [city]. Use the best (lowest) position found per term; if a term isn't in the domain's organic results, mark it "Not on page 1". This is the real Semrush web ranking (the map-pack rank comes from Local Falcon).
 - **Google Maps** (Local Falcon): run/read a grid scan for the chosen keyword; capture each cell's rank, the average rank, and % of grid where the practice is visible.
 
 If a metric can't be retrieved, leave the template placeholder and tell the user which fields need manual entry — don't fabricate.
@@ -74,7 +74,7 @@ If a metric can't be retrieved, leave the template placeholder and tell the user
    - **Keyword gap** table — the 5 keywords with page, volume, rank (use `rk` red / `rk warn` amber).
    - **Local Competition** bars — set each `width:%` relative to the top competitor and the numbers.
    - **Google Maps**: the "Keyword scanned" chip, the 5×5 grid `seed`/`ranks` arrays in the script, average rank, % visible.
-   - **Organic Search Traffic** stat strip: organic visits/mo, ranking keywords, est. traffic value — real Semrush figures.
+   - **Local Keyword Rankings** table: each core local keyword + its real Google organic rank, color-coded (good `rk good` = 1–3, amber `rk warn` = 4–10, red `rk` = 11+ or "Not on page 1").
    - Tailor the **Game Plan** copy (Step 01 + engines) to the client where relevant.
 4. Keep all branding, fonts, and interactive JS intact.
 5. **Reports are final deliverables — keep them non-editable.** The template has no `contenteditable` anywhere; never add it. Just replace the placeholder values directly in the HTML.

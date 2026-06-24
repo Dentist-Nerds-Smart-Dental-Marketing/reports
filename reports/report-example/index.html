@@ -182,6 +182,7 @@
     background:var(--bad-soft);color:var(--bad)}
   .rk::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
   .rk.warn{background:var(--warn-soft);color:#b87a0e}
+  .rk.good{background:var(--good-soft);color:var(--good-deep)}
 
   /* ============== BAR COMPARE ============== */
   .bars{display:flex;flex-direction:column;gap:6px}
@@ -636,18 +637,29 @@
   </div>
 </section>
 
-<!-- ============== TRAFFIC SOURCES ============== -->
+<!-- ============== LOCAL KEYWORD RANKINGS ============== -->
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Semrush</span>
-    <h2>Organic Search <span class="accent">Traffic</span></h2>
-    <p class="section-intro">What the site earns from organic search today — pulled from Semrush.</p>
-    <div class="stat-strip">
-      <div class="stat"><div class="stat-num">—</div><div class="stat-lbl">Organic visits / mo</div></div>
-      <div class="stat"><div class="stat-num">—</div><div class="stat-lbl">Ranking keywords</div></div>
-      <div class="stat"><div class="stat-num">$—</div><div class="stat-lbl">Est. traffic value / mo</div></div>
+    <h2>Local Keyword <span class="accent">Rankings</span></h2>
+    <p class="section-intro">Where the site ranks in Google organic search for the core local terms patients actually search.</p>
+    <div class="table-wrap">
+      <table class="kw">
+        <thead><tr><th>Keyword</th><th>Google Rank</th></tr></thead>
+        <tbody>
+          <tr><td class="kw-name">dentist in [city]</td><td><span class="rk">#—</span></td></tr>
+          <tr><td class="kw-name">dentist near me</td><td><span class="rk">#—</span></td></tr>
+          <tr><td class="kw-name">dental implants in [city]</td><td><span class="rk">#—</span></td></tr>
+          <tr><td class="kw-name">emergency dentist in [city]</td><td><span class="rk">#—</span></td></tr>
+          <tr><td class="kw-name">dental veneers in [city]</td><td><span class="rk">#—</span></td></tr>
+          <tr><td class="kw-name">dental cleaning in [city]</td><td><span class="rk">#—</span></td></tr>
+          <tr><td class="kw-name">invisalign in [city]</td><td><span class="rk">#—</span></td></tr>
+          <tr><td class="kw-name">all-on-4 in [city]</td><td><span class="rk">#—</span></td></tr>
+          <tr><td class="kw-name">root canal in [city]</td><td><span class="rk">#—</span></td></tr>
+        </tbody>
+      </table>
     </div>
-    <p class="hint">Source: Semrush (US). Fill with the client's real organic figures. Channel attribution (Direct, GBP, social, referral) needs GA4.</p>
+    <p class="hint">Source: Semrush organic positions. Replace each keyword's city + live Google rank per client (good = 1–3, amber = 4–10, red = 11+/none).</p>
   </div>
 </section>
 
