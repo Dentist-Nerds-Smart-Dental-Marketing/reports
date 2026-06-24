@@ -82,9 +82,13 @@ If a specific metric can't be retrieved, leave the template's placeholder and te
    - Tailor the **Game Plan** copy (Step 01 + engines) to the client where relevant.
 4. Keep all branding, fonts, and interactive JS intact.
 
-## Step 4 — Add to the listing
+## Step 4 — Drop it on the hub page
 
-Add a card for the new report near the top of `reports/index.html` grid, following the existing `<a class="card">` pattern, linking to `/reports/<client-slug>/`.
+Add the finished report to the **hub / listing page** — `reports/index.html`, served at **https://reports.dentistnerds.com/reports/** (the password-gated team hub).
+
+- Add a card near the **top** of the `<div class="grid" id="grid">`, following the existing `<a target="_blank" class="card">…</a>` pattern.
+- Link `href="/reports/<client-slug>/"`, set the card name to the practice name, and the tag to `SEO Report`.
+- Confirm the card appears in the grid before publishing.
 
 ## Step 5 — Publish
 
