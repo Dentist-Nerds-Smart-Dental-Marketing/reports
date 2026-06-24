@@ -3,1428 +3,790 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anaheim Hills Dentistry — Website Quality &amp; AI Visibility Audit</title>
+<title>Anaheim Hills Dentistry — SEO Audit & Growth Report | Dentist Nerds</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #0d1620;
-    --ink-2: #142030;
+  :root{
+    --blue:#0a6bff;
+    --blue-700:#0a4fd0;
+    --blue-900:#08308a;
+    --blue-50:#e8f1ff;
+    --blue-100:#d4e4ff;
+    --ink:#0c1322;
+    --ink-soft:#4a5568;
+    --ink-mute:#7b8794;
+    --black:#0c0c0c;
+    --line:#e2e8f0;
+    --line-soft:#edf2f7;
+    --bg:#ffffff;
+    --bg-soft:#f7f9fc;
+    --good:#1f9d6b;
+    --good-soft:#e1f4ec;
+    --good-deep:#157551;
+    --warn:#E0A126;
+    --warn-soft:#fbf0d6;
+    --bad:#D94436;
+    --bad-soft:#fbe2de;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    font-family:"DM Sans",system-ui,sans-serif;
+    color:var(--ink);
+    line-height:1.6;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:"Anton",sans-serif;font-weight:400;letter-spacing:.005em}
+  .wrap{max-width:1220px;margin:0 auto;padding:0 32px}
+  .edit{outline:none;border-radius:5px;transition:background .15s;box-shadow:inset 0 -1px 0 rgba(10,107,255,.4)}
+  .edit:hover{background:var(--blue-50)}
+  .edit:focus{background:#fff;box-shadow:0 0 0 2px var(--blue)}
 
-    --cream: #f6f0e2;
-    --paper: #ffffff;
+  /* ============== HERO ============== */
+  .hero{
+    background:linear-gradient(135deg,var(--blue) 0%,var(--blue-700) 100%);
+    color:#fff;padding:64px 0 60px;position:relative;overflow:hidden;
+  }
+  .hero::before{content:'';position:absolute;top:-200px;right:-160px;width:600px;height:600px;
+    background:radial-gradient(circle,rgba(255,255,255,.16) 0%,transparent 60%);pointer-events:none}
+  .hero::after{content:'';position:absolute;bottom:-160px;left:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(12,12,12,.18) 0%,transparent 60%);pointer-events:none}
+  .hero-wrap{position:relative;z-index:2}
+  .audit-strip{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    margin-bottom:44px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.18)}
+  .nerds-logo-img{height:72px;width:auto;display:block}
+  .audit-type{font-size:11px;color:rgba(255,255,255,.7);letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  .audit-target{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.3);color:#fff;padding:8px 16px;border-radius:100px;
+    font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px}
+  .audit-target .pulse{width:8px;height:8px;background:#fff;border-radius:50%;box-shadow:0 0 0 4px rgba(255,255,255,.25)}
+  .audit-target--light{background:var(--blue-50);border-color:var(--blue-100);color:var(--blue-700);margin-bottom:28px}
+  .audit-target--light .pulse{background:var(--blue);box-shadow:0 0 0 4px rgba(10,107,255,.18)}
+  .hero h1{font-size:clamp(38px,5.2vw,60px);line-height:1.02;text-transform:uppercase;margin-bottom:14px;max-width:960px}
+  .hero h1 .accent{color:#cfe0ff}
+  .hero-subtitle{font-size:14px;color:rgba(255,255,255,.7);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:26px}
+  .hero .lede{font-size:19.5px;color:rgba(255,255,255,.86);max-width:780px;line-height:1.55;margin-bottom:44px;font-weight:400}
+  .hero .lede strong{color:#fff;font-weight:700}
+  .hero-meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,.18)}
+  .meta-block .meta-label{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
+  .meta-block .meta-value{font-size:17px;color:#fff;font-weight:700;font-family:"DM Sans",sans-serif}
+  .meta-block .meta-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
 
-    --blue: #4a90e2;
-    --blue-deep: #2563eb;
-    --blue-dark: #1e40af;
-    --blue-soft: #dbeafe;
-    --blue-tint: #f0f5ff;
-    --teal: #0891b2;
-    --indigo: #6366f1;
-    --slate: #64748b;
-    --green: #16a34a;
-    --green-soft: #d1fae5;
-    --amber: #d97706;
-    --amber-soft: #fef3c7;
-    --red: #dc2626;
-    --red-soft: #fee2e2;
-    --purple: #8b5cf6;
-    --purple-soft: #ede9fe;
-    --gold: #c89a3a;
+  /* ============== SECTION SHELL ============== */
+  section{padding:72px 0}
+  section.alt{background:var(--bg-soft)}
+  section.dark{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff}
+  .section-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--blue-50);color:var(--blue-700);
+    padding:6px 14px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+  .section-eyebrow .dot{width:6px;height:6px;background:var(--blue);border-radius:50%}
+  .section-eyebrow.red{background:var(--bad-soft);color:var(--bad)}
+  .section-eyebrow.red .dot{background:var(--bad)}
+  section.dark .section-eyebrow{background:rgba(10,107,255,.18);color:#cfe0ff}
+  section h2{font-size:clamp(28px,3.6vw,42px);line-height:1.08;text-transform:uppercase;margin-bottom:16px;max-width:860px;color:var(--ink)}
+  section.dark h2{color:#fff}
+  section h2 .accent{color:var(--blue)}
+  section.dark h2 .accent{color:#cfe0ff}
+  .section-intro{font-size:18.5px;color:var(--ink-soft);max-width:780px;line-height:1.55;margin-bottom:44px;font-weight:400}
+  section.dark .section-intro{color:rgba(255,255,255,.72)}
+  .hint{font-size:13px;color:var(--ink-mute);margin-top:18px;font-style:italic}
 
-    --text: #0d1620;
-    --text-muted: #5c6b7d;
-    --text-light: #94a3b8;
-    --line-light: rgba(13,22,32,0.07);
-  }
+  /* ============== TOP 3 WEAKNESSES ============== */
+  .weak-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .weak{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;position:relative;overflow:hidden;
+    transition:transform .2s,box-shadow .2s}
+  .weak:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.07)}
+  .weak::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--bad)}
+  .weak.high::before{background:var(--warn)}
+  .weak-rank{font-family:"Anton",sans-serif;font-size:13px;color:var(--ink-mute);letter-spacing:.12em;margin-bottom:14px}
+  .weak-icon{width:52px;height:52px;border-radius:14px;background:var(--bad-soft);color:var(--bad);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .weak.high .weak-icon{background:var(--warn-soft);color:var(--warn)}
+  .weak h4{font-size:22px;color:var(--ink);margin-bottom:10px;line-height:1.2;text-transform:uppercase}
+  .weak p{font-size:15.5px;color:var(--ink-soft);line-height:1.55}
+  .sev{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;padding:4px 12px;border-radius:100px}
+  .sev::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+  .sev[data-s="bad"]{background:var(--bad-soft);color:var(--bad)}
+  .sev[data-s="warn"]{background:var(--warn-soft);color:#b87a0e}
+  .sev[data-s="good"]{background:var(--good-soft);color:var(--good-deep)}
+  .weak-other{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 30px}
+  .weak-other-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);display:block;margin-bottom:14px}
+  .weak-other ul{margin:0;padding-left:22px;columns:2;column-gap:40px;font-size:16px;color:var(--ink-soft)}
+  .weak-other li{margin-bottom:8px;break-inside:avoid;line-height:1.45}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  .container {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 48px;
-  }
+  /* ============== STATUS PILLS (foundation) ============== */
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .check{display:flex;align-items:center;gap:14px;padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:#fff}
+  .check .lbl{font-weight:700;font-size:16.5px}
+  .check .sub{font-size:13.5px;color:var(--ink-mute);display:block;margin-top:2px;font-weight:400}
+  .pill{margin-left:auto;flex:none;cursor:pointer;user-select:none;font-weight:700;font-size:10.5px;
+    letter-spacing:.06em;text-transform:uppercase;padding:6px 13px;border-radius:100px;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:6px;transition:transform .08s}
+  .pill::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+  .pill:active{transform:scale(.94)}
+  .pill[data-s="good"]{background:var(--good-soft);color:var(--good-deep)}
+  .pill[data-s="warn"]{background:var(--warn-soft);color:#b87a0e}
+  .pill[data-s="bad"]{background:var(--bad-soft);color:var(--bad)}
 
-  /* HERO */
-  .hero {
-    background: var(--ink);
-    color: white;
-    padding: 96px 0 112px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(74, 144, 226, 0.08), transparent 70%);
-    pointer-events: none;
-  }
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--blue);
-    font-weight: 600;
-    margin-bottom: 28px;
-  }
-  .hero h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(40px, 6vw, 68px);
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1.02;
-    margin-bottom: 32px;
-    color: white;
-  }
-  .hero-desc {
-    font-size: 17px;
-    color: #a8b3c2;
-    max-width: 700px;
-    line-height: 1.65;
-    margin-bottom: 56px;
-  }
-  .hero-kpis {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-  .hero-kpi {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 28px 26px;
-    transition: all 0.25s;
-  }
-  .hero-kpi:hover {
-    background: rgba(74, 144, 226, 0.05);
-    border-color: rgba(74, 144, 226, 0.25);
-  }
-  .hero-kpi-num {
-    font-family: 'Fraunces', serif;
-    font-size: 44px;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    color: var(--blue);
-    margin-bottom: 10px;
-    line-height: 1;
-  }
-  .hero-kpi-label {
-    font-size: 12px;
-    color: var(--text-light);
-    font-weight: 500;
-  }
-  .hero-prepared {
-    font-size: 11px;
-    color: var(--text-light);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
+  /* ============== DIALS ============== */
+  .dials{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .dial{border:1px solid var(--line);border-radius:18px;padding:28px 18px 24px;text-align:center;background:#fff}
+  .dial svg{width:140px;height:140px;display:block;margin:0 auto 10px}
+  .dial .track{fill:none;stroke:var(--blue-50);stroke-width:11}
+  .dial .arc{fill:none;stroke-width:11;stroke-linecap:round;transition:stroke-dashoffset .5s ease}
+  .dial .val{font-family:"Anton",sans-serif;font-size:24px;fill:var(--ink)}
+  .dial .name{font-weight:700;font-size:17.5px;color:var(--ink);font-family:"DM Sans",sans-serif}
+  .dial .note{font-size:14px;color:var(--ink-mute);margin-top:4px}
+  .flag{display:inline-block;margin-top:12px;font-size:11px;font-weight:700;padding:5px 12px;border-radius:100px;letter-spacing:.04em;text-transform:uppercase}
+  .flag.bad{background:var(--bad-soft);color:var(--bad)}
+  .flag.good{background:var(--good-soft);color:var(--good-deep)}
 
-  /* SECTIONS */
-  section.light { background: var(--cream); padding: 96px 0; }
-  section.paper { background: var(--paper); padding: 96px 0; }
-  section.dark { background: var(--ink); color: white; padding: 96px 0; }
+  /* ============== HEALTH SCORE ============== */
+  .score-grid{display:grid;grid-template-columns:380px 1fr;gap:48px;align-items:center}
+  .gauge-wrap{background:#fff;border-radius:24px;padding:36px;box-shadow:0 4px 24px rgba(15,27,45,.06);border:1px solid var(--line);text-align:center}
+  .gauge-label{font-size:11px;color:var(--ink-mute);letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .gauge-svg{display:block;margin:0 auto}
+  .gauge-num{font-family:"Anton",sans-serif;font-size:64px;color:var(--bad);line-height:1;margin-top:8px}
+  .gauge-suffix{font-size:24px;color:var(--ink-mute)}
+  .gauge-status{margin-top:8px;font-size:13px;color:var(--bad);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .subscore-list{display:flex;flex-direction:column;gap:16px}
+  .subscore{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;display:grid;grid-template-columns:40px 1fr auto;gap:18px;align-items:center}
+  .subscore-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:none}
+  .subscore-icon.bad{background:var(--bad-soft);color:var(--bad)}
+  .subscore-icon.warn{background:var(--warn-soft);color:var(--warn)}
+  .subscore-icon.blue{background:var(--blue-50);color:var(--blue)}
+  .subscore-icon.good{background:var(--good-soft);color:var(--good-deep)}
+  .subscore-title{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:9px;font-family:"DM Sans",sans-serif}
+  .subscore-bar{background:var(--line-soft);height:6px;border-radius:100px;overflow:hidden}
+  .subscore-fill{height:100%;border-radius:100px;background:var(--bad)}
+  .subscore-fill.warn{background:var(--warn)}
+  .subscore-fill.blue{background:var(--blue)}
+  .subscore-fill.good{background:var(--good)}
+  .subscore-value{font-family:"Anton",sans-serif;font-size:22px;color:var(--ink);min-width:60px;text-align:right}
+  .subscore-value.bad{color:var(--bad)}
+  .subscore-value.warn{color:var(--warn)}
+  .subscore-value.blue{color:var(--blue)}
 
-  .section-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--blue-deep);
-    font-weight: 600;
-    margin-bottom: 18px;
-  }
-  section.dark .section-eyebrow { color: var(--blue); }
+  /* ============== KEYWORD GAP TABLE ============== */
+  .table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line)}
+  .kw{width:100%;border-collapse:collapse;font-size:15.5px;min-width:560px;background:#fff}
+  .kw thead tr{background:var(--ink);color:#fff}
+  .kw th{text-align:left;font-family:"DM Sans",sans-serif;font-weight:700;font-size:11px;
+    text-transform:uppercase;letter-spacing:.08em;padding:16px 22px}
+  .kw td{padding:16px 22px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+  .kw tbody tr:last-child td{border-bottom:none}
+  .kw .kw-name{font-weight:700;color:var(--ink)}
+  .kw .kw-num{font-family:"Anton",sans-serif;font-size:18px;color:var(--ink)}
+  .rk{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:11px;padding:5px 12px;border-radius:100px;white-space:nowrap;
+    background:var(--bad-soft);color:var(--bad)}
+  .rk::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+  .rk.warn{background:var(--warn-soft);color:#b87a0e}
 
-  h2.section-title {
-    font-family: 'Fraunces', serif;
-    font-size: 44px;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
-    margin-bottom: 48px;
-    color: var(--text);
-  }
-  section.dark h2.section-title { color: white; }
+  /* ============== BAR COMPARE ============== */
+  .bars{display:flex;flex-direction:column;gap:6px}
+  .bar-row{display:grid;grid-template-columns:220px 1fr 70px;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+  .bar-row:last-child{border-bottom:none}
+  .bar-row .who{font-size:15.5px;font-weight:600;color:var(--ink)}
+  .bar-row .who.you{color:var(--blue)}
+  .track-bar{height:14px;background:var(--line-soft);border-radius:100px;overflow:hidden}
+  .fill-bar{height:100%;border-radius:100px;background:linear-gradient(90deg,#8893a8 0%,#5f6b7d 100%)}
+  .fill-bar.you{background:linear-gradient(90deg,var(--blue),var(--blue-700))}
+  .bar-row .num{font-family:"Anton",sans-serif;font-size:18px;text-align:right;color:var(--ink)}
 
-  /* FOCUS AREAS */
-  .focus-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 16px;
-  }
-  .focus-card {
-    background: var(--paper);
-    border-radius: 14px;
-    padding: 32px 28px 28px;
-    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.25s;
-    display: flex;
-    flex-direction: column;
-  }
-  .focus-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(13,22,32,0.08);
-  }
-  .focus-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-  }
-  .focus-card.f1::before { background: var(--red); }
-  .focus-card.f2::before { background: var(--amber); }
-  .focus-card.f3::before { background: var(--purple); }
-  .focus-num {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-  .focus-card.f1 .focus-num { color: var(--red); }
-  .focus-card.f2 .focus-num { color: var(--amber); }
-  .focus-card.f3 .focus-num { color: var(--purple); }
-  .focus-title {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    line-height: 1.15;
-    margin-bottom: 20px;
-    color: var(--text);
-  }
-  .focus-chart {
-    margin: 16px 0 18px;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 140px;
-  }
-  .focus-stat { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
-  .focus-big {
-    font-family: 'Fraunces', serif;
-    font-size: 48px;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1;
-  }
-  .focus-card.f1 .focus-big { color: var(--red); }
-  .focus-card.f2 .focus-big { color: var(--amber); }
-  .focus-card.f3 .focus-big { color: var(--purple); }
-  .focus-of { font-size: 14px; color: var(--text-muted); font-weight: 500; }
-  .focus-line {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.55;
-    padding-top: 14px;
-    border-top: 1px solid var(--line-light);
-  }
-  .mini-stack {
-    width: 100%;
-    height: 60px;
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    box-shadow: inset 0 0 0 1px var(--line-light);
-  }
-  .mini-stack-seg {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 12px;
-    font-weight: 700;
-  }
-  .mini-gauge { width: 140px; height: 140px; }
-  .mini-bars {
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
-    width: 100%;
-    height: 100px;
-    padding: 0 4px;
-  }
-  .mini-bar {
-    flex: 1;
-    border-radius: 4px 4px 0 0;
-    position: relative;
-  }
-  .mini-bar-label {
-    position: absolute;
-    bottom: -22px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 10px;
-    color: var(--text-muted);
-    font-weight: 600;
-    white-space: nowrap;
-  }
+  /* ============== MAP GRID ============== */
+  .map-wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;width:320px}
+  .cell{aspect-ratio:1;border-radius:11px;display:grid;place-items:center;font-family:"Anton",sans-serif;
+    font-size:17px;cursor:pointer;user-select:none;color:#fff;transition:transform .08s}
+  .cell:active{transform:scale(.9)}
+  .cell[data-s="good"]{background:var(--good)}
+  .cell[data-s="warn"]{background:var(--warn)}
+  .cell[data-s="bad"]{background:var(--bad)}
+  .map-legend{font-size:15.5px;color:var(--ink-soft);line-height:2}
+  .map-legend .dot{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:9px;vertical-align:middle}
+  .map-legend b{color:var(--ink);font-family:"Anton",sans-serif;font-weight:400}
 
-  /* FINDINGS */
-  .findings-list { display: flex; flex-direction: column; gap: 14px; }
-  .finding {
-    background: var(--paper);
-    border-radius: 12px;
-    padding: 24px 28px;
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    gap: 20px;
-    align-items: start;
-    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
-    transition: all 0.25s;
-  }
-  .finding:hover {
-    box-shadow: 0 6px 16px rgba(13,22,32,0.06);
-    transform: translateY(-1px);
-  }
-  .finding-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .finding-icon.red { background: var(--red-soft); color: var(--red); }
-  .finding-icon.amber { background: var(--amber-soft); color: var(--amber); }
-  .finding-icon.blue { background: var(--blue-soft); color: var(--blue-deep); }
-  .finding-icon.purple { background: var(--purple-soft); color: var(--purple); }
-  .finding-icon.green { background: var(--green-soft); color: var(--green); }
-  .finding-icon svg { width: 18px; height: 18px; }
-  .finding-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-  .finding-desc {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
+  /* ============== TRAFFIC STACK ============== */
+  .stack{display:flex;height:40px;border-radius:12px;overflow:hidden;margin-bottom:16px}
+  .stack span{display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;min-width:30px}
 
-  /* TRIPLE STATS */
-  .triple-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    margin-top: 16px;
-    margin-bottom: 56px;
-  }
-  .triple-stat { padding-right: 40px; }
-  .triple-stat .rule {
-    height: 4px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    width: 56px;
-  }
-  .triple-stat:nth-child(1) .rule { background: var(--red); }
-  .triple-stat:nth-child(2) .rule { background: var(--amber); }
-  .triple-stat:nth-child(3) .rule { background: var(--purple); }
-  .triple-num {
-    font-family: 'Fraunces', serif;
-    font-size: 56px;
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 0.95;
-    margin-bottom: 8px;
-  }
-  .triple-stat:nth-child(1) .triple-num { color: var(--red); }
-  .triple-stat:nth-child(2) .triple-num { color: var(--amber); }
-  .triple-stat:nth-child(3) .triple-num { color: var(--purple); }
-  .triple-label {
-    font-size: 14px;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
+  /* ============== GAME PLAN · Step 1 + Engines ============== */
+  .step-one-feature{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff;border-radius:24px;
+    padding:48px;margin-bottom:32px;position:relative;overflow:hidden}
+  .step-one-feature::before{content:'';position:absolute;top:-120px;right:-80px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(10,107,255,.25) 0%,transparent 60%);pointer-events:none}
+  .s1-grid{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start;position:relative;z-index:1}
+  .s1-badge{display:inline-block;background:var(--blue);color:#fff;font-size:10px;font-weight:800;
+    letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;margin-bottom:18px;font-family:"DM Sans",sans-serif}
+  .s1-number{font-family:"Anton",sans-serif;font-size:96px;line-height:1;color:var(--blue);margin-bottom:16px}
+  .s1-step-label{font-size:13px;color:rgba(255,255,255,.6);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;font-family:"DM Sans",sans-serif}
+  .s1-step-title{font-size:30px;color:#fff;line-height:1.12;text-transform:uppercase}
+  .s1-content h4{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#cfe0ff;margin-bottom:18px;font-family:"DM Sans",sans-serif}
+  .s1-content>p{color:rgba(255,255,255,.82);font-size:17.5px;line-height:1.6;margin-bottom:24px}
+  .s1-content>p strong{color:#fff}
+  .s1-todo{list-style:none;padding:0;margin:0 0 24px}
+  .s1-todo li{padding:13px 0 13px 34px;position:relative;color:rgba(255,255,255,.86);font-size:16.5px;line-height:1.5;border-bottom:1px solid rgba(255,255,255,.1)}
+  .s1-todo li:last-child{border-bottom:none}
+  .s1-todo li::before{content:'';position:absolute;left:0;top:17px;width:18px;height:18px;border:2px solid var(--blue);border-radius:5px;background:rgba(10,107,255,.18)}
+  .s1-todo li strong{color:#fff}
+  .s1-closing{background:rgba(10,107,255,.12);border-left:3px solid var(--blue);padding:18px 22px;border-radius:0 12px 12px 0;margin-top:12px}
+  .s1-closing p{margin:0;color:rgba(255,255,255,.92);font-size:14.5px;line-height:1.55;font-style:italic}
+  .s1-closing strong{color:#cfe0ff;font-style:normal}
+  .engines-header{text-align:center;margin:64px 0 36px;position:relative}
+  .engines-header::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.18);z-index:0}
+  .engines-header span{position:relative;z-index:1;background:#0c0c0c;padding:0 28px;font-size:15px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);font-family:"DM Sans",sans-serif}
+  .engines-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  .engine-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:48px;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative}
+  .engine-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.07);border-color:var(--blue)}
+  .engine-num{font-size:14px;font-weight:800;color:var(--ink-mute);letter-spacing:.12em;margin-bottom:22px;font-family:"DM Sans",sans-serif}
+  .engine-icon{width:80px;height:80px;border-radius:20px;background:var(--blue-50);color:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:26px}
+  .engine-icon svg{width:38px;height:38px}
+  .engine-card h4{font-size:30px;color:var(--ink);margin-bottom:16px;line-height:1.15;text-transform:uppercase}
+  .engine-card p{color:var(--ink-soft);font-size:17.5px;line-height:1.6;margin-bottom:16px}
+  .engine-card p:last-child{margin-bottom:0}
+  .engine-card strong{color:var(--ink);font-weight:700}
+  .engine-target{margin-top:22px;padding-top:22px;border-top:1px solid var(--line-soft);font-size:15px;color:var(--ink-soft)}
+  .engine-target strong{color:var(--blue-700);font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px}
 
-  /* DELTA */
-  .delta-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 36px;
-  }
-  .delta-item { padding-right: 32px; }
-  .delta-rule { height: 4px; border-radius: 4px; margin-bottom: 16px; width: 48px; }
-  .delta-item:nth-child(1) .delta-rule { background: var(--red); }
-  .delta-item:nth-child(2) .delta-rule { background: var(--amber); }
-  .delta-item:nth-child(3) .delta-rule { background: var(--purple); }
-  .delta-item:nth-child(4) .delta-rule { background: var(--blue-deep); }
-  .delta-num {
-    font-family: 'Fraunces', serif;
-    font-size: 38px;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .delta-item:nth-child(1) .delta-num { color: var(--red); }
-  .delta-item:nth-child(2) .delta-num { color: var(--amber); }
-  .delta-item:nth-child(3) .delta-num { color: var(--purple); }
-  .delta-item:nth-child(4) .delta-num { color: var(--blue-deep); }
-  .delta-label { font-size: 13px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.005em; }
-  .delta-sub { font-size: 12px; color: var(--text-muted); }
+  /* ============== FOOTER ============== */
+  .end-cta{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff;padding:56px 0;text-align:center}
+  .end-cta .nerds-logo-img{height:60px;margin:0 auto 22px}
+  .end-cta p{color:rgba(255,255,255,.72);max-width:560px;margin:0 auto;font-size:15px}
+  .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
 
-  /* CHART */
-  .chart-wrap {
-    background: var(--paper);
-    border-radius: 14px;
-    padding: 40px 44px;
-    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
+  /* ============== RESPONSIVE ============== */
+  @media(max-width:900px){
+    .wrap{padding:0 22px}
+    section{padding:52px 0}
+    .hero{padding:44px 0}
+    .audit-strip{flex-direction:column;align-items:flex-start;gap:14px}
+    .hero-meta-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+    .checks,.dials,.weak-grid,.engines-grid{grid-template-columns:1fr}
+    .weak-other ul{columns:1}
+    .map-wrap{grid-template-columns:1fr;gap:28px}
+    .score-grid{grid-template-columns:1fr;gap:32px}
+    .grid{width:260px}
+    .bar-row{grid-template-columns:120px 1fr 50px;gap:12px}
+    .s1-grid{grid-template-columns:1fr;gap:28px}
+    .step-one-feature{padding:32px}
   }
-  .trend-svg { width: 100%; height: auto; }
-  svg .grid { stroke: rgba(13,22,32,0.06); stroke-width: 1; }
-  svg .axis { stroke: rgba(13,22,32,0.2); stroke-width: 1; }
-  svg .lbl { font-family: 'Inter', sans-serif; font-size: 11px; fill: var(--text-muted); font-weight: 500; }
-  .trend-legend {
-    display: flex;
-    gap: 32px;
-    justify-content: center;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line-light);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-muted);
-  }
-  .trend-legend-item { display: flex; align-items: center; gap: 10px; }
-  .trend-legend-line { display: inline-block; }
-
-  /* TABLES */
-  .table-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .data-table {
-    background: var(--paper);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
-  }
-  .data-table-head {
-    background: var(--ink);
-    color: white;
-    padding: 16px 22px;
-    display: grid;
-    grid-template-columns: 1fr 100px;
-    gap: 12px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-  .data-table-row {
-    padding: 14px 22px;
-    display: grid;
-    grid-template-columns: 1fr 100px;
-    gap: 12px;
-    font-size: 13px;
-    border-bottom: 1px solid var(--line-light);
-    align-items: center;
-  }
-  .data-table-row:hover { background: var(--blue-tint); }
-  .data-table-row:last-child { border-bottom: none; }
-  .data-cell-text {
-    color: var(--text);
-    word-break: break-word;
-    overflow-wrap: anywhere;
-    line-height: 1.45;
-  }
-  .data-cell-num {
-    text-align: right;
-    font-weight: 700;
-    color: var(--text);
-    font-family: 'Fraunces', serif;
-    font-size: 16px;
-  }
-  .table-note {
-    background: var(--red-soft);
-    border-radius: 10px;
-    padding: 16px 24px;
-    color: var(--red);
-    font-size: 13px;
-    margin-top: 20px;
-    line-height: 1.6;
-    border-left: 3px solid var(--red);
-  }
-
-  /* CONV CARDS */
-  .conv-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-top: 16px;
-    margin-bottom: 48px;
-  }
-  .conv-card {
-    background: var(--paper);
-    border-radius: 12px;
-    padding: 26px;
-    border-top: 3px solid;
-    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
-    transition: all 0.2s;
-  }
-  .conv-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(13,22,32,0.06); }
-  .conv-card:nth-child(1) { border-top-color: var(--red); }
-  .conv-card:nth-child(2) { border-top-color: var(--amber); }
-  .conv-card:nth-child(3) { border-top-color: var(--purple); }
-  .conv-card:nth-child(4) { border-top-color: var(--blue-deep); }
-  .conv-num {
-    font-family: 'Fraunces', serif;
-    font-size: 38px;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .conv-card:nth-child(1) .conv-num { color: var(--red); }
-  .conv-card:nth-child(2) .conv-num { color: var(--amber); }
-  .conv-card:nth-child(3) .conv-num { color: var(--purple); }
-  .conv-card:nth-child(4) .conv-num { color: var(--blue-deep); }
-  .conv-label {
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .conv-sub { font-size: 11px; color: var(--text-muted); }
-
-  /* TECH ROWS */
-  .tech-row {
-    background: var(--paper);
-    border-radius: 10px;
-    padding: 20px 28px;
-    margin-bottom: 10px;
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 28px;
-    align-items: center;
-    border-left: 3px solid var(--red);
-    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
-  }
-  .tech-row.amber { border-left-color: var(--amber); }
-  .tech-row.purple { border-left-color: var(--purple); }
-  .tech-row.green { border-left-color: var(--green); }
-  .tech-num {
-    font-family: 'Fraunces', serif;
-    font-size: 40px;
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  .tech-row .tech-num { color: var(--red); }
-  .tech-row.amber .tech-num { color: var(--amber); }
-  .tech-row.purple .tech-num { color: var(--purple); }
-  .tech-row.green .tech-num { color: var(--green); }
-  .tech-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-  .tech-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
-
-  /* ACTION PLAN */
-  .action-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
-  .action-row {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 22px 28px;
-    display: grid;
-    grid-template-columns: 48px 1fr auto;
-    gap: 24px;
-    align-items: center;
-    transition: all 0.2s;
-  }
-  .action-row:hover {
-    background: rgba(74,144,226,0.06);
-    border-color: rgba(74,144,226,0.2);
-    transform: translateX(4px);
-  }
-  .action-num {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text-light);
-  }
-  .action-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: white; }
-  .action-desc { font-size: 13px; color: #94a3b8; line-height: 1.55; }
-  .action-tag {
-    padding: 7px 14px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: white;
-    white-space: nowrap;
-  }
-  .action-tag.immediate { background: var(--red); }
-  .action-tag.high { background: var(--amber); }
-  .action-tag.medium { background: var(--blue); }
-  .action-tag.ongoing { background: var(--purple); }
-
-  /* PROCESS SECTIONS */
-  .process-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 24px;
-    margin-bottom: 12px;
-  }
-  .process-header h2.section-title { margin-bottom: 0; }
-  .process-badge {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 10px 18px;
-    border-radius: 100px;
-    white-space: nowrap;
-    margin-top: 8px;
-    color: white;
-  }
-  .process-badge.organic { background: var(--blue-deep); }
-  .process-badge.ai { background: var(--purple); }
-  .process-intro {
-    font-size: 16px;
-    color: var(--text-muted);
-    line-height: 1.65;
-    max-width: 760px;
-    margin-bottom: 40px;
-  }
-  .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .pcard {
-    background: var(--paper);
-    border-radius: 12px;
-    padding: 26px;
-    border-left: 3px solid var(--blue);
-    box-shadow: 0 1px 3px rgba(13,22,32,0.04);
-    transition: all 0.2s;
-  }
-  .pcard:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(13,22,32,0.06); }
-  .pcard:nth-child(1) { border-left-color: var(--blue); }
-  .pcard:nth-child(2) { border-left-color: var(--blue-deep); }
-  .pcard:nth-child(3) { border-left-color: var(--indigo); }
-  .pcard:nth-child(4) { border-left-color: var(--purple); }
-  .pcard:nth-child(5) { border-left-color: var(--teal); }
-  .pcard:nth-child(6) { border-left-color: var(--blue-dark); }
-  .pgrid-ai .pcard { border-left-color: var(--purple); }
-  .pgrid-ai .pcard:nth-child(1) { border-left-color: #a78bfa; }
-  .pgrid-ai .pcard:nth-child(2) { border-left-color: var(--purple); }
-  .pgrid-ai .pcard:nth-child(3) { border-left-color: #7c3aed; }
-  .pgrid-ai .pcard:nth-child(4) { border-left-color: var(--indigo); }
-  .pgrid-ai .pcard:nth-child(5) { border-left-color: #4f46e5; }
-  .pgrid-ai .pcard:nth-child(6) { border-left-color: #4338ca; }
-  .pgrid-ai .pcard-num { color: var(--purple); }
-  .pcard-num {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    color: var(--blue-deep);
-    margin-bottom: 10px;
-  }
-  .pcard-title {
-    font-family: 'Fraunces', serif;
-    font-size: 19px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .pcard-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
-
-  /* FOOTER */
-  footer {
-    background: var(--ink);
-    color: white;
-    padding: 56px 0;
-    text-align: center;
-  }
-  .foot-brand {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--blue);
-    margin-bottom: 10px;
-  }
-  .foot-meta {
-    font-size: 11px;
-    color: var(--text-light);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 1024px) {
-    .container { padding: 0 32px; }
-    .hero { padding: 80px 0 96px; }
-    section.light, section.paper, section.dark { padding: 80px 0; }
-    h2.section-title { font-size: 38px; }
-    .hero-kpis { grid-template-columns: repeat(2, 1fr); }
-    .focus-grid { grid-template-columns: 1fr; gap: 16px; }
-    .triple-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .triple-stat { padding-right: 16px; }
-    .delta-row { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
-    .delta-item { padding-right: 16px; }
-    .conv-grid { grid-template-columns: repeat(2, 1fr); }
-    .pgrid { grid-template-columns: repeat(2, 1fr); }
-    .table-grid { grid-template-columns: 1fr; gap: 20px; }
-    .process-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .process-badge { margin-top: 0; }
-  }
-  @media (max-width: 640px) {
-    .container { padding: 0 18px; }
-    body { font-size: 14px; }
-    .hero { padding: 56px 0 64px; }
-    section.light, section.paper, section.dark { padding: 56px 0; }
-    .hero h1 { font-size: 36px; line-height: 1.05; margin-bottom: 24px; }
-    .hero-desc { font-size: 15px; margin-bottom: 32px; }
-    h2.section-title { font-size: 26px; line-height: 1.15; margin-bottom: 24px; }
-    .hero-kpis,
-    .conv-grid,
-    .delta-row,
-    .pgrid,
-    .focus-grid,
-    .triple-stats,
-    .table-grid {
-      grid-template-columns: 1fr !important;
-      gap: 12px !important;
-    }
-    .triple-stat, .delta-item { padding-right: 0; }
-    .action-row { grid-template-columns: 36px 1fr; gap: 12px; padding: 16px 18px; }
-    .action-tag { grid-column: 2; justify-self: start; margin-top: 6px; padding: 5px 10px; font-size: 9px; }
-    .action-title { font-size: 14px; }
-    .action-desc { font-size: 12px; }
-    .pcard { padding: 20px; }
-    .tech-row { grid-template-columns: 50px 1fr; gap: 14px; padding: 14px 18px; }
-    .tech-num { font-size: 28px; }
-    .data-table-head, .data-table-row { padding: 12px 14px; grid-template-columns: 1fr 70px; gap: 8px; }
-    .data-table-head { font-size: 10px; }
-    .data-cell-text { font-size: 12px; line-height: 1.4; }
-    .data-cell-num { font-size: 14px; }
-    .finding { grid-template-columns: 36px 1fr; gap: 14px; padding: 18px 20px; }
-    .finding-icon { width: 32px; height: 32px; border-radius: 8px; }
-    .finding-icon svg { width: 14px; height: 14px; }
-    .finding-title { font-size: 14px; }
-    .finding-desc { font-size: 12px; }
-    .triple-num { font-size: 40px; }
-    .delta-num, .conv-num { font-size: 30px; }
-    .focus-big { font-size: 36px; }
-    .hero-kpi-num { font-size: 32px; }
-    .chart-wrap { padding: 20px 14px; }
-    .trend-legend { flex-wrap: wrap; gap: 14px; justify-content: flex-start; font-size: 11px; }
+  @media print{
+    body{background:#fff}
+    section{padding:36px 0;break-inside:avoid}
+    .pill,.cell{cursor:default}
+    .weak:hover,.engine-card:hover{transform:none;box-shadow:none}
   }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- ============== HERO ============== -->
 <header class="hero">
-  <div class="container">
-    <div class="eyebrow">Website Quality &amp; AI Visibility Audit</div>
-    <h1>Anaheim Hills Dentistry</h1>
-    <p class="hero-desc">A focused audit of theanaheimhillsdentistry.com — Dr. Arman Mirai's general &amp; cosmetic practice in Anaheim Hills, CA. The site climbed from near-zero to 125 monthly visits in late 2025, then slid back to ~57. This report shows exactly why the momentum stalled, where the patients are going instead, and the plan to turn it around.</p>
-
-    <div class="hero-kpis">
-      <div class="hero-kpi">
-        <div class="hero-kpi-num">8</div>
-        <div class="hero-kpi-label">Authority Score</div>
-      </div>
-      <div class="hero-kpi">
-        <div class="hero-kpi-num">58</div>
-        <div class="hero-kpi-label">Visits / mo</div>
-      </div>
-      <div class="hero-kpi">
-        <div class="hero-kpi-num">93</div>
-        <div class="hero-kpi-label">Ranking Keywords</div>
-      </div>
-      <div class="hero-kpi">
-        <div class="hero-kpi-num">35</div>
-        <div class="hero-kpi-label">Referring Domains</div>
-      </div>
+  <div class="hero-wrap wrap">
+    <div class="audit-strip">
+      <img class="nerds-logo-img" src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds — Smart Dental Marketing" />
+      <div class="audit-type">SEO Audit &amp; Growth Report · Confidential</div>
     </div>
 
-    <div class="hero-prepared">theanaheimhillsdentistry.com · Anaheim Hills, CA · Live Search Data · June 2026</div>
+    <div class="audit-target">
+      <span class="pulse"></span>
+      <span contenteditable="true">Audited: theanaheimhillsdentistry.com</span>
+    </div>
+
+    <h1 contenteditable="true">Website Audit for <span class="accent">Anaheim Hills Dentistry</span></h1>
+    <p class="hero-subtitle" contenteditable="true">Prepared for Anaheim, CA · Jun 2026</p>
+    <p class="lede" contenteditable="true">
+      We reviewed every signal — page-by-page content, Semrush rankings, Local Falcon coverage, schema markup, Google Business Profile configuration, and the manual user experience. The audit surfaced the issues below. <strong>This report explains what's holding the site back, and exactly how we'd fix it.</strong>
+    </p>
+
+    <div class="hero-meta-grid">
+      <div class="meta-block">
+        <div class="meta-label">Prepared For</div>
+        <div class="meta-value edit" contenteditable="true">Anaheim Hills Dentistry</div>
+        <div class="meta-sub edit" contenteditable="true">[Doctor / Owner]</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Report Date</div>
+        <div class="meta-value edit" contenteditable="true">Jun 2026</div>
+        <div class="meta-sub edit" contenteditable="true">Tools: Semrush, Local Falcon, manual UX</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Issues Found</div>
+        <div class="meta-value edit" contenteditable="true">3 critical · 5 other</div>
+        <div class="meta-sub edit" contenteditable="true">across the site</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Our Recommendation</div>
+        <div class="meta-value edit" contenteditable="true" style="color:#cfe0ff">Rebuild &amp; Grow</div>
+        <div class="meta-sub edit" contenteditable="true">foundation-first plan</div>
+      </div>
+    </div>
   </div>
 </header>
 
-<!-- 3 FOCUS AREAS -->
-<section class="paper">
-  <div class="container">
-    <div class="section-eyebrow">Where to Focus</div>
-    <h2 class="section-title">3 Priorities That Will Move the Needle</h2>
-    <div style="display: inline-flex; align-items: center; gap: 10px; background: var(--blue-tint); border-left: 3px solid var(--blue-deep); padding: 10px 18px; border-radius: 0 8px 8px 0; margin-bottom: 40px; flex-wrap: wrap;">
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: var(--blue-deep); letter-spacing: 0.15em; text-transform: uppercase;">Account</span>
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); font-weight: 600;">theanaheimhillsdentistry.com</span>
-      <span style="font-size: 12px; color: var(--text-muted);">· Dr. Arman Mirai · Anaheim Hills, CA</span>
-    </div>
-
-    <div class="focus-grid">
-
-      <!-- Focus 01: Thin Site -->
-      <div class="focus-card f1">
-        <div class="focus-num">Focus 01 · Thin Site</div>
-        <div class="focus-title">Just 4 indexed pages — and not one treatment page</div>
-        <div class="focus-chart">
-          <svg class="mini-gauge" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="70" cy="70" r="55" fill="none" stroke="#fee2e2" stroke-width="14"/>
-            <circle cx="70" cy="70" r="55" fill="none" stroke="#dc2626" stroke-width="14"
-                    stroke-dasharray="0 345" stroke-dashoffset="0"
-                    transform="rotate(-90 70 70)" stroke-linecap="round"/>
-            <text x="70" y="74" text-anchor="middle" font-family="Fraunces, serif" font-size="36" font-weight="600" fill="#dc2626" letter-spacing="-1">0</text>
-            <text x="70" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#5c6b7d" font-weight="600" letter-spacing="2">TREATMENT PAGES</text>
-          </svg>
-        </div>
-        <div class="focus-stat">
-          <div class="focus-big">4</div>
-          <div class="focus-of">total indexed pages</div>
-        </div>
-        <div class="focus-line">Only the homepage, /our-services, /about, and /contact-us are indexed. No individual pages for implants, Invisalign, veneers, crowns, whitening, or root canals — the high-value searches patients actually make.</div>
+<!-- ============== HEALTH SCORE ============== -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>Health Score Breakdown</span>
+    <h2>Overall site health: <span class="accent" style="color:var(--bad)" contenteditable="true">38/100</span>.<br>Three of four pillars are in the red.</h2>
+    <p class="section-intro">We graded the site across four categories using Semrush data, manual review, and Core Web Vitals testing. The numbers below show the percentage of best-practice items the site currently meets in each pillar.</p>
+    <div class="score-grid">
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="20" stroke-linecap="round"/>
+          <path d="M 20 120 A 100 100 0 0 1 84 28" fill="none" stroke="#D94436" stroke-width="20" stroke-linecap="round"/>
+          <text x="20" y="138" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">0</text>
+          <text x="120" y="14" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">50</text>
+          <text x="220" y="138" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">100</text>
+        </svg>
+        <div class="gauge-num"><span contenteditable="true">38</span><span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status" contenteditable="true">Critical · Rebuild Recommended</div>
       </div>
-
-      <!-- Focus 02: Single-Keyword Dependency -->
-      <div class="focus-card f2">
-        <div class="focus-num">Focus 02 · Single-Keyword Dependency</div>
-        <div class="focus-title">Two-thirds of all traffic rides on one keyword</div>
-        <div class="focus-chart">
-          <div style="width: 100%;">
-            <div class="mini-bars">
-              <div class="mini-bar" style="height: 100%; background: var(--amber);"><span class="mini-bar-label">"anaheim hills dentist"</span></div>
-              <div class="mini-bar" style="height: 3%; background: rgba(217, 119, 6, 0.25);"><span class="mini-bar-label">Treatment terms</span></div>
-            </div>
-            <div style="display:flex; justify-content: space-around; margin-top: 32px; font-size: 13px;">
-              <div style="text-align: center;"><div style="font-family: Fraunces, serif; font-size: 22px; font-weight: 600; color: var(--amber); line-height: 1;">~39</div><div style="font-size: 10px; color: var(--text-muted); margin-top: 4px; letter-spacing: 0.05em; font-weight: 600;">/ MO</div></div>
-              <div style="text-align: center;"><div style="font-family: Fraunces, serif; font-size: 22px; font-weight: 600; color: var(--text-muted); line-height: 1;">0</div><div style="font-size: 10px; color: var(--text-muted); margin-top: 4px; letter-spacing: 0.05em; font-weight: 600;">/ MO</div></div>
-            </div>
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon bad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">Content Quality &amp; Accuracy</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:30%"></div></div>
           </div>
+          <div class="subscore-value bad" contenteditable="true">30%</div>
         </div>
-        <div class="focus-stat">
-          <div class="focus-big">67%</div>
-          <div class="focus-of">from one keyword</div>
-        </div>
-        <div class="focus-line">"anaheim hills dentist" (position 2, 480 vol) alone drives 67% of visits. If it slips one spot, traffic nearly halves. Higher-volume terms like "anaheim dental" (590) and "dentistry anaheim ca" (480) sit stranded on page 2–3.</div>
-      </div>
-
-      <!-- Focus 03: AI & Authority Gap -->
-      <div class="focus-card f3">
-        <div class="focus-num">Focus 03 · AI &amp; Authority Gap</div>
-        <div class="focus-title">No schema, thin authority — invisible to AI search</div>
-        <div class="focus-chart">
-          <div style="width: 100%;">
-            <div class="mini-stack">
-              <div class="mini-stack-seg" style="width: 8%; background: var(--purple);">6</div>
-              <div class="mini-stack-seg" style="width: 92%; background: rgba(13,22,32,0.12); color: var(--text-muted);">74 nofollow links</div>
-            </div>
-            <div style="display:flex; justify-content: space-between; margin-top: 14px; font-size: 11px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.05em;">
-              <span style="color: var(--purple);">▲ 6 FOLLOWED</span>
-              <span>OF 80 TOTAL ▶</span>
-            </div>
+        <div class="subscore">
+          <div class="subscore-icon warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">User Experience &amp; Navigation</div>
+            <div class="subscore-bar"><div class="subscore-fill warn" style="width:50%"></div></div>
           </div>
+          <div class="subscore-value warn" contenteditable="true">50%</div>
         </div>
-        <div class="focus-stat">
-          <div class="focus-big">8</div>
-          <div class="focus-of">authority score / 100</div>
-        </div>
-        <div class="focus-line">Of 80 backlinks, only 6 actually pass authority — 74 are nofollow. With no Dentist / FAQ / Service schema in place, there is nothing structured for ChatGPT, Gemini, Perplexity, or Google AI Overviews to cite.</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- KEY FINDINGS -->
-<section class="light">
-  <div class="container">
-    <div class="section-eyebrow">Executive Summary · Your Questions, Answered</div>
-    <h2 class="section-title">Key Findings</h2>
-
-    <div class="findings-list">
-
-      <div class="finding">
-        <div class="finding-icon red">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <div>
-          <div class="finding-title">#1 Weakness — A thin, branded-only site with no money pages</div>
-          <div class="finding-desc">The single biggest issue: the website is just four pages and ranks for no treatment at all, so it captures none of the high-value "implants / Invisalign / veneers" demand. With no content engine, the 2025 traffic surge had nothing to stand on and gave back 54% of its peak. Fixing this — real treatment pages with schema — is the highest-leverage move available.</div>
-        </div>
-      </div>
-
-      <div class="finding">
-        <div class="finding-icon red">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
-        <div>
-          <div class="finding-title">Missing doctor information — fix this first (trust &amp; E-E-A-T gap)</div>
-          <div class="finding-desc">The site doesn't surface clear information about the dentist — Dr. Arman Mirai's bio, credentials, and experience aren't presented prominently, and there's no Person / Dentist schema tying the practice to a named provider. For a healthcare (YMYL) site, Google weighs this heavily for trust, and AI assistants need a clearly identified, credentialed provider before they'll recommend one. It's one of the most impactful — and fastest — fixes available.</div>
-        </div>
-      </div>
-
-      <div class="finding">
-        <div class="finding-icon amber">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
-        </div>
-        <div>
-          <div class="finding-title">Web traffic peaked at 125/mo and has fallen to ~57</div>
-          <div class="finding-desc">Organic visits grew from 2 (Apr 2025) to a peak of 125 (Sep–Oct 2025), then declined steadily to 35 in April 2026 before recovering slightly to 57. The site clearly <em>can</em> rank — it just isn't being fed the pages and links to hold ground.</div>
-        </div>
-      </div>
-
-      <div class="finding">
-        <div class="finding-icon purple">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
-        </div>
-        <div>
-          <div class="finding-title">All traffic enters one page — the homepage</div>
-          <div class="finding-desc">The homepage carries 100% of organic visits and 66 of the site's keywords. The /our-services, /about and /contact-us pages rank only on page 2–10 (positions 40–96) and bring zero traffic. There is no second front door into the site.</div>
-        </div>
-      </div>
-
-      <div class="finding">
-        <div class="finding-icon blue">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
-        </div>
-        <div>
-          <div class="finding-title">Backlink profile is light — only 6 "followed" links</div>
-          <div class="finding-desc">35 referring domains and 80 backlinks sounds reasonable, but just 6 are dofollow (the kind that pass ranking authority); the other 74 are nofollow. Authority Score sits at 8/100. Competitors out-rank the site largely on this gap.</div>
-        </div>
-      </div>
-
-      <div class="finding">
-        <div class="finding-icon green">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-        </div>
-        <div>
-          <div class="finding-title">What's working — a #2 brand ranking and a 4.8★ reputation</div>
-          <div class="finding-desc">The site ranks #2 for "anaheim hills dentist" (480 searches/mo) and top-7 for five more local terms — it owns its core neighborhood brand, and patients rate the practice highly (detailed in the GBP scorecard below). These are real assets to build on, not start from scratch.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- COMPETITORS -->
-<section class="paper">
-  <div class="container">
-    <div class="section-eyebrow">Question 2 · The Competition</div>
-    <h2 class="section-title">Who's Winning the Anaheim Hills Patient</h2>
-    <p style="font-size: 16px; color: var(--text-muted); line-height: 1.65; max-width: 820px; margin-bottom: 32px;">These are the closest organic competitors — the offices showing up for the same searches. Every one of them pulls multiples of Anaheim Hills Dentistry's traffic, and the leaders do it with 2–6× as many ranking pages. The gap is opportunity: it's built on content and treatment pages, not luck.</p>
-
-    <div class="table-grid" style="grid-template-columns: 1fr;">
-      <div class="data-table">
-        <div class="data-table-head">
-          <div>Competing Practice</div>
-          <div style="text-align:right;">Visits / mo</div>
-        </div>
-        <div class="data-table-row"><div class="data-cell-text">dentistsofanaheimhills.com <span style="color: var(--text-muted);">· 221 keywords (the local leader)</span></div><div class="data-cell-num">2,165</div></div>
-        <div class="data-table-row"><div class="data-cell-text">anaheimhillsdental.com <span style="color: var(--text-muted);">· 551 keywords</span></div><div class="data-cell-num">1,857</div></div>
-        <div class="data-table-row"><div class="data-cell-text">anaheimhillsfamilydental.com <span style="color: var(--text-muted);">· 113 keywords</span></div><div class="data-cell-num">957</div></div>
-        <div class="data-table-row"><div class="data-cell-text">dentalcareanaheimhills.com <span style="color: var(--text-muted);">· 82 keywords</span></div><div class="data-cell-num">430</div></div>
-        <div class="data-table-row"><div class="data-cell-text">anaheimhillsvillagedentistry.com <span style="color: var(--text-muted);">· 109 keywords</span></div><div class="data-cell-num">352</div></div>
-        <div class="data-table-row"><div class="data-cell-text">easthillsfamilydental.com <span style="color: var(--text-muted);">· 64 keywords</span></div><div class="data-cell-num">232</div></div>
-        <div class="data-table-row" style="background: var(--blue-tint);"><div class="data-cell-text" style="font-weight: 700; color: var(--blue-deep);">theanaheimhillsdentistry.com <span style="font-weight: 600;">· 93 keywords (you)</span></div><div class="data-cell-num" style="color: var(--blue-deep);">58</div></div>
-      </div>
-    </div>
-
-    <div class="table-note" style="background: var(--amber-soft); color: var(--amber); border-left-color: var(--amber);"><strong>The headline:</strong> the neighborhood leader, Dentists of Anaheim Hills, pulls roughly <strong>37× more organic traffic</strong>. The reason isn't a better brand — it's more ranking pages and a deeper content/backlink footprint. That's a closeable gap.</div>
-  </div>
-</section>
-
-<!-- SITE ARCHITECTURE -->
-<section class="light">
-  <div class="container">
-    <div class="section-eyebrow">Question 9 · Site Architecture</div>
-    <h2 class="section-title">Which Pages Get the Traffic</h2>
-
-    <div class="triple-stats">
-      <div class="triple-stat">
-        <div class="rule"></div>
-        <div class="triple-num">4</div>
-        <div class="triple-label">Total Indexed Pages</div>
-      </div>
-      <div class="triple-stat">
-        <div class="rule"></div>
-        <div class="triple-num">1</div>
-        <div class="triple-label">Page That Earns Traffic</div>
-      </div>
-      <div class="triple-stat">
-        <div class="rule"></div>
-        <div class="triple-num">0</div>
-        <div class="triple-label">Treatment / Blog Pages</div>
-      </div>
-    </div>
-
-    <div class="section-eyebrow">All Indexed Pages with Traffic Data</div>
-
-    <div class="table-grid" style="grid-template-columns: 1fr;">
-      <div class="data-table">
-        <div class="data-table-head">
-          <div>URL</div>
-          <div style="text-align:right;">Visits / mo</div>
-        </div>
-        <div class="data-table-row" style="background: #ecfdf5;"><div class="data-cell-text" style="color: var(--green); font-weight: 600;">/ <span style="font-weight: 700;">(homepage — 66 keywords)</span></div><div class="data-cell-num" style="color: var(--green);">58</div></div>
-        <div class="data-table-row"><div class="data-cell-text">/our-services <span style="color: var(--text-muted);">(10 keywords, ranks pos 62–96)</span></div><div class="data-cell-num">0</div></div>
-        <div class="data-table-row"><div class="data-cell-text">/about <span style="color: var(--text-muted);">(10 keywords, ranks pos 43–50)</span></div><div class="data-cell-num">0</div></div>
-        <div class="data-table-row"><div class="data-cell-text">/contact-us <span style="color: var(--text-muted);">(7 keywords, ranks pos 69)</span></div><div class="data-cell-num">0</div></div>
-      </div>
-    </div>
-
-    <div class="table-note"><strong>The bottleneck:</strong> 100% of organic traffic lands on the homepage. The three other pages rank too deep to be seen. There are no pages at all for the treatments that actually drive new-patient revenue — implants, Invisalign, veneers, crowns, whitening, emergency visits.</div>
-  </div>
-</section>
-
-<!-- KEYWORD GAP -->
-<section class="paper">
-  <div class="container">
-    <div class="section-eyebrow">Question 3 · Keyword Gap</div>
-    <h2 class="section-title">Keywords They Want — But Don't Rank For</h2>
-    <p style="font-size: 16px; color: var(--text-muted); line-height: 1.65; max-width: 820px; margin-bottom: 32px;">There are two kinds of missed keywords. First, broader-Anaheim terms the site <em>already ranks for</em> but stranded on page 2–3, so they earn nothing. Second, high-value treatment terms the site doesn't rank for at all — because the pages don't exist. Both are recoverable with proper, optimized pages.</p>
-
-    <div class="table-grid">
-      <div>
-        <div class="data-table">
-          <div class="data-table-head">
-            <div>Ranks — but stuck on page 2–3 (0 traffic)</div>
-            <div style="text-align:right;">Position</div>
+        <div class="subscore">
+          <div class="subscore-icon bad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">AI Search Visibility (AEO)</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:25%"></div></div>
           </div>
-          <div class="data-table-row"><div class="data-cell-text">anaheim dental <span style="color: var(--text-muted);">· 590/mo</span></div><div class="data-cell-num">28</div></div>
-          <div class="data-table-row"><div class="data-cell-text">dentistry anaheim ca <span style="color: var(--text-muted);">· 480/mo</span></div><div class="data-cell-num">18</div></div>
-          <div class="data-table-row"><div class="data-cell-text">dentist in anaheim <span style="color: var(--text-muted);">· 260/mo</span></div><div class="data-cell-num">24</div></div>
-          <div class="data-table-row"><div class="data-cell-text">dds anaheim <span style="color: var(--text-muted);">· 140/mo</span></div><div class="data-cell-num">25</div></div>
-          <div class="data-table-row"><div class="data-cell-text">dental office in anaheim ca <span style="color: var(--text-muted);">· 30/mo</span></div><div class="data-cell-num">17</div></div>
+          <div class="subscore-value bad" contenteditable="true">25%</div>
         </div>
-      </div>
-
-      <div>
-        <div class="data-table">
-          <div class="data-table-head">
-            <div>Treatment money terms — not ranked at all</div>
-            <div style="text-align:right;">Vol / mo</div>
+        <div class="subscore">
+          <div class="subscore-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">Local Search &amp; Maps</div>
+            <div class="subscore-bar"><div class="subscore-fill blue" style="width:48%"></div></div>
           </div>
-          <div class="data-table-row"><div class="data-cell-text">dental implants anaheim <span style="color: var(--text-muted);">· $20.76 CPC</span></div><div class="data-cell-num">110</div></div>
-          <div class="data-table-row"><div class="data-cell-text">invisalign anaheim <span style="color: var(--text-muted);">· $8.12 CPC</span></div><div class="data-cell-num">50</div></div>
-          <div class="data-table-row"><div class="data-cell-text">dentures anaheim</div><div class="data-cell-num">30</div></div>
-          <div class="data-table-row"><div class="data-cell-text">dental implants anaheim hills</div><div class="data-cell-num">20</div></div>
-          <div class="data-table-row"><div class="data-cell-text">root canal anaheim</div><div class="data-cell-num">20</div></div>
+          <div class="subscore-value blue" contenteditable="true">48%</div>
         </div>
       </div>
     </div>
-
-    <div class="table-note" style="background: var(--blue-tint); color: var(--blue-dark); border-left-color: var(--blue-deep);">The left column is the quickest win: the site already ranks for "anaheim dental" (590/mo) and "dentistry anaheim ca" (480/mo) — pushing those from page 2–3 onto page 1 unlocks traffic with no new pages. The right column is the bigger prize: "dental implants anaheim" alone carries a $20.76 cost-per-click, signalling exactly how valuable each of those patients is.</div>
   </div>
 </section>
 
-<!-- TRIAGE CENTER -->
-<section class="light">
-  <div class="container">
-    <div class="section-eyebrow">Triage Center</div>
-    <h2 class="section-title">Local &amp; Technical Issues</h2>
+<!-- ============== SEARCH VISIBILITY ============== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Semrush</span>
+    <h2>Search <span class="accent">Visibility</span></h2>
+    <p class="section-intro">Where the practice stands on organic search performance today.</p>
+    <div class="dials">
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="58" data-max="600" data-color="var(--bad)" data-suffix="">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">Monthly Traffic</div>
+        <div class="note">organic visits / mo</div>
+        <span class="flag bad">Low</span>
+      </div>
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="93" data-max="250" data-color="var(--warn)" data-suffix="">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">Ranking Keywords</div>
+        <div class="note">rivals rank 110–220</div>
+        <span class="flag" style="background:var(--warn-soft);color:#b87a0e">Below rivals</span>
+      </div>
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="20" data-max="100" data-color="var(--bad)" data-suffix="%">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">AI Visibility</div>
+        <div class="note">cited in AI answers · est.</div>
+        <span class="flag bad">Weak</span>
+      </div>
+    </div>
+    <p class="hint" contenteditable="true">The site ranks well for "Anaheim Hills" neighborhood terms but is stuck on page 2–4 for the higher-volume "Anaheim" city searches — a content & keyword-strategy gap, not a technical block. Just 93 ranking keywords and ~58 organic visits/mo.</p>
+  </div>
+</section>
 
-    <div class="tech-row amber">
-      <div class="tech-num">5+</div>
-      <div>
-        <div class="tech-name">NAP &amp; listings risk — a shared medical building</div>
-        <div class="tech-desc">500 S Anaheim Hills Rd houses several dental practices (pediatric, oral surgery and others at different suites). Without a clean, consistent Name-Address-Phone and a locked-down suite number across Google, Yelp, Healthgrades and the data aggregators, listings get conflated — diluting local ranking signals.</div>
+<!-- ============== AUTHORITY & BACKLINKS ============== -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Semrush</span>
+    <h2>Authority &amp; <span class="accent">Backlinks</span></h2>
+    <p class="section-intro">The link profile that drives — or drags down — domain authority.</p>
+    <div class="dials">
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="80" data-max="500" data-color="var(--warn)" data-suffix="">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">Total Backlinks</div>
+        <div class="note">35 domains · only 6 followed</div>
+        <span class="flag" style="background:var(--warn-soft);color:#b87a0e">Thin profile</span>
+      </div>
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="8" data-max="100" data-color="var(--bad)" data-suffix="">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">Domain Authority</div>
+        <div class="note">authority score</div>
+        <span class="flag bad">Needs links</span>
+      </div>
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="12" data-max="100" data-color="var(--warn)" data-suffix="%">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">Toxic / Spam %</div>
+        <div class="note">estimate · confirm in audit</div>
+      </div>
+    </div>
+    <p class="hint" contenteditable="true">This is a <strong>thin</strong> profile, not a toxic one — just 80 links from 35 domains, and only 6 are "followed," so almost no authority flows in. The priority is building quality links &amp; citations, not just cleanup. (Toxic % is an estimate pending a full backlink audit.)</p>
+  </div>
+</section>
+
+<!-- ============== TOP 3 WEAKNESSES ============== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>Biggest Priorities</span>
+    <h2>Top 3 <span class="accent">Weaknesses</span></h2>
+    <p class="section-intro">The three issues doing the most damage right now — fix these first and everything else compounds faster.</p>
+
+    <div class="weak-grid">
+      <div class="weak">
+        <div class="weak-rank">01</div>
+        <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/><path d="M19 15l3 3-3 3"/></svg></div>
+        <h4 contenteditable="true">No city-wide keyword strategy</h4>
+        <p contenteditable="true">The site ranks for "Anaheim Hills" neighborhood terms but sits on page 2–4 for the higher-volume "Anaheim" city searches — only 93 ranking keywords and ~58 organic visits/mo. Thin content with no broader location/service strategy.</p>
+        <span class="sev" data-s="bad" contenteditable="true">Critical</span>
+      </div>
+      <div class="weak">
+        <div class="weak-rank">02</div>
+        <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h4 contenteditable="true">Weak domain authority</h4>
+        <p contenteditable="true">Authority Score is just 8, with only 35 referring domains and 6 "followed" links across the whole profile — almost no link equity flows in, so pages can't outrank better-linked local rivals.</p>
+        <span class="sev" data-s="bad" contenteditable="true">Critical</span>
+      </div>
+      <div class="weak high">
+        <div class="weak-rank">03</div>
+        <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h4 contenteditable="true">Treatment-page &amp; AI-visibility gap</h4>
+        <p contenteditable="true">Treatment pages lack patient-language FAQs with FAQ schema, so they don't earn AI/AEO citations — and they trail local competitors who hold 110–220 ranking keywords. (Confirm on-page UX details with the team review.)</p>
+        <span class="sev" data-s="warn" contenteditable="true">High</span>
       </div>
     </div>
 
-    <div class="tech-row green">
-      <div class="tech-num">#2</div>
-      <div>
-        <div class="tech-name">Core brand ranking is secure (the asset to build on)</div>
-        <div class="tech-desc">"anaheim hills dentist" sits at position #2 and drives two-thirds of all traffic. The neighborhood brand term is owned — the job now is to add the treatment and broader-Anaheim rankings around it.</div>
-      </div>
+    <div class="weak-other">
+      <span class="weak-other-label">Other issues we found</span>
+      <ul contenteditable="true">
+        <li>Underdeveloped organic channel — only ~58 visits/mo</li>
+        <li>Trails local rivals on keyword footprint (93 vs 109–221)</li>
+        <li>Page-2–4 rankings for high-volume "Anaheim" city terms</li>
+        <li>Only 6 of 80 backlinks are "followed" — minimal link equity</li>
+        <li>Meta titles &amp; descriptions likely need a sitewide rewrite</li>
+        <li>ADA / accessibility check pending team review</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- TREND CHART -->
-<section class="paper">
-  <div class="container">
-    <div class="section-eyebrow">Questions 5 &amp; 6 · Traffic Trends</div>
-    <h2 class="section-title">Organic Traffic — The Rise &amp; The Slip</h2>
-    <p style="font-size: 16px; color: var(--text-muted); line-height: 1.65; max-width: 820px; margin-bottom: 32px;">Sixteen months of search data tell a clear story: the site went from invisible in early 2025 to a peak of 125 monthly visits by Sep–Oct 2025, then slid back through the winter to a low of 35 before steadying around 57. The spike proves the site can rank — the slide proves it needs a steady supply of content and links to stay there.</p>
-
-    <div class="chart-wrap">
-      <svg class="trend-svg" viewBox="0 0 1100 540" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="redGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#dc2626" stop-opacity="0.20"/>
-            <stop offset="100%" stop-color="#dc2626" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-
-        <line class="grid" x1="80" y1="60" x2="1060" y2="60"/>
-        <line class="grid" x1="80" y1="136" x2="1060" y2="136"/>
-        <line class="grid" x1="80" y1="212" x2="1060" y2="212"/>
-        <line class="grid" x1="80" y1="288" x2="1060" y2="288"/>
-        <line class="grid" x1="80" y1="364" x2="1060" y2="364"/>
-        <line class="axis" x1="80" y1="440" x2="1060" y2="440"/>
-
-        <text class="lbl" x="70" y="64" text-anchor="end" font-size="12">140</text>
-        <text class="lbl" x="70" y="140" text-anchor="end" font-size="12">112</text>
-        <text class="lbl" x="70" y="216" text-anchor="end" font-size="12">84</text>
-        <text class="lbl" x="70" y="292" text-anchor="end" font-size="12">56</text>
-        <text class="lbl" x="70" y="368" text-anchor="end" font-size="12">28</text>
-        <text class="lbl" x="70" y="444" text-anchor="end" font-size="12">0</text>
-
-        <!-- Year separator: 2025 | 2026 (between Dec25 i10=733.3 and Jan26 i11=795.7) -->
-        <line x1="764.2" y1="60" x2="764.2" y2="440" stroke="rgba(13,22,32,0.08)" stroke-dasharray="3 4"/>
-        <text class="lbl" x="420" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2025</text>
-        <text class="lbl" x="920" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1620">2026</text>
-
-        <!-- Filled area -->
-        <path fill="url(#redGrad)" d="M 110.0,440.0 L 172.3,440.0 L 234.7,434.6 L 297.0,429.1 L 359.3,372.1 L 421.7,345.0 L 484.0,108.9 L 546.3,100.7 L 608.7,100.7 L 671.0,187.6 L 733.3,282.6 L 795.7,317.9 L 858.0,317.9 L 920.3,320.6 L 982.7,345.0 L 1045.0,285.3 L 1045.0,440 L 110.0,440 Z"/>
-
-        <!-- Main line -->
-        <path fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M 110.0,440.0 L 172.3,440.0 L 234.7,434.6 L 297.0,429.1 L 359.3,372.1 L 421.7,345.0 L 484.0,108.9 L 546.3,100.7 L 608.7,100.7 L 671.0,187.6 L 733.3,282.6 L 795.7,317.9 L 858.0,317.9 L 920.3,320.6 L 982.7,345.0 L 1045.0,285.3"/>
-
-        <!-- Peak callout (Sep–Oct 2025) -->
-        <circle cx="546.3" cy="100.7" r="8" fill="#dc2626" stroke="white" stroke-width="3"/>
-        <circle cx="608.7" cy="100.7" r="6" fill="#dc2626" stroke="white" stroke-width="2.5"/>
-        <line x1="546.3" y1="100.7" x2="546.3" y2="440" stroke="#dc2626" stroke-width="1" stroke-dasharray="4 4" opacity="0.35"/>
-        <rect x="446" y="46" width="216" height="48" rx="8" fill="white" stroke="#dc2626" stroke-width="1.5"/>
-        <text x="554" y="64" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#dc2626" letter-spacing="2">PEAK · SEP–OCT 2025</text>
-        <text x="554" y="84" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="600" fill="#dc2626" letter-spacing="-0.5">125 visits / month</text>
-
-        <!-- Decline zone shading after peak -->
-        <rect x="608.7" y="60" width="436.3" height="380" fill="#fee2e2" opacity="0.18" pointer-events="none"/>
-        <text x="826" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#dc2626" opacity="0.7" font-weight="700" letter-spacing="2">SLIPPED · −54%</text>
-
-        <!-- Current marker -->
-        <circle cx="1045" cy="285.3" r="6" fill="#dc2626" stroke="white" stroke-width="3"/>
-        <rect x="942" y="232" width="103" height="38" rx="6" fill="white" stroke="#dc2626" stroke-width="1.5"/>
-        <text x="993" y="249" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#dc2626" letter-spacing="2">CURRENT</text>
-        <text x="993" y="263" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="600" fill="#dc2626">57 / mo</text>
-      </svg>
-
-      <div class="trend-legend">
-        <div class="trend-legend-item"><span class="trend-legend-line" style="background:#dc2626; width: 28px; height: 3px; border-radius: 2px;"></span>Organic Visits · 16 months</div>
-        <div class="trend-legend-item"><span class="trend-legend-line" style="background:#dc2626; width: 12px; height: 12px; border-radius: 50%;"></span>Peak (125)</div>
-        <div class="trend-legend-item"><span style="display: inline-block; width: 18px; height: 12px; background: #fee2e2; opacity: 0.65;"></span>Decline zone</div>
-      </div>
+<!-- ============== KEYWORD GAP ============== -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Content Gap</span>
+    <h2>Keywords On Your Site You <span class="accent">Don't Rank For</span></h2>
+    <p class="section-intro">These terms already appear in your website's content, but the site isn't ranking on page 1 for them — fast wins once the pages are optimized.</p>
+    <div class="table-wrap">
+      <table class="kw">
+        <thead>
+          <tr><th>Keyword</th><th>Appears On</th><th>Monthly Searches</th><th>Current Rank</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="kw-name" contenteditable="true">dentist anaheim</td>
+            <td contenteditable="true">Homepage</td>
+            <td class="kw-num" contenteditable="true">720</td>
+            <td><span class="rk" contenteditable="true">Page 4 (#39)</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">anaheim dental</td>
+            <td contenteditable="true">Homepage</td>
+            <td class="kw-num" contenteditable="true">590</td>
+            <td><span class="rk" contenteditable="true">Page 3 (#28)</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">anaheim dentist</td>
+            <td contenteditable="true">Homepage</td>
+            <td class="kw-num" contenteditable="true">590</td>
+            <td><span class="rk warn" contenteditable="true">Page 2 (#20)</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">dentistry anaheim ca</td>
+            <td contenteditable="true">Homepage</td>
+            <td class="kw-num" contenteditable="true">480</td>
+            <td><span class="rk warn" contenteditable="true">Page 2 (#18)</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">dentist of anaheim</td>
+            <td contenteditable="true">Homepage</td>
+            <td class="kw-num" contenteditable="true">320</td>
+            <td><span class="rk warn" contenteditable="true">Page 2 (#19)</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <div class="delta-row">
-      <div class="delta-item">
-        <div class="delta-rule"></div>
-        <div class="delta-num">−54%</div>
-        <div class="delta-label">From the Peak</div>
-        <div class="delta-sub">Oct 2025 → now · 125 → 57</div>
-      </div>
-      <div class="delta-item">
-        <div class="delta-rule"></div>
-        <div class="delta-num">125</div>
-        <div class="delta-label">All-Time Peak</div>
-        <div class="delta-sub">Sep–Oct 2025</div>
-      </div>
-      <div class="delta-item">
-        <div class="delta-rule"></div>
-        <div class="delta-num">35</div>
-        <div class="delta-label">Lowest Month</div>
-        <div class="delta-sub">April 2026 trough</div>
-      </div>
-      <div class="delta-item">
-        <div class="delta-rule"></div>
-        <div class="delta-num">8</div>
-        <div class="delta-label">Authority Score</div>
-        <div class="delta-sub">only 6 followed backlinks</div>
-      </div>
-    </div>
+    <p class="hint" contenteditable="true">These are pages you already have — they only need stronger content, internal links &amp; schema to rank.</p>
   </div>
 </section>
 
-<!-- WHERE TRAFFIC COMES FROM -->
-<section class="light">
-  <div class="container">
-    <div class="section-eyebrow">Question 6 · Source of Traffic</div>
-    <h2 class="section-title">Where the Traffic Actually Comes From</h2>
-
-    <div class="conv-grid">
-      <div class="conv-card">
-        <div class="conv-num">58</div>
-        <div class="conv-label">organic_search</div>
-        <div class="conv-sub">100% of measured visits</div>
+<!-- ============== LOCAL COMPETITION ============== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Ranking Keywords</span>
+    <h2>You vs. <span class="accent">Local Competition</span></h2>
+    <p class="section-intro">How the practice's keyword footprint compares to nearby competitors.</p>
+    <div class="bars">
+      <div class="bar-row">
+        <span class="who you" contenteditable="true">Anaheim Hills Dentistry (you)</span>
+        <div class="track-bar"><div class="fill-bar you" style="width:42%"></div></div>
+        <span class="num" contenteditable="true">93</span>
       </div>
-      <div class="conv-card">
-        <div class="conv-num">67%</div>
-        <div class="conv-label">one_keyword</div>
-        <div class="conv-sub">"anaheim hills dentist"</div>
+      <div class="bar-row">
+        <span class="who" contenteditable="true">Dentists of Anaheim Hills</span>
+        <div class="track-bar"><div class="fill-bar" style="width:100%"></div></div>
+        <span class="num" contenteditable="true">221</span>
       </div>
-      <div class="conv-card">
-        <div class="conv-num">98%</div>
-        <div class="conv-label">geo_brand_terms</div>
-        <div class="conv-sub">6 local-name searches</div>
+      <div class="bar-row">
+        <span class="who" contenteditable="true">Anaheim Hills Family Dental</span>
+        <div class="track-bar"><div class="fill-bar" style="width:51%"></div></div>
+        <span class="num" contenteditable="true">113</span>
       </div>
-      <div class="conv-card">
-        <div class="conv-num">0%</div>
-        <div class="conv-label">treatment_terms</div>
-        <div class="conv-sub">no procedure rankings</div>
-      </div>
-    </div>
-
-    <div class="table-grid">
-      <div>
-        <div class="data-table">
-          <div class="data-table-head">
-            <div>Top Pages by Organic Traffic</div>
-            <div style="text-align:right;">Visits</div>
-          </div>
-          <div class="data-table-row"><div class="data-cell-text">/ (homepage)</div><div class="data-cell-num">58</div></div>
-          <div class="data-table-row"><div class="data-cell-text">/our-services</div><div class="data-cell-num">0</div></div>
-          <div class="data-table-row"><div class="data-cell-text">/about</div><div class="data-cell-num">0</div></div>
-          <div class="data-table-row"><div class="data-cell-text">/contact-us</div><div class="data-cell-num">0</div></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="data-table">
-          <div class="data-table-head">
-            <div>Top Ranking Keywords</div>
-            <div style="text-align:right;">Position</div>
-          </div>
-          <div class="data-table-row"><div class="data-cell-text">anaheim hills dentist <span style="color: var(--text-muted);">· 480/mo · 67% of traffic</span></div><div class="data-cell-num">2</div></div>
-          <div class="data-table-row"><div class="data-cell-text">anaheim hills dentists <span style="color: var(--text-muted);">· 260/mo</span></div><div class="data-cell-num">5</div></div>
-          <div class="data-table-row"><div class="data-cell-text">dentist anaheim hills <span style="color: var(--text-muted);">· 170/mo</span></div><div class="data-cell-num">6</div></div>
-          <div class="data-table-row"><div class="data-cell-text">dental care anaheim hills <span style="color: var(--text-muted);">· 110/mo</span></div><div class="data-cell-num">6</div></div>
-          <div class="data-table-row"><div class="data-cell-text">dentist in anaheim hills ca <span style="color: var(--text-muted);">· 210/mo</span></div><div class="data-cell-num">7</div></div>
-          <div class="data-table-row"><div class="data-cell-text">dentistry anaheim ca <span style="color: var(--text-muted);">· 480/mo</span></div><div class="data-cell-num">18</div></div>
-        </div>
+      <div class="bar-row">
+        <span class="who" contenteditable="true">Anaheim Hills Village Dentistry</span>
+        <div class="track-bar"><div class="fill-bar" style="width:49%"></div></div>
+        <span class="num" contenteditable="true">109</span>
       </div>
     </div>
-
-    <div class="table-note" style="background: var(--blue-tint); color: var(--blue-dark); border-left-color: var(--blue-deep);">All traffic is organic search, and 100% of it lands on the homepage. Five of the top six keywords are simple "Anaheim Hills dentist" variations. The moment you step outside that neighborhood-name bubble — "dentistry anaheim ca" (480/mo) at position 18 — the rankings drop off a cliff. Broadening beyond the brand is the growth path.</div>
+    <p class="hint">Bar widths are illustrative — set each bar's <code>width:%</code> relative to the top competitor.</p>
   </div>
 </section>
 
-<!-- GBP SCORECARD -->
-<section class="paper">
-  <div class="container">
-    <div class="section-eyebrow">Local Presence · Question 8</div>
-    <h2 class="section-title">Google Business Profile Scorecard</h2>
-    <p style="font-size: 16px; color: var(--text-muted); line-height: 1.65; max-width: 820px; margin-bottom: 40px;">The Google Business Profile is the practice's single biggest local asset — it powers the Google Map Pack and is a primary source AI assistants pull from when patients ask for a dentist. Here's where it stands today.</p>
-
-    <div class="conv-grid" style="margin-bottom: 32px;">
-      <div class="conv-card" style="border-top-color: var(--green);">
-        <div class="conv-num" style="color: var(--green);">4.8★</div>
-        <div class="conv-label">Average Rating</div>
-        <div class="conv-sub">Strong — patients praise Dr. Mirai</div>
-      </div>
-      <div class="conv-card" style="border-top-color: var(--amber);">
-        <div class="conv-num" style="color: var(--amber);">~25</div>
-        <div class="conv-label">Total Reviews</div>
-        <div class="conv-sub">Low volume — a top growth priority</div>
-      </div>
-      <div class="conv-card" style="border-top-color: var(--red);">
-        <div class="conv-num" style="color: var(--red); font-size: 30px;">Drifting</div>
-        <div class="conv-label">NAP Consistency</div>
-        <div class="conv-sub">Address &amp; phone vary across directories</div>
-      </div>
-      <div class="conv-card" style="border-top-color: var(--amber);">
-        <div class="conv-num" style="color: var(--amber); font-size: 30px;">Limited</div>
-        <div class="conv-label">Local Map Visibility</div>
-        <div class="conv-sub">Capped by thin reviews + NAP drift</div>
-      </div>
-    </div>
-
-    <div style="background: var(--green-soft); border-left: 3px solid var(--green); border-radius: 10px; padding: 16px 24px; color: #166534; font-size: 13px; line-height: 1.6;"><strong>Bottom line:</strong> the rating is a genuine asset — patients love the care. The gaps are volume and consistency: too few reviews, NAP that conflicts across Google / Yelp / Healthgrades, and an under-managed profile. These are fast, high-leverage fixes that lift both Map Pack and AI visibility.</div>
-  </div>
-</section>
-
-<!-- 6-STEP PROCESSES -->
-<section class="light">
-  <div class="container">
-    <div class="process-header">
-      <div>
-        <div class="section-eyebrow">Implementation Approach · Process 01</div>
-        <h2 class="section-title">Organic Search Optimization</h2>
-      </div>
-      <div class="process-badge organic">6-Step Process</div>
-    </div>
-    <p class="process-intro">A proven six-step process that combines expert strategy and advanced tools to dominate organic search results across Google, Maps, and local directories.</p>
-
-    <div class="pgrid">
-      <div class="pcard">
-        <div class="pcard-num">STEP 01</div>
-        <div class="pcard-title">Comprehensive Audit</div>
-        <div class="pcard-desc">Analyze current strategy, target ZIP codes, and top competitors to identify growth opportunities.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 02</div>
-        <div class="pcard-title">Technical &amp; On-Page Setup</div>
-        <div class="pcard-desc">Build or optimize the website to ensure every technical element and on-page detail is set up correctly.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 03</div>
-        <div class="pcard-title">Local Listings &amp; NAP Accuracy</div>
-        <div class="pcard-desc">Secure and optimize profiles across all major directories, keeping Name, Address, and Phone consistent.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 04</div>
-        <div class="pcard-title">Custom Content Creation</div>
-        <div class="pcard-desc">Dental writers craft unique blogs and treatment pages designed to rank on Google and AI-driven platforms.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 05</div>
-        <div class="pcard-title">Authority-Building Backlinks</div>
-        <div class="pcard-desc">Through a trusted network, earn high-quality backlinks and brand exposure to boost domain authority.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 06</div>
-        <div class="pcard-title">Ongoing Reporting &amp; Tracking</div>
-        <div class="pcard-desc">Detailed monthly reports and review meetings to track rankings, conversions, and measurable progress.</div>
+<!-- ============== GOOGLE MAPS ============== -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
+    <h2>Google Maps <span class="accent">Visibility</span></h2>
+    <p class="section-intro">Where the practice shows up in the map pack across the local grid.</p>
+    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword scanned: <span contenteditable="true">dentist Anaheim</span></div>
+    <div class="map-wrap">
+      <div class="grid" id="mapgrid"></div>
+      <div class="map-legend">
+        <div><span class="dot" style="background:var(--good)"></span> Top 3 in the map pack</div>
+        <div><span class="dot" style="background:var(--warn)"></span> Page 1 (4–10)</div>
+        <div><span class="dot" style="background:var(--bad)"></span> Not ranking (11+)</div>
+        <p style="margin-top:14px">Average map rank <b contenteditable="true" class="edit">9.5</b> &nbsp;·&nbsp; Visible in <b contenteditable="true" class="edit">40%</b> of the grid</p>
+        <p style="margin-top:8px;font-size:13px;color:var(--ink-mute);font-style:italic" contenteditable="true">Illustrative grid — run a live Local Falcon scan to finalize the cell ranks, average &amp; coverage.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="paper">
-  <div class="container">
-    <div class="process-header">
-      <div>
-        <div class="section-eyebrow" style="color: var(--purple);">Implementation Approach · Process 02</div>
-        <h2 class="section-title">AI Search Visibility</h2>
-      </div>
-      <div class="process-badge ai">6-Step Process</div>
+<!-- ============== TRAFFIC SOURCES ============== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Semrush</span>
+    <h2>Where Traffic <span class="accent">Comes From</span></h2>
+    <p class="section-intro">The current channel mix — and the biggest untapped growth lever.</p>
+    <div class="stack">
+      <span style="width:38%;background:var(--black)">Direct 38%</span>
+      <span style="width:30%;background:var(--blue)">GBP 30%</span>
+      <span style="width:16%;background:#5aa0ff">Organic 16%</span>
+      <span style="width:10%;background:#9ec7ff;color:var(--ink)">Referral 10%</span>
+      <span style="width:6%;background:var(--ink-mute)">Paid 6%</span>
     </div>
-    <p class="process-intro">A parallel six-step process that ensures the practice is recognized, cited, and recommended by ChatGPT, Gemini, Perplexity, and Google AI Overviews — the next layer of patient discovery.</p>
-
-    <div class="pgrid pgrid-ai">
-      <div class="pcard">
-        <div class="pcard-num">STEP 01</div>
-        <div class="pcard-title">AI Discovery Audit</div>
-        <div class="pcard-desc">Evaluate how the practice currently appears across ChatGPT, Gemini, and Perplexity.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 02</div>
-        <div class="pcard-title">Data Structuring</div>
-        <div class="pcard-desc">Organize the website with structured data, schema markup, and signals designed for AI readability.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 03</div>
-        <div class="pcard-title">Content Optimization</div>
-        <div class="pcard-desc">Craft AI-friendly copy that answers real patient questions and builds trust in AI-generated responses.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 04</div>
-        <div class="pcard-title">Brand Mentions &amp; Citations</div>
-        <div class="pcard-desc">Distribute trusted mentions and citations that help AI engines recognize your practice as authoritative.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 05</div>
-        <div class="pcard-title">Review &amp; Reputation</div>
-        <div class="pcard-desc">Strengthen online reviews and brand sentiment, key signals AI uses to recommend businesses.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-num">STEP 06</div>
-        <div class="pcard-title">Performance Tracking</div>
-        <div class="pcard-desc">Monitor visibility across multiple AI tools and refine strategy each month to maintain top positioning.</div>
-      </div>
-    </div>
+    <p class="hint" contenteditable="true">Estimated mix — most traffic is direct &amp; GBP, with organic search badly underdeveloped (~58 visits/mo) and the biggest growth lever. (Channel split is an estimate — connect GA4 for exact figures.)</p>
   </div>
 </section>
 
-<!-- ACTION PLAN -->
+<!-- ============== GAME PLAN · HOW DENTIST NERDS FIXES THIS ============== -->
 <section class="dark">
-  <div class="container">
-    <div class="section-eyebrow">Question 7 · Recommendations</div>
-    <h2 class="section-title">The Action Plan — How We Help</h2>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Our Game Plan</span>
+    <h2>How Dentist Nerds <span class="accent">Fixes This</span></h2>
+    <p class="section-intro">We don't believe in flashy launches that flame out. The plan starts with a strong foundation, then layers ongoing engines on top — each one compounding the last.</p>
 
-    <div class="action-list">
-
-      <div class="action-row">
-        <div class="action-num">01</div>
-        <div>
-          <div class="action-title">Build a website on a strong SEO &amp; AI-visibility foundation</div>
-          <div class="action-desc">Rebuild the site architecture so it's technically sound and AI-ready from the ground up — fast, crawlable, structured, and designed to be cited by Google and AI answer engines, not just to look good.</div>
+    <!-- STEP 1 · The Featured Foundation -->
+    <div class="step-one-feature">
+      <div class="s1-grid">
+        <div class="s1-number-block">
+          <span class="s1-badge">⚡ Start Here</span>
+          <div class="s1-number">01</div>
+          <div class="s1-step-label">The Foundation</div>
+          <div class="s1-step-title" contenteditable="true">Rebuild the foundation — and target all of Anaheim, not just the Hills.</div>
         </div>
-        <div class="action-tag immediate">Immediate</div>
-      </div>
 
-      <div class="action-row">
-        <div class="action-num">02</div>
-        <div>
-          <div class="action-title">Add &amp; optimize all treatment pages with schema markup</div>
-          <div class="action-desc">A dedicated, optimized page for every procedure — implants, Invisalign, veneers, crowns, dentures, root canals, whitening, emergency care — each with Dentist / Service / FAQ schema so it can rank and surface in AI results. Start with a prominent Dr. Arman Mirai bio page (credentials, experience, photo) marked up with Person / Dentist schema — the trust signal Google and AI need most.</div>
+        <div class="s1-content">
+          <h4>What we'd do in Step 1</h4>
+          <p contenteditable="true">This is the heaviest lift — and the precondition for everything that comes next. We rebuild the site with a strong technical and on-page SEO foundation, and add the dedicated service + location pages needed to rank for the higher-volume "Anaheim" city terms (not just "Anaheim Hills"). Without this layer in place, the work in the engines below won't compound the way it should.</p>
+
+          <ul class="s1-todo" contenteditable="true">
+            <li><strong>Rebuild the website.</strong> Start fresh on a modern platform with clean visual design, premium positioning, and a structure that reflects the full practice.</li>
+            <li><strong>Fix every layout issue and broken link.</strong> Clean URLs, proper redirects, no placeholder or malformed links.</li>
+            <li><strong>Lock in a strong SEO structure.</strong> Proper heading hierarchy, semantic HTML, clean internal linking, Core Web Vitals optimized from day one.</li>
+            <li><strong>Add FAQs to every treatment page</strong> — written in patient language, structured for both SEO and AI search.</li>
+            <li><strong>Schema markup on every page</strong> — Dentist, Physician, FAQPage, MedicalProcedure, AggregateRating.</li>
+            <li><strong>Rewrite thin content &amp; meta tags</strong> across every service page so each one can actually rank.</li>
+          </ul>
+
+          <div class="s1-closing">
+            <p><strong>Why this matters:</strong> a strong foundation is what every other channel — reviews, backlinks, content, AI search — needs to actually compound. Skipping it means the rest of the work leaks instead of stacks.</p>
+          </div>
         </div>
-        <div class="action-tag immediate">Immediate</div>
       </div>
+    </div>
 
-      <div class="action-row">
-        <div class="action-num">03</div>
-        <div>
-          <div class="action-title">Build backlinks from high-authority websites</div>
-          <div class="action-desc">Move Authority Score off 8 by earning quality dofollow links (only 6 exist today). Real authority is what lets the new treatment pages actually rank against the neighborhood leaders.</div>
-        </div>
-        <div class="action-tag high">High</div>
+    <!-- DIVIDER -->
+    <div class="engines-header">
+      <span>What runs alongside &amp; after — the ongoing engines</span>
+    </div>
+
+    <!-- THE ENGINES -->
+    <div class="engines-grid">
+      <div class="engine-card">
+        <div class="engine-num">02</div>
+        <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+        <h4>Authority &amp; Backlinks</h4>
+        <p>Audit the profile, disavow toxic links, then <strong>build quality backlinks, citations &amp; brand mentions</strong> across high-authority dental and local publications.</p>
+        <div class="engine-target"><strong>Target</strong>Domain Authority climbing month over month</div>
       </div>
-
-      <div class="action-row">
-        <div class="action-num">04</div>
-        <div>
-          <div class="action-title">Clean up NAP &amp; manage local listings</div>
-          <div class="action-desc">Lock down a consistent Name-Address-Phone and suite number across Google, Yelp, Healthgrades and the data aggregators — critical given the shared 500 S Anaheim Hills Rd building — so local signals stop getting diluted.</div>
-        </div>
-        <div class="action-tag high">High</div>
+      <div class="engine-card">
+        <div class="engine-num">03</div>
+        <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <h4>Content Engine</h4>
+        <p>4 strategic blogs per month written for <strong>AI search and traditional SEO</strong> — filling topic gaps and pushing ranking keywords past 80+.</p>
+        <div class="engine-target"><strong>Target</strong>4 keyword-targeted articles per month</div>
       </div>
-
-      <div class="action-row">
-        <div class="action-num">05</div>
-        <div>
-          <div class="action-title">Publish 4 AI-ready blog posts per month</div>
-          <div class="action-desc">Patient-question content mapped to real searches ("dental implants cost anaheim", "how long does Invisalign take") that keeps the site fresh and feeds both Google and AI engines.</div>
-        </div>
-        <div class="action-tag medium">Medium</div>
+      <div class="engine-card">
+        <div class="engine-num">04</div>
+        <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h4>Google Business Management</h4>
+        <p>Hands-on GBP management: <strong>weekly posts, review responses, Q&amp;A, photos</strong>, tracked with Local Falcon to dominate the map pack.</p>
+        <div class="engine-target"><strong>Target</strong>Top-3 Map Pack for core keywords</div>
       </div>
-
-      <div class="action-row">
-        <div class="action-num">06</div>
-        <div>
-          <div class="action-title">Optimize &amp; manage Google Business Profile / Maps</div>
-          <div class="action-desc">Grow review volume from ~25 toward the 300+ the leaders hold, post regularly, and optimize the profile to win the local Map Pack — the #1 driver of local dental patients.</div>
-        </div>
-        <div class="action-tag high">High</div>
+      <div class="engine-card">
+        <div class="engine-num">05</div>
+        <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h4>Tracking &amp; Reporting</h4>
+        <p>Semrush, Local Falcon, GA4 &amp; Search Console together — <strong>monthly reports</strong> show what's working and what to iterate next.</p>
+        <div class="engine-target"><strong>Target</strong>Monthly reporting · always know where you stand</div>
       </div>
-
-      <div class="action-row">
-        <div class="action-num">07</div>
-        <div>
-          <div class="action-title">Provide monthly reports</div>
-          <div class="action-desc">Clear, live-data reporting each month — rankings, traffic, reviews and AI visibility — so progress is always transparent and tied to real numbers.</div>
-        </div>
-        <div class="action-tag ongoing">Ongoing</div>
+      <div class="engine-card">
+        <div class="engine-num">06</div>
+        <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <h4>Foundation Upkeep</h4>
+        <p>Ongoing technical SEO, schema, and Core Web Vitals maintenance so the rebuilt site <strong>stays fast, clean and fully indexed</strong>.</p>
+        <div class="engine-target"><strong>Target</strong>Healthy technical baseline, every month</div>
       </div>
-
-      <div class="action-row">
-        <div class="action-num">08</div>
-        <div>
-          <div class="action-title">Track &amp; improve the website every month</div>
-          <div class="action-desc">Continuous optimization — refining pages, content and links based on what the data shows is working — to keep rankings climbing and reverse the slip for good.</div>
-        </div>
-        <div class="action-tag ongoing">Ongoing</div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <div class="foot-brand">Dentist Nerds</div>
-    <div class="foot-meta">Website Quality &amp; AI Visibility Audit · Anaheim Hills Dentistry · Anaheim Hills, CA · June 2026</div>
+<!-- ============== FOOTER ============== -->
+<footer class="end-cta">
+  <div class="wrap">
+    <img class="nerds-logo-img" src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
+    <p>Smart dental marketing that turns your website into a ranking, AI-visible asset — and compounds authority every month.</p>
+    <div class="end-meta">Prepared by Dentist Nerds · dentistnerds.com · Confidential growth report</div>
   </div>
 </footer>
 
+<script>
+  // ---- Status pills cycle ----
+  const ORDER=["good","warn","bad"];
+  const LABELS={good:"Good",warn:"Needs work",bad:"Failing"};
+  document.querySelectorAll(".pill").forEach(p=>{
+    p.addEventListener("click",()=>{
+      const next=ORDER[(ORDER.indexOf(p.dataset.s)+1)%3];
+      p.dataset.s=next;
+      if(Object.values(LABELS).includes(p.textContent.trim()))p.textContent=LABELS[next];
+    });
+  });
+
+  // ---- Dials ----
+  const R=52, C=2*Math.PI*R;
+  function paint(svg){
+    const v=parseFloat(svg.dataset.value)||0;
+    const max=parseFloat(svg.dataset.max)||100;
+    const pct=Math.max(0,Math.min(1,v/max));
+    const arc=svg.querySelector(".arc");
+    arc.style.stroke=svg.dataset.color;
+    arc.setAttribute("stroke-dasharray",C);
+    arc.setAttribute("stroke-dashoffset",C*(1-pct));
+    arc.setAttribute("transform","rotate(-90 65 65)");
+    const t=svg.querySelector(".val");
+    const num = v>=1000 ? (v/1000).toFixed(1).replace(/\.0$/,"")+"k" : v;
+    t.textContent=num+(svg.dataset.suffix||"");
+  }
+  document.querySelectorAll(".dial svg").forEach(svg=>{
+    paint(svg);
+    const t=svg.querySelector(".val");
+    t.setAttribute("contenteditable","true");
+    t.style.cursor="text";
+    t.addEventListener("blur",()=>{
+      let raw=t.textContent.replace(/[^0-9.k]/gi,"");
+      let n=parseFloat(raw)||0;
+      if(/k/i.test(raw))n*=1000;
+      svg.dataset.value=n;
+      if(n>svg.dataset.max)svg.dataset.max=n;
+      paint(svg);
+    });
+  });
+
+  // ---- Local Falcon grid (5x5) ----
+  const seed=["good","warn","warn","bad","bad",
+              "warn","good","warn","bad","bad",
+              "warn","warn","good","warn","bad",
+              "bad","warn","warn","warn","bad",
+              "bad","bad","warn","bad","bad"];
+  const ranks=["2","5","7","12","15",
+               "4","1","6","18","20",
+               "8","9","3","10","22",
+               "14","7","8","11","19",
+               "16","21","9","17","25"];
+  const g=document.getElementById("mapgrid");
+  seed.forEach((s,i)=>{
+    const c=document.createElement("div");
+    c.className="cell";c.dataset.s=s;c.textContent=ranks[i];
+    c.setAttribute("contenteditable","true");
+    c.addEventListener("click",e=>{
+      if(e.detail>0 && !window.getSelection().toString()){
+        c.dataset.s=ORDER[(ORDER.indexOf(c.dataset.s)+1)%3];
+      }
+    });
+    g.appendChild(c);
+  });
+</script>
 </body>
 </html>
