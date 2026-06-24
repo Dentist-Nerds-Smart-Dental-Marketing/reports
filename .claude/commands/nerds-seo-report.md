@@ -1,6 +1,6 @@
 ---
-name: nerds-seo-report
-description: Generate a branded Dentist Nerds SEO audit & growth report for a dental client and publish it to the team hub. Use when someone asks to create/build/run an SEO report or audit for a practice. Starts with team-answered website review questions, then pulls live Semrush + Local Falcon data, fills the report template, and drops it on the hub page.
+description: Generate a Dentist Nerds SEO audit & growth report for a client — team website review, then Semrush + Local Falcon data, build from the template, and publish to the hub
+argument-hint: <practice name> | <website> | <city, ST> [| keyword to scan]
 ---
 
 # Nerds SEO Report
@@ -9,7 +9,7 @@ Generate a branded **Dentist Nerds — SEO Audit & Growth Report** for a client 
 
 ## Inputs
 
-The request should include (ask for any that are missing — never guess the domain or city):
+Parse `$ARGUMENTS` (pipe- or comma-separated). Expected fields, in order (ask for any of the first three that are missing — never guess the domain or city):
 
 1. **Practice name** — e.g. `Westgrove Dental Care`
 2. **Website** — e.g. `westgrovedental.com`
