@@ -47,7 +47,7 @@ Pull for the client's domain:
 - **Authority & Backlinks** (Semrush backlinks): total backlinks, Authority/Domain score, toxic/spam %.
 - **Keyword gap** (Semrush): keywords the site has pages for but ranks poorly (page 2+ or unranked). Capture keyword, the page it lives on, monthly search volume, current rank. Pick the 5 highest-volume.
 - **Local competition** (Semrush): 3 nearby competitors and each one's ranking-keyword count, for the comparison bars.
-- **Traffic sources** (Semrush .Trends / Windsor GA4 if available): Direct / GBP / Organic / Referral / Paid mix.
+- **Organic Search Traffic** (Semrush `domain_rank` overview): organic visits/mo, ranking keywords, and est. monthly traffic value (organic cost). This populates the "Organic Search Traffic" section — a real Semrush snapshot, NOT a Direct/GBP/Organic channel mix (that needs GA4, which isn't available).
 - **Google Maps** (Local Falcon): run/read a grid scan for the chosen keyword; capture each cell's rank, the average rank, and % of grid where the practice is visible.
 
 If a metric can't be retrieved, leave the template placeholder and tell the user which fields need manual entry — don't fabricate.
@@ -57,7 +57,7 @@ If a metric can't be retrieved, leave the template placeholder and tell the user
 - **Ranking keywords below 80** → flag the Ranking Keywords dial as low and call out that **there isn't enough content / no keyword strategy** (a top weakness, and a driver for the Content Engine).
 - **Many backlinks but low Domain Authority** → call out that the profile is **probably spammy / toxic backlinks dragging authority down**; recommend a disavow + cleanup (make it a Top 3 Weakness when the gap is severe).
 - Reflect these in both the dial flags/notes and the Top 3 Weaknesses.
-- **Google Maps grid & Traffic mix must be REAL or marked pending — never placeholder.** The 5×5 map grid must come from an actual Local Falcon scan, and the Traffic channel mix from real analytics (GA4 / Windsor). **Never reuse the template's default grid or default traffic percentages** — that ships identical, fake data across every client. If Local Falcon or analytics data is not available in the session, set that section to a clear "Pending — from your latest Local Falcon scan / GA4" state and tell the user which sections need real data, rather than filling placeholders.
+- **Google Maps grid & Organic Traffic must be REAL — never placeholder.** The 5×5 map grid must come from an actual Local Falcon scan (run it from a session where Local Falcon is connected — it is NOT available in headless/cloud runs). The Organic Search Traffic stats must come from Semrush per client. **Never reuse the template's default grid or default numbers** — that ships identical, fake data across every client. If Local Falcon isn't available in the session, set the Maps section to a clear "Pending — from your latest Local Falcon scan" state and tell the user, rather than filling placeholders.
 
 ---
 
@@ -74,7 +74,7 @@ If a metric can't be retrieved, leave the template placeholder and tell the user
    - **Keyword gap** table — the 5 keywords with page, volume, rank (use `rk` red / `rk warn` amber).
    - **Local Competition** bars — set each `width:%` relative to the top competitor and the numbers.
    - **Google Maps**: the "Keyword scanned" chip, the 5×5 grid `seed`/`ranks` arrays in the script, average rank, % visible.
-   - **Traffic** stack: the channel percentages and bar widths.
+   - **Organic Search Traffic** stat strip: organic visits/mo, ranking keywords, est. traffic value — real Semrush figures.
    - Tailor the **Game Plan** copy (Step 01 + engines) to the client where relevant.
 4. Keep all branding, fonts, and interactive JS intact.
 5. **Reports are final deliverables — keep them non-editable.** The template has no `contenteditable` anywhere; never add it. Just replace the placeholder values directly in the HTML.

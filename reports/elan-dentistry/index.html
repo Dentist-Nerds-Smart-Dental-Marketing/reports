@@ -222,6 +222,10 @@
   /* ============== TRAFFIC STACK ============== */
   .stack{display:flex;height:40px;border-radius:12px;overflow:hidden;margin-bottom:16px}
   .stack span{display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;min-width:30px}
+  .stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 28px;text-align:center}
+  .stat-num{font-family:"Anton",sans-serif;font-size:48px;color:var(--blue);line-height:1}
+  .stat-lbl{margin-top:10px;font-size:14.5px;color:var(--ink-soft);font-weight:600}
 
   /* ============== GAME PLAN · Step 1 + Engines ============== */
   .step-one-feature{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff;border-radius:24px;
@@ -274,7 +278,7 @@
     .hero{padding:44px 0}
     .audit-strip{flex-direction:column;align-items:flex-start;gap:14px}
     .hero-meta-grid{grid-template-columns:repeat(2,1fr);gap:24px}
-    .checks,.dials,.weak-grid,.engines-grid{grid-template-columns:1fr}
+    .checks,.dials,.weak-grid,.engines-grid,.stat-strip{grid-template-columns:1fr}
     .weak-other ul{columns:1}
     .map-wrap{grid-template-columns:1fr;gap:28px}
     .score-grid{grid-template-columns:1fr;gap:32px}
@@ -638,16 +642,14 @@
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Semrush</span>
-    <h2>Where Traffic <span class="accent">Comes From</span></h2>
-    <p class="section-intro">The current channel mix — and the biggest untapped growth lever.</p>
-    <div class="stack">
-      <span style="width:34%;background:var(--black)">Direct 34%</span>
-      <span style="width:26%;background:var(--blue)">GBP 26%</span>
-      <span style="width:22%;background:#5aa0ff">Organic 22%</span>
-      <span style="width:12%;background:#9ec7ff;color:var(--ink)">Referral 12%</span>
-      <span style="width:6%;background:var(--ink-mute)">Paid 6%</span>
+    <h2>Organic Search <span class="accent">Traffic</span></h2>
+    <p class="section-intro">What the site earns from organic search today — pulled from Semrush.</p>
+    <div class="stat-strip">
+      <div class="stat"><div class="stat-num">46</div><div class="stat-lbl">Organic visits / mo</div></div>
+      <div class="stat"><div class="stat-num">153</div><div class="stat-lbl">Ranking keywords</div></div>
+      <div class="stat"><div class="stat-num">$125</div><div class="stat-lbl">Est. traffic value / mo</div></div>
     </div>
-    <p class="hint">Channel mix is an illustrative placeholder — connect GA4 (Windsor) to drop in the real Direct / GBP / Organic / Referral / Paid split. Either way, with only ~46 organic visits/mo, organic search is the biggest untapped growth lever.</p>
+    <p class="hint">Source: Semrush (US), June 2026. Channel-level attribution (Direct, GBP, social, referral) needs GA4, which isn't connected yet.</p>
   </div>
 </section>
 
