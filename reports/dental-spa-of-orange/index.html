@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dentist Nerds — SEO Audit & Growth Report · Dental Spa of Orange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#0a6bff;
+    --blue-700:#0a4fd0;
+    --blue-900:#08308a;
+    --blue-50:#e8f1ff;
+    --blue-100:#d4e4ff;
+    --ink:#0c1322;
+    --ink-soft:#4a5568;
+    --ink-mute:#7b8794;
+    --black:#0c0c0c;
+    --line:#e2e8f0;
+    --line-soft:#edf2f7;
+    --bg:#ffffff;
+    --bg-soft:#f7f9fc;
+    --good:#1f9d6b;
+    --good-soft:#e1f4ec;
+    --good-deep:#157551;
+    --warn:#E0A126;
+    --warn-soft:#fbf0d6;
+    --bad:#D94436;
+    --bad-soft:#fbe2de;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    font-family:"DM Sans",system-ui,sans-serif;
+    color:var(--ink);
+    line-height:1.6;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:"Anton",sans-serif;font-weight:400;letter-spacing:.005em}
+  .wrap{max-width:1220px;margin:0 auto;padding:0 32px}
+  .edit{outline:none;border-radius:5px;transition:background .15s;box-shadow:inset 0 -1px 0 rgba(10,107,255,.4)}
+  .edit:hover{background:var(--blue-50)}
+  .edit:focus{background:#fff;box-shadow:0 0 0 2px var(--blue)}
+
+  /* ============== HERO ============== */
+  .hero{
+    background:linear-gradient(135deg,var(--blue) 0%,var(--blue-700) 100%);
+    color:#fff;padding:64px 0 60px;position:relative;overflow:hidden;
+  }
+  .hero::before{content:'';position:absolute;top:-200px;right:-160px;width:600px;height:600px;
+    background:radial-gradient(circle,rgba(255,255,255,.16) 0%,transparent 60%);pointer-events:none}
+  .hero::after{content:'';position:absolute;bottom:-160px;left:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(12,12,12,.18) 0%,transparent 60%);pointer-events:none}
+  .hero-wrap{position:relative;z-index:2}
+  .audit-strip{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    margin-bottom:44px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.18)}
+  .nerds-logo-img{height:72px;width:auto;display:block}
+  .audit-type{font-size:11px;color:rgba(255,255,255,.7);letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  .audit-target{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.3);color:#fff;padding:8px 16px;border-radius:100px;
+    font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px}
+  .audit-target .pulse{width:8px;height:8px;background:#fff;border-radius:50%;box-shadow:0 0 0 4px rgba(255,255,255,.25)}
+  .audit-target--light{background:var(--blue-50);border-color:var(--blue-100);color:var(--blue-700);margin-bottom:28px}
+  .audit-target--light .pulse{background:var(--blue);box-shadow:0 0 0 4px rgba(10,107,255,.18)}
+  .hero h1{font-size:clamp(38px,5.2vw,60px);line-height:1.02;text-transform:uppercase;margin-bottom:14px;max-width:960px}
+  .hero h1 .accent{color:#cfe0ff}
+  .hero-subtitle{font-size:14px;color:rgba(255,255,255,.7);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:26px}
+  .hero .lede{font-size:19.5px;color:rgba(255,255,255,.86);max-width:780px;line-height:1.55;margin-bottom:44px;font-weight:400}
+  .hero .lede strong{color:#fff;font-weight:700}
+  .hero-meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,.18)}
+  .meta-block .meta-label{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
+  .meta-block .meta-value{font-size:17px;color:#fff;font-weight:700;font-family:"DM Sans",sans-serif}
+  .meta-block .meta-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+
+  /* ============== SECTION SHELL ============== */
+  section{padding:72px 0}
+  section.alt{background:var(--bg-soft)}
+  section.dark{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff}
+  .section-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--blue-50);color:var(--blue-700);
+    padding:6px 14px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+  .section-eyebrow .dot{width:6px;height:6px;background:var(--blue);border-radius:50%}
+  .section-eyebrow.red{background:var(--bad-soft);color:var(--bad)}
+  .section-eyebrow.red .dot{background:var(--bad)}
+  section.dark .section-eyebrow{background:rgba(10,107,255,.18);color:#cfe0ff}
+  section h2{font-size:clamp(28px,3.6vw,42px);line-height:1.08;text-transform:uppercase;margin-bottom:16px;max-width:860px;color:var(--ink)}
+  section.dark h2{color:#fff}
+  section h2 .accent{color:var(--blue)}
+  section.dark h2 .accent{color:#cfe0ff}
+  .section-intro{font-size:18.5px;color:var(--ink-soft);max-width:780px;line-height:1.55;margin-bottom:44px;font-weight:400}
+  section.dark .section-intro{color:rgba(255,255,255,.72)}
+  .hint{font-size:13px;color:var(--ink-mute);margin-top:18px;font-style:italic}
+
+  /* ============== TOP 3 WEAKNESSES ============== */
+  .weak-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .weak{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;position:relative;overflow:hidden;
+    transition:transform .2s,box-shadow .2s}
+  .weak:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.07)}
+  .weak::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--bad)}
+  .weak.high::before{background:var(--warn)}
+  .weak-rank{font-family:"Anton",sans-serif;font-size:13px;color:var(--ink-mute);letter-spacing:.12em;margin-bottom:14px}
+  .weak-icon{width:52px;height:52px;border-radius:14px;background:var(--bad-soft);color:var(--bad);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .weak.high .weak-icon{background:var(--warn-soft);color:var(--warn)}
+  .weak h4{font-size:22px;color:var(--ink);margin-bottom:10px;line-height:1.2;text-transform:uppercase}
+  .weak p{font-size:15.5px;color:var(--ink-soft);line-height:1.55}
+  .sev{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;padding:4px 12px;border-radius:100px}
+  .sev::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+  .sev[data-s="bad"]{background:var(--bad-soft);color:var(--bad)}
+  .sev[data-s="warn"]{background:var(--warn-soft);color:#b87a0e}
+  .sev[data-s="good"]{background:var(--good-soft);color:var(--good-deep)}
+  .weak-other{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 30px}
+  .weak-other-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);display:block;margin-bottom:14px}
+  .weak-other ul{margin:0;padding-left:22px;columns:2;column-gap:40px;font-size:16px;color:var(--ink-soft)}
+  .weak-other li{margin-bottom:8px;break-inside:avoid;line-height:1.45}
+
+  /* ============== STATUS PILLS (foundation) ============== */
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .check{display:flex;align-items:center;gap:14px;padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:#fff}
+  .check .lbl{font-weight:700;font-size:16.5px}
+  .check .sub{font-size:13.5px;color:var(--ink-mute);display:block;margin-top:2px;font-weight:400}
+  .pill{margin-left:auto;flex:none;cursor:pointer;user-select:none;font-weight:700;font-size:10.5px;
+    letter-spacing:.06em;text-transform:uppercase;padding:6px 13px;border-radius:100px;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:6px;transition:transform .08s}
+  .pill::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+  .pill:active{transform:scale(.94)}
+  .pill[data-s="good"]{background:var(--good-soft);color:var(--good-deep)}
+  .pill[data-s="warn"]{background:var(--warn-soft);color:#b87a0e}
+  .pill[data-s="bad"]{background:var(--bad-soft);color:var(--bad)}
+
+  /* ============== DIALS ============== */
+  .dials{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .dial{border:1px solid var(--line);border-radius:18px;padding:28px 18px 24px;text-align:center;background:#fff}
+  .dial svg{width:140px;height:140px;display:block;margin:0 auto 10px}
+  .dial .track{fill:none;stroke:var(--blue-50);stroke-width:11}
+  .dial .arc{fill:none;stroke-width:11;stroke-linecap:round;transition:stroke-dashoffset .5s ease}
+  .dial .val{font-family:"Anton",sans-serif;font-size:24px;fill:var(--ink)}
+  .dial .name{font-weight:700;font-size:17.5px;color:var(--ink);font-family:"DM Sans",sans-serif}
+  .dial .note{font-size:14px;color:var(--ink-mute);margin-top:4px}
+  .flag{display:inline-block;margin-top:12px;font-size:11px;font-weight:700;padding:5px 12px;border-radius:100px;letter-spacing:.04em;text-transform:uppercase}
+  .flag.bad{background:var(--bad-soft);color:var(--bad)}
+  .flag.good{background:var(--good-soft);color:var(--good-deep)}
+
+  /* ============== HEALTH SCORE ============== */
+  .score-grid{display:grid;grid-template-columns:380px 1fr;gap:48px;align-items:center}
+  .gauge-wrap{background:#fff;border-radius:24px;padding:36px;box-shadow:0 4px 24px rgba(15,27,45,.06);border:1px solid var(--line);text-align:center}
+  .gauge-label{font-size:11px;color:var(--ink-mute);letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .gauge-svg{display:block;margin:0 auto}
+  .gauge-num{font-family:"Anton",sans-serif;font-size:64px;color:var(--bad);line-height:1;margin-top:8px}
+  .gauge-suffix{font-size:24px;color:var(--ink-mute)}
+  .gauge-status{margin-top:8px;font-size:13px;color:var(--bad);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .subscore-list{display:flex;flex-direction:column;gap:16px}
+  .subscore{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;display:grid;grid-template-columns:40px 1fr auto;gap:18px;align-items:center}
+  .subscore-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:none}
+  .subscore-icon.bad{background:var(--bad-soft);color:var(--bad)}
+  .subscore-icon.warn{background:var(--warn-soft);color:var(--warn)}
+  .subscore-icon.blue{background:var(--blue-50);color:var(--blue)}
+  .subscore-icon.good{background:var(--good-soft);color:var(--good-deep)}
+  .subscore-title{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:9px;font-family:"DM Sans",sans-serif}
+  .subscore-bar{background:var(--line-soft);height:6px;border-radius:100px;overflow:hidden}
+  .subscore-fill{height:100%;border-radius:100px;background:var(--bad)}
+  .subscore-fill.warn{background:var(--warn)}
+  .subscore-fill.blue{background:var(--blue)}
+  .subscore-fill.good{background:var(--good)}
+  .subscore-value{font-family:"Anton",sans-serif;font-size:22px;color:var(--ink);min-width:60px;text-align:right}
+  .subscore-value.bad{color:var(--bad)}
+  .subscore-value.warn{color:var(--warn)}
+  .subscore-value.blue{color:var(--blue)}
+
+  /* ============== KEYWORD GAP TABLE ============== */
+  .table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line)}
+  .kw{width:100%;border-collapse:collapse;font-size:15.5px;min-width:560px;background:#fff}
+  .kw thead tr{background:var(--ink);color:#fff}
+  .kw th{text-align:left;font-family:"DM Sans",sans-serif;font-weight:700;font-size:11px;
+    text-transform:uppercase;letter-spacing:.08em;padding:16px 22px}
+  .kw td{padding:16px 22px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+  .kw tbody tr:last-child td{border-bottom:none}
+  .kw .kw-name{font-weight:700;color:var(--ink)}
+  .kw .kw-num{font-family:"Anton",sans-serif;font-size:18px;color:var(--ink)}
+  .rk{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:11px;padding:5px 12px;border-radius:100px;white-space:nowrap;
+    background:var(--bad-soft);color:var(--bad)}
+  .rk::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+  .rk.warn{background:var(--warn-soft);color:#b87a0e}
+
+  /* ============== BAR COMPARE ============== */
+  .bars{display:flex;flex-direction:column;gap:6px}
+  .bar-row{display:grid;grid-template-columns:220px 1fr 70px;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+  .bar-row:last-child{border-bottom:none}
+  .bar-row .who{font-size:15.5px;font-weight:600;color:var(--ink)}
+  .bar-row .who.you{color:var(--blue)}
+  .track-bar{height:14px;background:var(--line-soft);border-radius:100px;overflow:hidden}
+  .fill-bar{height:100%;border-radius:100px;background:linear-gradient(90deg,#8893a8 0%,#5f6b7d 100%)}
+  .fill-bar.you{background:linear-gradient(90deg,var(--blue),var(--blue-700))}
+  .bar-row .num{font-family:"Anton",sans-serif;font-size:18px;text-align:right;color:var(--ink)}
+
+  /* ============== MAP GRID ============== */
+  .map-wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;width:320px}
+  .cell{aspect-ratio:1;border-radius:11px;display:grid;place-items:center;font-family:"Anton",sans-serif;
+    font-size:17px;cursor:pointer;user-select:none;color:#fff;transition:transform .08s}
+  .cell:active{transform:scale(.9)}
+  .cell[data-s="good"]{background:var(--good)}
+  .cell[data-s="warn"]{background:var(--warn)}
+  .cell[data-s="bad"]{background:var(--bad)}
+  .map-legend{font-size:15.5px;color:var(--ink-soft);line-height:2}
+  .map-legend .dot{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:9px;vertical-align:middle}
+  .map-legend b{color:var(--ink);font-family:"Anton",sans-serif;font-weight:400}
+
+  /* ============== TRAFFIC STACK ============== */
+  .stack{display:flex;height:40px;border-radius:12px;overflow:hidden;margin-bottom:16px}
+  .stack span{display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;min-width:30px}
+
+  /* ============== GAME PLAN · Step 1 + Engines ============== */
+  .step-one-feature{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff;border-radius:24px;
+    padding:48px;margin-bottom:32px;position:relative;overflow:hidden}
+  .step-one-feature::before{content:'';position:absolute;top:-120px;right:-80px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(10,107,255,.25) 0%,transparent 60%);pointer-events:none}
+  .s1-grid{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start;position:relative;z-index:1}
+  .s1-badge{display:inline-block;background:var(--blue);color:#fff;font-size:10px;font-weight:800;
+    letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;margin-bottom:18px;font-family:"DM Sans",sans-serif}
+  .s1-number{font-family:"Anton",sans-serif;font-size:96px;line-height:1;color:var(--blue);margin-bottom:16px}
+  .s1-step-label{font-size:13px;color:rgba(255,255,255,.6);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;font-family:"DM Sans",sans-serif}
+  .s1-step-title{font-size:30px;color:#fff;line-height:1.12;text-transform:uppercase}
+  .s1-content h4{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#cfe0ff;margin-bottom:18px;font-family:"DM Sans",sans-serif}
+  .s1-content>p{color:rgba(255,255,255,.82);font-size:17.5px;line-height:1.6;margin-bottom:24px}
+  .s1-content>p strong{color:#fff}
+  .s1-todo{list-style:none;padding:0;margin:0 0 24px}
+  .s1-todo li{padding:13px 0 13px 34px;position:relative;color:rgba(255,255,255,.86);font-size:16.5px;line-height:1.5;border-bottom:1px solid rgba(255,255,255,.1)}
+  .s1-todo li:last-child{border-bottom:none}
+  .s1-todo li::before{content:'';position:absolute;left:0;top:17px;width:18px;height:18px;border:2px solid var(--blue);border-radius:5px;background:rgba(10,107,255,.18)}
+  .s1-todo li strong{color:#fff}
+  .s1-closing{background:rgba(10,107,255,.12);border-left:3px solid var(--blue);padding:18px 22px;border-radius:0 12px 12px 0;margin-top:12px}
+  .s1-closing p{margin:0;color:rgba(255,255,255,.92);font-size:14.5px;line-height:1.55;font-style:italic}
+  .s1-closing strong{color:#cfe0ff;font-style:normal}
+  .engines-header{text-align:center;margin:64px 0 36px;position:relative}
+  .engines-header::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.18);z-index:0}
+  .engines-header span{position:relative;z-index:1;background:#0c0c0c;padding:0 28px;font-size:15px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);font-family:"DM Sans",sans-serif}
+  .engines-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  .engine-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:48px;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative}
+  .engine-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.07);border-color:var(--blue)}
+  .engine-num{font-size:14px;font-weight:800;color:var(--ink-mute);letter-spacing:.12em;margin-bottom:22px;font-family:"DM Sans",sans-serif}
+  .engine-icon{width:80px;height:80px;border-radius:20px;background:var(--blue-50);color:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:26px}
+  .engine-icon svg{width:38px;height:38px}
+  .engine-card h4{font-size:30px;color:var(--ink);margin-bottom:16px;line-height:1.15;text-transform:uppercase}
+  .engine-card p{color:var(--ink-soft);font-size:17.5px;line-height:1.6;margin-bottom:16px}
+  .engine-card p:last-child{margin-bottom:0}
+  .engine-card strong{color:var(--ink);font-weight:700}
+  .engine-target{margin-top:22px;padding-top:22px;border-top:1px solid var(--line-soft);font-size:15px;color:var(--ink-soft)}
+  .engine-target strong{color:var(--blue-700);font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px}
+
+  /* ============== FOOTER ============== */
+  .end-cta{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff;padding:56px 0;text-align:center}
+  .end-cta .nerds-logo-img{height:60px;margin:0 auto 22px}
+  .end-cta p{color:rgba(255,255,255,.72);max-width:560px;margin:0 auto;font-size:15px}
+  .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
+
+  /* ============== RESPONSIVE ============== */
+  @media(max-width:900px){
+    .wrap{padding:0 22px}
+    section{padding:52px 0}
+    .hero{padding:44px 0}
+    .audit-strip{flex-direction:column;align-items:flex-start;gap:14px}
+    .hero-meta-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+    .checks,.dials,.weak-grid,.engines-grid{grid-template-columns:1fr}
+    .weak-other ul{columns:1}
+    .map-wrap{grid-template-columns:1fr;gap:28px}
+    .score-grid{grid-template-columns:1fr;gap:32px}
+    .grid{width:260px}
+    .bar-row{grid-template-columns:120px 1fr 50px;gap:12px}
+    .s1-grid{grid-template-columns:1fr;gap:28px}
+    .step-one-feature{padding:32px}
+  }
+  @media print{
+    body{background:#fff}
+    section{padding:36px 0;break-inside:avoid}
+    .pill,.cell{cursor:default}
+    .weak:hover,.engine-card:hover{transform:none;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== HERO ============== -->
+<header class="hero">
+  <div class="hero-wrap wrap">
+    <div class="audit-strip">
+      <img class="nerds-logo-img" src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds — Smart Dental Marketing" />
+      <div class="audit-type">SEO Audit &amp; Growth Report · Confidential</div>
+    </div>
+
+    <div class="audit-target">
+      <span class="pulse"></span>
+      <span contenteditable="true">Audited: dentalspaorange.com</span>
+    </div>
+
+    <h1 contenteditable="true">Website Audit for <span class="accent">Dental Spa of Orange</span></h1>
+    <p class="hero-subtitle" contenteditable="true">Prepared for Orange, CA · Jun 2026</p>
+    <p class="lede" contenteditable="true">
+      We reviewed every signal — page-by-page content, Semrush rankings, Local Falcon coverage, schema markup, Google Business Profile configuration, and the manual user experience. The audit surfaced the issues below. <strong>This report explains what's holding the site back, and exactly how we'd fix it.</strong>
+    </p>
+
+    <div class="hero-meta-grid">
+      <div class="meta-block">
+        <div class="meta-label">Prepared For</div>
+        <div class="meta-value edit" contenteditable="true">Dental Spa of Orange</div>
+        <div class="meta-sub edit" contenteditable="true">Orange, CA</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Report Date</div>
+        <div class="meta-value edit" contenteditable="true">June 2026</div>
+        <div class="meta-sub edit" contenteditable="true">Tools: Semrush, Local Falcon, manual UX</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Issues Found</div>
+        <div class="meta-value edit" contenteditable="true">3 critical · 7 other</div>
+        <div class="meta-sub edit" contenteditable="true">across the site</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Our Recommendation</div>
+        <div class="meta-value edit" contenteditable="true" style="color:#cfe0ff">Optimize &amp; Grow</div>
+        <div class="meta-sub edit" contenteditable="true">positions-first plan</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HEALTH SCORE ============== -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>Health Score Breakdown</span>
+    <h2>Overall site health: <span class="accent" style="color:var(--bad)" contenteditable="true">52/100</span>.<br>A real content footprint — held back by weak positions.</h2>
+    <p class="section-intro">We graded the site across four categories using Semrush data, manual review, and Core Web Vitals testing. The numbers below show the percentage of best-practice items the site currently meets in each pillar.</p>
+    <div class="score-grid">
+      <div class="gauge-wrap">
+        <div class="gauge-label">Overall Site Health</div>
+        <svg class="gauge-svg" width="240" height="140" viewBox="0 0 240 140">
+          <path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="#EDF2F7" stroke-width="20" stroke-linecap="round"/>
+          <path d="M 20 120 A 100 100 0 0 1 126 20" fill="none" stroke="#D94436" stroke-width="20" stroke-linecap="round"/>
+          <text x="20" y="138" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">0</text>
+          <text x="120" y="14" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">50</text>
+          <text x="220" y="138" text-anchor="middle" font-family="DM Sans" font-size="11" fill="#7B8794" font-weight="600">100</text>
+        </svg>
+        <div class="gauge-num"><span contenteditable="true">52</span><span class="gauge-suffix">/100</span></div>
+        <div class="gauge-status" contenteditable="true">Needs Work · Optimize &amp; Grow</div>
+      </div>
+      <div class="subscore-list">
+        <div class="subscore">
+          <div class="subscore-icon warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">Content Quality &amp; Accuracy</div>
+            <div class="subscore-bar"><div class="subscore-fill warn" style="width:55%"></div></div>
+          </div>
+          <div class="subscore-value warn" contenteditable="true">55%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon bad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">User Experience &amp; Navigation</div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:50%"></div></div>
+          </div>
+          <div class="subscore-value bad" contenteditable="true">50%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">AI Search Visibility (AEO)</div>
+            <div class="subscore-bar"><div class="subscore-fill warn" style="width:45%"></div></div>
+          </div>
+          <div class="subscore-value warn" contenteditable="true">45%</div>
+        </div>
+        <div class="subscore">
+          <div class="subscore-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="subscore-title" contenteditable="true">Local Search &amp; Maps</div>
+            <div class="subscore-bar"><div class="subscore-fill blue" style="width:52%"></div></div>
+          </div>
+          <div class="subscore-value blue" contenteditable="true">52%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SEARCH VISIBILITY ============== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Semrush</span>
+    <h2>Search <span class="accent">Visibility</span></h2>
+    <p class="section-intro">Where the practice stands on organic search performance today.</p>
+    <div class="dials">
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="177" data-max="600" data-color="var(--bad)" data-suffix="">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">Monthly Traffic</div>
+        <div class="note">organic visits / mo</div>
+        <span class="flag bad">Low for the footprint</span>
+      </div>
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="519" data-max="700" data-color="var(--good)" data-suffix="">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">Ranking Keywords</div>
+        <div class="note">519 — but mostly page 2+</div>
+        <span class="flag good">Strong footprint</span>
+      </div>
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="42" data-max="100" data-color="var(--warn)" data-suffix="%">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">AI Visibility</div>
+        <div class="note">cited in AI answers</div>
+        <span class="flag bad">No FAQ schema</span>
+      </div>
+    </div>
+    <p class="hint" contenteditable="true">The site already ranks for 519 keywords — a strong footprint — but most sit on page 2+ (positions 13–98), so only ~177 visits/mo land. The pages exist; they need on-page optimization, internal links &amp; schema to break onto page 1.</p>
+  </div>
+</section>
+
+<!-- ============== AUTHORITY & BACKLINKS ============== -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Semrush</span>
+    <h2>Authority &amp; <span class="accent">Backlinks</span></h2>
+    <p class="section-intro">The link profile that drives — or drags down — domain authority.</p>
+    <div class="dials">
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="903" data-max="3000" data-color="var(--warn)" data-suffix="">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">Total Backlinks</div>
+        <div class="note">from 382 domains</div>
+      </div>
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="9" data-max="100" data-color="var(--bad)" data-suffix="">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">Domain Authority</div>
+        <div class="note">Authority Score — low</div>
+        <span class="flag bad">Needs link building</span>
+      </div>
+      <div class="dial">
+        <svg viewBox="0 0 130 130" data-value="15" data-max="100" data-color="var(--warn)" data-suffix="%">
+          <circle class="track" cx="65" cy="65" r="52"/>
+          <circle class="arc" cx="65" cy="65" r="52"/>
+          <text class="val" x="65" y="72" text-anchor="middle"></text>
+        </svg>
+        <div class="name">Toxic / Spam %</div>
+        <div class="note">placeholder — confirm in Audit</div>
+      </div>
+    </div>
+    <p class="hint" contenteditable="true">Authority Score of 9 is low for a competitive Orange County market — competitors are out-linking the practice. The profile is broad (903 links / 382 domains) rather than flagrantly toxic; the fix is consistent quality link building &amp; citations. <strong>Toxic % is a placeholder — run Semrush's Backlink Audit to confirm the real figure.</strong></p>
+  </div>
+</section>
+
+<!-- ============== TOP 3 WEAKNESSES ============== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow red"><span class="dot"></span>Biggest Priorities</span>
+    <h2>Top 3 <span class="accent">Weaknesses</span></h2>
+    <p class="section-intro">The three issues doing the most damage right now — fix these first and everything else compounds faster.</p>
+
+    <div class="weak-grid">
+      <div class="weak">
+        <div class="weak-rank">01</div>
+        <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/><path d="M19 15l3 3-3 3"/></svg></div>
+        <h4 contenteditable="true">Rankings stuck on page 2+</h4>
+        <p contenteditable="true">519 keywords ranked, but almost none on page 1 — so only ~177 visits land each month. High-value pages (implants, veneers, cosmetic) sit on page 4+.</p>
+        <span class="sev" data-s="bad" contenteditable="true">Critical</span>
+      </div>
+      <div class="weak">
+        <div class="weak-rank">02</div>
+        <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h4 contenteditable="true">No FAQ schema · weak AEO</h4>
+        <p contenteditable="true">Treatment pages have some FAQs but no FAQPage schema, so they don't earn rich results or get cited in AI answers — a growing source of patient discovery.</p>
+        <span class="sev" data-s="bad" contenteditable="true">Critical</span>
+      </div>
+      <div class="weak high">
+        <div class="weak-rank">03</div>
+        <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+        <h4 contenteditable="true">Low authority in a crowded market</h4>
+        <p contenteditable="true">Authority Score of 9 trails the Orange County field — competitors carry stronger link profiles, which caps how high these pages can climb.</p>
+        <span class="sev" data-s="warn" contenteditable="true">High</span>
+      </div>
+    </div>
+
+    <div class="weak-other">
+      <span class="weak-other-label">Other issues we found</span>
+      <ul contenteditable="true">
+        <li>FAQs present but missing FAQPage schema (no AI/AEO markup)</li>
+        <li>Partial ADA compliance — finish contrast, alt text &amp; form labels</li>
+        <li>Mixed stock imagery — add real doctor, team &amp; office photos</li>
+        <li>Average usability — book/call CTAs could be stronger</li>
+        <li>High-value service pages ranking page 4+ (implants, veneers)</li>
+        <li>Underdeveloped organic channel — ~177 visits/mo despite 519 keywords</li>
+        <li>Meta titles &amp; descriptions need optimization sitewide</li>
+        <li>Thin internal linking between service pages</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============== KEYWORD GAP ============== -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Content Gap</span>
+    <h2>Keywords On Your Site You <span class="accent">Don't Rank For</span></h2>
+    <p class="section-intro">These terms already appear in your website's content, but the site isn't ranking on page 1 for them — fast wins once the pages are optimized.</p>
+    <div class="table-wrap">
+      <table class="kw">
+        <thead>
+          <tr><th>Keyword</th><th>Appears On</th><th>Monthly Searches</th><th>Current Rank</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="kw-name" contenteditable="true">oral pathology</td>
+            <td contenteditable="true">Oral Pathology page</td>
+            <td class="kw-num" contenteditable="true">5,400</td>
+            <td><span class="rk" contenteditable="true">Page 4 (#37)</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">braces orange</td>
+            <td contenteditable="true">Clear Braces page</td>
+            <td class="kw-num" contenteditable="true">720</td>
+            <td><span class="rk" contenteditable="true">Page 8 (#79)</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">orange county dentistry</td>
+            <td contenteditable="true">Homepage</td>
+            <td class="kw-num" contenteditable="true">720</td>
+            <td><span class="rk" contenteditable="true">Page 5 (#47)</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">dental implants orange county</td>
+            <td contenteditable="true">Dental Implants page</td>
+            <td class="kw-num" contenteditable="true">390</td>
+            <td><span class="rk" contenteditable="true">Page 5 (#44)</span></td>
+          </tr>
+          <tr>
+            <td class="kw-name" contenteditable="true">dentist orange ca</td>
+            <td contenteditable="true">Homepage</td>
+            <td class="kw-num" contenteditable="true">320</td>
+            <td><span class="rk warn" contenteditable="true">Page 2 (#13)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="hint" contenteditable="true">These are pages you already have — they only need stronger content, internal links &amp; schema to rank. "dentist orange ca" is already on page 2 (#13) — the closest quick win.</p>
+  </div>
+</section>
+
+<!-- ============== LOCAL COMPETITION ============== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Ranking Keywords</span>
+    <h2>You vs. <span class="accent">Local Competition</span></h2>
+    <p class="section-intro">How the practice's keyword footprint compares to nearby Orange competitors.</p>
+    <div class="bars">
+      <div class="bar-row">
+        <span class="who you" contenteditable="true">Dental Spa of Orange</span>
+        <div class="track-bar"><div class="fill-bar you" style="width:82%"></div></div>
+        <span class="num" contenteditable="true">519</span>
+      </div>
+      <div class="bar-row">
+        <span class="who" contenteditable="true">Newport Dental Orange</span>
+        <div class="track-bar"><div class="fill-bar" style="width:100%"></div></div>
+        <span class="num" contenteditable="true">636</span>
+      </div>
+      <div class="bar-row">
+        <span class="who" contenteditable="true">Orange Cosmetic Dentistry</span>
+        <div class="track-bar"><div class="fill-bar" style="width:55%"></div></div>
+        <span class="num" contenteditable="true">347</span>
+      </div>
+      <div class="bar-row">
+        <span class="who" contenteditable="true">Orange Village Dentistry</span>
+        <div class="track-bar"><div class="fill-bar" style="width:47%"></div></div>
+        <span class="num" contenteditable="true">299</span>
+      </div>
+    </div>
+    <p class="hint" contenteditable="true">Bar widths are set relative to the top competitor (Newport Dental Orange, 636 keywords). The footprint is competitive — the gap is positions, not page count. Source: Semrush organic competitors, US database.</p>
+  </div>
+</section>
+
+<!-- ============== GOOGLE MAPS ============== -->
+<section>
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
+    <h2>Google Maps <span class="accent">Visibility</span></h2>
+    <p class="section-intro">Where the practice shows up in the map pack across the local grid.</p>
+    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword scanned: <span contenteditable="true">dentist orange</span></div>
+    <div class="map-wrap">
+      <div class="grid" id="mapgrid"></div>
+      <div class="map-legend">
+        <div><span class="dot" style="background:var(--good)"></span> Top 3 in the map pack</div>
+        <div><span class="dot" style="background:var(--warn)"></span> Page 1 (4–10)</div>
+        <div><span class="dot" style="background:var(--bad)"></span> Not ranking (11+)</div>
+        <p style="margin-top:14px">Average map rank <b contenteditable="true" class="edit">8.4</b> &nbsp;·&nbsp; Visible in <b contenteditable="true" class="edit">36%</b> of the grid</p>
+        <p style="margin-top:10px;font-size:13px;color:var(--ink-mute);font-style:italic">Placeholder grid — run a live Local Falcon scan for "dentist orange" and drop the real cell ranks, average and % visible in here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TRAFFIC SOURCES ============== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Semrush</span>
+    <h2>Where Traffic <span class="accent">Comes From</span></h2>
+    <p class="section-intro">The current channel mix — and the biggest untapped growth lever.</p>
+    <div class="stack">
+      <span style="width:34%;background:var(--black)">Direct 34%</span>
+      <span style="width:26%;background:var(--blue)">GBP 26%</span>
+      <span style="width:22%;background:#5aa0ff">Organic 22%</span>
+      <span style="width:12%;background:#9ec7ff;color:var(--ink)">Referral 12%</span>
+      <span style="width:6%;background:var(--ink-mute)">Paid 6%</span>
+    </div>
+    <p class="hint" contenteditable="true">Channel mix is an illustrative placeholder — connect GA4 (Windsor) to drop in the real Direct / GBP / Organic / Referral / Paid split. Either way, with 519 keywords ranked but only ~177 organic visits, organic search is the biggest untapped growth lever.</p>
+  </div>
+</section>
+
+<!-- ============== GAME PLAN · HOW DENTIST NERDS FIXES THIS ============== -->
+<section class="dark">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Our Game Plan</span>
+    <h2>How Dentist Nerds <span class="accent">Fixes This</span></h2>
+    <p class="section-intro">We don't believe in flashy launches that flame out. The plan starts with a strong foundation, then layers ongoing engines on top — each one compounding the last.</p>
+
+    <!-- STEP 1 · The Featured Foundation -->
+    <div class="step-one-feature">
+      <div class="s1-grid">
+        <div class="s1-number-block">
+          <span class="s1-badge">⚡ Start Here</span>
+          <div class="s1-number">01</div>
+          <div class="s1-step-label">The Foundation</div>
+          <div class="s1-step-title" contenteditable="true">Optimize the foundation so existing rankings can climb.</div>
+        </div>
+
+        <div class="s1-content">
+          <h4>What we'd do in Step 1</h4>
+          <p contenteditable="true">The site already has a real content footprint — 519 ranking keywords across dozens of service pages. The problem isn't a missing website; it's that almost everything sits on page 2+. Step 1 strengthens the technical, accessibility and on-page foundation so those pages can finally break onto page 1.</p>
+
+          <ul class="s1-todo" contenteditable="true">
+            <li><strong>On-page optimization of the page-2 pages.</strong> Rework titles, headings, content depth and internal links on the service pages already ranking #11–50 so they climb to page 1.</li>
+            <li><strong>Add FAQ schema to every treatment page</strong> — the FAQs are partly there; they need FAQPage markup so Google and AI engines can use them.</li>
+            <li><strong>Finish ADA accessibility.</strong> Close the remaining contrast, alt-text and labeled-form gaps our review flagged.</li>
+            <li><strong>Strengthen internal linking</strong> between related service pages so authority flows to the pages that matter.</li>
+            <li><strong>Schema markup sitewide</strong> — Dentist, Physician, FAQPage, MedicalProcedure, AggregateRating.</li>
+            <li><strong>Rewrite meta titles &amp; descriptions</strong> across the service pages to lift click-through from search.</li>
+          </ul>
+
+          <div class="s1-closing">
+            <p><strong>Why this matters:</strong> a strong foundation is what every other channel — reviews, backlinks, content, AI search — needs to actually compound. With 519 keywords already in play, optimization should pay back faster here than a from-scratch build would.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="engines-header">
+      <span>What runs alongside &amp; after — the ongoing engines</span>
+    </div>
+
+    <!-- THE ENGINES -->
+    <div class="engines-grid">
+      <div class="engine-card">
+        <div class="engine-num">02</div>
+        <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+        <h4>Authority &amp; Backlinks</h4>
+        <p>Audit the profile, then <strong>build quality backlinks, citations &amp; brand mentions</strong> across high-authority dental and local publications to lift an Authority Score that's currently sitting at 9.</p>
+        <div class="engine-target"><strong>Target</strong>Domain Authority climbing month over month</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">03</div>
+        <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <h4>Content Engine</h4>
+        <p>4 strategic blogs per month written for <strong>AI search and traditional SEO</strong> — plus optimizing the existing service pages to push the page-2 keywords onto page 1.</p>
+        <div class="engine-target"><strong>Target</strong>Page-2 keywords climbing onto page 1</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">04</div>
+        <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h4>Google Business Management</h4>
+        <p>Hands-on GBP management: <strong>weekly posts, review responses, Q&amp;A, photos</strong>, tracked with Local Falcon to dominate the Orange map pack.</p>
+        <div class="engine-target"><strong>Target</strong>Top-3 Map Pack for core keywords</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">05</div>
+        <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h4>Tracking &amp; Reporting</h4>
+        <p>Semrush, Local Falcon, GA4 &amp; Search Console together — <strong>monthly reports</strong> show what's working and what to iterate next.</p>
+        <div class="engine-target"><strong>Target</strong>Monthly reporting · always know where you stand</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">06</div>
+        <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <h4>Foundation Upkeep</h4>
+        <p>Ongoing technical SEO, schema, accessibility and Core Web Vitals maintenance so the site <strong>stays fast, compliant and fully indexed</strong>.</p>
+        <div class="engine-target"><strong>Target</strong>Healthy technical baseline, every month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="end-cta">
+  <div class="wrap">
+    <img class="nerds-logo-img" src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
+    <p>Smart dental marketing that turns your website into a ranking, AI-visible asset — and compounds authority every month.</p>
+    <div class="end-meta">Prepared by Dentist Nerds · dentistnerds.com · Confidential growth report</div>
+  </div>
+</footer>
+
+<script>
+  // ---- Status pills cycle ----
+  const ORDER=["good","warn","bad"];
+  const LABELS={good:"Good",warn:"Needs work",bad:"Failing"};
+  document.querySelectorAll(".pill").forEach(p=>{
+    p.addEventListener("click",()=>{
+      const next=ORDER[(ORDER.indexOf(p.dataset.s)+1)%3];
+      p.dataset.s=next;
+      if(Object.values(LABELS).includes(p.textContent.trim()))p.textContent=LABELS[next];
+    });
+  });
+
+  // ---- Dials ----
+  const R=52, C=2*Math.PI*R;
+  function paint(svg){
+    const v=parseFloat(svg.dataset.value)||0;
+    const max=parseFloat(svg.dataset.max)||100;
+    const pct=Math.max(0,Math.min(1,v/max));
+    const arc=svg.querySelector(".arc");
+    arc.style.stroke=svg.dataset.color;
+    arc.setAttribute("stroke-dasharray",C);
+    arc.setAttribute("stroke-dashoffset",C*(1-pct));
+    arc.setAttribute("transform","rotate(-90 65 65)");
+    const t=svg.querySelector(".val");
+    const num = v>=1000 ? (v/1000).toFixed(1).replace(/\.0$/,"")+"k" : v;
+    t.textContent=num+(svg.dataset.suffix||"");
+  }
+  document.querySelectorAll(".dial svg").forEach(svg=>{
+    paint(svg);
+    const t=svg.querySelector(".val");
+    t.setAttribute("contenteditable","true");
+    t.style.cursor="text";
+    t.addEventListener("blur",()=>{
+      let raw=t.textContent.replace(/[^0-9.k]/gi,"");
+      let n=parseFloat(raw)||0;
+      if(/k/i.test(raw))n*=1000;
+      svg.dataset.value=n;
+      if(n>svg.dataset.max)svg.dataset.max=n;
+      paint(svg);
+    });
+  });
+
+  // ---- Local Falcon grid (5x5) ----
+  const seed=["good","warn","warn","bad","bad",
+              "warn","good","warn","bad","bad",
+              "warn","warn","good","warn","bad",
+              "bad","warn","warn","warn","bad",
+              "bad","bad","warn","bad","bad"];
+  const ranks=["2","5","7","12","15",
+               "4","1","6","18","20",
+               "8","9","3","10","22",
+               "14","7","8","11","19",
+               "16","21","9","17","25"];
+  const g=document.getElementById("mapgrid");
+  seed.forEach((s,i)=>{
+    const c=document.createElement("div");
+    c.className="cell";c.dataset.s=s;c.textContent=ranks[i];
+    c.setAttribute("contenteditable","true");
+    c.addEventListener("click",e=>{
+      if(e.detail>0 && !window.getSelection().toString()){
+        c.dataset.s=ORDER[(ORDER.indexOf(c.dataset.s)+1)%3];
+      }
+    });
+    g.appendChild(c);
+  });
+</script>
+</body>
+</html>
