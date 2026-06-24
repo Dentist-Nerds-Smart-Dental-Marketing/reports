@@ -43,11 +43,11 @@ Now run the connected MCP servers. **Always call the tools — never invent numb
 
 Pull for the client's domain:
 
-- **Search Visibility** (Semrush organic/overview): organic monthly traffic, total ranking keywords.
-- **Authority & Backlinks** (Semrush backlinks): total backlinks, Authority/Domain score, toxic/spam %.
-- **Keyword gap** (Semrush): keywords the site has pages for but ranks poorly (page 2+ or unranked). Capture keyword, the page it lives on, monthly search volume, current rank. Pick the 5 highest-volume.
-- **Local competition** (Semrush): 3 nearby competitors and each one's ranking-keyword count, for the comparison bars.
-- **Local Keyword Rankings** (Semrush `domain_organic` with `display_filter` `+|Ph|Co|<city>`): the client's Google organic position for the core local terms — dentist in [city], dentist near me, dental implants in [city], emergency dentist in [city], dental veneers in [city], dental cleaning in [city], invisalign in [city], all-on-4 in [city], root canal in [city]. Use the best (lowest) position found per term; if a term isn't in the domain's organic results, mark it "Not on page 1". This is the real Semrush web ranking (the map-pack rank comes from Local Falcon).
+- **Search Visibility** (Semrush `domain_rank` overview): organic monthly traffic, total ranking keywords. (AI Visibility dial is an estimate informed by the Step 1 AEO answer.)
+- **Authority & Backlinks** (Semrush `backlink_research`): total backlinks, Authority/Domain score, toxic/spam %.
+- **Local Keyword Rankings** (Semrush `domain_organic` with `display_filter` = `+|Ph|Co|<city>`, `display_sort` = `po_asc`): the client's Google organic position for the core local terms — **dentist in [city], dentist near me, dental implants in [city], emergency dentist in [city], dental veneers in [city], dental cleaning in [city], invisalign in [city], all-on-4 in [city], root canal in [city]**. Take the best (lowest) position found per term; if a term isn't in the domain's organic results, mark it **"Not on page 1"**. (For "dentist near me", note it's a geo term best confirmed by the Local Falcon scan.)
+- **Keyword gap** (Semrush `domain_organic`, page 2+ / poorly-ranked): keywords the site has pages for but ranks poorly. Capture keyword, the page it lives on, monthly search volume, current rank. Pick the 5 highest-volume.
+- **Local competition** (Semrush `domain_organic_organic` or per-competitor `domain_rank`): 3 nearby competitors and each one's ranking-keyword count, for the comparison bars.
 - **Google Maps** (Local Falcon): run/read a grid scan for the chosen keyword; capture each cell's rank, the average rank, and % of grid where the practice is visible.
 
 If a metric can't be retrieved, leave the template placeholder and tell the user which fields need manual entry — don't fabricate.
@@ -57,7 +57,8 @@ If a metric can't be retrieved, leave the template placeholder and tell the user
 - **Ranking keywords below 80** → flag the Ranking Keywords dial as low and call out that **there isn't enough content / no keyword strategy** (a top weakness, and a driver for the Content Engine).
 - **Many backlinks but low Domain Authority** → call out that the profile is **probably spammy / toxic backlinks dragging authority down**; recommend a disavow + cleanup (make it a Top 3 Weakness when the gap is severe).
 - Reflect these in both the dial flags/notes and the Top 3 Weaknesses.
-- **Google Maps grid & Organic Traffic must be REAL — never placeholder.** The 5×5 map grid must come from an actual Local Falcon scan (run it from a session where Local Falcon is connected — it is NOT available in headless/cloud runs). The Organic Search Traffic stats must come from Semrush per client. **Never reuse the template's default grid or default numbers** — that ships identical, fake data across every client. If Local Falcon isn't available in the session, set the Maps section to a clear "Pending — from your latest Local Falcon scan" state and tell the user, rather than filling placeholders.
+- **The Google Maps grid must be REAL — never placeholder.** It must come from an actual Local Falcon scan (run this from a session where Local Falcon is connected — it is NOT available in headless/cloud runs). **Never reuse the template's default `seed`/`ranks` arrays** — that ships an identical, fake grid across every client. If Local Falcon isn't available, set the Maps section to a clear "Pending — from your latest Local Falcon scan" state and tell the user, rather than filling placeholders.
+- Local Keyword Rankings come from real Semrush positions (US desktop). Footnote the source + month.
 
 ---
 
@@ -65,19 +66,19 @@ If a metric can't be retrieved, leave the template placeholder and tell the user
 
 1. Read `reports/report-example/index.html` — the **canonical template**. Do NOT edit the template itself.
 2. Copy it to `reports/<client-slug>/index.html` (create the folder).
-3. Fill in the real values:
-   - **Hero**: practice name, website, market, report date (today), and the meta-grid blocks.
-   - **Health Score**: overall score + the 4 pillar percentages — derived from the **Step 1 review**.
+3. Fill in the real values, section by section (this is the exact section order in the template):
+   - **Hero**: practice name, website (`Audited: <domain>`), market, report date (today), and the 4 meta-grid blocks (Prepared For, Report Date, Issues Found, Recommendation).
+   - **Health Score**: the gauge number + status, and the 4 pillar percentages (Content Quality & Accuracy, User Experience & Navigation, AI Search Visibility / AEO, Local Search & Maps) — derived from the **Step 1 review**.
    - **Search Visibility** dials: Monthly Traffic, Ranking Keywords, AI Visibility — set each `data-value`/`data-max` and the flag.
    - **Authority & Backlinks** dials: Total Backlinks, Domain Authority, Toxic %.
-   - **Top 3 Weaknesses** + the "other issues" list — written from the **Step 1 findings** and the interpretation rules.
-   - **Keyword gap** table — the 5 keywords with page, volume, rank (use `rk` red / `rk warn` amber).
+   - **Top 3 Weaknesses** + the "other issues we found" list — written from the **Step 1 findings** and the interpretation rules.
+   - **Local Keyword Rankings** table: each core local keyword + its real Google organic rank, color-coded (`rk good` = 1–3, `rk warn` = 4–10, `rk` = 11+ / "Not on page 1").
+   - **Keyword gap** table — the 5 keywords with page, volume, rank (`rk` red / `rk warn` amber).
    - **Local Competition** bars — set each `width:%` relative to the top competitor and the numbers.
-   - **Google Maps**: the "Keyword scanned" chip, the 5×5 grid `seed`/`ranks` arrays in the script, average rank, % visible.
-   - **Local Keyword Rankings** table: each core local keyword + its real Google organic rank, color-coded (good `rk good` = 1–3, amber `rk warn` = 4–10, red `rk` = 11+ or "Not on page 1").
-   - Tailor the **Game Plan** copy (Step 01 + engines) to the client where relevant.
-4. Keep all branding, fonts, and interactive JS intact.
-5. **Reports are final deliverables — keep them non-editable.** The template has no `contenteditable` anywhere; never add it. Just replace the placeholder values directly in the HTML.
+   - **Google Maps**: the "Keyword scanned" chip, the 5×5 `seed`/`ranks` arrays in the script (real Local Falcon data), average rank, % visible.
+   - **Game Plan**: tailor the Step 01 "Rebuild" copy + the ongoing engines (02–06) to the client where relevant.
+4. Keep all branding, fonts, the Local-Falcon-style map, and interactive JS intact.
+5. **Reports are final, non-editable deliverables.** The template has NO `contenteditable` anywhere — never add it. Replace the placeholder values directly in the HTML.
 
 ## Step 4 — Drop it on the hub page
 
@@ -95,5 +96,5 @@ Add the finished report to the **hub / listing page** — `reports/index.html`, 
 
 ## Notes
 
-- The report is fully click-to-edit, so leave anything uncertain as a sensible placeholder and flag it for the user to finalize.
-- The template lives at `reports/report-example/` — keep it as the master copy and always generate fresh client reports from it.
+- The template lives at `reports/report-example/` — it's the master copy. Always generate fresh client reports from it, and keep it non-editable.
+- Anything you genuinely can't source, leave as a clearly-labeled "pending" state and tell the user — never ship fabricated or identical placeholder data across clients.
