@@ -609,7 +609,7 @@
     <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
     <h2>Google Maps <span class="accent">Visibility</span></h2>
     <p class="section-intro">Where the practice shows up in the map pack across the local grid.</p>
-    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword scanned: <span>dentist Anaheim</span></div>
+    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword scanned: <span>dentist in anaheim hills</span></div>
     <div class="map-wrap">
       <div class="lf-map">
         <div class="lf-bg">
@@ -627,7 +627,8 @@
         <div><span class="dot" style="background:var(--good)"></span> Top 3 in the map pack</div>
         <div><span class="dot" style="background:var(--warn)"></span> Page 1 (4–10)</div>
         <div><span class="dot" style="background:var(--bad)"></span> Not ranking (11+)</div>
-        <p style="margin-top:14px">Average map rank <b class="edit">9.5</b> &nbsp;·&nbsp; Visible in <b class="edit">40%</b> of the grid</p>
+        <p style="margin-top:14px">Average map rank <b>3.1</b> &nbsp;·&nbsp; Visible in <b>100%</b> of the grid</p>
+        <p class="hint" style="margin-top:8px">Local Falcon · "dentist in anaheim hills" · 5×5 grid, 2.5 mi (June 2026).</p>
         <p style="margin-top:8px;font-size:13px;color:var(--ink-mute);font-style:italic">Illustrative grid — run a live Local Falcon scan to finalize the cell ranks, average &amp; coverage.</p>
       </div>
     </div>
@@ -775,16 +776,8 @@
   });
 
   // ---- Local Falcon grid (5x5) ----
-  const seed=["good","warn","warn","bad","bad",
-              "warn","good","warn","bad","bad",
-              "warn","warn","good","warn","bad",
-              "bad","warn","warn","warn","bad",
-              "bad","bad","warn","bad","bad"];
-  const ranks=["2","5","7","12","15",
-               "4","1","6","18","20",
-               "8","9","3","10","22",
-               "14","7","8","11","19",
-               "16","21","9","17","25"];
+  const seed=["good","good","good","good","good","warn","good","good","good","warn","warn","good","good","good","good","warn","good","good","good","good","warn","good","good","good","good"];
+  const ranks=["3","3","3","3","3","4","3","3","3","4","4","3","1","3","3","4","3","3","3","3","4","3","3","3","3"];
   const g=document.getElementById("mapgrid");
   seed.forEach((s,i)=>{
     const c=document.createElement("div");
