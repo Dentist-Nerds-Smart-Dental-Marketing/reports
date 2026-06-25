@@ -390,9 +390,9 @@
           <div class="subscore-icon bad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
             <div class="subscore-title">Local Search &amp; Maps</div>
-            <div class="subscore-bar"><div class="subscore-fill" style="width:22%"></div></div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:8%"></div></div>
           </div>
-          <div class="subscore-value bad">22%</div>
+          <div class="subscore-value bad">8%</div>
         </div>
       </div>
     </div>
@@ -642,8 +642,8 @@
         <div><span class="dot" style="background:var(--good)"></span> Top 3 in the map pack</div>
         <div><span class="dot" style="background:var(--warn)"></span> Page 1 (4–10)</div>
         <div><span class="dot" style="background:var(--bad)"></span> Not ranking (11+)</div>
-        <p style="margin-top:14px">Average map rank <b>—</b> &nbsp;·&nbsp; Visible in <b>—</b> of the grid</p>
-        <p class="hint" style="margin-top:8px">Sample grid shown — live Local Falcon scan for “dentist in san diego” pending.</p>
+        <p style="margin-top:14px">Average map rank <b>20.2</b> &nbsp;·&nbsp; Visible in <b>4%</b> of the grid</p>
+        <p class="hint" style="margin-top:8px">Local Falcon · "dentist in san diego" · 5×5 grid, 2.5 mi (June 2026). Ranks #1 at the office but isn't found across the rest of the grid.</p>
       </div>
     </div>
   </div>
@@ -773,16 +773,16 @@
   });
 
   // ---- Local Falcon grid (5x5) ----
-  const seed=["good","warn","warn","bad","bad",
-              "warn","good","warn","bad","bad",
-              "warn","warn","good","warn","bad",
-              "bad","warn","warn","warn","bad",
-              "bad","bad","warn","bad","bad"];
-  const ranks=["2","5","7","12","15",
-               "4","1","6","18","20",
-               "8","9","3","10","22",
-               "14","7","8","11","19",
-               "16","21","9","17","25"];
+  const seed=["bad","bad","bad","bad","bad",
+              "bad","bad","bad","bad","bad",
+              "bad","bad","good","bad","bad",
+              "bad","bad","bad","bad","bad",
+              "bad","bad","bad","bad","bad"];
+  const ranks=["20+","20+","20+","20+","20+",
+               "20+","20+","20+","20+","20+",
+               "20+","20+","1","20+","20+",
+               "20+","20+","20+","20+","20+",
+               "20+","20+","20+","20+","20+"];
   const g=document.getElementById("mapgrid");
   if(g) seed.forEach((s,i)=>{
     const c=document.createElement("div");
