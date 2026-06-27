@@ -112,12 +112,28 @@ inventing numbers.
 
 ---
 
-## Step 4 — Update the client's index + the hub
+## Step 4 — Add the month card to the client's folder index
 
-1. Point `clients/<slug>/index.html` at the new month (it's the "latest" pointer — copy the new
-   file's contents over it, or update its redirect, matching how that folder already works).
-2. Add/refresh the client's card on the clients hub `clients/index.html` so the latest month is
-   linked. (Don't hand-edit unrelated auto-generated listing markup — just the one card.)
+Each client has their **own folder** with a landing page (`clients/<slug>/index.html`) that
+**lists every month as a card** (newest first) — e.g. https://reports.dentistnerds.com/clients/smile-tustin/.
+The dated report file lives **in that same folder**, and you add a new card linking to it.
+
+1. The report file is already at `clients/<slug>/<month>-<year>.html` (from Step 3).
+2. Open `clients/<slug>/index.html` and **prepend** a new card to the top of `<div class="grid">`
+   (newest month first), using the existing card markup in that file. Pattern:
+
+   ```html
+   <a target="_blank" href="<month>-<year>.html" class="card">
+     <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4"/><path d="M16 4v4"/></svg></div>
+     <div><div class="card-name"><Month Year></div><div class="card-tag">Monthly Report</div></div>
+   </a>
+   ```
+
+   (e.g. `href="june-2026.html"` and `card-name` = `June 2026`.) Don't touch the other cards or
+   the rest of the page.
+
+3. The clients hub `clients/index.html` lists clients (not individual months) — only edit it if
+   this client has no card there yet.
 
 ---
 
