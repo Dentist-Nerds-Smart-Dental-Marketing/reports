@@ -28,7 +28,9 @@ for**, then collect the month's work so you can paste it straight into the repor
    and the **report month** (e.g. "May 2026").
 2. **Blogs** — paste the blog post **titles + links** completed this month.
 3. **Treatment pages** — paste the **links** to any treatment/service pages added this month.
-4. **Backlinks** — list the backlinks built this month (and the tracking-sheet link, if any).
+4. **Backlinks** — ask the user to **paste the client's backlink sheet** (the live tracking
+   spreadsheet — paste its link and/or the rows). Use it to count the backlinks built this month
+   and to set the "View Backlinks Sheet" button link in the report.
 5. **Technical updates** — paste any technical SEO work done this month.
 6. (If not obvious) the **Semrush project** name and the **GA4 property / Google Business Profile**
    so Windsor pulls hit the right account.
