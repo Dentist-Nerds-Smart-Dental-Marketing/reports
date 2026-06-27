@@ -18,18 +18,25 @@ and how you're doing this month" report — **different from** the one-time SEO 
 
 ---
 
-## Step 1 — Get the client basics
+## Step 1 — Intake (ALWAYS ask first)
 
-Ask the user (one short prompt) for:
-1. **Client name** + **city, ST** + **website**
-2. **Report month** (e.g. "May 2026")
-3. The **Semrush project** name (for position tracking) and the **Google Business Profile /
-   GA4 property** if not obvious — needed for Windsor pulls.
-4. The month's **work done**: blogs (titles + URLs), backlinks added (#), treatment pages added
-   (titles + URLs), technical SEO summary, and the backlinks tracking-sheet link.
+Before pulling any data, ask the user this intake. **Start by asking which client the report is
+for**, then collect the month's work so you can paste it straight into the report:
 
-Confirm the client already has a folder under `clients/<slug>/`. The slug must match exactly
-(case-sensitive) — see the active-clients list in `CLAUDE.md`. If there's no folder, ask before
+1. **Which client is this for?** (client name — map it to the exact `clients/<slug>/` folder,
+   case-sensitive, from the active-clients list in `CLAUDE.md`) + confirm **city, ST**, **website**,
+   and the **report month** (e.g. "May 2026").
+2. **Blogs** — paste the blog post **titles + links** completed this month.
+3. **Treatment pages** — paste the **links** to any treatment/service pages added this month.
+4. **Backlinks** — list the backlinks built this month (and the tracking-sheet link, if any).
+5. **Technical updates** — paste any technical SEO work done this month.
+6. (If not obvious) the **Semrush project** name and the **GA4 property / Google Business Profile**
+   so Windsor pulls hit the right account.
+
+Whatever the user pastes is what goes into the **"What We've Done This Month"** cards verbatim
+(titles linked to the URLs they gave). Drop any card with nothing to report this month.
+
+Confirm the client already has a folder under `clients/<slug>/`. If there's no folder, ask before
 creating one.
 
 ---
@@ -112,7 +119,10 @@ inventing numbers.
 
 ---
 
-## Step 5 — Publish
+## Step 5 — Publish (the report MUST go live)
+
+The report is not done until it's **live on the site under the correct client**. Push to `main`
+(GitHub Pages serves `main`):
 
 ```
 git add -A
@@ -121,8 +131,10 @@ git commit -m "Add <Month Year> monthly report — <Client Name>"
 git push -u origin main
 ```
 
-Then give the user the live link:
-`https://reports.dentistnerds.com/clients/<slug>/<month>-<year>.html`
+After pushing, confirm both URLs resolve to the new month and give them to the user:
+- Report: `https://reports.dentistnerds.com/clients/<slug>/<month>-<year>.html`
+- Latest:  `https://reports.dentistnerds.com/clients/<slug>/`
+- Hub:     `https://reports.dentistnerds.com/clients/` (the client's card links the new report)
 
 ---
 
