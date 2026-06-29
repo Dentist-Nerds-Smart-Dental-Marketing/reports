@@ -106,11 +106,10 @@
     table { border-collapse: collapse; width: 100%; min-width: 480px; }
     th { text-align: left; font-family: var(--body); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #8a96a6; font-weight: 600; padding: 13px 18px; background: var(--light-grey); }
     th.r, td.r { text-align: right; }
-    td { padding: 13px 18px; font-size: 0.95rem; border-top: 1px solid var(--border); color: var(--grey); }
-    td.pos { font-family: var(--display); font-weight: 700; color: var(--green); font-size: 1.15rem; font-variant-numeric: tabular-nums; }
-    .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 11px; border-radius: 999px; white-space: nowrap; }
-    .tag.up { color: #1f7a30; background: rgba(51,178,73,0.15); }
-    .tag.stable { color: #6b7785; background: #eef1f4; }
+    td { padding: 14px 20px; font-size: 1rem; border-top: 1px solid var(--border); color: var(--grey); font-variant-numeric: tabular-nums; }
+    td.grow { font-family: var(--display); font-weight: 700; color: var(--green); font-size: 1.3rem; }
+    tr.total td { border-top: 2px solid var(--dark-blue); font-weight: 700; color: var(--dark-blue); }
+    tr.total td.grow { color: var(--green); }
 
     /* ---------- Results (green panel + navy stat cards) ---------- */
     .results { background: var(--green); color: #fff; }
@@ -264,19 +263,17 @@
           <div class="kw-wrap">
             <table>
               <thead>
-                <tr><th>Search Phrase</th><th class="r">Position</th><th class="r">Monthly Searches</th><th>Trend</th></tr>
+                <tr><th>Google Ranking Position</th><th class="r">Nov 2025</th><th class="r">May 2026</th></tr>
               </thead>
               <tbody>
-                <tr><td>dental care garden grove</td><td class="pos r">#3</td><td class="r">30</td><td><span class="tag stable">Stable</span></td></tr>
-                <tr><td>dentist in garden grove</td><td class="pos r">#4</td><td class="r">210</td><td><span class="tag stable">Stable</span></td></tr>
-                <tr><td>emergency dentist in garden grove <span style="color:#9aa6b2">(map)</span></td><td class="pos r">#4</td><td class="r">40</td><td><span class="tag stable">Stable</span></td></tr>
-                <tr><td>dentists garden grove</td><td class="pos r">#5</td><td class="r">90</td><td><span class="tag stable">Stable</span></td></tr>
-                <tr><td>invisalign in garden grove</td><td class="pos r">↑</td><td class="r">—</td><td><span class="tag up">Climbing +15</span></td></tr>
-                <tr><td>veneers garden grove</td><td class="pos r">↑</td><td class="r">—</td><td><span class="tag up">Climbing +13</span></td></tr>
+                <tr><td>Top 3</td><td class="r">2</td><td class="r grow">5</td></tr>
+                <tr><td>Positions 4–10</td><td class="r">6</td><td class="r grow">16</td></tr>
+                <tr><td>Positions 11–20</td><td class="r">16</td><td class="r grow">19</td></tr>
+                <tr class="total"><td>Total — Top 20</td><td class="r">24</td><td class="r grow">40</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="step-takeaway">The practice more than doubled the number of keywords it ranks for — from 65 to 146.</p>
+          <p class="step-takeaway">Keywords in Google's top 20 grew from 24 to 40 — and top-3 placements more than doubled.</p>
         </div>
       </div>
 
