@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study — Westgrove Dental Care | Dentist Nerds</title>
+  <meta name="description" content="How Dentist Nerds grew Westgrove Dental Care with Meta Ads and SEO — 99,889 ad impressions, 42,492 people reached, and a climb from 65 to 146 ranking keywords." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #0a1628; --bg-soft: #142a47; --bg-card: #0f2038;
+      --accent-green: #00d084; --accent-green-soft: rgba(0,208,132,0.13);
+      --accent-blue: #4aa3ff; --accent-blue-soft: rgba(74,163,255,0.13);
+      --text-primary: #ffffff; --text-secondary: #a9b9cf; --text-muted: #6d7f99;
+      --border-soft: rgba(255,255,255,0.08);
+      --display: "Sora", "Segoe UI", system-ui, sans-serif;
+      --body: "DM Sans", system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100%; background: var(--bg-deep); color: var(--text-primary);
+      font-family: var(--body); font-size: 16px; line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ""; position: fixed; top: -20%; right: -10%; width: 60vw; height: 60vw;
+      background: radial-gradient(circle at center, rgba(0,208,132,0.10) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ""; position: fixed; bottom: -10%; left: -12%; width: 52vw; height: 52vw;
+      background: radial-gradient(circle at center, rgba(74,163,255,0.09) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .page { position: relative; z-index: 1; }
+
+    /* Header */
+    .site-header {
+      padding: 22px 40px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border-soft); position: sticky; top: 0;
+      background: rgba(10,22,40,0.82); backdrop-filter: blur(10px); z-index: 50;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo img { height: 34px; width: auto; display: block; }
+    .header-cta {
+      color: var(--bg-deep); background: var(--accent-green); text-decoration: none;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 11px 22px; border-radius: 999px; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .header-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,208,132,0.3); }
+
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 40px; width: 100%; }
+
+    /* Hero */
+    .hero { padding: 56px 0 36px; }
+    .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 26px; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent-green); }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-green);
+      margin-bottom: 18px;
+    }
+    .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--accent-green); }
+    h1 {
+      font-family: var(--display); font-weight: 800; letter-spacing: -0.025em;
+      font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.08; text-wrap: balance;
+      margin-bottom: 22px;
+    }
+    h1 .grad {
+      background: linear-gradient(110deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .lede { font-size: 1.12rem; color: var(--text-secondary); max-width: 60ch; }
+    .meta-row {
+      display: flex; flex-wrap: wrap; gap: 0 36px; margin-top: 32px;
+      padding-top: 26px; border-top: 1px solid var(--border-soft);
+    }
+    .meta-item { padding: 6px 0; }
+    .meta-item .k { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+    .meta-item .v { font-size: 0.96rem; font-weight: 600; margin-top: 3px; }
+    .meta-item .v a { color: var(--accent-blue); text-decoration: none; }
+
+    /* Headline stat band */
+    .statband {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: var(--border-soft); border: 1px solid var(--border-soft);
+      border-radius: 18px; overflow: hidden; margin: 44px 0 8px;
+    }
+    .statband .cell { background: var(--bg-card); padding: 26px 22px; }
+    .statband .num {
+      font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 4vw, 2.3rem);
+      letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums;
+    }
+    .statband .num.green { color: var(--accent-green); }
+    .statband .num.blue { color: var(--accent-blue); }
+    .statband .lbl { font-size: 0.82rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.4; }
+
+    /* Sections */
+    section { padding: 54px 0; }
+    .sec-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 14px;
+    }
+    .sec-eyebrow.blue { color: var(--accent-blue); }
+    .sec-eyebrow.green { color: var(--accent-green); }
+    h2 {
+      font-family: var(--display); font-weight: 700; letter-spacing: -0.02em;
+      font-size: clamp(1.5rem, 3.4vw, 2.1rem); line-height: 1.15; text-wrap: balance;
+      margin-bottom: 18px;
+    }
+    .prose p { color: var(--text-secondary); margin-bottom: 16px; max-width: 65ch; }
+    .prose p strong { color: var(--text-primary); font-weight: 600; }
+    .divider { height: 1px; background: var(--border-soft); border: none; }
+
+    /* Process steps */
+    .steps { display: grid; gap: 16px; margin-top: 30px; }
+    .step {
+      display: grid; grid-template-columns: 54px 1fr; gap: 20px; align-items: start;
+      background: linear-gradient(180deg, rgba(20,42,71,0.55) 0%, rgba(15,32,56,0.35) 100%);
+      border: 1px solid var(--border-soft); border-radius: 16px; padding: 24px 26px;
+      transition: border-color 0.22s ease, transform 0.22s ease;
+    }
+    .step:hover { border-color: rgba(0,208,132,0.4); transform: translateY(-2px); }
+    .step .idx {
+      font-family: var(--display); font-weight: 800; font-size: 1.5rem;
+      color: var(--accent-green); line-height: 1;
+      width: 54px; height: 54px; border-radius: 13px; background: var(--accent-green-soft);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step h3 { font-family: var(--display); font-size: 1.08rem; font-weight: 700; margin-bottom: 6px; }
+    .step p { color: var(--text-secondary); font-size: 0.95rem; margin: 0; }
+
+    /* Result cards */
+    .result-block {
+      border: 1px solid var(--border-soft); border-radius: 20px; padding: 32px;
+      margin-top: 26px; background: linear-gradient(180deg, rgba(15,32,56,0.6) 0%, rgba(10,22,40,0.4) 100%);
+    }
+    .result-block.meta { border-top: 3px solid var(--accent-blue); }
+    .result-block.seo { border-top: 3px solid var(--accent-green); }
+    .rb-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+    .rb-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 5px 11px; border-radius: 999px;
+    }
+    .rb-tag.blue { color: var(--accent-blue); background: var(--accent-blue-soft); }
+    .rb-tag.green { color: var(--accent-green); background: var(--accent-green-soft); }
+    .rb-period { font-size: 0.82rem; color: var(--text-muted); }
+    .rb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+    .rb-stat { padding: 16px 0; }
+    .rb-stat .n {
+      font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 3.5vw, 2rem);
+      letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+    }
+    .rb-stat .n.blue { color: var(--accent-blue); }
+    .rb-stat .n.green { color: var(--accent-green); }
+    .rb-stat .s { font-size: 0.8rem; color: var(--text-secondary); margin-top: 7px; line-height: 1.4; }
+    .rb-note { font-size: 0.9rem; color: var(--text-secondary); margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-soft); }
+    .rb-note strong { color: var(--text-primary); }
+
+    /* Keyword table */
+    .table-scroll { overflow-x: auto; margin-top: 22px; border-radius: 14px; border: 1px solid var(--border-soft); }
+    table { border-collapse: collapse; width: 100%; min-width: 460px; }
+    thead th {
+      text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 600; padding: 13px 18px; background: var(--bg-card);
+    }
+    thead th.r, tbody td.r { text-align: right; }
+    tbody td { padding: 13px 18px; font-size: 0.92rem; border-top: 1px solid var(--border-soft); }
+    tbody td.pos { font-family: var(--display); font-weight: 700; color: var(--accent-green); font-variant-numeric: tabular-nums; }
+    tbody td.r { font-variant-numeric: tabular-nums; color: var(--text-secondary); }
+    .pill { font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+    .pill.up { color: var(--accent-green); background: var(--accent-green-soft); }
+    .pill.stable { color: var(--text-secondary); background: rgba(255,255,255,0.06); }
+
+    /* Quote */
+    .quote {
+      border-left: 3px solid var(--accent-green); padding: 6px 0 6px 28px; margin: 8px 0;
+    }
+    .quote blockquote {
+      font-family: var(--display); font-weight: 600; font-size: clamp(1.25rem, 3vw, 1.7rem);
+      line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance;
+    }
+    .quote .stars { color: var(--accent-green); letter-spacing: 2px; margin: 16px 0 6px; }
+    .quote cite { font-style: normal; color: var(--text-muted); font-size: 0.9rem; }
+
+    /* Related */
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 26px; }
+    .rc {
+      background: linear-gradient(180deg, rgba(20,42,71,0.6) 0%, rgba(15,32,56,0.4) 100%);
+      border: 1px solid var(--border-soft); border-radius: 16px; padding: 22px;
+      text-decoration: none; color: var(--text-primary); display: block;
+      transition: border-color 0.22s ease, transform 0.22s ease;
+    }
+    .rc:hover { border-color: rgba(74,163,255,0.5); transform: translateY(-3px); }
+    .rc .rc-tag { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-blue); font-weight: 600; }
+    .rc .rc-name { font-family: var(--display); font-weight: 700; font-size: 1.02rem; margin: 10px 0 6px; line-height: 1.25; }
+    .rc .rc-desc { font-size: 0.85rem; color: var(--text-secondary); }
+
+    /* Final CTA */
+    .final-cta {
+      text-align: center; border-radius: 24px; padding: 60px 32px;
+      background: linear-gradient(135deg, rgba(0,208,132,0.12) 0%, rgba(74,163,255,0.12) 100%);
+      border: 1px solid var(--border-soft); margin: 20px 0 64px;
+    }
+    .final-cta h2 { margin-bottom: 12px; }
+    .final-cta p { color: var(--text-secondary); max-width: 48ch; margin: 0 auto 28px; }
+    .btn {
+      display: inline-block; background: var(--accent-green); color: var(--bg-deep);
+      font-weight: 700; letter-spacing: 0.03em; text-decoration: none;
+      padding: 15px 34px; border-radius: 999px; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,208,132,0.35); }
+
+    /* Footer */
+    .site-footer {
+      padding: 28px 40px; border-top: 1px solid var(--border-soft);
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--text-muted); font-size: 13px; flex-wrap: wrap; gap: 10px;
+    }
+    .site-footer a { color: var(--text-muted); text-decoration: none; }
+    .site-footer a:hover { color: var(--text-primary); }
+
+    @media (max-width: 720px) {
+      .site-header { padding: 16px 20px; }
+      .wrap { padding: 0 20px; }
+      .statband { grid-template-columns: repeat(2, 1fr); }
+      .rb-grid { grid-template-columns: repeat(2, 1fr); }
+      .related-grid { grid-template-columns: 1fr; }
+      .result-block { padding: 24px 20px; }
+      .step { grid-template-columns: 44px 1fr; gap: 14px; padding: 20px; }
+      .step .idx { width: 44px; height: 44px; font-size: 1.2rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header">
+    <a href="/" class="logo">
+      <img src="https://cdn.prod.website-files.com/685ac262f32984bfe0953247/68ba6394db862b368b7de07d_Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
+    </a>
+    <a href="https://www.dentistnerds.com/contact" class="header-cta">Get Started</a>
+  </header>
+
+  <!-- HERO -->
+  <div class="wrap">
+    <div class="hero">
+      <div class="breadcrumb"><a href="index.html">← Westgrove Dental Care</a></div>
+      <div class="eyebrow">Case Study · Garden Grove, CA</div>
+      <h1>From a quiet local listing to <span class="grad">Garden Grove's most-searched dentist</span> — here's exactly how.</h1>
+      <p class="lede">Westgrove Dental Care had a great practice and a perfect reputation — but limited reach online. We paired a disciplined Meta Ads program with steady SEO growth to put them in front of the right patients, every single day.</p>
+      <div class="meta-row">
+        <div class="meta-item"><div class="k">Client</div><div class="v">Westgrove Dental Care</div></div>
+        <div class="meta-item"><div class="k">Website</div><div class="v"><a href="https://westgrovedentalcare.com" target="_blank" rel="noopener">westgrovedentalcare.com</a></div></div>
+        <div class="meta-item"><div class="k">Services</div><div class="v">Meta Ads · SEO</div></div>
+        <div class="meta-item"><div class="k">Focus Period</div><div class="v">Nov 2025 – May 2026</div></div>
+      </div>
+
+      <div class="statband">
+        <div class="cell"><div class="num blue">99.9K</div><div class="lbl">Meta Ads impressions across the launch window</div></div>
+        <div class="cell"><div class="num blue">42,492</div><div class="lbl">People reached in the Garden Grove area</div></div>
+        <div class="cell"><div class="num green">65→146</div><div class="lbl">Keywords ranking on Google</div></div>
+        <div class="cell"><div class="num green">5.0★</div><div class="lbl">Rating across 266 Google reviews</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHALLENGE -->
+  <div class="wrap">
+    <section>
+      <div class="sec-eyebrow">The Challenge</div>
+      <h2>A trusted practice that too few people could find.</h2>
+      <div class="prose">
+        <p>Drs. Iris and Brandon Skenandore had built exactly the kind of practice patients hope for — a modern, welcoming office with a <strong>flawless 5.0★ reputation</strong>. But reputation only works when people can find you.</p>
+        <p>Outside of branded searches, Westgrove was hard to discover. The website ranked for a modest set of keywords, the Google Business Profile was under-leveraged, and there was no paid channel actively putting the practice in front of nearby patients. In a competitive Garden Grove market, <strong>not showing up means losing patients to the practice down the street — every single day.</strong></p>
+        <p>The goal was twofold: turn on a reliable flow of new-patient demand <strong>now</strong> through Meta Ads, while compounding long-term visibility through SEO so the practice keeps growing even when the ads pause.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- APPROACH -->
+  <div class="wrap">
+    <section>
+      <div class="sec-eyebrow">The Approach</div>
+      <h2>Two channels, one growth engine.</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="idx">1</div>
+          <div>
+            <h3>Locally-targeted Meta Ads</h3>
+            <p>Built a Garden Grove–focused campaign on Facebook &amp; Instagram, putting Westgrove's services in front of high-intent local audiences with creative tuned to the practice's strengths.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="idx">2</div>
+          <div>
+            <h3>Conversion-first scaling</h3>
+            <p>Started lean to learn what worked, then shifted to a conversion-optimized "Sales" objective and scaled spend into the best-performing audiences — driving cost-per-click down as volume went up.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="idx">3</div>
+          <div>
+            <h3>Service-page &amp; keyword SEO</h3>
+            <p>Optimized core service pages around how Garden Grove patients actually search, expanded topical authority with consistent blog content, and tracked rankings across Semrush, GA4, and Local Falcon.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="idx">4</div>
+          <div>
+            <h3>Google Business Profile &amp; authority</h3>
+            <p>Sharpened the Google Business Profile, kept reviews answered to protect the 5.0★ rating, and built links steadily to grow domain authority and local map presence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- RESULTS -->
+  <div class="wrap">
+    <section>
+      <div class="sec-eyebrow blue">The Results · Meta Ads</div>
+      <h2>A paid channel that reaches the whole neighborhood.</h2>
+      <div class="prose">
+        <p>From its April launch through the end of May, the Meta Ads program reached over <strong>42,000 people</strong> across Garden Grove and scaled efficiently as it learned — May more than doubled April's reach while keeping clicks affordable.</p>
+      </div>
+
+      <div class="result-block meta">
+        <div class="rb-head">
+          <span class="rb-tag blue">Meta Ads</span>
+          <span class="rb-period">Apr 6 – May 31, 2026</span>
+        </div>
+        <div class="rb-grid">
+          <div class="rb-stat"><div class="n blue">99,889</div><div class="s">Ad impressions delivered</div></div>
+          <div class="rb-stat"><div class="n blue">42,492</div><div class="s">People reached</div></div>
+          <div class="rb-stat"><div class="n blue">2,723</div><div class="s">Total clicks</div></div>
+          <div class="rb-stat"><div class="n blue">1,177</div><div class="s">Landing-page views</div></div>
+          <div class="rb-stat"><div class="n blue">2.73%</div><div class="s">Click-through rate</div></div>
+          <div class="rb-stat"><div class="n blue">$1.93</div><div class="s">Average cost per click</div></div>
+        </div>
+        <div class="rb-note"><strong>Scaling that held its efficiency:</strong> reach grew from 12,987 people in April to 34,130 in May (+163%) and clicks more than doubled — while staying inside a healthy CTR and cost-per-click. A campaign that gets <em>cheaper</em> per result as it grows is exactly what you want before scaling further.</div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section style="padding-top: 8px;">
+      <div class="sec-eyebrow green">The Results · SEO</div>
+      <h2>Compounding visibility on Google.</h2>
+      <div class="prose">
+        <p>While the ads drove immediate demand, organic search kept building underneath it. Over the focus period the site <strong>more than doubled the number of keywords it ranks for</strong>, climbed into top positions for competitive local terms, and strengthened its Google Business Profile and link authority.</p>
+      </div>
+
+      <div class="result-block seo">
+        <div class="rb-head">
+          <span class="rb-tag green">SEO Growth</span>
+          <span class="rb-period">Nov 2025 – May 2026</span>
+        </div>
+        <div class="rb-grid">
+          <div class="rb-stat"><div class="n green">+125%</div><div class="s">Ranking keywords grew from 65 to 146</div></div>
+          <div class="rb-stat"><div class="n green">+137%</div><div class="s">Google Search impressions (3,421 → 8,106/mo)</div></div>
+          <div class="rb-stat"><div class="n green">50.4%</div><div class="s">Share of local voice on Google Maps</div></div>
+          <div class="rb-stat"><div class="n green">+207</div><div class="s">New backlinks acquired</div></div>
+          <div class="rb-stat"><div class="n green">+134</div><div class="s">New referring domains</div></div>
+          <div class="rb-stat"><div class="n green">#1</div><div class="s">Map ranking across ~half the Garden Grove grid</div></div>
+        </div>
+
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th>Search Phrase</th><th class="r">Position</th><th class="r">Monthly Searches</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>dental care garden grove</td><td class="pos r">#3</td><td class="r">30</td><td><span class="pill stable">Stable</span></td></tr>
+              <tr><td>dentist in garden grove</td><td class="pos r">#4</td><td class="r">210</td><td><span class="pill stable">Stable</span></td></tr>
+              <tr><td>emergency dentist in garden grove <span style="color:var(--text-muted)">(map)</span></td><td class="pos r">#4</td><td class="r">40</td><td><span class="pill stable">Stable</span></td></tr>
+              <tr><td>dentists garden grove</td><td class="pos r">#5</td><td class="r">90</td><td><span class="pill stable">Stable</span></td></tr>
+              <tr><td>invisalign in garden grove</td><td class="pos r">↑</td><td class="r">—</td><td><span class="pill up">Climbing +15</span></td></tr>
+              <tr><td>veneers garden grove</td><td class="pos r">↑</td><td class="r">—</td><td><span class="pill up">Climbing +13</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="rb-note"><strong>Built to last:</strong> ranking keywords climbed every month — 65 → 72 → 92 → 95 → 121 → 135 → 146 — alongside a steadily growing backlink profile. This is visibility the practice keeps, ad budget or not.</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="wrap">
+    <section>
+      <div class="quote">
+        <blockquote>“A perfect 5.0★ across 266 reviews — the strongest review profile in its competitive set.”</blockquote>
+        <div class="stars">★★★★★</div>
+        <cite>Westgrove Dental Care · Google Business Profile, May 2026</cite>
+      </div>
+    </section>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- RELATED -->
+  <div class="wrap">
+    <section>
+      <div class="sec-eyebrow">More Success Stories</div>
+      <h2>Practices growing with Dentist Nerds.</h2>
+      <div class="related-grid">
+        <a class="rc" href="https://www.dentistnerds.com/case-study/west-hollywood-dental-studio" target="_blank" rel="noopener">
+          <div class="rc-tag">SEO</div>
+          <div class="rc-name">West Hollywood Dental Studio</div>
+          <div class="rc-desc">From invisible on Google to top-3 local rankings.</div>
+        </a>
+        <a class="rc" href="https://www.dentistnerds.com/" target="_blank" rel="noopener">
+          <div class="rc-tag">Meta Ads · SEO</div>
+          <div class="rc-name">Canyon Country Dental Care</div>
+          <div class="rc-desc">A full-funnel growth program in a competitive market.</div>
+        </a>
+        <a class="rc" href="https://www.dentistnerds.com/" target="_blank" rel="noopener">
+          <div class="rc-tag">Local SEO</div>
+          <div class="rc-name">Gardena Dental Group</div>
+          <div class="rc-desc">Climbing the local map pack, one keyword at a time.</div>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="wrap">
+    <div class="final-cta">
+      <h2>Ready to grow your practice?</h2>
+      <p>Your success story starts here. Let's build the same kind of growth engine for your dental practice.</p>
+      <a class="btn" href="https://www.dentistnerds.com/contact" target="_blank" rel="noopener">Get Started</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div>© 2026 Dentist Nerds. All rights reserved.</div>
+    <div>
+      <a href="https://www.dentistnerds.com/privacy-policy">Privacy Policy</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.dentistnerds.com/contact">Contact</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
