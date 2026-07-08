@@ -142,6 +142,7 @@
   .status.stable{background:var(--good-soft);color:var(--good-deep)}
   .status.improving{background:var(--blue-50);color:var(--blue-700)}
   .status.building{background:var(--warn-soft);color:#b87a0e}
+  .status.declining{background:var(--bad-soft);color:var(--bad)}
 
   /* ============== LOCAL FALCON MAP (Leaflet) ============== */
   .map-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
@@ -380,30 +381,40 @@
 <!-- ============== KEYWORD TRACKING ============== -->
 <section class="alt">
   <div class="wrap">
-    <span class="section-eyebrow"><span class="dot"></span>Local Falcon · Local Map Rankings</span>
+    <span class="section-eyebrow"><span class="dot"></span>Semrush · Keyword Position Tracking</span>
     <h2>Keyword <span class="accent">Rankings</span></h2>
-    <p class="section-intro">Where the practice ranks in Google's local results across Palmdale — the average position across an 11×11 grid (121 search points over a 3-mile radius) measured by Local Falcon, as of June 2026, sorted by best position. This reflects what nearby patients actually see in Maps and localized search. <strong>Searches/mo</strong> is the U.S. monthly search volume from Semrush.</p>
+    <p class="section-intro">Where the practice ranks in Google's organic results for its tracked Palmdale search phrases, measured by Semrush position tracking as of June 2026, sorted by best position. <strong>Change</strong> compares to the prior tracking period. <strong>Traffic Share</strong> is Semrush's estimated share of organic clicks the site earns for each phrase.</p>
     <div class="table-wrap">
       <table class="kw">
         <colgroup><col style="width:40%"><col style="width:16%"><col style="width:16%"><col style="width:14%"><col style="width:14%"></colgroup>
         <thead>
-          <tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change</th><th class="center">Searches/mo</th><th class="center">Status</th></tr>
+          <tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change</th><th class="center">Traffic Share</th><th class="center">Status</th></tr>
         </thead>
         <tbody>
-          <tr><td class="kw-name">fluoride treatment in palmdale</td><td class="center"><span class="rk good">#2</span></td><td class="center">—</td><td class="center kw-num">30</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">veneers palmdale</td><td class="center"><span class="rk good">#2</span></td><td class="center">—</td><td class="center kw-num">30</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">emergency dentist palmdale</td><td class="center"><span class="rk good">#3</span></td><td class="center">—</td><td class="center kw-num">110</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dentist in palmdale</td><td class="center"><span class="rk warn">#4</span></td><td class="center">▲ 0.5</td><td class="center kw-num">880</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">teeth cleaning in palmdale</td><td class="center"><span class="rk warn">#4</span></td><td class="center">—</td><td class="center kw-num">20</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dental implants in palmdale</td><td class="center"><span class="rk warn">#4</span></td><td class="center">—</td><td class="center kw-num">70</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dental exam in palmdale</td><td class="center"><span class="rk warn">#5</span></td><td class="center">—</td><td class="center kw-num">30</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">all-on-4 implants in palmdale</td><td class="center"><span class="rk warn">#6</span></td><td class="center">—</td><td class="center kw-num">30</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk warn">#8</span></td><td class="center">—</td><td class="center kw-num">50</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">night guard in palmdale</td><td class="center"><span class="rk warn">#10</span></td><td class="center">—</td><td class="center kw-num">20</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">all-on-4 implants in palmdale</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center kw-num">5%</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">fluoride treatment in palmdale</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center kw-num">5%</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">night guard in palmdale</td><td class="center"><span class="rk warn">#4</span></td><td class="center">▼ 2</td><td class="center kw-num">1.09%</td><td class="center"><span class="status declining">Declining</span></td></tr>
+          <tr><td class="kw-name">teeth cleaning in palmdale</td><td class="center"><span class="rk warn">#4</span></td><td class="center">▼ 3</td><td class="center kw-num">1.09%</td><td class="center"><span class="status declining">Declining</span></td></tr>
+          <tr><td class="kw-name">dental implants in palmdale</td><td class="center"><span class="rk warn">#5</span></td><td class="center">—</td><td class="center kw-num">0.84%</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">dental exam in palmdale</td><td class="center"><span class="rk bad">#11</span></td><td class="center">—</td><td class="center kw-num">0.28%</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk bad">#13</span></td><td class="center">▲ 10</td><td class="center kw-num">0.19%</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk bad">#13</span></td><td class="center">▲ 1</td><td class="center kw-num">0.19%</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">cosmetic dentist in palmdale</td><td class="center"><span class="rk bad">#16</span></td><td class="center">▲ 2</td><td class="center kw-num">0.17%</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">veneers in palmdale</td><td class="center"><span class="rk bad">#16</span></td><td class="center">—</td><td class="center kw-num">0.17%</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">teeth whitening palmdale</td><td class="center"><span class="rk bad">#17</span></td><td class="center">▲ 1</td><td class="center kw-num">0.16%</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">emergency dentist palmdale</td><td class="center"><span class="rk bad">#19</span></td><td class="center">—</td><td class="center kw-num">0.15%</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">veneers palmdale</td><td class="center"><span class="rk bad">#19</span></td><td class="center">—</td><td class="center kw-num">0.15%</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">dentures in palmdale</td><td class="center"><span class="rk bad">#20</span></td><td class="center">▼ 1</td><td class="center kw-num">0.14%</td><td class="center"><span class="status declining">Declining</span></td></tr>
+          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk bad">#21</span></td><td class="center">▼ 1</td><td class="center kw-num">0.14%</td><td class="center"><span class="status declining">Declining</span></td></tr>
+          <tr><td class="kw-name">dental implants palmdale</td><td class="center"><span class="rk bad">#23</span></td><td class="center">▲ 6</td><td class="center kw-num">0.13%</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dentist palmdale</td><td class="center"><span class="rk bad">#25</span></td><td class="center">▲ 6</td><td class="center kw-num">0.13%</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">palmdale dentist</td><td class="center"><span class="rk bad">#25</span></td><td class="center">▲ 8</td><td class="center kw-num">0.13%</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">root canal palmdale</td><td class="center"><span class="rk bad">#26</span></td><td class="center">▲ 6</td><td class="center kw-num">0.12%</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dentist in palmdale</td><td class="center"><span class="rk bad">#28</span></td><td class="center">▼ 1</td><td class="center kw-num">0.12%</td><td class="center"><span class="status declining">Declining</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Local Falcon map-grid scans (11×11 grid, 3-mile radius), June 2026 — Position is the average rank across the grid (ARP). Change compares to the May scan where a prior scan exists. Search volume from Semrush (U.S.).</p>
+    <p class="hint">Source: Semrush position tracking, June 2026 — Position is the keyword's organic Google ranking for the tracked domain. Change compares to the prior tracking period (▲ = moved up, ▼ = moved down). Traffic Share is Semrush's estimated share of organic clicks earned for each phrase.</p>
   </div>
 </section>
 
