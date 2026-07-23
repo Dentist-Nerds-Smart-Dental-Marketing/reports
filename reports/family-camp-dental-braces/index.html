@@ -358,7 +358,7 @@
   <div class="wrap">
     <span class="section-eyebrow red"><span class="dot"></span>Health Score Breakdown</span>
     <h2>Overall site health: <span class="accent" style="color:var(--warn)">45/100</span>.<br>Good rankings, but a one-page structure caps the upside.</h2>
-    <p class="section-intro">We graded the site across four categories using Semrush data and a manual team review. The site ranks #1 for braces and brand terms, but treatments are crammed onto one scrolling page with thin content and no FAQs, and the design reads as a generic, over-colorful pediatric template. (Local map score is provisional — a Local Falcon scan is pending.)</p>
+    <p class="section-intro">We graded the site across four categories using Semrush data and a manual team review. The site ranks #1 for braces and brand terms, but treatments are crammed onto one scrolling page with thin content and no FAQs, and the design reads as a generic, over-colorful pediatric template. On the local map it ranks #1 at the office but fades to the west (SoLV 24%).</p>
     <div class="score-grid">
       <div class="gauge-wrap">
         <div class="gauge-label">Overall Site Health</div>
@@ -692,14 +692,27 @@
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
     <h2>Google Maps <span class="accent">Visibility</span></h2>
-    <p class="section-intro">Where the practice shows up in the Google map pack across the local grid. <strong>This scan is pending</strong> — we run it live in Local Falcon and drop the real grid in here.</p>
-    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword: <span>dentist lubbock — scan pending</span></div>
-    <div class="map-pending" style="border:1px dashed var(--line);border-radius:20px;background:var(--bg-soft);padding:56px 32px;text-align:center">
-      <div style="width:56px;height:56px;border-radius:16px;background:var(--blue-50);color:var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <p class="section-intro">Where the practice shows up in the Google map pack across a 5×5 grid around the Lubbock office. Strong on the east side — <strong>#1 at the office</strong> and top-3 across the eastern half — but it drops off toward the west, where it's not ranking. Overall it's visible in <strong>20 of 25 points</strong>.</p>
+    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword scanned: <span>dentist lubbock</span></div>
+    <div class="map-wrap">
+      <div class="lf-map">
+        <div class="lf-bg">
+          <span class="lf-park"></span>
+          <span class="lf-water"></span>
+          <span class="lf-road h1"></span>
+          <span class="lf-road h2"></span>
+          <span class="lf-road h3"></span>
+          <span class="lf-road v1"></span>
+          <span class="lf-road v2"></span>
+        </div>
+        <div class="grid" id="mapgrid"></div>
       </div>
-      <h3 style="font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase;color:var(--ink);margin-bottom:10px">Local Falcon scan pending</h3>
-      <p style="max-width:520px;margin:0 auto;color:var(--ink-soft);font-size:16px">We measure map-pack rank across a 5×5 grid around the Lubbock office and drop the real heatmap here. This section is intentionally left as a live placeholder — no sample data.</p>
+      <div class="map-legend">
+        <div><span class="dot" style="background:var(--good)"></span> Top 3 in the map pack</div>
+        <div><span class="dot" style="background:var(--warn)"></span> Page 1 (4–10)</div>
+        <div><span class="dot" style="background:var(--bad)"></span> Not ranking (11+)</div>
+        <p style="margin-top:14px">Average map rank <b>7.05</b> &nbsp;·&nbsp; Visible in <b>80%</b> of the grid (SoLV 24%)</p>
+      </div>
     </div>
   </div>
 </section>
@@ -828,8 +841,16 @@
   });
 
   // ---- Local Falcon grid (5x5) ----
-  const seed=[];
-  const ranks=[];
+  const seed=["bad","bad","warn","warn","warn",
+              "bad","bad","good","good","warn",
+              "bad","bad","good","good","good",
+              "bad","bad","warn","good","warn",
+              "bad","bad","bad","warn","warn"];
+  const ranks=["17","13","10","5","4",
+               "X","11","3","3","4",
+               "X","11","1","1","3",
+               "X","19","4","3","4",
+               "X","X","13","7","5"];
   const g=document.getElementById("mapgrid");
   seed.forEach((s,i)=>{
     const c=document.createElement("div");
