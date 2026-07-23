@@ -294,6 +294,17 @@
     .pill,.cell{cursor:default}
     .weak:hover,.engine-card:hover{transform:none;box-shadow:none}
   }
+
+  /* ============== GROWTH CHART ============== */
+  .cliff-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:36px}
+  .cliff-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px 20px}
+  .cliff-num{font-family:"Anton",sans-serif;font-size:32px;line-height:1;color:#fff}
+  .cliff-lbl{font-size:13px;color:rgba(255,255,255,.7);margin-top:8px;font-weight:600}
+  .cliff-lbl span{display:block;font-weight:400;color:rgba(255,255,255,.45);font-size:12px;margin-top:2px}
+  .cliff-chart{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px 20px 18px}
+  .cliff-legend{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;margin-top:12px;font-size:13.5px;color:rgba(255,255,255,.72)}
+  .cliff-legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:7px;vertical-align:middle}
+  @media(max-width:900px){.cliff-stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -441,6 +452,48 @@
   </div>
 </section>
 
+<!-- ============== THE GROWTH STORY ============== -->
+<section class="dark">
+  <div class="wrap">
+    <span class="section-eyebrow green"><span class="dot"></span>Semrush · Organic History</span>
+    <h2>The Growth <span class="accent" style="color:#4d94ff">Story</span></h2>
+    <p class="section-intro">Here's the encouraging part: this is a site on the way <strong>up</strong>. From a brand-new domain in 2023 (essentially zero keywords), Family Camp has climbed steadily to <strong>344 keywords</strong> and around <strong>200+ organic visits a month</strong> — growing almost every quarter. The fixes in this report are about accelerating a trend that's already working.</p>
+
+    <div class="cliff-stats">
+      <div class="cliff-stat"><div class="cliff-num" style="color:#4d94ff">0 → 344</div><div class="cliff-lbl">Keywords <span>2023 → today</span></div></div>
+      <div class="cliff-stat"><div class="cliff-num" style="color:#E0A126">~210</div><div class="cliff-lbl">Visits / mo <span>up from zero</span></div></div>
+      <div class="cliff-stat"><div class="cliff-num" style="color:#1f9d6b">+153%</div><div class="cliff-lbl">Keywords <span>since Jan 2024</span></div></div>
+      <div class="cliff-stat"><div class="cliff-num">Steady</div><div class="cliff-lbl">Trend <span>climbing quarter over quarter</span></div></div>
+    </div>
+
+    <div class="cliff-chart">
+      <svg viewBox="0 0 1000 430" preserveAspectRatio="xMidYMid meet" width="100%" role="img" aria-label="Organic keywords and traffic for familycampdental.com, 2023 to 2026, steady upward growth" style="display:block">
+    <line x1="64" y1="376.0" x2="936" y2="376.0" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="380.0" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">0</text><line x1="64" y1="290.5" x2="936" y2="290.5" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="294.5" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">100</text><line x1="64" y1="205.0" x2="936" y2="205.0" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="209.0" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">200</text><line x1="64" y1="119.5" x2="936" y2="119.5" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="123.5" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">300</text><line x1="64" y1="34.0" x2="936" y2="34.0" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="38.0" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">400</text>
+    <text x="946" y="380.0" text-anchor="start" font-family="DM Sans" font-size="12" fill="#7c8aa0">0</text><text x="946" y="266.0" text-anchor="start" font-family="DM Sans" font-size="12" fill="#7c8aa0">100</text><text x="946" y="152.0" text-anchor="start" font-family="DM Sans" font-size="12" fill="#7c8aa0">200</text><text x="946" y="38.0" text-anchor="start" font-family="DM Sans" font-size="12" fill="#7c8aa0">300</text>
+    <text x="64.0" y="402.0" text-anchor="middle" font-family="DM Sans" font-size="12" fill="#7c8aa0">2023</text><text x="313.1" y="402.0" text-anchor="middle" font-family="DM Sans" font-size="12" fill="#7c8aa0">2024</text><text x="562.3" y="402.0" text-anchor="middle" font-family="DM Sans" font-size="12" fill="#7c8aa0">2025</text><text x="811.4" y="402.0" text-anchor="middle" font-family="DM Sans" font-size="12" fill="#7c8aa0">2026</text>
+    <text x="64" y="20" text-anchor="start" font-family="DM Sans" font-size="10.5" fill="#5b6b82" letter-spacing=".08em">KEYWORDS</text>
+    <text x="946" y="20" text-anchor="start" font-family="DM Sans" font-size="10.5" fill="#7c8aa0" letter-spacing=".08em">TRAFFIC</text>
+    <path d="M 64.0,376.0 L 64.0,376.0 L 126.3,364.0 L 188.6,351.2 L 250.9,305.9 L 313.1,259.7 L 375.4,228.9 L 437.7,199.9 L 500.0,161.4 L 562.3,209.3 L 624.6,201.6 L 686.9,194.7 L 749.1,169.1 L 811.4,153.7 L 873.7,93.9 L 936.0,81.9 L 936.0,376.0 Z" fill="rgba(77,148,255,.16)"/>
+    <polyline points="64.0,376.0 126.3,364.0 188.6,351.2 250.9,305.9 313.1,259.7 375.4,228.9 437.7,199.9 500.0,161.4 562.3,209.3 624.6,201.6 686.9,194.7 749.1,169.1 811.4,153.7 873.7,93.9 936.0,81.9" fill="none" stroke="#4d94ff" stroke-width="2.5" stroke-linejoin="round"/>
+    <polyline points="64.0,376.0 126.3,376.0 188.6,376.0 250.9,352.1 313.1,327.0 375.4,281.4 437.7,250.6 500.0,201.6 562.3,218.7 624.6,218.7 686.9,208.4 749.1,190.2 811.4,97.8 873.7,75.0 936.0,137.7" fill="none" stroke="#E0A126" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="188.6" cy="351.2" r="4" fill="#4d94ff" stroke="#0c1322" stroke-width="2"/>
+    <circle cx="936.0" cy="81.9" r="5" fill="#4d94ff" stroke="#0c1322" stroke-width="2"/>
+    <circle cx="936.0" cy="137.7" r="5" fill="#E0A126" stroke="#0c1322" stroke-width="2"/>
+    <g transform="translate(194.6,345.2)">
+      <rect x="0" y="-30" width="150" height="34" rx="8" fill="#1f9d6b"/>
+      <text x="75" y="-14" text-anchor="middle" font-family="Anton" font-size="12" fill="#fff">NEW SITE · 2023</text>
+      <text x="75" y="-2" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#fff">~0 keywords to start</text>
+    </g>
+  </svg>
+      <div class="cliff-legend">
+        <span><i style="background:#4d94ff"></i> Organic keywords</span>
+        <span><i style="background:#E0A126"></i> Organic traffic / mo</span>
+      </div>
+    </div>
+    <p class="hint" style="color:rgba(255,255,255,.5)">Source: Semrush organic trend, familycampdental.com (2023–2026, quarterly). A rising base is the best foundation to build on — dedicated treatment pages, deeper content &amp; FAQs are how we bend this curve up faster.</p>
+  </div>
+</section>
+
 <!-- ============== AUTHORITY & BACKLINKS ============== -->
 <section>
   <div class="wrap">
@@ -493,8 +546,8 @@
       <div class="weak">
         <div class="weak-rank">01</div>
         <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/><path d="M19 15l3 3-3 3"/></svg></div>
-        <h4>All treatments on one page</h4>
-        <p>Services live as sections on a single scrolling page — the menu just jumps down. With no dedicated pages, each treatment can't rank on its own or earn its own links.</p>
+        <h4>All general dentistry on one page</h4>
+        <p>General dentistry services live as sections on a single scrolling page — the menu just jumps down. With no dedicated pages, each service can't rank on its own or earn its own links.</p>
         <span class="sev" data-s="bad">Critical</span>
       </div>
       <div class="weak">
