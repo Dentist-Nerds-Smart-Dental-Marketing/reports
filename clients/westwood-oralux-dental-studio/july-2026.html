@@ -63,8 +63,6 @@
     border:1px solid rgba(255,255,255,.3);color:#fff;padding:8px 16px;border-radius:100px;
     font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px}
   .audit-target .pulse{width:8px;height:8px;background:#fff;border-radius:50%;box-shadow:0 0 0 4px rgba(255,255,255,.25)}
-  .audit-target--light{background:var(--blue-50);border-color:var(--blue-100);color:var(--blue-700);margin-bottom:28px}
-  .audit-target--light .pulse{background:var(--blue);box-shadow:0 0 0 4px rgba(10,107,255,.18)}
   .hero h1{font-size:clamp(38px,5.2vw,60px);line-height:1.02;text-transform:uppercase;margin-bottom:14px;max-width:960px}
   .hero h1 .accent{color:#cfe0ff}
   .hero-subtitle{font-size:14px;color:rgba(255,255,255,.78);letter-spacing:.04em;font-weight:600;margin-bottom:8px}
@@ -77,6 +75,7 @@
   .hero-kpi-num{font-family:"Anton",sans-serif;font-size:46px;color:#fff;line-height:1}
   .hero-kpi-label{font-size:12.5px;color:rgba(255,255,255,.78);margin-top:10px;letter-spacing:.04em;font-weight:600;text-transform:uppercase}
   .hero-kpi-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
+  .hero-kpi-sub.up{color:#9ff5c8;font-weight:700}
 
   /* ============== SECTION SHELL ============== */
   section{padding:72px 0}
@@ -93,6 +92,18 @@
   .section-intro strong{color:var(--ink);font-weight:700}
   .hint{font-size:13px;color:var(--ink-mute);margin-top:18px;font-style:italic}
   .block-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 14px}
+
+  /* ============== PROGRESS SNAPSHOT ============== */
+  .prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .prog-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+  .prog-metric{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mute)}
+  .prog-vals{display:flex;align-items:baseline;gap:10px;margin-top:10px}
+  .prog-from{font-size:16px;color:var(--ink-mute)}
+  .prog-arrow{color:var(--ink-mute);font-size:15px}
+  .prog-to{font-family:"Anton",sans-serif;font-size:34px;color:var(--blue);line-height:1}
+  .prog-delta{margin-top:8px;font-size:13px;font-weight:700}
+  .prog-delta.up{color:var(--good-deep)}
+  .prog-delta.flat{color:var(--ink-mute)}
 
   /* ============== WHAT WE'VE DONE — WORK CARDS ============== */
   .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -138,6 +149,10 @@
   .rk.good{background:var(--good-soft);color:var(--good-deep)}
   .rk.warn{background:var(--warn-soft);color:#b87a0e}
   .rk.bad{background:var(--bad-soft);color:var(--bad)}
+  .chg{font-weight:700;font-size:13px}
+  .chg.up{color:var(--good-deep)}
+  .chg.down{color:var(--bad)}
+  .chg.flat{color:var(--ink-mute)}
   .status{display:inline-block;padding:5px 13px;border-radius:100px;font-size:11px;font-weight:700;
     letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
   .status.stable{background:var(--good-soft);color:var(--good-deep)}
@@ -233,6 +248,7 @@
     .audit-strip{flex-direction:column;align-items:flex-start;gap:14px}
     .hero-kpis{grid-template-columns:repeat(2,1fr);gap:14px}
     .hero-kpi-num{font-size:38px}
+    .prog-grid{grid-template-columns:repeat(2,1fr)}
     .work-grid{grid-template-columns:1fr}
     .work-card.span-2{grid-column:span 1}
     .src-grid{grid-template-columns:1fr;gap:28px}
@@ -258,7 +274,7 @@
 
     <div class="audit-target">
       <span class="pulse"></span>
-      <span>July 2026 Report</span>
+      <span>July 2026 Report · June → July Progress</span>
     </div>
 
     <h1>Oraluxe Dental Studio<br><span class="accent">Westwood, CA</span></h1>
@@ -267,31 +283,62 @@
 
     <div class="hero-kpis">
       <div class="hero-kpi">
-        <div class="hero-kpi-num">46</div>
+        <div class="hero-kpi-num">59</div>
         <div class="hero-kpi-label">Keywords Ranking</div>
-        <div class="hero-kpi-sub">Semrush, domain-wide</div>
+        <div class="hero-kpi-sub up">▲ from 18 in June</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">174</div>
         <div class="hero-kpi-label">Website Traffic / mo</div>
-        <div class="hero-kpi-sub">Organic sessions (GA4)</div>
+        <div class="hero-kpi-sub up">▲ from 161 in June</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">4</div>
         <div class="hero-kpi-label">GBP Phone Calls</div>
-        <div class="hero-kpi-sub">This month</div>
+        <div class="hero-kpi-sub up">▲ from 3 in June</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">5.0★</div>
         <div class="hero-kpi-label">Review Rating</div>
-        <div class="hero-kpi-sub">46 total reviews</div>
+        <div class="hero-kpi-sub">46 total · +4 new in July</div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ============== WHAT WE'VE DONE THIS MONTH ============== -->
+<!-- ============== PROGRESS SNAPSHOT ============== -->
 <section>
+  <div class="wrap">
+    <span class="section-eyebrow green"><span class="dot"></span>June → July at a glance</span>
+    <h2>The <span class="accent">Progress</span> This Month</h2>
+    <p class="section-intro">Month two of the campaign built on month one. Here's how the headline numbers moved from <strong>June to July</strong> — more keywords ranking, more organic traffic, more calls, and more 5-star reviews.</p>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <div class="prog-metric">Keywords Ranking</div>
+        <div class="prog-vals"><span class="prog-from">18</span><span class="prog-arrow">→</span><span class="prog-to">59</span></div>
+        <div class="prog-delta up">▲ +41 domain-wide (Semrush)</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-metric">Organic Sessions</div>
+        <div class="prog-vals"><span class="prog-from">161</span><span class="prog-arrow">→</span><span class="prog-to">174</span></div>
+        <div class="prog-delta up">▲ +13 organic visits (GA4)</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-metric">Tracked Kw in Top 100</div>
+        <div class="prog-vals"><span class="prog-from">6</span><span class="prog-arrow">→</span><span class="prog-to">8</span></div>
+        <div class="prog-delta up">▲ +2, plus big climbs</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-metric">New 5★ Reviews</div>
+        <div class="prog-vals"><span class="prog-from">1</span><span class="prog-arrow">→</span><span class="prog-to">4</span></div>
+        <div class="prog-delta up">▲ +3 vs June</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WHAT WE'VE DONE THIS MONTH ============== -->
+<section class="alt">
   <div class="wrap">
     <span class="section-eyebrow green"><span class="dot"></span>This Month's Work</span>
     <h2>What We've <span class="accent">Done</span> This Month</h2>
@@ -308,20 +355,20 @@
         </div>
         <ul class="work-list">
           <li>
-            <a href="https://westwoodoraluxedentalstudio.com/blog/how-do-i-keep-my-teeth-white-after-a-whitening-treatment/" target="_blank" rel="noopener">How Do I Keep My Teeth White After a Whitening Treatment?</a>
-            <div class="work-meta">Targets teeth-whitening aftercare &amp; cosmetic searches</div>
-          </li>
-          <li>
-            <a href="https://westwoodoraluxedentalstudio.com/blog/should-i-go-to-the-er-or-a-dentist-for-bad-tooth-pain-in-westwood-ca/" target="_blank" rel="noopener">Should I Go to the ER or a Dentist for Bad Tooth Pain in Westwood, CA?</a>
-            <div class="work-meta">Targets emergency-dentist &amp; tooth-pain searches in Westwood</div>
+            <a href="https://westwoodoraluxedentalstudio.com/blog/can-a-chipped-front-tooth-be-fixed-without-veneers/" target="_blank" rel="noopener">Can a Chipped Front Tooth Be Fixed Without Veneers?</a>
+            <div class="work-meta">Targets chipped-tooth &amp; cosmetic bonding searches</div>
           </li>
           <li>
             <a href="https://westwoodoraluxedentalstudio.com/blog/is-a-dental-bridge-a-good-way-to-replace-a-missing-tooth/" target="_blank" rel="noopener">Is a Dental Bridge a Good Way to Replace a Missing Tooth?</a>
-            <div class="work-meta">Targets dental bridge &amp; missing-tooth replacement searches</div>
+            <div class="work-meta">Targets tooth-replacement &amp; dental bridge searches</div>
           </li>
           <li>
-            <a href="https://westwoodoraluxedentalstudio.com/blog/can-a-chipped-front-tooth-be-fixed-without-veneers/" target="_blank" rel="noopener">Can a Chipped Front Tooth Be Fixed Without Veneers?</a>
-            <div class="work-meta">Targets chipped-tooth &amp; cosmetic-bonding searches</div>
+            <a href="https://westwoodoraluxedentalstudio.com/blog/should-i-go-to-the-er-or-a-dentist-for-bad-tooth-pain-in-westwood-ca/" target="_blank" rel="noopener">Should I Go to the ER or a Dentist for Bad Tooth Pain in Westwood, CA?</a>
+            <div class="work-meta">Targets local emergency-dentist searches</div>
+          </li>
+          <li>
+            <a href="https://westwoodoraluxedentalstudio.com/blog/how-do-i-keep-my-teeth-white-after-a-whitening-treatment/" target="_blank" rel="noopener">How Do I Keep My Teeth White After a Whitening Treatment?</a>
+            <div class="work-meta">Targets teeth-whitening aftercare searches</div>
           </li>
         </ul>
       </div>
@@ -330,19 +377,12 @@
       <div class="work-card">
         <div class="work-card-head">
           <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
-          <span class="work-card-title">Backlinks &amp; Authority</span>
+          <span class="work-card-title">Backlinks Added</span>
           <span class="work-card-count">5 new</span>
         </div>
-        <div class="work-summary" style="margin-bottom:18px">
-          We continued building authority with <strong>5 new backlinks</strong> this month — brand citations and profile links strengthening the practice's off-site footprint and NAP consistency across Medium, Quora, Pinterest, Scribd and Dailymotion:
+        <div class="work-summary">
+          We built <strong>5 new backlinks</strong> this month — brand profiles on <strong>Medium, Quora, Pinterest, Scribd, and Dailymotion</strong> — expanding Oraluxe's off-site footprint and citation authority. The live tracking sheet logs every link and its source.
         </div>
-        <ul class="work-list">
-          <li><a href="https://medium.com/@westwoodoraluxedentalstudio" target="_blank" rel="noopener">Medium — Oraluxe Dental Studio</a></li>
-          <li><a href="https://www.quora.com/profile/Oraluxe-Dental-Studio" target="_blank" rel="noopener">Quora — Oraluxe Dental Studio</a></li>
-          <li><a href="https://www.pinterest.com/oraluxdentalstudio/" target="_blank" rel="noopener">Pinterest — Oraluxe Dental Studio</a></li>
-          <li><a href="https://www.scribd.com/user/1003411462/Ninella-Bogosian" target="_blank" rel="noopener">Scribd — Oraluxe Dental Studio</a></li>
-          <li><a href="https://www.dailymotion.com/user/westwoodoraluxedentalstudio" target="_blank" rel="noopener">Dailymotion — Oraluxe Dental Studio</a></li>
-        </ul>
         <a href="https://docs.google.com/spreadsheets/d/1qXIeJ_40WmO-j401m2LAOMg4voGFoojR1N-o0XDkPzw/edit?usp=sharing" target="_blank" rel="noopener" class="sheet-link">View Backlinks Sheet</a>
       </div>
 
@@ -353,7 +393,7 @@
           <span class="work-card-title">Tracking &amp; Reporting</span>
         </div>
         <div class="work-summary">
-          Monitored Oraluxe's performance all month across <strong>Semrush</strong> (keyword position tracking), <strong>Local Falcon</strong> (map-pack grid scans), and <strong>Windsor</strong> — pulling Google Analytics 4, Google Business Profile, and Google Search Console data together so every number in this report is live and verified.
+          Monitored month-over-month movement across <strong>Semrush</strong> (keyword position tracking), <strong>Local Falcon</strong> (map-pack grid scans), and <strong>Windsor</strong> — pulling Google Analytics 4, Google Business Profile, and Google Search Console data together so every number in this report is live, verified, and compared against June.
         </div>
       </div>
 
@@ -362,52 +402,52 @@
 </section>
 
 <!-- ============== KEYWORD TRACKING ============== -->
-<section class="alt">
+<section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Semrush Position Tracking</span>
     <h2>Keyword <span class="accent">Rankings</span></h2>
-    <p class="section-intro">July was a strong month of movement. <strong>8 of the 14 tracked terms now rank in Google's top 100</strong> — up from 6 in June — and the terms already ranking climbed hard: <strong>root canal Westwood jumped 61 spots to #29</strong>, <strong>dental implants in Westwood rose 25 to #20</strong>, and <strong>emergency dentist Westwood moved up 11 to #14</strong>. Domain-wide, Semrush now tracks <strong>46 organic keywords, up from 15 a month ago</strong>. The higher-volume "near me" phrases are still <strong>Building</strong> — that's the next frontier as the new content and citations keep earning authority. Positions compare month-end June 30 to July 31; search volumes are regional (Los Angeles).</p>
+    <p class="section-intro">Where the 14 tracked Westwood terms stood at <strong>July 31</strong>, with the change since June 30. <strong>8 terms are now in Google's top 100 (up from 6)</strong> — including strong climbs on <strong>root canal westwood (90 → 29)</strong>, <strong>dental implants in westwood (45 → 20)</strong>, and <strong>emergency dentist westwood (25 → 14)</strong>. A status of <strong>Building</strong> means the keyword isn't ranking well yet — that's where we focus next. Positions as of July 31; search volumes are regional (Los Angeles).</p>
     <div class="table-wrap">
       <table class="kw">
-        <colgroup><col style="width:40%"><col style="width:16%"><col style="width:16%"><col style="width:14%"><col style="width:14%"></colgroup>
+        <colgroup><col style="width:34%"><col style="width:14%"><col style="width:18%"><col style="width:16%"><col style="width:18%"></colgroup>
         <thead>
-          <tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change</th><th class="center">Searches/mo</th><th class="center">Status</th></tr>
+          <tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change vs June</th><th class="center">Searches/mo</th><th class="center">Status</th></tr>
         </thead>
         <tbody>
-          <tr><td class="kw-name">emergency dentist westwood</td><td class="center"><span class="rk bad">#14</span></td><td class="center">▲ 11</td><td class="center kw-num">10</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">veneers in westwood</td><td class="center"><span class="rk bad">#16</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">veneers westwood</td><td class="center"><span class="rk bad">#17</span></td><td class="center">▼ 1</td><td class="center kw-num">10</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dental implants in westwood</td><td class="center"><span class="rk bad">#20</span></td><td class="center">▲ 25</td><td class="center kw-num">—</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">root canal westwood</td><td class="center"><span class="rk bad">#29</span></td><td class="center">▲ 61</td><td class="center kw-num">10</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dentist in westwood</td><td class="center"><span class="rk bad">#39</span></td><td class="center">▲ New</td><td class="center kw-num">10</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">dental implants westwood</td><td class="center"><span class="rk bad">#41</span></td><td class="center">▼ 2</td><td class="center kw-num">140</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">dentist westwood</td><td class="center"><span class="rk bad">#48</span></td><td class="center">▲ New</td><td class="center kw-num">210</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk bad">—</span></td><td class="center">—</td><td class="center kw-num">90,500</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk bad">—</span></td><td class="center">—</td><td class="center kw-num">22,200</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk bad">—</span></td><td class="center">—</td><td class="center kw-num">12,100</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">teeth whitening westwood</td><td class="center"><span class="rk bad">—</span></td><td class="center">—</td><td class="center kw-num">50</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">westwood dentist</td><td class="center"><span class="rk bad">—</span></td><td class="center">—</td><td class="center kw-num">50</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">invisalign in westwood</td><td class="center"><span class="rk bad">—</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">emergency dentist westwood</td><td class="center"><span class="rk bad">#14</span></td><td class="center"><span class="chg up">▲ 11</span></td><td class="center kw-num">10</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">veneers in westwood</td><td class="center"><span class="rk bad">#16</span></td><td class="center"><span class="chg flat">—</span></td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">veneers westwood</td><td class="center"><span class="rk bad">#17</span></td><td class="center"><span class="chg down">▼ 1</span></td><td class="center kw-num">10</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">dental implants in westwood</td><td class="center"><span class="rk bad">#20</span></td><td class="center"><span class="chg up">▲ 25</span></td><td class="center kw-num">—</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">root canal westwood</td><td class="center"><span class="rk bad">#29</span></td><td class="center"><span class="chg up">▲ 61</span></td><td class="center kw-num">10</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dentist in westwood</td><td class="center"><span class="rk bad">#39</span></td><td class="center"><span class="chg up">▲ New</span></td><td class="center kw-num">10</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dental implants westwood</td><td class="center"><span class="rk bad">#41</span></td><td class="center"><span class="chg down">▼ 2</span></td><td class="center kw-num">140</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">dentist westwood</td><td class="center"><span class="rk bad">#48</span></td><td class="center"><span class="chg up">▲ New</span></td><td class="center kw-num">210</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk bad">—</span></td><td class="center"><span class="chg flat">—</span></td><td class="center kw-num">90,500</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk bad">—</span></td><td class="center"><span class="chg flat">—</span></td><td class="center kw-num">22,200</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk bad">—</span></td><td class="center"><span class="chg flat">—</span></td><td class="center kw-num">12,100</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">teeth whitening westwood</td><td class="center"><span class="rk bad">—</span></td><td class="center"><span class="chg flat">—</span></td><td class="center kw-num">50</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">westwood dentist</td><td class="center"><span class="rk bad">—</span></td><td class="center"><span class="chg flat">—</span></td><td class="center kw-num">50</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">invisalign in westwood</td><td class="center"><span class="rk bad">—</span></td><td class="center"><span class="chg flat">—</span></td><td class="center kw-num">—</td><td class="center"><span class="status building">Building</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Semrush position tracking for the Oraluxe Dental Studio project (Westwood, Los Angeles). Change compares position on June 30 to July 31, 2026. "New" = the page entered Google's top 100 this month; "—" position = not yet in the top 100. Search volumes are regional (Los Angeles) monthly figures.</p>
+    <p class="hint">Source: Semrush position tracking for the Oraluxe Dental Studio project (Westwood, Los Angeles). Positions as of July 31, 2026; "Change vs June" compares to June 30. "New" = the page entered Google's top 100 this month; "—" position = not yet in the top 100. Search volumes are regional (Los Angeles) monthly figures.</p>
   </div>
 </section>
 
 <!-- ============== LOCAL MAP — LOCAL FALCON ============== -->
-<section>
+<section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
     <h2>Local Map <span class="accent">Rankings</span></h2>
-    <p class="section-intro">Where the practice shows up on Google Maps across the local grid. Each circle is a geographic search point — greener is better, the blue pin is the office. <strong>Click any circle</strong> to see the rank at that point.</p>
+    <p class="section-intro">Where the practice shows up on Google Maps across the local grid. Each circle is a geographic search point — greener is better, the blue pin is the office. <strong>Click any circle</strong> to see the rank at that point. The map pack held steady month-over-month while the website rankings above climbed — expanding local-pack coverage is a focus for the coming month.</p>
 
     <!-- MAP 1 — dentist in Westwood -->
     <div class="map-card">
       <div class="map-meta">
         <div><strong>Keyword:</strong> dentist in Westwood</div>
         <div><strong>Grid:</strong> 11×11 · 3 mile radius</div>
-        <div><strong>Scanned:</strong> July 6, 2026</div>
+        <div><strong>Scanned:</strong> August 10, 2026</div>
       </div>
       <div class="map-stats">
         <div class="map-stat"><div class="map-stat-num">12.00</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
@@ -434,7 +474,7 @@
       <div class="map-meta">
         <div><strong>Keyword:</strong> dentist near me</div>
         <div><strong>Grid:</strong> 11×11 · 3 mile radius</div>
-        <div><strong>Scanned:</strong> July 6, 2026</div>
+        <div><strong>Scanned:</strong> August 10, 2026</div>
       </div>
       <div class="map-stats">
         <div class="map-stat"><div class="map-stat-num">4.00</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
@@ -459,7 +499,7 @@
 </section>
 
 <!-- ============== TRAFFIC TO PAGES ============== -->
-<section class="alt">
+<section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 · via Windsor</span>
     <h2>Traffic to <span class="accent">Each Page</span></h2>
@@ -477,11 +517,11 @@
 </section>
 
 <!-- ============== TRAFFIC SOURCES ============== -->
-<section>
+<section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 · via Windsor</span>
     <h2>Where Traffic <span class="accent">Comes From</span></h2>
-    <p class="section-intro">How visitors found the website in July, broken down by channel. A healthy mix with strong organic search is what we're building toward.</p>
+    <p class="section-intro">How visitors found the website in July, broken down by channel. Organic search is now the single largest channel — and grew to 174 sessions from 161 in June.</p>
     <div class="src-grid">
       <div>
         <!-- Stacked bar — set each span width:% to its share; colors below -->
@@ -491,7 +531,7 @@
           <span style="width:27.9%;background:var(--warn)">28%</span>
           <span style="width:6.9%;background:var(--ink-mute)">7%</span>
         </div>
-        <p class="hint" style="margin-top:0">Total sessions this month: <strong>466</strong></p>
+        <p class="hint" style="margin-top:0">Total sessions this month: <strong>466</strong> <span style="color:var(--good-deep);font-weight:700">(▲ from 458 in June)</span></p>
       </div>
       <div class="src-legend">
         <div class="src-row"><span class="src-dot" style="background:var(--blue)"></span><span class="src-name">Organic Search</span><span class="src-pct">37.3%</span><span class="src-num">174 sess.</span></div>
@@ -505,7 +545,7 @@
 </section>
 
 <!-- ============== GOOGLE BUSINESS PROFILE PERFORMANCE ============== -->
-<section class="alt">
+<section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Business Profile · via Windsor</span>
     <h2>Google Business Profile <span class="accent">Performance</span></h2>
@@ -515,8 +555,8 @@
     <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:36px">
       <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Phone Calls</div><div class="stat-sub">▲ from 3 last month</div></div>
       <div class="stat-card"><div class="stat-num">+4</div><div class="stat-label">New Reviews</div><div class="stat-sub">46 total · 5.0★</div></div>
-      <div class="stat-card"><div class="stat-num">32</div><div class="stat-label">Website Clicks</div><div class="stat-sub">▲ from 30 last month</div></div>
-      <div class="stat-card"><div class="stat-num">257</div><div class="stat-label">Searches / Impr.</div><div class="stat-sub">Search volume on listing</div></div>
+      <div class="stat-card"><div class="stat-num">34</div><div class="stat-label">Website Clicks</div><div class="stat-sub">▲ from 30 last month</div></div>
+      <div class="stat-card"><div class="stat-num">262</div><div class="stat-label">Searches / Impr.</div><div class="stat-sub">▲ from 258 last month</div></div>
     </div>
 
     <p class="block-label">6-month trend</p>
@@ -531,11 +571,11 @@
           <tr><td>Apr 2026</td><td class="num">273</td><td>184</td><td>89</td><td>0</td><td>14</td><td>46</td></tr>
           <tr><td>May 2026</td><td class="num">243</td><td>169</td><td>74</td><td>0</td><td>11</td><td>81</td></tr>
           <tr><td>Jun 2026</td><td class="num">258</td><td>180</td><td>78</td><td>30</td><td>3</td><td>51</td></tr>
-          <tr><td><strong>Jul 2026</strong></td><td class="num">257</td><td>173</td><td>84</td><td>32</td><td>4</td><td>41</td></tr>
+          <tr><td><strong>Jul 2026</strong></td><td class="num">262</td><td>173</td><td>89</td><td>34</td><td>4</td><td>46</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Windsor / Google Business Profile insights. Search + Maps impressions sum to total impressions each month. Website-click tracking on the listing began in June.</p>
+    <p class="hint">Source: Windsor / Google Business Profile insights. Search + Maps impressions sum to total impressions each month.</p>
   </div>
 </section>
 
