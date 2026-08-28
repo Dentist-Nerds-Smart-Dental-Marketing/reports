@@ -47,7 +47,7 @@ p{margin:0}
 .wrap{max-width:var(--maxw);margin:0 auto;width:100%}
 /* grid/flex children must be allowed to shrink below intrinsic content width,
    or the wide charts and tables widen the page instead of scrolling */
-.svc-grid>*,.results-grid>*{min-width:0}
+.results-grid>*{min-width:0}
 .section{padding:100px 50px;position:relative}
 .section.light-grey-bg{background:var(--light-grey)}
 .section.padding-top-none{padding-top:0}
@@ -184,18 +184,6 @@ svg .dot2{fill:var(--green)}
 }
 .step-visual{margin-top:8px}
 
-/* ---------- services: icon cards ---------- */
-.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.svc{
-  background:var(--white);border:1px solid var(--border);border-radius:10px;
-  padding:28px 24px;display:flex;flex-direction:column;gap:10px;
-  transition:transform .2s,box-shadow .2s;
-}
-.svc:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(0,19,38,.09)}
-.svc svg{width:38px;height:38px;flex:none}
-.svc h4{margin:0}
-.svc p{font-size:14px;margin-top:auto}
-
 /* ---------- results: bright green band, navy stat cards ---------- */
 .results{background:var(--green);padding:100px 50px;color:var(--white)}
 .results h2{color:var(--white)}
@@ -229,7 +217,6 @@ svg .dot2{fill:var(--green)}
   .section{padding-top:65px;padding-bottom:65px}
   .site-head-inner{padding:14px 30px}
   .nav{display:none}
-  .svc-grid{grid-template-columns:repeat(2,1fr)}
   .qmark{font-size:90px}
   .hero-figure .ph{aspect-ratio:16/9}
 }
@@ -237,7 +224,6 @@ svg .dot2{fill:var(--green)}
   .section,.hero,.results,.quote-band{padding-left:20px;padding-right:20px}
   .section{padding-top:50px;padding-bottom:50px}
   .hero{padding-top:50px}
-  .svc-grid{grid-template-columns:1fr}
   .chart-card{padding:20px 14px}
   .quote-band-inner{grid-template-columns:1fr}
   .qmark{display:none}
