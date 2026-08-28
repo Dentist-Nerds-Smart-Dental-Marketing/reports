@@ -222,22 +222,29 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 /* ---------- results: bright green band, navy stat cards ---------- */
 .results{background:var(--green);padding:100px 50px;color:var(--white)}
 .results h2{color:var(--white)}
-.results-intro{max-width:900px;margin:0 auto;text-align:center;color:#eafbee;font-size:17px}
+.results-intro{max-width:760px;margin:0 auto;text-align:center;color:#eafbee;font-size:clamp(15px,1.5vw,17px)}
 .results-lines{
   list-style:none;padding:0;margin:30px auto 0;max-width:760px;
   display:grid;gap:8px;text-align:center;color:#fff;font-size:16px;
 }
-.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:50px}
-.results-stats{background:var(--dark-blue);border-radius:10px;padding:44px 28px;text-align:center}
+.results-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(10px,1.8vw,26px);margin-top:50px;
+}
+.results-stats{
+  background:var(--dark-blue);border-radius:10px;text-align:center;
+  padding:clamp(20px,3vw,44px) clamp(10px,2vw,28px);
+}
 .empower-number{
-  display:block;font-family:var(--head);font-size:clamp(50px,6.5vw,70px);
-  font-weight:700;line-height:1;color:var(--white);margin-bottom:14px;
+  display:block;font-family:var(--head);font-size:clamp(28px,5.4vw,70px);
+  font-weight:700;line-height:1;color:var(--white);margin-bottom:12px;
 }
 .results-stats .stat-label{
-  display:block;font-family:var(--head);font-size:18px;font-weight:700;
-  letter-spacing:1.5px;text-transform:uppercase;color:var(--light-green);margin-bottom:10px;
+  display:block;font-family:var(--head);font-weight:700;
+  font-size:clamp(13px,1.5vw,18px);letter-spacing:1px;text-transform:uppercase;
+  color:var(--light-green);margin-bottom:8px;
 }
-.results-stats .stat-sub{font-size:13px;color:#b6c6d8;margin:0}
+.results-stats .stat-sub{font-size:clamp(11px,1.15vw,14px);line-height:1.45;color:#b6c6d8;margin:0}
 
 /* ---------- responsive ---------- */
 @media (max-width:991px){
@@ -246,7 +253,6 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
   .site-head-inner{padding:14px 30px}
   .nav{display:none}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
-  .results-grid{grid-template-columns:1fr;gap:20px}
   .qmark{font-size:90px}
   .hero-figure .ph{aspect-ratio:16/9}
 }
