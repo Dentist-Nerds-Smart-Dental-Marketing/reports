@@ -184,29 +184,6 @@ svg .dot2{fill:var(--green)}
 }
 .step-visual{margin-top:8px}
 
-/* ---------- tables ---------- */
-.table-scroll{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
-caption{
-  text-align:left;font-family:var(--head);font-size:18px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;color:var(--dark-blue);padding-bottom:10px;
-}
-th,td{padding:11px 14px;border-bottom:1px solid var(--border);text-align:left}
-thead th{
-  font-family:var(--head);font-size:15px;letter-spacing:1px;text-transform:uppercase;
-  color:var(--dark-blue);background:var(--light-grey);border-bottom:2px solid var(--border);
-}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-.pos{display:inline-block;min-width:30px;text-align:center;border-radius:4px;padding:3px 8px;font-weight:700;font-variant-numeric:tabular-nums}
-.pos.top3{background:var(--green);color:#fff}
-.pos.top10{background:var(--light-green);color:#14532d}
-.pos.rest{background:#eef2f8;color:#5d6c7b}
-.pos.none{background:#f4f5f7;color:#98a2b0}
-.delta{font-weight:700;font-variant-numeric:tabular-nums}
-.delta.up{color:#1a7f36}
-.delta.down{color:#c2410c}
-.tbl-note{font-size:13px;color:#7b8794;margin:14px 0 0}
-
 /* ---------- services: icon cards ---------- */
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .svc{
