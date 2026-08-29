@@ -97,15 +97,6 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .hero-sub{max-width:820px;margin:0 auto;font-size:18px;color:var(--grey)}
 .hero-figure{margin:50px 0 0}
 .hero-figure .ph{aspect-ratio:16/6.6;min-height:0}
-.hero-meta{
-  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
-  margin:26px 0 0;padding:0;list-style:none;
-}
-.hero-meta li{
-  font-family:var(--head);font-size:15px;font-weight:600;letter-spacing:1px;
-  text-transform:uppercase;color:var(--dark-blue);
-  border:1px solid var(--border);border-radius:999px;padding:6px 16px;
-}
 /* decorative quote frame under the hero image */
 .quote-band{padding:60px 50px 100px;position:relative}
 .quote-band-inner{
