@@ -144,6 +144,7 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .chart-card h4{margin-bottom:6px}
 .chart-src{font-size:13px;color:#7b8794;margin:0 0 18px}
 .chart-scroll{overflow-x:auto}
+.chart-img{width:100%;height:auto;display:block;border-radius:10px}
 .chart-scroll svg{min-width:640px;height:auto;display:block}
 svg .g{stroke:#e7ecf2;stroke-width:1}
 svg .ax{font-family:var(--body);font-size:15px;fill:#8494a6}
