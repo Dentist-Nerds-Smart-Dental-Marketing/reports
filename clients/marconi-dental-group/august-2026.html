@@ -222,7 +222,7 @@
   .end-cta .thanks{margin-top:22px;font-size:15px;color:#fff}
   .end-cta .thanks b{color:#cfe0ff}
   .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em}
-  .end-meta .src-tag{color:rgba(255,255,255,.7)}
+      <span class="src-tag">Data sources: Local Falcon &middot; Windsor (GA4, Google Business Profile) &middot; Semrush position tracking pending</span>
 
   /* ============== RESPONSIVE ============== */
   @media(max-width:900px){
@@ -283,15 +283,15 @@
         <div class="hero-kpi-label">Keywords Ranking</div>
         <div class="hero-kpi-sub">Awaiting Semrush API units</div>
       </div>
-      <div class="hero-kpi is-pending">
-        <div class="hero-kpi-num">Pending</div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">382</div>
         <div class="hero-kpi-label">Website Traffic / mo</div>
-        <div class="hero-kpi-sub">Awaiting GA4 connection</div>
+        <div class="hero-kpi-sub">Organic sessions (GA4)</div>
       </div>
-      <div class="hero-kpi is-pending">
-        <div class="hero-kpi-num">Pending</div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num">106</div>
         <div class="hero-kpi-label">GBP Phone Calls</div>
-        <div class="hero-kpi-sub">Awaiting GBP connection</div>
+        <div class="hero-kpi-sub">This month</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">4.8&#9733;</div>
@@ -368,7 +368,7 @@
           <span class="work-card-title">Tracking &amp; Reporting</span>
         </div>
         <div class="work-summary">
-          <strong>Local Falcon</strong> map-pack grid scans are live and reporting for August (both grids below are real August scan data). <strong>Semrush</strong> position tracking and <strong>Windsor</strong> — the pipe that feeds Google Analytics 4, Google Business Profile and Search Console into this report — are still being connected for this practice. Those sections are marked <strong>Data pending</strong> below rather than filled with estimates: every number we publish is pulled live from the source, so we'd rather show you a gap than a guess.
+          Every figure in this report is pulled live from source: <strong>Local Falcon</strong> for the map-pack grid scans, <strong>Windsor</strong> for Google Analytics 4 and Google Business Profile. Rankings, traffic, calls and reviews are all reporting for August. The one gap is <strong>Semrush position tracking</strong>, which is out of API units this month — that section is marked <strong>Data pending</strong> rather than filled with estimates.
         </div>
       </div>
 
@@ -453,51 +453,89 @@
   </div>
 </section>
 
-<!-- ============== TRAFFIC TO PAGES — DATA PENDING ============== -->
+<!-- ============== TRAFFIC TO PAGES ============== -->
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 &middot; via Windsor</span>
     <h2>Traffic to <span class="accent">Each Page</span></h2>
-    <p class="section-intro">Top pages by organic visits — the pages doing the heavy lifting for the practice.</p>
-    <div class="pending-box">
-      <div class="pending-title">Data pending — GA4 not yet connected</div>
-      <p>Marconi Dental Group's <strong>Google Analytics 4 property is not yet linked into Windsor</strong>, the reporting pipe we use to pull page-level organic sessions. Until it is, we have no verified traffic figures to show for August.</p>
-      <p>Connecting the GA4 property is a one-time step on our side and backfills historical months, so next month's report will carry both August and September page traffic.</p>
-    </div>
+    <p class="section-intro">Top pages by organic visits in August. These are the pages doing the heavy lifting for the practice &mdash; note how hard the <strong>team pages</strong> and the <strong>numbing/anaesthetic blog posts</strong> are working.</p>
+    <ul class="pages-list">
+      <li><div class="page-name">/</div><div class="page-bar"><div class="page-bar-fill" style="width:100%"></div></div><div class="page-visits">140</div></li>
+      <li><div class="page-name">/our-dental-team/</div><div class="page-bar"><div class="page-bar-fill" style="width:62%"></div></div><div class="page-visits">87</div></li>
+      <li><div class="page-name">/blog/how-to-make-novocaine-wear-off-faster/</div><div class="page-bar"><div class="page-bar-fill" style="width:50%"></div></div><div class="page-visits">70</div></li>
+      <li><div class="page-name">/blog/how-long-does-lidocaine-last/</div><div class="page-bar"><div class="page-bar-fill" style="width:36%"></div></div><div class="page-visits">50</div></li>
+      <li><div class="page-name">/blog/the-joys-of-novocaine/</div><div class="page-bar"><div class="page-bar-fill" style="width:18%"></div></div><div class="page-visits">25</div></li>
+      <li><div class="page-name">/about-us/</div><div class="page-bar"><div class="page-bar-fill" style="width:14%"></div></div><div class="page-visits">20</div></li>
+      <li><div class="page-name">/our-dental-team/dr-dylan-kovar/</div><div class="page-bar"><div class="page-bar-fill" style="width:14%"></div></div><div class="page-visits">20</div></li>
+      <li><div class="page-name">/contact-us/</div><div class="page-bar"><div class="page-bar-fill" style="width:14%"></div></div><div class="page-visits">19</div></li>
+      <li><div class="page-name">/our-dental-team/dr-werner-visage/</div><div class="page-bar"><div class="page-bar-fill" style="width:9%"></div></div><div class="page-visits">13</div></li>
+      <li><div class="page-name">/dentist-appointment/</div><div class="page-bar"><div class="page-bar-fill" style="width:9%"></div></div><div class="page-visits">12</div></li>
+    </ul>
+    <p class="hint">Source: Windsor / Google Analytics 4 organic sessions per page. Bar widths are relative to the top page. Page totals sum higher than the 382 monthly organic sessions because a visit that touches several pages is counted on each.</p>
   </div>
 </section>
 
-<!-- ============== TRAFFIC SOURCES — DATA PENDING ============== -->
+<!-- ============== TRAFFIC SOURCES ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 &middot; via Windsor</span>
     <h2>Where Traffic <span class="accent">Comes From</span></h2>
-    <p class="section-intro">How visitors found the website, broken down by channel. A healthy mix with strong organic search is what we're building toward.</p>
-    <div class="pending-box">
-      <div class="pending-title">Data pending — GA4 not yet connected</div>
-      <p>The channel breakdown comes from the same <strong>Google Analytics 4</strong> connection as the page traffic above, so it's held for the same reason. No sessions-by-channel data is available for August yet.</p>
+    <p class="section-intro">How visitors found the website in August, broken down by channel. A healthy mix with strong organic search is what we're building toward.</p>
+    <div class="src-grid">
+      <div>
+        <div class="stack">
+          <span style="width:19.80%;min-width:0;background:var(--blue)">19.8%</span>
+          <span style="width:78.95%;min-width:0;background:var(--good)">78.9%</span>
+          <span style="width:0.88%;min-width:0;background:var(--warn)"></span>
+          <span style="width:0.21%;min-width:0;background:var(--ink-mute)"></span>
+          <span style="width:0.16%;min-width:0;background:#b9c2cf"></span>
+        </div>
+        <p class="hint" style="margin-top:0">Total sessions this month: <strong>1,929</strong></p>
+      </div>
+      <div class="src-legend">
+        <div class="src-row"><span class="src-dot" style="background:var(--blue)"></span><span class="src-name">Organic Search</span><span class="src-pct">19.8%</span><span class="src-num">382 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--good)"></span><span class="src-name">Direct</span><span class="src-pct">78.9%</span><span class="src-num">1,523 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--warn)"></span><span class="src-name">Referral</span><span class="src-pct">0.9%</span><span class="src-num">17 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--ink-mute)"></span><span class="src-name">Organic Social</span><span class="src-pct">0.2%</span><span class="src-num">4 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:#b9c2cf"></span><span class="src-name">Unassigned</span><span class="src-pct">0.2%</span><span class="src-num">3 sess.</span></div>
+      </div>
     </div>
+    <p class="hint">Source: Windsor / Google Analytics 4 &mdash; sessions by default channel group. Direct is carrying an unusually large share this month; a chunk of that is normally attributable traffic arriving untagged, so adding campaign tagging to the Google Business Profile and directory links is on our list &mdash; it will move real credit out of Direct and into the channels earning it.</p>
   </div>
 </section>
 
-<!-- ============== GOOGLE BUSINESS PROFILE — PARTIAL ============== -->
+<!-- ============== GOOGLE BUSINESS PROFILE ============== -->
 <section class="alt">
   <div class="wrap">
-    <span class="section-eyebrow"><span class="dot"></span>Google Business Profile</span>
+    <span class="section-eyebrow"><span class="dot"></span>Google Business Profile &middot; via Windsor</span>
     <h2>Google Business Profile <span class="accent">Performance</span></h2>
-    <p class="section-intro">Activity on the Google Business listing — calls, web clicks, reviews, and how often the profile showed up in Search and Maps.</p>
+    <p class="section-intro">Activity on the Google Business listing this month and the prior 5 months &mdash; calls, web clicks, reviews, and how often the profile showed up in Search and Maps.</p>
 
-    <p class="block-label">Verified this month</p>
-    <div class="stat-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:36px">
-      <div class="stat-card"><div class="stat-num">4.8&#9733;</div><div class="stat-label">Average Review Rating</div><div class="stat-sub">Across 550 published reviews</div></div>
-      <div class="stat-card"><div class="stat-num">550</div><div class="stat-label">Total Reviews</div><div class="stat-sub">As of the August 12 scan</div></div>
+    <p class="block-label">This month at a glance</p>
+    <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:36px">
+      <div class="stat-card"><div class="stat-num">106</div><div class="stat-label">Phone Calls</div><div class="stat-sub">&#9660; 13 vs last month</div></div>
+      <div class="stat-card"><div class="stat-num">+1</div><div class="stat-label">New Reviews</div><div class="stat-sub">550 total &middot; 4.8&#9733; (new one at 5&#9733;)</div></div>
+      <div class="stat-card"><div class="stat-num">98</div><div class="stat-label">Website Clicks</div><div class="stat-sub">&#9650; 4 vs last month</div></div>
+      <div class="stat-card"><div class="stat-num">1,099</div><div class="stat-label">Searches / Impr.</div><div class="stat-sub">&#9650; 36 vs last month</div></div>
     </div>
 
-    <div class="pending-box">
-      <div class="pending-title">Calls, clicks &amp; impressions pending — GBP not yet connected</div>
-      <p>The rating and review count above are <strong>verified live</strong> from the practice's Google listing. Phone calls, website clicks, direction requests and Search/Maps impressions come from <strong>Google Business Profile insights via Windsor</strong>, which is not yet connected for this practice — so the at-a-glance call/click cards and the 6-month trend table are held rather than estimated.</p>
-      <p>A 4.8&#9733; average across 550 reviews is a genuinely strong trust signal, and it's a big part of why the map-pack results below are as strong as they are.</p>
+    <p class="block-label">6-month trend</p>
+    <div class="table-wrap">
+      <table class="gbp">
+        <thead>
+          <tr><th>Month</th><th>Impressions</th><th>Search</th><th>Maps</th><th>Web Clicks</th><th>Calls</th><th>Directions</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Mar 2026</td><td class="num">1,374</td><td>813</td><td>561</td><td>79</td><td>98</td><td>159</td></tr>
+          <tr><td>Apr 2026</td><td class="num">1,259</td><td>764</td><td>495</td><td>79</td><td>91</td><td>138</td></tr>
+          <tr><td>May 2026</td><td class="num">1,328</td><td>725</td><td>603</td><td>66</td><td>74</td><td>106</td></tr>
+          <tr><td>Jun 2026</td><td class="num">1,222</td><td>714</td><td>508</td><td>82</td><td>130</td><td>156</td></tr>
+          <tr><td>Jul 2026</td><td class="num">1,063</td><td>689</td><td>374</td><td>94</td><td>119</td><td>170</td></tr>
+          <tr><td><strong>Aug 2026</strong></td><td class="num">1,099</td><td>743</td><td>356</td><td>98</td><td>106</td><td>131</td></tr>
+        </tbody>
+      </table>
     </div>
+    <p class="hint">Source: Windsor / Google Business Profile insights. Website clicks reached a 6-month high in August (98), and mobile Search impressions kept climbing (520, up from 449 in July) &mdash; the listing is being found more often on phones, which is where local dental searches happen.</p>
   </div>
 </section>
 
