@@ -115,6 +115,11 @@
     font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex:none;font-family:"DM Sans",sans-serif}
   .work-list{list-style:none;padding:0;margin:0}
   .work-list li{padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:15.5px;line-height:1.5}
+  .work-list.compact{columns:2;column-gap:26px}
+  .work-list.compact li{padding:7px 0;font-size:14px;break-inside:avoid;-webkit-column-break-inside:avoid}
+  .work-list.compact a{display:inline}
+  .work-list.compact a::after{margin-left:5px}
+  @media(max-width:900px){.work-list.compact{columns:1}}
   .work-list li:last-child{border-bottom:none}
   .work-list a{color:var(--blue-700);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:6px}
   .work-list a::after{content:'↗';font-size:11px;opacity:.5}
@@ -318,7 +323,7 @@
       </div>
 
       <!-- Backlinks -->
-      <div class="work-card span-2">
+      <div class="work-card">
         <div class="work-card-head">
           <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
           <span class="work-card-title">Backlinks Added</span>
@@ -327,7 +332,7 @@
         <div class="work-summary" style="margin-bottom:16px">
           A strong month for off-site authority: <strong>11 new backlinks</strong> — dental directories, business listings and local citations that reinforce NAP consistency and push the practice further into Laguna Niguel's local search footprint. <strong>10 are confirmed live</strong>; the eleventh was submitted on August 31 and is awaiting review.
         </div>
-        <ul class="work-list">
+        <ul class="work-list compact">
           <li><a href="https://dentistry.com/dental_practices/2c-wellness-dentistry/" target="_blank" rel="noopener">Dentistry.com — 2C Wellness Dentistry</a> <span style="color:var(--ink-mute);font-size:12.5px">— Submitted Aug 31 · pending review</span></li>
           <li><a href="https://www.manta.com/c/m1hcdtw/2c-wellness-dentistry" target="_blank" rel="noopener">Manta — 2C Wellness Dentistry</a></li>
           <li><a href="https://www.provenexpert.com/en-us/2c-wellness-dentistry/" target="_blank" rel="noopener">ProvenExpert — 2C Wellness Dentistry</a></li>
