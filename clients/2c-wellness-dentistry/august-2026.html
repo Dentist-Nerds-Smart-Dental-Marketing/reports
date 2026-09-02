@@ -100,10 +100,6 @@
   .work-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.07)}
   .work-card.span-2{grid-column:span 2}
   .work-card-count.hold{background:var(--warn)}
-  .notice{background:#fff8e8;border:1px solid #f0d9a8;border-left:4px solid var(--warn);
-    border-radius:14px;padding:20px 24px;margin-bottom:24px}
-  .notice-title{font-weight:700;color:var(--ink);font-size:15px;margin-bottom:6px}
-  .notice p{font-size:14.5px;color:var(--ink-soft);margin:0}
   .gsc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:8px}
   @media(max-width:900px){.gsc-grid{grid-template-columns:1fr}}
   .work-card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
@@ -278,9 +274,9 @@
 
     <div class="hero-kpis">
       <div class="hero-kpi">
-        <div class="hero-kpi-num">71</div>
-        <div class="hero-kpi-label">Keywords in Google Top 20</div>
-        <div class="hero-kpi-sub">Search Console · August</div>
+        <div class="hero-kpi-num">10</div>
+        <div class="hero-kpi-label">Keywords Ranking</div>
+        <div class="hero-kpi-sub">▲ from 7 in July · Semrush</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">136</div>
@@ -378,56 +374,43 @@
 <!-- ============== KEYWORD TRACKING ============== -->
 <section class="alt">
   <div class="wrap">
-    <span class="section-eyebrow"><span class="dot"></span>Keyword Visibility</span>
+    <span class="section-eyebrow"><span class="dot"></span>Semrush Position Tracking</span>
     <h2>Keyword <span class="accent">Rankings</span></h2>
-
-    <div class="notice">
-      <div class="notice-title">August position-tracking table is pending</div>
-      <p>The Semrush position-tracking pull for August could not be completed in time for this report — the account's API quota was exhausted. The 14-keyword table you saw in July will be updated and re-published here as soon as that data is available; nothing else in this report is affected. In the meantime, the figures below come straight from <strong>Google Search Console</strong>, which measures the same thing from Google's own side.</p>
+    <p class="section-intro">All 14 local keywords tracked in the practice's Semrush campaign, comparing <strong>July 31</strong> to <strong>August 31, 2026</strong>. The headline result: <strong>"root canal laguna niguel" jumped from #32 to #2</strong> — the practice's first top-three ranking. <strong>10 of the 14 terms now rank in Google's top 100, up from 7 in July</strong>, with three phrases breaking in for the first time. Terms marked <strong>Building</strong> are still climbing toward page one.</p>
+    <div class="table-wrap">
+      <table class="kw">
+        <colgroup><col style="width:40%"><col style="width:16%"><col style="width:16%"><col style="width:14%"><col style="width:14%"></colgroup>
+        <thead>
+          <tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change</th><th class="center">Searches/mo</th><th class="center">Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="kw-name">root canal laguna niguel</td><td class="center"><span class="rk good">#2</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 30</span></td><td class="center kw-num">&lt;10</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">veneers in laguna niguel</td><td class="center"><span class="rk bad">#19</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 23</span></td><td class="center kw-num">&lt;10</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">veneers laguna niguel</td><td class="center"><span class="rk bad">#21</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 14</span></td><td class="center kw-num">&lt;10</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk bad">#33</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ New</span></td><td class="center kw-num">90</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk bad">#37</span></td><td class="center"><span style="color:#b3261e;font-weight:700">▼ 4</span></td><td class="center kw-num">10</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">invisalign in laguna niguel</td><td class="center"><span class="rk bad">#41</span></td><td class="center"><span style="color:#b3261e;font-weight:700">▼ 5</span></td><td class="center kw-num">&lt;10</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">teeth whitening laguna niguel</td><td class="center"><span class="rk bad">#45</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 7</span></td><td class="center kw-num">&lt;10</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">emergency dentist laguna niguel</td><td class="center"><span class="rk bad">#53</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ New</span></td><td class="center kw-num">&lt;10</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">dental implants in laguna niguel</td><td class="center"><span class="rk bad">#57</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ New</span></td><td class="center kw-num">&lt;10</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">dental implants laguna niguel</td><td class="center"><span class="rk bad">#62</span></td><td class="center"><span style="color:#b3261e;font-weight:700">▼ 10</span></td><td class="center kw-num">&lt;10</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">dentist in laguna niguel</td><td class="center"><span class="rk bad">&gt;100</span></td><td class="center"><span style="color:var(--ink-mute)">—</span></td><td class="center kw-num">&lt;10</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">dentist laguna niguel</td><td class="center"><span class="rk bad">&gt;100</span></td><td class="center"><span style="color:var(--ink-mute)">—</span></td><td class="center kw-num">90</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk bad">&gt;100</span></td><td class="center"><span style="color:var(--ink-mute)">—</span></td><td class="center kw-num">140</td><td class="center"><span class="status building">Building</span></td></tr>
+          <tr><td class="kw-name">laguna niguel dentist</td><td class="center"><span class="rk bad">&gt;100</span></td><td class="center"><span style="color:var(--ink-mute)">—</span></td><td class="center kw-num">70</td><td class="center"><span class="status building">Building</span></td></tr>
+        </tbody>
+      </table>
     </div>
+    <p class="hint">Source: Semrush position tracking — campaign 2C Wellness Dentistry, Laguna Niguel, CA (desktop, Google), positions on July 31 vs August 31, 2026. "▲ New" marks phrases that entered Google's top 100 during August. Volumes shown as &lt;10 fall below Semrush's reported threshold. <strong>Building</strong> = ranking outside the top 20, or down more than 12 places month-over-month.</p>
 
-    <p class="section-intro">Here's how the site performed in Google organic search across <strong>every</strong> query it appeared for in August — not just the 14 tracked terms.</p>
-
+    <p class="block-label" style="margin-top:38px">The wider search footprint</p>
+    <p class="section-intro" style="margin-top:0">Beyond the 14 tracked terms, here's every query the site actually appeared for in Google during August.</p>
     <div class="gsc-grid">
       <div class="stat-card"><div class="stat-num">71</div><div class="stat-label">Keywords in Google's Top 20</div><div class="stat-sub">Search terms averaging position 20 or better</div></div>
       <div class="stat-card"><div class="stat-num">2,152</div><div class="stat-label">Search Impressions</div><div class="stat-sub">Times the site appeared in Google results</div></div>
       <div class="stat-card"><div class="stat-num">47</div><div class="stat-label">Clicks from Search</div><div class="stat-sub">Visits earned from organic results</div></div>
     </div>
-
-    <p class="block-label" style="margin-top:32px">Notable positions in August</p>
-    <div class="table-wrap">
-      <table class="kw">
-        <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
-        <thead>
-          <tr><th>Search Phrase</th><th class="center">Avg. Position</th><th class="center">Impressions</th><th class="center">Status</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="kw-name">2c wellness dentistry</td><td class="center"><span class="rk good">#1.4</span></td><td class="center kw-num">94</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk warn">#10.0</span></td><td class="center kw-num">6</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">root canal near me</td><td class="center"><span class="rk bad">#10.9</span></td><td class="center kw-num">33</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">tmj therapy laguna niguel</td><td class="center"><span class="rk bad">#11.4</span></td><td class="center kw-num">9</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">root canal laguna niguel ca</td><td class="center"><span class="rk bad">#12.1</span></td><td class="center kw-num">8</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dr tousi</td><td class="center"><span class="rk bad">#13.2</span></td><td class="center kw-num">34</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk bad">#13.9</span></td><td class="center kw-num">42</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">laguna niguel cheek filler</td><td class="center"><span class="rk bad">#13.9</span></td><td class="center kw-num">29</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">invisalign near me</td><td class="center"><span class="rk bad">#14.1</span></td><td class="center kw-num">41</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dentist in laguna niguel</td><td class="center"><span class="rk bad">#14.3</span></td><td class="center kw-num">4</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">night guards in laguna hills</td><td class="center"><span class="rk bad">#14.6</span></td><td class="center kw-num">20</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dental sealants laguna niguel</td><td class="center"><span class="rk bad">#15.1</span></td><td class="center kw-num">7</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">holistic dentist laguna niguel</td><td class="center"><span class="rk bad">#16.3</span></td><td class="center kw-num">7</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">veneers in laguna niguel</td><td class="center"><span class="rk bad">#18.3</span></td><td class="center kw-num">6</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">laguna niguel cosmetic fillers</td><td class="center"><span class="rk bad">#19.1</span></td><td class="center kw-num">21</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dentist laguna niguel</td><td class="center"><span class="rk bad">#20.1</span></td><td class="center kw-num">60</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">root canal laguna niguel</td><td class="center"><span class="rk bad">#20.6</span></td><td class="center kw-num">60</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">invisalign laguna niguel</td><td class="center"><span class="rk bad">#21.8</span></td><td class="center kw-num">55</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">veneers laguna niguel</td><td class="center"><span class="rk bad">#21.9</span></td><td class="center kw-num">15</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">teeth cleaning laguna niguel</td><td class="center"><span class="rk bad">#30.5</span></td><td class="center kw-num">21</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">emergency dentist laguna niguel</td><td class="center"><span class="rk bad">#42.0</span></td><td class="center kw-num">23</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">dental implants laguna niguel</td><td class="center"><span class="rk bad">#55.4</span></td><td class="center kw-num">15</td><td class="center"><span class="status building">Building</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="hint">Source: Windsor / Google Search Console — August 1–31, 2026. "Avg. Position" is the site's average ranking across every impression for that phrase, so it can land between whole numbers. Status reflects where each term sits relative to page one: <strong>Improving</strong> = within striking distance of the top 10, <strong>Building</strong> = still working toward the first two pages. Semrush position-tracking figures will replace this view once the API quota is restored.</p>
+    <p class="hint">Source: Windsor / Google Search Console — August 1–31, 2026.</p>
   </div>
 </section>
 
@@ -586,7 +569,7 @@
     <div class="thanks"><b>Thank you for trusting us with your marketing.</b> Questions about anything in this report? Just reply to this email — we love hearing from you.</div>
     <div class="end-meta">
       Reporting period: August 1–August 31, 2026 · Prepared by Dentist Nerds · dentistnerds.com<br>
-      <span class="src-tag">Data sources: Local Falcon (map grid, scanned Aug 29) · Windsor (Google Analytics 4, Google Business Profile, Google Search Console) · Semrush position tracking pending</span>
+      <span class="src-tag">Data sources: Semrush (position tracking) · Local Falcon (map grid, scanned Aug 29) · Windsor (Google Analytics 4, Google Business Profile, Google Search Console)</span>
     </div>
   </div>
 </footer>
