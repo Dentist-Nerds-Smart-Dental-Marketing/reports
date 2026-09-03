@@ -99,7 +99,6 @@
     transition:transform .2s,box-shadow .2s}
   .work-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.07)}
   .work-card.span-2{grid-column:span 2}
-  .work-card-count.hold{background:var(--warn)}
   .gsc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:8px}
   @media(max-width:900px){.gsc-grid{grid-template-columns:1fr}}
   .work-card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
@@ -305,16 +304,23 @@
 
     <div class="work-grid">
 
-      <!-- Blogs — ON HOLD -->
+      <!-- Blogs -->
       <div class="work-card">
         <div class="work-card-head">
           <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
           <span class="work-card-title">Blog Content</span>
-          <span class="work-card-count hold">On hold</span>
+          <span class="work-card-count">4 new</span>
         </div>
-        <div class="work-summary">
-          August's blog posts are written and ready, but they are <strong>not live yet</strong> — the website still needs to be updated before they publish. As of this report the blog shows only the two July posts, so we're holding this item open and will confirm the August posts in next month's report once they're on the site.
+        <div class="work-summary" style="margin-bottom:16px">
+          <strong>Four new blog posts</strong> published in August — one a week, each targeting a question real patients search for. They build topical depth around preventive care, emergencies and holistic dentistry, the same themes the practice's service pages rank for:
         </div>
+        <ul class="work-list">
+          <li><a href="https://www.dentistoflagunaniguel.com/blog/top-5-warning-signs-of-a-cavity/" target="_blank" rel="noopener">Top 5 Warning Signs of a Cavity You Shouldn&rsquo;t Ignore</a><div class="work-meta">Aug 27 · Preventive Care</div></li>
+          <li><a href="https://www.dentistoflagunaniguel.com/blog/what-to-do-when-a-tooth-gets-knocked-out/" target="_blank" rel="noopener">What Do I Do the Second a Tooth Gets Knocked Out?</a><div class="work-meta">Aug 20 · Dental Emergencies</div></li>
+          <li><a href="https://www.dentistoflagunaniguel.com/blog/how-dentists-check-for-signs-of-oral-cancer/" target="_blank" rel="noopener">How Do Dentists Check for Signs of Oral Cancer?</a><div class="work-meta">Aug 13 · Preventive Care</div></li>
+          <li><a href="https://www.dentistoflagunaniguel.com/blog/are-digital-x-rays-safer-than-traditional-ones/" target="_blank" rel="noopener">Are Digital X-Rays Safer Than Traditional Ones?</a><div class="work-meta">Aug 6 · Holistic Dentistry</div></li>
+        </ul>
+        <a href="https://www.dentistoflagunaniguel.com/blog/" target="_blank" rel="noopener" class="sheet-link">View All Blog Posts</a>
       </div>
 
       <!-- Backlinks -->
