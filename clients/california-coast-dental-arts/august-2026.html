@@ -108,6 +108,8 @@
   .work-card-count{margin-left:auto;background:var(--good);color:#fff;padding:6px 14px;border-radius:100px;
     font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex:none;font-family:"DM Sans",sans-serif}
   .work-list{list-style:none;padding:0;margin:0}
+  .work-list.cols-2{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+  @media(max-width:600px){.work-list.cols-2{grid-template-columns:1fr}}
   .work-list li{padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:15.5px;line-height:1.5}
   .work-list li:last-child{border-bottom:none}
   .work-list a{color:var(--blue-700);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:6px}
@@ -324,7 +326,7 @@
         <div class="work-summary">
           We built <strong>13 new backlinks</strong> this month across dental and business directories — a big step up from July — to strengthen local authority and citation consistency.
         </div>
-        <ul class="work-list">
+        <ul class="work-list cols-2">
           <li><a href="https://www.ratemds.com/clinic/us-ca-oceanside-california-coast-dental-arts/" target="_blank" rel="noopener">RateMDs</a><div class="work-meta">Aug 11 · Review directory</div></li>
           <li><a href="https://www.provenexpert.com/en-us/california-coast-dental-arts/" target="_blank" rel="noopener">ProvenExpert</a><div class="work-meta">Aug 11 · Review directory</div></li>
           <li><a href="https://dentagama.com/dentists/california-coast-dental-arts" target="_blank" rel="noopener">Dentagama</a><div class="work-meta">Aug 11 · Dental directory</div></li>
