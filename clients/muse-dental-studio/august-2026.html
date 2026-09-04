@@ -114,6 +114,11 @@
   .work-list a::after{content:'↗';font-size:11px;opacity:.5}
   .work-list a:hover{color:var(--blue)}
   .work-meta{font-size:13px;color:var(--ink-mute);margin-top:4px;line-height:1.5}
+  .work-list.two-col{column-count:2;column-gap:30px}
+  .work-list.two-col li{break-inside:avoid;-webkit-column-break-inside:avoid}
+  @media(max-width:600px){.work-list.two-col{column-count:1}}
+  .work-intro{font-size:15px;color:var(--ink-soft);line-height:1.55;margin-bottom:18px}
+  .work-intro strong{color:var(--ink);font-weight:700}
   .work-summary{font-size:16px;color:var(--ink-soft);line-height:1.6}
   .work-summary strong{color:var(--ink);font-weight:700}
   .sheet-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:11px 18px;
@@ -306,6 +311,7 @@
           <span class="work-card-title">Blogs Published</span>
           <span class="work-card-count">4 new</span>
         </div>
+        <p class="work-intro">Four new posts published this month — one per week — building topical authority and answering the questions Houston patients are searching, from Invisalign vs. Fastbraces to easing dental anxiety.</p>
         <ul class="work-list">
           <li>
             <a href="https://www.musedental.com/blog/top-5-tips-for-a-calm-anxiety-free-dental-visit-in-houston-tx/" target="_blank" rel="noopener">Top 5 Tips for a Calm, Anxiety-Free Dental Visit in Houston, TX</a>
@@ -334,7 +340,8 @@
           <span class="work-card-title">Backlinks &amp; Authority</span>
           <span class="work-card-count">11 new</span>
         </div>
-        <ul class="work-list">
+        <p class="work-intro">Eleven new citations and directory listings went live this month, strengthening the practice's local authority and keeping its name, address, and phone consistent across the web.</p>
+        <ul class="work-list two-col">
           <li>
             <a href="https://www.manta.com/c/m1xzhrm/muse-dental-studio" target="_blank" rel="noopener">Manta — Business Listing</a>
             <div class="work-meta">manta.com · Live</div>
