@@ -294,6 +294,15 @@
     .pill,.cell{cursor:default}
     .weak:hover,.engine-card:hover{transform:none;box-shadow:none}
   }
+  .cliff-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:36px}
+  .cliff-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px 20px}
+  .cliff-num{font-family:"Anton",sans-serif;font-size:32px;line-height:1;color:#fff}
+  .cliff-lbl{font-size:13px;color:rgba(255,255,255,.7);margin-top:8px;font-weight:600}
+  .cliff-lbl span{display:block;font-weight:400;color:rgba(255,255,255,.45);font-size:12px;margin-top:2px}
+  .cliff-chart{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px 20px 18px}
+  .cliff-legend{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;margin-top:12px;font-size:13.5px;color:rgba(255,255,255,.72)}
+  .cliff-legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:7px;vertical-align:middle}
+  @media(max-width:900px){.cliff-stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -441,6 +450,50 @@
   </div>
 </section>
 
+<!-- ============== BUILDING MOMENTUM ============== -->
+<section class="dark">
+  <div class="wrap">
+    <span class="section-eyebrow"><span class="dot"></span>Semrush · Organic History</span>
+    <h2>Building <span class="accent" style="color:#4d94ff">Momentum</span></h2>
+    <p class="section-intro">The trajectory explains the audit. This domain did not exist in search data before <strong>June 2026</strong> — it is three months old. Since then Google has indexed it quickly: keywords climbed <strong>4 &rarr; 27</strong> in a single quarter. Traffic did not follow, moving only <strong>27 &rarr; 33 visits/mo</strong>, because 96.9% of it comes from one search for the doctor's own name. The indexing engine has started. The patient engine has not.</p>
+
+    <div class="cliff-stats">
+      <div class="cliff-stat"><div class="cliff-num" style="color:#4d94ff">4 &rarr; 27</div><div class="cliff-lbl">Keywords <span>Jun &rarr; Sep 2026</span></div></div>
+      <div class="cliff-stat"><div class="cliff-num" style="color:#E0A126">27 &rarr; 33</div><div class="cliff-lbl">Visits / mo <span>same quarter</span></div></div>
+      <div class="cliff-stat"><div class="cliff-num" style="color:#D94436">96.9%</div><div class="cliff-lbl">From one keyword <span>the doctor's own name</span></div></div>
+      <div class="cliff-stat"><div class="cliff-num">3 months</div><div class="cliff-lbl">Site age <span>first indexed Jun 2026</span></div></div>
+    </div>
+
+    <div class="cliff-chart">
+      <svg viewBox="0 0 1000 430" preserveAspectRatio="xMidYMid meet" width="100%" role="img" aria-label="Organic keywords and traffic for dabakdentistry.com, January to September 2026" style="display:block">
+    <line x1="64" y1="376.0" x2="936" y2="376.0" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="380.0" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">0</text>
+    <line x1="64" y1="300.0" x2="936" y2="300.0" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="304.0" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">10</text>
+    <line x1="64" y1="224.0" x2="936" y2="224.0" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="228.0" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">20</text>
+    <line x1="64" y1="148.0" x2="936" y2="148.0" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="152.0" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">30</text>
+    <line x1="64" y1="72.0" x2="936" y2="72.0" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="76.0" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">40</text>
+    <text x="64.0" y="402.0" text-anchor="middle" font-family="DM Sans" font-size="12" fill="#7c8aa0">Jan</text><text x="282.0" y="402.0" text-anchor="middle" font-family="DM Sans" font-size="12" fill="#7c8aa0">Mar</text><text x="500.0" y="402.0" text-anchor="middle" font-family="DM Sans" font-size="12" fill="#7c8aa0">May</text><text x="718.0" y="402.0" text-anchor="middle" font-family="DM Sans" font-size="12" fill="#7c8aa0">Jul</text><text x="936.0" y="402.0" text-anchor="middle" font-family="DM Sans" font-size="12" fill="#7c8aa0">Sep</text>
+    <text x="64" y="20" text-anchor="start" font-family="DM Sans" font-size="10.5" fill="#5b6b82" letter-spacing=".08em">KEYWORDS &amp; VISITS / MO · SAME SCALE</text>
+    <path d="M 64.0,376.0 L 173.0,376.0 L 282.0,376.0 L 391.0,376.0 L 500.0,376.0 L 609.0,345.6 L 718.0,269.6 L 827.0,186.0 L 936.0,170.8 L 936.0,376.0 L 64.0,376.0 Z" fill="rgba(77,148,255,.16)"/>
+    <polyline points="64.0,376.0 173.0,376.0 282.0,376.0 391.0,376.0 500.0,376.0 609.0,345.6 718.0,269.6 827.0,186.0 936.0,170.8" fill="none" stroke="#4d94ff" stroke-width="2.5" stroke-linejoin="round"/>
+    <polyline points="64.0,376.0 173.0,376.0 282.0,376.0 391.0,376.0 500.0,376.0 609.0,170.8 718.0,170.8 827.0,125.2 936.0,125.2" fill="none" stroke="#E0A126" stroke-width="2.5" stroke-linejoin="round"/>
+    <line x1="609.0" y1="60" x2="609.0" y2="376" stroke="rgba(255,255,255,.22)" stroke-dasharray="4 5"/>
+    <g transform="translate(525.0,26.0)">
+      <rect x="0" y="0" width="168" height="34" rx="8" fill="#E0A126"/>
+      <text x="84" y="15" text-anchor="middle" font-family="Anton" font-size="12" fill="#0c1322">FIRST INDEXED · JUN 2026</text>
+      <text x="84" y="27" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#0c1322">nothing before this point</text>
+    </g>
+    <circle cx="936.0" cy="170.8" r="5" fill="#4d94ff" stroke="#0c1322" stroke-width="2"/>
+    <circle cx="936.0" cy="125.2" r="5" fill="#E0A126" stroke="#0c1322" stroke-width="2"/>
+  </svg>
+      <div class="cliff-legend">
+        <span><i style="background:#4d94ff"></i> Organic keywords</span>
+        <span><i style="background:#E0A126"></i> Organic traffic / mo</span>
+      </div>
+    </div>
+    <p class="hint" style="color:rgba(255,255,255,.5)">Source: Semrush organic trend, dabakdentistry.com, monthly. Read the gap between the two lines: keywords are climbing steadily while traffic sits flat, which is what happens when a site gets indexed for terms that all sit on page 3 or deeper. Everything in this report is about closing that gap.</p>
+  </div>
+</section>
+
 <!-- ============== AUTHORITY & BACKLINKS ============== -->
 <section>
   <div class="wrap">
@@ -537,17 +590,17 @@
       <table class="kw">
         <thead><tr><th>Keyword</th><th>Google Rank</th></tr></thead>
         <tbody>
-          <tr><td class="kw-name">apurva dabak dds <span style="opacity:.6">· the doctor's own name · 40/mo</span></td><td><span class="rk good">#1</span></td></tr>
-          <tr><td class="kw-name">emergency dentist redwood city <span style="opacity:.6">· 90/mo · via a blog post</span></td><td><span class="rk">#23</span></td></tr>
-          <tr><td class="kw-name">best dentist redwood city <span style="opacity:.6">· 110/mo</span></td><td><span class="rk">#30</span></td></tr>
-          <tr><td class="kw-name">redwood city dentist <span style="opacity:.6">· 140/mo</span></td><td><span class="rk">#39</span></td></tr>
-          <tr><td class="kw-name">dentist in redwood city <span style="opacity:.6">· 140/mo</span></td><td><span class="rk">#41</span></td></tr>
-          <tr><td class="kw-name">dentist redwood city <span style="opacity:.6">· 260/mo · the core term</span></td><td><span class="rk">#44</span></td></tr>
-          <tr><td class="kw-name">dental implants redwood city <span style="opacity:.6">· 210/mo · $30.88 a click</span></td><td><span class="rk">Not ranking</span></td></tr>
-          <tr><td class="kw-name">invisalign redwood city <span style="opacity:.6">· 90/mo</span></td><td><span class="rk">Not ranking</span></td></tr>
-          <tr><td class="kw-name">veneers redwood city <span style="opacity:.6">· 90/mo</span></td><td><span class="rk">Not ranking</span></td></tr>
-          <tr><td class="kw-name">teeth whitening redwood city <span style="opacity:.6">· 110/mo</span></td><td><span class="rk">Not ranking</span></td></tr>
-          <tr><td class="kw-name">root canal redwood city <span style="opacity:.6">· 90/mo</span></td><td><span class="rk">Not ranking</span></td></tr>
+          <tr><td class="kw-name">apurva dabak dds</td><td><span class="rk good">#1</span></td></tr>
+          <tr><td class="kw-name">emergency dentist redwood city</td><td><span class="rk">#23</span></td></tr>
+          <tr><td class="kw-name">best dentist redwood city</td><td><span class="rk">#30</span></td></tr>
+          <tr><td class="kw-name">redwood city dentist</td><td><span class="rk">#39</span></td></tr>
+          <tr><td class="kw-name">dentist in redwood city</td><td><span class="rk">#41</span></td></tr>
+          <tr><td class="kw-name">dentist redwood city</td><td><span class="rk">#44</span></td></tr>
+          <tr><td class="kw-name">dental implants redwood city</td><td><span class="rk">Not ranking</span></td></tr>
+          <tr><td class="kw-name">invisalign redwood city</td><td><span class="rk">Not ranking</span></td></tr>
+          <tr><td class="kw-name">veneers redwood city</td><td><span class="rk">Not ranking</span></td></tr>
+          <tr><td class="kw-name">teeth whitening redwood city</td><td><span class="rk">Not ranking</span></td></tr>
+          <tr><td class="kw-name">root canal redwood city</td><td><span class="rk">Not ranking</span></td></tr>
         </tbody>
       </table>
     </div>
