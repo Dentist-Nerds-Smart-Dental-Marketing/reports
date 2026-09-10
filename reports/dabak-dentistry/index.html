@@ -725,7 +725,7 @@
         <div><span class="dot" style="background:var(--warn)"></span> Page 1 (4–10)</div>
         <div><span class="dot" style="background:var(--bad)"></span> Not in the top 20 — all 25 points</div>
         <p style="margin-top:14px">Average map rank <b class="edit">not in top 20</b> &nbsp;·&nbsp; Visible in <b class="edit">0%</b> of the grid</p>
-        <p style="margin-top:10px;font-size:13px;opacity:.75">The practice was not found in the top 20 at a single one of the 25 points scanned — Local Falcon records this as an average rank of 21.0, its "beyond top 20" marker, and a share of local voice of 0%.</p>
+        <p style="margin-top:10px;font-size:13px;opacity:.75">The practice was not found in the top 20 at a single one of the 25 points scanned — Local Falcon records this as an average rank of 21.0, its "beyond top 20" marker, and a share of local voice of 0%. <b>We ran the scan twice, independently, and got identical results.</b> Meanwhile United Dental holds 100% share of local voice across the same grid, Redwood City Dentistry 88%, and Captain Dental 76%.</p>
       </div>
     </div>
   </div>
@@ -855,8 +855,9 @@
   });
 
   // ---- Local Falcon grid (5x5) ----
-  // Local Falcon report 17e640b65fdb93e — "dentist redwood city", 5x5, 10mi, Sep 2026.
-  // Every one of the 25 points returned rank:false — not present in the top 20 anywhere.
+  // Local Falcon, "dentist redwood city", 5x5, 10mi, Sep 2026.
+  // Two independent scans (17e640b65fdb93e and 65cf380e62aa0b9) returned identical results:
+  // every one of the 25 points came back rank:false — not present in the top 20 anywhere.
   const seed=["bad","bad","bad","bad","bad",
               "bad","bad","bad","bad","bad",
               "bad","bad","bad","bad","bad",
