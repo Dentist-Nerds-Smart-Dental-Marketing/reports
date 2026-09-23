@@ -399,9 +399,9 @@
           <div class="subscore-icon bad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
             <div class="subscore-title">Local Search &amp; Maps</div>
-            <div class="subscore-bar"><div class="subscore-fill" style="width:15%"></div></div>
+            <div class="subscore-bar"><div class="subscore-fill" style="width:18%"></div></div>
           </div>
-          <div class="subscore-value bad">15%</div>
+          <div class="subscore-value bad">18%</div>
         </div>
       </div>
     </div>
@@ -583,6 +583,7 @@
         <li>5.2% of traffic still lands on the insecure <em>http://</em> version of the site</li>
         <li>No dedicated contact or booking page &mdash; both menu items are anchors on the homepage</li>
         <li>Four to five URLs compete for each branded term, splitting their own signal</li>
+        <li>The Google listing rates 4.1&#9733; on 42 reviews &mdash; and appears to be unclaimed</li>
       </ul>
     </div>
   </div>
@@ -728,20 +729,25 @@
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
     <h2>Google Maps <span class="accent">Visibility</span></h2>
-    <p class="section-intro">The Google Map Pack is where most local dental patients choose a practice, and it is the section we could not complete for this audit.</p>
-    <div class="audit-target audit-target--light"><span class="pulse"></span>Keyword to scan: <span>dentist san jose</span> · 5×5 grid · 10-mile radius</div>
+    <p class="section-intro">The Google Business Profile is where most local dental patients choose a practice &mdash; and this is the one place where Blossom Hill Dental Center looks materially different from every other practice we audit.</p>
+    <div class="audit-target audit-target--light"><span class="pulse"></span>Live Google listing · <span>704 Blossom Hill Rd #100, San Jose, CA 95123</span></div>
     <div class="table-wrap" style="margin-top:8px">
       <table class="kw">
-        <thead><tr><th>Scan parameter</th><th>Status</th></tr></thead>
+        <thead><tr><th>Google Business Profile</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td class="kw-name">Google Business Profile</td><td><span class="rk">Not located</span></td></tr>
-          <tr><td class="kw-name">Grid scan</td><td><span class="rk">Blocked &mdash; needs the profile first</span></td></tr>
-          <tr><td class="kw-name">Practice address</td><td><span class="rk good">704 Blossom Hill Rd, Ste 100, San Jose, CA 95123</span></td></tr>
+          <tr><td class="kw-name">Star rating</td><td><span class="rk warn">4.1 &#9733;</span></td></tr>
+          <tr><td class="kw-name">Google reviews</td><td><span class="rk warn">42</span></td></tr>
+          <tr><td class="kw-name">Ownership</td><td><span class="rk">Listing shows "Own this business?" &mdash; appears unclaimed</span></td></tr>
+          <tr><td class="kw-name">Name, address &amp; phone</td><td><span class="rk good">Match the website exactly</span></td></tr>
+          <tr><td class="kw-name">Highlights shown</td><td><span class="rk good">Emergency &middot; Sedation &middot; Cosmetic</span></td></tr>
+          <tr><td class="kw-name">Link from the website</td><td><span class="rk">None &mdash; the site never points to the listing</span></td></tr>
+          <tr><td class="kw-name">Review schema on the site</td><td><span class="rk">None &mdash; no AggregateRating markup anywhere</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint" style="margin-top:18px"><strong>What happened:</strong> we searched Local Falcon seven times &mdash; by practice name, by doctor name, by address and by ZIP &mdash; and could not locate a Google Business Profile for this practice. A grid scan needs that profile to run, so no map data is shown here rather than placeholder figures.</p>
-    <p class="hint"><strong>Why it matters either way:</strong> if the profile exists under a different name, it is not discoverable the way a patient would look for it. If it does not exist, or is unclaimed, that is the single largest local-search gap a dental practice can have &mdash; the Map Pack is where most patients choose. Either answer is worth a conversation, and we will run the full 25-point grid scan as soon as we have the listing.</p>
+    <p class="hint" style="margin-top:18px"><strong>The rating is the finding.</strong> Across the practices we audit in this market, 5.0&#9733; profiles are the norm. At <strong>4.1&#9733; on 42 reviews</strong> this listing sits visibly below that, and the negative reviews on it are about front-desk experience rather than clinical care &mdash; the kind of feedback a managed review program answers and outweighs. Every patient comparing practices in the Map Pack sees that number before they see anything on the website.</p>
+    <p class="hint"><strong>And the profile looks unclaimed.</strong> Google is still offering "Own this business?" on the listing, which means nobody is posting, responding to reviews, adding photos, or controlling the categories and services. Claiming it is free, takes days, and is the single highest-return action in this entire report.</p>
+    <p class="hint"><strong>Grid scan pending.</strong> The 25-point Local Falcon scan for "dentist san jose" is not included here: the Local Falcon business-search endpoint was returning empty results and timeouts at the time of writing &mdash; including for listings it had resolved earlier the same day &mdash; so the profile could not be attached to run a scan. The map coverage figures will be added as soon as that clears. No placeholder numbers have been used.</p>
   </div>
 </section>
 
@@ -772,6 +778,7 @@
             <li><strong>Add schema markup, because right now there is none at all</strong> &mdash; Dentist, LocalBusiness, MedicalProcedure, FAQPage and AggregateRating on every page. This site currently gives Google and the AI engines nothing structured to read.</li>
             <li><strong>Give the practice a real contact and booking page.</strong> Both menu items are anchors on the homepage today, so nothing can rank for them and nothing captures booking intent on its own URL.</li>
             <li><strong>Protect the brand asset while rebuilding.</strong> Six name variations at #1 carry 94.7% of current traffic &mdash; and four to five URLs compete for each one. Consolidate those without losing the rankings that pay the bills today.</li>
+            <li><strong>Claim the Google Business Profile and connect it to the site.</strong> It appears unclaimed, rates 4.1&#9733; on 42 reviews, and the website does not link to it or carry any review markup. Free to fix, and the fastest win available.</li>
             <li><strong>Rewrite every title and meta description.</strong> The crowns page title is currently the single lowercase word "crowns."</li>
           </ul>
 
@@ -807,8 +814,8 @@
         <div class="engine-num">04</div>
         <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <h4>Google Business Management</h4>
-        <p>First find or claim the Google Business Profile &mdash; we could not locate one. Then hands-on management: <strong>weekly posts, review responses, Q&amp;A, photos</strong>, tracked with Local Falcon grid scans.</p>
-        <div class="engine-target"><strong>Target</strong>Locate or claim the profile, then win the Map Pack</div>
+        <p>Claim the profile first &mdash; Google is still offering "Own this business?" on it. Then hands-on management: <strong>weekly posts, review responses, Q&amp;A, photos</strong> and a review program to lift 4.1&#9733; toward the 5.0 this market expects, tracked with Local Falcon grid scans.</p>
+        <div class="engine-target"><strong>Target</strong>Claim the profile, lift the rating, win the Map Pack</div>
       </div>
       <div class="engine-card">
         <div class="engine-num">05</div>
