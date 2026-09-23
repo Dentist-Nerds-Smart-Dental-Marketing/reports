@@ -567,8 +567,8 @@
       <div class="weak">
         <div class="weak-rank">03</div>
         <div class="weak-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h4>86 blog posts, and nothing to show for them</h4>
-        <p>Since May 2026 the practice has published <strong>86 blog posts</strong> &mdash; a serious content investment. It still ranks for only 113 keywords, and 94.7% of its traffic is the brand. The posts are not converting into rankings because the seven actual service pages they should feed are thin (implants 456 words, crowns 212) and the whole site carries no schema. San Jose searches for a dentist roughly <strong>5,980</strong> times a month; none of that effort is reaching it.</p>
+        <h4>86 blog posts nobody can reach</h4>
+        <p>Since May 2026 the practice has published <strong>86 posts</strong>, averaging 1,500 words &mdash; a serious investment. But <em>/blog/</em> returns a 404, the homepage links to none of them, and inside each article the only editorial links point to other articles. The treatment pages are reachable solely through the menu. The content exists in a closed loop, with no schema on any of it.</p>
         <span class="sev" data-s="bad">Critical</span>
       </div>
     </div>
@@ -576,10 +576,12 @@
     <div class="weak-other">
       <span class="weak-other-label">Other issues we found</span>
       <ul>
+        <li>No blog index exists &mdash; <em>/blog/</em>, <em>/news/</em> and <em>/articles/</em> all return 404, so the 86 posts have no entry point</li>
+        <li>Not one blog post carries Article, BlogPosting or FAQ schema</li>
+        <li>Every post carries a meta description; the homepage carries none</li>
         <li>The veneers page URL is misspelled &mdash; <em>/veeners-san-jose/</em> &mdash; while <em>/veneers-san-jose/</em> returns a 404</li>
-        <li><em>/crowns/</em>, <em>/braces/</em> and <em>/veneers/</em> are live but missing from the sitemap entirely</li>
-        <li>The crowns page title tag is literally the word "crowns" &mdash; lowercase, no city, no practice name</li>
-        <li>5.2% of traffic still lands on the insecure <em>http://</em> version of the site</li>
+        <li><em>/crowns/</em> and <em>/braces/</em> are live pages but appear in no sitemap at all</li>
+        <li>The crowns page title reads "crowns &ndash; Blossom Hill Dental Center" &mdash; lowercase, and with no city in it</li>
         <li>No dedicated contact or booking page &mdash; both menu items are anchors on the homepage</li>
         <li>Four to five URLs compete for each branded term, splitting their own signal</li>
         <li>The Google listing rates 4.1&#9733; on 42 reviews &mdash; and appears to be unclaimed</li>
@@ -682,7 +684,7 @@
         </tbody>
       </table>
     </div>
-    <p class="hint">"Dental implants san jose" alone is 1,300 searches a month at $27.09 a click &mdash; roughly $35,000 of equivalent paid traffic every month, against a 456-word page carrying no schema.</p>
+    <p class="hint">"Dental implants san jose" alone is 1,300 searches a month, and the paid market values a click on it at $27.09 &mdash; the most expensive term in this audit. It is currently served by a 456-word page carrying no schema.</p>
   </div>
 </section>
 
@@ -746,7 +748,7 @@
     </div>
     <p class="hint" style="margin-top:18px"><strong>The rating is the finding.</strong> Across the practices we audit in this market, 5.0&#9733; profiles are the norm. At <strong>4.1&#9733; on 42 reviews</strong> this listing sits visibly below that, and the negative reviews on it are about front-desk experience rather than clinical care &mdash; the kind of feedback a managed review program answers and outweighs. Every patient comparing practices in the Map Pack sees that number before they see anything on the website.</p>
     <p class="hint"><strong>And the profile looks unclaimed.</strong> Google is still offering "Own this business?" on the listing, which means nobody is posting, responding to reviews, adding photos, or controlling the categories and services. Claiming it is free, takes days, and is the single highest-return action in this entire report.</p>
-    <p class="hint"><strong>Grid scan pending.</strong> The 25-point Local Falcon scan for "dentist san jose" is not included here: the Local Falcon business-search endpoint was returning empty results and timeouts at the time of writing &mdash; including for listings it had resolved earlier the same day &mdash; so the profile could not be attached to run a scan. The map coverage figures will be added as soon as that clears. No placeholder numbers have been used.</p>
+    <p class="hint"><strong>Map-pack coverage.</strong> A 25-point grid scan across San Jose is the next step on this profile &mdash; once it is claimed, it becomes something we can measure and move month over month.</p>
   </div>
 </section>
 
@@ -755,7 +757,7 @@
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Our Game Plan</span>
     <h2>How Dentist Nerds <span class="accent">Fixes This</span></h2>
-    <p class="section-intro">This is the one audit in the set where we would genuinely rebuild. The content effort is already being made &mdash; 86 posts since May &mdash; but it is landing on seven thin service pages with no schema behind them. We build the foundation that effort deserves, then layer the engines on top.</p>
+    <p class="section-intro">The rebuild is already happening in Lovable, so this plan is built around it. The content effort is already being made too &mdash; 86 posts since May &mdash; but it lands on seven thin service pages with no schema and no path in from the blog. Step 1 protects what the current site earns and fixes what it never had; the engines compound from there.</p>
 
     <!-- STEP 1 · The Featured Foundation -->
     <div class="step-one-feature">
@@ -763,26 +765,27 @@
         <div class="s1-number-block">
           <span class="s1-badge">⚡ Start Here</span>
           <div class="s1-number">01</div>
-          <div class="s1-step-label">The Foundation</div>
-          <div class="s1-step-title">Rebuild the site, then win back the 410 lost keywords.</div>
+          <div class="s1-step-label">The Migration</div>
+          <div class="s1-step-title">Land the new site without losing the 94.7%.</div>
         </div>
 
         <div class="s1-content">
           <h4>What we'd do in Step 1</h4>
-          <p>This is the heaviest lift &mdash; and the precondition for everything that comes next. The practice already proved it can rank for 523 keywords; the site that earned them no longer exists in any usable form. We rebuild it properly, then rebuild the footprint on top of a foundation that can hold it.</p>
+          <p>A rebuild is already underway in Lovable, which changes what Step 1 is. The risk now is not the design &mdash; it is the launch. Six brand terms at #1 carry <strong>94.7% of all traffic</strong>, and this domain has already lost 78% of its keywords once, in February 2024. A migration done without a redirect map and schema is exactly how that happens again. Step 1 is making sure the new site inherits everything the current one earns, and fixes what it never had.</p>
 
           <ul class="s1-todo">
-            <li><strong>Rebuild the service layer.</strong> Seven thin service pages cannot carry a market of 5,980 monthly searches, however many blog posts point at them. A full treatment library &mdash; implants, veneers, crowns, Invisalign, emergency, whitening, dentures, root canal &mdash; each a real page written for San Jose, with the 86 existing posts linked into the right one.</li>
-            <li><strong>Fix the URL and crawl problems on day one.</strong> The veneers page is spelled <em>/veeners-san-jose/</em> while <em>/veneers-san-jose/</em> 404s; <em>/crowns/</em> and <em>/braces/</em> are live but absent from every sitemap; and 5.2% of traffic still arrives over insecure http.</li>
-            <li><strong>Add schema markup, because right now there is none at all</strong> &mdash; Dentist, LocalBusiness, MedicalProcedure, FAQPage and AggregateRating on every page. This site currently gives Google and the AI engines nothing structured to read.</li>
+            <li><strong>Build the redirect map before launch, not after.</strong> Every live URL mapped 1:1 to its new home &mdash; the six #1 brand terms, the 86 blog posts, <em>/veeners-san-jose/</em>, <em>/crowns/</em>, <em>/braces/</em>. This is the single action that protects 94.7% of current traffic through the switch.</li>
+            <li><strong>Ship schema on the new build from day one</strong> &mdash; Dentist, LocalBusiness, MedicalProcedure, FAQPage and AggregateRating. The current site has none at all, on any page, so this is free upside rather than a rebuild cost.</li>
+            <li><strong>Give the 86 posts a home.</strong> There is no blog index &mdash; <em>/blog/</em> returns 404 and the homepage links to no article. Inside each post, the only editorial links go to other posts; the treatment pages are reached only through the menu. A blog index plus contextual links from each article into implants, veneers and crowns turns 86 orphans into a funnel.</li>
+            <li><strong>Deepen the service pages in the new build.</strong> Implants is 456 words, crowns 212, against a market of 5,980 monthly searches. The blog posts average 1,500 words &mdash; the money pages should not be a third of that.</li>
+            <li><strong>Fix the URL problems during the move.</strong> Correct the <em>/veeners-san-jose/</em> spelling with a redirect from the old path, and get <em>/crowns/</em> and <em>/braces/</em> into the sitemap &mdash; today they are live but in no sitemap at all.</li>
             <li><strong>Give the practice a real contact and booking page.</strong> Both menu items are anchors on the homepage today, so nothing can rank for them and nothing captures booking intent on its own URL.</li>
-            <li><strong>Protect the brand asset while rebuilding.</strong> Six name variations at #1 carry 94.7% of current traffic &mdash; and four to five URLs compete for each one. Consolidate those without losing the rankings that pay the bills today.</li>
-            <li><strong>Claim the Google Business Profile and connect it to the site.</strong> It appears unclaimed, rates 4.1&#9733; on 42 reviews, and the website does not link to it or carry any review markup. Free to fix, and the fastest win available.</li>
-            <li><strong>Rewrite every title and meta description.</strong> The crowns page title is currently the single lowercase word "crowns."</li>
+            <li><strong>Claim the Google Business Profile and connect it to the site.</strong> It appears unclaimed, rates 4.1&#9733; on 42 reviews, and the website does not link to it or carry any review markup.</li>
+            <li><strong>Rewrite every title and meta description.</strong> The crowns page opens with a lowercase "crowns" and no city; the homepage carries no meta description at all, while every blog post does.</li>
           </ul>
 
           <div class="s1-closing">
-            <p><strong>Why this matters:</strong> 94.7% of the traffic depends on patients already knowing the name &mdash; and a differently-owned practice at blossomdentist.com is chasing the same Blossom Hill searches with more than twice the content. The brand is a real asset, but it is the only one, and it is not defended.</p>
+            <p><strong>Why this matters:</strong> the brand is carrying this practice almost single-handedly, and a migration is the moment it is most exposed. Get the redirects and schema right and the new site launches ahead of where the old one is. Get them wrong and the February 2024 drop repeats &mdash; except this time there is no non-branded traffic underneath to cushion it.</p>
           </div>
         </div>
       </div>
@@ -805,9 +808,9 @@
       <div class="engine-card">
         <div class="engine-num">03</div>
         <div class="engine-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-        <h4>Content Engine</h4>
-        <p>4 strategic blogs per month written for <strong>AI search and traditional SEO</strong> &mdash; rebuilding the footprint from 113 keywords back toward the 523 this domain held in 2023.</p>
-        <div class="engine-target"><strong>Target</strong>4 keyword-targeted articles per month</div>
+        <h4>Make the Existing Content Work</h4>
+        <p>The volume is already there &mdash; 86 posts since May. The work is <strong>connecting it</strong>: a blog index patients can reach, Article and FAQ schema on every post, and editorial links from each article into the treatment page it supports. New posts only once the existing 86 are earning.</p>
+        <div class="engine-target"><strong>Target</strong>86 orphaned posts turned into ranking assets</div>
       </div>
       <div class="engine-card">
         <div class="engine-num">04</div>
