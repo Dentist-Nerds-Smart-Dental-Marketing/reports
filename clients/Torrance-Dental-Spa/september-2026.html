@@ -415,7 +415,7 @@
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#cf5a28"></span>#8–9</div>
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#a93020"></span>#10–19</div>
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#6b2018"></span>#20+</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
+        <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not in top 20</div>
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
       </div>
     </div>
@@ -562,7 +562,7 @@ function renderMap(elId,officeLat,officeLng,officeName,dataPoints){
   dataPoints.forEach(function(pt){
     bounds.push([pt.lat,pt.lng]);
     var cls=bucketFor(pt.rank);
-    var label=(pt.rank>20)?'20+':(pt.rank===0?'X':String(pt.rank));
+    var label=(pt.rank>20)?'20+':(pt.rank===0?'20':String(pt.rank));
     var icon=L.divIcon({className:'',html:'<div class="rank-icon '+cls+'">'+label+'</div>',iconSize:[28,28],iconAnchor:[14,14]});
     var marker=L.marker([pt.lat,pt.lng],{icon:icon}).addTo(map);
     var popup=L.popup().setContent(buildPopup(pt.rank,'Loading area...'));
