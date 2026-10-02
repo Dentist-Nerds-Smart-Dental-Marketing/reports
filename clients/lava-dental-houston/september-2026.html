@@ -401,7 +401,6 @@
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#cf5a28"></span>#8–9</div>
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#a93020"></span>#10–19</div>
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#6b2018"></span>#20+</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
       </div>
     </div>
@@ -507,7 +506,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
 function bucketFor(r){
-  if(!r||r===0)return 'heat-x';
+  if(!r||r===0)return 'heat-20';
   if(r===1)return 'heat-1';
   if(r<=3)return 'heat-2';
   if(r<=5)return 'heat-4';
