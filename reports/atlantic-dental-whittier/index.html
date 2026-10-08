@@ -302,7 +302,14 @@
   .cliff-chart{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px 20px 18px}
   .cliff-legend{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;margin-top:12px;font-size:13.5px;color:rgba(255,255,255,.72)}
   .cliff-legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:7px;vertical-align:middle}
+  .cliff-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .cliff-swipe{display:none;text-align:center;font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;letter-spacing:.04em}
   @media(max-width:900px){.cliff-stats{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:760px){
+    .cliff-chart{padding:18px 12px 14px}
+    .cliff-scroll svg{min-width:720px;display:block}
+    .cliff-swipe{display:block}
+  }
 </style>
 </head>
 <body>
@@ -467,6 +474,7 @@
     </div>
 
     <div class="cliff-chart">
+      <div class="cliff-scroll">
       <svg viewBox="0 0 1000 430" preserveAspectRatio="xMidYMid meet" width="100%" role="img" aria-label="Organic traffic and keywords for atlanticdentalgrp.com, July 2023 to September 2026, showing a 98.8 percent traffic collapse" style="display:block">
     <line x1="64" y1="376.0" x2="936" y2="376.0" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="380.0" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">0</text>
     <line x1="64" y1="297.0" x2="936" y2="297.0" stroke="rgba(255,255,255,.10)" stroke-width="1"/><text x="54" y="301.0" text-anchor="end" font-family="DM Sans" font-size="12" fill="#5b6b82">3.5k</text>
@@ -492,6 +500,8 @@
       <text x="70" y="27" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#D94436">163 visits / month</text>
     </g>
   </svg>
+      </div>
+      <div class="cliff-swipe">&larr; swipe to follow the full timeline &rarr;</div>
       <div class="cliff-legend">
         <span><i style="background:#D94436"></i> Organic visits / mo</span>
         <span><i style="background:#E0A126"></i> Ranking keywords (own scale)</span>
@@ -580,7 +590,7 @@
         <li>Local Falcon reports the listing as unclaimed; worth confirming directly with the practice</li>
         <li>The homepage schema declares a different phone number (562-567-0498) than the one shown on the page and on Google (562-696-5544)</li>
         <li>No Dentist, LocalBusiness, FAQPage or AggregateRating schema anywhere &mdash; 4.9&#9733; across 315 reviews is invisible to search and AI</li>
-        <li><em>/teeth-whitening/</em> is 318 words with no city in the title; <em>/orthodontics/</em> is 894 words, also with no city</li>
+        <li>Three thin service pages: <em>/teeth-whitening/</em> (311 words), <em>/invisalign-whittier/</em> (332) and <em>/orthodontics/</em> (892). None carries the city in its H1; the first and last carry none in the title tag either</li>
         <li><em>/general-dentistry/</em> is no longer a page: it 301s to www, then 301s back to the non-www homepage &mdash; two hops &mdash; yet it is still listed in the XML sitemap</li>
         <li>Up to seven different URLs compete for the same implant searches. &quot;affordable dental implants whittier&quot; alone is chased by the homepage (#8), <em>/dental-implant-costs/</em> (#33) and five more pages &mdash; while <em>/dental-implants/</em>, the page built for it, ranks for no Whittier implant term at all</li>
         <li>Semrush records ranking URLs under both <em>www</em> and non-www for the same keywords, even though the site canonicalises to non-www</li>
@@ -616,7 +626,7 @@
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Semrush organic positions, US database, October 2026. Worth reading the ranks alongside the URLs that hold them: the three ranking inside the top five all sit on the <strong>homepage or <em>/cosmetic-dentistry-whittier/</em></strong>, not on the dedicated service pages &mdash; and the two that do rank below them (#14 for implants, #40 for Invisalign) sit far enough down to earn almost nothing. Meanwhile the site does not rank at all for any of the four highest-volume ways a Whittier patient searches for a dentist: <em>dentist whittier</em> (590/mo), <em>whittier dentist</em> (480), <em>dentist whittier ca</em> (320) and <em>orthodontist whittier</em> (210) &mdash; <strong>1,600 searches a month</strong> between them.</p>
+    <p class="hint">Source: Semrush organic positions, US database, October 2026. Worth reading the ranks alongside the URLs that hold them: the three <strong>non-brand</strong> terms inside the top five all sit on the <strong>homepage or <em>/cosmetic-dentistry-whittier/</em></strong>, not on the dedicated service pages &mdash; and the two that do rank below them (#14 for implants, #40 for Invisalign) sit far enough down to earn almost nothing. Meanwhile the site does not rank at all for any of the four highest-volume ways a Whittier patient searches for a dentist: <em>dentist whittier</em> (590/mo), <em>whittier dentist</em> (480), <em>dentist whittier ca</em> (320) and <em>orthodontist whittier</em> (210) &mdash; <strong>1,600 searches a month</strong> between them.</p>
   </div>
 </section>
 
@@ -625,7 +635,7 @@
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Content Gap</span>
     <h2>Keywords Your Pages Should Own &mdash; <span class="accent">And Don't</span></h2>
-    <p class="section-intro">This is the part that should be encouraging. Every term below already has a page built for it, and most of those pages are genuinely good &mdash; the implants page runs 2,076 words with the city in the title, the emergency page 1,846. Six of the eight rank nowhere; the two that do rank are held by the wrong URL, at #14 and #40. The content is not the problem. Whatever is suppressing the domain is.</p>
+    <p class="section-intro">This is the part that should be encouraging. Every term below already has a page built for it, and most of those pages are genuinely good &mdash; the implants page runs 2,067 words with the city in the title, the emergency page 1,840. Six of the eight rank nowhere; the two that do rank sit at #14 &mdash; on the homepage instead of <em>/dental-implants/</em> &mdash; and #40. The content is not the problem. Whatever is suppressing the domain is.</p>
     <div class="table-wrap">
       <table class="kw">
         <thead>
@@ -635,15 +645,15 @@
           <tr><td class="kw-name">dentist whittier</td><td>Homepage</td><td class="kw-num">590</td><td><span class="rk">Not ranking &middot; $6.80 CPC</span></td></tr>
           <tr><td class="kw-name">whittier dentist</td><td>Homepage</td><td class="kw-num">480</td><td><span class="rk">Not ranking &middot; $7.16 CPC</span></td></tr>
           <tr><td class="kw-name">dentist whittier ca</td><td>Homepage</td><td class="kw-num">320</td><td><span class="rk">Not ranking &middot; $8.53 CPC</span></td></tr>
-          <tr><td class="kw-name">orthodontist whittier</td><td>/orthodontics/ &middot; 894 words, no city in title</td><td class="kw-num">210</td><td><span class="rk">Not ranking</span></td></tr>
-          <tr><td class="kw-name">dental implants whittier</td><td>Homepage holds the rank; /dental-implants/ (2,076 words) holds none</td><td class="kw-num">140</td><td><span class="rk warn">#14 &middot; $21.40 CPC</span></td></tr>
-          <tr><td class="kw-name">emergency dentist whittier</td><td>/emergency-dentist-whittier/ &middot; 1,846 words</td><td class="kw-num">140</td><td><span class="rk">Not ranking</span></td></tr>
-          <tr><td class="kw-name">invisalign whittier</td><td>/invisalign-whittier/ &middot; a real, dedicated page</td><td class="kw-num">110</td><td><span class="rk">#40 &middot; $7.84 CPC</span></td></tr>
-          <tr><td class="kw-name">teeth whitening whittier</td><td>/teeth-whitening/ &middot; 318 words, no city</td><td class="kw-num">90</td><td><span class="rk">Not ranking</span></td></tr>
+          <tr><td class="kw-name">orthodontist whittier</td><td>/orthodontics/ &middot; 892 words, no city in title</td><td class="kw-num">210</td><td><span class="rk">Not ranking</span></td></tr>
+          <tr><td class="kw-name">dental implants whittier</td><td>Homepage holds the rank; /dental-implants/ (2,067 words) holds none</td><td class="kw-num">140</td><td><span class="rk warn">#14 &middot; $21.40 CPC</span></td></tr>
+          <tr><td class="kw-name">emergency dentist whittier</td><td>/emergency-dentist-whittier/ &middot; 1,840 words</td><td class="kw-num">140</td><td><span class="rk">Not ranking</span></td></tr>
+          <tr><td class="kw-name">invisalign whittier</td><td>/invisalign-whittier/ &middot; dedicated page, but only 332 words</td><td class="kw-num">110</td><td><span class="rk">#40 &middot; $7.84 CPC</span></td></tr>
+          <tr><td class="kw-name">teeth whitening whittier</td><td>/teeth-whitening/ &middot; 311 words, no city</td><td class="kw-num">90</td><td><span class="rk">Not ranking</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">These eight terms carry <strong>2,080 searches a month</strong> in Whittier, at CPCs up to $21.40. The pages exist and are well written. Three things stand out. <em>/invisalign-whittier/</em> is a proper dedicated page and still only reaches #40 &mdash; along with #42 for &quot;metal braces whittier&quot; and #49 for &quot;whittier braces&quot; &mdash; which is a domain problem, not a page problem. <em>/dental-implants/</em> ranks for no Whittier implant term at all while the homepage takes #14. And <em>/teeth-whitening/</em> (318 words) and <em>/orthodontics/</em> (894) are thin and carry no city in their title tags. Volumes and CPCs: Semrush Keyword Overview, US database, October 2026.</p>
+    <p class="hint">These eight terms carry <strong>2,080 searches a month</strong> in Whittier, at CPCs up to $21.40, and most of the pages behind them are solid &mdash; the implants page runs 2,067 words, the emergency page 1,840. Three things stand out. <em>/dental-implants/</em> ranks for no Whittier implant term at all while the homepage takes #14: a targeting problem, not a content one. Three service pages are thin &mdash; <em>/teeth-whitening/</em> (311 words), <em>/invisalign-whittier/</em> (332) and <em>/orthodontics/</em> (892) &mdash; and none of the three carries the city in its H1. And <em>/invisalign-whittier/</em> is the only page here actually built around its city term, yet it still stops at #40, with #42 for &quot;metal braces whittier&quot; and #49 for &quot;whittier braces&quot;: thin copy and a suppressed domain are both holding it down. Word counts measured on the live pages; volumes and CPCs from Semrush Keyword Overview, US database, October 2026.</p>
   </div>
 </section>
 
@@ -735,7 +745,7 @@
 
         <div class="s1-content">
           <h4>What we'd do in Step 1</h4>
-          <p>Most audits in this series open with "rebuild the site." This one does not. The pages here are good &mdash; 2,076 words on implants, 1,846 on emergency care, the city in the title tags, 284 URLs indexed. A site like this earning 165 visits a month is not a content problem. Something changed between January 2025 and now, and until we know what, every other investment is guesswork.</p>
+          <p>Most audits in this series open with "rebuild the site." This one does not. The pages here are good &mdash; 2,067 words on implants, 1,840 on emergency care, the city in the title tags, 284 URLs indexed. A site like this earning 165 visits a month is not a content problem. Something changed between January 2025 and now, and until we know what, every other investment is guesswork.</p>
 
           <ul class="s1-todo">
             <li><strong>Full backlink audit, first and before anything else.</strong> 37,827 links from 861 domains &mdash; 44 per domain &mdash; at Authority Score 8. We map the profile, identify what was built and when, and compare it against the traffic timeline. If there is a toxic cluster, a disavow goes in. This is the one task that gates everything else.</li>
@@ -744,7 +754,7 @@
             <li><strong>Untangle the cannibalization before adding a single page.</strong> Seven URLs chase the same Whittier implant searches while <em>/dental-implants/</em> ranks for none of them, and WordPress tag archives &mdash; <em>/tag/implants-399-reviews/</em>, <em>/tag/399-dental-implants-california/</em> &mdash; are ranking in their place. We consolidate the duplicates, point them at one page per intent, and close the www / non-www split Semrush is still recording. This is the cheapest lead in the whole audit and it costs no new content.</li>
             <li><strong>Fix the Google Business Profile.</strong> One category &mdash; "Emergency dental service" &mdash; for a practice that has placed 15,000+ implants. Add accurate primary and secondary categories, populate services, and settle who controls the listing.</li>
             <li><strong>Add the dental schema the site has never had.</strong> Dentist, LocalBusiness, MedicalProcedure, FAQPage and AggregateRating. A 4.9&#9733; rating across 315 reviews currently appears nowhere in the markup, so neither Google nor any AI engine can use it.</li>
-            <li><strong>Fix the NAP mismatch and the three weak pages.</strong> The homepage schema declares 562-567-0498 while the page and Google both show 562-696-5544. <em>/teeth-whitening/</em> (318 words) and <em>/orthodontics/</em> (894) need depth and the city in their titles; <em>/general-dentistry/</em> is a two-hop redirect back to the homepage that is still sitting in the sitemap &mdash; either rebuild it as a real page or drop it from the sitemap and point the redirect straight at its destination.</li>
+            <li><strong>Fix the NAP mismatch and the three weak pages.</strong> The homepage schema declares 562-567-0498 while the page and Google both show 562-696-5544. <em>/teeth-whitening/</em> (311 words), <em>/invisalign-whittier/</em> (332) and <em>/orthodontics/</em> (892) all need depth and the city in their headings; <em>/general-dentistry/</em> is a two-hop redirect back to the homepage that is still sitting in the sitemap &mdash; either rebuild it as a real page or drop it from the sitemap and point the redirect straight at its destination.</li>
           </ul>
 
           <div class="s1-closing">
@@ -810,6 +820,17 @@
 </footer>
 
 <script>
+  // ---- Organic-history chart: on narrow screens it scrolls, so open it on the cliff ----
+  (function(){
+    var box=document.querySelector(".cliff-scroll");
+    if(!box) return;
+    function park(){
+      var extra=box.scrollWidth-box.clientWidth;
+      if(extra>0) box.scrollLeft=Math.min(extra, Math.max(0, box.scrollWidth*0.477 - box.clientWidth*0.35));
+    }
+    park(); window.addEventListener("resize",park);
+  })();
+
   // ---- Status pills cycle ----
   const ORDER=["good","warn","bad"];
   const LABELS={good:"Good",warn:"Needs work",bad:"Failing"};
