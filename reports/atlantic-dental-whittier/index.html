@@ -443,17 +443,17 @@
         <span class="flag warn">Ranking, not clicking</span>
       </div>
       <div class="dial">
-        <svg viewBox="0 0 130 130" data-value="18" data-max="100" data-color="var(--bad)" data-suffix="%">
+        <svg viewBox="0 0 130 130" data-value="25" data-max="100" data-color="var(--bad)" data-label="Weak">
           <circle class="track" cx="65" cy="65" r="52"/>
           <circle class="arc" cx="65" cy="65" r="52"/>
           <text class="val" x="65" y="72" text-anchor="middle"></text>
         </svg>
         <div class="name">AI Visibility</div>
-        <div class="note">AEO readiness &middot; our estimate</div>
-        <span class="flag bad">Weak</span>
+        <div class="note">our AEO checklist &mdash; no score claimed</div>
+        <span class="flag bad">Not cited</span>
       </div>
     </div>
-    <p class="hint">Read the first two dials together. The site still ranks for 1,475 keywords &mdash; more than any Whittier competitor we checked &mdash; and earns 165 visits from them. The positions are the problem: most of that footprint now sits between #59 and #91, where nobody clicks.<br><br>The third dial is ours, not Semrush's: an <strong>AI-visibility readiness estimate</strong> scoring the site on the signals AI answer engines read &mdash; FAQ blocks in patient language, FAQPage / MedicalProcedure / AggregateRating schema, and clear entity markup. Atlantic currently has none of them, while Semrush shows Google already displaying an AI Overview on <strong>1,198 of the 1,475 keywords</strong> the site ranks for. Traffic figures: Semrush, atlanticdentalgrp.com, US database, October 2026.</p>
+    <p class="hint">Read the first two dials together. The site still ranks for 1,475 keywords &mdash; more than any Whittier competitor we checked &mdash; and earns 165 visits from them. The positions are the problem: most of that footprint now sits between #59 and #91, where nobody clicks.<br><br>The third dial is ours, not Semrush's, and it deliberately carries no percentage &mdash; there is no published metric for this, so we grade it as a checklist rather than pretend to measure it. The checklist is the signals an answer engine reads: FAQ blocks in patient language, FAQPage / MedicalProcedure / AggregateRating / Dentist schema, clean entity markup and a NAP that agrees with itself. Atlantic has the raw material and none of the signals &mdash; 284 indexed pages of genuinely detailed treatment copy, but no dental schema anywhere, no FAQ blocks, and a phone number in the homepage markup that contradicts the one on the page and on Google. That is the same checklist behind <strong>AI Search Visibility at 25%</strong> in the health score above. The number here that is measured, not graded, is Semrush's: Google already shows an AI Overview on <strong>1,198 of the 1,475 keywords</strong> this site ranks for &mdash; and not one of those answers can cite a practice whose reviews, services and credentials are invisible in its markup. Traffic figures: Semrush, atlanticdentalgrp.com, US database, October 2026.</p>
   </div>
 </section>
 
@@ -854,6 +854,7 @@
     arc.setAttribute("stroke-dashoffset",C*(1-pct));
     arc.setAttribute("transform","rotate(-90 65 65)");
     const t=svg.querySelector(".val");
+    if(svg.dataset.label){ t.textContent=svg.dataset.label; return; }
     const num = v>=1000 ? (v/1000).toFixed(1).replace(/\.0$/,"")+"k" : v;
     t.textContent=num+(svg.dataset.suffix||"");
   }
