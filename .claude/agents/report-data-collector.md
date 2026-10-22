@@ -55,6 +55,10 @@ A `rank` of `false`/absent means not found — emit `0`.
 
 **C. Windsor** (`googleanalytics4`, `google_my_business`, `searchconsole`)
 - GA4: organic sessions this month; top pages by organic sessions; sessions by default channel group.
+  **State provenance with the data.** For `top_pages`, record which channel filter you applied and
+  what the listed rows sum to against the month's total — the builder has no data tools and cannot
+  check, so an unlabelled list makes it either guess or hedge in the published footnote. The same
+  goes for any figure whose meaning depends on how it was queried.
 - GBP: phone calls, website clicks, direction requests, impressions (Search + Maps) for this
   month **and the prior 5** (6-month trend); review count, average rating, new reviews this month.
 - GSC: optional supporting query data.
