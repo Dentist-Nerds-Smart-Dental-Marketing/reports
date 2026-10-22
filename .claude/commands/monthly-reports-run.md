@@ -86,6 +86,26 @@ is included and `.cache/` is not.
 
 ---
 
+## Step 4b — Generate Renato's client cover emails
+
+Once the reports are live, produce the per-client cover emails:
+
+```
+python3 tools/gen-client-emails.py <month>-<year> <contacts.json> <out.md>
+```
+
+`contacts.json` maps client slug to recipient address. **It is NOT in this repo and must never
+be committed.** This repository is PUBLIC on GitHub and the site serves its files without
+authentication, so any address added here is published — in the manifest, in a skill, in an
+agent definition, anywhere. `clients/clients.json` holds `contact_greeting` (names only, which
+are already public on the practices' own sites); addresses live in the CRM or a private sheet
+and are supplied at generation time.
+
+If no contacts file is available, still generate the drafts with the To: line left blank and
+say so in the Slack post — the body, subject and report link are the slow part, not the address.
+
+Attach or link the generated markdown in the Slack summary so Renato can work straight from it.
+
 ## Step 5 — Tell Amin and Renato
 
 Post to the Slack channel in `notify.slack_channel` (if null, say so and ask which channel):
