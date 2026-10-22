@@ -84,7 +84,7 @@
       "city": "Laguna Hills",
       "state": "CA",
       "website": "https://azdentallagunahills.com",
-      "active": true,
+      "active": false,
       "ids": {
         "semrush_project": null,
         "falcon_place_id": null,
@@ -92,7 +92,8 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "note": "Removed from the monthly run on 2026-10-22 at Amin's request. Historical reports stay published."
     },
     {
       "slug": "beverly-hIlls-cosmetic-dentistry",
