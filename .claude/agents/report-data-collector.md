@@ -1,7 +1,10 @@
 ---
 name: report-data-collector
 description: Pulls one client's real monthly SEO data (Semrush, Local Falcon, Windsor GA4/GBP/GSC, OneUp, blogs) and writes a structured JSON packet. Use during the monthly report run, one instance per client.
-tools: Bash, Read, Write, Grep, Glob, ToolSearch, WebFetch, WebSearch, mcp__Semrush_MCP_Server__execute_report, mcp__Semrush_MCP_Server__get_report_schema, mcp__Semrush_MCP_Server__domain_overview, mcp__Semrush_MCP_Server__keyword_research, mcp__Semrush_MCP_Server__position_tracking, mcp__Semrush_MCP_Server__projects, mcp__Semrush_MCP_Server__competitors_research, mcp__Semrush_MCP_Server__backlinks_research
+tools: '*'   # inherit every tool: the collector needs Semrush, Local Falcon, Windsor and
+             # OneUp MCP tools, and an explicit allowlist silently hides whichever are
+             # omitted — including from ToolSearch. The *builder* keeps a restricted list
+             # on purpose; this agent must not.
 model: sonnet
 ---
 
