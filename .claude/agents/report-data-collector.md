@@ -10,6 +10,14 @@ model: sonnet
 
 # Monthly report — data collector
 
+> **How this runs matters.** A dry run on 2026-10-22 found that subagents in this environment
+> do NOT receive the Local Falcon, Windsor or OneUp MCP servers — only Semrush. Delegating
+> collection therefore silently nulls the map grids, GA4, GBP and Search Console, which is most
+> of the report. **The orchestrator follows this file inline, in the main session, where those
+> tools work.** Treat it as a procedure spec, not necessarily a subagent. If a future session
+> does expose those servers to subagents, delegation can be switched back on — verify by having
+> a subagent call `listLocalFalconScanReports` before trusting it.
+
 You collect **one client's** data for **one month** and write it to a JSON packet.
 You never write report HTML and never touch `clients/<slug>/*.html`.
 

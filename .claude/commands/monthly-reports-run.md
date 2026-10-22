@@ -31,21 +31,27 @@ the run. With no arguments: **the month that just ended**, all active clients.
 
 ---
 
-## Step 1 — Collect (fan out)
+## Step 1 — Collect (INLINE, not delegated)
 
-One `report-data-collector` per client, **in batches of 5** so connector rate limits and
-Local Falcon don't get hammered. Each writes `.cache/<report_month>/<slug>.json`.
+Work through the clients **one at a time in this session**, following
+`.claude/agents/report-data-collector.md` as the procedure. Write each client's packet to
+`.cache/<report_month>/<slug>.json` and then **drop the detail from your working context** —
+the packet on disk is the handoff, so collecting 34 clients does not mean holding 34 clients'
+data at once.
 
-Pass the client's manifest row and `out_path`. As packets land, write any `ids_resolved` back
-into `clients/clients.json` so later runs are deterministic.
+**Do not delegate this step to a `report-data-collector` subagent.** A dry run on 2026-10-22
+showed subagents here receive only the Semrush MCP server; Local Falcon, Windsor and OneUp are
+absent, so a delegated collector returns Semrush plus blogs and silently nulls the map grids,
+GA4, GBP and Search Console. If you want to re-test that, have a subagent call
+`listLocalFalconScanReports` first — if it cannot, collect inline.
 
-If a collector fails entirely, record it and carry on — one broken client must not sink the run.
-
----
+Per client: resolve any null `ids` by name and write them back into `clients/clients.json`.
+If one client's collection fails, record it and move on — one failure must not sink the run.
 
 ## Step 2 — Build (fan out)
 
-One `report-builder` per client **that has a packet**, again in batches of 5. Builders have no
+One `report-builder` per client **that has a packet**, in batches of 5. Builders need only
+Read/Write/Edit/Bash — no MCP servers — so delegation is safe and verified here. They have no
 data tools, so anything they write traces to a packet.
 
 Never run a builder for a client whose packet is missing — that is how blank reports happen.
