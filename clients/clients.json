@@ -9,11 +9,12 @@
   "template": "clients/report-template.html",
   "hub_url": "https://reports.dentistnerds.com/clients/",
   "notify": {
-    "slack_channel": null,
+    "slack_channel": "#organic-search",
     "recipients": [
       "Amin",
       "Renato"
-    ]
+    ],
+    "slack_channel_id": "C0C8JF7SK6X"
   },
   "local_falcon": {
     "reuse_scan_within_days": 30,
