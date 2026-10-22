@@ -3,7 +3,8 @@
     "Source of truth for the automated monthly client report run (/monthly-reports-run).",
     "active=true means this client MUST have a report each month; the reviewer agent fails the run if one is missing.",
     "ids are resolved by name on first run and written back here, so later runs are deterministic.",
-    "Set active=false to pause a client without deleting their folder or history."
+    "Set active=false to pause a client without deleting their folder or history.",
+    "contact_greeting / contact_doctors are PUBLIC — this file is served at https://reports.dentistnerds.com/clients/clients.json with no auth. NEVER put client email addresses, phone numbers or any other contact PII here."
   ],
   "report_root": "clients",
   "template": "clients/report-template.html",
@@ -38,7 +39,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Tousi",
+      "contact_doctors": "Dr. Mahboubeh Najariantousi (Dr. Tousi)"
     },
     {
       "slug": "all-smiles-dental-studio",
@@ -54,7 +57,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Shahrokh",
+      "contact_doctors": "Dr. Ali Shahrokh"
     },
     {
       "slug": "av-dental-wellness-group",
@@ -103,7 +108,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Chemla",
+      "contact_doctors": "Dr. Marc Chemla"
     },
     {
       "slug": "california-coast-dental-arts",
@@ -119,7 +126,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Granger",
+      "contact_doctors": "Dr. Dryden Granger"
     },
     {
       "slug": "cameron-park-family-dentistry",
@@ -135,7 +144,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Nav",
+      "contact_doctors": "Dr. Nahved Jafarnejad (Dr. Nav)"
     },
     {
       "slug": "canyon-country-dental-care",
@@ -151,7 +162,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Dabirian",
+      "contact_doctors": "Dr. Ali Dabirian"
     },
     {
       "slug": "delicate-smiles",
@@ -167,7 +180,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Alshehabi",
+      "contact_doctors": "Dr. Hassan Alshehabi"
     },
     {
       "slug": "elite-dentistry",
@@ -183,7 +198,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Rastegar-Lai",
+      "contact_doctors": "Dr. Mehran Rastegar-Lai"
     },
     {
       "slug": "exceptional-dentistry",
@@ -199,7 +216,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Garsdean",
+      "contact_doctors": "Dr. Ramy Garsdean"
     },
     {
       "slug": "foothill-ranch-dentistry",
@@ -215,7 +234,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Irvani",
+      "contact_doctors": "Dr. Aria Irvani"
     },
     {
       "slug": "fullerton-smile-dentistry",
@@ -231,7 +252,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Zhang",
+      "contact_doctors": "Dr. Chris Zhang"
     },
     {
       "slug": "gardena-dental-group",
@@ -247,7 +270,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Sanaz",
+      "contact_doctors": "Dr. Sanaz"
     },
     {
       "slug": "lava-dental-houston",
@@ -263,7 +288,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Tatari",
+      "contact_doctors": "Dr. Fadi Tatari"
     },
     {
       "slug": "littleton-dental-collective",
@@ -279,7 +306,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Park",
+      "contact_doctors": "Dr. Euijoon Park"
     },
     {
       "slug": "malibu-dentistry",
@@ -295,7 +324,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. De Los Santos",
+      "contact_doctors": "Dr. Austin De Los Santos"
     },
     {
       "slug": "marconi-dental-group",
@@ -311,7 +342,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Kovar",
+      "contact_doctors": "Dr. Dylan Kovar"
     },
     {
       "slug": "muse-dental-studio",
@@ -327,7 +360,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Tatari",
+      "contact_doctors": "Dr. Fadi Tatari"
     },
     {
       "slug": "next-smile-implant",
@@ -343,7 +378,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Yazdianpour and Dr. Rezaei",
+      "contact_doctors": "Dr. Saeed Yazdianpour & Dr. Kiana Rezaei"
     },
     {
       "slug": "oc-perio-implants-dental-group",
@@ -359,7 +396,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Reshad",
+      "contact_doctors": "Dr. Moe Reshad"
     },
     {
       "slug": "orthodontics-in-woodland-hills",
@@ -375,7 +414,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Sanaz",
+      "contact_doctors": "Dr. Sanaz"
     },
     {
       "slug": "pennsylvania-perio--implants",
@@ -391,7 +432,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Sourvanos",
+      "contact_doctors": "Dr. Dennis Sourvanos"
     },
     {
       "slug": "perio-implants-health-pro",
@@ -407,7 +450,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Rodríguez Peña",
+      "contact_doctors": "Dr. Angel Emmanuel Rodríguez Peña"
     },
     {
       "slug": "rod-gleave-dmd",
@@ -423,7 +468,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Gleave",
+      "contact_doctors": "Dr. Rod Gleave"
     },
     {
       "slug": "saddleback-valley-endodontics",
@@ -439,7 +486,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Jönsson",
+      "contact_doctors": "Dr. Lars Björn Jönsson"
     },
     {
       "slug": "san-juan-family-dentistry",
@@ -489,7 +538,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Ntekim",
+      "contact_doctors": "Dr. Ette Ntekim"
     },
     {
       "slug": "smile-spa-camarillo",
@@ -505,7 +556,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Nguyen and Dr. Abed Elahad",
+      "contact_doctors": "Dr. Shawn Nguyen & Dr. Joelle Abed Elahad"
     },
     {
       "slug": "smile-tustin",
@@ -521,7 +574,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Ezzy",
+      "contact_doctors": "Dr. Zahra Ezzy"
     },
     {
       "slug": "the-smile-spa",
@@ -537,7 +592,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Abed Elahad and Dr. Nguyen",
+      "contact_doctors": "Dr. Joelle Abed Elahad & Dr. Shawn Nguyen"
     },
     {
       "slug": "Torrance-Dental-Spa",
@@ -553,7 +610,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Ranjbar",
+      "contact_doctors": "Dr. Maral Ranjbar"
     },
     {
       "slug": "valencia-aesthetic-dentistry",
@@ -569,7 +628,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Rayan Kafri and Dr. Peyman Kafri",
+      "contact_doctors": "Dr. Rayan Kafri & Dr. Peyman Kafri"
     },
     {
       "slug": "west-hollywood-dental-studio",
@@ -585,7 +646,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Rivas",
+      "contact_doctors": "Dr. Lisa Rivas"
     },
     {
       "slug": "westgrove-dental-care",
@@ -601,7 +664,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Skenandore",
+      "contact_doctors": "Dr. Brandon Skenandore"
     },
     {
       "slug": "westwood-oralux-dental-studio",
@@ -634,7 +699,9 @@
         "ga4_property": null,
         "gsc_site": null,
         "oneup_account": null
-      }
+      },
+      "contact_greeting": "Dr. Sanaz",
+      "contact_doctors": "Dr. Sanaz"
     }
   ]
 }
