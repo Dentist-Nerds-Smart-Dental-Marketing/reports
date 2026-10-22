@@ -1,0 +1,637 @@
+{
+  "_comment": [
+    "Source of truth for the automated monthly client report run (/monthly-reports-run).",
+    "active=true means this client MUST have a report each month; the reviewer agent fails the run if one is missing.",
+    "ids are resolved by name on first run and written back here, so later runs are deterministic.",
+    "Set active=false to pause a client without deleting their folder or history."
+  ],
+  "report_root": "clients",
+  "template": "clients/report-template.html",
+  "hub_url": "https://reports.dentistnerds.com/clients/",
+  "notify": {
+    "slack_channel": null,
+    "recipients": [
+      "Amin",
+      "Renato"
+    ]
+  },
+  "local_falcon": {
+    "reuse_scan_within_days": 30,
+    "keywords": [
+      "dentist in {city}",
+      "dentist near me"
+    ]
+  },
+  "clients": [
+    {
+      "slug": "2c-wellness-dentistry",
+      "name": "2C Wellness Dentistry",
+      "city": "Laguna Niguel",
+      "state": "CA",
+      "website": "https://www.dentistoflagunaniguel.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "all-smiles-dental-studio",
+      "name": "All Smiles Dental Studio",
+      "city": "Encinitas",
+      "state": "CA",
+      "website": "https://encinitasallsmilesdental.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "av-dental-wellness-group",
+      "name": null,
+      "city": null,
+      "state": null,
+      "website": null,
+      "active": false,
+      "note": "No report on the current template; last file april-2026.html. Confirm whether still an SEO client.",
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "az-dental-office-laguna-hill",
+      "name": "AZ Dental Office",
+      "city": "Laguna Hills",
+      "state": "CA",
+      "website": "https://azdentallagunahills.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "beverly-hIlls-cosmetic-dentistry",
+      "name": "Beverly Hills Cosmetic Dentistry",
+      "city": "Beverly Hills",
+      "state": "CA",
+      "website": "https://beverlyhillscosmeticdentistry.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "california-coast-dental-arts",
+      "name": "California Coast Dental Arts",
+      "city": "Oceanside",
+      "state": "CA",
+      "website": "https://www.calcoastdental.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "cameron-park-family-dentistry",
+      "name": "Cameron Park Family Dentistry",
+      "city": "Cameron Park",
+      "state": "CA",
+      "website": "https://cameronparkfamilydentistry.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "canyon-country-dental-care",
+      "name": "Canyon Country Dental Care",
+      "city": "Canyon Country",
+      "state": "CA",
+      "website": "https://canyoncountrydentalcare.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "delicate-smiles",
+      "name": "Delicate Smiles",
+      "city": "Milwaukee",
+      "state": "WI",
+      "website": "https://www.delicatesmiles.net",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "elite-dentistry",
+      "name": "Elite Dentistry",
+      "city": "Rancho Santa Margarita",
+      "state": "CA",
+      "website": "https://elitedentistryrsm.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "exceptional-dentistry",
+      "name": "Exceptional Dentistry",
+      "city": "Palmdale",
+      "state": "CA",
+      "website": "https://palmdaleexceptionaldentistry.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "foothill-ranch-dentistry",
+      "name": "Foothill Ranch Dentistry",
+      "city": "Foothill Ranch",
+      "state": "CA",
+      "website": "https://foothillranchdentistry.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "fullerton-smile-dentistry",
+      "name": "Fullerton Smile Dentistry",
+      "city": "Fullerton",
+      "state": "CA",
+      "website": "https://fullertonsmiledentistry.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "gardena-dental-group",
+      "name": "Gardena Dental Group",
+      "city": "Gardena",
+      "state": "CA",
+      "website": "https://gardenadentalgroup.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "lava-dental-houston",
+      "name": "Lava Dental",
+      "city": "Houston",
+      "state": "TX",
+      "website": "https://www.lavadentalhouston.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "littleton-dental-collective",
+      "name": "Littleton Dental Collective",
+      "city": "Littleton",
+      "state": "CO",
+      "website": "https://www.littletondentalco.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "malibu-dentistry",
+      "name": "Malibu Dentistry",
+      "city": "Malibu",
+      "state": "CA",
+      "website": "https://malibudentistry.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "marconi-dental-group",
+      "name": "Marconi Dental Group",
+      "city": "Carmichael",
+      "state": "CA",
+      "website": "https://www.marconidentalgroup.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "muse-dental-studio",
+      "name": "Muse Dental Studio",
+      "city": "Houston",
+      "state": "TX",
+      "website": "https://www.musedental.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "next-smile-implant",
+      "name": "Next Smile + Implant",
+      "city": "Thousand Oaks",
+      "state": "CA",
+      "website": "https://www.nextsmilecenter.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "oc-perio-implants-dental-group",
+      "name": "OC Perio & Implants Dental Group",
+      "city": "Mission Viejo",
+      "state": "CA",
+      "website": "https://ocperioandimplants.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "orthodontics-in-woodland-hills",
+      "name": "Orthodontics in Woodland Hills",
+      "city": "Woodland Hills",
+      "state": "CA",
+      "website": "https://orthodonticsinwoodlandhills.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "pennsylvania-perio--implants",
+      "name": "Pennsylvania Perio & Implants",
+      "city": "York & Hanover",
+      "state": "PA",
+      "website": "https://pennsylvaniaperioandimplants.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "perio-implants-health-pro",
+      "name": "Perio Implant Health Professionals",
+      "city": "Downtown Los Angeles",
+      "state": "CA",
+      "website": "https://perioimplanthealthpro.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "rod-gleave-dmd",
+      "name": "Rod Gleave, DMD",
+      "city": "Salt Lake City",
+      "state": "UT",
+      "website": "https://www.slcsmiles.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "saddleback-valley-endodontics",
+      "name": "Saddleback Valley Endodontics",
+      "city": "Laguna Hills",
+      "state": "CA",
+      "website": "https://www.sbvendo.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "san-juan-family-dentistry",
+      "name": "San Juan Family Dentistry",
+      "city": "San Juan Capistrano",
+      "state": "CA",
+      "website": "https://sanjuanfamilydental.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "seattle-biomimetic-dentistry",
+      "name": null,
+      "city": null,
+      "state": null,
+      "website": null,
+      "active": false,
+      "note": "No report on the current template; last file june-2026.html. Confirm whether still an SEO client.",
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "seren-advanced-dentistry-oxnard",
+      "name": "Seren Advanced Dentistry",
+      "city": "Oxnard",
+      "state": "CA",
+      "website": "https://serendentaloxnard.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "smile-spa-camarillo",
+      "name": "Smile Spa Camarillo",
+      "city": "Camarillo",
+      "state": "CA",
+      "website": "https://www.camarillocosmeticdentistry.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "smile-tustin",
+      "name": "Smile Tustin by Dr. Ezzy",
+      "city": "Tustin",
+      "state": "CA",
+      "website": "https://smiletustin.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "the-smile-spa",
+      "name": "The Smile Spa",
+      "city": "Agoura Hills",
+      "state": "CA",
+      "website": "https://agourahillscosmeticdentists.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "Torrance-Dental-Spa",
+      "name": "Torrance Dental Spa",
+      "city": "Torrance",
+      "state": "CA",
+      "website": "https://torrancedentalspa.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "valencia-aesthetic-dentistry",
+      "name": "Valencia Aesthetic Dentistry",
+      "city": "Valencia",
+      "state": "CA",
+      "website": "https://valenciaaestheticdentistry.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "west-hollywood-dental-studio",
+      "name": "West Hollywood Dental Studio",
+      "city": "West Hollywood",
+      "state": "CA",
+      "website": "https://westhollywooddentalstudio.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "westgrove-dental-care",
+      "name": "Westgrove Dental Care",
+      "city": "Garden Grove",
+      "state": "CA",
+      "website": "https://westgrovedentalcare.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "westwood-oralux-dental-studio",
+      "name": "Oraluxe Dental Studio",
+      "city": "Westwood",
+      "state": "CA",
+      "website": "https://westwoodoraluxedentalstudio.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    },
+    {
+      "slug": "woodland-hills-family-dentistry",
+      "name": "Woodland Hills Family Dentistry",
+      "city": "Woodland Hills",
+      "state": "CA",
+      "website": "https://www.woodlandhillsfamilydentistry.com",
+      "active": true,
+      "ids": {
+        "semrush_project": null,
+        "falcon_place_id": null,
+        "gbp_location": null,
+        "ga4_property": null,
+        "gsc_site": null,
+        "oneup_account": null
+      }
+    }
+  ]
+}
