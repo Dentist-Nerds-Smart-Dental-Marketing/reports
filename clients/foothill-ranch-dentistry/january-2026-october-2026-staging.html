@@ -259,7 +259,11 @@
   @media print{
     html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:14px}
     .wrap{max-width:none;padding:0 6px}
-    section{padding:26px 0}
+    section{padding:22px 0;break-inside:auto!important}
+    .work-card{break-inside:auto!important}
+    .work-list li{break-inside:avoid}
+    .table-wrap,table{break-inside:avoid}
+    .leads-grid{grid-template-columns:1fr 1fr}
     .hero{padding:30px 0}
     .lf-map{display:none!important}
     .map-static{display:block}
