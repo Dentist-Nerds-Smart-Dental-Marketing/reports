@@ -341,12 +341,30 @@ time Search Console put them at average positions 18.9, 15.4, 18.1 and 6.2, and 
 "dentist in oceanside" ranked at 103 of 121 grid points. Three more terms were 20–30 places off.
 That is the same failure as 2C Wellness, and the count test did not catch it.
 
-So also run Test B, every client, every month: **cross-check the head terms against Search
-Console for the same month.** If a keyword reads `"-"` in Semrush for the whole month while
-Search Console shows it with a real average position, or the two disagree by roughly 20 places or
-more on several keywords, the campaign is unreliable **whatever the count test says**. Record the
-per-keyword comparison in the packet. Fall back to Search Console for that client that month, and
-add the client to Appendix A.
+So also run Test B, every client, every month: **cross-check the tracked terms against Search
+Console for the same month**, and record the per-keyword comparison in the packet.
+
+Weigh the evidence — do not trigger on a position gap alone. Search Console is an all-device,
+US-wide average and Semrush is a desktop check at city level, so the two legitimately differ, and
+the same caveat that makes the fallback imperfect makes a raw gap weak evidence.
+
+**The decisive signal is a keyword Semrush reports as `"-"` for the WHOLE month while Search
+Console shows it with a monthly average position of 20 or better.** Semrush is claiming the term
+is not in the top 100 anywhere, which a national all-device average of, say, 18 contradicts
+outright; geography cannot explain it away. Treat the campaign as unreliable when:
+
+- two or more tracked keywords show that pattern, **or**
+- one does and several further keywords sit 20+ places apart in the same direction, **or**
+- **Local Falcon's own grid contradicts Semrush on the same head term.** This is the strongest
+  evidence there is, because Local Falcon is already city-level and local, so the geography
+  caveat cannot explain the gap away. Exceptional Dentistry in October 2026: Semrush put
+  "dentist in palmdale" at #48 while Local Falcon had the practice ranked at all 121 grid
+  points with an ARP of 3.59 and Search Console had "dentist palmdale" at an average of 3.1.
+  Two independent sources, both disagreeing with Semrush in the same direction.
+
+A single `"-"` keyword with everything else in reasonable agreement is worth a note in `_errors`,
+not a fallback. When the test does trigger, fall back to Search Console for that client that
+month and add the client to Appendix A.
 
 Keywords sitting at healthy positions do not all leave the top 100 on the same day. When a
 campaign fails this check:
@@ -532,6 +550,15 @@ before building any client's report. Remove an entry once the underlying issue i
 - Open question for the team: Local Falcon's place record links GBP `locations/1402003271736985932`
   while the manifest carries `locations/7231815729630229678`. Confirm they are the same profile.
 
+### LITTLETON DENTAL COLLECTIVE (littletondentalcollective.com)
+- Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Campaign `30604390_5208423` passed the
+  count test but failed Test B: "root canal littleton" read `"-"` all month against a Search
+  Console average of 18.9, and four more terms sat 20–35 places apart in the same direction
+  ("dentist littleton" 40 vs 19.9, "littleton dentist" 49 vs 21.9, "dental implants near me" 41 vs
+  6.8, "emergency dentist littleton" 52 vs 17.1). Remove once the campaign agrees with Google again.
+- Local Falcon holds only three scans for this place, all dated 29 Oct, so there is no September
+  grid and the map section has no month-over-month comparison this month.
+
 ### DELICATE SMILES (delicatesmiles.net)
 - Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Campaign `30530984_5177401` failed the
   count test outright — 10 of 14 keywords through 18 Oct, down to 3 on 19 Oct, recovering only to
@@ -542,3 +569,15 @@ before building any client's report. Remove an entry once the underlying issue i
 
 ### EXCEPTIONAL DENTISTRY
 - Traffic to Each Page: keep the hostname filter for `palmdaleexceptionaldentistry.com`
+- Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Campaign `24862249_3027046` passed the
+  count test but failed Test B on 9 of 20 keywords, and Local Falcon corroborated against it:
+  Semrush read "dentist in palmdale" at #48 while the grid had all 121 points ranked at ARP 3.59
+  and Search Console had the term at 3.1. Other gaps: "dental implants palmdale" 53 vs 1.9,
+  "emergency dentist near me" 44 vs 1.4, "root canal palmdale" 64 vs 9.4. Remove once the campaign
+  agrees with Google again.
+- Second listing "Palmdale Emergency Dental Care" (`locations/17327590917246830856`) is still
+  rejected by Windsor as unavailable. Its calls and clicks must be filled in by hand, as in August.
+- Local Falcon holds no September scan for this place (all four scans are dated 6 Oct), so the map
+  section has no month-over-month comparison this month.
+- The backlink sheet's "NAP & Infos" tab lists the website as `exceptionaldentistryca.com` while
+  the manifest has `palmdaleexceptionaldentistry.com`. Someone should confirm which is current.
