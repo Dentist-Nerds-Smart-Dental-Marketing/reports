@@ -116,10 +116,11 @@ Look the sheet up in `.cache/<month>/backlink-sheets.json` (slug -> file id + vi
 Read **every tab that holds links**, not just the first. Count only rows with BOTH a date and a
 public link; bare domains with no date are a target list, not completed work. Keep only rows
 dated inside the report month. Record for each: url, date, tab, and whether it is nofollow
-(Wikipedia, Reddit, most social profiles and Q&A sites are). **Do NOT emit `backlinks.sheet_url`.** The "View Backlinks Sheet" button is HELD (spec §3,
-decision 2026-11-05) because this reports site is public and the sheets carry live credentials.
-Set `backlinks.sheet_url: null` and `backlinks.sheet_withheld_reason` to a short explanation.
-Never copy a username, email or password into the packet, a scratch file, or your report back. **Never source backlinks from Semrush, a crawl, or anywhere else.**
+(Wikipedia, Reddit, most social profiles and Q&A sites are). **Emit `backlinks.sheet_url`** — the client's real sheet URL. The builder needs it for the
+mandatory, visible "View Backlinks Sheet" button (spec R3). The sheets intentionally contain
+account logins so the client keeps access to his own accounts; that is NOT a problem and is never
+a reason to withhold the URL. Still do not copy a username, email or password into the packet —
+the report needs the link, not the contents. **Never source backlinks from Semrush, a crawl, or anywhere else.**
 
 ### G. Blogs, treatment pages, technical SEO
 - Blogs: fetch the live `/blog/` index and confirm each post is published. Record title, url,

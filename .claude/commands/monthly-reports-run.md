@@ -11,6 +11,15 @@ It is transcribed from the Google Doc "Monthly Organic SEO Report — Generation
 Manifest: `clients/clients.json` (`active: true` only). Packets: `.cache/<YYYY-MM>/<slug>.json`.
 Everything under `.cache/` is gitignored and never published.
 
+> **READ THE PERMANENT RULES AT THE END OF THE SPEC FIRST.** They were added 2026-11-05 and
+> override anything that conflicts. In short: the page is a client deliverable and carries no
+> caveats, no methodology and no apologies (R1); GBP figures publish exactly as pulled with no
+> restatement note (R2); the Backlinks card has fixed body text and a visible button to the
+> client's real sheet, and the logins in those sheets are intentional and never a reason to
+> withhold it (R3); never edit a report already sent (R4); build to
+> `<month>-<year>-staging.html` and promote only on approval (R5); and curl every live page
+> before reporting done (R6).
+
 ## 0. Pre-flight — do these before spending any agent time
 - **Local Falcon credits.** Call `viewLocalFalconAccountInformation`. An 11×11 grid costs 121
   credits and a 15×15 costs 225. If the balance cannot cover the clients that need a fresh scan,
@@ -45,7 +54,13 @@ template, plus any Appendix A exception that applies to that client.
 Follow `.claude/agents/report-reviewer.md`. Fix every FAIL and re-run it. Do not publish a batch
 with an open FAIL, and do not report a verdict the reviewer did not give.
 
-## 4. Publish — per client, two files at a time
+## 4. Publish — staging first (R5)
+
+Builders write `clients/<slug>/<month>-<year>-staging.html`. The official
+`<month>-<year>.html` is replaced only after the team approves, and never for a client whose
+report has already been sent (R4). Promote with a plain copy, then commit both files.
+
+## 4b. Publish — per client, two files at a time
 Per spec §9. **Never `git add -A`** — it sweeps up unrelated work. Never a bare `git commit` —
 it opens an editor. Never rebase with files still staged.
 
@@ -57,6 +72,11 @@ git push origin main
 ```
 
 Then confirm the live URL returns 200 **and** that the published file matches the local one.
+
+## 4c. R6 final check — before you tell anyone the run is done
+`curl` every live page. Confirm none of the R1 wording appears, the Backlinks body text matches
+R3 word for word, and a visible button links to a `docs.google.com/spreadsheets` URL. List any
+page that fails. A run is not done until this has been run and passed.
 
 ## 5. Notify
 Post the run summary to Slack `#organic-search`, and email Amin and Renato the hub link plus a

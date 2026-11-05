@@ -43,11 +43,18 @@ Compare **positionally**, not "the value appears somewhere in the file":
   the packet's provenance notes.
 
 ## Cards
-- Backlinks card present on **every** report. Its absence is an automatic FAIL — it is the most
-  common failure.
-- **The sheet button is HELD.** A report containing a "View Backlinks Sheet" button, or any
-  `docs.google.com/spreadsheets` URL, is an automatic FAIL: those sheets hold live credentials and
-  this site is public. Grep every report for `docs.google.com` and report any hit.
+- Backlinks card present on **every** report. Its absence is an automatic FAIL.
+- Its body text must match spec R3 **word for word**. Any deviation is a FAIL.
+- A **visible** "View Backlinks Sheet" button linking to a real `docs.google.com/spreadsheets`
+  URL must be present on every report. Its absence, a placeholder URL, or a commented-out button
+  is an automatic FAIL. The logins in those sheets are intentional and are never a reason to
+  withhold the button.
+- **R1 sweep — automatic FAIL on any hit in rendered text:** "A note on these numbers",
+  "incomplete", "not yet reported", "reporting lag", "continues to revise", "restated",
+  "may rise", "should not be compared", "comparison is not available", "could not be retrieved",
+  "not independently verified", "unverified", "approximate", "hand-tallied", or any sentence
+  explaining why a figure is missing, uncertain or unreliable. The page is a client deliverable.
+- **Never an estimate in a KPI.** A figure the packet flags as approximate or hand-tallied is a FAIL.
 - No card whose only content is missing data (e.g. "GBP Posts — Not available"). Automatic FAIL.
 - Blog Content holds blogs only; Treatment Pages is separate or absent; no card spans two columns.
 
@@ -59,6 +66,11 @@ genuinely identical.
 ## Tone
 Flag "best month on record", any internal data problem printed on a client page, any data gap
 presented as a result, and any narrative claim that does not trace to a number in the report.
+
+## R6 — final check before you report the run done
+`curl` every live page and confirm: no R1 wording; the Backlinks body text matches R3 exactly;
+a visible button links to a docs.google.com/spreadsheets URL. Name every page that fails. Do not
+report the run as done until this has actually been run.
 
 ## Output
 A markdown table: client | report | coverage | placeholders | map | KPIs | verdict. Then, for each
