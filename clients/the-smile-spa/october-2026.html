@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Smile Spa — October 2026 SEO Performance Report</title>
+<title>SEO Performance Report — The Smile Spa · October 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
@@ -75,7 +75,7 @@
   .hero-kpi{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:24px 22px}
   .hero-kpi-num{font-family:"Anton",sans-serif;font-size:46px;color:#fff;line-height:1}
   .hero-kpi-label{font-size:12.5px;color:rgba(255,255,255,.78);margin-top:10px;letter-spacing:.04em;font-weight:600;text-transform:uppercase}
-  .hero-kpi-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
+  .hero-kpi-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px;line-height:1.45}
 
   /* ============== SECTION SHELL ============== */
   section{padding:72px 0}
@@ -94,11 +94,12 @@
   .block-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 14px}
 
   /* ============== WHAT WE'VE DONE — WORK CARDS ============== */
+  /* v6: two equal columns, NO card spans two columns, NO align-items:start —
+     cards in a row share height. The .span-2 class from v5 is deliberately gone. */
   .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
   .work-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;position:relative;
-    transition:transform .2s,box-shadow .2s}
+    display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
   .work-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.07)}
-  .work-card.span-2{grid-column:span 2}
   .work-card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
   .work-card-icon{width:52px;height:52px;border-radius:14px;background:var(--blue-50);color:var(--blue);
     display:flex;align-items:center;justify-content:center;flex:none}
@@ -106,6 +107,7 @@
   .work-card-title{font-size:21px;color:var(--ink);text-transform:uppercase;line-height:1.15;flex:1;min-width:0}
   .work-card-count{margin-left:auto;background:var(--good);color:#fff;padding:6px 14px;border-radius:100px;
     font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex:none;font-family:"DM Sans",sans-serif}
+  .work-card-count.hold{background:var(--warn);color:#4a3406}
   .work-list{list-style:none;padding:0;margin:0}
   .work-list li{padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:15.5px;line-height:1.5}
   .work-list li:last-child{border-bottom:none}
@@ -115,11 +117,16 @@
   .work-meta{font-size:13px;color:var(--ink-mute);margin-top:4px;line-height:1.5}
   .work-summary{font-size:16px;color:var(--ink-soft);line-height:1.6}
   .work-summary strong{color:var(--ink);font-weight:700}
-  .sheet-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:11px 18px;
-    background:var(--ink);color:#fff;text-decoration:none;border-radius:10px;font-size:13px;font-weight:700;
-    letter-spacing:.02em;transition:transform .15s,box-shadow .15s}
-  .sheet-link:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,27,45,.18)}
+
+  /* SECONDARY BUTTON — "View Backlinks Sheet". Outlined, brand blue, unmissable.
+     margin-top:auto pins it to the bottom of its card so equal-height rows look right. */
+  .sheet-link{display:inline-flex;align-items:center;align-self:flex-start;gap:8px;margin-top:auto;
+    padding:12px 20px;background:#fff;color:var(--blue-700);text-decoration:none;border:2px solid var(--blue);
+    border-radius:10px;font-size:13.5px;font-weight:700;letter-spacing:.02em;
+    transition:background .15s,color .15s,transform .15s,box-shadow .15s}
   .sheet-link::after{content:'→'}
+  .sheet-link:hover{background:var(--blue);color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(10,107,255,.22)}
+  .work-summary + .sheet-link{margin-top:18px}
 
   /* ============== KEYWORD TABLE ============== */
   .table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line)}
@@ -134,19 +141,33 @@
   .kw .kw-name{font-weight:700;color:var(--ink)}
   .kw .kw-num{font-family:"Anton",sans-serif;font-size:18px;color:var(--ink)}
   .rk{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:12px;padding:5px 12px;border-radius:100px;white-space:nowrap}
-  .rk.good{background:var(--good-soft);color:var(--good-deep)}
-  .rk.warn{background:var(--warn-soft);color:#b87a0e}
-  .rk.bad{background:var(--bad-soft);color:var(--bad)}
+  .rk.good{background:var(--good-soft);color:var(--good-deep)}   /* #1–3   */
+  .rk.warn{background:var(--warn-soft);color:#b87a0e}            /* #4–10  */
+  .rk.bad{background:var(--bad-soft);color:var(--bad)}           /* #11+   */
   .status{display:inline-block;padding:5px 13px;border-radius:100px;font-size:11px;font-weight:700;
     letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
-  .status.stable{background:var(--good-soft);color:var(--good-deep)}
   .status.improving{background:var(--blue-50);color:var(--blue-700)}
+  .status.stable{background:var(--good-soft);color:var(--good-deep)}
   .status.building{background:var(--warn-soft);color:#b87a0e}
-  .status.declining{background:var(--bad-soft);color:var(--bad)}
+  /* v6: there is NO .status.declining. Keywords that dropped 1.0+ are REMOVED from
+     the table (spec §4), not labelled. Do not reintroduce the rule. */
+
+  /* ============== STAT CARDS (GBP + Search Console footprint) ============== */
+  .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .stat-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .stat-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+  .stat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+  .stat-num{font-family:"Anton",sans-serif;font-size:38px;color:var(--blue);line-height:1}
+  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:8px;font-weight:600}
+  .stat-sub{font-size:12.5px;color:var(--ink-mute);margin-top:4px}
+  .stat-sub.up{color:var(--good-deep)}
+  .stat-sub.down{color:var(--bad)}
+
+  /* Search Console footprint block sits directly under the keyword table */
+  .footprint{margin-top:38px}
 
   /* ============== LOCAL FALCON MAP (Leaflet) ============== */
   .map-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
-  .map-card+.map-card{margin-top:24px}
   .map-meta{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:13.5px;color:var(--ink-mute);
     margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
   .map-meta strong{color:var(--ink)}
@@ -199,15 +220,8 @@
   .src-pct{font-family:"Anton",sans-serif;font-size:18px;color:var(--ink);min-width:54px;text-align:right}
   .src-num{font-size:13.5px;color:var(--ink-mute);min-width:80px;text-align:right}
 
-  /* ============== STAT CARDS ============== */
-  .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .stat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
-  .stat-num{font-family:"Anton",sans-serif;font-size:38px;color:var(--blue);line-height:1}
-  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:8px;font-weight:600}
-  .stat-sub{font-size:12.5px;color:var(--ink-mute);margin-top:4px}
-
   /* ============== GBP TABLE ============== */
-  .gbp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:520px}
+  .gbp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:640px}
   .gbp thead tr{background:var(--ink);color:#fff}
   .gbp th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:14px 10px;text-align:center}
   .gbp th:first-child{text-align:left}
@@ -215,6 +229,8 @@
   .gbp td:first-child{text-align:left;font-weight:600}
   .gbp tbody tr:last-child{background:var(--blue-50);font-weight:700}
   .gbp .num{font-family:"Anton",sans-serif;font-size:16px}
+  .restatement{font-size:13px;color:var(--ink-soft);background:var(--bg-soft);border:1px solid var(--line);
+    border-left:3px solid var(--blue);border-radius:10px;padding:14px 18px;margin-top:18px;line-height:1.55}
 
   /* ============== FOOTER ============== */
   .end-cta{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff;padding:56px 0;text-align:center}
@@ -222,7 +238,7 @@
   .end-cta p{color:rgba(255,255,255,.72);max-width:560px;margin:0 auto;font-size:15px}
   .end-cta .thanks{margin-top:22px;font-size:15px;color:#fff}
   .end-cta .thanks b{color:#cfe0ff}
-  .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em}
+  .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em;line-height:1.9}
   .end-meta .src-tag{color:rgba(255,255,255,.7)}
 
   /* ============== RESPONSIVE ============== */
@@ -234,9 +250,8 @@
     .hero-kpis{grid-template-columns:repeat(2,1fr);gap:14px}
     .hero-kpi-num{font-size:38px}
     .work-grid{grid-template-columns:1fr}
-    .work-card.span-2{grid-column:span 1}
     .src-grid{grid-template-columns:1fr;gap:28px}
-    .stat-grid{grid-template-columns:1fr}
+    .stat-grid,.stat-grid.cols-3,.stat-grid.cols-4{grid-template-columns:1fr}
     .page-bar{flex-basis:26%}
   }
   @media print{
@@ -248,7 +263,6 @@
 </head>
 <body>
 
-<!-- ============== HERO ============== -->
 <header class="hero">
   <div class="hero-wrap wrap">
     <div class="audit-strip">
@@ -267,30 +281,29 @@
 
     <div class="hero-kpis">
       <div class="hero-kpi">
-        <div class="hero-kpi-num">694</div>
-        <div class="hero-kpi-label">Keywords Ranking</div>
-        <div class="hero-kpi-sub">Semrush, domain-wide · mid-month snapshot (~Oct 15)</div>
+        <div class="hero-kpi-num">1,030</div>
+        <div class="hero-kpi-label">Keywords in Google Top 20</div>
+        <div class="hero-kpi-sub">▼ 9 vs September (1,039) · Search Console, United States</div>
       </div>
       <div class="hero-kpi">
-        <div class="hero-kpi-num">307</div>
+        <div class="hero-kpi-num">188</div>
         <div class="hero-kpi-label">Website Traffic / mo</div>
-        <div class="hero-kpi-sub">Organic sessions (GA4)</div>
+        <div class="hero-kpi-sub">▼ 74 vs September (262) · GA4 organic sessions, United States</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">29</div>
         <div class="hero-kpi-label">GBP Phone Calls</div>
-        <div class="hero-kpi-sub">This month</div>
+        <div class="hero-kpi-sub">▲ 8 vs September (21) · Google Business Profile, this listing</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">5.0★</div>
         <div class="hero-kpi-label">Review Rating</div>
-        <div class="hero-kpi-sub">174 total reviews</div>
+        <div class="hero-kpi-sub">175 total reviews · Google Business Profile</div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ============== WHAT WE'VE DONE THIS MONTH ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow green"><span class="dot"></span>This Month's Work</span>
@@ -302,44 +315,69 @@
       <div class="work-card">
         <div class="work-card-head">
           <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <span class="work-card-title">Blogs Completed</span>
+          <span class="work-card-title">Blog Content</span>
           <span class="work-card-count">6 new</span>
         </div>
         <ul class="work-list">
           <li>
             <a href="https://agourahillscosmeticdentists.com/blog/can-implants-replace-several-teeth-in-a-row/" target="_blank" rel="noopener">Can Implants Replace Several Teeth in a Row?</a>
-            <div class="work-meta">Published October 29, 2026</div>
+            <div class="work-meta">October 29, 2026 · Dental Implants</div>
           </li>
           <li>
             <a href="https://agourahillscosmeticdentists.com/blog/can-gum-contouring-fix-teeth-that-look-too-short/" target="_blank" rel="noopener">Can Gum Contouring Fix Teeth That Look Too Short?</a>
-            <div class="work-meta">Published October 24, 2026</div>
+            <div class="work-meta">October 24, 2026 · Cosmetic Dentistry</div>
           </li>
           <li>
             <a href="https://agourahillscosmeticdentists.com/blog/what-gives-celebrities-that-flawless-hollywood-smile/" target="_blank" rel="noopener">What Gives Celebrities That Flawless Hollywood Smile?</a>
-            <div class="work-meta">Published October 19, 2026</div>
+            <div class="work-meta">October 19, 2026 · Cosmetic Dentistry</div>
           </li>
           <li>
             <a href="https://agourahillscosmeticdentists.com/blog/top-5-things-to-know-before-you-straighten-your-teeth/" target="_blank" rel="noopener">Top 5 Things to Know Before You Straighten Your Teeth</a>
-            <div class="work-meta">Published October 14, 2026</div>
+            <div class="work-meta">October 14, 2026 · Orthodontics</div>
           </li>
           <li>
             <a href="https://agourahillscosmeticdentists.com/blog/when-do-dentists-choose-an-inlay-over-a-filling/" target="_blank" rel="noopener">When Do Dentists Choose an Inlay Over a Filling?</a>
-            <div class="work-meta">Published October 9, 2026</div>
+            <div class="work-meta">October 9, 2026 · Restorative Dentistry</div>
           </li>
           <li>
             <a href="https://agourahillscosmeticdentists.com/blog/which-foods-and-drinks-stain-teeth-the-most/" target="_blank" rel="noopener">Which Foods and Drinks Stain Teeth the Most?</a>
-            <div class="work-meta">Published October 4, 2026</div>
+            <div class="work-meta">October 4, 2026 · Cosmetic Dentistry</div>
           </li>
         </ul>
       </div>
 
-      <div class="work-card span-2">
+      <div class="work-card">
+        <div class="work-card-head">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+          <span class="work-card-title">Backlinks Added</span>
+          <span class="work-card-count">1 submitted</span>
+        </div>
+        <ul class="work-list">
+          <li>
+            <a href="https://nearmedental.com/dentist/the-smile-spa/" target="_blank" rel="noopener">nearmedental.com</a>
+            <div class="work-meta">Submitted October 27, 2026 · pending review — not yet confirmed live</div>
+          </li>
+        </ul>
+        <div class="work-summary">One business-listing link was submitted in October. We have not yet verified that it is live, so it is not counted as a completed link. Listings like this build visibility and referral traffic rather than ranking authority.</div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-head">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div>
+          <span class="work-card-title">Technical SEO — Maintenance</span>
+        </div>
+        <div class="work-summary">
+          Routine maintenance this month: schema checked on the key service pages, internal links reviewed, Core Web Vitals monitored, and the sitemap confirmed submitted and clean in Google Search Console.
+        </div>
+      </div>
+
+      <div class="work-card">
         <div class="work-card-head">
           <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
           <span class="work-card-title">Tracking &amp; Reporting</span>
         </div>
         <div class="work-summary">
-          Monitored rankings and performance across <strong>Semrush</strong> (keyword position tracking), <strong>Local Falcon</strong> (map-pack grid scans), and <strong>Windsor</strong> — pulling Google Analytics 4, Google Business Profile, and Google Search Console data together so every number in this report is live and verified.
+          Monitored rankings and performance across <strong>Semrush</strong> (city-level keyword position tracking, desktop), <strong>Local Falcon</strong> (map-pack grid scans), and <strong>Windsor</strong> — pulling Google Analytics 4, Google Search Console and Google Business Profile data together so every number in this report is live and verified.
         </div>
       </div>
 
@@ -347,61 +385,77 @@
   </div>
 </section>
 
-<!-- ============== KEYWORD TRACKING ============== -->
 <section class="alt">
   <div class="wrap">
-    <span class="section-eyebrow"><span class="dot"></span>Semrush Position Tracking</span>
+    <span class="section-eyebrow"><span class="dot"></span>Semrush Position Tracking · Agoura Hills, CA</span>
     <h2>Keyword <span class="accent">Rankings</span></h2>
-    <p class="section-intro">Every keyword tracked in the practice's Semrush project, as of October 31, 2026, sorted by best position. A status of <strong>Building</strong> means the keyword isn't ranking well yet — that's where we're focusing next. <strong>Declining</strong> means it slipped three or more positions this month.</p>
+    <p class="section-intro">7 of the 14 keywords we track for The Smile Spa in Agoura Hills, CA, sorted by best position as of October 31, 2026. <strong>Improving</strong> means the phrase moved up a full position or more and now sits in the top 20; <strong>Stable</strong> means it held a top-20 spot; <strong>Building</strong> means it's ranking but not yet in the top 20. This was a mixed month. Several phrases improved, led by "dental implants in agoura hills" (26 to 8), "agoura hills dentist" (25 to 18) and "dental implants agoura hills" (15 to 10). The other 7 tracked phrases lost ground and are not in the table: "emergency dentist agoura hills" fell from 6 to 31, "root canal agoura hills" from 18 to 34, "veneers agoura hills" from 7 to 17, "invisalign in agoura hills" from 1 to 6, "veneers in agoura hills" from 7 to 10, "dental implants near me" from 5 to 7, and "dentist in agoura hills" from 13 to 15. Across all of Google, Search Console shows more impressions but fewer clicks and slightly fewer top-20 queries than in September (see below).</p>
 
     <div class="table-wrap">
       <table class="kw">
-        <colgroup><col style="width:40%"><col style="width:16%"><col style="width:16%"><col style="width:14%"><col style="width:14%"></colgroup>
+        <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
         <thead>
-          <tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change</th><th class="center">Searches/mo</th><th class="center">Status</th></tr>
+          <tr>
+            <th>Search Phrase</th>
+            <th class="center">Position</th>
+            <th class="center">Change</th>
+            <th class="center">Status</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td class="kw-name">teeth whitening agoura hills</td><td class="center"><span class="rk warn">#5</span></td><td class="center">▲ 4</td><td class="center kw-num">10</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk warn">#6</span></td><td class="center">▲ 2</td><td class="center kw-num">210</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">invisalign in agoura hills<div class="work-meta" style="font-weight:400;font-size:12.5px;margin-top:2px">Semrush: #1 on Sep 30 / Oct 1, around #4 mid-October, #6 on Oct 31.</div></td><td class="center"><span class="rk warn">#6</span></td><td class="center">▼ 5</td><td class="center kw-num">—</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dental implants near me<div class="work-meta" style="font-weight:400;font-size:12.5px;margin-top:2px">Semrush showed #1 on Sep 30 but #5–7 for the rest of October (the Sep 30 reading looks like a one-day spike); #7 on Oct 31.</div></td><td class="center"><span class="rk warn">#7</span></td><td class="center">▼ 6</td><td class="center kw-num">20</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dental implants in agoura hills</td><td class="center"><span class="rk warn">#8</span></td><td class="center">▲ 7</td><td class="center kw-num">—</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk warn">#8</span></td><td class="center">—</td><td class="center kw-num">30</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dental implants agoura hills</td><td class="center"><span class="rk warn">#10</span></td><td class="center">▲ 5</td><td class="center kw-num">10</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">veneers in agoura hills</td><td class="center"><span class="rk warn">#10</span></td><td class="center">▼ 3</td><td class="center kw-num">—</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dentist in agoura hills</td><td class="center"><span class="rk bad">#15</span></td><td class="center">▼ 1</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">veneers agoura hills<div class="work-meta" style="font-weight:400;font-size:12.5px;margin-top:2px">Semrush was #4–5 through Oct 26, then #23 on Oct 29–30 and #17 on Oct 31.</div></td><td class="center"><span class="rk bad">#17</span></td><td class="center">▼ 10</td><td class="center kw-num">—</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">agoura hills dentist</td><td class="center"><span class="rk bad">#18</span></td><td class="center">▲ 7</td><td class="center kw-num">170</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dentist agoura hills</td><td class="center"><span class="rk bad">#21</span></td><td class="center">▼ 4</td><td class="center kw-num">—</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">emergency dentist agoura hills<div class="work-meta" style="font-weight:400;font-size:12.5px;margin-top:2px">Dropped 9 → 31 on Semrush (held #4–9 for most of October, #13 on Oct 30). The Local Falcon &quot;emergency dentist in agoura hills&quot; map (Oct 20) is strong — avg rank 3.17, SoLV 59.5% — a different measure (one desktop check vs 121 sampled locations), so the two are not contradictory.</div></td><td class="center"><span class="rk bad">#31</span></td><td class="center">▼ 22</td><td class="center kw-num">10</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">root canal agoura hills<div class="work-meta" style="font-weight:400;font-size:12.5px;margin-top:2px">Semrush ranged #9–15 for most of October before ending at #34.</div></td><td class="center"><span class="rk bad">#34</span></td><td class="center">▼ 16</td><td class="center kw-num">—</td><td class="center"><span class="status declining">Declining</span></td></tr>
+          <tr><td class="kw-name">teeth whitening agoura hills</td><td class="center"><span class="rk warn">#5</span></td><td class="center">▲ 4</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk warn">#6</span></td><td class="center">▲ 2</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dental implants in agoura hills</td><td class="center"><span class="rk warn">#8</span></td><td class="center">▲ 18</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk warn">#8</span></td><td class="center">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">dental implants agoura hills</td><td class="center"><span class="rk warn">#10</span></td><td class="center">▲ 5</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">agoura hills dentist</td><td class="center"><span class="rk bad">#18</span></td><td class="center">▲ 7</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dentist agoura hills</td><td class="center"><span class="rk bad">#21</span></td><td class="center">▲ 4</td><td class="center"><span class="status building">Building</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Semrush position tracking (desktop; positions as of Oct 31 vs Sep 30). Change column shows month-over-month movement; status is as calculated in the tracking data. 8 of the 14 phrases returned no search-volume data from Semrush (shown as —); that is missing data, not zero searches.</p>
-    <p class="hint">Semrush is a single desktop check from one point; Local Falcon samples 121 locations, so a phrase can look weaker here than on the map.</p>
+    <p class="hint">Source: Semrush position tracking — Agoura Hills, CA campaign, city level, desktop, Google. Positions as of October 31 vs September 30. Keywords that lost ground this month are discussed in the text above rather than listed here.</p>
+
+    <div class="footprint">
+      <p class="block-label">Total Search Console footprint — United States</p>
+      <div class="stat-grid cols-3">
+        <div class="stat-card">
+          <div class="stat-num">1,030</div>
+          <div class="stat-label">Keywords in Google's Top 20</div>
+          <div class="stat-sub down">▼ 9 vs September (1,039)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">31,918</div>
+          <div class="stat-label">Search Impressions</div>
+          <div class="stat-sub up">▲ 5,123 vs September (26,795)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">112</div>
+          <div class="stat-label">Clicks from Search</div>
+          <div class="stat-sub down">▼ 21 vs September (133)</div>
+        </div>
+      </div>
+      <p class="hint">Source: Windsor / Google Search Console — United States. Counts every query the site appeared for, not just the tracked set above. Top-20 count is the number of queries whose average position for the month was 20 or better, among the queries Google reports individually.</p>
+    </div>
   </div>
 </section>
 
-<!-- ============== LOCAL MAP — LOCAL FALCON ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
     <h2>Local Map <span class="accent">Rankings</span></h2>
-    <p class="section-intro">Where the practice shows up on Google Maps across the local grid. Each circle is a geographic search point — greener is better, the blue pin is the office. <strong>Click any circle</strong> to see the rank at that point.</p>
+    <p class="section-intro">Where The Smile Spa shows up on Google Maps across the local grid. Each circle is a geographic search point — greener is better, the blue pin is the office. <strong>Click any circle</strong> to see the rank at that point. This was a genuine improvement on September: average rank (ARP) improved from 5.69 to 4.74, and share of local voice (SoLV) rose from 25.62% to 48.76%. The practice ranked at all 121 of 121 points in both months, so coverage held steady while rank quality improved.</p>
 
-    <!-- MAP 1 — dentist in agoura hills -->
     <div class="map-card">
       <div class="map-meta">
         <div><strong>Keyword:</strong> dentist in agoura hills</div>
-        <div><strong>Grid:</strong> 11×11 · 3 mile radius</div>
+        <div><strong>Radius:</strong> 3 mile</div>
         <div><strong>Scanned:</strong> October 20, 2026</div>
       </div>
       <div class="map-stats">
         <div class="map-stat"><div class="map-stat-num">4.74</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
         <div class="map-stat"><div class="map-stat-num">121/121</div><div class="map-stat-label">Points Ranked</div></div>
         <div class="map-stat"><div class="map-stat-num">48.76%</div><div class="map-stat-label">SoLV</div></div>
-        <div class="map-stat"><div class="map-stat-num">121</div><div class="map-stat-label">Search Points</div></div>
+        <div class="map-stat"><div class="map-stat-num">11×11</div><div class="map-stat-label">Grid Size</div></div>
       </div>
       <div id="lf-map-1" class="lf-map"></div>
       <div class="map-legend">
@@ -415,137 +469,103 @@
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
       </div>
-      
     </div>
-
-    <!-- MAP 2 — dentist near me -->
-    <div class="map-card">
-      <div class="map-meta">
-        <div><strong>Keyword:</strong> dentist near me</div>
-        <div><strong>Grid:</strong> 11×11 · 3 mile radius</div>
-        <div><strong>Scanned:</strong> October 20, 2026</div>
-      </div>
-      <div class="map-stats">
-        <div class="map-stat"><div class="map-stat-num">7.31</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
-        <div class="map-stat"><div class="map-stat-num">113/121</div><div class="map-stat-label">Points Ranked</div></div>
-        <div class="map-stat"><div class="map-stat-num">32.23%</div><div class="map-stat-label">SoLV</div></div>
-        <div class="map-stat"><div class="map-stat-num">121</div><div class="map-stat-label">Search Points</div></div>
-      </div>
-      <div id="lf-map-2" class="lf-map"></div>
-      <div class="map-legend">
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#1f6d3a"></span>#1</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#4a9d3a"></span>#2–3</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#bdc742"></span>#4–5</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#e4a432"></span>#6–7</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#cf5a28"></span>#8–9</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#a93020"></span>#10–19</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#6b2018"></span>#20+</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
-      </div>
-      
-    </div>
-
-    <p class="hint">Source: Local Falcon. Both scans are the most recent ones inside October (taken October 20, 2026, not at month-end). Points Ranked = grid points where the practice appeared; SoLV (Share of Local Voice) = share of grid points where it ranked in the top 3. Semrush rankings come from a single desktop check at one location, while Local Falcon samples 121 locations — so the two can legitimately differ for the same search.</p>
+    <p class="hint">Source: Local Falcon grid scan centred on the practice address, October 20, 2026 (September comparison: scan of September 22, 2026). ARP is the average rank across every point that ranked; SoLV is share of local voice across the grid.</p>
   </div>
 </section>
 
-<!-- ============== TRAFFIC TO PAGES ============== -->
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 · via Windsor</span>
     <h2>Traffic to <span class="accent">Each Page</span></h2>
-    <p class="section-intro">Top pages by organic visits in October. These are the pages doing the heavy lifting for the practice.</p>
+    <p class="section-intro">The top 10 pages by organic visits in October. Organic sessions overall fell from 262 in September to 188 in October (down 74), so every page here is working with a smaller total than last month.</p>
     <ul class="pages-list">
-      <li><div class="page-name">/</div><div class="page-bar"><div class="page-bar-fill" style="width:100.0%"></div></div><div class="page-visits">93</div></li>
-      <li><div class="page-name">/dentist-appointment</div><div class="page-bar"><div class="page-bar-fill" style="width:43.0%"></div></div><div class="page-visits">40</div></li>
-      <li><div class="page-name">(not set)</div><div class="page-bar"><div class="page-bar-fill" style="width:16.1%"></div></div><div class="page-visits">15</div></li>
-      <li><div class="page-name">/blog/what-happens-if-you-dont-get-a-bone-graft-after-tooth-extraction</div><div class="page-bar"><div class="page-bar-fill" style="width:14.0%"></div></div><div class="page-visits">13</div></li>
-      <li><div class="page-name">/agoura-hills-ca/invisalign-clear-aligners</div><div class="page-bar"><div class="page-bar-fill" style="width:7.5%"></div></div><div class="page-visits">7</div></li>
-      <li><div class="page-name">/meet-the-doctors/dr-shawn-nguyen</div><div class="page-bar"><div class="page-bar-fill" style="width:6.5%"></div></div><div class="page-visits">6</div></li>
-      <li><div class="page-name">/blog/my-tooth-is-turning-black-how-can-a-dentist-help</div><div class="page-bar"><div class="page-bar-fill" style="width:5.4%"></div></div><div class="page-visits">5</div></li>
-      <li><div class="page-name">/meet-the-doctors</div><div class="page-bar"><div class="page-bar-fill" style="width:4.3%"></div></div><div class="page-visits">4</div></li>
-      <li><div class="page-name">/agoura-hills-ca/iv-drips</div><div class="page-bar"><div class="page-bar-fill" style="width:3.2%"></div></div><div class="page-visits">3</div></li>
-      <li><div class="page-name">/blog/bleeding-after-tooth-extraction-cip104</div><div class="page-bar"><div class="page-bar-fill" style="width:3.2%"></div></div><div class="page-visits">3</div></li>
-      <li><div class="page-name">/blog/can-a-deep-cleaning-save-gums-that-bleed</div><div class="page-bar"><div class="page-bar-fill" style="width:3.2%"></div></div><div class="page-visits">3</div></li>
-      <li><div class="page-name">/blog/can-an-iv-drip-help-you-recover-after-oral-surgery</div><div class="page-bar"><div class="page-bar-fill" style="width:3.2%"></div></div><div class="page-visits">3</div></li>
-      <li><div class="page-name">/blog/top-5-reasons-to-finally-fix-a-chipped-front-tooth</div><div class="page-bar"><div class="page-bar-fill" style="width:3.2%"></div></div><div class="page-visits">3</div></li>
-      <li><div class="page-name">/dental-dictionary/dental-cleaning-glossary</div><div class="page-bar"><div class="page-bar-fill" style="width:3.2%"></div></div><div class="page-visits">3</div></li>
-      <li><div class="page-name">/dental-financing</div><div class="page-bar"><div class="page-bar-fill" style="width:3.2%"></div></div><div class="page-visits">3</div></li>
+      <li><div class="page-name">/</div><div class="page-bar"><div class="page-bar-fill" style="width:100%"></div></div><div class="page-visits">87</div></li>
+      <li><div class="page-name">/meet-the-doctors/</div><div class="page-bar"><div class="page-bar-fill" style="width:40%"></div></div><div class="page-visits">35</div></li>
+      <li><div class="page-name">/blog/what-happens-if-you-dont-get-a-bone-graft-after-tooth-extraction/</div><div class="page-bar"><div class="page-bar-fill" style="width:16%"></div></div><div class="page-visits">14</div></li>
+      <li><div class="page-name">/dentist-appointment/</div><div class="page-bar"><div class="page-bar-fill" style="width:14%"></div></div><div class="page-visits">12</div></li>
+      <li><div class="page-name">/agoura-hills-ca/invisalign-clear-aligners/</div><div class="page-bar"><div class="page-bar-fill" style="width:13%"></div></div><div class="page-visits">11</div></li>
+      <li><div class="page-name">/meet-the-doctors/dr-joelle-abed/</div><div class="page-bar"><div class="page-bar-fill" style="width:13%"></div></div><div class="page-visits">11</div></li>
+      <li><div class="page-name">/dental-insurance/</div><div class="page-bar"><div class="page-bar-fill" style="width:11%"></div></div><div class="page-visits">10</div></li>
+      <li><div class="page-name">/meet-the-doctors/dr-shawn-nguyen/</div><div class="page-bar"><div class="page-bar-fill" style="width:11%"></div></div><div class="page-visits">10</div></li>
+      <li><div class="page-name">/about-us/</div><div class="page-bar"><div class="page-bar-fill" style="width:8%"></div></div><div class="page-visits">7</div></li>
+      <li><div class="page-name">/our-office/</div><div class="page-bar"><div class="page-bar-fill" style="width:8%"></div></div><div class="page-visits">7</div></li>
     </ul>
-    <p class="hint">Source: Windsor / Google Analytics 4 organic sessions by landing page (the first page of each session). Bar widths are relative to the top page. Showing the top 15 of 92 organic landing pages; these 204 sessions are about 66% of the 307 organic sessions, the rest are spread across the other 77 pages. All 92 pages together sum to 308 against 307 in the channel query (a 1-session difference between two separate data pulls). 15 sessions have landing page &#x27;(not set)&#x27; (no page recorded).</p>
+    <p class="hint">Source: Windsor / Google Analytics 4 — organic sessions per page, United States. One visit can touch several pages, so these figures do not add up to the monthly session total. Bar widths are relative to the top page.</p>
   </div>
 </section>
 
-<!-- ============== TRAFFIC SOURCES ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 · via Windsor</span>
     <h2>Where Traffic <span class="accent">Comes From</span></h2>
-    <p class="section-intro">How visitors found the website in October, broken down by channel. A healthy mix with strong organic search is what we're building toward.</p>
+    <p class="section-intro">How visitors found the website in October, broken down by channel. Total sessions fell from 869 in September to 686 in October, and organic search fell from 262 to 188 sessions.</p>
     <div class="src-grid">
       <div>
         <div class="stack">
-          <span style="width:77.52%;background:var(--blue)">78%</span>
-          <span style="width:10.42%;background:var(--good)">10%</span>
-          <span style="width:9.95%;background:var(--warn)">10%</span>
-          <span style="width:1.05%;background:var(--ink-mute);min-width:0"></span>
-          <span style="width:0.85%;background:#8b5cf6;min-width:0"></span>
-          <span style="width:0.14%;background:#0ea5e9;min-width:0"></span>
-          <span style="width:0.07%;background:#D94436;min-width:0"></span>
+          <span style="width:42.13%;background:var(--blue)">42%</span>
+          <span style="width:27.41%;background:var(--good)">27%</span>
+          <span style="width:24.05%;background:var(--warn)">24%</span>
+          <span style="width:4.23%;background:var(--ink-mute)">4%</span>
+          <span style="width:1.90%;background:#8b5cf6"></span>
+          <span style="width:0.15%;background:#14b8a6"></span>
+          <span style="width:0.15%;background:#c084fc"></span>
         </div>
-        <p class="hint" style="margin-top:0">Total sessions this month: <strong>2,945</strong></p>
+        <p class="hint" style="margin-top:0">Total sessions this month: <strong>686</strong></p>
       </div>
       <div class="src-legend">
-        <div class="src-row"><span class="src-dot" style="background:var(--blue)"></span><span class="src-name">Direct</span><span class="src-pct">77.5%</span><span class="src-num">2,283 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--good)"></span><span class="src-name">Organic Search</span><span class="src-pct">10.4%</span><span class="src-num">307 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--warn)"></span><span class="src-name">Paid Search</span><span class="src-pct">9.9%</span><span class="src-num">293 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--ink-mute)"></span><span class="src-name">Organic Social</span><span class="src-pct">1.1%</span><span class="src-num">31 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:#8b5cf6"></span><span class="src-name">Referral</span><span class="src-pct">0.8%</span><span class="src-num">25 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:#0ea5e9"></span><span class="src-name">Unassigned</span><span class="src-pct">0.1%</span><span class="src-num">4 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:#D94436"></span><span class="src-name">Cross-network</span><span class="src-pct">0.1%</span><span class="src-num">2 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--blue)"></span><span class="src-name">Paid Search</span><span class="src-pct">42.1%</span><span class="src-num">289 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--good)"></span><span class="src-name">Organic Search</span><span class="src-pct">27.4%</span><span class="src-num">188 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--warn)"></span><span class="src-name">Direct</span><span class="src-pct">24.1%</span><span class="src-num">165 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--ink-mute)"></span><span class="src-name">Organic Social</span><span class="src-pct">4.2%</span><span class="src-num">29 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:#8b5cf6"></span><span class="src-name">Referral</span><span class="src-pct">1.9%</span><span class="src-num">13 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:#14b8a6"></span><span class="src-name">Cross-network</span><span class="src-pct">0.1%</span><span class="src-num">1 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:#c084fc"></span><span class="src-name">Unassigned</span><span class="src-pct">0.1%</span><span class="src-num">1 sess.</span></div>
       </div>
     </div>
-    <p class="hint">Source: Windsor / Google Analytics 4 — sessions by default channel group, Oct 1–31, 2026.</p>
+    <p class="hint">Source: Windsor / Google Analytics 4 — sessions by default channel group, United States.</p>
   </div>
 </section>
 
-<!-- ============== GOOGLE BUSINESS PROFILE PERFORMANCE ============== -->
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Business Profile · via Windsor</span>
     <h2>Google Business Profile <span class="accent">Performance</span></h2>
-    <p class="section-intro">Activity on the Google Business listing this month and the prior 5 months — calls, web clicks, reviews, and how often the profile showed up in Search and Maps.</p>
+    <p class="section-intro">Activity on the Google Business listing this month and the prior 5 months. Phone calls rose from 21 to 29 and directions from 66 to 75, while website clicks fell from 60 to 37 and impressions fell from 2,034 to 1,529, the lowest of the six months shown.</p>
 
     <p class="block-label">This month at a glance</p>
-    <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:36px">
-      <div class="stat-card"><div class="stat-num">29</div><div class="stat-label">Phone Calls</div><div class="stat-sub">▲ 8 vs September (21)</div></div>
-      <div class="stat-card"><div class="stat-num">+6</div><div class="stat-label">New Reviews</div><div class="stat-sub">174 total · 5.0★</div></div>
-      <div class="stat-card"><div class="stat-num">37</div><div class="stat-label">Website Clicks</div><div class="stat-sub">▼ 23 vs September (60)</div></div>
-      <div class="stat-card"><div class="stat-num">1,529</div><div class="stat-label">Searches / Impr.</div><div class="stat-sub">▼ 505 vs September (2034)</div></div>
+    <div class="stat-grid cols-4" style="margin-bottom:36px">
+      <div class="stat-card"><div class="stat-num">29</div><div class="stat-label">Phone Calls</div><div class="stat-sub up">▲ 8 vs September (21)</div></div>
+      <div class="stat-card"><div class="stat-num">5.0★</div><div class="stat-label">Review Rating</div><div class="stat-sub">175 total reviews</div></div>
+      <div class="stat-card"><div class="stat-num">37</div><div class="stat-label">Website Clicks</div><div class="stat-sub down">▼ 23 vs September (60)</div></div>
+      <div class="stat-card"><div class="stat-num">1,529</div><div class="stat-label">Searches / Impr.</div><div class="stat-sub down">▼ 505 vs September (2,034)</div></div>
     </div>
 
     <p class="block-label">6-month trend</p>
     <div class="table-wrap">
       <table class="gbp">
         <thead>
-          <tr><th>Month</th><th>Impressions</th><th>Web Clicks</th><th>Calls</th><th>Directions</th></tr>
+          <tr><th>Month</th><th>Impressions</th><th>Search</th><th>Maps</th><th>Web Clicks</th><th>Calls</th><th>Directions</th></tr>
         </thead>
         <tbody>
-          <tr><td>May 2026</td><td class="num">4,361</td><td>45</td><td>40</td><td>90</td></tr>
-          <tr><td>Jun 2026</td><td class="num">1,686</td><td>55</td><td>40</td><td>90</td></tr>
-          <tr><td>Jul 2026</td><td class="num">2,683</td><td>64</td><td>18</td><td>87</td></tr>
-          <tr><td>Aug 2026</td><td class="num">2,162</td><td>43</td><td>38</td><td>106</td></tr>
-          <tr><td>Sep 2026</td><td class="num">2,034</td><td>60</td><td>21</td><td>66</td></tr>
-          <tr><td><strong>Oct 2026</strong></td><td class="num"><strong>1,529</strong></td><td><strong>37</strong></td><td><strong>29</strong></td><td><strong>75</strong></td></tr>
+          <tr><td>May 2026</td><td class="num">4,361</td><td>530</td><td>3831</td><td>45</td><td>40</td><td>90</td></tr>
+          <tr><td>Jun 2026</td><td class="num">1,686</td><td>503</td><td>1183</td><td>55</td><td>40</td><td>90</td></tr>
+          <tr><td>Jul 2026</td><td class="num">2,683</td><td>611</td><td>2072</td><td>64</td><td>18</td><td>87</td></tr>
+          <tr><td>Aug 2026</td><td class="num">2,162</td><td>775</td><td>1387</td><td>43</td><td>38</td><td>106</td></tr>
+          <tr><td>Sep 2026</td><td class="num">2,034</td><td>754</td><td>1280</td><td>60</td><td>21</td><td>66</td></tr>
+          <tr><td><strong>Oct 2026</strong></td><td class="num"><strong>1,529</strong></td><td><strong>690</strong></td><td><strong>839</strong></td><td><strong>37</strong></td><td><strong>29</strong></td><td><strong>75</strong></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Windsor / Google Business Profile insights. Impressions = Search + Maps, desktop + mobile, combined; the data pull did not break impressions out into separate Search and Maps figures, so those two template columns are omitted rather than estimated. Review total and rating are all-time figures as of Nov 4, 2026.</p>
+
+    <div class="restatement">
+      <strong>A note on these numbers:</strong> Google continues to revise Business Profile figures for several weeks after a month closes. All six months above were re-pulled fresh for this report, so earlier months may read slightly higher than they did in their own reports — and we expect October's figures to rise the same way over the coming weeks.
+    </div>
+
+    <p class="hint">Source: Windsor / Google Business Profile insights. Impressions are split into Search (desktop + mobile) and Maps (desktop + mobile); the two columns add up to the Impressions total. The review total and rating are all-time figures.</p>
   </div>
 </section>
 
-<!-- ============== FOOTER ============== -->
 <footer class="end-cta">
   <div class="wrap">
     <img class="nerds-logo-img" src="/logo/Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
@@ -553,7 +573,7 @@
     <div class="thanks"><b>Thank you for trusting us with your marketing.</b> Questions about anything in this report? Just reply to this email — we love hearing from you.</div>
     <div class="end-meta">
       Reporting period: October 1–31, 2026 · Prepared by Dentist Nerds · dentistnerds.com<br>
-      <span class="src-tag">Data sources: Semrush · Local Falcon · Windsor (GA4, Google Business Profile)</span>
+      <span class="src-tag">Data sources: Semrush position tracking (Agoura Hills, desktop) · Local Falcon (grid on practice address) · Windsor / GA4 (United States) · Windsor / Google Search Console (United States) · Windsor / Google Business Profile (this listing)</span>
     </div>
   </div>
 </footer>
@@ -618,8 +638,8 @@ function renderMap(elId,officeLat,officeLng,officeName,dataPoints){
   if(bounds.length)map.fitBounds(bounds,{padding:[20,20]});
 }
 
-// ===== MAP 1 — dentist in agoura hills — Local Falcon scan 2026-10-20 =====
-renderMap('lf-map-1', 34.1366164, -118.7258349, "The Smile Spa", [
+// ONE map: "dentist in agoura hills", scan of October 20, 2026.
+renderMap('lf-map-1', 34.1366164, -118.7258349, 'The Smile Spa', [
   {lat:34.0932456,lng:-118.778234,rank:5},
   {lat:34.1019197,lng:-118.778234,rank:6},
   {lat:34.1105939,lng:-118.778234,rank:6},
@@ -741,131 +761,6 @@ renderMap('lf-map-1', 34.1366164, -118.7258349, "The Smile Spa", [
   {lat:34.1626389,lng:-118.6734358,rank:3},
   {lat:34.1713131,lng:-118.6734358,rank:3},
   {lat:34.1799872,lng:-118.6734358,rank:4}
-]);
-
-// ===== MAP 2 — dentist near me — Local Falcon scan 2026-10-20 =====
-renderMap('lf-map-2', 34.1366164, -118.7258349, "The Smile Spa", [
-  {lat:34.0932456,lng:-118.778234,rank:2},
-  {lat:34.1019197,lng:-118.778234,rank:2},
-  {lat:34.1105939,lng:-118.778234,rank:3},
-  {lat:34.1192681,lng:-118.778234,rank:7},
-  {lat:34.1279422,lng:-118.778234,rank:13},
-  {lat:34.1366164,lng:-118.778234,rank:0},
-  {lat:34.1452906,lng:-118.778234,rank:0},
-  {lat:34.1539647,lng:-118.778234,rank:0},
-  {lat:34.1626389,lng:-118.778234,rank:18},
-  {lat:34.1713131,lng:-118.778234,rank:18},
-  {lat:34.1799872,lng:-118.778234,rank:0},
-  {lat:34.0932456,lng:-118.7677542,rank:2},
-  {lat:34.1019197,lng:-118.7677542,rank:2},
-  {lat:34.1105939,lng:-118.7677542,rank:2},
-  {lat:34.1192681,lng:-118.7677542,rank:15},
-  {lat:34.1279422,lng:-118.7677542,rank:8},
-  {lat:34.1366164,lng:-118.7677542,rank:16},
-  {lat:34.1452906,lng:-118.7677542,rank:18},
-  {lat:34.1539647,lng:-118.7677542,rank:18},
-  {lat:34.1626389,lng:-118.7677542,rank:17},
-  {lat:34.1713131,lng:-118.7677542,rank:14},
-  {lat:34.1799872,lng:-118.7677542,rank:14},
-  {lat:34.0932456,lng:-118.7572744,rank:2},
-  {lat:34.1019197,lng:-118.7572744,rank:2},
-  {lat:34.1105939,lng:-118.7572744,rank:2},
-  {lat:34.1192681,lng:-118.7572744,rank:2},
-  {lat:34.1279422,lng:-118.7572744,rank:2},
-  {lat:34.1366164,lng:-118.7572744,rank:7},
-  {lat:34.1452906,lng:-118.7572744,rank:13},
-  {lat:34.1539647,lng:-118.7572744,rank:16},
-  {lat:34.1626389,lng:-118.7572744,rank:10},
-  {lat:34.1713131,lng:-118.7572744,rank:9},
-  {lat:34.1799872,lng:-118.7572744,rank:8},
-  {lat:34.0932456,lng:-118.7467945,rank:2},
-  {lat:34.1019197,lng:-118.7467945,rank:2},
-  {lat:34.1105939,lng:-118.7467945,rank:2},
-  {lat:34.1192681,lng:-118.7467945,rank:2},
-  {lat:34.1279422,lng:-118.7467945,rank:2},
-  {lat:34.1366164,lng:-118.7467945,rank:3},
-  {lat:34.1452906,lng:-118.7467945,rank:6},
-  {lat:34.1539647,lng:-118.7467945,rank:5},
-  {lat:34.1626389,lng:-118.7467945,rank:5},
-  {lat:34.1713131,lng:-118.7467945,rank:14},
-  {lat:34.1799872,lng:-118.7467945,rank:7},
-  {lat:34.0932456,lng:-118.7363147,rank:1},
-  {lat:34.1019197,lng:-118.7363147,rank:2},
-  {lat:34.1105939,lng:-118.7363147,rank:1},
-  {lat:34.1192681,lng:-118.7363147,rank:1},
-  {lat:34.1279422,lng:-118.7363147,rank:1},
-  {lat:34.1366164,lng:-118.7363147,rank:1},
-  {lat:34.1452906,lng:-118.7363147,rank:5},
-  {lat:34.1539647,lng:-118.7363147,rank:4},
-  {lat:34.1626389,lng:-118.7363147,rank:4},
-  {lat:34.1713131,lng:-118.7363147,rank:4},
-  {lat:34.1799872,lng:-118.7363147,rank:4},
-  {lat:34.0932456,lng:-118.7258349,rank:1},
-  {lat:34.1019197,lng:-118.7258349,rank:1},
-  {lat:34.1105939,lng:-118.7258349,rank:1},
-  {lat:34.1192681,lng:-118.7258349,rank:1},
-  {lat:34.1279422,lng:-118.7258349,rank:1},
-  {lat:34.1366164,lng:-118.7258349,rank:1},
-  {lat:34.1452906,lng:-118.7258349,rank:1},
-  {lat:34.1539647,lng:-118.7258349,rank:2},
-  {lat:34.1626389,lng:-118.7258349,rank:5},
-  {lat:34.1713131,lng:-118.7258349,rank:4},
-  {lat:34.1799872,lng:-118.7258349,rank:6},
-  {lat:34.0932456,lng:-118.7153551,rank:1},
-  {lat:34.1019197,lng:-118.7153551,rank:2},
-  {lat:34.1105939,lng:-118.7153551,rank:2},
-  {lat:34.1192681,lng:-118.7153551,rank:2},
-  {lat:34.1279422,lng:-118.7153551,rank:2},
-  {lat:34.1366164,lng:-118.7153551,rank:2},
-  {lat:34.1452906,lng:-118.7153551,rank:4},
-  {lat:34.1539647,lng:-118.7153551,rank:6},
-  {lat:34.1626389,lng:-118.7153551,rank:6},
-  {lat:34.1713131,lng:-118.7153551,rank:7},
-  {lat:34.1799872,lng:-118.7153551,rank:8},
-  {lat:34.0932456,lng:-118.7048753,rank:2},
-  {lat:34.1019197,lng:-118.7048753,rank:4},
-  {lat:34.1105939,lng:-118.7048753,rank:4},
-  {lat:34.1192681,lng:-118.7048753,rank:5},
-  {lat:34.1279422,lng:-118.7048753,rank:6},
-  {lat:34.1366164,lng:-118.7048753,rank:8},
-  {lat:34.1452906,lng:-118.7048753,rank:9},
-  {lat:34.1539647,lng:-118.7048753,rank:6},
-  {lat:34.1626389,lng:-118.7048753,rank:11},
-  {lat:34.1713131,lng:-118.7048753,rank:10},
-  {lat:34.1799872,lng:-118.7048753,rank:14},
-  {lat:34.0932456,lng:-118.6943954,rank:5},
-  {lat:34.1019197,lng:-118.6943954,rank:6},
-  {lat:34.1105939,lng:-118.6943954,rank:6},
-  {lat:34.1192681,lng:-118.6943954,rank:9},
-  {lat:34.1279422,lng:-118.6943954,rank:8},
-  {lat:34.1366164,lng:-118.6943954,rank:10},
-  {lat:34.1452906,lng:-118.6943954,rank:11},
-  {lat:34.1539647,lng:-118.6943954,rank:13},
-  {lat:34.1626389,lng:-118.6943954,rank:14},
-  {lat:34.1713131,lng:-118.6943954,rank:14},
-  {lat:34.1799872,lng:-118.6943954,rank:19},
-  {lat:34.0932456,lng:-118.6839156,rank:3},
-  {lat:34.1019197,lng:-118.6839156,rank:8},
-  {lat:34.1105939,lng:-118.6839156,rank:8},
-  {lat:34.1192681,lng:-118.6839156,rank:9},
-  {lat:34.1279422,lng:-118.6839156,rank:13},
-  {lat:34.1366164,lng:-118.6839156,rank:14},
-  {lat:34.1452906,lng:-118.6839156,rank:14},
-  {lat:34.1539647,lng:-118.6839156,rank:13},
-  {lat:34.1626389,lng:-118.6839156,rank:16},
-  {lat:34.1713131,lng:-118.6839156,rank:19},
-  {lat:34.1799872,lng:-118.6839156,rank:0},
-  {lat:34.0932456,lng:-118.6734358,rank:5},
-  {lat:34.1019197,lng:-118.6734358,rank:9},
-  {lat:34.1105939,lng:-118.6734358,rank:11},
-  {lat:34.1192681,lng:-118.6734358,rank:13},
-  {lat:34.1279422,lng:-118.6734358,rank:16},
-  {lat:34.1366164,lng:-118.6734358,rank:16},
-  {lat:34.1452906,lng:-118.6734358,rank:19},
-  {lat:34.1539647,lng:-118.6734358,rank:20},
-  {lat:34.1626389,lng:-118.6734358,rank:0},
-  {lat:34.1713131,lng:-118.6734358,rank:0},
-  {lat:34.1799872,lng:-118.6734358,rank:0}
 ]);
 </script>
 </body>

@@ -43,8 +43,6 @@
   }
   h1,h2,h3,h4{font-family:"Anton",sans-serif;font-weight:400;letter-spacing:.005em}
   .wrap{max-width:1220px;margin:0 auto;padding:0 32px}
-
-  /* ============== HERO ============== */
   .hero{
     background:linear-gradient(135deg,var(--blue) 0%,var(--blue-700) 100%);
     color:#fff;padding:64px 0 60px;position:relative;overflow:hidden;
@@ -69,15 +67,11 @@
   .hero-subtitle{font-size:14px;color:rgba(255,255,255,.78);letter-spacing:.04em;font-weight:600;margin-bottom:8px}
   .hero-web{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:40px}
   .hero-web a{color:#cfe0ff;text-decoration:none}
-
-  /* HERO KPI CARDS */
   .hero-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-top:34px;border-top:1px solid rgba(255,255,255,.18)}
   .hero-kpi{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:24px 22px}
   .hero-kpi-num{font-family:"Anton",sans-serif;font-size:46px;color:#fff;line-height:1}
   .hero-kpi-label{font-size:12.5px;color:rgba(255,255,255,.78);margin-top:10px;letter-spacing:.04em;font-weight:600;text-transform:uppercase}
-  .hero-kpi-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
-
-  /* ============== SECTION SHELL ============== */
+  .hero-kpi-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px;line-height:1.45}
   section{padding:72px 0}
   section.alt{background:var(--bg-soft)}
   section.dark{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff}
@@ -92,13 +86,10 @@
   .section-intro strong{color:var(--ink);font-weight:700}
   .hint{font-size:13px;color:var(--ink-mute);margin-top:18px;font-style:italic}
   .block-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 14px}
-
-  /* ============== WHAT WE'VE DONE — WORK CARDS ============== */
   .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
   .work-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;position:relative;
-    transition:transform .2s,box-shadow .2s}
+    display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
   .work-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.07)}
-  .work-card.span-2{grid-column:span 2}
   .work-card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
   .work-card-icon{width:52px;height:52px;border-radius:14px;background:var(--blue-50);color:var(--blue);
     display:flex;align-items:center;justify-content:center;flex:none}
@@ -106,6 +97,7 @@
   .work-card-title{font-size:21px;color:var(--ink);text-transform:uppercase;line-height:1.15;flex:1;min-width:0}
   .work-card-count{margin-left:auto;background:var(--good);color:#fff;padding:6px 14px;border-radius:100px;
     font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex:none;font-family:"DM Sans",sans-serif}
+  .work-card-count.hold{background:var(--warn);color:#4a3406}
   .work-list{list-style:none;padding:0;margin:0}
   .work-list li{padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:15.5px;line-height:1.5}
   .work-list li:last-child{border-bottom:none}
@@ -115,13 +107,6 @@
   .work-meta{font-size:13px;color:var(--ink-mute);margin-top:4px;line-height:1.5}
   .work-summary{font-size:16px;color:var(--ink-soft);line-height:1.6}
   .work-summary strong{color:var(--ink);font-weight:700}
-  .sheet-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:11px 18px;
-    background:var(--ink);color:#fff;text-decoration:none;border-radius:10px;font-size:13px;font-weight:700;
-    letter-spacing:.02em;transition:transform .15s,box-shadow .15s}
-  .sheet-link:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,27,45,.18)}
-  .sheet-link::after{content:'→'}
-
-  /* ============== KEYWORD TABLE ============== */
   .table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line)}
   .kw{width:100%;border-collapse:collapse;font-size:15.5px;min-width:560px;background:#fff}
   .kw thead tr{background:var(--ink);color:#fff}
@@ -134,19 +119,25 @@
   .kw .kw-name{font-weight:700;color:var(--ink)}
   .kw .kw-num{font-family:"Anton",sans-serif;font-size:18px;color:var(--ink)}
   .rk{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:12px;padding:5px 12px;border-radius:100px;white-space:nowrap}
-  .rk.good{background:var(--good-soft);color:var(--good-deep)}
-  .rk.warn{background:var(--warn-soft);color:#b87a0e}
-  .rk.bad{background:var(--bad-soft);color:var(--bad)}
+  .rk.good{background:var(--good-soft);color:var(--good-deep)}   
+  .rk.warn{background:var(--warn-soft);color:#b87a0e}            
+  .rk.bad{background:var(--bad-soft);color:var(--bad)}           
   .status{display:inline-block;padding:5px 13px;border-radius:100px;font-size:11px;font-weight:700;
     letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
-  .status.stable{background:var(--good-soft);color:var(--good-deep)}
   .status.improving{background:var(--blue-50);color:var(--blue-700)}
+  .status.stable{background:var(--good-soft);color:var(--good-deep)}
   .status.building{background:var(--warn-soft);color:#b87a0e}
-  .status.declining{background:var(--bad-soft);color:var(--bad)}
-
-  /* ============== LOCAL FALCON MAP (Leaflet) ============== */
+  .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .stat-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .stat-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+  .stat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+  .stat-num{font-family:"Anton",sans-serif;font-size:38px;color:var(--blue);line-height:1}
+  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:8px;font-weight:600}
+  .stat-sub{font-size:12.5px;color:var(--ink-mute);margin-top:4px}
+  .stat-sub.up{color:var(--good-deep)}
+  .stat-sub.down{color:var(--bad)}
+  .footprint{margin-top:38px}
   .map-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
-  .map-card+.map-card{margin-top:24px}
   .map-meta{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:13.5px;color:var(--ink-mute);
     margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
   .map-meta strong{color:var(--ink)}
@@ -176,8 +167,6 @@
   .map-legend-item{display:inline-flex;align-items:center;gap:6px}
   .map-legend-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid #fff;box-shadow:0 0 0 1px var(--line)}
   @media(max-width:600px){.lf-map{height:380px}.rank-icon{width:24px;height:24px;font-size:10px}.map-stats{grid-template-columns:repeat(2,1fr)}}
-
-  /* ============== TRAFFIC TO PAGES ============== */
   .pages-list{list-style:none;padding:0;margin:0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:8px 26px}
   .pages-list li{display:flex;align-items:center;gap:16px;padding:15px 0;border-bottom:1px solid var(--line-soft)}
   .pages-list li:last-child{border-bottom:none}
@@ -185,8 +174,6 @@
   .page-bar{flex:0 0 34%;height:8px;background:var(--line-soft);border-radius:100px;overflow:hidden}
   .page-bar-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue-700));border-radius:100px}
   .page-visits{font-family:"Anton",sans-serif;font-size:20px;color:var(--ink);min-width:56px;text-align:right}
-
-  /* ============== TRAFFIC SOURCES (Windsor GA4) ============== */
   .src-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
   .stack{display:flex;height:46px;border-radius:12px;overflow:hidden;margin-bottom:24px;border:1px solid var(--line)}
   .stack span{display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;min-width:34px}
@@ -198,16 +185,7 @@
   .src-name{font-size:15.5px;font-weight:600;color:var(--ink)}
   .src-pct{font-family:"Anton",sans-serif;font-size:18px;color:var(--ink);min-width:54px;text-align:right}
   .src-num{font-size:13.5px;color:var(--ink-mute);min-width:80px;text-align:right}
-
-  /* ============== STAT CARDS ============== */
-  .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .stat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
-  .stat-num{font-family:"Anton",sans-serif;font-size:38px;color:var(--blue);line-height:1}
-  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:8px;font-weight:600}
-  .stat-sub{font-size:12.5px;color:var(--ink-mute);margin-top:4px}
-
-  /* ============== GBP TABLE ============== */
-  .gbp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:520px}
+  .gbp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:640px}
   .gbp thead tr{background:var(--ink);color:#fff}
   .gbp th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:14px 10px;text-align:center}
   .gbp th:first-child{text-align:left}
@@ -215,17 +193,15 @@
   .gbp td:first-child{text-align:left;font-weight:600}
   .gbp tbody tr:last-child{background:var(--blue-50);font-weight:700}
   .gbp .num{font-family:"Anton",sans-serif;font-size:16px}
-
-  /* ============== FOOTER ============== */
+  .restatement{font-size:13px;color:var(--ink-soft);background:var(--bg-soft);border:1px solid var(--line);
+    border-left:3px solid var(--blue);border-radius:10px;padding:14px 18px;margin-top:18px;line-height:1.55}
   .end-cta{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff;padding:56px 0;text-align:center}
   .end-cta .nerds-logo-img{height:56px;margin:0 auto 22px}
   .end-cta p{color:rgba(255,255,255,.72);max-width:560px;margin:0 auto;font-size:15px}
   .end-cta .thanks{margin-top:22px;font-size:15px;color:#fff}
   .end-cta .thanks b{color:#cfe0ff}
-  .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em}
+  .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em;line-height:1.9}
   .end-meta .src-tag{color:rgba(255,255,255,.7)}
-
-  /* ============== RESPONSIVE ============== */
   @media(max-width:900px){
     .wrap{padding:0 22px}
     section{padding:52px 0}
@@ -234,9 +210,8 @@
     .hero-kpis{grid-template-columns:repeat(2,1fr);gap:14px}
     .hero-kpi-num{font-size:38px}
     .work-grid{grid-template-columns:1fr}
-    .work-card.span-2{grid-column:span 1}
     .src-grid{grid-template-columns:1fr;gap:28px}
-    .stat-grid{grid-template-columns:1fr}
+    .stat-grid,.stat-grid.cols-3,.stat-grid.cols-4{grid-template-columns:1fr}
     .page-bar{flex-basis:26%}
   }
   @media print{
@@ -247,163 +222,173 @@
 </style>
 </head>
 <body>
-
-<!-- ============== HERO ============== -->
 <header class="hero">
   <div class="hero-wrap wrap">
     <div class="audit-strip">
       <img class="nerds-logo-img" src="/logo/Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds — Smart Dental Marketing" />
       <div class="audit-type">Monthly SEO Performance Report · Confidential</div>
     </div>
-
     <div class="audit-target">
       <span class="pulse"></span>
       <span>October 2026 Report</span>
     </div>
-
     <h1>Elite Dentistry<br><span class="accent">Rancho Santa Margarita, CA</span></h1>
     <p class="hero-subtitle">Reporting period: October 1–31, 2026</p>
     <p class="hero-web"><a href="https://elitedentistryrsm.com">elitedentistryrsm.com</a></p>
-
     <div class="hero-kpis">
       <div class="hero-kpi">
-        <div class="hero-kpi-num">401</div>
-        <div class="hero-kpi-label">Keywords Ranking</div>
-        <div class="hero-kpi-sub">Semrush, domain-wide · mid-month snapshot (~Oct 15)</div>
+        <div class="hero-kpi-num">442</div>
+        <div class="hero-kpi-label">Keywords in Google Top 20</div>
+        <div class="hero-kpi-sub">▼ 44 vs September (486) · Search Console, United States</div>
       </div>
       <div class="hero-kpi">
-        <div class="hero-kpi-num">202</div>
+        <div class="hero-kpi-num">146</div>
         <div class="hero-kpi-label">Website Traffic / mo</div>
-        <div class="hero-kpi-sub">Organic sessions (GA4)</div>
+        <div class="hero-kpi-sub">▲ 9 vs September (137) · GA4 organic sessions, United States</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">51</div>
         <div class="hero-kpi-label">GBP Phone Calls</div>
-        <div class="hero-kpi-sub">This month</div>
+        <div class="hero-kpi-sub">▲ 4 vs September (47) · Google Business Profile, this listing</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">4.9★</div>
         <div class="hero-kpi-label">Review Rating</div>
-        <div class="hero-kpi-sub">136 total reviews</div>
+        <div class="hero-kpi-sub">136 total reviews · +3 new in October · Google Business Profile</div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ============== WHAT WE'VE DONE THIS MONTH ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow green"><span class="dot"></span>This Month's Work</span>
     <h2>What We've <span class="accent">Done</span> This Month</h2>
     <p class="section-intro">Here's the work the Dentist Nerds team completed for <strong>Elite Dentistry</strong> in October — with links so you can review each item directly.</p>
-
     <div class="work-grid">
-
       <div class="work-card">
         <div class="work-card-head">
           <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <span class="work-card-title">Blogs Completed</span>
+          <span class="work-card-title">Blog Content</span>
           <span class="work-card-count">4 new</span>
         </div>
         <ul class="work-list">
           <li>
-            <a href="https://www.elitedentistryrsm.com/blog/do-i-always-need-a-bone-graft-for-an-implant/" target="_blank" rel="noopener">Do I Always Need a Bone Graft for an Implant?</a>
-            <div class="work-meta">Published October 5, 2026</div>
-          </li>
-          <li>
-            <a href="https://www.elitedentistryrsm.com/blog/do-i-have-to-wear-invisalign-while-sleeping/" target="_blank" rel="noopener">Do I Have to Wear Invisalign While Sleeping?</a>
-            <div class="work-meta">Published October 12, 2026</div>
+            <a href="https://www.elitedentistryrsm.com/blog/is-dental-work-during-pregnancy-safe-for-my-baby/" target="_blank" rel="noopener">Is Dental Work During Pregnancy Safe for My Baby?</a>
+            <div class="work-meta">Published October 26, 2026</div>
           </li>
           <li>
             <a href="https://www.elitedentistryrsm.com/blog/how-often-should-i-actually-schedule-a-dental-cleaning/" target="_blank" rel="noopener">How Often Should I Actually Schedule a Dental Cleaning?</a>
             <div class="work-meta">Published October 19, 2026</div>
           </li>
           <li>
-            <a href="https://www.elitedentistryrsm.com/blog/is-dental-work-during-pregnancy-safe-for-my-baby/" target="_blank" rel="noopener">Is Dental Work During Pregnancy Safe for My Baby?</a>
-            <div class="work-meta">Published October 26, 2026</div>
+            <a href="https://www.elitedentistryrsm.com/blog/do-i-have-to-wear-invisalign-while-sleeping/" target="_blank" rel="noopener">Do I Have to Wear Invisalign While Sleeping?</a>
+            <div class="work-meta">Published October 12, 2026</div>
+          </li>
+          <li>
+            <a href="https://www.elitedentistryrsm.com/blog/do-i-always-need-a-bone-graft-for-an-implant/" target="_blank" rel="noopener">Do I Always Need a Bone Graft for an Implant?</a>
+            <div class="work-meta">Published October 5, 2026</div>
           </li>
         </ul>
       </div>
-
       <div class="work-card">
         <div class="work-card-head">
-          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-          <span class="work-card-title">Google Business Profile Posts</span>
+          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+          <span class="work-card-title">Backlinks Added</span>
           <span class="work-card-count">1 new</span>
         </div>
         <ul class="work-list">
-          <li>Oct 2 — Emergency warning signs: knocked-out tooth, swelling, lost crown</li>
+          <li>
+            <a href="https://www.wellness.com/dir/2097472/dentist/ca/rancho-santa-margarita/elite-dentistry" target="_blank" rel="noopener">Wellness.com — Elite Dentistry listing</a>
+            <div class="work-meta">Directory listing added October 9, 2026 · live status not yet confirmed — this is a business directory listing, so it builds visibility and referral traffic rather than ranking authority</div>
+          </li>
         </ul>
       </div>
-
-      <div class="work-card span-2">
+      <div class="work-card">
+        <div class="work-card-head">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div>
+          <span class="work-card-title">Technical SEO — Maintenance</span>
+        </div>
+        <div class="work-summary">
+          Routine maintenance this month: schema checked on the key service pages, internal links reviewed, Core Web Vitals monitored, and the sitemap confirmed submitted and clean in Google Search Console.
+        </div>
+      </div>
+      <div class="work-card">
         <div class="work-card-head">
           <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
           <span class="work-card-title">Tracking &amp; Reporting</span>
         </div>
         <div class="work-summary">
-          Monitored rankings and performance across <strong>Semrush</strong> (keyword position tracking), <strong>Local Falcon</strong> (map-pack grid scans), and <strong>Windsor</strong> — pulling Google Analytics 4 and Google Business Profile data together so every number in this report is live and verified.
+          Monitored rankings and performance across <strong>Semrush</strong> (city-level keyword position tracking, desktop), <strong>Local Falcon</strong> (map-pack grid scans), and <strong>Windsor</strong> — pulling Google Analytics 4, Google Search Console and Google Business Profile data together so every number in this report is live and verified.
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============== KEYWORD TRACKING ============== -->
 <section class="alt">
   <div class="wrap">
-    <span class="section-eyebrow"><span class="dot"></span>Semrush Position Tracking</span>
+    <span class="section-eyebrow"><span class="dot"></span>Semrush Position Tracking · Rancho Santa Margarita, CA</span>
     <h2>Keyword <span class="accent">Rankings</span></h2>
-    <p class="section-intro">Every keyword tracked in the practice's Semrush project, as of October 31, 2026, sorted by best position. A status of <strong>Building</strong> means the keyword isn't ranking well yet — that's where we're focusing next. <strong>Declining</strong> means it slipped three or more positions this month.</p>
+    <p class="section-intro">2 of the 15 keywords we track for Elite Dentistry in Rancho Santa Margarita, CA are shown below, sorted by best position as of October 31, 2026. <strong>Improving</strong> means the phrase moved up a full position or more and now sits in the top 20; <strong>Stable</strong> means it held a top-20 spot; <strong>Building</strong> means it's ranking but not yet in the top 20. <strong>This was a difficult month for the tracked phrases:</strong> 13 of the 15 lost ground, and they are kept out of the table on purpose. The biggest losses were "rancho santa margarita dentist" (#4 to #99), "dentist rancho santa margarita" (#4 to #73) and "dentist in rsm" (#4 to #24). Our main phrase "dentist in rancho santa margarita" slipped from #4 to #6; "dental implants rancho santa margarita" fell from #3 to #22, "dental implants in rancho santa margarita" from #3 to #25 and "dental implants near me" from #10 to #43; "emergency dentist rancho santa margarita" fell from #5 to #12. The other five (veneers, root canal, teeth whitening and Invisalign phrases) slipped by between 1 and 8 places. Two phrases moved the right way and are shown: "emergency dentist near me" (#45 to #8) and "dentist near me" (#29 to #16).</p>
     <div class="table-wrap">
       <table class="kw">
-        <colgroup><col style="width:40%"><col style="width:16%"><col style="width:16%"><col style="width:14%"><col style="width:14%"></colgroup>
+        <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
         <thead>
-          <tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change (Sep 30→Oct 31)</th><th class="center">Searches/mo</th><th class="center">Status</th></tr>
+          <tr>
+            <th>Search Phrase</th>
+            <th class="center">Position</th>
+            <th class="center">Change</th>
+            <th class="center">Status</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td class="kw-name">dentist in rancho santa margarita</td><td class="center"><span class="rk warn">#6</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 2</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk warn">#8</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 26</span></td><td class="center kw-num">40</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">veneers in rancho santa margarita</td><td class="center"><span class="rk warn">#10</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 1</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">root canal rancho santa margarita</td><td class="center"><span class="rk bad">#11</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 1</span></td><td class="center kw-num">10</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">emergency dentist rancho santa margarita</td><td class="center"><span class="rk bad">#12</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 1</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk bad">#16</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 13</span></td><td class="center kw-num">320</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">teeth whitening rancho santa margarita</td><td class="center"><span class="rk bad">#16</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 5</span></td><td class="center kw-num">10</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">veneers rancho santa margarita</td><td class="center"><span class="rk bad">#18</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 8</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dental implants rancho santa margarita</td><td class="center"><span class="rk bad">#22</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 19</span></td><td class="center kw-num">10</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dentist in rsm</td><td class="center"><span class="rk bad">#24</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 20</span></td><td class="center kw-num">10</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dental implants in rancho santa margarita</td><td class="center"><span class="rk bad">#25</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 20</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">invisalign in rancho santa margarita</td><td class="center"><span class="rk bad">#27</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 11</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk bad">#43</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 33</span></td><td class="center kw-num">90</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dentist rancho santa margarita</td><td class="center"><span class="rk bad">#73</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 69</span></td><td class="center kw-num">170</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">rancho santa margarita dentist</td><td class="center"><span class="rk bad">#99</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 95</span></td><td class="center kw-num">170</td><td class="center"><span class="status declining">Declining</span></td></tr>
+          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk warn">#8</span></td><td class="center">▲ 37</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk bad">#16</span></td><td class="center">▲ 13</td><td class="center"><span class="status improving">Improving</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Semrush position tracking, desktop, Rancho Santa Margarita, California; each position is a single check on that date. “Not ranking” = outside the top 100. Change column shows movement from Sep 30 to Oct 31. <sup>1</sup> Searches/mo shown as — where Semrush returned no volume data for the phrase (a reported volume of 0 means no data, not zero searches). </p>
-    <p class="hint">Semrush vs. Local Falcon: Semrush is one desktop check from one point in Rancho Santa Margarita, while Local Falcon samples 121 locations (scanned October 20), so the two will not match exactly. For example, “dentist near me” sits at #16 in Semrush while the map grid shows the practice appearing at 93 of 121 points (8.3% SoLV). Several phrases also moved sharply between the Sep 30 and Oct 31 checks (for example “rancho santa margarita dentist”, #4 to #99); figures are shown exactly as Semrush returned them.</p>
+    <p class="hint">Source: Semrush position tracking — Rancho Santa Margarita, CA campaign, city level, desktop, Google. Positions as of October 31 compared with the start of the month. Keywords that lost ground this month are discussed in the text above rather than listed here.</p>
+    <div class="footprint">
+      <p class="block-label">Total Search Console footprint — United States</p>
+      <div class="stat-grid cols-3">
+        <div class="stat-card">
+          <div class="stat-num">442</div>
+          <div class="stat-label">Keywords in Google's Top 20</div>
+          <div class="stat-sub down">▼ 44 vs September (486)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">13,348</div>
+          <div class="stat-label">Search Impressions</div>
+          <div class="stat-sub up">▲ 184 vs September (13,164)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">85</div>
+          <div class="stat-label">Clicks from Search</div>
+          <div class="stat-sub">Unchanged vs September (85)</div>
+        </div>
+      </div>
+      <p class="hint">Source: Windsor / Google Search Console — United States. Counts every query the site appeared for, not just the tracked set above. Top-20 count is the number of queries whose average position for the month was 20 or better. The number of distinct queries the site appeared for also fell, from 1,202 in September to 987 in October.</p>
+    </div>
   </div>
 </section>
 
-<!-- ============== LOCAL MAP — LOCAL FALCON ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
     <h2>Local Map <span class="accent">Rankings</span></h2>
-    <p class="section-intro">Where the practice shows up on Google Maps across the local grid. Each circle is a geographic search point — greener is better, the blue pin is the office. <strong>Click any circle</strong> to see the rank at that point.</p>
-
+    <p class="section-intro">Where Elite Dentistry shows up on Google Maps across the local grid. Each circle is a geographic search point — greener is better, the blue pin is the office. <strong>Click any circle</strong> to see the rank at that point. <strong>Top-three coverage roughly halved this month.</strong> Share of Local Voice (SoLV) fell from 8.26% on September 22 to 4.13% on October 20, while average rank (ARP) barely moved — 7.38 in September, 7.49 in October, marginally worse. The practice still ranked at all 121 of 121 points, the same as September, so it is visible across the whole grid but it appears in the top three at far fewer of them. This is a decline, not a gain.</p>
     <div class="map-card">
       <div class="map-meta">
         <div><strong>Keyword:</strong> dentist in rancho santa margarita</div>
-        <div><strong>Grid:</strong> 11×11 · 3 mile radius</div>
+        <div><strong>Radius:</strong> 3 mile</div>
         <div><strong>Scanned:</strong> October 20, 2026</div>
       </div>
       <div class="map-stats">
         <div class="map-stat"><div class="map-stat-num">7.49</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
         <div class="map-stat"><div class="map-stat-num">121/121</div><div class="map-stat-label">Points Ranked</div></div>
-        <div class="map-stat"><div class="map-stat-num">4.1%</div><div class="map-stat-label">SoLV</div></div>
-        <div class="map-stat"><div class="map-stat-num">121</div><div class="map-stat-label">Search Points</div></div>
+        <div class="map-stat"><div class="map-stat-num">4.13%</div><div class="map-stat-label">SoLV</div></div>
+        <div class="map-stat"><div class="map-stat-num">11×11</div><div class="map-stat-label">Grid Size</div></div>
       </div>
       <div id="lf-map-1" class="lf-map"></div>
       <div class="map-legend">
@@ -417,110 +402,74 @@
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
       </div>
-<p class="hint">Scan dated October 20, 2026 — the latest scan inside October; month-end (Oct 31) is not covered by a scan.</p>
     </div>
-    <div class="map-card">
-      <div class="map-meta">
-        <div><strong>Keyword:</strong> dentist near me</div>
-        <div><strong>Grid:</strong> 11×11 · 3 mile radius</div>
-        <div><strong>Scanned:</strong> October 20, 2026</div>
-      </div>
-      <div class="map-stats">
-        <div class="map-stat"><div class="map-stat-num">9.09</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
-        <div class="map-stat"><div class="map-stat-num">93/121</div><div class="map-stat-label">Points Ranked</div></div>
-        <div class="map-stat"><div class="map-stat-num">8.3%</div><div class="map-stat-label">SoLV</div></div>
-        <div class="map-stat"><div class="map-stat-num">121</div><div class="map-stat-label">Search Points</div></div>
-      </div>
-      <div id="lf-map-2" class="lf-map"></div>
-      <div class="map-legend">
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#1f6d3a"></span>#1</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#4a9d3a"></span>#2–3</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#bdc742"></span>#4–5</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#e4a432"></span>#6–7</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#cf5a28"></span>#8–9</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#a93020"></span>#10–19</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#6b2018"></span>#20+</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
-      </div>
-<p class="hint">Scan dated October 20, 2026 — the latest scan inside October; month-end (Oct 31) is not covered by a scan.</p>
-    </div>
+    <p class="hint">Source: Local Falcon grid scan centred on the practice address, October 20, 2026 (compared with the September 22, 2026 scan). ARP is the average rank across every point that ranked; SoLV is share of local voice across the grid.</p>
   </div>
 </section>
 
-<!-- ============== TRAFFIC TO PAGES ============== -->
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 · via Windsor</span>
     <h2>Traffic to <span class="accent">Each Page</span></h2>
-    <p class="section-intro">Top pages by organic visits in October. These are the pages doing the heavy lifting for the practice.</p>
+    <p class="section-intro">The top 10 pages by organic visits in October. These are the pages doing the heavy lifting for the practice.</p>
     <ul class="pages-list">
-      <li><div class="page-name">/</div><div class="page-bar"><div class="page-bar-fill" style="width:100.0%"></div></div><div class="page-visits">155</div></li>
-      <li><div class="page-name">/our-dental-team/dr-mehran-rastegar-lari/</div><div class="page-bar"><div class="page-bar-fill" style="width:20.0%"></div></div><div class="page-visits">31</div></li>
-      <li><div class="page-name">/our-dental-team/</div><div class="page-bar"><div class="page-bar-fill" style="width:18.1%"></div></div><div class="page-visits">28</div></li>
-      <li><div class="page-name">/contact-us/</div><div class="page-bar"><div class="page-bar-fill" style="width:8.4%"></div></div><div class="page-visits">13</div></li>
-      <li><div class="page-name">/dental-insurance/</div><div class="page-bar"><div class="page-bar-fill" style="width:7.7%"></div></div><div class="page-visits">12</div></li>
-      <li><div class="page-name">/about-us/</div><div class="page-bar"><div class="page-bar-fill" style="width:7.1%"></div></div><div class="page-visits">11</div></li>
-      <li><div class="page-name">/dentist-appointment/</div><div class="page-bar"><div class="page-bar-fill" style="width:3.9%"></div></div><div class="page-visits">6</div></li>
-      <li><div class="page-name">/dental-services/</div><div class="page-bar"><div class="page-bar-fill" style="width:3.2%"></div></div><div class="page-visits">5</div></li>
-      <li><div class="page-name">/blog/how-a-cracked-tooth-can-lead-to-a-serious-infection/</div><div class="page-bar"><div class="page-bar-fill" style="width:2.6%"></div></div><div class="page-visits">4</div></li>
-      <li><div class="page-name">/patients-first-visit/</div><div class="page-bar"><div class="page-bar-fill" style="width:2.6%"></div></div><div class="page-visits">4</div></li>
-      <li><div class="page-name">/rancho-santa-margarita-ca/same-day-dental-crowns/</div><div class="page-bar"><div class="page-bar-fill" style="width:2.6%"></div></div><div class="page-visits">4</div></li>
-      <li><div class="page-name">/terms-conditions/</div><div class="page-bar"><div class="page-bar-fill" style="width:2.6%"></div></div><div class="page-visits">4</div></li>
-      <li><div class="page-name">/patient-specials/</div><div class="page-bar"><div class="page-bar-fill" style="width:1.9%"></div></div><div class="page-visits">3</div></li>
-      <li><div class="page-name">/preventive-dentistry/</div><div class="page-bar"><div class="page-bar-fill" style="width:1.9%"></div></div><div class="page-visits">3</div></li>
-      <li><div class="page-name">/rancho-santa-margarita-ca/dental-implants/</div><div class="page-bar"><div class="page-bar-fill" style="width:1.9%"></div></div><div class="page-visits">3</div></li>
+      <li><div class="page-name">/</div><div class="page-bar"><div class="page-bar-fill" style="width:100%"></div></div><div class="page-visits">111</div></li>
+      <li><div class="page-name">/our-dental-team/</div><div class="page-bar"><div class="page-bar-fill" style="width:23%"></div></div><div class="page-visits">26</div></li>
+      <li><div class="page-name">/our-dental-team/dr-mehran-rastegar-lari/</div><div class="page-bar"><div class="page-bar-fill" style="width:23%"></div></div><div class="page-visits">26</div></li>
+      <li><div class="page-name">/contact-us/</div><div class="page-bar"><div class="page-bar-fill" style="width:12%"></div></div><div class="page-visits">13</div></li>
+      <li><div class="page-name">/dental-insurance/</div><div class="page-bar"><div class="page-bar-fill" style="width:11%"></div></div><div class="page-visits">12</div></li>
+      <li><div class="page-name">/about-us/</div><div class="page-bar"><div class="page-bar-fill" style="width:9%"></div></div><div class="page-visits">10</div></li>
+      <li><div class="page-name">/dentist-appointment/</div><div class="page-bar"><div class="page-bar-fill" style="width:5%"></div></div><div class="page-visits">6</div></li>
+      <li><div class="page-name">/dental-services/</div><div class="page-bar"><div class="page-bar-fill" style="width:5%"></div></div><div class="page-visits">5</div></li>
+      <li><div class="page-name">/patients-first-visit/</div><div class="page-bar"><div class="page-bar-fill" style="width:4%"></div></div><div class="page-visits">4</div></li>
+      <li><div class="page-name">/terms-conditions/</div><div class="page-bar"><div class="page-bar-fill" style="width:4%"></div></div><div class="page-visits">4</div></li>
     </ul>
-    <p class="hint">Source: Windsor / Google Analytics 4, Organic Search sessions, Oct 1–31, 2026. Bar widths are relative to the top page. Per-page counts, not a breakdown of organic sessions: this list uses the GA4 page_path dimension (Organic Search channel, Oct 1–31), which counts a session on every page it viewed rather than on its landing page only. The 44 returned rows (top 15 shown) sum to 319 against the month's 202 organic sessions, so a multi-page visit appears in several rows. Do not read the list as summing to 202.</p>
+    <p class="hint">Source: Windsor / Google Analytics 4 — organic sessions per page, United States. One visit can touch several pages, so these figures do not add up to the monthly organic session total (146). Bar widths are relative to the top page.</p>
   </div>
 </section>
 
-<!-- ============== TRAFFIC SOURCES ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 · via Windsor</span>
     <h2>Where Traffic <span class="accent">Comes From</span></h2>
-    <p class="section-intro">How visitors found the website in October, broken down by channel. A healthy mix with strong organic search is what we're building toward.</p>
+    <p class="section-intro">How visitors found the website in October, broken down by channel. Organic Search brought 146 sessions, up from 137 in September. Total sessions were 573 against 569 last month; Direct fell from 262 to 210, Organic Social rose from 84 to 159, and AI Assistant referrals fell from 21 to 3.</p>
     <div class="src-grid">
       <div>
         <div class="stack">
-          <span style="width:10.66%;background:var(--blue)">11%</span>
-          <span style="width:76.46%;background:var(--good)">76%</span>
-          <span style="width:9.02%;background:var(--warn)">9%</span>
-          <span style="width:2.11%;background:var(--ink-mute)"></span>
-          <span style="width:1.53%;background:#7c3aed"></span>
-          <span style="width:0.21%;background:#0891b2"></span>
+          <span style="width:37%;background:var(--good)">37%</span>
+          <span style="width:28%;background:var(--warn)">28%</span>
+          <span style="width:25%;background:var(--blue)">25%</span>
+          <span style="width:7%;background:var(--ink-mute)">7%</span>
+          <span style="width:3%;background:var(--bad)">3%</span>
+          <span style="width:1%;background:var(--blue-900)">1%</span>
         </div>
-        <p class="hint" style="margin-top:0">Total sessions this month: <strong>1,895</strong></p>
+        <p class="hint" style="margin-top:0">Total sessions this month: <strong>573</strong></p>
       </div>
       <div class="src-legend">
-        <div class="src-row"><span class="src-dot" style="background:var(--blue)"></span><span class="src-name">Organic Search</span><span class="src-pct">11%</span><span class="src-num">202 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--good)"></span><span class="src-name">Direct</span><span class="src-pct">76%</span><span class="src-num">1,449 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--warn)"></span><span class="src-name">Organic Social</span><span class="src-pct">9%</span><span class="src-num">171 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--ink-mute)"></span><span class="src-name">Paid Social</span><span class="src-pct">2%</span><span class="src-num">40 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:#7c3aed"></span><span class="src-name">Referral</span><span class="src-pct">2%</span><span class="src-num">29 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:#0891b2"></span><span class="src-name">AI Assistant</span><span class="src-pct"><1%</span><span class="src-num">4 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--good)"></span><span class="src-name">Direct</span><span class="src-pct">37%</span><span class="src-num">210 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--warn)"></span><span class="src-name">Organic Social</span><span class="src-pct">28%</span><span class="src-num">159 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--blue)"></span><span class="src-name">Organic Search</span><span class="src-pct">25%</span><span class="src-num">146 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--ink-mute)"></span><span class="src-name">Paid Social</span><span class="src-pct">7%</span><span class="src-num">40 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--bad)"></span><span class="src-name">Referral</span><span class="src-pct">3%</span><span class="src-num">15 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--blue-900)"></span><span class="src-name">AI Assistant</span><span class="src-pct">1%</span><span class="src-num">3 sess.</span></div>
       </div>
     </div>
-    <p class="hint">Source: Windsor / Google Analytics 4 — sessions by default channel group. </p>
+    <p class="hint">Source: Windsor / Google Analytics 4 — sessions by default channel group, United States. Percentages are rounded.</p>
   </div>
 </section>
 
-<!-- ============== GOOGLE BUSINESS PROFILE PERFORMANCE ============== -->
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Business Profile · via Windsor</span>
     <h2>Google Business Profile <span class="accent">Performance</span></h2>
-    <p class="section-intro">Activity on the Google Business listing this month and the prior 5 months — calls, web clicks, reviews, and how often the profile showed up in Search and Maps.</p>
-
+    <p class="section-intro">Activity on the Google Business listing this month and the prior 5 months — calls, web clicks, reviews, and how often the profile showed up in Search and Maps. Calls were the highest of the six months shown (51), while impressions fell from 737 in September to 618 in October, driven by Maps (309 to 185).</p>
     <p class="block-label">This month at a glance</p>
-    <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:36px">
-      <div class="stat-card"><div class="stat-num">51</div><div class="stat-label">Phone Calls</div><div class="stat-sub">▲ 4 vs September</div></div>
-      <div class="stat-card"><div class="stat-num">+3</div><div class="stat-label">New Reviews</div><div class="stat-sub">136 total · 4.9★</div></div>
-      <div class="stat-card"><div class="stat-num">47</div><div class="stat-label">Website Clicks</div><div class="stat-sub">▲ 1 vs September</div></div>
-      <div class="stat-card"><div class="stat-num">618</div><div class="stat-label">Searches / Impr.</div><div class="stat-sub">Maps + Search combined</div></div>
+    <div class="stat-grid cols-4" style="margin-bottom:36px">
+      <div class="stat-card"><div class="stat-num">51</div><div class="stat-label">Phone Calls</div><div class="stat-sub up">▲ 4 vs September (47)</div></div>
+      <div class="stat-card"><div class="stat-num">+3</div><div class="stat-label">New Reviews</div><div class="stat-sub">136 total · 4.9★ overall · new reviews averaged 5.0★</div></div>
+      <div class="stat-card"><div class="stat-num">47</div><div class="stat-label">Website Clicks</div><div class="stat-sub up">▲ 1 vs September (46)</div></div>
+      <div class="stat-card"><div class="stat-num">618</div><div class="stat-label">Searches / Impr.</div><div class="stat-sub down">▼ 119 vs September (737)</div></div>
     </div>
-
     <p class="block-label">6-month trend</p>
     <div class="table-wrap">
       <table class="gbp">
@@ -528,20 +477,22 @@
           <tr><th>Month</th><th>Impressions</th><th>Search</th><th>Maps</th><th>Web Clicks</th><th>Calls</th><th>Directions</th></tr>
         </thead>
         <tbody>
-          <tr><td>May 2026</td><td class="num">419</td><td>—</td><td>—</td><td>43</td><td>28</td><td>74</td></tr>
-          <tr><td>Jun 2026</td><td class="num">369</td><td>—</td><td>—</td><td>46</td><td>37</td><td>88</td></tr>
-          <tr><td>Jul 2026</td><td class="num">438</td><td>—</td><td>—</td><td>32</td><td>43</td><td>65</td></tr>
-          <tr><td>Aug 2026</td><td class="num">673</td><td>—</td><td>—</td><td>42</td><td>49</td><td>88</td></tr>
-          <tr><td>Sep 2026</td><td class="num">737</td><td>—</td><td>—</td><td>46</td><td>47</td><td>113</td></tr>
-          <tr><td><strong>Oct 2026</strong></td><td class="num"><strong>618</strong></td><td><strong>—</strong></td><td><strong>—</strong></td><td><strong>47</strong></td><td><strong>51</strong></td><td><strong>87</strong></td></tr>
+          <tr><td>May 2026</td><td class="num">419</td><td>289</td><td>130</td><td>43</td><td>28</td><td>74</td></tr>
+          <tr><td>Jun 2026</td><td class="num">369</td><td>252</td><td>117</td><td>46</td><td>37</td><td>88</td></tr>
+          <tr><td>Jul 2026</td><td class="num">438</td><td>277</td><td>161</td><td>32</td><td>43</td><td>65</td></tr>
+          <tr><td>Aug 2026</td><td class="num">673</td><td>426</td><td>247</td><td>42</td><td>49</td><td>88</td></tr>
+          <tr><td>Sep 2026</td><td class="num">737</td><td>428</td><td>309</td><td>46</td><td>47</td><td>113</td></tr>
+          <tr><td><strong>Oct 2026</strong></td><td class="num"><strong>618</strong></td><td><strong>433</strong></td><td><strong>185</strong></td><td><strong>47</strong></td><td><strong>51</strong></td><td><strong>87</strong></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Windsor / Google Business Profile insights. Impressions = Maps + Search, desktop + mobile, combined. The Search / Maps split (—) was not part of this month's data pull, so it is not shown rather than estimated.</p>
+    <div class="restatement">
+      <strong>A note on these numbers:</strong> Google continues to revise Business Profile figures for several weeks after a month closes. All six months above were re-pulled fresh for this report, so earlier months may read slightly higher than they did in their own reports — and we expect October's figures to rise the same way over the coming weeks.
+    </div>
+    <p class="hint">Source: Windsor / Google Business Profile insights. Impressions are split into Search (desktop + mobile) and Maps (desktop + mobile); the two columns add up to the Impressions total. New reviews are reviews added during October; the total and rating are all-time figures.</p>
   </div>
 </section>
 
-<!-- ============== FOOTER ============== -->
 <footer class="end-cta">
   <div class="wrap">
     <img class="nerds-logo-img" src="/logo/Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
@@ -549,7 +500,7 @@
     <div class="thanks"><b>Thank you for trusting us with your marketing.</b> Questions about anything in this report? Just reply to this email — we love hearing from you.</div>
     <div class="end-meta">
       Reporting period: October 1–31, 2026 · Prepared by Dentist Nerds · dentistnerds.com<br>
-      <span class="src-tag">Data sources: Semrush · Local Falcon · Windsor (GA4, Google Business Profile)</span>
+      <span class="src-tag">Data sources: Semrush position tracking (Rancho Santa Margarita, desktop) · Local Falcon (grid on practice address) · Windsor / GA4 (United States) · Windsor / Google Search Console (United States) · Windsor / Google Business Profile (this listing)</span>
     </div>
   </div>
 </footer>
@@ -615,12 +566,130 @@ function renderMap(elId,officeLat,officeLng,officeName,dataPoints){
   if(bounds.length)map.fitBounds(bounds,{padding:[20,20]});
 }
 
-// ===== MAP 1 — dentist in rancho santa margarita =====
-renderMap('lf-map-1', 33.6389896, -117.5911177, "Elite Dentistry", [{"lat":33.5956188,"lng":-117.643212,"rank":9},{"lat":33.6042929,"lng":-117.643212,"rank":9},{"lat":33.6129671,"lng":-117.643212,"rank":9},{"lat":33.6216413,"lng":-117.643212,"rank":10},{"lat":33.6303154,"lng":-117.643212,"rank":10},{"lat":33.6389896,"lng":-117.643212,"rank":11},{"lat":33.6476638,"lng":-117.643212,"rank":11},{"lat":33.6563379,"lng":-117.643212,"rank":14},{"lat":33.6650121,"lng":-117.643212,"rank":10},{"lat":33.6736863,"lng":-117.643212,"rank":10},{"lat":33.6823604,"lng":-117.643212,"rank":8},{"lat":33.5956188,"lng":-117.6327932,"rank":9},{"lat":33.6042929,"lng":-117.6327932,"rank":7},{"lat":33.6129671,"lng":-117.6327932,"rank":9},{"lat":33.6216413,"lng":-117.6327932,"rank":10},{"lat":33.6303154,"lng":-117.6327932,"rank":11},{"lat":33.6389896,"lng":-117.6327932,"rank":11},{"lat":33.6476638,"lng":-117.6327932,"rank":11},{"lat":33.6563379,"lng":-117.6327932,"rank":10},{"lat":33.6650121,"lng":-117.6327932,"rank":10},{"lat":33.6736863,"lng":-117.6327932,"rank":10},{"lat":33.6823604,"lng":-117.6327932,"rank":8},{"lat":33.5956188,"lng":-117.6223743,"rank":9},{"lat":33.6042929,"lng":-117.6223743,"rank":9},{"lat":33.6129671,"lng":-117.6223743,"rank":9},{"lat":33.6216413,"lng":-117.6223743,"rank":9},{"lat":33.6303154,"lng":-117.6223743,"rank":10},{"lat":33.6389896,"lng":-117.6223743,"rank":10},{"lat":33.6476638,"lng":-117.6223743,"rank":10},{"lat":33.6563379,"lng":-117.6223743,"rank":10},{"lat":33.6650121,"lng":-117.6223743,"rank":10},{"lat":33.6736863,"lng":-117.6223743,"rank":9},{"lat":33.6823604,"lng":-117.6223743,"rank":8},{"lat":33.5956188,"lng":-117.6119554,"rank":8},{"lat":33.6042929,"lng":-117.6119554,"rank":9},{"lat":33.6129671,"lng":-117.6119554,"rank":8},{"lat":33.6216413,"lng":-117.6119554,"rank":9},{"lat":33.6303154,"lng":-117.6119554,"rank":10},{"lat":33.6389896,"lng":-117.6119554,"rank":12},{"lat":33.6476638,"lng":-117.6119554,"rank":10},{"lat":33.6563379,"lng":-117.6119554,"rank":8},{"lat":33.6650121,"lng":-117.6119554,"rank":9},{"lat":33.6736863,"lng":-117.6119554,"rank":9},{"lat":33.6823604,"lng":-117.6119554,"rank":8},{"lat":33.5956188,"lng":-117.6015366,"rank":8},{"lat":33.6042929,"lng":-117.6015366,"rank":9},{"lat":33.6129671,"lng":-117.6015366,"rank":8},{"lat":33.6216413,"lng":-117.6015366,"rank":9},{"lat":33.6303154,"lng":-117.6015366,"rank":8},{"lat":33.6389896,"lng":-117.6015366,"rank":11},{"lat":33.6476638,"lng":-117.6015366,"rank":9},{"lat":33.6563379,"lng":-117.6015366,"rank":9},{"lat":33.6650121,"lng":-117.6015366,"rank":8},{"lat":33.6736863,"lng":-117.6015366,"rank":9},{"lat":33.6823604,"lng":-117.6015366,"rank":9},{"lat":33.5956188,"lng":-117.5911177,"rank":8},{"lat":33.6042929,"lng":-117.5911177,"rank":8},{"lat":33.6129671,"lng":-117.5911177,"rank":7},{"lat":33.6216413,"lng":-117.5911177,"rank":6},{"lat":33.6303154,"lng":-117.5911177,"rank":4},{"lat":33.6389896,"lng":-117.5911177,"rank":2},{"lat":33.6476638,"lng":-117.5911177,"rank":6},{"lat":33.6563379,"lng":-117.5911177,"rank":7},{"lat":33.6650121,"lng":-117.5911177,"rank":8},{"lat":33.6736863,"lng":-117.5911177,"rank":4},{"lat":33.6823604,"lng":-117.5911177,"rank":9},{"lat":33.5956188,"lng":-117.5806988,"rank":6},{"lat":33.6042929,"lng":-117.5806988,"rank":6},{"lat":33.6129671,"lng":-117.5806988,"rank":5},{"lat":33.6216413,"lng":-117.5806988,"rank":5},{"lat":33.6303154,"lng":-117.5806988,"rank":2},{"lat":33.6389896,"lng":-117.5806988,"rank":2},{"lat":33.6476638,"lng":-117.5806988,"rank":2},{"lat":33.6563379,"lng":-117.5806988,"rank":5},{"lat":33.6650121,"lng":-117.5806988,"rank":7},{"lat":33.6736863,"lng":-117.5806988,"rank":9},{"lat":33.6823604,"lng":-117.5806988,"rank":8},{"lat":33.5956188,"lng":-117.57028,"rank":6},{"lat":33.6042929,"lng":-117.57028,"rank":6},{"lat":33.6129671,"lng":-117.57028,"rank":5},{"lat":33.6216413,"lng":-117.57028,"rank":4},{"lat":33.6303154,"lng":-117.57028,"rank":4},{"lat":33.6389896,"lng":-117.57028,"rank":2},{"lat":33.6476638,"lng":-117.57028,"rank":4},{"lat":33.6563379,"lng":-117.57028,"rank":5},{"lat":33.6650121,"lng":-117.57028,"rank":7},{"lat":33.6736863,"lng":-117.57028,"rank":8},{"lat":33.6823604,"lng":-117.57028,"rank":4},{"lat":33.5956188,"lng":-117.5598611,"rank":6},{"lat":33.6042929,"lng":-117.5598611,"rank":6},{"lat":33.6129671,"lng":-117.5598611,"rank":6},{"lat":33.6216413,"lng":-117.5598611,"rank":4},{"lat":33.6303154,"lng":-117.5598611,"rank":4},{"lat":33.6389896,"lng":-117.5598611,"rank":4},{"lat":33.6476638,"lng":-117.5598611,"rank":4},{"lat":33.6563379,"lng":-117.5598611,"rank":5},{"lat":33.6650121,"lng":-117.5598611,"rank":8},{"lat":33.6736863,"lng":-117.5598611,"rank":8},{"lat":33.6823604,"lng":-117.5598611,"rank":8},{"lat":33.5956188,"lng":-117.5494422,"rank":6},{"lat":33.6042929,"lng":-117.5494422,"rank":6},{"lat":33.6129671,"lng":-117.5494422,"rank":6},{"lat":33.6216413,"lng":-117.5494422,"rank":6},{"lat":33.6303154,"lng":-117.5494422,"rank":6},{"lat":33.6389896,"lng":-117.5494422,"rank":5},{"lat":33.6476638,"lng":-117.5494422,"rank":7},{"lat":33.6563379,"lng":-117.5494422,"rank":7},{"lat":33.6650121,"lng":-117.5494422,"rank":8},{"lat":33.6736863,"lng":-117.5494422,"rank":8},{"lat":33.6823604,"lng":-117.5494422,"rank":8},{"lat":33.5956188,"lng":-117.5390234,"rank":6},{"lat":33.6042929,"lng":-117.5390234,"rank":6},{"lat":33.6129671,"lng":-117.5390234,"rank":6},{"lat":33.6216413,"lng":-117.5390234,"rank":6},{"lat":33.6303154,"lng":-117.5390234,"rank":6},{"lat":33.6389896,"lng":-117.5390234,"rank":6},{"lat":33.6476638,"lng":-117.5390234,"rank":6},{"lat":33.6563379,"lng":-117.5390234,"rank":7},{"lat":33.6650121,"lng":-117.5390234,"rank":7},{"lat":33.6736863,"lng":-117.5390234,"rank":8},{"lat":33.6823604,"lng":-117.5390234,"rank":8}]);
 
-// ===== MAP 2 — dentist near me =====
-renderMap('lf-map-2', 33.6389896, -117.5911177, "Elite Dentistry", [{"lat":33.5956188,"lng":-117.643212,"rank":0},{"lat":33.6042929,"lng":-117.643212,"rank":0},{"lat":33.6129671,"lng":-117.643212,"rank":0},{"lat":33.6216413,"lng":-117.643212,"rank":0},{"lat":33.6303154,"lng":-117.643212,"rank":0},{"lat":33.6389896,"lng":-117.643212,"rank":0},{"lat":33.6476638,"lng":-117.643212,"rank":0},{"lat":33.6563379,"lng":-117.643212,"rank":0},{"lat":33.6650121,"lng":-117.643212,"rank":0},{"lat":33.6736863,"lng":-117.643212,"rank":0},{"lat":33.6823604,"lng":-117.643212,"rank":0},{"lat":33.5956188,"lng":-117.6327932,"rank":0},{"lat":33.6042929,"lng":-117.6327932,"rank":0},{"lat":33.6129671,"lng":-117.6327932,"rank":0},{"lat":33.6216413,"lng":-117.6327932,"rank":0},{"lat":33.6303154,"lng":-117.6327932,"rank":0},{"lat":33.6389896,"lng":-117.6327932,"rank":0},{"lat":33.6476638,"lng":-117.6327932,"rank":0},{"lat":33.6563379,"lng":-117.6327932,"rank":0},{"lat":33.6650121,"lng":-117.6327932,"rank":0},{"lat":33.6736863,"lng":-117.6327932,"rank":0},{"lat":33.6823604,"lng":-117.6327932,"rank":0},{"lat":33.5956188,"lng":-117.6223743,"rank":0},{"lat":33.6042929,"lng":-117.6223743,"rank":14},{"lat":33.6129671,"lng":-117.6223743,"rank":15},{"lat":33.6216413,"lng":-117.6223743,"rank":15},{"lat":33.6303154,"lng":-117.6223743,"rank":16},{"lat":33.6389896,"lng":-117.6223743,"rank":18},{"lat":33.6476638,"lng":-117.6223743,"rank":17},{"lat":33.6563379,"lng":-117.6223743,"rank":18},{"lat":33.6650121,"lng":-117.6223743,"rank":18},{"lat":33.6736863,"lng":-117.6223743,"rank":0},{"lat":33.6823604,"lng":-117.6223743,"rank":0},{"lat":33.5956188,"lng":-117.6119554,"rank":13},{"lat":33.6042929,"lng":-117.6119554,"rank":11},{"lat":33.6129671,"lng":-117.6119554,"rank":13},{"lat":33.6216413,"lng":-117.6119554,"rank":13},{"lat":33.6303154,"lng":-117.6119554,"rank":13},{"lat":33.6389896,"lng":-117.6119554,"rank":0},{"lat":33.6476638,"lng":-117.6119554,"rank":12},{"lat":33.6563379,"lng":-117.6119554,"rank":12},{"lat":33.6650121,"lng":-117.6119554,"rank":13},{"lat":33.6736863,"lng":-117.6119554,"rank":0},{"lat":33.6823604,"lng":-117.6119554,"rank":0},{"lat":33.5956188,"lng":-117.6015366,"rank":10},{"lat":33.6042929,"lng":-117.6015366,"rank":10},{"lat":33.6129671,"lng":-117.6015366,"rank":8},{"lat":33.6216413,"lng":-117.6015366,"rank":10},{"lat":33.6303154,"lng":-117.6015366,"rank":10},{"lat":33.6389896,"lng":-117.6015366,"rank":20},{"lat":33.6476638,"lng":-117.6015366,"rank":11},{"lat":33.6563379,"lng":-117.6015366,"rank":13},{"lat":33.6650121,"lng":-117.6015366,"rank":17},{"lat":33.6736863,"lng":-117.6015366,"rank":17},{"lat":33.6823604,"lng":-117.6015366,"rank":16},{"lat":33.5956188,"lng":-117.5911177,"rank":18},{"lat":33.6042929,"lng":-117.5911177,"rank":13},{"lat":33.6129671,"lng":-117.5911177,"rank":9},{"lat":33.6216413,"lng":-117.5911177,"rank":9},{"lat":33.6303154,"lng":-117.5911177,"rank":1},{"lat":33.6389896,"lng":-117.5911177,"rank":2},{"lat":33.6476638,"lng":-117.5911177,"rank":6},{"lat":33.6563379,"lng":-117.5911177,"rank":7},{"lat":33.6650121,"lng":-117.5911177,"rank":6},{"lat":33.6736863,"lng":-117.5911177,"rank":9},{"lat":33.6823604,"lng":-117.5911177,"rank":13},{"lat":33.5956188,"lng":-117.5806988,"rank":10},{"lat":33.6042929,"lng":-117.5806988,"rank":10},{"lat":33.6129671,"lng":-117.5806988,"rank":8},{"lat":33.6216413,"lng":-117.5806988,"rank":6},{"lat":33.6303154,"lng":-117.5806988,"rank":3},{"lat":33.6389896,"lng":-117.5806988,"rank":2},{"lat":33.6476638,"lng":-117.5806988,"rank":3},{"lat":33.6563379,"lng":-117.5806988,"rank":6},{"lat":33.6650121,"lng":-117.5806988,"rank":3},{"lat":33.6736863,"lng":-117.5806988,"rank":9},{"lat":33.6823604,"lng":-117.5806988,"rank":9},{"lat":33.5956188,"lng":-117.57028,"rank":10},{"lat":33.6042929,"lng":-117.57028,"rank":9},{"lat":33.6129671,"lng":-117.57028,"rank":7},{"lat":33.6216413,"lng":-117.57028,"rank":1},{"lat":33.6303154,"lng":-117.57028,"rank":3},{"lat":33.6389896,"lng":-117.57028,"rank":4},{"lat":33.6476638,"lng":-117.57028,"rank":4},{"lat":33.6563379,"lng":-117.57028,"rank":5},{"lat":33.6650121,"lng":-117.57028,"rank":6},{"lat":33.6736863,"lng":-117.57028,"rank":9},{"lat":33.6823604,"lng":-117.57028,"rank":9},{"lat":33.5956188,"lng":-117.5598611,"rank":9},{"lat":33.6042929,"lng":-117.5598611,"rank":9},{"lat":33.6129671,"lng":-117.5598611,"rank":9},{"lat":33.6216413,"lng":-117.5598611,"rank":6},{"lat":33.6303154,"lng":-117.5598611,"rank":2},{"lat":33.6389896,"lng":-117.5598611,"rank":2},{"lat":33.6476638,"lng":-117.5598611,"rank":4},{"lat":33.6563379,"lng":-117.5598611,"rank":5},{"lat":33.6650121,"lng":-117.5598611,"rank":6},{"lat":33.6736863,"lng":-117.5598611,"rank":7},{"lat":33.6823604,"lng":-117.5598611,"rank":9},{"lat":33.5956188,"lng":-117.5494422,"rank":8},{"lat":33.6042929,"lng":-117.5494422,"rank":9},{"lat":33.6129671,"lng":-117.5494422,"rank":9},{"lat":33.6216413,"lng":-117.5494422,"rank":8},{"lat":33.6303154,"lng":-117.5494422,"rank":6},{"lat":33.6389896,"lng":-117.5494422,"rank":6},{"lat":33.6476638,"lng":-117.5494422,"rank":7},{"lat":33.6563379,"lng":-117.5494422,"rank":5},{"lat":33.6650121,"lng":-117.5494422,"rank":9},{"lat":33.6736863,"lng":-117.5494422,"rank":9},{"lat":33.6823604,"lng":-117.5494422,"rank":8},{"lat":33.5956188,"lng":-117.5390234,"rank":10},{"lat":33.6042929,"lng":-117.5390234,"rank":9},{"lat":33.6129671,"lng":-117.5390234,"rank":9},{"lat":33.6216413,"lng":-117.5390234,"rank":8},{"lat":33.6303154,"lng":-117.5390234,"rank":5},{"lat":33.6389896,"lng":-117.5390234,"rank":7},{"lat":33.6476638,"lng":-117.5390234,"rank":7},{"lat":33.6563379,"lng":-117.5390234,"rank":8},{"lat":33.6650121,"lng":-117.5390234,"rank":8},{"lat":33.6736863,"lng":-117.5390234,"rank":13},{"lat":33.6823604,"lng":-117.5390234,"rank":7}]);
-
+renderMap('lf-map-1', 33.6389896, -117.5911177, 'Elite Dentistry', [
+  {lat:33.5956188,lng:-117.643212,rank:9},
+  {lat:33.6042929,lng:-117.643212,rank:9},
+  {lat:33.6129671,lng:-117.643212,rank:9},
+  {lat:33.6216413,lng:-117.643212,rank:10},
+  {lat:33.6303154,lng:-117.643212,rank:10},
+  {lat:33.6389896,lng:-117.643212,rank:11},
+  {lat:33.6476638,lng:-117.643212,rank:11},
+  {lat:33.6563379,lng:-117.643212,rank:14},
+  {lat:33.6650121,lng:-117.643212,rank:10},
+  {lat:33.6736863,lng:-117.643212,rank:10},
+  {lat:33.6823604,lng:-117.643212,rank:8},
+  {lat:33.5956188,lng:-117.6327932,rank:9},
+  {lat:33.6042929,lng:-117.6327932,rank:7},
+  {lat:33.6129671,lng:-117.6327932,rank:9},
+  {lat:33.6216413,lng:-117.6327932,rank:10},
+  {lat:33.6303154,lng:-117.6327932,rank:11},
+  {lat:33.6389896,lng:-117.6327932,rank:11},
+  {lat:33.6476638,lng:-117.6327932,rank:11},
+  {lat:33.6563379,lng:-117.6327932,rank:10},
+  {lat:33.6650121,lng:-117.6327932,rank:10},
+  {lat:33.6736863,lng:-117.6327932,rank:10},
+  {lat:33.6823604,lng:-117.6327932,rank:8},
+  {lat:33.5956188,lng:-117.6223743,rank:9},
+  {lat:33.6042929,lng:-117.6223743,rank:9},
+  {lat:33.6129671,lng:-117.6223743,rank:9},
+  {lat:33.6216413,lng:-117.6223743,rank:9},
+  {lat:33.6303154,lng:-117.6223743,rank:10},
+  {lat:33.6389896,lng:-117.6223743,rank:10},
+  {lat:33.6476638,lng:-117.6223743,rank:10},
+  {lat:33.6563379,lng:-117.6223743,rank:10},
+  {lat:33.6650121,lng:-117.6223743,rank:10},
+  {lat:33.6736863,lng:-117.6223743,rank:9},
+  {lat:33.6823604,lng:-117.6223743,rank:8},
+  {lat:33.5956188,lng:-117.6119554,rank:8},
+  {lat:33.6042929,lng:-117.6119554,rank:9},
+  {lat:33.6129671,lng:-117.6119554,rank:8},
+  {lat:33.6216413,lng:-117.6119554,rank:9},
+  {lat:33.6303154,lng:-117.6119554,rank:10},
+  {lat:33.6389896,lng:-117.6119554,rank:12},
+  {lat:33.6476638,lng:-117.6119554,rank:10},
+  {lat:33.6563379,lng:-117.6119554,rank:8},
+  {lat:33.6650121,lng:-117.6119554,rank:9},
+  {lat:33.6736863,lng:-117.6119554,rank:9},
+  {lat:33.6823604,lng:-117.6119554,rank:8},
+  {lat:33.5956188,lng:-117.6015366,rank:8},
+  {lat:33.6042929,lng:-117.6015366,rank:9},
+  {lat:33.6129671,lng:-117.6015366,rank:8},
+  {lat:33.6216413,lng:-117.6015366,rank:9},
+  {lat:33.6303154,lng:-117.6015366,rank:8},
+  {lat:33.6389896,lng:-117.6015366,rank:11},
+  {lat:33.6476638,lng:-117.6015366,rank:9},
+  {lat:33.6563379,lng:-117.6015366,rank:9},
+  {lat:33.6650121,lng:-117.6015366,rank:8},
+  {lat:33.6736863,lng:-117.6015366,rank:9},
+  {lat:33.6823604,lng:-117.6015366,rank:9},
+  {lat:33.5956188,lng:-117.5911177,rank:8},
+  {lat:33.6042929,lng:-117.5911177,rank:8},
+  {lat:33.6129671,lng:-117.5911177,rank:7},
+  {lat:33.6216413,lng:-117.5911177,rank:6},
+  {lat:33.6303154,lng:-117.5911177,rank:4},
+  {lat:33.6389896,lng:-117.5911177,rank:2},
+  {lat:33.6476638,lng:-117.5911177,rank:6},
+  {lat:33.6563379,lng:-117.5911177,rank:7},
+  {lat:33.6650121,lng:-117.5911177,rank:8},
+  {lat:33.6736863,lng:-117.5911177,rank:4},
+  {lat:33.6823604,lng:-117.5911177,rank:9},
+  {lat:33.5956188,lng:-117.5806988,rank:6},
+  {lat:33.6042929,lng:-117.5806988,rank:6},
+  {lat:33.6129671,lng:-117.5806988,rank:5},
+  {lat:33.6216413,lng:-117.5806988,rank:5},
+  {lat:33.6303154,lng:-117.5806988,rank:2},
+  {lat:33.6389896,lng:-117.5806988,rank:2},
+  {lat:33.6476638,lng:-117.5806988,rank:2},
+  {lat:33.6563379,lng:-117.5806988,rank:5},
+  {lat:33.6650121,lng:-117.5806988,rank:7},
+  {lat:33.6736863,lng:-117.5806988,rank:9},
+  {lat:33.6823604,lng:-117.5806988,rank:8},
+  {lat:33.5956188,lng:-117.57028,rank:6},
+  {lat:33.6042929,lng:-117.57028,rank:6},
+  {lat:33.6129671,lng:-117.57028,rank:5},
+  {lat:33.6216413,lng:-117.57028,rank:4},
+  {lat:33.6303154,lng:-117.57028,rank:4},
+  {lat:33.6389896,lng:-117.57028,rank:2},
+  {lat:33.6476638,lng:-117.57028,rank:4},
+  {lat:33.6563379,lng:-117.57028,rank:5},
+  {lat:33.6650121,lng:-117.57028,rank:7},
+  {lat:33.6736863,lng:-117.57028,rank:8},
+  {lat:33.6823604,lng:-117.57028,rank:4},
+  {lat:33.5956188,lng:-117.5598611,rank:6},
+  {lat:33.6042929,lng:-117.5598611,rank:6},
+  {lat:33.6129671,lng:-117.5598611,rank:6},
+  {lat:33.6216413,lng:-117.5598611,rank:4},
+  {lat:33.6303154,lng:-117.5598611,rank:4},
+  {lat:33.6389896,lng:-117.5598611,rank:4},
+  {lat:33.6476638,lng:-117.5598611,rank:4},
+  {lat:33.6563379,lng:-117.5598611,rank:5},
+  {lat:33.6650121,lng:-117.5598611,rank:8},
+  {lat:33.6736863,lng:-117.5598611,rank:8},
+  {lat:33.6823604,lng:-117.5598611,rank:8},
+  {lat:33.5956188,lng:-117.5494422,rank:6},
+  {lat:33.6042929,lng:-117.5494422,rank:6},
+  {lat:33.6129671,lng:-117.5494422,rank:6},
+  {lat:33.6216413,lng:-117.5494422,rank:6},
+  {lat:33.6303154,lng:-117.5494422,rank:6},
+  {lat:33.6389896,lng:-117.5494422,rank:5},
+  {lat:33.6476638,lng:-117.5494422,rank:7},
+  {lat:33.6563379,lng:-117.5494422,rank:7},
+  {lat:33.6650121,lng:-117.5494422,rank:8},
+  {lat:33.6736863,lng:-117.5494422,rank:8},
+  {lat:33.6823604,lng:-117.5494422,rank:8},
+  {lat:33.5956188,lng:-117.5390234,rank:6},
+  {lat:33.6042929,lng:-117.5390234,rank:6},
+  {lat:33.6129671,lng:-117.5390234,rank:6},
+  {lat:33.6216413,lng:-117.5390234,rank:6},
+  {lat:33.6303154,lng:-117.5390234,rank:6},
+  {lat:33.6389896,lng:-117.5390234,rank:6},
+  {lat:33.6476638,lng:-117.5390234,rank:6},
+  {lat:33.6563379,lng:-117.5390234,rank:7},
+  {lat:33.6650121,lng:-117.5390234,rank:7},
+  {lat:33.6736863,lng:-117.5390234,rank:8},
+  {lat:33.6823604,lng:-117.5390234,rank:8}
+]);
 </script>
 </body>
 </html>

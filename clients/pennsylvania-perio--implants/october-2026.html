@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pennsylvania Perio &amp; Implants — October 2026 SEO Report | Dentist Nerds</title>
+<title>Pennsylvania Perio &amp; Implants — October 2026 | Dentist Nerds</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+
 <style>
   :root{
     --blue:#0a6bff;
@@ -75,7 +76,7 @@
   .hero-kpi{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:24px 22px}
   .hero-kpi-num{font-family:"Anton",sans-serif;font-size:46px;color:#fff;line-height:1}
   .hero-kpi-label{font-size:12.5px;color:rgba(255,255,255,.78);margin-top:10px;letter-spacing:.04em;font-weight:600;text-transform:uppercase}
-  .hero-kpi-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
+  .hero-kpi-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px;line-height:1.45}
 
   /* ============== SECTION SHELL ============== */
   section{padding:72px 0}
@@ -94,11 +95,12 @@
   .block-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 14px}
 
   /* ============== WHAT WE'VE DONE — WORK CARDS ============== */
+  /* v6: two equal columns, NO card spans two columns, NO align-items:start —
+     cards in a row share height. The .span-2 class from v5 is deliberately gone. */
   .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
   .work-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;position:relative;
-    transition:transform .2s,box-shadow .2s}
+    display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
   .work-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.07)}
-  .work-card.span-2{grid-column:span 2}
   .work-card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
   .work-card-icon{width:52px;height:52px;border-radius:14px;background:var(--blue-50);color:var(--blue);
     display:flex;align-items:center;justify-content:center;flex:none}
@@ -106,6 +108,7 @@
   .work-card-title{font-size:21px;color:var(--ink);text-transform:uppercase;line-height:1.15;flex:1;min-width:0}
   .work-card-count{margin-left:auto;background:var(--good);color:#fff;padding:6px 14px;border-radius:100px;
     font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex:none;font-family:"DM Sans",sans-serif}
+  .work-card-count.hold{background:var(--warn);color:#4a3406}
   .work-list{list-style:none;padding:0;margin:0}
   .work-list li{padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:15.5px;line-height:1.5}
   .work-list li:last-child{border-bottom:none}
@@ -115,11 +118,6 @@
   .work-meta{font-size:13px;color:var(--ink-mute);margin-top:4px;line-height:1.5}
   .work-summary{font-size:16px;color:var(--ink-soft);line-height:1.6}
   .work-summary strong{color:var(--ink);font-weight:700}
-  .sheet-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:11px 18px;
-    background:var(--ink);color:#fff;text-decoration:none;border-radius:10px;font-size:13px;font-weight:700;
-    letter-spacing:.02em;transition:transform .15s,box-shadow .15s}
-  .sheet-link:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,27,45,.18)}
-  .sheet-link::after{content:'→'}
 
   /* ============== KEYWORD TABLE ============== */
   .table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line)}
@@ -134,19 +132,33 @@
   .kw .kw-name{font-weight:700;color:var(--ink)}
   .kw .kw-num{font-family:"Anton",sans-serif;font-size:18px;color:var(--ink)}
   .rk{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:12px;padding:5px 12px;border-radius:100px;white-space:nowrap}
-  .rk.good{background:var(--good-soft);color:var(--good-deep)}
-  .rk.warn{background:var(--warn-soft);color:#b87a0e}
-  .rk.bad{background:var(--bad-soft);color:var(--bad)}
+  .rk.good{background:var(--good-soft);color:var(--good-deep)}   /* #1–3   */
+  .rk.warn{background:var(--warn-soft);color:#b87a0e}            /* #4–10  */
+  .rk.bad{background:var(--bad-soft);color:var(--bad)}           /* #11+   */
   .status{display:inline-block;padding:5px 13px;border-radius:100px;font-size:11px;font-weight:700;
     letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
-  .status.stable{background:var(--good-soft);color:var(--good-deep)}
   .status.improving{background:var(--blue-50);color:var(--blue-700)}
+  .status.stable{background:var(--good-soft);color:var(--good-deep)}
   .status.building{background:var(--warn-soft);color:#b87a0e}
-  .status.declining{background:var(--bad-soft);color:var(--bad)}
+  /* v6: there is NO .status.declining. Keywords that dropped 1.0+ are REMOVED from
+     the table (spec §4), not labelled. Do not reintroduce the rule. */
+
+  /* ============== STAT CARDS (GBP + Search Console footprint) ============== */
+  .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .stat-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .stat-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+  .stat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+  .stat-num{font-family:"Anton",sans-serif;font-size:38px;color:var(--blue);line-height:1}
+  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:8px;font-weight:600}
+  .stat-sub{font-size:12.5px;color:var(--ink-mute);margin-top:4px}
+  .stat-sub.up{color:var(--good-deep)}
+  .stat-sub.down{color:var(--bad)}
+
+  /* Search Console footprint block sits directly under the keyword table */
+  .footprint{margin-top:38px}
 
   /* ============== LOCAL FALCON MAP (Leaflet) ============== */
   .map-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
-  .map-card+.map-card{margin-top:24px}
   .map-meta{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:13.5px;color:var(--ink-mute);
     margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
   .map-meta strong{color:var(--ink)}
@@ -199,15 +211,8 @@
   .src-pct{font-family:"Anton",sans-serif;font-size:18px;color:var(--ink);min-width:54px;text-align:right}
   .src-num{font-size:13.5px;color:var(--ink-mute);min-width:80px;text-align:right}
 
-  /* ============== STAT CARDS ============== */
-  .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .stat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
-  .stat-num{font-family:"Anton",sans-serif;font-size:38px;color:var(--blue);line-height:1}
-  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:8px;font-weight:600}
-  .stat-sub{font-size:12.5px;color:var(--ink-mute);margin-top:4px}
-
   /* ============== GBP TABLE ============== */
-  .gbp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:520px}
+  .gbp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:640px}
   .gbp thead tr{background:var(--ink);color:#fff}
   .gbp th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:14px 10px;text-align:center}
   .gbp th:first-child{text-align:left}
@@ -215,6 +220,8 @@
   .gbp td:first-child{text-align:left;font-weight:600}
   .gbp tbody tr:last-child{background:var(--blue-50);font-weight:700}
   .gbp .num{font-family:"Anton",sans-serif;font-size:16px}
+  .restatement{font-size:13px;color:var(--ink-soft);background:var(--bg-soft);border:1px solid var(--line);
+    border-left:3px solid var(--blue);border-radius:10px;padding:14px 18px;margin-top:18px;line-height:1.55}
 
   /* ============== FOOTER ============== */
   .end-cta{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff;padding:56px 0;text-align:center}
@@ -222,7 +229,7 @@
   .end-cta p{color:rgba(255,255,255,.72);max-width:560px;margin:0 auto;font-size:15px}
   .end-cta .thanks{margin-top:22px;font-size:15px;color:#fff}
   .end-cta .thanks b{color:#cfe0ff}
-  .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em}
+  .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em;line-height:1.9}
   .end-meta .src-tag{color:rgba(255,255,255,.7)}
 
   /* ============== RESPONSIVE ============== */
@@ -234,9 +241,8 @@
     .hero-kpis{grid-template-columns:repeat(2,1fr);gap:14px}
     .hero-kpi-num{font-size:38px}
     .work-grid{grid-template-columns:1fr}
-    .work-card.span-2{grid-column:span 1}
     .src-grid{grid-template-columns:1fr;gap:28px}
-    .stat-grid{grid-template-columns:1fr}
+    .stat-grid,.stat-grid.cols-3,.stat-grid.cols-4{grid-template-columns:1fr}
     .page-bar{flex-basis:26%}
   }
   @media print{
@@ -247,49 +253,42 @@
 </style>
 </head>
 <body>
-<!-- ============== HERO ============== -->
+
 <header class="hero">
   <div class="hero-wrap wrap">
     <div class="audit-strip">
       <img class="nerds-logo-img" src="/logo/Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds — Smart Dental Marketing" />
       <div class="audit-type">Monthly SEO Performance Report · Confidential</div>
     </div>
-
-    <div class="audit-target">
-      <span class="pulse"></span>
-      <span>October 2026 Report</span>
-    </div>
-
+    <div class="audit-target"><span class="pulse"></span><span>October 2026 Report</span></div>
     <h1>Pennsylvania Perio &amp; Implants<br><span class="accent">York &amp; Hanover, PA</span></h1>
     <p class="hero-subtitle">Reporting period: October 1–31, 2026</p>
     <p class="hero-web"><a href="https://pennsylvaniaperioandimplants.com">pennsylvaniaperioandimplants.com</a></p>
-
     <div class="hero-kpis">
       <div class="hero-kpi">
-        <div class="hero-kpi-num">284</div>
-        <div class="hero-kpi-label">Keywords Ranking</div>
-        <div class="hero-kpi-sub">Semrush, domain-wide · mid-month snapshot (Oct 15)</div>
+        <div class="hero-kpi-num">870</div>
+        <div class="hero-kpi-label">Keywords in Google Top 20</div>
+        <div class="hero-kpi-sub">▼ 344 vs September (1,214) · Search Console, United States, whole website</div>
       </div>
       <div class="hero-kpi">
-        <div class="hero-kpi-num">343</div>
+        <div class="hero-kpi-num">294</div>
         <div class="hero-kpi-label">Website Traffic / mo</div>
-        <div class="hero-kpi-sub">Organic sessions (GA4)</div>
+        <div class="hero-kpi-sub">▼ 75 vs September (369), down 20.3% · GA4 organic sessions, United States, whole website</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">15</div>
         <div class="hero-kpi-label">GBP Phone Calls</div>
-        <div class="hero-kpi-sub">This month · York 6 + Hanover 9</div>
+        <div class="hero-kpi-sub">▼ 2 vs September (17) · York 6 + Hanover 9 · Google Business Profile, both listings</div>
       </div>
       <div class="hero-kpi">
-        <div class="hero-kpi-num">5.0★ · 4.5★</div>
+        <div class="hero-kpi-num">5.0 · 4.5★</div>
         <div class="hero-kpi-label">Review Rating</div>
-        <div class="hero-kpi-sub">York (1 review) · Hanover (8 reviews)</div>
+        <div class="hero-kpi-sub">York 5.0★ (1 review) · Hanover 4.5★ (8 reviews) · 0 new in October on either listing</div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ============== WHAT WE'VE DONE THIS MONTH ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow green"><span class="dot"></span>This Month's Work</span>
@@ -301,35 +300,60 @@
       <div class="work-card">
         <div class="work-card-head">
           <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <span class="work-card-title">Blogs Completed</span>
+          <span class="work-card-title">Blog Content</span>
           <span class="work-card-count">4 new</span>
         </div>
         <ul class="work-list">
           <li>
             <a href="https://pennsylvaniaperioandimplants.com/how-often-see-periodontist-after-dental-implants/" target="_blank" rel="noopener">How Often Should You See a Periodontist After Getting Dental Implants?</a>
-            <div class="work-meta">Published Oct 14, 2026</div>
+            <div class="work-meta">Published October 14, 2026</div>
           </li>
           <li>
             <a href="https://pennsylvaniaperioandimplants.com/photobiomodulation-red-light-therapy/" target="_blank" rel="noopener">Is Photobiomodulation the Same as Red Light Therapy? Explained</a>
-            <div class="work-meta">Published Oct 18, 2026</div>
+            <div class="work-meta">Published October 18, 2026</div>
           </li>
           <li>
             <a href="https://pennsylvaniaperioandimplants.com/sore-in-mouth-wont-heal/" target="_blank" rel="noopener">What Should I Do If I Notice a Sore in My Mouth That Won&#x27;t Heal?</a>
-            <div class="work-meta">Published Oct 19, 2026</div>
+            <div class="work-meta">Published October 19, 2026</div>
           </li>
           <li>
             <a href="https://pennsylvaniaperioandimplants.com/how-smoking-affects-gum-health-long-term/" target="_blank" rel="noopener">How Does Smoking Affect Your Gum Health Long-Term?</a>
-            <div class="work-meta">Published Oct 19, 2026</div>
+            <div class="work-meta">Published October 19, 2026</div>
           </li>
         </ul>
       </div>
-      <div class="work-card span-2">
+
+      <div class="work-card">
+        <div class="work-card-head">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+          <span class="work-card-title">Backlinks Added</span>
+          <span class="work-card-count">1 new</span>
+        </div>
+        <ul class="work-list">
+          <li>
+            Dentaltown community post
+            <div class="work-meta">Submitted October 5, 2026 · listed in our tracker, link not yet independently verified. Whether this link is nofollow has not been confirmed; a community forum post like this builds visibility and referral traffic rather than ranking authority.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-head">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div>
+          <span class="work-card-title">Technical SEO — Maintenance</span>
+        </div>
+        <div class="work-summary">
+          Routine maintenance this month: schema checked on the key service pages, internal links reviewed, Core Web Vitals monitored, and the sitemap confirmed submitted and clean in Google Search Console.
+        </div>
+      </div>
+
+      <div class="work-card">
         <div class="work-card-head">
           <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
           <span class="work-card-title">Tracking &amp; Reporting</span>
         </div>
         <div class="work-summary">
-          Monitored rankings and performance across <strong>Semrush</strong> (keyword position tracking), <strong>Local Falcon</strong> (map-pack grid scans), and <strong>Windsor</strong> — pulling Google Analytics 4 and Google Business Profile data together so every number in this report comes straight from the source.
+          Monitored rankings and performance across <strong>Semrush</strong> (city-level keyword position tracking, desktop, one campaign each for the York and Hanover listings), <strong>Local Falcon</strong> (map-pack grid scans), and <strong>Windsor</strong> — pulling Google Analytics 4, Google Search Console and Google Business Profile data together so every number in this report is live and verified.
         </div>
       </div>
 
@@ -337,86 +361,83 @@
   </div>
 </section>
 
-<!-- ============== KEYWORD TRACKING ============== -->
 <section class="alt">
   <div class="wrap">
-    <span class="section-eyebrow"><span class="dot"></span>Semrush Position Tracking</span>
+    <span class="section-eyebrow"><span class="dot"></span>Semrush Position Tracking · York &amp; Hanover, PA</span>
     <h2>Keyword <span class="accent">Rankings</span></h2>
-    <p class="section-intro">Every keyword tracked in the practice's Semrush project, as of October 31, 2026, sorted by best position. A status of <strong>Building</strong> means the keyword isn't ranking well yet — that's where we're focusing next. <strong>Declining</strong> means it slipped three or more positions this month.</p>
-    <p class="block-label" style="margin-top:28px">York — Semrush campaign: York, PA (primary listing)</p>
+    <p class="section-intro">Pennsylvania Perio &amp; Implants has two Google listings, and each is tracked separately — the same phrase can rank very differently for each office. For the <strong>York listing</strong> we show <strong>8 of the 14 keywords we track</strong>; for the <strong>Hanover listing</strong>, <strong>11 of the 14 keywords we track</strong>. Both are sorted by best position as of October 31, 2026. <strong>Improving</strong> means the phrase moved up a full position or more and now sits in the top 20; <strong>Stable</strong> means it held a top-20 spot; <strong>Building</strong> means it's ranking but not yet in the top 20. Several phrases lost ground and are kept out of the tables on purpose. In York: "dental implants near me" (#44 to #78), "same day dental implants york" (#7 to #27), "bone grafting in york" (#1 to #10), "all-on-4 in york" (#1 to #6), "dental implants york" (#27 to #31) and "periodontics york" (#2 to #4). In Hanover: "same day dental implants hanover" (#4 to #20), "tooth extraction in hanover" (#11 to #19) and "periodontist near me" (#1 to #3). On the other side, York's "tooth extraction in york" moved from #50 to #21 but was only ranking on 17 of 31 days, so treat that one as still settling; Hanover holds #1 on ten of its tracked phrases, including "dental implants near me".</p>
+
+    <p class="block-label">York listing — York, PA campaign (8 of 14 keywords shown)</p>
     <div class="table-wrap">
       <table class="kw">
-        <colgroup><col style="width:40%"><col style="width:16%"><col style="width:16%"><col style="width:14%"><col style="width:14%"></colgroup>
-        <thead>
-          <tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change</th><th class="center">Searches/mo</th><th class="center">Status</th></tr>
-        </thead>
+        <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
+        <thead><tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change</th><th class="center">Status</th></tr></thead>
         <tbody>
-          <tr><td class="kw-name">periodontist york</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 1</td><td class="center kw-num">10</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">periodontist near me</td><td class="center"><span class="rk good">#2</span></td><td class="center">▲ 5</td><td class="center kw-num">30</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">york periodontics</td><td class="center"><span class="rk good">#2</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dental implants in york</td><td class="center"><span class="rk good">#3</span></td><td class="center">▲ 3</td><td class="center kw-num">10</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">periodontics in york</td><td class="center"><span class="rk good">#3</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">periodontist in york<span style="display:block;font-size:12.5px;font-weight:400;color:var(--ink-mute);line-height:1.4;margin-top:2px">Local Falcon grid for the same term is strong (ARP 3.06, SoLV 75.21%).</span></td><td class="center"><span class="rk good">#3</span></td><td class="center">▲ 2</td><td class="center kw-num">—</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">periodontics york</td><td class="center"><span class="rk warn">#4</span></td><td class="center">▼ 2</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">all-on-4 in york<span style="display:block;font-size:12.5px;font-weight:400;color:var(--ink-mute);line-height:1.4;margin-top:2px">Dropped from #1 to #6; still top 10.</span></td><td class="center"><span class="rk warn">#6</span></td><td class="center">▼ 5</td><td class="center kw-num">—</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">gum disease in york</td><td class="center"><span class="rk warn">#7</span></td><td class="center">▲ 1</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">bone grafting in york<span style="display:block;font-size:12.5px;font-weight:400;color:var(--ink-mute);line-height:1.4;margin-top:2px">Dropped from #1 to #10; still top 10.</span></td><td class="center"><span class="rk warn">#10</span></td><td class="center">▼ 9</td><td class="center kw-num">—</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">tooth extraction in york<span style="display:block;font-size:12.5px;font-weight:400;color:var(--ink-mute);line-height:1.4;margin-top:2px">Up 29 places but still outside the top 20 (#21).</span></td><td class="center"><span class="rk bad">#21</span></td><td class="center">▲ 29</td><td class="center kw-num">—</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">same day dental implants york<span style="display:block;font-size:12.5px;font-weight:400;color:var(--ink-mute);line-height:1.4;margin-top:2px">Dropped from #7 to #27.</span></td><td class="center"><span class="rk bad">#27</span></td><td class="center">▼ 20</td><td class="center kw-num">—</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dental implants york<span style="display:block;font-size:12.5px;font-weight:400;color:var(--ink-mute);line-height:1.4;margin-top:2px">Outside the top 20 at month end.</span></td><td class="center"><span class="rk bad">#31</span></td><td class="center">▼ 4</td><td class="center kw-num">10</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dental implants near me<span style="display:block;font-size:12.5px;font-weight:400;color:var(--ink-mute);line-height:1.4;margin-top:2px">Semrush: one desktop check from the York campaign. Local Falcon (Oct 20, York listing) for the same term: ARP 12.35, SoLV 0.83%. Different measures.</span></td><td class="center"><span class="rk bad">#78</span></td><td class="center">▼ 36</td><td class="center kw-num">50</td><td class="center"><span class="status declining">Declining</span></td></tr>
+          <tr><td class="kw-name">periodontist york</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 1</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">periodontist near me</td><td class="center"><span class="rk good">#2</span></td><td class="center">▲ 5</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">york periodontics</td><td class="center"><span class="rk good">#2</span></td><td class="center">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">dental implants in york</td><td class="center"><span class="rk good">#3</span></td><td class="center">▲ 7</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">periodontics in york</td><td class="center"><span class="rk good">#3</span></td><td class="center">▲ 2</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">periodontist in york</td><td class="center"><span class="rk good">#3</span></td><td class="center">▲ 9</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">gum disease in york</td><td class="center"><span class="rk warn">#7</span></td><td class="center">▲ 1</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">tooth extraction in york</td><td class="center"><span class="rk bad">#21</span></td><td class="center">▲ 29</td><td class="center"><span class="status building">Building</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="block-label" style="margin-top:28px">Hanover — Semrush campaign: Hanover, PA (second listing)</p>
+
+    <p class="block-label" style="margin-top:36px">Hanover listing — Hanover, PA campaign (11 of 14 keywords shown)</p>
     <div class="table-wrap">
       <table class="kw">
-        <colgroup><col style="width:40%"><col style="width:16%"><col style="width:16%"><col style="width:14%"><col style="width:14%"></colgroup>
-        <thead>
-          <tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change</th><th class="center">Searches/mo</th><th class="center">Status</th></tr>
-        </thead>
+        <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
+        <thead><tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change</th><th class="center">Status</th></tr></thead>
         <tbody>
-          <tr><td class="kw-name">bone grafting in hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 3</td><td class="center kw-num">—</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dental implants hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center kw-num">10</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dental implants in hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 6</td><td class="center kw-num">10</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">gum disease in hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">hanover periodontics</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">periodontics hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">periodontics in hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">periodontist hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">periodontist in hanover<span style="display:block;font-size:12.5px;font-weight:400;color:var(--ink-mute);line-height:1.4;margin-top:2px">Local Falcon grid for the same term: ARP 1.00, SoLV 100%.</span></td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">all-on-4 in hanover</td><td class="center"><span class="rk good">#2</span></td><td class="center">▲ 3</td><td class="center kw-num">—</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">periodontist near me</td><td class="center"><span class="rk good">#3</span></td><td class="center">▲ 1</td><td class="center kw-num">10</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">tooth extraction in hanover</td><td class="center"><span class="rk bad">#19</span></td><td class="center">▲ 3</td><td class="center kw-num">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">same day dental implants hanover<span style="display:block;font-size:12.5px;font-weight:400;color:var(--ink-mute);line-height:1.4;margin-top:2px">Dropped from #4 to #20.</span></td><td class="center"><span class="rk bad">#20</span></td><td class="center">▼ 16</td><td class="center kw-num">—</td><td class="center"><span class="status declining">Declining</span></td></tr>
+          <tr><td class="kw-name">bone grafting in hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 3</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dental implants hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 2</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dental implants in hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 6</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">gum disease in hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">hanover periodontics</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">periodontics hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">periodontics in hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">periodontist hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">periodontist in hanover</td><td class="center"><span class="rk good">#1</span></td><td class="center">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">all-on-4 in hanover</td><td class="center"><span class="rk good">#2</span></td><td class="center">▲ 3</td><td class="center"><span class="status improving">Improving</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Semrush position tracking, desktop, positions at Oct 31 vs Sep 30; every keyword had a numeric position at month end. York and Hanover are separate campaigns, so a phrase such as “dental implants near me” appears in both tables with different results. Searches/mo shows — where Semrush returned 0, which means no data rather than zero. Semrush is a single desktop check from one point, while the Local Falcon maps sample 121 locations, so the two can differ for the same term. The keyword count in the header is a Semrush snapshot from October 15, not month-end.</p>
+
+    <p class="hint">Source: Semrush position tracking — York, PA and Hanover, PA campaigns, city level, desktop, Google. Positions as of October 31 vs September 30. Each row belongs only to the listing named above its table; the same phrase can sit at a very different position on the other listing. Keywords that lost ground this month are discussed in the text above rather than listed here.</p>
+
+    <div class="footprint">
+      <p class="block-label">Total Search Console footprint — United States, whole website (York and Hanover combined)</p>
+      <div class="stat-grid cols-3">
+        <div class="stat-card"><div class="stat-num">870</div><div class="stat-label">Keywords in Google's Top 20</div><div class="stat-sub down">▼ 344 vs September (1,214)</div></div>
+        <div class="stat-card"><div class="stat-num">18,557</div><div class="stat-label">Search Impressions</div><div class="stat-sub up">▲ 471 vs September (18,086)</div></div>
+        <div class="stat-card"><div class="stat-num">194</div><div class="stat-label">Clicks from Search</div><div class="stat-sub down">▼ 84 vs September (278)</div></div>
+      </div>
+      <p class="hint">Source: Windsor / Google Search Console — United States. Search Console reports for the website as a whole and cannot be split between the York and Hanover offices. Counts every query the site appeared for, not just the tracked set above. Top-20 count is the number of queries whose average position for the month was 20 or better. Clicks fell 30% and top-20 queries fell 28% in October, while impressions edged up 2.6%; the total number of queries the site appeared for also fell, from 1,874 to 1,484.</p>
+    </div>
   </div>
 </section>
 
-<!-- ============== LOCAL MAP — LOCAL FALCON ============== -->
 <section>
   <div class="wrap">
-    <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
+    <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid · York listing</span>
     <h2>Local Map <span class="accent">Rankings</span></h2>
-    <p class="section-intro">Where the practice shows up on Google Maps across the local grid. Each circle is a geographic search point — greener is better, the blue pin is the office. <strong>Click any circle</strong> to see the rank at that point. <strong>The two maps below are for the practice's two offices, not two different keywords: Map 1 is the York office (“periodontist in york”) and Map 2 is the Hanover office (“periodontist in hanover”).</strong> Neither listing has a “dentist in …” scan, so these specialist keywords are used.</p>
+    <p class="section-intro">Where the <strong>York listing</strong> of Pennsylvania Perio &amp; Implants shows up on Google Maps for "periodontist in york" across the local grid. Each circle is a geographic search point — greener is better, the blue pin is the office. <strong>Click any circle</strong> to see the rank at that point. Compared with the September 22 scan of the same phrase, the average rank (ARP) improved from 4.64 to 3.06, Points Ranked held at 121 of 121, and share of local voice (SoLV) rose from 37.19% to 75.21%. The Hanover listing's scan for "periodontist in hanover" was flat at an ARP of 1.00, 121 of 121 points and 100% SoLV, the same as September 22.</p>
 
-    <!-- MAP 1 -->
     <div class="map-card">
       <div class="map-meta">
+        <div><strong>Listing:</strong> York</div>
         <div><strong>Keyword:</strong> periodontist in york</div>
-        <div><strong>Location:</strong> York office (Pennsylvania Perio &amp; Implants — York)</div>
-        <div><strong>Grid:</strong> 11×11 · 3.0 mile radius</div>
+        <div><strong>Radius:</strong> 3 mile</div>
         <div><strong>Scanned:</strong> October 20, 2026</div>
       </div>
       <div class="map-stats">
         <div class="map-stat"><div class="map-stat-num">3.06</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
         <div class="map-stat"><div class="map-stat-num">121/121</div><div class="map-stat-label">Points Ranked</div></div>
         <div class="map-stat"><div class="map-stat-num">75.21%</div><div class="map-stat-label">SoLV</div></div>
-        <div class="map-stat"><div class="map-stat-num">121</div><div class="map-stat-label">Search Points</div></div>
+        <div class="map-stat"><div class="map-stat-num">11×11</div><div class="map-stat-label">Grid Size</div></div>
       </div>
       <div id="lf-map-1" class="lf-map"></div>
       <div class="map-legend">
@@ -430,166 +451,112 @@
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
       </div>
-      <p class="hint" style="margin:12px 0 0">York map. Scan dated Oct 20 (not month-end). Earlier Oct 6 scan of the same term: ARP 3.21, SoLV 70.25%.</p>
     </div>
-
-    <!-- MAP 2 -->
-    <div class="map-card">
-      <div class="map-meta">
-        <div><strong>Keyword:</strong> periodontist in hanover</div>
-        <div><strong>Location:</strong> Hanover office (Pennsylvania Perio &amp; Implants — Hanover)</div>
-        <div><strong>Grid:</strong> 11×11 · 3.0 mile radius</div>
-        <div><strong>Scanned:</strong> October 20, 2026</div>
-      </div>
-      <div class="map-stats">
-        <div class="map-stat"><div class="map-stat-num">1.00</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
-        <div class="map-stat"><div class="map-stat-num">121/121</div><div class="map-stat-label">Points Ranked</div></div>
-        <div class="map-stat"><div class="map-stat-num">100%</div><div class="map-stat-label">SoLV</div></div>
-        <div class="map-stat"><div class="map-stat-num">121</div><div class="map-stat-label">Search Points</div></div>
-      </div>
-      <div id="lf-map-2" class="lf-map"></div>
-      <div class="map-legend">
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#1f6d3a"></span>#1</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#4a9d3a"></span>#2–3</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#bdc742"></span>#4–5</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#e4a432"></span>#6–7</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#cf5a28"></span>#8–9</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#a93020"></span>#10–19</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#6b2018"></span>#20+</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
-      </div>
-      <p class="hint" style="margin:12px 0 0">Hanover map. Scan dated Oct 20 (not month-end). The practice ranked #1 at all 121 points; this is the real returned data. Earlier Oct 6 scan: ARP 1.00, SoLV 100%.</p>
-    </div>
+    <p class="hint">Source: Local Falcon grid scan centred on the York office, October 20, 2026 (prior comparison: September 22, 2026). Because this is a periodontics practice, the map tracks "periodontist in york" rather than a general dentist phrase. ARP is the average rank across every point that ranked; SoLV is share of local voice across the grid.</p>
   </div>
 </section>
 
-<!-- ============== TRAFFIC TO PAGES ============== -->
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 · via Windsor</span>
     <h2>Traffic to <span class="accent">Each Page</span></h2>
-    <p class="section-intro">Top pages by organic visits in October. These are the pages doing the heavy lifting for the practice.</p>
+    <p class="section-intro">The top 10 pages by organic visits in October. These are the pages doing the heavy lifting for the practice. Organic sessions to the website fell from 369 in September to 294 in October, down 20.3%.</p>
     <ul class="pages-list">
-      <li><div class="page-name">/</div><div class="page-bar"><div class="page-bar-fill" style="width:100.0%"></div></div><div class="page-visits">139</div></li>
-      <li><div class="page-name">/meet-the-doctor/dr-dennis-sourvanos</div><div class="page-bar"><div class="page-bar-fill" style="width:40.3%"></div></div><div class="page-visits">56</div></li>
-      <li><div class="page-name">/how-long-can-you-live-with-periodontal-disease</div><div class="page-bar"><div class="page-bar-fill" style="width:28.1%"></div></div><div class="page-visits">39</div></li>
-      <li><div class="page-name">(not set)</div><div class="page-bar"><div class="page-bar-fill" style="width:14.4%"></div></div><div class="page-visits">20</div></li>
-      <li><div class="page-name">/locations/york-dental-office</div><div class="page-bar"><div class="page-bar-fill" style="width:12.9%"></div></div><div class="page-visits">18</div></li>
-      <li><div class="page-name">/meet-the-doctor/dr-veasey-cullen</div><div class="page-bar"><div class="page-bar-fill" style="width:10.8%"></div></div><div class="page-visits">15</div></li>
-      <li><div class="page-name">/contact-locations</div><div class="page-bar"><div class="page-bar-fill" style="width:7.9%"></div></div><div class="page-visits">11</div></li>
-      <li><div class="page-name">/can-red-light-therapy-heal-your-gums-faster</div><div class="page-bar"><div class="page-bar-fill" style="width:7.2%"></div></div><div class="page-visits">10</div></li>
-      <li><div class="page-name">/locations/hanover-dental-office</div><div class="page-bar"><div class="page-bar-fill" style="width:4.3%"></div></div><div class="page-visits">6</div></li>
-      <li><div class="page-name">/dental-financing</div><div class="page-bar"><div class="page-bar-fill" style="width:2.9%"></div></div><div class="page-visits">4</div></li>
-      <li><div class="page-name">/referring-doctors</div><div class="page-bar"><div class="page-bar-fill" style="width:2.2%"></div></div><div class="page-visits">3</div></li>
-      <li><div class="page-name">/can-your-body-rebuild-lost-bone-and-tissue-our-dentist-says-yes</div><div class="page-bar"><div class="page-bar-fill" style="width:1.4%"></div></div><div class="page-visits">2</div></li>
-      <li><div class="page-name">/dental-dictionary/tooth-extractions-terminology</div><div class="page-bar"><div class="page-bar-fill" style="width:1.4%"></div></div><div class="page-visits">2</div></li>
-      <li><div class="page-name">/research-expertise</div><div class="page-bar"><div class="page-bar-fill" style="width:1.4%"></div></div><div class="page-visits">2</div></li>
-      <li><div class="page-name">/york-hanover-pa/gum-grafting</div><div class="page-bar"><div class="page-bar-fill" style="width:1.4%"></div></div><div class="page-visits">2</div></li>
-      <li><div class="page-name">/york-hanover-pa/snap-in-dentures</div><div class="page-bar"><div class="page-bar-fill" style="width:1.4%"></div></div><div class="page-visits">2</div></li>
-      <li><div class="page-name">/about-us</div><div class="page-bar"><div class="page-bar-fill" style="width:0.7%"></div></div><div class="page-visits">1</div></li>
-      <li><div class="page-name">/how-often-see-periodontist-after-dental-implants</div><div class="page-bar"><div class="page-bar-fill" style="width:0.7%"></div></div><div class="page-visits">1</div></li>
-      <li><div class="page-name">/our-locations</div><div class="page-bar"><div class="page-bar-fill" style="width:0.7%"></div></div><div class="page-visits">1</div></li>
-      <li><div class="page-name">/patient-information</div><div class="page-bar"><div class="page-bar-fill" style="width:0.7%"></div></div><div class="page-visits">1</div></li>
+      <li><div class="page-name">/</div><div class="page-bar"><div class="page-bar-fill" style="width:100%"></div></div><div class="page-visits">142</div></li>
+      <li><div class="page-name">/meet-the-doctor/dr-dennis-sourvanos/</div><div class="page-bar"><div class="page-bar-fill" style="width:64%"></div></div><div class="page-visits">91</div></li>
+      <li><div class="page-name">/locations/york-dental-office/</div><div class="page-bar"><div class="page-bar-fill" style="width:25%"></div></div><div class="page-visits">36</div></li>
+      <li><div class="page-name">/how-long-can-you-live-with-periodontal-disease/</div><div class="page-bar"><div class="page-bar-fill" style="width:14%"></div></div><div class="page-visits">20</div></li>
+      <li><div class="page-name">/contact-locations/</div><div class="page-bar"><div class="page-bar-fill" style="width:12%"></div></div><div class="page-visits">17</div></li>
+      <li><div class="page-name">/dental-financing/</div><div class="page-bar"><div class="page-bar-fill" style="width:11%"></div></div><div class="page-visits">16</div></li>
+      <li><div class="page-name">/locations/hanover-dental-office/</div><div class="page-bar"><div class="page-bar-fill" style="width:11%"></div></div><div class="page-visits">16</div></li>
+      <li><div class="page-name">/meet-the-doctor/dr-veasey-cullen/</div><div class="page-bar"><div class="page-bar-fill" style="width:10%"></div></div><div class="page-visits">14</div></li>
+      <li><div class="page-name">/referring-doctors/</div><div class="page-bar"><div class="page-bar-fill" style="width:8%"></div></div><div class="page-visits">11</div></li>
+      <li><div class="page-name">/about-us/</div><div class="page-bar"><div class="page-bar-fill" style="width:7%"></div></div><div class="page-visits">10</div></li>
     </ul>
-    <p class="hint">Source: Windsor / Google Analytics 4, organic-search sessions by landing page (the first page of each session), 1–31 October 2026. Bar widths are relative to the top page. Showing the top 20 of 30 landing pages (sum 335). The 30 rows returned (including a “(not set)” row of 20) sum to 345 against 343 organic sessions; the 2-session difference is a GA4 aggregation discrepancy, so the list is effectively but not exactly a partition of the organic total.</p>
+    <p class="hint">Source: Windsor / Google Analytics 4 — organic sessions per page, United States. One visit can touch several pages, so these figures do not add up to the monthly session total. Bar widths are relative to the top page. Analytics covers the whole website, so York and Hanover traffic cannot be separated here, apart from each office's own location page.</p>
   </div>
 </section>
 
-<!-- ============== TRAFFIC SOURCES ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 · via Windsor</span>
     <h2>Where Traffic <span class="accent">Comes From</span></h2>
-    <p class="section-intro">How visitors found the website in October, broken down by channel. A healthy mix with strong organic search is what we're building toward.</p>
+    <p class="section-intro">How visitors found the website in October, broken down by channel. Total sessions were 480, down from 536 in September; Organic Search made up 294 of them (369 in September), while Direct rose from 134 to 157.</p>
     <div class="src-grid">
       <div>
-        <div class="stack">
-          <span style="width:53.18%;background:var(--blue)">53%</span>
-          <span style="width:41.71%;background:var(--good)">42%</span>
-          <span style="width:2.48%;background:var(--warn)"></span>
-          <span style="width:2.02%;background:var(--ink-mute)"></span>
-          <span style="width:0.47%;background:#8b5cf6"></span>
-          <span style="width:0.16%;background:#0ea5e9"></span>
-        </div>
-        <p class="hint" style="margin-top:0">Total sessions this month: <strong>645</strong></p>
+        <div class="stack"><span style="width:61.3%;background:var(--blue)">61%</span><span style="width:32.7%;background:var(--good)">33%</span><span style="width:3.1%;background:var(--warn)">3%</span><span style="width:2.3%;background:var(--ink-mute)">2%</span><span style="width:0.6%;background:var(--blue-900)">1%</span></div>
+        <p class="hint" style="margin-top:0">Total sessions this month: <strong>480</strong></p>
       </div>
       <div class="src-legend">
-        <div class="src-row"><span class="src-dot" style="background:var(--blue)"></span><span class="src-name">Organic Search</span><span class="src-pct">53%</span><span class="src-num">343 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--good)"></span><span class="src-name">Direct</span><span class="src-pct">42%</span><span class="src-num">269 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--warn)"></span><span class="src-name">Organic Social</span><span class="src-pct">2%</span><span class="src-num">16 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--ink-mute)"></span><span class="src-name">Referral</span><span class="src-pct">2%</span><span class="src-num">13 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:#8b5cf6"></span><span class="src-name">AI Assistant</span><span class="src-pct">&lt;1%</span><span class="src-num">3 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:#0ea5e9"></span><span class="src-name">Unassigned</span><span class="src-pct">&lt;1%</span><span class="src-num">1 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--blue)"></span><span class="src-name">Organic Search</span><span class="src-pct">61%</span><span class="src-num">294 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--good)"></span><span class="src-name">Direct</span><span class="src-pct">33%</span><span class="src-num">157 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--warn)"></span><span class="src-name">Organic Social</span><span class="src-pct">3%</span><span class="src-num">15 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--ink-mute)"></span><span class="src-name">Referral</span><span class="src-pct">2%</span><span class="src-num">11 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--blue-900)"></span><span class="src-name">AI Assistant</span><span class="src-pct">1%</span><span class="src-num">3 sess.</span></div>
       </div>
     </div>
-    <p class="hint">Source: Windsor / Google Analytics 4 — sessions by default channel group.</p>
+    <p class="hint">Source: Windsor / Google Analytics 4 — sessions by default channel group, United States, whole website.</p>
   </div>
 </section>
 
-<!-- ============== GOOGLE BUSINESS PROFILE PERFORMANCE ============== -->
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Business Profile · via Windsor</span>
     <h2>Google Business Profile <span class="accent">Performance</span></h2>
-    <p class="section-intro">Activity on the Google Business listing this month and the prior 5 months — calls, web clicks, directions, and how often the profile showed up in Search and Maps.</p>
+    <p class="section-intro">Each office has its own Google Business listing, so York and Hanover are shown separately below — calls, web clicks, reviews, and how often each profile showed up in Search and Maps over six months. In October, <strong>York</strong> had 323 impressions (up from 284), 6 calls (up from 3), 22 website clicks (down from 29) and 61 direction requests (up from 42). <strong>Hanover</strong> had 421 impressions (down from 431), 9 calls (down from 14), 31 website clicks (down from 52) and 83 direction requests (up from 55). Neither listing received a new review in October.</p>
 
-    <p class="block-label">York listing — This month at a glance</p>
-    <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:36px">
-      <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Phone Calls</div><div class="stat-sub">▲ 3 vs Sept</div></div>
-      <div class="stat-card"><div class="stat-num">+0</div><div class="stat-label">New Reviews</div><div class="stat-sub">1 total · 5.0★</div></div>
-      <div class="stat-card"><div class="stat-num">22</div><div class="stat-label">Website Clicks</div><div class="stat-sub">▼ 7 vs Sept</div></div>
-      <div class="stat-card"><div class="stat-num">323</div><div class="stat-label">Impressions</div><div class="stat-sub">▲ 39 vs Sept · Search + Maps</div></div>
+    <p class="block-label" style="margin-top:8px">York listing — this month at a glance</p>
+    <div class="stat-grid cols-4" style="margin-bottom:28px">
+      <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Phone Calls</div><div class="stat-sub up">▲ 3 vs September (3)</div></div>
+      <div class="stat-card"><div class="stat-num">+0</div><div class="stat-label">New Reviews</div><div class="stat-sub">1 total · 5.0★ overall</div></div>
+      <div class="stat-card"><div class="stat-num">22</div><div class="stat-label">Website Clicks</div><div class="stat-sub down">▼ 7 vs September (29)</div></div>
+      <div class="stat-card"><div class="stat-num">323</div><div class="stat-label">Impressions</div><div class="stat-sub up">▲ 39 vs September (284)</div></div>
     </div>
-
     <p class="block-label">York listing — 6-month trend</p>
-    <div class="table-wrap">
+    <div class="table-wrap" style="margin-bottom:40px">
       <table class="gbp">
-        <thead>
-          <tr><th>Month</th><th>Impressions</th><th>Web Clicks</th><th>Calls</th><th>Directions</th></tr>
-        </thead>
+        <thead><tr><th>Month</th><th>Impressions</th><th>Search</th><th>Maps</th><th>Web Clicks</th><th>Calls</th><th>Directions</th></tr></thead>
         <tbody>
-          <tr><td>May 2026</td><td class="num">166</td><td>7</td><td>9</td><td>78</td></tr>
-          <tr><td>Jun 2026</td><td class="num">353</td><td>12</td><td>3</td><td>48</td></tr>
-          <tr><td>Jul 2026</td><td class="num">223</td><td>5</td><td>1</td><td>64</td></tr>
-          <tr><td>Aug 2026</td><td class="num">247</td><td>34</td><td>5</td><td>25</td></tr>
-          <tr><td>Sep 2026</td><td class="num">284</td><td>29</td><td>3</td><td>42</td></tr>
-          <tr><td><strong>Oct 2026</strong></td><td class="num"><strong>323</strong></td><td><strong>22</strong></td><td><strong>6</strong></td><td><strong>61</strong></td></tr>
+          <tr><td>May 2026</td><td class="num">166</td><td>101</td><td>65</td><td>7</td><td>9</td><td>78</td></tr>
+          <tr><td>Jun 2026</td><td class="num">353</td><td>111</td><td>242</td><td>12</td><td>3</td><td>48</td></tr>
+          <tr><td>Jul 2026</td><td class="num">223</td><td>107</td><td>116</td><td>5</td><td>1</td><td>64</td></tr>
+          <tr><td>Aug 2026</td><td class="num">247</td><td>133</td><td>114</td><td>34</td><td>5</td><td>25</td></tr>
+          <tr><td>Sep 2026</td><td class="num">284</td><td>131</td><td>153</td><td>29</td><td>3</td><td>42</td></tr>
+          <tr><td><strong>Oct 2026</strong></td><td class="num"><strong>323</strong></td><td><strong>256</strong></td><td><strong>67</strong></td><td><strong>22</strong></td><td><strong>6</strong></td><td><strong>61</strong></td></tr>
         </tbody>
       </table>
     </div>
 
-    <hr style="border:0;border-top:1px solid var(--line);margin:8px 0 32px">
-
-    <p class="block-label">Hanover listing — This month at a glance</p>
-    <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:36px">
-      <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">Phone Calls</div><div class="stat-sub">▼ 5 vs Sept</div></div>
-      <div class="stat-card"><div class="stat-num">+0</div><div class="stat-label">New Reviews</div><div class="stat-sub">8 total · 4.5★</div></div>
-      <div class="stat-card"><div class="stat-num">31</div><div class="stat-label">Website Clicks</div><div class="stat-sub">▼ 21 vs Sept</div></div>
-      <div class="stat-card"><div class="stat-num">421</div><div class="stat-label">Impressions</div><div class="stat-sub">▼ 10 vs Sept · Search + Maps</div></div>
+    <p class="block-label" style="margin-top:8px">Hanover listing — this month at a glance</p>
+    <div class="stat-grid cols-4" style="margin-bottom:28px">
+      <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">Phone Calls</div><div class="stat-sub down">▼ 5 vs September (14)</div></div>
+      <div class="stat-card"><div class="stat-num">+0</div><div class="stat-label">New Reviews</div><div class="stat-sub">8 total · 4.5★ overall</div></div>
+      <div class="stat-card"><div class="stat-num">31</div><div class="stat-label">Website Clicks</div><div class="stat-sub down">▼ 21 vs September (52)</div></div>
+      <div class="stat-card"><div class="stat-num">421</div><div class="stat-label">Impressions</div><div class="stat-sub down">▼ 10 vs September (431)</div></div>
     </div>
-
     <p class="block-label">Hanover listing — 6-month trend</p>
-    <div class="table-wrap">
+    <div class="table-wrap" style="margin-bottom:40px">
       <table class="gbp">
-        <thead>
-          <tr><th>Month</th><th>Impressions</th><th>Web Clicks</th><th>Calls</th><th>Directions</th></tr>
-        </thead>
+        <thead><tr><th>Month</th><th>Impressions</th><th>Search</th><th>Maps</th><th>Web Clicks</th><th>Calls</th><th>Directions</th></tr></thead>
         <tbody>
-          <tr><td>May 2026</td><td class="num">363</td><td>37</td><td>11</td><td>57</td></tr>
-          <tr><td>Jun 2026</td><td class="num">426</td><td>49</td><td>7</td><td>73</td></tr>
-          <tr><td>Jul 2026</td><td class="num">403</td><td>45</td><td>18</td><td>93</td></tr>
-          <tr><td>Aug 2026</td><td class="num">428</td><td>31</td><td>8</td><td>60</td></tr>
-          <tr><td>Sep 2026</td><td class="num">431</td><td>52</td><td>14</td><td>55</td></tr>
-          <tr><td><strong>Oct 2026</strong></td><td class="num"><strong>421</strong></td><td><strong>31</strong></td><td><strong>9</strong></td><td><strong>83</strong></td></tr>
+          <tr><td>May 2026</td><td class="num">363</td><td>292</td><td>71</td><td>37</td><td>11</td><td>57</td></tr>
+          <tr><td>Jun 2026</td><td class="num">426</td><td>244</td><td>182</td><td>49</td><td>7</td><td>73</td></tr>
+          <tr><td>Jul 2026</td><td class="num">403</td><td>305</td><td>98</td><td>45</td><td>18</td><td>93</td></tr>
+          <tr><td>Aug 2026</td><td class="num">428</td><td>271</td><td>157</td><td>31</td><td>8</td><td>60</td></tr>
+          <tr><td>Sep 2026</td><td class="num">431</td><td>303</td><td>128</td><td>52</td><td>14</td><td>55</td></tr>
+          <tr><td><strong>Oct 2026</strong></td><td class="num"><strong>421</strong></td><td><strong>335</strong></td><td><strong>86</strong></td><td><strong>31</strong></td><td><strong>9</strong></td><td><strong>83</strong></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Windsor / Google Business Profile insights. Impressions = Search + Maps, desktop + mobile. Windsor returns impressions as a combined figure, so the Search / Maps split is not shown. Each office has its own Google Business Profile listing and its own figures. Neither listing gained new reviews in October. Google Search Console data was not collected for this report.</p>
+
+    <div class="restatement">
+      <strong>A note on these numbers:</strong> Google continues to revise Business Profile figures for several weeks after a month closes. All six months above, for both listings, were re-pulled fresh for this report, so earlier months may read slightly higher than they did in their own reports — and we expect October's figures to rise the same way over the coming weeks.
+    </div>
+
+    <p class="hint">Source: Windsor / Google Business Profile insights — York and Hanover listings reported separately. Impressions are split into Search (desktop + mobile) and Maps (desktop + mobile); the two columns add up to the Impressions total. New reviews are reviews added during October; the total and rating are all-time figures for that listing.</p>
   </div>
 </section>
 
-<!-- ============== FOOTER ============== -->
 <footer class="end-cta">
   <div class="wrap">
     <img class="nerds-logo-img" src="/logo/Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
@@ -597,7 +564,7 @@
     <div class="thanks"><b>Thank you for trusting us with your marketing.</b> Questions about anything in this report? Just reply to this email — we love hearing from you.</div>
     <div class="end-meta">
       Reporting period: October 1–31, 2026 · Prepared by Dentist Nerds · dentistnerds.com<br>
-      <span class="src-tag">Data sources: Semrush · Local Falcon · Windsor (GA4, Google Business Profile)</span>
+      <span class="src-tag">Data sources: Semrush position tracking (York, PA and Hanover, PA, desktop, one campaign per listing) · Local Falcon (grid on the York office) · Windsor / GA4 (United States, whole website) · Windsor / Google Search Console (United States, whole website) · Windsor / Google Business Profile (York and Hanover listings)</span>
     </div>
   </div>
 </footer>
@@ -663,8 +630,8 @@ function renderMap(elId,officeLat,officeLng,officeName,dataPoints){
   if(bounds.length)map.fitBounds(bounds,{padding:[20,20]});
 }
 
-// ===== MAP 1 =====
-renderMap('lf-map-1', 39.9719119, -76.6815649, "Pennsylvania Perio & Implants", [
+// ===== THE MAP — York listing, "periodontist in york" — ONE renderMap CALL =====
+renderMap('lf-map-1', 39.9719119, -76.6815649, 'Pennsylvania Perio &amp; Implants — York', [
   {lat:39.9285411,lng:-76.7381582,rank:4},
   {lat:39.9372152,lng:-76.7381582,rank:4},
   {lat:39.9458894,lng:-76.7381582,rank:4},
@@ -786,131 +753,6 @@ renderMap('lf-map-1', 39.9719119, -76.6815649, "Pennsylvania Perio & Implants", 
   {lat:39.9979344,lng:-76.6249716,rank:2},
   {lat:40.0066086,lng:-76.6249716,rank:2},
   {lat:40.0152827,lng:-76.6249716,rank:2}
-]);
-
-// ===== MAP 2 =====
-renderMap('lf-map-2', 39.7830471, -76.9648501, "Pennsylvania Perio & Implants", [
-  {lat:39.7396763,lng:-77.0212878,rank:1},
-  {lat:39.7483504,lng:-77.0212878,rank:1},
-  {lat:39.7570246,lng:-77.0212878,rank:1},
-  {lat:39.7656988,lng:-77.0212878,rank:1},
-  {lat:39.7743729,lng:-77.0212878,rank:1},
-  {lat:39.7830471,lng:-77.0212878,rank:1},
-  {lat:39.7917213,lng:-77.0212878,rank:1},
-  {lat:39.8003954,lng:-77.0212878,rank:1},
-  {lat:39.8090696,lng:-77.0212878,rank:1},
-  {lat:39.8177438,lng:-77.0212878,rank:1},
-  {lat:39.8264179,lng:-77.0212878,rank:1},
-  {lat:39.7396763,lng:-77.0100003,rank:1},
-  {lat:39.7483504,lng:-77.0100003,rank:1},
-  {lat:39.7570246,lng:-77.0100003,rank:1},
-  {lat:39.7656988,lng:-77.0100003,rank:1},
-  {lat:39.7743729,lng:-77.0100003,rank:1},
-  {lat:39.7830471,lng:-77.0100003,rank:1},
-  {lat:39.7917213,lng:-77.0100003,rank:1},
-  {lat:39.8003954,lng:-77.0100003,rank:1},
-  {lat:39.8090696,lng:-77.0100003,rank:1},
-  {lat:39.8177438,lng:-77.0100003,rank:1},
-  {lat:39.8264179,lng:-77.0100003,rank:1},
-  {lat:39.7396763,lng:-76.9987127,rank:1},
-  {lat:39.7483504,lng:-76.9987127,rank:1},
-  {lat:39.7570246,lng:-76.9987127,rank:1},
-  {lat:39.7656988,lng:-76.9987127,rank:1},
-  {lat:39.7743729,lng:-76.9987127,rank:1},
-  {lat:39.7830471,lng:-76.9987127,rank:1},
-  {lat:39.7917213,lng:-76.9987127,rank:1},
-  {lat:39.8003954,lng:-76.9987127,rank:1},
-  {lat:39.8090696,lng:-76.9987127,rank:1},
-  {lat:39.8177438,lng:-76.9987127,rank:1},
-  {lat:39.8264179,lng:-76.9987127,rank:1},
-  {lat:39.7396763,lng:-76.9874252,rank:1},
-  {lat:39.7483504,lng:-76.9874252,rank:1},
-  {lat:39.7570246,lng:-76.9874252,rank:1},
-  {lat:39.7656988,lng:-76.9874252,rank:1},
-  {lat:39.7743729,lng:-76.9874252,rank:1},
-  {lat:39.7830471,lng:-76.9874252,rank:1},
-  {lat:39.7917213,lng:-76.9874252,rank:1},
-  {lat:39.8003954,lng:-76.9874252,rank:1},
-  {lat:39.8090696,lng:-76.9874252,rank:1},
-  {lat:39.8177438,lng:-76.9874252,rank:1},
-  {lat:39.8264179,lng:-76.9874252,rank:1},
-  {lat:39.7396763,lng:-76.9761376,rank:1},
-  {lat:39.7483504,lng:-76.9761376,rank:1},
-  {lat:39.7570246,lng:-76.9761376,rank:1},
-  {lat:39.7656988,lng:-76.9761376,rank:1},
-  {lat:39.7743729,lng:-76.9761376,rank:1},
-  {lat:39.7830471,lng:-76.9761376,rank:1},
-  {lat:39.7917213,lng:-76.9761376,rank:1},
-  {lat:39.8003954,lng:-76.9761376,rank:1},
-  {lat:39.8090696,lng:-76.9761376,rank:1},
-  {lat:39.8177438,lng:-76.9761376,rank:1},
-  {lat:39.8264179,lng:-76.9761376,rank:1},
-  {lat:39.7396763,lng:-76.9648501,rank:1},
-  {lat:39.7483504,lng:-76.9648501,rank:1},
-  {lat:39.7570246,lng:-76.9648501,rank:1},
-  {lat:39.7656988,lng:-76.9648501,rank:1},
-  {lat:39.7743729,lng:-76.9648501,rank:1},
-  {lat:39.7830471,lng:-76.9648501,rank:1},
-  {lat:39.7917213,lng:-76.9648501,rank:1},
-  {lat:39.8003954,lng:-76.9648501,rank:1},
-  {lat:39.8090696,lng:-76.9648501,rank:1},
-  {lat:39.8177438,lng:-76.9648501,rank:1},
-  {lat:39.8264179,lng:-76.9648501,rank:1},
-  {lat:39.7396763,lng:-76.9535626,rank:1},
-  {lat:39.7483504,lng:-76.9535626,rank:1},
-  {lat:39.7570246,lng:-76.9535626,rank:1},
-  {lat:39.7656988,lng:-76.9535626,rank:1},
-  {lat:39.7743729,lng:-76.9535626,rank:1},
-  {lat:39.7830471,lng:-76.9535626,rank:1},
-  {lat:39.7917213,lng:-76.9535626,rank:1},
-  {lat:39.8003954,lng:-76.9535626,rank:1},
-  {lat:39.8090696,lng:-76.9535626,rank:1},
-  {lat:39.8177438,lng:-76.9535626,rank:1},
-  {lat:39.8264179,lng:-76.9535626,rank:1},
-  {lat:39.7396763,lng:-76.942275,rank:1},
-  {lat:39.7483504,lng:-76.942275,rank:1},
-  {lat:39.7570246,lng:-76.942275,rank:1},
-  {lat:39.7656988,lng:-76.942275,rank:1},
-  {lat:39.7743729,lng:-76.942275,rank:1},
-  {lat:39.7830471,lng:-76.942275,rank:1},
-  {lat:39.7917213,lng:-76.942275,rank:1},
-  {lat:39.8003954,lng:-76.942275,rank:1},
-  {lat:39.8090696,lng:-76.942275,rank:1},
-  {lat:39.8177438,lng:-76.942275,rank:1},
-  {lat:39.8264179,lng:-76.942275,rank:1},
-  {lat:39.7396763,lng:-76.9309875,rank:1},
-  {lat:39.7483504,lng:-76.9309875,rank:1},
-  {lat:39.7570246,lng:-76.9309875,rank:1},
-  {lat:39.7656988,lng:-76.9309875,rank:1},
-  {lat:39.7743729,lng:-76.9309875,rank:1},
-  {lat:39.7830471,lng:-76.9309875,rank:1},
-  {lat:39.7917213,lng:-76.9309875,rank:1},
-  {lat:39.8003954,lng:-76.9309875,rank:1},
-  {lat:39.8090696,lng:-76.9309875,rank:1},
-  {lat:39.8177438,lng:-76.9309875,rank:1},
-  {lat:39.8264179,lng:-76.9309875,rank:1},
-  {lat:39.7396763,lng:-76.9196999,rank:1},
-  {lat:39.7483504,lng:-76.9196999,rank:1},
-  {lat:39.7570246,lng:-76.9196999,rank:1},
-  {lat:39.7656988,lng:-76.9196999,rank:1},
-  {lat:39.7743729,lng:-76.9196999,rank:1},
-  {lat:39.7830471,lng:-76.9196999,rank:1},
-  {lat:39.7917213,lng:-76.9196999,rank:1},
-  {lat:39.8003954,lng:-76.9196999,rank:1},
-  {lat:39.8090696,lng:-76.9196999,rank:1},
-  {lat:39.8177438,lng:-76.9196999,rank:1},
-  {lat:39.8264179,lng:-76.9196999,rank:1},
-  {lat:39.7396763,lng:-76.9084124,rank:1},
-  {lat:39.7483504,lng:-76.9084124,rank:1},
-  {lat:39.7570246,lng:-76.9084124,rank:1},
-  {lat:39.7656988,lng:-76.9084124,rank:1},
-  {lat:39.7743729,lng:-76.9084124,rank:1},
-  {lat:39.7830471,lng:-76.9084124,rank:1},
-  {lat:39.7917213,lng:-76.9084124,rank:1},
-  {lat:39.8003954,lng:-76.9084124,rank:1},
-  {lat:39.8090696,lng:-76.9084124,rank:1},
-  {lat:39.8177438,lng:-76.9084124,rank:1},
-  {lat:39.8264179,lng:-76.9084124,rank:1}
 ]);
 </script>
 </body>

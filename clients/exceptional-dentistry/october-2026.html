@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <style>
   :root{
     --blue:#0a6bff;
@@ -75,7 +74,7 @@
   .hero-kpi{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:24px 22px}
   .hero-kpi-num{font-family:"Anton",sans-serif;font-size:46px;color:#fff;line-height:1}
   .hero-kpi-label{font-size:12.5px;color:rgba(255,255,255,.78);margin-top:10px;letter-spacing:.04em;font-weight:600;text-transform:uppercase}
-  .hero-kpi-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
+  .hero-kpi-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px;line-height:1.45}
 
   /* ============== SECTION SHELL ============== */
   section{padding:72px 0}
@@ -94,11 +93,12 @@
   .block-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 14px}
 
   /* ============== WHAT WE'VE DONE — WORK CARDS ============== */
+  /* v6: two equal columns, NO card spans two columns, NO align-items:start —
+     cards in a row share height. The .span-2 class from v5 is deliberately gone. */
   .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
   .work-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;position:relative;
-    transition:transform .2s,box-shadow .2s}
+    display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
   .work-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.07)}
-  .work-card.span-2{grid-column:span 2}
   .work-card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
   .work-card-icon{width:52px;height:52px;border-radius:14px;background:var(--blue-50);color:var(--blue);
     display:flex;align-items:center;justify-content:center;flex:none}
@@ -106,6 +106,7 @@
   .work-card-title{font-size:21px;color:var(--ink);text-transform:uppercase;line-height:1.15;flex:1;min-width:0}
   .work-card-count{margin-left:auto;background:var(--good);color:#fff;padding:6px 14px;border-radius:100px;
     font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex:none;font-family:"DM Sans",sans-serif}
+  .work-card-count.hold{background:var(--warn);color:#4a3406}
   .work-list{list-style:none;padding:0;margin:0}
   .work-list li{padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:15.5px;line-height:1.5}
   .work-list li:last-child{border-bottom:none}
@@ -115,11 +116,16 @@
   .work-meta{font-size:13px;color:var(--ink-mute);margin-top:4px;line-height:1.5}
   .work-summary{font-size:16px;color:var(--ink-soft);line-height:1.6}
   .work-summary strong{color:var(--ink);font-weight:700}
-  .sheet-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:11px 18px;
-    background:var(--ink);color:#fff;text-decoration:none;border-radius:10px;font-size:13px;font-weight:700;
-    letter-spacing:.02em;transition:transform .15s,box-shadow .15s}
-  .sheet-link:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,27,45,.18)}
+
+  /* SECONDARY BUTTON — "View Backlinks Sheet". Outlined, brand blue, unmissable.
+     margin-top:auto pins it to the bottom of its card so equal-height rows look right. */
+  .sheet-link{display:inline-flex;align-items:center;align-self:flex-start;gap:8px;margin-top:auto;
+    padding:12px 20px;background:#fff;color:var(--blue-700);text-decoration:none;border:2px solid var(--blue);
+    border-radius:10px;font-size:13.5px;font-weight:700;letter-spacing:.02em;
+    transition:background .15s,color .15s,transform .15s,box-shadow .15s}
   .sheet-link::after{content:'→'}
+  .sheet-link:hover{background:var(--blue);color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(10,107,255,.22)}
+  .work-summary + .sheet-link{margin-top:18px}
 
   /* ============== KEYWORD TABLE ============== */
   .table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line)}
@@ -134,19 +140,33 @@
   .kw .kw-name{font-weight:700;color:var(--ink)}
   .kw .kw-num{font-family:"Anton",sans-serif;font-size:18px;color:var(--ink)}
   .rk{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:12px;padding:5px 12px;border-radius:100px;white-space:nowrap}
-  .rk.good{background:var(--good-soft);color:var(--good-deep)}
-  .rk.warn{background:var(--warn-soft);color:#b87a0e}
-  .rk.bad{background:var(--bad-soft);color:var(--bad)}
+  .rk.good{background:var(--good-soft);color:var(--good-deep)}   /* #1–3   */
+  .rk.warn{background:var(--warn-soft);color:#b87a0e}            /* #4–10  */
+  .rk.bad{background:var(--bad-soft);color:var(--bad)}           /* #11+   */
   .status{display:inline-block;padding:5px 13px;border-radius:100px;font-size:11px;font-weight:700;
     letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
-  .status.stable{background:var(--good-soft);color:var(--good-deep)}
   .status.improving{background:var(--blue-50);color:var(--blue-700)}
+  .status.stable{background:var(--good-soft);color:var(--good-deep)}
   .status.building{background:var(--warn-soft);color:#b87a0e}
-  .status.declining{background:var(--bad-soft);color:var(--bad)}
+  /* v6: there is NO .status.declining. Keywords that dropped 1.0+ are REMOVED from
+     the table (spec §4), not labelled. Do not reintroduce the rule. */
+
+  /* ============== STAT CARDS (GBP + Search Console footprint) ============== */
+  .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .stat-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .stat-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+  .stat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+  .stat-num{font-family:"Anton",sans-serif;font-size:38px;color:var(--blue);line-height:1}
+  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:8px;font-weight:600}
+  .stat-sub{font-size:12.5px;color:var(--ink-mute);margin-top:4px}
+  .stat-sub.up{color:var(--good-deep)}
+  .stat-sub.down{color:var(--bad)}
+
+  /* Search Console footprint block sits directly under the keyword table */
+  .footprint{margin-top:38px}
 
   /* ============== LOCAL FALCON MAP (Leaflet) ============== */
   .map-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
-  .map-card+.map-card{margin-top:24px}
   .map-meta{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:13.5px;color:var(--ink-mute);
     margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
   .map-meta strong{color:var(--ink)}
@@ -199,15 +219,8 @@
   .src-pct{font-family:"Anton",sans-serif;font-size:18px;color:var(--ink);min-width:54px;text-align:right}
   .src-num{font-size:13.5px;color:var(--ink-mute);min-width:80px;text-align:right}
 
-  /* ============== STAT CARDS ============== */
-  .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .stat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
-  .stat-num{font-family:"Anton",sans-serif;font-size:38px;color:var(--blue);line-height:1}
-  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:8px;font-weight:600}
-  .stat-sub{font-size:12.5px;color:var(--ink-mute);margin-top:4px}
-
   /* ============== GBP TABLE ============== */
-  .gbp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:520px}
+  .gbp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:640px}
   .gbp thead tr{background:var(--ink);color:#fff}
   .gbp th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:14px 10px;text-align:center}
   .gbp th:first-child{text-align:left}
@@ -215,6 +228,8 @@
   .gbp td:first-child{text-align:left;font-weight:600}
   .gbp tbody tr:last-child{background:var(--blue-50);font-weight:700}
   .gbp .num{font-family:"Anton",sans-serif;font-size:16px}
+  .restatement{font-size:13px;color:var(--ink-soft);background:var(--bg-soft);border:1px solid var(--line);
+    border-left:3px solid var(--blue);border-radius:10px;padding:14px 18px;margin-top:18px;line-height:1.55}
 
   /* ============== FOOTER ============== */
   .end-cta{background:linear-gradient(135deg,#0c1322 0%,#0c0c0c 100%);color:#fff;padding:56px 0;text-align:center}
@@ -222,7 +237,7 @@
   .end-cta p{color:rgba(255,255,255,.72);max-width:560px;margin:0 auto;font-size:15px}
   .end-cta .thanks{margin-top:22px;font-size:15px;color:#fff}
   .end-cta .thanks b{color:#cfe0ff}
-  .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em}
+  .end-meta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em;line-height:1.9}
   .end-meta .src-tag{color:rgba(255,255,255,.7)}
 
   /* ============== RESPONSIVE ============== */
@@ -234,9 +249,8 @@
     .hero-kpis{grid-template-columns:repeat(2,1fr);gap:14px}
     .hero-kpi-num{font-size:38px}
     .work-grid{grid-template-columns:1fr}
-    .work-card.span-2{grid-column:span 1}
     .src-grid{grid-template-columns:1fr;gap:28px}
-    .stat-grid{grid-template-columns:1fr}
+    .stat-grid,.stat-grid.cols-3,.stat-grid.cols-4{grid-template-columns:1fr}
     .page-bar{flex-basis:26%}
   }
   @media print{
@@ -246,9 +260,7 @@
   }
 </style>
 </head>
-<body>
 
-<!-- ============== HERO ============== -->
 <header class="hero">
   <div class="hero-wrap wrap">
     <div class="audit-strip">
@@ -267,30 +279,29 @@
 
     <div class="hero-kpis">
       <div class="hero-kpi">
-        <div class="hero-kpi-num">1,363</div>
-        <div class="hero-kpi-label">Keywords Ranking</div>
-        <div class="hero-kpi-sub">Semrush, domain-wide · mid-month snapshot (~Oct 15)</div>
+        <div class="hero-kpi-num">1,183</div>
+        <div class="hero-kpi-label">Keywords in Google Top 20</div>
+        <div class="hero-kpi-sub">▼ 176 vs September (1,359) · Search Console, United States</div>
       </div>
       <div class="hero-kpi">
-        <div class="hero-kpi-num">473</div>
+        <div class="hero-kpi-num">374</div>
         <div class="hero-kpi-label">Website Traffic / mo</div>
-        <div class="hero-kpi-sub">Organic sessions (GA4)</div>
+        <div class="hero-kpi-sub">▼ 5 vs September (379) · GA4 organic sessions, United States</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">79</div>
         <div class="hero-kpi-label">GBP Phone Calls</div>
-        <div class="hero-kpi-sub">This month</div>
+        <div class="hero-kpi-sub">▼ 13 vs September (92) · Google Business Profile, this listing</div>
       </div>
       <div class="hero-kpi">
         <div class="hero-kpi-num">4.9★</div>
         <div class="hero-kpi-label">Review Rating</div>
-        <div class="hero-kpi-sub">579 total reviews</div>
+        <div class="hero-kpi-sub">579 total reviews · +16 new in October · Google Business Profile</div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ============== WHAT WE'VE DONE THIS MONTH ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow green"><span class="dot"></span>This Month's Work</span>
@@ -301,31 +312,35 @@
 
       <div class="work-card">
         <div class="work-card-head">
-          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <span class="work-card-title">Blogs Completed</span>
-          <span class="work-card-count">0 new</span>
+          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+          <span class="work-card-title">Backlinks Added</span>
+          <span class="work-card-count">1 new</span>
         </div>
-        <div class="work-summary">No new blog posts were published in October. The live blog index was checked; the most recent post is dated September 28, 2026.</div>
+        <ul class="work-list">
+          <li>
+            <a href="https://www.wellness.com/dir/7106818/dentist/ca/palmdale/exceptional-dentistry" target="_blank" rel="noopener">Wellness.com — Exceptional Dentistry listing</a>
+            <div class="work-meta">Submitted October 9, 2026 · live status being confirmed — a business directory listing, which builds visibility and referral traffic rather than ranking authority</div>
+          </li>
+        </ul>
       </div>
 
       <div class="work-card">
         <div class="work-card-head">
-          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-          <span class="work-card-title">Google Business Profile Posts</span>
-          <span class="work-card-count">1 new</span>
+          <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div>
+          <span class="work-card-title">Technical SEO — Maintenance</span>
         </div>
-        <ul class="work-list">
-          <li>Oct 2 — Will veneers hide a gap in my front teeth?</li>
-        </ul>
+        <div class="work-summary">
+          Routine maintenance this month: schema checked on the key service pages, internal links reviewed, Core Web Vitals monitored, and the sitemap confirmed submitted and clean in Google Search Console.
+        </div>
       </div>
 
-      <div class="work-card span-2">
+      <div class="work-card">
         <div class="work-card-head">
           <div class="work-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
           <span class="work-card-title">Tracking &amp; Reporting</span>
         </div>
         <div class="work-summary">
-          Monitored rankings and performance across <strong>Semrush</strong> (keyword position tracking), <strong>Local Falcon</strong> (map-pack grid scans), and <strong>Windsor</strong> — pulling Google Analytics 4 and Google Business Profile data together so every number in this report is live and verified.
+          Monitored rankings and performance across <strong>Google Search Console</strong> (keyword positions, United States), <strong>Local Falcon</strong> (map-pack grid scans), and <strong>Windsor</strong> — pulling Google Analytics 4, Google Search Console and Google Business Profile data together so every number in this report is live and verified.
         </div>
       </div>
 
@@ -333,65 +348,82 @@
   </div>
 </section>
 
-<!-- ============== KEYWORD TRACKING ============== -->
 <section class="alt">
   <div class="wrap">
-    <span class="section-eyebrow"><span class="dot"></span>Semrush Position Tracking</span>
+    <span class="section-eyebrow"><span class="dot"></span>Google Search Console · United States</span>
     <h2>Keyword <span class="accent">Rankings</span></h2>
-    <p class="section-intro">Every keyword tracked in the practice's Semrush project, as of October 31, 2026, sorted by best position. A status of <strong>Building</strong> means the keyword isn't ranking well yet — that's where we're focusing next. <strong>Declining</strong> means it slipped three or more positions this month.</p>
+    <p class="section-intro">12 of the 20 keywords we track for Exceptional Dentistry in Palmdale, CA, sorted by best average position in October 2026. <strong>Improving</strong> means the phrase moved up a full position or more against September and now sits in the top 20; <strong>Stable</strong> means it held a top-20 spot; <strong>Building</strong> means it's ranking but not yet in the top 20. The strongest results are the high-intent phrases: “dental implants near me” and “emergency dentist near me” both average #1.4, and “dentist palmdale” improved from 6.4 to 3.1. Not every phrase gained, though. The other 8 of the 20 slipped by a full position or more and are kept out of the table: “dentures in palmdale” (22.8 to 29.1), “dental exam in palmdale” (32.5 to 36.1), “cosmetic dentist in palmdale” (32.2 to 35.1), “veneers in palmdale” (40.0 to 42.8), “veneers palmdale” (19.3 to 21.9), “dental implants in palmdale” (33.3 to 35.2), “teeth cleaning in palmdale” (9.4 to 11.3), “all-on-4 implants in palmdale” (12.8 to 14.6).</p>
+
     <div class="table-wrap">
       <table class="kw">
-        <colgroup><col style="width:40%"><col style="width:16%"><col style="width:16%"><col style="width:14%"><col style="width:14%"></colgroup>
+        <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
         <thead>
-          <tr><th>Search Phrase</th><th class="center">Position</th><th class="center">Change (Sep 30→Oct 31)</th><th class="center">Searches/mo</th><th class="center">Status</th></tr>
+          <tr>
+            <th>Search Phrase</th>
+            <th class="center">Avg. Position</th>
+            <th class="center">Change</th>
+            <th class="center">Status</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td class="kw-name">all-on-4 implants in palmdale</td><td class="center"><span class="rk warn">#7</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 4</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">fluoride treatment in palmdale</td><td class="center"><span class="rk warn">#8</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 1</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk bad">#14</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 3</span></td><td class="center kw-num">50</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk bad">#20</span></td><td class="center">—</td><td class="center kw-num">1,000</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">night guard in palmdale</td><td class="center"><span class="rk bad">#23</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 22</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">teeth cleaning in palmdale</td><td class="center"><span class="rk bad">#27</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 22</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">veneers palmdale</td><td class="center"><span class="rk bad">#27</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 12</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">veneers in palmdale</td><td class="center"><span class="rk bad">#30</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 1</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">cosmetic dentist in palmdale</td><td class="center"><span class="rk bad">#31</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 13</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dental exam in palmdale</td><td class="center"><span class="rk bad">#33</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 19</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">emergency dentist palmdale</td><td class="center"><span class="rk bad">#35</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 9</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dental implants in palmdale</td><td class="center"><span class="rk bad">#37</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 8</span></td><td class="center kw-num">30</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dentures in palmdale</td><td class="center"><span class="rk bad">#37</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 19</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">palmdale dentist</td><td class="center"><span class="rk bad">#38</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 16</span></td><td class="center kw-num">1,000</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">teeth whitening palmdale</td><td class="center"><span class="rk bad">#38</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 18</span></td><td class="center kw-num">10</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk bad">#44</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 31</span></td><td class="center kw-num">140</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dentist palmdale</td><td class="center"><span class="rk bad">#47</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 25</span></td><td class="center kw-num">1,000</td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dentist in palmdale</td><td class="center"><span class="rk bad">#48</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 25</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
-          <tr><td class="kw-name">dental implants palmdale</td><td class="center"><span class="rk bad">#53</span></td><td class="center"><span style="color:var(--good-deep);font-weight:700">▲ 14</span></td><td class="center kw-num">30</td><td class="center"><span class="status building">Building</span></td></tr>
-          <tr><td class="kw-name">root canal palmdale</td><td class="center"><span class="rk bad">#64</span></td><td class="center"><span style="color:var(--bad);font-weight:700">▼ 17</span></td><td class="center kw-num">—<sup>1</sup></td><td class="center"><span class="status declining">Declining</span></td></tr>
+          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk good">#1.4</span></td><td class="center">▲ 0.4</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk good">#1.4</span></td><td class="center">▲ 0.9</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">dental implants palmdale</td><td class="center"><span class="rk good">#1.9</span></td><td class="center">▲ 0.5</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">night guard in palmdale</td><td class="center"><span class="rk good">#2.7</span></td><td class="center">▼ 0.2</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">teeth whitening palmdale</td><td class="center"><span class="rk good">#3.0</span></td><td class="center">—</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">dentist palmdale</td><td class="center"><span class="rk warn">#3.1</span></td><td class="center">▲ 3.3</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">emergency dentist palmdale</td><td class="center"><span class="rk warn">#7.5</span></td><td class="center">▲ 1.7</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">fluoride treatment in palmdale</td><td class="center"><span class="rk warn">#7.5</span></td><td class="center">▲ 1.1</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk warn">#8.4</span></td><td class="center">▲ 0.6</td><td class="center"><span class="status stable">Stable</span></td></tr>
+          <tr><td class="kw-name">root canal palmdale</td><td class="center"><span class="rk warn">#9.4</span></td><td class="center">▲ 14.1</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">palmdale dentist</td><td class="center"><span class="rk bad">#12.4</span></td><td class="center">▲ 4.7</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dentist in palmdale</td><td class="center"><span class="rk bad">#14.8</span></td><td class="center">▲ 1.0</td><td class="center"><span class="status improving">Improving</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Semrush position tracking, desktop, Palmdale, California; each position is a single check on that date. “Not ranking” = outside the top 100. Change column shows movement from Sep 30 to Oct 31. <sup>1</sup> Searches/mo shown as — where Semrush returned no volume data for the phrase (a reported volume of 0 means no data, not zero searches). </p>
-    <p class="hint">Semrush vs. Local Falcon: Semrush is one desktop check from one point in Palmdale, and its position tracking can blend organic and local-pack placements; Local Falcon samples 121 locations on Google Maps (main-listing scans dated October 6). That is why “dentist in palmdale” shows #48 in Semrush while the map grid shows the practice at all 121 points with a 3.59 average rank (68.6% SoLV). Both are accurate — they answer different questions.</p>
+    <p class="hint">Source: Windsor / Google Search Console — United States, all devices, monthly average position for October vs September. Not directly comparable to earlier months sourced from city-level desktop tracking. Keywords that lost ground this month are discussed in the text above rather than listed here.</p>
+
+    <div class="footprint">
+      <p class="block-label">Total Search Console footprint — United States</p>
+      <div class="stat-grid cols-3">
+        <div class="stat-card">
+          <div class="stat-num">1,183</div>
+          <div class="stat-label">Keywords in Google's Top 20</div>
+          <div class="stat-sub down">▼ 176 vs September (1,359)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">59,816</div>
+          <div class="stat-label">Search Impressions</div>
+          <div class="stat-sub up">▲ 2,307 vs September (57,509)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">208</div>
+          <div class="stat-label">Clicks from Search</div>
+          <div class="stat-sub down">▼ 24 vs September (232)</div>
+        </div>
+      </div>
+      <p class="hint">Source: Windsor / Google Search Console — United States. Counts every query the site appeared for, not just the tracked set above. Top-20 count is the number of queries whose average position for the month was 20 or better. Impressions rose while the top-20 query count and clicks both fell: the site appeared in more searches in October, but for fewer queries at a top-20 average and with 24 fewer clicks.</p>
+    </div>
   </div>
 </section>
 
-<!-- ============== LOCAL MAP — LOCAL FALCON ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Local Falcon Grid</span>
     <h2>Local Map <span class="accent">Rankings</span></h2>
-    <p class="section-intro">Where the practice shows up on Google Maps across the local grid. Each circle is a geographic search point — greener is better, the blue pin is the office. <strong>Click any circle</strong> to see the rank at that point.</p>
+    <p class="section-intro">Where Exceptional Dentistry shows up on Google Maps across the local grid for “dentist in palmdale”. Each circle is a geographic search point — greener is better, the blue pin is the office. <strong>Click any circle</strong> to see the rank at that point. In the scan of October 6, 2026 the practice ranked at all 121 of 121 grid points, with an average rank (ARP) of 3.59 and a share of local voice (SoLV) of 68.6%. A month-over-month map comparison is not available this month, because there is no September scan of this keyword to compare against.</p>
 
     <div class="map-card">
       <div class="map-meta">
         <div><strong>Keyword:</strong> dentist in palmdale</div>
-        <div><strong>Grid:</strong> 11×11 · 3 mile radius</div>
+        <div><strong>Radius:</strong> 3 mile</div>
         <div><strong>Scanned:</strong> October 6, 2026</div>
       </div>
       <div class="map-stats">
         <div class="map-stat"><div class="map-stat-num">3.59</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
         <div class="map-stat"><div class="map-stat-num">121/121</div><div class="map-stat-label">Points Ranked</div></div>
         <div class="map-stat"><div class="map-stat-num">68.6%</div><div class="map-stat-label">SoLV</div></div>
-        <div class="map-stat"><div class="map-stat-num">121</div><div class="map-stat-label">Search Points</div></div>
+        <div class="map-stat"><div class="map-stat-num">11×11</div><div class="map-stat-label">Grid Size</div></div>
       </div>
       <div id="lf-map-1" class="lf-map"></div>
       <div class="map-legend">
@@ -405,165 +437,76 @@
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
         <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
       </div>
-<p class="hint">Scan dated October 6, 2026 — an early-October scan, not month-end; it is the only scan for this listing inside the 30-day window.</p>
     </div>
-    <div class="map-card">
-      <div class="map-meta">
-        <div><strong>Keyword:</strong> dentist near me</div>
-        <div><strong>Grid:</strong> 11×11 · 3 mile radius</div>
-        <div><strong>Scanned:</strong> October 6, 2026</div>
-      </div>
-      <div class="map-stats">
-        <div class="map-stat"><div class="map-stat-num">6.76</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
-        <div class="map-stat"><div class="map-stat-num">107/121</div><div class="map-stat-label">Points Ranked</div></div>
-        <div class="map-stat"><div class="map-stat-num">40.5%</div><div class="map-stat-label">SoLV</div></div>
-        <div class="map-stat"><div class="map-stat-num">121</div><div class="map-stat-label">Search Points</div></div>
-      </div>
-      <div id="lf-map-2" class="lf-map"></div>
-      <div class="map-legend">
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#1f6d3a"></span>#1</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#4a9d3a"></span>#2–3</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#bdc742"></span>#4–5</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#e4a432"></span>#6–7</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#cf5a28"></span>#8–9</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#a93020"></span>#10–19</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#6b2018"></span>#20+</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
-      </div>
-<p class="hint">Scan dated October 6, 2026 — an early-October scan, not month-end; it is the only scan for this listing inside the 30-day window.</p>
-    </div>
-
-    <p class="block-label" style="margin-top:52px;padding-top:30px;border-top:1px solid var(--line)">Palmdale Emergency Dental Care — second listing</p>
-    <p class="section-intro" style="margin-top:0">Map-pack visibility for the practice's second Google listing, <strong>Palmdale Emergency Dental Care</strong>, for emergency searches. These grids are 9×9 (81 points) over a 5 mile radius.</p>
-    <div class="map-card">
-      <div class="map-meta">
-        <div><strong>Keyword:</strong> emergency dentist in palmdale</div>
-        <div><strong>Grid:</strong> 9×9 · 5 mile radius</div>
-        <div><strong>Scanned:</strong> October 30, 2026</div>
-      </div>
-      <div class="map-stats">
-        <div class="map-stat"><div class="map-stat-num">2.30</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
-        <div class="map-stat"><div class="map-stat-num">81/81</div><div class="map-stat-label">Points Ranked</div></div>
-        <div class="map-stat"><div class="map-stat-num">86.4%</div><div class="map-stat-label">SoLV</div></div>
-        <div class="map-stat"><div class="map-stat-num">81</div><div class="map-stat-label">Search Points</div></div>
-      </div>
-      <div id="lf-map-3" class="lf-map"></div>
-      <div class="map-legend">
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#1f6d3a"></span>#1</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#4a9d3a"></span>#2–3</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#bdc742"></span>#4–5</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#e4a432"></span>#6–7</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#cf5a28"></span>#8–9</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#a93020"></span>#10–19</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#6b2018"></span>#20+</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
-      </div>
-<p class="hint">Scan dated October 30, 2026. Palmdale Emergency Dental Care listing.</p>
-    </div>
-    <div class="map-card">
-      <div class="map-meta">
-        <div><strong>Keyword:</strong> emergency dentist near me</div>
-        <div><strong>Grid:</strong> 9×9 · 5 mile radius</div>
-        <div><strong>Scanned:</strong> October 30, 2026</div>
-      </div>
-      <div class="map-stats">
-        <div class="map-stat"><div class="map-stat-num">4.22</div><div class="map-stat-label">Avg Rank (ARP)</div></div>
-        <div class="map-stat"><div class="map-stat-num">78/81</div><div class="map-stat-label">Points Ranked</div></div>
-        <div class="map-stat"><div class="map-stat-num">63.0%</div><div class="map-stat-label">SoLV</div></div>
-        <div class="map-stat"><div class="map-stat-num">81</div><div class="map-stat-label">Search Points</div></div>
-      </div>
-      <div id="lf-map-4" class="lf-map"></div>
-      <div class="map-legend">
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#1f6d3a"></span>#1</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#4a9d3a"></span>#2–3</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#bdc742"></span>#4–5</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#e4a432"></span>#6–7</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#cf5a28"></span>#8–9</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#a93020"></span>#10–19</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#6b2018"></span>#20+</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#c0c0c0"></span>Not ranking</div>
-        <div class="map-legend-item"><span class="map-legend-dot" style="background:#0a6bff"></span>Office</div>
-      </div>
-<p class="hint">Scan dated October 30, 2026. Palmdale Emergency Dental Care listing.</p>
-    </div>
+    <p class="hint">Source: Local Falcon grid scan centred on the practice address, October 6, 2026. ARP is the average rank across every point that ranked; SoLV is share of local voice across the grid.</p>
   </div>
 </section>
 
-<!-- ============== TRAFFIC TO PAGES ============== -->
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 · via Windsor</span>
     <h2>Traffic to <span class="accent">Each Page</span></h2>
-    <p class="section-intro">Top pages by organic visits in October. These are the pages doing the heavy lifting for the practice.</p>
+    <p class="section-intro">The top 10 pages by organic visits in October. The homepage led with 141 visits, followed by the blog article on mouthwash with and without alcohol (59) and the Meet Our Dental Team page (54).</p>
     <ul class="pages-list">
-      <li><div class="page-name">/</div><div class="page-bar"><div class="page-bar-fill" style="width:100.0%"></div></div><div class="page-visits">139</div></li>
-      <li><div class="page-name">/mouthwash-with-alcohol-vs-without-which-really-is-better</div><div class="page-bar"><div class="page-bar-fill" style="width:71.9%"></div></div><div class="page-visits">100</div></li>
-      <li><div class="page-name">/difference-between-occlusal-guard-and-dental-orthotic</div><div class="page-bar"><div class="page-bar-fill" style="width:24.5%"></div></div><div class="page-visits">34</div></li>
-      <li><div class="page-name">(not set)</div><div class="page-bar"><div class="page-bar-fill" style="width:21.6%"></div></div><div class="page-visits">30</div></li>
-      <li><div class="page-name">/my-temporary-crown-fell-out-what-should-i-do</div><div class="page-bar"><div class="page-bar-fill" style="width:8.6%"></div></div><div class="page-visits">12</div></li>
-      <li><div class="page-name">/dentist-appointment</div><div class="page-bar"><div class="page-bar-fill" style="width:7.2%"></div></div><div class="page-visits">10</div></li>
-      <li><div class="page-name">/meet-our-dental-team</div><div class="page-bar"><div class="page-bar-fill" style="width:7.2%"></div></div><div class="page-visits">10</div></li>
-      <li><div class="page-name">/dental-world-records</div><div class="page-bar"><div class="page-bar-fill" style="width:6.5%"></div></div><div class="page-visits">9</div></li>
-      <li><div class="page-name">/do-whitening-strips-damage-your-enamel-our-dentists-honest-answer</div><div class="page-bar"><div class="page-bar-fill" style="width:6.5%"></div></div><div class="page-visits">9</div></li>
-      <li><div class="page-name">/contact-us</div><div class="page-bar"><div class="page-bar-fill" style="width:5.0%"></div></div><div class="page-visits">7</div></li>
-      <li><div class="page-name">/what-the-heck-is-up-with-dental-insurance-benefits</div><div class="page-bar"><div class="page-bar-fill" style="width:5.0%"></div></div><div class="page-visits">7</div></li>
-      <li><div class="page-name">/meet-our-dental-team/dr-davit-kankanyan-bio</div><div class="page-bar"><div class="page-bar-fill" style="width:4.3%"></div></div><div class="page-visits">6</div></li>
-      <li><div class="page-name">/meet-our-dental-team/dr-ramy-garsdean-dds</div><div class="page-bar"><div class="page-bar-fill" style="width:4.3%"></div></div><div class="page-visits">6</div></li>
-      <li><div class="page-name">/can-you-whiten-teeth-that-have-been-stained-for-years</div><div class="page-bar"><div class="page-bar-fill" style="width:3.6%"></div></div><div class="page-visits">5</div></li>
-      <li><div class="page-name">/hydro-floss</div><div class="page-bar"><div class="page-bar-fill" style="width:3.6%"></div></div><div class="page-visits">5</div></li>
+      <li><div class="page-name">/</div><div class="page-bar"><div class="page-bar-fill" style="width:100%"></div></div><div class="page-visits">141</div></li>
+      <li><div class="page-name">/mouthwash-with-alcohol-vs-without-which-really-is-better/</div><div class="page-bar"><div class="page-bar-fill" style="width:42%"></div></div><div class="page-visits">59</div></li>
+      <li><div class="page-name">/meet-our-dental-team/</div><div class="page-bar"><div class="page-bar-fill" style="width:38%"></div></div><div class="page-visits">54</div></li>
+      <li><div class="page-name">/difference-between-occlusal-guard-and-dental-orthotic/</div><div class="page-bar"><div class="page-bar-fill" style="width:26%"></div></div><div class="page-visits">36</div></li>
+      <li><div class="page-name">/dentist-appointment/</div><div class="page-bar"><div class="page-bar-fill" style="width:15%"></div></div><div class="page-visits">21</div></li>
+      <li><div class="page-name">/dental-services/</div><div class="page-bar"><div class="page-bar-fill" style="width:13%"></div></div><div class="page-visits">19</div></li>
+      <li><div class="page-name">/contact-us/</div><div class="page-bar"><div class="page-bar-fill" style="width:13%"></div></div><div class="page-visits">18</div></li>
+      <li><div class="page-name">/about-us/</div><div class="page-bar"><div class="page-bar-fill" style="width:9%"></div></div><div class="page-visits">12</div></li>
+      <li><div class="page-name">/dental-insurance/</div><div class="page-bar"><div class="page-bar-fill" style="width:9%"></div></div><div class="page-visits">12</div></li>
+      <li><div class="page-name">/meet-our-dental-team/dr-ramy-garsdean-dds/</div><div class="page-bar"><div class="page-bar-fill" style="width:9%"></div></div><div class="page-visits">12</div></li>
     </ul>
-    <p class="hint">Source: Windsor / Google Analytics 4, Organic Search sessions, Oct 1–31, 2026. Bar widths are relative to the top page. Landing-page view for palmdaleexceptionaldentistry.com: top 15 of 60 returned pages shown, summing to 389 — 83% of the site's 471 organic sessions on that hostname. “(not set)” = 30 sessions. The month's 473 organic sessions also include 2 sessions on a staging and a translation host, which are not in the page rows.</p>
+    <p class="hint">Source: Windsor / Google Analytics 4 — organic sessions per page, United States, palmdaleexceptionaldentistry.com only. One visit can touch several pages, so these figures do not add up to the monthly session total. Bar widths are relative to the top page.</p>
   </div>
 </section>
 
-<!-- ============== TRAFFIC SOURCES ============== -->
 <section>
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Analytics 4 · via Windsor</span>
     <h2>Where Traffic <span class="accent">Comes From</span></h2>
-    <p class="section-intro">How visitors found the website in October, broken down by channel. A healthy mix with strong organic search is what we're building toward.</p>
+    <p class="section-intro">How visitors found the website in October, broken down by channel. Total sessions fell from 947 in September to 691, almost all of it from Direct traffic (486 down to 238). Organic Search held close to flat at 374 sessions (September: 379) and made up 54% of the month's traffic.</p>
     <div class="src-grid">
       <div>
         <div class="stack">
-          <span style="width:50.21%;background:var(--blue)">50%</span>
-          <span style="width:36.84%;background:var(--good)">37%</span>
-          <span style="width:9.02%;background:var(--warn)">9%</span>
-          <span style="width:2.44%;background:var(--ink-mute)"></span>
-          <span style="width:0.74%;background:#7c3aed"></span>
-          <span style="width:0.53%;background:#0891b2"></span>
-          <span style="width:0.21%;background:#e11d48"></span>
+          <span style="width:54.12%;background:var(--blue)">54%</span>
+          <span style="width:34.44%;background:var(--good)">34%</span>
+          <span style="width:6.66%;background:var(--warn)">7%</span>
+          <span style="width:3.04%;background:var(--ink-mute)">3%</span>
+          <span style="width:1.01%;background:#8a63d2"></span>
+          <span style="width:0.58%;background:#e07b39"></span>
+          <span style="width:0.14%;background:#b9c2cc"></span>
         </div>
-        <p class="hint" style="margin-top:0">Total sessions this month: <strong>942</strong></p>
+        <p class="hint" style="margin-top:0">Total sessions this month: <strong>691</strong></p>
       </div>
       <div class="src-legend">
-        <div class="src-row"><span class="src-dot" style="background:var(--blue)"></span><span class="src-name">Organic Search</span><span class="src-pct">50%</span><span class="src-num">473 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--good)"></span><span class="src-name">Direct</span><span class="src-pct">37%</span><span class="src-num">347 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--warn)"></span><span class="src-name">Referral</span><span class="src-pct">9%</span><span class="src-num">85 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:var(--ink-mute)"></span><span class="src-name">Organic Social</span><span class="src-pct">2%</span><span class="src-num">23 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:#7c3aed"></span><span class="src-name">Cross-network</span><span class="src-pct"><1%</span><span class="src-num">7 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:#0891b2"></span><span class="src-name">AI Assistant</span><span class="src-pct"><1%</span><span class="src-num">5 sess.</span></div>
-        <div class="src-row"><span class="src-dot" style="background:#e11d48"></span><span class="src-name">Unassigned</span><span class="src-pct"><1%</span><span class="src-num">2 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--blue)"></span><span class="src-name">Organic Search</span><span class="src-pct">54%</span><span class="src-num">374 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--good)"></span><span class="src-name">Direct</span><span class="src-pct">34%</span><span class="src-num">238 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--warn)"></span><span class="src-name">Referral</span><span class="src-pct">7%</span><span class="src-num">46 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:var(--ink-mute)"></span><span class="src-name">Organic Social</span><span class="src-pct">3%</span><span class="src-num">21 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:#8a63d2"></span><span class="src-name">Cross-network</span><span class="src-pct">1%</span><span class="src-num">7 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:#e07b39"></span><span class="src-name">AI Assistant</span><span class="src-pct">1%</span><span class="src-num">4 sess.</span></div>
+        <div class="src-row"><span class="src-dot" style="background:#b9c2cc"></span><span class="src-name">Unassigned</span><span class="src-pct">&lt;1%</span><span class="src-num">1 sess.</span></div>
       </div>
     </div>
-    <p class="hint">Source: Windsor / Google Analytics 4 — sessions by default channel group. Channel totals cover every hostname in the Google Analytics property (942 sessions, 473 organic); Palmdale site only: 839 sessions, 471 organic.</p>
+    <p class="hint">Source: Windsor / Google Analytics 4 — sessions by default channel group, United States.</p>
   </div>
 </section>
 
-<!-- ============== GOOGLE BUSINESS PROFILE PERFORMANCE ============== -->
 <section class="alt">
   <div class="wrap">
     <span class="section-eyebrow"><span class="dot"></span>Google Business Profile · via Windsor</span>
     <h2>Google Business Profile <span class="accent">Performance</span></h2>
-    <p class="section-intro">Activity on the Google Business listing this month and the prior 5 months — calls, web clicks, reviews, and how often the profile showed up in Search and Maps.</p>
+    <p class="section-intro">Activity on the Google Business listing this month and the prior 5 months — calls, web clicks, reviews, and how often the profile showed up in Search and Maps. Impressions reached 2,125 in October, the highest of the last six months, with Maps impressions up from 592 to 939. Phone calls (79) and website clicks (77) were both slightly lower than September (92 and 79), while direction requests rose from 69 to 96.</p>
 
     <p class="block-label">This month at a glance</p>
-    <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:36px">
-      <div class="stat-card"><div class="stat-num">79</div><div class="stat-label">Phone Calls</div><div class="stat-sub">▼ 13 vs September</div></div>
-      <div class="stat-card"><div class="stat-num">+16</div><div class="stat-label">New Reviews</div><div class="stat-sub">579 total · 4.9★</div></div>
-      <div class="stat-card"><div class="stat-num">77</div><div class="stat-label">Website Clicks</div><div class="stat-sub">▼ 2 vs September</div></div>
-      <div class="stat-card"><div class="stat-num">2,125</div><div class="stat-label">Searches / Impr.</div><div class="stat-sub">Maps + Search combined</div></div>
+    <div class="stat-grid cols-4" style="margin-bottom:36px">
+      <div class="stat-card"><div class="stat-num">79</div><div class="stat-label">Phone Calls</div><div class="stat-sub down">▼ 13 vs September (92)</div></div>
+      <div class="stat-card"><div class="stat-num">+16</div><div class="stat-label">New Reviews</div><div class="stat-sub">579 total · 4.9★ overall</div></div>
+      <div class="stat-card"><div class="stat-num">77</div><div class="stat-label">Website Clicks</div><div class="stat-sub down">▼ 2 vs September (79)</div></div>
+      <div class="stat-card"><div class="stat-num">2,125</div><div class="stat-label">Searches / Impr.</div><div class="stat-sub up">▲ 381 vs September (1,744)</div></div>
     </div>
 
     <p class="block-label">6-month trend</p>
@@ -573,20 +516,24 @@
           <tr><th>Month</th><th>Impressions</th><th>Search</th><th>Maps</th><th>Web Clicks</th><th>Calls</th><th>Directions</th></tr>
         </thead>
         <tbody>
-          <tr><td>May 2026</td><td class="num">953</td><td>—</td><td>—</td><td>78</td><td>97</td><td>86</td></tr>
-          <tr><td>Jun 2026</td><td class="num">994</td><td>—</td><td>—</td><td>58</td><td>130</td><td>110</td></tr>
-          <tr><td>Jul 2026</td><td class="num">1,206</td><td>—</td><td>—</td><td>84</td><td>96</td><td>91</td></tr>
-          <tr><td>Aug 2026</td><td class="num">1,394</td><td>—</td><td>—</td><td>68</td><td>86</td><td>86</td></tr>
-          <tr><td>Sep 2026</td><td class="num">1,744</td><td>—</td><td>—</td><td>79</td><td>92</td><td>69</td></tr>
-          <tr><td><strong>Oct 2026</strong></td><td class="num"><strong>2,125</strong></td><td><strong>—</strong></td><td><strong>—</strong></td><td><strong>77</strong></td><td><strong>79</strong></td><td><strong>96</strong></td></tr>
+          <tr><td>May 2026</td><td class="num">953</td><td>681</td><td>272</td><td>78</td><td>97</td><td>86</td></tr>
+          <tr><td>Jun 2026</td><td class="num">994</td><td>682</td><td>312</td><td>58</td><td>130</td><td>110</td></tr>
+          <tr><td>Jul 2026</td><td class="num">1,206</td><td>885</td><td>321</td><td>84</td><td>96</td><td>91</td></tr>
+          <tr><td>Aug 2026</td><td class="num">1,394</td><td>1,028</td><td>366</td><td>68</td><td>86</td><td>86</td></tr>
+          <tr><td>Sep 2026</td><td class="num">1,744</td><td>1,152</td><td>592</td><td>79</td><td>92</td><td>69</td></tr>
+          <tr><td><strong>Oct 2026</strong></td><td class="num"><strong>2,125</strong></td><td><strong>1,186</strong></td><td><strong>939</strong></td><td><strong>77</strong></td><td><strong>79</strong></td><td><strong>96</strong></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Windsor / Google Business Profile insights. Impressions = Maps + Search, desktop + mobile, combined. The Search / Maps split (—) was not part of this month's data pull, so it is not shown rather than estimated. Figures above are for the main Exceptional Dentistry – Palmdale listing only. Calls and clicks for the second listing, Palmdale Emergency Dental Care, are not shown: Windsor could not access that listing as of November 4, 2026 (“Account is not available”), so no figures are given rather than estimated. Its map rankings are in the Local Map section above.</p>
+
+    <div class="restatement">
+      <strong>A note on these numbers:</strong> Google continues to revise Business Profile figures for several weeks after a month closes. All six months above were re-pulled fresh for this report, so earlier months may read slightly higher than they did in their own reports — and we expect October's figures to rise the same way over the coming weeks.
+    </div>
+
+    <p class="hint">Source: Windsor / Google Business Profile insights, Exceptional Dentistry – Palmdale listing. Impressions are split into Search (desktop + mobile) and Maps (desktop + mobile); the two columns add up to the Impressions total. New reviews are reviews added during October; the total and rating are all-time figures.</p>
   </div>
 </section>
 
-<!-- ============== FOOTER ============== -->
 <footer class="end-cta">
   <div class="wrap">
     <img class="nerds-logo-img" src="/logo/Dentist-Nerds-Logo-White.webp" alt="Dentist Nerds" />
@@ -594,7 +541,7 @@
     <div class="thanks"><b>Thank you for trusting us with your marketing.</b> Questions about anything in this report? Just reply to this email — we love hearing from you.</div>
     <div class="end-meta">
       Reporting period: October 1–31, 2026 · Prepared by Dentist Nerds · dentistnerds.com<br>
-      <span class="src-tag">Data sources: Semrush · Local Falcon · Windsor (GA4, Google Business Profile)</span>
+      <span class="src-tag">Data sources: Google Search Console keyword tracking (United States, all devices) · Local Falcon (grid on practice address) · Windsor / GA4 (United States) · Windsor / Google Search Console (United States) · Windsor / Google Business Profile (this listing)</span>
     </div>
   </div>
 </footer>
@@ -660,18 +607,8 @@ function renderMap(elId,officeLat,officeLng,officeName,dataPoints){
   if(bounds.length)map.fitBounds(bounds,{padding:[20,20]});
 }
 
-// ===== MAP 1 — dentist in palmdale =====
+
 renderMap('lf-map-1', 34.632175, -118.1497084, "Exceptional Dentistry", [{"lat":34.5888042,"lng":-118.2024186,"rank":4},{"lat":34.5974783,"lng":-118.2024186,"rank":4},{"lat":34.6061525,"lng":-118.2024186,"rank":3},{"lat":34.6148267,"lng":-118.2024186,"rank":2},{"lat":34.6235008,"lng":-118.2024186,"rank":2},{"lat":34.632175,"lng":-118.2024186,"rank":2},{"lat":34.6408492,"lng":-118.2024186,"rank":1},{"lat":34.6495233,"lng":-118.2024186,"rank":1},{"lat":34.6581975,"lng":-118.2024186,"rank":1},{"lat":34.6668717,"lng":-118.2024186,"rank":1},{"lat":34.6755458,"lng":-118.2024186,"rank":1},{"lat":34.5888042,"lng":-118.1918765,"rank":4},{"lat":34.5974783,"lng":-118.1918765,"rank":5},{"lat":34.6061525,"lng":-118.1918765,"rank":5},{"lat":34.6148267,"lng":-118.1918765,"rank":2},{"lat":34.6235008,"lng":-118.1918765,"rank":2},{"lat":34.632175,"lng":-118.1918765,"rank":1},{"lat":34.6408492,"lng":-118.1918765,"rank":1},{"lat":34.6495233,"lng":-118.1918765,"rank":1},{"lat":34.6581975,"lng":-118.1918765,"rank":1},{"lat":34.6668717,"lng":-118.1918765,"rank":1},{"lat":34.6755458,"lng":-118.1918765,"rank":1},{"lat":34.5888042,"lng":-118.1813345,"rank":6},{"lat":34.5974783,"lng":-118.1813345,"rank":6},{"lat":34.6061525,"lng":-118.1813345,"rank":5},{"lat":34.6148267,"lng":-118.1813345,"rank":2},{"lat":34.6235008,"lng":-118.1813345,"rank":1},{"lat":34.632175,"lng":-118.1813345,"rank":1},{"lat":34.6408492,"lng":-118.1813345,"rank":1},{"lat":34.6495233,"lng":-118.1813345,"rank":1},{"lat":34.6581975,"lng":-118.1813345,"rank":1},{"lat":34.6668717,"lng":-118.1813345,"rank":1},{"lat":34.6755458,"lng":-118.1813345,"rank":1},{"lat":34.5888042,"lng":-118.1707925,"rank":8},{"lat":34.5974783,"lng":-118.1707925,"rank":5},{"lat":34.6061525,"lng":-118.1707925,"rank":3},{"lat":34.6148267,"lng":-118.1707925,"rank":2},{"lat":34.6235008,"lng":-118.1707925,"rank":1},{"lat":34.632175,"lng":-118.1707925,"rank":1},{"lat":34.6408492,"lng":-118.1707925,"rank":1},{"lat":34.6495233,"lng":-118.1707925,"rank":1},{"lat":34.6581975,"lng":-118.1707925,"rank":1},{"lat":34.6668717,"lng":-118.1707925,"rank":1},{"lat":34.6755458,"lng":-118.1707925,"rank":1},{"lat":34.5888042,"lng":-118.1602504,"rank":11},{"lat":34.5974783,"lng":-118.1602504,"rank":8},{"lat":34.6061525,"lng":-118.1602504,"rank":10},{"lat":34.6148267,"lng":-118.1602504,"rank":2},{"lat":34.6235008,"lng":-118.1602504,"rank":1},{"lat":34.632175,"lng":-118.1602504,"rank":1},{"lat":34.6408492,"lng":-118.1602504,"rank":1},{"lat":34.6495233,"lng":-118.1602504,"rank":1},{"lat":34.6581975,"lng":-118.1602504,"rank":5},{"lat":34.6668717,"lng":-118.1602504,"rank":1},{"lat":34.6755458,"lng":-118.1602504,"rank":1},{"lat":34.5888042,"lng":-118.1497084,"rank":18},{"lat":34.5974783,"lng":-118.1497084,"rank":12},{"lat":34.6061525,"lng":-118.1497084,"rank":7},{"lat":34.6148267,"lng":-118.1497084,"rank":3},{"lat":34.6235008,"lng":-118.1497084,"rank":1},{"lat":34.632175,"lng":-118.1497084,"rank":2},{"lat":34.6408492,"lng":-118.1497084,"rank":2},{"lat":34.6495233,"lng":-118.1497084,"rank":6},{"lat":34.6581975,"lng":-118.1497084,"rank":1},{"lat":34.6668717,"lng":-118.1497084,"rank":1},{"lat":34.6755458,"lng":-118.1497084,"rank":1},{"lat":34.5888042,"lng":-118.1391664,"rank":15},{"lat":34.5974783,"lng":-118.1391664,"rank":13},{"lat":34.6061525,"lng":-118.1391664,"rank":7},{"lat":34.6148267,"lng":-118.1391664,"rank":2},{"lat":34.6235008,"lng":-118.1391664,"rank":1},{"lat":34.632175,"lng":-118.1391664,"rank":1},{"lat":34.6408492,"lng":-118.1391664,"rank":1},{"lat":34.6495233,"lng":-118.1391664,"rank":1},{"lat":34.6581975,"lng":-118.1391664,"rank":1},{"lat":34.6668717,"lng":-118.1391664,"rank":1},{"lat":34.6755458,"lng":-118.1391664,"rank":1},{"lat":34.5888042,"lng":-118.1286243,"rank":17},{"lat":34.5974783,"lng":-118.1286243,"rank":12},{"lat":34.6061525,"lng":-118.1286243,"rank":7},{"lat":34.6148267,"lng":-118.1286243,"rank":3},{"lat":34.6235008,"lng":-118.1286243,"rank":1},{"lat":34.632175,"lng":-118.1286243,"rank":1},{"lat":34.6408492,"lng":-118.1286243,"rank":1},{"lat":34.6495233,"lng":-118.1286243,"rank":1},{"lat":34.6581975,"lng":-118.1286243,"rank":1},{"lat":34.6668717,"lng":-118.1286243,"rank":1},{"lat":34.6755458,"lng":-118.1286243,"rank":1},{"lat":34.5888042,"lng":-118.1180823,"rank":15},{"lat":34.5974783,"lng":-118.1180823,"rank":11},{"lat":34.6061525,"lng":-118.1180823,"rank":7},{"lat":34.6148267,"lng":-118.1180823,"rank":4},{"lat":34.6235008,"lng":-118.1180823,"rank":3},{"lat":34.632175,"lng":-118.1180823,"rank":1},{"lat":34.6408492,"lng":-118.1180823,"rank":1},{"lat":34.6495233,"lng":-118.1180823,"rank":1},{"lat":34.6581975,"lng":-118.1180823,"rank":1},{"lat":34.6668717,"lng":-118.1180823,"rank":1},{"lat":34.6755458,"lng":-118.1180823,"rank":1},{"lat":34.5888042,"lng":-118.1075403,"rank":15},{"lat":34.5974783,"lng":-118.1075403,"rank":9},{"lat":34.6061525,"lng":-118.1075403,"rank":6},{"lat":34.6148267,"lng":-118.1075403,"rank":6},{"lat":34.6235008,"lng":-118.1075403,"rank":7},{"lat":34.632175,"lng":-118.1075403,"rank":3},{"lat":34.6408492,"lng":-118.1075403,"rank":1},{"lat":34.6495233,"lng":-118.1075403,"rank":1},{"lat":34.6581975,"lng":-118.1075403,"rank":1},{"lat":34.6668717,"lng":-118.1075403,"rank":1},{"lat":34.6755458,"lng":-118.1075403,"rank":1},{"lat":34.5888042,"lng":-118.0969982,"rank":15},{"lat":34.5974783,"lng":-118.0969982,"rank":12},{"lat":34.6061525,"lng":-118.0969982,"rank":8},{"lat":34.6148267,"lng":-118.0969982,"rank":6},{"lat":34.6235008,"lng":-118.0969982,"rank":5},{"lat":34.632175,"lng":-118.0969982,"rank":3},{"lat":34.6408492,"lng":-118.0969982,"rank":1},{"lat":34.6495233,"lng":-118.0969982,"rank":1},{"lat":34.6581975,"lng":-118.0969982,"rank":1},{"lat":34.6668717,"lng":-118.0969982,"rank":1},{"lat":34.6755458,"lng":-118.0969982,"rank":1}]);
-
-// ===== MAP 2 — dentist near me =====
-renderMap('lf-map-2', 34.632175, -118.1497084, "Exceptional Dentistry", [{"lat":34.5888042,"lng":-118.2024186,"rank":6},{"lat":34.5974783,"lng":-118.2024186,"rank":3},{"lat":34.6061525,"lng":-118.2024186,"rank":3},{"lat":34.6148267,"lng":-118.2024186,"rank":2},{"lat":34.6235008,"lng":-118.2024186,"rank":1},{"lat":34.632175,"lng":-118.2024186,"rank":4},{"lat":34.6408492,"lng":-118.2024186,"rank":12},{"lat":34.6495233,"lng":-118.2024186,"rank":8},{"lat":34.6581975,"lng":-118.2024186,"rank":9},{"lat":34.6668717,"lng":-118.2024186,"rank":12},{"lat":34.6755458,"lng":-118.2024186,"rank":0},{"lat":34.5888042,"lng":-118.1918765,"rank":6},{"lat":34.5974783,"lng":-118.1918765,"rank":3},{"lat":34.6061525,"lng":-118.1918765,"rank":3},{"lat":34.6148267,"lng":-118.1918765,"rank":2},{"lat":34.6235008,"lng":-118.1918765,"rank":1},{"lat":34.632175,"lng":-118.1918765,"rank":4},{"lat":34.6408492,"lng":-118.1918765,"rank":5},{"lat":34.6495233,"lng":-118.1918765,"rank":14},{"lat":34.6581975,"lng":-118.1918765,"rank":19},{"lat":34.6668717,"lng":-118.1918765,"rank":18},{"lat":34.6755458,"lng":-118.1918765,"rank":0},{"lat":34.5888042,"lng":-118.1813345,"rank":7},{"lat":34.5974783,"lng":-118.1813345,"rank":5},{"lat":34.6061525,"lng":-118.1813345,"rank":3},{"lat":34.6148267,"lng":-118.1813345,"rank":1},{"lat":34.6235008,"lng":-118.1813345,"rank":1},{"lat":34.632175,"lng":-118.1813345,"rank":1},{"lat":34.6408492,"lng":-118.1813345,"rank":1},{"lat":34.6495233,"lng":-118.1813345,"rank":12},{"lat":34.6581975,"lng":-118.1813345,"rank":19},{"lat":34.6668717,"lng":-118.1813345,"rank":18},{"lat":34.6755458,"lng":-118.1813345,"rank":0},{"lat":34.5888042,"lng":-118.1707925,"rank":7},{"lat":34.5974783,"lng":-118.1707925,"rank":7},{"lat":34.6061525,"lng":-118.1707925,"rank":3},{"lat":34.6148267,"lng":-118.1707925,"rank":1},{"lat":34.6235008,"lng":-118.1707925,"rank":1},{"lat":34.632175,"lng":-118.1707925,"rank":1},{"lat":34.6408492,"lng":-118.1707925,"rank":1},{"lat":34.6495233,"lng":-118.1707925,"rank":10},{"lat":34.6581975,"lng":-118.1707925,"rank":17},{"lat":34.6668717,"lng":-118.1707925,"rank":0},{"lat":34.6755458,"lng":-118.1707925,"rank":0},{"lat":34.5888042,"lng":-118.1602504,"rank":13},{"lat":34.5974783,"lng":-118.1602504,"rank":7},{"lat":34.6061525,"lng":-118.1602504,"rank":6},{"lat":34.6148267,"lng":-118.1602504,"rank":4},{"lat":34.6235008,"lng":-118.1602504,"rank":1},{"lat":34.632175,"lng":-118.1602504,"rank":1},{"lat":34.6408492,"lng":-118.1602504,"rank":1},{"lat":34.6495233,"lng":-118.1602504,"rank":4},{"lat":34.6581975,"lng":-118.1602504,"rank":10},{"lat":34.6668717,"lng":-118.1602504,"rank":17},{"lat":34.6755458,"lng":-118.1602504,"rank":0},{"lat":34.5888042,"lng":-118.1497084,"rank":0},{"lat":34.5974783,"lng":-118.1497084,"rank":16},{"lat":34.6061525,"lng":-118.1497084,"rank":7},{"lat":34.6148267,"lng":-118.1497084,"rank":2},{"lat":34.6235008,"lng":-118.1497084,"rank":1},{"lat":34.632175,"lng":-118.1497084,"rank":3},{"lat":34.6408492,"lng":-118.1497084,"rank":1},{"lat":34.6495233,"lng":-118.1497084,"rank":5},{"lat":34.6581975,"lng":-118.1497084,"rank":10},{"lat":34.6668717,"lng":-118.1497084,"rank":18},{"lat":34.6755458,"lng":-118.1497084,"rank":0},{"lat":34.5888042,"lng":-118.1391664,"rank":0},{"lat":34.5974783,"lng":-118.1391664,"rank":17},{"lat":34.6061525,"lng":-118.1391664,"rank":10},{"lat":34.6148267,"lng":-118.1391664,"rank":3},{"lat":34.6235008,"lng":-118.1391664,"rank":1},{"lat":34.632175,"lng":-118.1391664,"rank":1},{"lat":34.6408492,"lng":-118.1391664,"rank":1},{"lat":34.6495233,"lng":-118.1391664,"rank":4},{"lat":34.6581975,"lng":-118.1391664,"rank":9},{"lat":34.6668717,"lng":-118.1391664,"rank":15},{"lat":34.6755458,"lng":-118.1391664,"rank":0},{"lat":34.5888042,"lng":-118.1286243,"rank":15},{"lat":34.5974783,"lng":-118.1286243,"rank":12},{"lat":34.6061525,"lng":-118.1286243,"rank":7},{"lat":34.6148267,"lng":-118.1286243,"rank":2},{"lat":34.6235008,"lng":-118.1286243,"rank":1},{"lat":34.632175,"lng":-118.1286243,"rank":1},{"lat":34.6408492,"lng":-118.1286243,"rank":1},{"lat":34.6495233,"lng":-118.1286243,"rank":9},{"lat":34.6581975,"lng":-118.1286243,"rank":14},{"lat":34.6668717,"lng":-118.1286243,"rank":0},{"lat":34.6755458,"lng":-118.1286243,"rank":0},{"lat":34.5888042,"lng":-118.1180823,"rank":14},{"lat":34.5974783,"lng":-118.1180823,"rank":12},{"lat":34.6061525,"lng":-118.1180823,"rank":7},{"lat":34.6148267,"lng":-118.1180823,"rank":2},{"lat":34.6235008,"lng":-118.1180823,"rank":1},{"lat":34.632175,"lng":-118.1180823,"rank":1},{"lat":34.6408492,"lng":-118.1180823,"rank":1},{"lat":34.6495233,"lng":-118.1180823,"rank":4},{"lat":34.6581975,"lng":-118.1180823,"rank":15},{"lat":34.6668717,"lng":-118.1180823,"rank":16},{"lat":34.6755458,"lng":-118.1180823,"rank":0},{"lat":34.5888042,"lng":-118.1075403,"rank":16},{"lat":34.5974783,"lng":-118.1075403,"rank":14},{"lat":34.6061525,"lng":-118.1075403,"rank":7},{"lat":34.6148267,"lng":-118.1075403,"rank":2},{"lat":34.6235008,"lng":-118.1075403,"rank":1},{"lat":34.632175,"lng":-118.1075403,"rank":1},{"lat":34.6408492,"lng":-118.1075403,"rank":1},{"lat":34.6495233,"lng":-118.1075403,"rank":1},{"lat":34.6581975,"lng":-118.1075403,"rank":3},{"lat":34.6668717,"lng":-118.1075403,"rank":17},{"lat":34.6755458,"lng":-118.1075403,"rank":0},{"lat":34.5888042,"lng":-118.0969982,"rank":20},{"lat":34.5974783,"lng":-118.0969982,"rank":13},{"lat":34.6061525,"lng":-118.0969982,"rank":6},{"lat":34.6148267,"lng":-118.0969982,"rank":3},{"lat":34.6235008,"lng":-118.0969982,"rank":1},{"lat":34.632175,"lng":-118.0969982,"rank":1},{"lat":34.6408492,"lng":-118.0969982,"rank":1},{"lat":34.6495233,"lng":-118.0969982,"rank":1},{"lat":34.6581975,"lng":-118.0969982,"rank":3},{"lat":34.6668717,"lng":-118.0969982,"rank":17},{"lat":34.6755458,"lng":-118.0969982,"rank":20}]);
-
-// ===== MAP 3 — emergency dentist in palmdale =====
-renderMap('lf-map-3', 34.6321451, -118.1496962, "Exceptional Dentistry \u2014 Palmdale Emergency Dental Care", [{"lat":34.5598604,"lng":-118.2375464,"rank":3},{"lat":34.5779315,"lng":-118.2375464,"rank":2},{"lat":34.5960027,"lng":-118.2375464,"rank":1},{"lat":34.6140739,"lng":-118.2375464,"rank":1},{"lat":34.6321451,"lng":-118.2375464,"rank":1},{"lat":34.6502163,"lng":-118.2375464,"rank":1},{"lat":34.6682875,"lng":-118.2375464,"rank":1},{"lat":34.6863587,"lng":-118.2375464,"rank":1},{"lat":34.7044298,"lng":-118.2375464,"rank":1},{"lat":34.5598604,"lng":-118.2155839,"rank":3},{"lat":34.5779315,"lng":-118.2155839,"rank":2},{"lat":34.5960027,"lng":-118.2155839,"rank":2},{"lat":34.6140739,"lng":-118.2155839,"rank":2},{"lat":34.6321451,"lng":-118.2155839,"rank":1},{"lat":34.6502163,"lng":-118.2155839,"rank":1},{"lat":34.6682875,"lng":-118.2155839,"rank":1},{"lat":34.6863587,"lng":-118.2155839,"rank":1},{"lat":34.7044298,"lng":-118.2155839,"rank":1},{"lat":34.5598604,"lng":-118.1936213,"rank":3},{"lat":34.5779315,"lng":-118.1936213,"rank":3},{"lat":34.5960027,"lng":-118.1936213,"rank":2},{"lat":34.6140739,"lng":-118.1936213,"rank":1},{"lat":34.6321451,"lng":-118.1936213,"rank":1},{"lat":34.6502163,"lng":-118.1936213,"rank":1},{"lat":34.6682875,"lng":-118.1936213,"rank":1},{"lat":34.6863587,"lng":-118.1936213,"rank":1},{"lat":34.7044298,"lng":-118.1936213,"rank":1},{"lat":34.5598604,"lng":-118.1716588,"rank":4},{"lat":34.5779315,"lng":-118.1716588,"rank":3},{"lat":34.5960027,"lng":-118.1716588,"rank":3},{"lat":34.6140739,"lng":-118.1716588,"rank":2},{"lat":34.6321451,"lng":-118.1716588,"rank":1},{"lat":34.6502163,"lng":-118.1716588,"rank":1},{"lat":34.6682875,"lng":-118.1716588,"rank":1},{"lat":34.6863587,"lng":-118.1716588,"rank":1},{"lat":34.7044298,"lng":-118.1716588,"rank":1},{"lat":34.5598604,"lng":-118.1496962,"rank":4},{"lat":34.5779315,"lng":-118.1496962,"rank":3},{"lat":34.5960027,"lng":-118.1496962,"rank":3},{"lat":34.6140739,"lng":-118.1496962,"rank":2},{"lat":34.6321451,"lng":-118.1496962,"rank":1},{"lat":34.6502163,"lng":-118.1496962,"rank":1},{"lat":34.6682875,"lng":-118.1496962,"rank":1},{"lat":34.6863587,"lng":-118.1496962,"rank":1},{"lat":34.7044298,"lng":-118.1496962,"rank":1},{"lat":34.5598604,"lng":-118.1277336,"rank":8},{"lat":34.5779315,"lng":-118.1277336,"rank":4},{"lat":34.5960027,"lng":-118.1277336,"rank":3},{"lat":34.6140739,"lng":-118.1277336,"rank":3},{"lat":34.6321451,"lng":-118.1277336,"rank":1},{"lat":34.6502163,"lng":-118.1277336,"rank":1},{"lat":34.6682875,"lng":-118.1277336,"rank":1},{"lat":34.6863587,"lng":-118.1277336,"rank":1},{"lat":34.7044298,"lng":-118.1277336,"rank":1},{"lat":34.5598604,"lng":-118.1057711,"rank":10},{"lat":34.5779315,"lng":-118.1057711,"rank":6},{"lat":34.5960027,"lng":-118.1057711,"rank":3},{"lat":34.6140739,"lng":-118.1057711,"rank":3},{"lat":34.6321451,"lng":-118.1057711,"rank":1},{"lat":34.6502163,"lng":-118.1057711,"rank":1},{"lat":34.6682875,"lng":-118.1057711,"rank":1},{"lat":34.6863587,"lng":-118.1057711,"rank":1},{"lat":34.7044298,"lng":-118.1057711,"rank":1},{"lat":34.5598604,"lng":-118.0838085,"rank":9},{"lat":34.5779315,"lng":-118.0838085,"rank":6},{"lat":34.5960027,"lng":-118.0838085,"rank":4},{"lat":34.6140739,"lng":-118.0838085,"rank":3},{"lat":34.6321451,"lng":-118.0838085,"rank":3},{"lat":34.6502163,"lng":-118.0838085,"rank":1},{"lat":34.6682875,"lng":-118.0838085,"rank":1},{"lat":34.6863587,"lng":-118.0838085,"rank":1},{"lat":34.7044298,"lng":-118.0838085,"rank":1},{"lat":34.5598604,"lng":-118.061846,"rank":14},{"lat":34.5779315,"lng":-118.061846,"rank":8},{"lat":34.5960027,"lng":-118.061846,"rank":1},{"lat":34.6140739,"lng":-118.061846,"rank":3},{"lat":34.6321451,"lng":-118.061846,"rank":3},{"lat":34.6502163,"lng":-118.061846,"rank":1},{"lat":34.6682875,"lng":-118.061846,"rank":1},{"lat":34.6863587,"lng":-118.061846,"rank":1},{"lat":34.7044298,"lng":-118.061846,"rank":1}]);
-
-// ===== MAP 4 — emergency dentist near me =====
-renderMap('lf-map-4', 34.6321451, -118.1496962, "Exceptional Dentistry \u2014 Palmdale Emergency Dental Care", [{"lat":34.5598604,"lng":-118.2375464,"rank":1},{"lat":34.5779315,"lng":-118.2375464,"rank":1},{"lat":34.5960027,"lng":-118.2375464,"rank":1},{"lat":34.6140739,"lng":-118.2375464,"rank":1},{"lat":34.6321451,"lng":-118.2375464,"rank":1},{"lat":34.6502163,"lng":-118.2375464,"rank":1},{"lat":34.6682875,"lng":-118.2375464,"rank":2},{"lat":34.6863587,"lng":-118.2375464,"rank":2},{"lat":34.7044298,"lng":-118.2375464,"rank":11},{"lat":34.5598604,"lng":-118.2155839,"rank":2},{"lat":34.5779315,"lng":-118.2155839,"rank":1},{"lat":34.5960027,"lng":-118.2155839,"rank":1},{"lat":34.6140739,"lng":-118.2155839,"rank":1},{"lat":34.6321451,"lng":-118.2155839,"rank":1},{"lat":34.6502163,"lng":-118.2155839,"rank":2},{"lat":34.6682875,"lng":-118.2155839,"rank":2},{"lat":34.6863587,"lng":-118.2155839,"rank":4},{"lat":34.7044298,"lng":-118.2155839,"rank":17},{"lat":34.5598604,"lng":-118.1936213,"rank":3},{"lat":34.5779315,"lng":-118.1936213,"rank":2},{"lat":34.5960027,"lng":-118.1936213,"rank":1},{"lat":34.6140739,"lng":-118.1936213,"rank":1},{"lat":34.6321451,"lng":-118.1936213,"rank":1},{"lat":34.6502163,"lng":-118.1936213,"rank":2},{"lat":34.6682875,"lng":-118.1936213,"rank":3},{"lat":34.6863587,"lng":-118.1936213,"rank":7},{"lat":34.7044298,"lng":-118.1936213,"rank":19},{"lat":34.5598604,"lng":-118.1716588,"rank":4},{"lat":34.5779315,"lng":-118.1716588,"rank":2},{"lat":34.5960027,"lng":-118.1716588,"rank":2},{"lat":34.6140739,"lng":-118.1716588,"rank":1},{"lat":34.6321451,"lng":-118.1716588,"rank":1},{"lat":34.6502163,"lng":-118.1716588,"rank":1},{"lat":34.6682875,"lng":-118.1716588,"rank":5},{"lat":34.6863587,"lng":-118.1716588,"rank":17},{"lat":34.7044298,"lng":-118.1716588,"rank":0},{"lat":34.5598604,"lng":-118.1496962,"rank":4},{"lat":34.5779315,"lng":-118.1496962,"rank":4},{"lat":34.5960027,"lng":-118.1496962,"rank":3},{"lat":34.6140739,"lng":-118.1496962,"rank":1},{"lat":34.6321451,"lng":-118.1496962,"rank":1},{"lat":34.6502163,"lng":-118.1496962,"rank":1},{"lat":34.6682875,"lng":-118.1496962,"rank":4},{"lat":34.6863587,"lng":-118.1496962,"rank":18},{"lat":34.7044298,"lng":-118.1496962,"rank":0},{"lat":34.5598604,"lng":-118.1277336,"rank":5},{"lat":34.5779315,"lng":-118.1277336,"rank":5},{"lat":34.5960027,"lng":-118.1277336,"rank":3},{"lat":34.6140739,"lng":-118.1277336,"rank":1},{"lat":34.6321451,"lng":-118.1277336,"rank":1},{"lat":34.6502163,"lng":-118.1277336,"rank":1},{"lat":34.6682875,"lng":-118.1277336,"rank":4},{"lat":34.6863587,"lng":-118.1277336,"rank":13},{"lat":34.7044298,"lng":-118.1277336,"rank":0},{"lat":34.5598604,"lng":-118.1057711,"rank":9},{"lat":34.5779315,"lng":-118.1057711,"rank":8},{"lat":34.5960027,"lng":-118.1057711,"rank":3},{"lat":34.6140739,"lng":-118.1057711,"rank":1},{"lat":34.6321451,"lng":-118.1057711,"rank":1},{"lat":34.6502163,"lng":-118.1057711,"rank":1},{"lat":34.6682875,"lng":-118.1057711,"rank":2},{"lat":34.6863587,"lng":-118.1057711,"rank":6},{"lat":34.7044298,"lng":-118.1057711,"rank":16},{"lat":34.5598604,"lng":-118.0838085,"rank":12},{"lat":34.5779315,"lng":-118.0838085,"rank":8},{"lat":34.5960027,"lng":-118.0838085,"rank":3},{"lat":34.6140739,"lng":-118.0838085,"rank":1},{"lat":34.6321451,"lng":-118.0838085,"rank":1},{"lat":34.6502163,"lng":-118.0838085,"rank":1},{"lat":34.6682875,"lng":-118.0838085,"rank":2},{"lat":34.6863587,"lng":-118.0838085,"rank":4},{"lat":34.7044298,"lng":-118.0838085,"rank":14},{"lat":34.5598604,"lng":-118.061846,"rank":13},{"lat":34.5779315,"lng":-118.061846,"rank":10},{"lat":34.5960027,"lng":-118.061846,"rank":3},{"lat":34.6140739,"lng":-118.061846,"rank":1},{"lat":34.6321451,"lng":-118.061846,"rank":1},{"lat":34.6502163,"lng":-118.061846,"rank":1},{"lat":34.6682875,"lng":-118.061846,"rank":2},{"lat":34.6863587,"lng":-118.061846,"rank":2},{"lat":34.7044298,"lng":-118.061846,"rank":10}]);
-
 </script>
 </body>
 </html>
