@@ -363,7 +363,17 @@ outright; geography cannot explain it away. Treat the campaign as unreliable whe
   Two independent sources, both disagreeing with Semrush in the same direction.
 
 A single `"-"` keyword with everything else in reasonable agreement is worth a note in `_errors`,
-not a fallback. When the test does trigger, fall back to Search Console for that client that
+not a fallback.
+
+**"Near me" terms do not count toward the trigger.** Google personalises a "near me" result to
+each searcher's location, so Search Console reports an average across many different local result
+sets while a rank tracker checks from one fixed point. The two can disagree completely without
+anything being wrong. Foothill Ranch in October 2026 failed the literal rule on exactly this —
+"dentist near me" and "dental implants near me" read `"-"` all month against Search Console
+averages of 9.5 and 7.8 — while every one of its other twelve keywords agreed with Search Console
+to within about 14 places, Semrush was *better* than Search Console on the local terms
+("dentist foothill ranch" 6 vs 15.4), and Local Falcon independently had the practice at ARP 2.43
+across 121 of 121 points. That campaign is working. Judge Test B on terms that name a place. When the test does trigger, fall back to Search Console for that client that
 month and add the client to Appendix A.
 
 Keywords sitting at healthy positions do not all leave the top 100 on the same day. When a
@@ -558,6 +568,86 @@ before building any client's report. Remove an entry once the underlying issue i
   6.8, "emergency dentist littleton" 52 vs 17.1). Remove once the campaign agrees with Google again.
 - Local Falcon holds only three scans for this place, all dated 29 Oct, so there is no September
   grid and the map section has no month-over-month comparison this month.
+
+### FULLERTON SMILE DENTISTRY (fullertonsmiledentistry.com)
+- Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Campaign `24384973_2931703` failed BOTH
+  tests — the count fell from 13 of 14 to 8 and recovered only to 11, and "dentist near me" read
+  `"-"` all month against a Search Console average of 9.15 while "dentist fullerton" read 66
+  against 28.4. One keyword returned 115, outside the valid 1–100 range.
+- SoLV here is 1.65, which rounds to 1.7 at one decimal. JavaScript `toFixed(1)` on 1.65 returns
+  1.6, which is how an earlier report printed 1.6% in one place and 1.7% in another. Round once,
+  server-side, and use the single value everywhere.
+
+### LAVA DENTAL (Houston)
+- Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Campaign `30349785_5101386` holds a
+  steady but tiny count — 2 to 4 of 23 keywords all month — and "dental implants houston",
+  "houston dentist" and "dentist near me" read `"-"` all month against Search Console averages of
+  9.4, 9.0 and 10.3. Note two of those three name a place, so the "near me" carve-out does not
+  rescue it. One keyword returned 117, outside the valid range.
+- Local Falcon holds only three scans for this place, all dated 29 Oct, so there is no September
+  grid and the map section has no month-over-month comparison.
+
+### MUSE DENTAL STUDIO (Houston)
+- Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Campaign tracks 20 keywords of which
+  12 read `"-"` on all 31 days. Three of those — "dentist houston", "dentist in houston" and
+  "dentist near me" — have Search Console averages of 11.1, 1.0 and 8.4. The Search Console
+  impressions behind those three are thin (9, 2 and 13), which weakens the signal without clearing
+  the rule.
+- Local Falcon holds only scans dated 29 Oct, so there is no September comparison.
+- October's 5 new reviews average 3.4 against an overall 4.8. The overall rating is being dragged
+  down and the report should say so plainly rather than quoting only the 4.8.
+
+### ROD GLEAVE, DMD (slcsmiles.com)
+- Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Only 4 to 5 of 14 keywords held a
+  position at any point, and 9 of 14 read `"-"` at month end while Search Console has 8 of those 9
+  ranking (e.g. "dentist salt lake city" 29.1, "dental implants salt lake city" 25.5). Where both
+  sources have a number they differ by 20+ places.
+- Its backlink sheet is NOT shared by link — owner plus three named writers only.
+
+### ORTHODONTICS IN WOODLAND HILLS
+- **No Search Console property exists** for the domain in Windsor, under either `sc-domain:` or a
+  URL-prefix form. That breaks three things the spec assumes: hero KPI 1, the footprint block, and
+  Test B. All three are nulled with an `_error` and no Semrush figure is substituted. Someone needs
+  to connect the property.
+- Map keyword is "orthodontics in woodland hills", not "dentist in <city>" — no "dentist in" scan
+  exists for this orthodontic practice.
+- "invisalign near me" was #1 on 1 Oct and `"-"` on 23 of 31 days. That is the pattern Test B
+  exists to catch and it cannot be checked here.
+
+### OC PERIO & IMPLANTS DENTAL GROUP
+- **No "dentist in mission viejo" scan exists** — this is a periodontics and implants practice and
+  the account has never scanned that term. The four keywords it does scan (periodontics in/near me,
+  dental implants in/near me) are recorded in the packet. The team must choose which stands in as
+  the map, or approve a scan. The map is null until then.
+- `page_path` splits the same article across two paths (`/blog/<slug>/` and `/<slug>/`) — e.g. gum
+  recession reads 423 and 108. Merge them or note it.
+
+### SADDLEBACK VALLEY ENDODONTICS
+- Map keyword is "endodontics in laguna hills", not "dentist in <city>" — it is the one phrase both
+  tracked in the campaign and scanned in Local Falcon in both months. Label the map accordingly.
+
+### PERIO IMPLANT HEALTH PROFESSIONALS
+- Hero location reads **Downtown Los Angeles, CA**, not Los Angeles — corrected by hand on an
+  earlier report, so keep it.
+- **Probably the wrong campaign in the manifest.** Project `27517640` holds two: the Los Angeles
+  city campaign `27517640_3794715` that the manifest points at, and a Downtown Los Angeles
+  neighbourhood campaign `27517640_4905046` tracking terms like "periodontist in downtown los
+  angeles". Given the hero location, the Downtown one is likely correct. Someone should confirm.
+- Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Both campaigns fail Test B — on the
+  Downtown campaign "dental implants near me" and "dental implants specialist near me" read `"-"`
+  all 31 days against Search Console averages of 8.1 and 1.0; on the city campaign the same term
+  is `"-"` on 29 of 31 days while Local Falcon has it at ARP 2.88 / SoLV 69%.
+- **No valid map.** No scan exists for "dentist in downtown los angeles" or "dentist in los
+  angeles". October scans cover only "dental implants near me", "dental implants in los angeles",
+  "periodontist in los angeles" and "periodontist near me". The map is null until the team picks a
+  keyword or approves a scan; the candidates are listed in the packet with their report keys.
+- No October blog posts — newest is 24 Sep, confirmed against the sitemap. A verified zero, and
+  the team should know nothing went out.
+
+### THE "dentist in <city>" ASSUMPTION
+Three clients so far are not general dentists, so §5's default map keyword does not fit them. The
+map keyword belongs in the manifest per client, not hard-coded in the spec. Until it is, check
+Appendix A before assuming the default.
 
 ### DELICATE SMILES (delicatesmiles.net)
 - Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Campaign `30530984_5177401` failed the
