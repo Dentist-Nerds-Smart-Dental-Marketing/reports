@@ -1,130 +1,65 @@
 ---
-description: Run the automated monthly client report cycle — collect data, build every active client's report, QA the batch, publish, and post the summary to Slack.
+description: Run the automated monthly client report cycle to SPEC v6 — collect, build, QA, publish, notify.
 ---
 
-# Monthly client reports — automated run
+# Monthly client report run (SPEC v6)
 
-Produces the monthly organic report for **every active client** in `clients/clients.json`,
-publishes them, and reports back. Fired by a Routine on the 4th; also runnable by hand.
+**The spec is `.claude/specs/monthly-report-spec-v6.md`. Read it before anything else.**
+It is transcribed from the Google Doc "Monthly Organic SEO Report — Generation Spec v6
+(ALL CLIENTS)". If the doc has moved on, re-sync the file first — the doc wins.
 
-`$ARGUMENTS` may name a report month (`2026-09`) and/or a comma-separated slug list to limit
-the run. With no arguments: **the month that just ended**, all active clients.
+Manifest: `clients/clients.json` (`active: true` only). Packets: `.cache/<YYYY-MM>/<slug>.json`.
+Everything under `.cache/` is gitignored and never published.
 
----
+## 0. Pre-flight — do these before spending any agent time
+- **Local Falcon credits.** Call `viewLocalFalconAccountInformation`. An 11×11 grid costs 121
+  credits and a 15×15 costs 225. If the balance cannot cover the clients that need a fresh scan,
+  say so now and get it topped up — do not discover it halfway through. Scans are reused within
+  the month either way; never run one without explicit approval.
+- **Backlink sheets.** Every report must carry a Backlinks card sourced only from the client's own
+  tracking sheet. Confirm `.cache/<month>/backlink-sheets.json` exists and covers the active
+  clients. Without it the run cannot produce a compliant report.
+- **Connectors.** Semrush, Windsor, Local Falcon and Google Drive must all answer. Two of the three
+  OneUp servers hold invalid keys; only `mcp__One_up_5_22_206__*` works.
 
-## Step 0 — Set up
+## 1. Collect — one collector per client
+Follow `.claude/agents/report-data-collector.md`.
 
-1. `git fetch origin main && git checkout main && git reset --hard origin/main`
-2. Read `clients/clients.json`. Work list = `active: true` clients (minus any slug filter).
-3. Resolve the report month and `month-year` slug (e.g. `2026-09` → `september-2026`).
-4. `mkdir -p .cache/<report_month>` for the data packets. **`.cache/` is never committed.**
-5. Announce: month, client count, and anything already present (a client who already has that
-   month's file is **skipped**, not overwritten — say so).
+> **Known environment trap.** A dry run on 2026-10-22 found subagents receiving only the Semrush
+> MCP server, which silently nulls the maps, GA4, GBP and Search Console — most of the report.
+> `tools: '*'` in the agent frontmatter fixes it, but only takes effect in a **fresh session**,
+> because agent definitions load at session start. Before trusting a batch, have one collector
+> call `listLocalFalconScanReports` and confirm it answers. If it does not, run collection inline
+> in the main session instead.
 
-### Preflight — check the dependencies before burning any work
-- **Windsor** — if the connector is unauthorized, GA4/GBP/GSC are unavailable, which is most of
-  the report. **Stop and report** rather than producing 36 hollow reports. The fix is for a human
-  to reauthorise Windsor in claude.ai connector settings.
-- **Semrush** and **Local Falcon** — one cheap call each to confirm they answer.
-- **Client websites** — these are often blocked by the environment's network policy. If so, blog
-  lists can't be scraped; continue, mark blogs null, and ask for them in the Slack summary.
+Record the Semrush §4 validation verdict for every client. An `unreliable` verdict means the
+keyword table falls back to Search Console for that client that month, and the client gets added
+to Appendix A of the spec.
 
----
+## 2. Build — batches of 5
+Follow `.claude/agents/report-builder.md`. Builders have no data tools on purpose: if a figure
+is not in the packet, it cannot reach the page. Hand each builder its slug, packet path and the
+template, plus any Appendix A exception that applies to that client.
 
-## Step 1 — Collect (INLINE, not delegated)
+## 3. QA — once, over the whole batch
+Follow `.claude/agents/report-reviewer.md`. Fix every FAIL and re-run it. Do not publish a batch
+with an open FAIL, and do not report a verdict the reviewer did not give.
 
-Work through the clients **one at a time in this session**, following
-`.claude/agents/report-data-collector.md` as the procedure. Write each client's packet to
-`.cache/<report_month>/<slug>.json` and then **drop the detail from your working context** —
-the packet on disk is the handoff, so collecting 34 clients does not mean holding 34 clients'
-data at once.
-
-**Do not delegate this step to a `report-data-collector` subagent.** A dry run on 2026-10-22
-showed subagents here receive only the Semrush MCP server; Local Falcon, Windsor and OneUp are
-absent, so a delegated collector returns Semrush plus blogs and silently nulls the map grids,
-GA4, GBP and Search Console. If you want to re-test that, have a subagent call
-`listLocalFalconScanReports` first — if it cannot, collect inline.
-
-Per client: resolve any null `ids` by name and write them back into `clients/clients.json`.
-If one client's collection fails, record it and move on — one failure must not sink the run.
-
-## Step 2 — Build (fan out)
-
-One `report-builder` per client **that has a packet**, in batches of 5. Builders need only
-Read/Write/Edit/Bash — no MCP servers — so delegation is safe and verified here. They have no
-data tools, so anything they write traces to a packet.
-
-Never run a builder for a client whose packet is missing — that is how blank reports happen.
-
----
-
-## Step 3 — Review (the gate)
-
-Run `report-reviewer` **once** over the whole batch. It checks coverage against the manifest and
-correctness per report, including the cross-client duplicate check.
-
-Take its verdict at face value:
-- **PASS** → Step 4.
-- **FAIL** → fix what is fixable (rebuild a client, rerun a collector), then **re-run the
-  reviewer**. Only publish once it passes, or once the remaining failures are genuinely
-  unfixable (e.g. a dead connector) — and then name them explicitly in the Slack summary.
-
-Never report a run as clean when the reviewer said otherwise.
-
----
-
-## Step 4 — Publish
+## 4. Publish — per client, two files at a time
+Per spec §9. **Never `git add -A`** — it sweeps up unrelated work. Never a bare `git commit` —
+it opens an editor. Never rebase with files still staged.
 
 ```
-git add -A
-git fetch origin main && git rebase origin/main
-git commit -m "Add <Month Year> monthly reports — <n> clients"
-git push -u origin main
-```
-`main` is what GitHub Pages serves, so this puts the reports live. Confirm `clients/clients.json`
-is included and `.cache/` is not.
-
----
-
-## Step 4b — Generate Renato's client cover emails
-
-Once the reports are live, produce the per-client cover emails:
-
-```
-python3 tools/gen-client-emails.py <month>-<year> <contacts.json> <out.md>
+git add clients/<slug>/<month>-<year>.html clients/<slug>/index.html
+git commit -m "<slug>: <Month> <Year> report"
+git pull --rebase origin main
+git push origin main
 ```
 
-`contacts.json` maps client slug to recipient address. **It is NOT in this repo and must never
-be committed.** This repository is PUBLIC on GitHub and the site serves its files without
-authentication, so any address added here is published — in the manifest, in a skill, in an
-agent definition, anywhere. `clients/clients.json` holds `contact_greeting` (names only, which
-are already public on the practices' own sites); addresses live in the CRM or a private sheet
-and are supplied at generation time.
+Then confirm the live URL returns 200 **and** that the published file matches the local one.
 
-If no contacts file is available, still generate the drafts with the To: line left blank and
-say so in the Slack post — the body, subject and report link are the slow part, not the address.
-
-Attach or link the generated markdown in the Slack summary so Renato can work straight from it.
-
-## Step 5 — Tell Amin and Renato
-
-Post to the Slack channel in `notify.slack_channel` (if null, say so and ask which channel):
-
-- Month, clients published, hub link `https://reports.dentistnerds.com/clients/`
-- The reviewer's verdict line
-- **Needs a human**: any client with nulled sections, what's missing, and why — especially blogs
-  and backlinks, which the old interactive skill collected from a person
-- Any client skipped, paused, or failed, and the reason
-- A reminder that these are live and awaiting their review before going to clients
-
-Be accurate about what did not work. A run that half-failed and is reported as a success is
-worse than one that failed loudly.
-
----
-
-## Guardrails
-- Real data only. A null with an explanation beats a plausible number.
-- Never overwrite an existing month's report unless explicitly asked.
-- Never edit `clients/report-template.html`.
-- Final reports carry no `contenteditable`.
-- Reuse Local Falcon scans within 30 days; only scan the gaps.
+## 5. Notify
+Post the run summary to Slack `#organic-search`, and email Amin and Renato the hub link plus a
+per-client list of individual report links. Say plainly what needs a human: connector failures,
+sheets that ask for a sign-in, campaigns that failed validation, clients held back and why.
+Internal problems go here — never onto a client's page.
