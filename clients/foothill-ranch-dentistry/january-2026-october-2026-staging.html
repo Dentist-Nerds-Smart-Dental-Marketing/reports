@@ -261,15 +261,21 @@
     html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:14px}
     .wrap{max-width:none;padding:0 6px}
     section{padding:22px 0;break-inside:auto!important}
-    .work-card{break-inside:auto!important}
+    .work-card{break-inside:avoid!important}
     .work-list li{break-inside:avoid}
-    .table-wrap,table{break-inside:avoid}
+    .table-wrap,table{break-inside:auto!important}
+    .section-eyebrow{display:flex;width:max-content;break-after:avoid;page-break-after:avoid}
+    h2,.block-label{break-before:avoid;page-break-before:avoid}
+    .block-label,.section-intro{break-after:avoid;page-break-after:avoid}
+    .section-intro,.hint{break-inside:avoid}
+    p{orphans:3;widows:3}
+    .work-grid{display:flex!important;flex-wrap:wrap;gap:16px}
+    .work-grid>.work-card{width:calc(50% - 8px)}
     .leads-grid{grid-template-columns:1fr 1fr}
     .hero{padding:30px 0}
     .lf-map{display:none!important}
     .map-static{display:block}
     .work-card,.stat-card,.map-card,.hero-kpi{break-inside:avoid}
-    .work-grid{grid-template-columns:1fr 1fr}
     .work-card.long{break-inside:auto}
     tr,li{break-inside:avoid}
     thead{display:table-header-group}
