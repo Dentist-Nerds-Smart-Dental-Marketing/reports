@@ -84,6 +84,11 @@ the most you may claim is "best in the last six months". Never present a data ga
 a number in the report.
 
 ## Steps
+0. **Work inside `<scratchpad>/<slug>/`.** Builders run in parallel against one shared
+   scratchpad; generic filenames like `build.py` have twice been overwritten by another agent,
+   and once a builder executed another's script and regenerated the wrong client's report. Never
+   write a generic filename to the scratchpad root, and never run a script you did not just write.
+   Touch only your own client's files.
 1. Read the packet and the template. **Never edit the template itself.**
 2. Write `clients/<slug>/<month>-<year>.html` (lowercase).
 3. Prepend a card to the top of `<div class="grid">` in `clients/<slug>/index.html`, newest
