@@ -327,9 +327,26 @@ CITY and to desktop. Search Console cannot be filtered below country level.
 Run this for every client, every month. Count, for each of the last roughly ten days of the
 month, how many tracked keywords have a recorded position. `"-"` means not in the top 100.
 
-- Count stable (e.g. 11–12 of 14 every day) -> campaign healthy. PUBLISH IT.
+- Count stable (e.g. 11–12 of 14 every day) -> campaign passes TEST A.
 - Count collapses (e.g. 10 of 14 -> 1 of 14) and does not fully recover -> campaign
   unreliable. DO NOT PUBLISH.
+
+### TEST B — THE COUNT TEST IS NOT ENOUGH (added 2026-11-05, from evidence)
+
+A campaign can hold a perfectly steady count and still be wrong, because a keyword stuck at
+`"-"` every single day is *stable*. California Coast Dental Arts passed Test A in October 2026
+(10–11 of 14 every day) while reporting "dentist in oceanside", "dentist oceanside",
+"oceanside dentist" and "dentist near me" as never reaching the top 100 all month — at the same
+time Search Console put them at average positions 18.9, 15.4, 18.1 and 6.2, and Local Falcon had
+"dentist in oceanside" ranked at 103 of 121 grid points. Three more terms were 20–30 places off.
+That is the same failure as 2C Wellness, and the count test did not catch it.
+
+So also run Test B, every client, every month: **cross-check the head terms against Search
+Console for the same month.** If a keyword reads `"-"` in Semrush for the whole month while
+Search Console shows it with a real average position, or the two disagree by roughly 20 places or
+more on several keywords, the campaign is unreliable **whatever the count test says**. Record the
+per-keyword comparison in the packet. Fall back to Search Console for that client that month, and
+add the client to Appendix A.
 
 Keywords sitting at healthy positions do not all leave the top 100 on the same day. When a
 campaign fails this check:
@@ -506,6 +523,22 @@ before building any client's report. Remove an entry once the underlying issue i
   as 46 positions, and was still returning only 5 of 14 keywords on 4 November. Remove this
   entry once the campaign passes validation again.
 - Backlink sheet currently asks for a sign-in. Keep the button, flag it until the sharing is fixed.
+
+### CALIFORNIA COAST DENTAL ARTS (californiacoastdentalarts.com)
+- Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Campaign `30456032_5146101` passed
+  the count test but failed Test B: four head terms read `"-"` all month while Search Console had
+  them on page 1–2, and Local Falcon had "dentist in oceanside" on 103 of 121 points. Remove this
+  entry once the campaign agrees with Google again.
+- Open question for the team: Local Falcon's place record links GBP `locations/1402003271736985932`
+  while the manifest carries `locations/7231815729630229678`. Confirm they are the same profile.
+
+### DELICATE SMILES (delicatesmiles.net)
+- Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Campaign `30530984_5177401` failed the
+  count test outright — 10 of 14 keywords through 18 Oct, down to 3 on 19 Oct, recovering only to
+  7 of 14 for the rest of the month. Remove once it holds a steady count again.
+- Its September Search Console pull returns zero rows for `sc-domain:delicatesmiles.net`, with and
+  without the country filter, so the fallback table has no month-over-month Change values and the
+  footprint block has no comparison. Needs a look at the property.
 
 ### EXCEPTIONAL DENTISTRY
 - Traffic to Each Page: keep the hostname filter for `palmdaleexceptionaldentistry.com`

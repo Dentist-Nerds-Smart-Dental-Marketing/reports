@@ -28,12 +28,23 @@ You never write report HTML and never touch `clients/<slug>/*.html`.
    is a defect that ships to a client.
 2. **Geography is not optional** (spec §0). Semrush = the client's CITY campaign, desktop.
    Local Falcon = grid on the practice's own lat/lng. **Every** GA4 call carries
-   `["country","eq","United States"]`. **Every** GSC call carries `["country","eq","usa"]`.
+   `["country","eq","United States"]`. **Every** GSC call carries `["country","eq","United States"]`
+   too — the doc says `"usa"`, but Windsor stores the full country name and `"usa"` returns
+   `total_rows: 0`. Verified 2026-11-05.
    Never a city filter on GA4. Never all-countries on either.
 3. **Local Falcon costs credits.** `listLocalFalconScanReports` first, reuse the month's scan,
    and never run a new scan without explicit approval recorded in `_cost_notes`.
 4. Big responses (Semrush tracking, unmasked Local Falcon) blow the token limit — write to a file
    and parse it. Always pass the spec's fieldmasks.
+5. **Collectors run in parallel and share a scratchpad.** Put every intermediate file under a
+   directory named for your slug, and never use a generic filename like `semrush.json` — a
+   dry run had one collector read another client's data off a colliding path. If a file you did
+   not write appears where you expected yours, stop and re-derive from your own tool results.
+6. **Backlink sheets:** `mcp__Google_Drive__read_file_content` returns only ~10 sample rows per
+   tab, and a `text/csv` export returns only the FIRST tab. To see every row you must export the
+   whole workbook as xlsx (`exportMimeType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`)
+   and parse it. When `.cache/<month>/v6/backlinks-october.json` exists, use it instead — it was
+   extracted centrally and carries no credentials.
 
 ## What to collect
 
@@ -42,7 +53,10 @@ You never write report HTML and never touch `clients/<slug>/*.html`.
   INTEGER. A bare project id fails with "campaign not found".
 - `tracking_position_organic` for the full month. Per row: `Ph` phrase, `Be` position at start,
   `Fi` position at end, `Dt` daily series. `"-"` = not in top 100.
-- **RUN THE MANDATORY VALIDATION (spec §4) AND RECORD IT.** For each of the last ~10 days of the
+- **RUN BOTH VALIDATION TESTS (spec §4) AND RECORD THEM.** Test A is the daily count. Test B is
+  the Search Console cross-check — a keyword pinned at `"-"` every day is "stable" to the count
+  test, so Test A alone misses a broken campaign. Put the per-keyword Semrush-vs-GSC comparison in
+  `semrush.validation.gsc_crosscheck_avg_position`. Either test failing means unreliable. For each of the last ~10 days of the
   month, count how many tracked keywords have a position. Put the daily counts in
   `semrush.validation.daily_counts` and set `semrush.validation.verdict` to `"healthy"` or
   `"unreliable"`, with `reason`. A count that collapses (10 of 14 -> 1 of 14) and does not
@@ -102,10 +116,10 @@ Look the sheet up in `.cache/<month>/backlink-sheets.json` (slug -> file id + vi
 Read **every tab that holds links**, not just the first. Count only rows with BOTH a date and a
 public link; bare domains with no date are a target list, not completed work. Keep only rows
 dated inside the report month. Record for each: url, date, tab, and whether it is nofollow
-(Wikipedia, Reddit, most social profiles and Q&A sites are). Emit `backlinks.sheet_url` — the
-builder needs it for the mandatory "View Backlinks Sheet" button. If the sheet asks for a
-sign-in, still emit the url and set `backlinks.sheet_requires_signin: true` so the team can fix
-the sharing. **Never source backlinks from Semrush, a crawl, or anywhere else.**
+(Wikipedia, Reddit, most social profiles and Q&A sites are). **Do NOT emit `backlinks.sheet_url`.** The "View Backlinks Sheet" button is HELD (spec §3,
+decision 2026-11-05) because this reports site is public and the sheets carry live credentials.
+Set `backlinks.sheet_url: null` and `backlinks.sheet_withheld_reason` to a short explanation.
+Never copy a username, email or password into the packet, a scratch file, or your report back. **Never source backlinks from Semrush, a crawl, or anywhere else.**
 
 ### G. Blogs, treatment pages, technical SEO
 - Blogs: fetch the live `/blog/` index and confirm each post is published. Record title, url,
