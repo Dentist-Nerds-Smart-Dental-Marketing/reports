@@ -43,8 +43,11 @@ Compare **positionally**, not "the value appears somewhere in the file":
   the packet's provenance notes.
 
 ## Cards
-- Backlinks card present on **every** report, with the "View Backlinks Sheet" button. Its absence
-  is an automatic FAIL — it is the most common failure.
+- Backlinks card present on **every** report. Its absence is an automatic FAIL — it is the most
+  common failure.
+- **The sheet button is HELD.** A report containing a "View Backlinks Sheet" button, or any
+  `docs.google.com/spreadsheets` URL, is an automatic FAIL: those sheets hold live credentials and
+  this site is public. Grep every report for `docs.google.com` and report any hit.
 - No card whose only content is missing data (e.g. "GBP Posts — Not available"). Automatic FAIL.
 - Blog Content holds blogs only; Treatment Pages is separate or absent; no card spans two columns.
 

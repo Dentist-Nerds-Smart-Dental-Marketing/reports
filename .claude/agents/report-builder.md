@@ -56,9 +56,12 @@ scan date, and compare each to last month in the intro prose from `local_falcon.
 **Work cards** (spec §3) — two-column grid, `grid-template-columns: 1fr 1fr`, **no card spans two
 columns**, no `align-items:start`. Show the cards that apply and drop the empty ones, with one
 exception:
-- **Backlinks Added NEVER drops.** The "View Backlinks Sheet" button is mandatory on every
-  report. Zero links built -> keep the card and say so plainly. Label nofollow links "builds
-  visibility and referral traffic rather than ranking authority" — never as ranking authority.
+- **Backlinks Added NEVER drops.** Zero links built -> keep the card and say so plainly. Label
+  nofollow links "builds visibility and referral traffic rather than ranking authority" — never
+  as ranking authority.
+- **The "View Backlinks Sheet" button is HELD (spec §3, decision 2026-11-05).** Do NOT render it
+  and do NOT put the sheet URL anywhere in the HTML, even though the doc calls it mandatory. The
+  sheets carry live credentials and this site is public. The card itself still always renders.
 - Blog Content holds **blogs only**. Never fold treatment pages or backlinks into it.
 - Treatment Pages is its **own** card, and drops entirely when empty.
 - Technical SEO defaults to "Maintenance" wording when the packet says nothing. Never invent work.

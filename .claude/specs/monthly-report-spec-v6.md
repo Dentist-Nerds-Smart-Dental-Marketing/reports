@@ -28,7 +28,7 @@ scoped to the United States. NEVER report all countries.
 | Semrush | City campaign: "<City>, <State>, United States", city level, device desktop, engine Google |
 | Local Falcon | Grid centred on the practice's own lat/lng |
 | GA4 | Filter EVERY call to country = United States. NEVER a city filter. Windsor field id: `country` |
-| GSC | Filter EVERY call to country = usa. GSC has NO city dimension. Windsor field id: `country` |
+| GSC | Filter EVERY call to country = United States. GSC has NO city dimension. Windsor field id: `country` |
 
 Name the level in each section's source line. e.g. "Source: Windsor / GA4 — organic
 sessions, United States" or "Source: Windsor / Google Search Console — United States".
@@ -117,16 +117,23 @@ session total. Say so in the source line under the list.
 
 Account = `sc-domain:<client-domain>`. EVERY GSC call carries the country filter.
 
+> **CORRECTION TO THE DOC (verified 2026-11-05).** The doc says to filter GSC with
+> `["country","eq","usa"]`. Windsor's Search Console connector stores the country as the full
+> name, so `"usa"` matches nothing and the call returns `total_rows: 0` — checked directly
+> against `sc-domain:westgrovedentalcare.com` for October 2026. Use
+> `["country","eq","United States"]`, the same value GA4 takes. The intent of the doc is
+> unchanged: US-only, never all countries. Fix the source doc and delete this note.
+
 Footprint block (every client):
 
 ```
 total clicks + impressions:
   fields ["clicks","impressions"]
-  filter [["country","eq","usa"]]
+  filter [["country","eq","United States"]]
 
 top-20 keyword count:
   fields ["query","position"]
-  filter [["country","eq","usa"]]
+  filter [["country","eq","United States"]]
   date range = full month, aggregated per query (NOT daily rows)
 ```
 
@@ -137,7 +144,7 @@ Keyword table (fallback clients only — see section 4):
 
 ```
 fields ["query","impressions","clicks","position"]
-filter [["query","in","[\"kw1\",\"kw2\"]"],"and",["country","eq","usa"]]
+filter [["query","in","[\"kw1\",\"kw2\"]"],"and",["country","eq","United States"]]
 ```
 
 One call PER MONTH. Do not add `year_month_name` to a multi-month call — it returns per-day
@@ -202,6 +209,10 @@ report_key,date,keyword,lat,lng,grid_size,radius,measurement,arp,atrp,solv,found
 
 - ALWAYS pass the fieldmask — an unmasked report is 100–300KB and will blow the token limit.
 - SCANS COST CREDITS. Reuse the month's existing scan. Never run a new one without explicit approval.
+- A month often holds MORE THAN ONE scan for the same keyword (e.g. 6 Oct and 20 Oct). The doc
+  does not say which to take: **use the latest scan inside the report month**, and show its real
+  date. Use the latest scan inside the prior month for the comparison. `listLocalFalconScanReports`
+  is paginated, so a prior-month lookup may need the `next_token` page.
 - `data_points` are COLUMN-MAJOR: all latitudes for the first longitude, then the next
   longitude. Build the {lat,lng,rank} array in that order or the heat map is wrong.
 - `rank === false` means not ranking -> emit 0.
@@ -261,6 +272,22 @@ empty one, and do not merge it into another card.
 
 **BACKLINKS CARD — THE ONE CARD THAT NEVER DROPS.** The most common failure is omitting this
 card. Do not omit it.
+
+> **BUTTON HELD — decision by Amin, 2026-11-05. Overrides the "MANDATORY" wording below until
+> lifted.** The doc assumes the sheet being readable without a sign-in is the desired state. It is
+> not safe here: reports.dentistnerds.com is public and unauthenticated, and the backlink sheets
+> carry Username / Email / Password columns beside the links. A sample of 10 of the 33 active
+> clients found credentials in **all 10**, and 8 of those 10 are already shared
+> `{"type":"anyone","role":"reader"}` — so linking them from a client report publishes working
+> logins. The passwords also repeat across clients, so one exposed sheet reaches several
+> practices. Malibu, Woodland Hills, All Smiles and The Smile Spa carry password values across
+> 4–5 tabs each.
+>
+> Until the credential columns are stripped from the sheets and the reused passwords rotated:
+> **render the Backlinks Added card in full — every October link, date and status — but DO NOT
+> render the "View Backlinks Sheet" button and do not put the sheet URL anywhere in the HTML.**
+> The card still never drops. Flag the held button in the internal run summary, never on the
+> client's page. Restore the button in a follow-up pass once the sheets are clean.
 
 - Source is the client's tracking sheet ONLY.
 - The "View Backlinks Sheet" button is MANDATORY on every report.
@@ -426,7 +453,7 @@ If the number does not cover the full report month, it is the wrong number.
 - [ ] Blog Content holds blogs only; Treatment Pages is its own card
 - [ ] Backlinks card present, sheet button present, sheet opens without sign-in
 - [ ] Every blog and treatment page URL live (403 checked in a browser)
-- [ ] Every GA4 call carries country = United States (no city filter); every GSC call carries country=usa
+- [ ] Every GA4 call carries country = United States (no city filter); every GSC call carries country = United States
 - [ ] GA4 comparison months re-pulled with country = United States, not copied from an earlier report
 - [ ] Top-20 count uses monthly per-query average position, not daily rows
 - [ ] Traffic to Each Page uses `page_path`, drops "(not set)", shows top 10
