@@ -362,6 +362,17 @@ outright; geography cannot explain it away. Treat the campaign as unreliable whe
   points with an ARP of 3.59 and Search Console had "dentist palmdale" at an average of 3.1.
   Two independent sources, both disagreeing with Semrush in the same direction.
 
+  **Two limits on using Local Falcon this way.** It only counts when Search Console sides WITH the
+  grid against Semrush. If the grid is better than Semrush and Search Console sits between the two
+  — Woodland Hills in October 2026: grid ARP 1.12 across 121 points, Semrush #5–10, Search Console
+  14.3 — there is no two-against-one, and no trigger.
+
+  And it only speaks to whether the practice ranks AT ALL, never to how far apart two positions
+  are. Local Falcon measures the **map pack** across a grid; Semrush measures the **organic blue
+  links** from one point. Those are different surfaces of the same results page, and a practice
+  can sit #1 in the map pack while sitting #8 organically with nothing wrong. So use the grid to
+  contradict a Semrush `"-"`, never to argue that a Semrush position is numerically wrong.
+
 A single `"-"` keyword with everything else in reasonable agreement is worth a note in `_errors`,
 not a fallback.
 
@@ -441,6 +452,20 @@ Console (US level) for EVERY client regardless of which source feeds the table a
 measures the long tail a 14-keyword campaign cannot see.
 
 ---
+
+## 4a. A KNOWN WEAKNESS OF THIS SPEC — month-end snapshots
+
+§4 reads each keyword's position at a single instant: the last day of the month. Several October
+2026 campaigns showed daily series that swing 20–70 places between consecutive days (Valencia's
+"root canal valencia" read 73 on 29 Oct and 4 on 30 Oct; Marconi's "dental implants carmichael"
+went 1 → 39; Smile Tustin's head terms dropped only in the final four days and Search Console
+showed them recovering on 30–31 Oct). A single noisy day at month end therefore decides whether a
+keyword is shown as Improving, shown as Stable, or deleted from the table entirely as a 1.0+ drop.
+
+That is a real weakness, not a collector error. Until the rule changes, record each keyword's
+monthly MEAN position alongside its start and end, and say so when the end value is clearly
+unrepresentative. A median or a last-week average would be a more honest basis for the Change
+column than a single day, and is worth considering for v7.
 
 ## 5. LOCAL MAP RANKINGS — ONE MAP
 
@@ -568,6 +593,14 @@ before building any client's report. Remove an entry once the underlying issue i
   6.8, "emergency dentist littleton" 52 vs 17.1). Remove once the campaign agrees with Google again.
 - Local Falcon holds only three scans for this place, all dated 29 Oct, so there is no September
   grid and the map section has no month-over-month comparison this month.
+
+### SMILE TUSTIN BY DR. EZZY
+- Keyword source: SEARCH CONSOLE FALLBACK for October 2026 — but the campaign is NOT broken. Its
+  monthly means agree with Search Console; only the readings on 28–31 Oct are off. Because v6
+  reads position at month end, those four days would have deleted all four head terms from the
+  table as 30+ place losses while Search Console shows them improving (e.g. "dentist in tustin"
+  23.1 → 13.8). Reinstate Semrush next month if the end-of-month readings settle.
+- Organic sessions fell 413 → 331, down 19.9%. Report it plainly.
 
 ### FULLERTON SMILE DENTISTRY (fullertonsmiledentistry.com)
 - Keyword source: SEARCH CONSOLE FALLBACK for October 2026. Campaign `24384973_2931703` failed BOTH
