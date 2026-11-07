@@ -149,8 +149,7 @@
   .status.improving{background:var(--blue-50);color:var(--blue-700)}
   .status.stable{background:var(--good-soft);color:var(--good-deep)}
   .status.building{background:var(--warn-soft);color:#b87a0e}
-  /* v6: there is NO .status.declining. Keywords that dropped 1.0+ are REMOVED from
-     the table (spec §4), not labelled. Do not reintroduce the rule. */
+  .status.declining{background:var(--bad-soft);color:var(--bad)}
 
   /* ============== STAT CARDS (GBP + Search Console footprint) ============== */
   .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -387,40 +386,30 @@
 
 <section class="alt">
   <div class="wrap">
-    <span class="section-eyebrow"><span class="dot"></span>Google Search Console · United States</span>
+    <span class="section-eyebrow"><span class="dot"></span>Semrush · Position Tracking · Palmdale, CA</span>
     <h2>Keyword <span class="accent">Rankings</span></h2>
-    <p class="section-intro">How Exceptional Dentistry ranks on Google for its priority local searches, sorted by average position for October 2026. <strong>Improving</strong> means the phrase moved up at least one position against September and sits in the top 20; <strong>Stable</strong> means it held a top-20 spot. “all on fours palmdale” climbed to #1, “endodontist palmdale” jumped 16 spots to #2, “dentist palmdale” moved up to #3 and “root canal palmdale” moved up 14 spots to #9.</p>
+    <p class="section-intro">Where the practice ranks in Google for its key Palmdale search phrases, sorted by latest position. “cosmetic dentist in palmdale” jumped 15 spots to #4, “dental implants palmdale” moved up 11 spots and “all-on-4 implants in palmdale” reached #7.</p>
 
     <div class="table-wrap">
       <table class="kw">
-        <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
+        <colgroup><col style="width:40%"><col style="width:15%"><col style="width:15%"><col style="width:16%"><col style="width:14%"></colgroup>
         <thead>
-          <tr>
-            <th>Search Phrase</th>
-            <th class="center">Position</th>
-            <th class="center">Change</th>
-            <th class="center">Status</th>
-          </tr>
+          <tr><th>Search Phrase</th><th class="center">Previous</th><th class="center">Latest</th><th class="center">Change</th><th class="center">Status</th></tr>
         </thead>
         <tbody>
-          <tr><td class="kw-name">dental office palmdale</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 2</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">all on fours palmdale</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 9</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dental implants near me</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 1</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">emergency dentist near me</td><td class="center"><span class="rk good">#1</span></td><td class="center">▲ 1</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dental implants palmdale</td><td class="center"><span class="rk good">#2</span></td><td class="center">=</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">endodontist palmdale</td><td class="center"><span class="rk good">#2</span></td><td class="center">▲ 16</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">teeth whitening palmdale</td><td class="center"><span class="rk good">#3</span></td><td class="center">=</td><td class="center"><span class="status stable">Stable</span></td></tr>
-          <tr><td class="kw-name">dentist palmdale</td><td class="center"><span class="rk good">#3</span></td><td class="center">▲ 3</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">invisalign palmdale</td><td class="center"><span class="rk good">#3</span></td><td class="center">▲ 1</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">emergency dentist palmdale</td><td class="center"><span class="rk warn">#7</span></td><td class="center">▲ 2</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dentist near me</td><td class="center"><span class="rk warn">#8</span></td><td class="center">▲ 1</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">root canal palmdale</td><td class="center"><span class="rk warn">#9</span></td><td class="center">▲ 14</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">palmdale dentist</td><td class="center"><span class="rk bad">#12</span></td><td class="center">▲ 5</td><td class="center"><span class="status improving">Improving</span></td></tr>
-          <tr><td class="kw-name">dentist in palmdale</td><td class="center"><span class="rk bad">#15</span></td><td class="center">▲ 1</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">cosmetic dentist in palmdale</td><td class="center">#19</td><td class="center"><span class="rk warn">#4</span></td><td class="center">▲ 15</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">all-on-4 implants in palmdale</td><td class="center">#11</td><td class="center"><span class="rk warn">#7</span></td><td class="center">▲ 4</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">fluoride treatment in palmdale</td><td class="center">#10</td><td class="center"><span class="rk warn">#9</span></td><td class="center">▲ 1</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dental implants near me</td><td class="center">#17</td><td class="center"><span class="rk bad">#14</span></td><td class="center">▲ 3</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dental implants palmdale</td><td class="center">#28</td><td class="center"><span class="rk bad">#17</span></td><td class="center">▲ 11</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">veneers palmdale</td><td class="center">#20</td><td class="center"><span class="rk bad">#17</span></td><td class="center">▲ 3</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dental implants in palmdale</td><td class="center">#26</td><td class="center"><span class="rk bad">#19</span></td><td class="center">▲ 7</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">dentist near me</td><td class="center">#25</td><td class="center"><span class="rk bad">#22</span></td><td class="center">▲ 3</td><td class="center"><span class="status improving">Improving</span></td></tr>
+          <tr><td class="kw-name">night guard in palmdale</td><td class="center">#1</td><td class="center"><span class="rk bad">#23</span></td><td class="center">▼ 22</td><td class="center"><span class="status declining">Declining</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint">Source: Google Search Console (United States) — October average position vs September average.</p>
+    <p class="hint">Source: Semrush position tracking (Palmdale, CA) — positions refreshed November 6, 2026; Change = movement vs the previous check.</p>
 
     <div class="footprint">
       <p class="block-label">Total Search Console footprint — United States</p>
